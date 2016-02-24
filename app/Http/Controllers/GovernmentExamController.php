@@ -26,4 +26,12 @@ class GovernmentExamController extends Controller
 
         return redirect()->route('governmentExamIndex');
     }
+
+    public function updateGovernmentExam(Request $request){
+        GovernmentExam::where('intGovernmentExamID', $request->governmentExamID)
+        ->update(['strGovernmentExam'=>$request->governmentExam]);
+
+
+        return redirect()->route('governmentExamIndex');
+    }
 }

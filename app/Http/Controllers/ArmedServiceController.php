@@ -28,4 +28,15 @@ class ArmedServiceController extends Controller
 
         return redirect()->route('armedServiceIndex');
     }
+
+    public function updateArmedService(Request $request){
+        
+        
+        ArmedService::where('intArmedServiceID', $request->armedServiceID)
+        ->update(['strArmedServiceName'=>$request->armedServiceName, 
+            'strDescription'=>$request->armedServiceDescription]);
+
+
+        return redirect()->route('armedServiceIndex');
+    }
 }

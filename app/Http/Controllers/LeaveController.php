@@ -33,4 +33,12 @@ class LeaveController extends Controller
         return redirect()->route('leaveIndex');
     }
 
+    public function updateLeave(Request $request){
+        Leave::where('intLeaveID', $request->leaveID)
+        ->update(['strLeaveType'=>$request->leaveType, 
+            'intDefaultLeave'=>$request->defaultLeave]);
+
+        return redirect()->route('leaveIndex');   
+    }
+
 }
