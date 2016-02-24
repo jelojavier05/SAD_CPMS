@@ -17,6 +17,8 @@ Route::post('/maintenance/insertVitalStatistics', 'VitalStatisticsController@add
 
 Route::get('/maintenance/unitOfMeasurement', 'UnitOfMeasurementController@index')->name('unitOfMeasurementIndex');
 
+Route::post('/maintenance/updateUnitOfMeasurement', 'UnitOfMeasurementController@updateUnitOfMeasurement')->name('unitOfMeasurementUpdate');
+
 Route::post('/maintenance/insertUnitOfMeasurement', 'UnitOfMeasurementController@addUnitOfMeasurement')->name('unitOfMeasurementAdd');
 
 Route::get('/maintenance/leave', 'LeaveController@index')->name('leaveIndex');

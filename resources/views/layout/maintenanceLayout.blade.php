@@ -7,6 +7,5 @@
     <body>
         @yield('content')
         @yield('script')
-        <script src = "SAD_SAMS/javascript/armedService.js"></script>
     </body>
 </html>
