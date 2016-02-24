@@ -30,12 +30,4 @@ class UnitOfMeasurementController extends Controller
 
         return redirect()->route('unitOfMeasurementIndex');
     }
-
-    public function updateUnitOfMeasurement(Request $request){
-        UnitOfMeasurement::where('intUnitOfMeasurementID', $request->unitOfMeasurementID)
-        ->update(['strUnitOfMeasurement'=>$request->unitOfMeasurement]);
-
-
-        return redirect()->route('unitOfMeasurementIndex');
-    }
 }
