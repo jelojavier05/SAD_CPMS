@@ -49,6 +49,7 @@
            <tbody>
 			   @foreach ($leaves as $leave)
           			<tr>
+
             			
 						<td><input class="with-gap" type="radio" name="leave" id="{{ $leave->intLeaveID }}" onclick="radioClicked('{{$leave->intLeaveID}}','{{$leave->strLeaveType}}','{{$leave->intDefaultLeave}}')"/><label for="{{ $leave->intLeaveID }}"></label> </td>
 						<td>{{ $leave->intLeaveID }}</td>
@@ -60,6 +61,7 @@
           			</tr>
           		@endforeach
         	</tbody>
+
 				</table></div>
         	</div>
 			</br></br></br></br></br>
