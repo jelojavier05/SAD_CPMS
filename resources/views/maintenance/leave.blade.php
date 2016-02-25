@@ -39,7 +39,7 @@
 					</div>
            	<thead>
                     <tr>
-						<th></th>
+						<th>radio</th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Leave Type</th>
 						<th data-field="number">Default Leave</th>
@@ -49,21 +49,17 @@
            <tbody>
 			   @foreach ($leaves as $leave)
           			<tr>
-            			<td><input class="with-gap" name="leave" type="radio" id="{{ $leave->intLeaveID }}" onclick="radioClicked('{{$leave->intLeaveID}}','{{$leave->strLeaveType}}','{{$leave->intDefaultLeave}}')" /></td>
+            			
+						<td><input class="with-gap" type="radio" name="leave" id="{{ $leave->intLeaveID }}" onclick="radioClicked('{{$leave->intLeaveID}}','{{$leave->strLeaveType}}','{{$leave->intDefaultLeave}}')"/><label for="{{ $leave->intLeaveID }}"></label> </td>
 						<td>{{ $leave->intLeaveID }}</td>
             			<td>{{ $leave->strLeaveType }}</td>
             			<td>{{ $leave->intDefaultLeave }}</td>
+							
 						
-      					
+								
           			</tr>
-          			@endforeach
-			   		
-			   
-			   		
-               
-      
-          
-        </tbody>
+          		@endforeach
+        	</tbody>
 				</table></div>
         	</div>
 			</br></br></br></br></br>
@@ -87,7 +83,7 @@
 
 <!-- Modal Leave ADD -->
 
-<div id="modalleaveAdd" class="modal">
+<div id="modalleaveAdd" class="modal" style="overflow-y: hidden;">
         <div class="modal-header"><h2>Leave</h2></div>
         	<div class="modal-content">
 				<form action = "{{ route('leaveAdd') }} " method = "post">
@@ -105,7 +101,7 @@
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="strLeaveType" type="text" class="validate" name = "leaveType" required="" aria-required="true">
+								<input  id="strLeaveType" type="text" class="validate" name = "leaveType" required="" aria-required="true">
 									<label for="strLeaveType">Leave Type</label> 
 							</div>
 						</div>
@@ -122,9 +118,7 @@
 				
 		<div class="modal-footer">
 			
-			<button class="btn waves-effect waves-light modal-close red" style="margin-right: 30px;">Cancel
-    			<i class="material-icons right">stop</i>
-  			</button>
+			
 			<button class="btn waves-effect waves-light" type="submit" name="action" style="margin-right: 30px;">Save
     			<i class="material-icons right">send</i>
   			</button>
@@ -133,7 +127,7 @@
 				</form>
 		</div>
 <!-- MODAL LEAVE EDIT -->
-<div id="modalleaveEdit" class="modal">
+<div id="modalleaveEdit" class="modal" style="overflow-y: hidden;">
 	<div class="modal-header"><h2>Leave</h2></div>
         	<div class="modal-content">
 				<form action = "{{ route('leaveUpdate') }}" method = "post">
@@ -142,7 +136,8 @@
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="editID" type="text" class="validate" name = "leaveID" disabled required="" aria-required="true">
+								<input  id="editID" type="text" class="validate" name = "leaveID" disabled required="" aria-required="true"
+									   value ="test">
 									<label for="intLeaveID">Leave ID</label>
 							</div>
 						</div>
@@ -150,16 +145,16 @@
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "leaveType" required="" aria-required="true">
-									<label for="strLeaveType">Leave Type</label> 
+								<input id="editname" type="text" class="validate" name = "leaveType" required="" aria-required="true" value ="test">
+									<label for="editname" class="active">Leave Type</label> 
 							</div>
 						</div>
 					</div>
 						<div class="row">
 							<div class="col s5">
 								<div class="input-field">
-									<input id="editDefault" type="text" class="validate" name = "defaultLeave" required="" aria-required="true">
-										<label for="intDefaultLeave">DefaultLeave</label> 
+									<input id="editDefault" type="text" class="validate" name = "defaultLeave" required="" aria-required="true" value ="test">
+										<label for="editDefault" class="active">DefaultLeave</label> 
 								</div>
 							</div>
 					</div>
@@ -167,9 +162,7 @@
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
-     		<button class="btn waves-effect waves-light modal-close red" style="margin-right: 30px;">Cancel
-    			<i class="material-icons right">stop</i>
-  			</button>
+     	
 			<button class="btn waves-effect waves-light" type="submit" name="action" style="margin-right: 30px;">Save
     			<i class="material-icons right">send</i>
   			</button>
