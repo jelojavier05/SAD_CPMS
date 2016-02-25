@@ -49,19 +49,15 @@
            <tbody>
 			   @foreach ($leaves as $leave)
           			<tr>
-            			<td><input class="with-gap" name="leave" type="radio" id="{{ $leave->intLeaveID }}" onclick="radioClicked('{{$leave->intLeaveID}}','{{$leave->strLeaveType}}','{{$leave->intDefaultLeave}}')" /></td>
+            			<td><input class="with-gap" name="leave" type="radio" id="{{ $leave->intLeaveID }}" 
+            				onclick="radioClicked('{{$leave->intLeaveID}}','{{$leave->strLeaveType}}',
+            				'{{$leave->intDefaultLeave}}')">
+            			<label for="{{ $leave->intLeaveID }}"></label> </td>
 						<td>{{ $leave->intLeaveID }}</td>
             			<td>{{ $leave->strLeaveType }}</td>
-            			<td>{{ $leave->intDefaultLeave }}</td>
-						
-      					
+            			<td>{{ $leave->intDefaultLeave }}</td>	
           			</tr>
-          			@endforeach
-			   		
-			   
-			   		
-               
-      
+          		@endforeach
           
         </tbody>
 				</table></div>
