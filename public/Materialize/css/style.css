@@ -1,0 +1,58 @@
+div.scroll {
+    
+    background-color: white;
+	width: 700px;
+    height: 500px;
+    overflow: scroll;
+	
+	margin-left: 120px;
+}
+
+
+.homeposition
+{
+    padding-left: 70px;
+}
+
+.iconposition
+{
+    margin-top: -10px;
+}
+
+.dashiconpos
+{
+    position: absolute;
+    margin-top: 2px;
+    margin-left: -10px;
+}
+
+.textindent
+{
+    margin-top:3px;
+    margin-left:25px;
+    font-size: 24px;
+}
+
+#textindentmain
+{
+    margin-top: -64px;
+    margin-left: 35px;
+    font-size: 26px;
+}
+.sgcontent
+{
+    display: none;
+}
+
+.modal-header
+{
+    color: #fff;
+    background-color: #26a69a;
+}
+
+.mainpos
+{
+    margin-top: -63px;
+    margin-left: 30px;
+}
+
