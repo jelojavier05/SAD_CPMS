@@ -1,11 +1,21 @@
+.bodyscrollhider
+{
+	overflow-x: hidden;
+}
+
+
+
 div.scroll {
     
     background-color: white;
+/*
 	width: 700px;
-    height: 500px;
+ */   
+	height: 380px;
+
     overflow: scroll;
 	
-	margin-left: 120px;
+/*	margin-left: 120px;*/
 }
 
 
@@ -28,9 +38,9 @@ div.scroll {
 
 .textindent
 {
-    margin-top:3px;
-    margin-left:25px;
-    font-size: 24px;
+    margin-top:-65px;
+    margin-left:35px;
+    font-size: 26px;
 }
 
 #textindentmain
@@ -50,9 +60,21 @@ div.scroll {
     background-color: #26a69a;
 }
 
+
 .mainpos
 {
     margin-top: -63px;
     margin-left: 30px;
 }
+
+.colortitle
+{
+	color: #26a69a;
+}
+
+
+
+
+
+
 

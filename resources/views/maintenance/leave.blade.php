@@ -1,19 +1,28 @@
 @extends('layout.maintenanceLayout')
 
+@section('title')
+Leave
+@endsection
+
 @section('content')
 
 <!-- ADD EDIT DELETE BUTTON-->
 	<div class="row">
     	<div class="col s12">	
 			<div class="col s3 offset-s3">
-				<button id="btnAdd" class="btn-large waves-effect waves-light green hide-on-small-only modal-trigger" href="#modalleaveAdd"><i class="material-icons">add</i> ADD</button></br></br>
+				<h1 class="colortitle">Leave</h1>
+			</div>
+			<div class="col s3 offset-s3">
+				<button id="btnAdd" class="btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalleaveAdd"><i class="material-icons">add</i> ADD</button></br></br>
+			</div>
+<!--
+			<div class="col s3">
+				<button id="btnEdit" class="btn-large waves-effect waves-light blue hide-on-med-and-down modal-trigger" href="#modalleaveEdit" onclick = "editButton(this.id)" disabled><i class="material-icons">settings</i> EDIT</button></br></br>
 			</div>
 			<div class="col s3">
-				<button id="btnEdit" class="btn-large waves-effect waves-light blue hide-on-small-only modal-trigger" href="#modalleaveEdit" onclick = "editButton(this.id)" disabled><i class="material-icons">settings</i> EDIT</button></br></br>
+				<button id="btnDelete" class="btn-large waves-effect waves-light red hide-on-med-and-down" disabled><i class="material-icons">delete</i> DELETE</button>
 			</div>
-			<div class="col s3">
-				<button id="btnDelete" class="btn-large waves-effect waves-light red hide-on-small-only" disabled><i class="material-icons">delete</i> DELETE</button>
-			</div>
+-->
 		</div>
 	
 
@@ -21,20 +30,23 @@
 
 	 <div class="row">
         <div class="container">
-        	<div class="col l12 offset-l1">
+        	<div class="col s10 push-s2">
             	<div class="scroll">
+					
 				<table class="highlight white" style="margin-top: -10px;">
                 	<div class="right-align">
                  		<div class="fixed-action-btn horizontal click-to-toggle">
-    						<a class="btn-floating btn-large red hide-on-large-only">
-      							<i class="large mdi-navigation-menu"></i>
-    						</a>
+    						<button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalleaveAdd">
+      							<i class="material-icons">add</i>
+    						</button>
+<!--
     							<ul>
-      						<li><a class="btn-floating green modal-trigger hide-on-large-only" href="#modalleaveAdd"><i class="material-icons">add</i></a></li>
-      						<li><a class="btn-floating blue modal-trigger hide-on-large-only" href="#modalleaveEdit"><i class="material-icons">settings</i></a></li>
-      						<li><a class="btn-floating red darken-4 hide-on-large-only"><i class="material-icons">delete</i></a></li>
+      						<li><button class="btn-floating green modal-trigger hide-on-large-only" href="#modalleaveAdd" id="btnsmallAdd"><i class="material-icons">add</i></button></li>
+      						<li><button class="btn-floating blue modal-trigger hide-on-large-only" href="#modalleaveEdit" id="btnsmallEdit" disabled onclick = "editButton(this.id)"><i class="material-icons">settings</i></button></li>
+      						<li><button class="btn-floating red darken-4 hide-on-large-only" id="btnsmallDelete" disabled><i class="material-icons">delete</i></button></li>
       
     							</ul>
+-->
   						</div>
 					</div>
            	<thead>
@@ -47,11 +59,12 @@
 			</thead>
             
            <tbody>
-			   @foreach ($leaves as $leave)
+			   
           			<tr>
-            			<td><input class="with-gap" name="leave" type="radio" id="{{ $leave->intLeaveID }}" 
+						@foreach ($leaves as $leave)
+            			<td><button class="btn large modal-trigger"  name="leave" id="{{ $leave->intLeaveID }}" 
             				onclick="radioClicked('{{$leave->intLeaveID}}','{{$leave->strLeaveType}}',
-            				'{{$leave->intDefaultLeave}}')">
+							'{{$leave->intDefaultLeave}}')" href="#modalleaveEdit">Update</button>
             			<label for="{{ $leave->intLeaveID }}"></label> </td>
 						<td>{{ $leave->intLeaveID }}</td>
             			<td>{{ $leave->strLeaveType }}</td>
@@ -61,8 +74,9 @@
           
         </tbody>
 				</table></div>
-        	</div>
+			</div>
 			</br></br></br></br></br>
+			
 			<!-- Pagination -->
 <!--
 			<center>
@@ -83,7 +97,7 @@
 
 <!-- Modal Leave ADD -->
 
-<div id="modalleaveAdd" class="modal">
+<div id="modalleaveAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Leave</h2></div>
         	<div class="modal-content">
 				<form action = "{{ route('leaveAdd') }} " method = "post">
@@ -125,7 +139,7 @@
 				</form>
 		</div>
 <!-- MODAL LEAVE EDIT -->
-<div id="modalleaveEdit" class="modal">
+<div id="modalleaveEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Leave</h2></div>
         	<div class="modal-content">
 				<form action = "{{ route('leaveUpdate') }}" method = "post">
@@ -159,9 +173,14 @@
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
-			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Save
+			<button class="btn waves-effect waves-light red" style="margin-right: 30px;">Delete
+    			<i class="material-icons right">stop</i>
+  			</button>
+			
+			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
     			<i class="material-icons right">send</i>
   			</button>
+			
     	</div>
     		</div>
 				</form>

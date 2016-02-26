@@ -20,7 +20,7 @@
   
 </head>
 
-<body style="overflow-x:hidden; overflow-y:hidden">
+<body id="scrollhider" class="bodyscrollhider">
     
     
     <nav class="black darken-1">
@@ -30,16 +30,16 @@
             <div class="nav-wrapper">
                 <div class="homeposition">
                     
-                    <a href="index.html" class="brand-logo"><div class="flow-text"><div class="hide-on-small-only"><i class="material-icons ">dashboard</i></div><span class="white-text"><div class="mainpos">Client and Personnel Management System</div></span></div></a>
+                    <a href="#" class="brand-logo"><div class="flow-text"><div class="hide-on-small-only"><i class="material-icons ">dashboard</i></div><span class="white-text"><div class="mainpos">Client and Personnel Management System</div></span></div></a>
                 </div>
                 
-                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+                <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
                 
                     <ul class="side-nav fixed grey lighten-1" id="mobile-nav">
                         <div class="iconposition">
                     <div class="card-panel teal">
                         
-                        <div class="dashiconpos"><i class="material-icons">stars</i></div><span class="white-text"><div class="textindent">CPMS</div></span></div></div>
+                        <div class="dashicoanpos"><i class="material-icons">stars</i></div><span class="white-text"><div class="textindent">CPMS</div></span></div></div>
                         <ul class="collapsible collapsible-accordion">
                     <li class="bold"><a class="collapsible-header waves-effect waves-teal" href="#"><i class="material-icons">settings</i>Maintenance</a>
                             <div class="collapsible-body">
@@ -105,10 +105,16 @@
    
     $('.modal-trigger').leanModal();
   });
-</script>
+	</script>
+	<script>
+		$('#scrollcontrol').click(function(){
+				$('#scrollhider').addClass('bodyscrollhider);
+	});
+	</script>
     
      
     </body>
+	
     
 </html>
 
