@@ -51,11 +51,11 @@ Armed Service
            <tbody>
 			   
           			<tr>
-						@foreach ($armedServices as $armedServices)
+						@foreach ($armedServices as $armedService)
             			<td><button class="btn large modal-trigger"  name="armedService" id="{{ $armedService->intArmedServiceID }}" 
             				onclick="radioClicked('{{$armedService->intArmedServiceID}}', '{{$armedService->strArmedServiceName}}',
 				'{{$armedService->strDescription}}')" href="#modalarmedserviceEdit">Update</button>
-            			<label for="{{ $armedServices->intArmedServiceID }}"></label> </td>
+            			<label for="{{ $armedService->intArmedServiceID }}"></label> </td>
 						<td>{{ $armedService->intArmedServiceID }}</td>
             			<td>{{ $armedService->strArmedServiceName }}</td>
             			<td>{{ $armedService->strDescription }}</td>	
@@ -67,7 +67,7 @@ Armed Service
 				
 				</div>
 				
-				<center><div class="white">{!! $armedServices->render() !!}</div></center>
+			<center><div class="white">{!! $armedServices->render() !!}</div></center>
 			</div>
 			</br></br></br></br></br>
 

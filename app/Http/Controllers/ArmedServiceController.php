@@ -11,8 +11,7 @@ class ArmedServiceController extends Controller
 {
     public function index()
     {
-        $armedServices = ArmedService::where('bitFlag', 1)
-        ->get();
+        $armedServices = ArmedService::where('bitFlag', 1)->paginate(5);
 
         return view('/maintenance/armedservice', ['armedServices'=>$armedServices]);
     }
