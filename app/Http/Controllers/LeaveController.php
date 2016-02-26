@@ -16,7 +16,7 @@ class LeaveController extends Controller
      */
     public function index()
     {
-        $leaves = Leave::get();
+        $leaves = Leave::paginate(5);
 
         return view('maintenance.leave', ['leaves'=>$leaves]);
     }

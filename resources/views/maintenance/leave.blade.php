@@ -71,7 +71,7 @@ Leave
             			<td>{{ $leave->intDefaultLeave }}</td>	
           			</tr>
           		@endforeach
-          
+          {!! $leaves->render() !!}
         </tbody>
 				</table></div>
 			</div>
