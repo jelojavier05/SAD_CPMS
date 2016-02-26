@@ -6,15 +6,15 @@ Leave
 
 @section('content')
 
-<!-- ADD EDIT DELETE BUTTON-->
-	<div class="row">
-    	<div class="col s12">	
-			<div class="col s3 offset-s3">
-				<h1 class="colortitle">Leave</h1>
-			</div>
-			<div class="col s3 offset-s3">
-				<button id="btnAdd" class="btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalleaveAdd"><i class="material-icons">add</i> ADD</button></br></br>
-			</div>
+	<!-- ADD EDIT DELETE BUTTON-->
+		<div class="row">
+			<div class="col s12">	
+				<div class="col s3 offset-s3">
+					<h1 class="colortitle">Leave</h1>
+				</div>
+				<div class="col s3 offset-s3">
+					<button style="margin-top: 60px;" id="btnAdd" class="btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalleaveAdd"><i class="material-icons">add</i> ADD</button></br></br>
+				</div>
 <!--
 			<div class="col s3">
 				<button id="btnEdit" class="btn-large waves-effect waves-light blue hide-on-med-and-down modal-trigger" href="#modalleaveEdit" onclick = "editButton(this.id)" disabled><i class="material-icons">settings</i> EDIT</button></br></br>
@@ -71,9 +71,13 @@ Leave
             			<td>{{ $leave->intDefaultLeave }}</td>	
           			</tr>
           		@endforeach
-          {!! $leaves->render() !!}
+          
         </tbody>
-				</table></div>
+				</table>
+				
+				</div>
+				
+				<center><div class="white">{!! $leaves->render() !!}</div></center>
 			</div>
 			</br></br></br></br></br>
 			

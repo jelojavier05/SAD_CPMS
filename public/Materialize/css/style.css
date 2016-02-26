@@ -1,6 +1,6 @@
 .bodyscrollhider
 {
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 
@@ -11,9 +11,9 @@ div.scroll {
 /*
 	width: 700px;
  */   
-	height: 380px;
+	height: 400px;
 
-    overflow: scroll;
+/*    overflow: scroll;*/
 	
 /*	margin-left: 120px;*/
 }
