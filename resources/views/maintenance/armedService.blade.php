@@ -8,35 +8,28 @@ Armed Service
 
 <!-- ADD EDIT DELETE BUTTON-->
 	<div class="row">
-    	<div class="col s12">	
+    	<div class="col s12">
 			<div class="col s4 offset-s3">
-				<h1 class="colortitle">Armed Service</h1>
+				<h1 class="colortitle blue-text text-darken-3">Armed Service</h1>
 			</div>
 			<div class="col s3 offset-s2">
-				<button style="margin-top: 60px;" id="btnAdd" class="btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalarmedserviceAdd"><i class="material-icons">add</i> ADD</button></br></br>
-	</div></div>
+				<button style="margin-top: 60px;" id="btnAdd" class=" z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalarmedserviceAdd"><i class="material-icons">add</i> ADD</button></br></br>
+</div></div>
 
 <!-- TABLE -->
 
 	 <div class="row">
-        <div class="container">
+        
         	<div class="col s10 push-s2">
-            	<div class="scroll">
+            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%;">
 					
-				<table class="highlight white" style="margin-top: -10px;">
+				<table class="highlight white" style="margin-top: -10px; border-radius: 10px; margin-top: -5%">
                 	<div class="right-align">
                  		<div class="fixed-action-btn horizontal click-to-toggle">
     						<button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalarmedserviceAdd">
       							<i class="material-icons">add</i>
     						</button>
-<!--
-    							<ul>
-      						<li><button class="btn-floating green modal-trigger hide-on-large-only" href="#modalleaveAdd" id="btnsmallAdd"><i class="material-icons">add</i></button></li>
-      						<li><button class="btn-floating blue modal-trigger hide-on-large-only" href="#modalleaveEdit" id="btnsmallEdit" disabled onclick = "editButton(this.id)"><i class="material-icons">settings</i></button></li>
-      						<li><button class="btn-floating red darken-4 hide-on-large-only" id="btnsmallDelete" disabled><i class="material-icons">delete</i></button></li>
-      
-    							</ul>
--->
+
   						</div>
 					</div>
            	<thead>
@@ -66,13 +59,18 @@ Armed Service
 				</table>
 				
 				</div>
+				<!-- Pagination -->
+				<div class="row">
+					<div class="col s3 push-s4">
+						<div class="white" style="position:absolute; margin-top: -115px;">{!! $armedServices->render() !!}</div>
+					</div></div></div>
 				
-			<center><div class="white">{!! $armedServices->render() !!}</div></center>
-			</div>
+			
+			
 			</br></br></br></br></br>
 
-			</div>
-			</div>
+</div>
+				
 
 
 <!-- Modal Armed Service ADD -->
@@ -145,7 +143,7 @@ Armed Service
 						<div class="row">
 							<div class="col s5">
 								<div class="input-field">
-									<input id="editDescription" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true" value = "test">
+									<input id="editdescription" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true" value = "test">
 										<label for="editDescription">Description</label> 
 								</div>
 							</div>
@@ -168,74 +166,7 @@ Armed Service
 </div>
 </div>
 	
-<!--
-	<h1>Armed Service</h1>
-	<form action = "{{ route('armedServiceUpdate') }}" method = "post">
-		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-		<input id = "editID" type = "text" name = "armedServiceID" placeholder = "ID" readonly>
-		<input id = "editname" type = "text" name = "armedServiceName" placeholder = "Armed Service Name">
-		<textarea id = "editdescription" name = "armedServiceDescription" placeholder = "Description"></textarea>
-		<input id = "submit" type = "submit" value = "Save">
-	</form>
--->
 
-<!--
-	<table>
-		<tr>
-			<td></td>
-			<td>ID</td>
-			<td>Armed Service</td>
-			<td>Description</td>
-		</tr>
--->
-	
-<!--
-		<tr>
-			<td> <input type = "radio" name = "armedService" id = "{{ $armedService->intArmedServiceID }}" 
-				onclick = "radioClicked('{{$armedService->intArmedServiceID}}', '{{$armedService->strArmedServiceName}}',
-				'{{$armedService->strDescription}}')"> </td>
-			<td>{{ $armedService->intArmedServiceID }}</td>
-			<td>{{ $armedService->strArmedServiceName }}</td>
-			<td>{{ $armedService->strDescription }}</td>
-			<td>
-			</td>
-		</tr>
--->
-
-
-	
-<!--
-	</table>
-
-	<button id="btnAdd">ADD</button>
-	
-
-  <div id="myModal" class="modal">
-  <div class="modal-content">
-    
-	<form action = "{{ route('armedServiceAdd') }}" method = "post">
-		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-		<input id = "ID" type = "text" name = "armedServiceID" placeholder = "ID" readonly>
-		<input id = "name" type = "text" name = "armedServiceName" placeholder = "Armed Service Name">
-		<textarea id = "description" name = "armedServiceDescription" placeholder = "Description"></textarea>
-		<input id = "submit" type = "submit"  value = "Save">
-	</form>
-	<div class="closepos"><span class="close">x<span></div>
-  </div>
-
-</div>
-	<button id = "btnEdit"name = "btnEdit" onclick = "editButton(this.id)" disabled>Edit</button>
-	<button id = "btnDelete" name = "btnDelete" disabled>Delete</button>
-	<div id="myModal1" class="modal">
-		<div class="modal-content">
-	<form action = "{{ route('armedServiceUpdate') }}" method = "post">
-		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-		<input id = "editID" type = "text" name = "armedServiceID" placeholder = "ID" readonly>
-		<input id = "editname" type = "text" name = "armedServiceName" placeholder = "Armed Service Name">
-		<textarea id = "editdescription" name = "armedServiceDescription" placeholder = "Description"></textarea>
-		<input id = "submit" type = "submit" value = "Save">
-	</form>
--->
 	
 	
 	

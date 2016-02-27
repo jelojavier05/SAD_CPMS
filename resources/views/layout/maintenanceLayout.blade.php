@@ -20,32 +20,36 @@
   
 </head>
 
-<body id="scrollhider" class="bodyscrollhider">
+<body id="scrollhider" class="bodyscrollhider grey lighten-3">
     
     
-    <nav class="black darken-1">
+    <nav class="indigo darken-4">
         
         <div class="container">
-            <div class="parallax"><img class="responsive-img;" style="width: 100%;" src="{!! URL::asset('../Materialize/images/background3.jpg') !!}" alt="Unsplashed background img 1"></div>
+<!--            <div class="parallax"><img class="responsive-img;" style="width: 100%;" src="{!! URL::asset('../Materialize/images/background3.jpg') !!}" alt="Unsplashed background img 1"></div>-->
             <div class="nav-wrapper">
-                <div class="homeposition">
-                    
-                    <a href="#" class="brand-logo"><div class="flow-text"><div class="hide-on-small-only"><i class="material-icons ">dashboard</i></div><span class="white-text"><div class="mainpos">Client and Personnel Management System</div></span></div></a>
-                </div>
+               
                 
                 <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
                 
-                    <ul class="side-nav fixed grey lighten-1" id="mobile-nav">
-                        <div class="iconposition">
-                    <div class="card-panel teal">
-                        
-                        <div class="dashicoanpos"><i class="material-icons">stars</i></div><span class="white-text"><div class="textindent">CPMS</div></span></div></div>
+                    <ul class="side-nav fixed white" id="mobile-nav">
+                    <div class="iconposition">
+						<div class="card-panel blue darken-4">
+
+							<div class="dashicoanpos center">
+								<img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="70%" height="70%">
+							</div>
+						</div>
+					</div>	
                         <ul class="collapsible collapsible-accordion">
-                    <li class="bold"><a class="collapsible-header waves-effect waves-teal" href="#"><i class="material-icons">settings</i>Maintenance</a>
+                    <li class="bold">
+						<a class="collapsible-header waves-effect waves-teal" href="#">
+							<i class="material-icons">settings</i>Maintenance
+						</a>
                             <div class="collapsible-body">
-                                <ul>
+                                <ul >
                                             <li>
-                                                <a href="#">Client</a>
+                                                <a href="#" >Client</a>
                                             </li>
                                             <li>
                                                 <a href="#">Security Guard</a>
@@ -54,10 +58,12 @@
                                                 <a href="#">Equipment</a>
                                             </li>
                                         </ul>
-                            </div></li>
+                            </div>
+							
+					</li>
                     <li class="bold"><a class="collapsible-header waves-effect waves-teal" href="#"><i class="material-icons">assignment</i>Assignment</a>
                             <div class="collapsible-body">
-                                <ul>
+                                <ul class="black-text">
                                             <li>
                                                 <a href="#">Assignment1</a>
                                             </li>
@@ -89,13 +95,20 @@
                 </ul>
                         
                 </ul>
-                
+				<div>
+                 <div class="homeposition">
+                    
+                    <a href="#" class="brand-logo">
+						<h5 style="margin-top: 20px;">Client and Personnel Management System</h5>
+					</a>
+                </div>
                 
             </div>
         
         </div>
     
     </nav>
+		
     
     @yield('content')
 	@yield('script')

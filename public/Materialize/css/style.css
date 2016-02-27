@@ -1,6 +1,7 @@
 .bodyscrollhider
 {
-	overflow: hidden;
+	overflow:hidden;
+	background-color:whitesmoke;
 }
 
 
@@ -11,7 +12,7 @@ div.scroll {
 /*
 	width: 700px;
  */   
-	height: 400px;
+	height: 450px;
 
 /*    overflow: scroll;*/
 	
@@ -57,7 +58,7 @@ div.scroll {
 .modal-header
 {
     color: #fff;
-    background-color: #26a69a;
+    background-color: #01579b;
 }
 
 
@@ -65,12 +66,15 @@ div.scroll {
 {
     margin-top: -63px;
     margin-left: 30px;
+	font-size: 3rem;
 }
 
 .colortitle
 {
-	color: #26a69a;
+	color: black;
 }
+
+
 
 
 
