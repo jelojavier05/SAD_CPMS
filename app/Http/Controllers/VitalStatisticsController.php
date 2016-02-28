@@ -11,8 +11,7 @@ class VitalStatisticsController extends Controller
 {
     public function index()
     {
-        $vitalStatistics = VitalStatistics::where('bitFlag', 1)
-        ->get();
+        $vitalStatistics = VitalStatistics::where('deleted_at', null)->paginate(5);
 
         return view('maintenance.vitalStatistics',['vitalStatistics'=>$vitalStatistics]);
     }
@@ -20,10 +19,14 @@ class VitalStatisticsController extends Controller
     public function addVitalStatistics(Request $request){
         $vitalStatistics = new VitalStatistics;
 
-        $vitalStatistics->strVitalStatisticsName = $request->vitalStatistics;
+        try {
+            $vitalStatistics->strVitalStatisticsName = $request->vitalStatistics;
 
-        $vitalStatistics->save();
+            $vitalStatistics->save();
 
+        } catch (Exception $e) {
+            alert();            
+        }
         return redirect()->route('vitalStatisticsIndex');
     }
 }

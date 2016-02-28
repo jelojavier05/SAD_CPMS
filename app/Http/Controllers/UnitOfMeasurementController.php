@@ -16,18 +16,22 @@ class UnitOfMeasurementController extends Controller
      */
     public function index()
     {
-        $unitOfMeasurements = UnitOfMeasurement::get();
+        $unitOfMeasurements = UnitOfMeasurement::where('deleted_at', null)->paginate(5);
 
         return view ('maintenance.unitOfMeasurement',['unitOfMeasurements'=>$unitOfMeasurements]);
     }
 
     public function addUnitOfMeasurement(Request $request){
         $unitOfMeasurement = new UnitOfMeasurement;
+        
+        try {
+            $unitOfMeasurement->strUnitOfMeasurement = $request->unitOfMeasurement;
 
-        $unitOfMeasurement->strUnitOfMeasurement = $request->unitOfMeasurement;
-
-        $unitOfMeasurement->save();
-
+            $unitOfMeasurement->save();
+        } catch (Exception $e) {
+            alert();
+        }
+        
         return redirect()->route('unitOfMeasurementIndex');
     }
 }

@@ -10,19 +10,27 @@ use App\Http\Controllers\Controller;
 class GovernmentExamController extends Controller
 {
     public function index(){
-        $governmentExams = GovernmentExam::where('bitFlag', 1)
-        ->get();
+        $governmentExams = GovernmentExam::where('deleted_at', null)->paginate(5);
 
         return view('/maintenance/governmentExam', ['governmentExams'=>$governmentExams]);
     }
 
     public function addGovernmentExam(Request $request)
     {
+
+
         $governmentExam = new GovernmentExam;
 
-        $governmentExam->strGovernmentExam = $request->governmentExamName;
+        try {
+            $governmentExam->strGovernmentExam = $request->governmentExamName;
 
-        $governmentExam->save();
+            $governmentExam->save();
+            
+        } catch (Exception $e) {
+            alert();
+        }
+
+        
 
         return redirect()->route('governmentExamIndex');
     }

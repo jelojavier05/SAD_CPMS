@@ -16,28 +16,38 @@ class LeaveController extends Controller
      */
     public function index()
     {
-        $leaves = Leave::paginate(5);
+        $leaves = Leave::where('deleted_at', null)->paginate(5);
 
         return view('maintenance.leave', ['leaves'=>$leaves]);
     }
 
     public function addLeave(Request $request)
     {
-        $leave = new Leave;
 
-        $leave->strLeaveType = $request->leaveType;
-        $leave->intDefaultLeave = $request->defaultLeave;
+        try {
+            $leave = new Leave;
 
-        $leave->save();
+            $leave->strLeaveType = $request->leaveType;
+            $leave->intDefaultLeave = $request->defaultLeave;
+            $leave->save();
 
-        return redirect()->route('leaveIndex');
+        } catch (Exception $e) {
+            //
+            alert();
+        }   
+
+        return redirect()->route('leaveIndex');     
     }
 
     public function updateLeave(Request $request){
-        Leave::where('intLeaveID', $request->editLeaveID)
-        ->update(['strLeaveType'=>$request->editLeaveType, 
-            'intDefaultLeave'=>$request->editDefaultLeave]);
-
+        
+        try {
+            Leave::where('intLeaveID', $request->editLeaveID)
+            ->update(['strLeaveType'=>$request->editLeaveType, 
+                'intDefaultLeave'=>$request->editDefaultLeave]);
+        } catch (Exception $e) {
+            alert();
+        }
         return redirect()->route('leaveIndex');   
     }
 

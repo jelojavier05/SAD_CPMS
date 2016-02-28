@@ -11,31 +11,39 @@ class ArmedServiceController extends Controller
 {
     public function index()
     {
-        $armedServices = ArmedService::where('bitFlag', 1)->paginate(5);
+        $armedServices = ArmedService::where('deleted_at', null)->paginate(5);
 
         return view('/maintenance/armedservice', ['armedServices'=>$armedServices]);
     }
 
     public function addArmedService(Request $request)
     {
-        $armedService = new ArmedService;
+        try {
 
-        $armedService->strArmedServiceName = $request->armedServiceName;
-        $armedService->strDescription = $request->armedServiceDescription;
-        
-        $armedService->save();
+            $armedService = new ArmedService;
+
+            $armedService->strArmedServiceName = $request->armedServiceName;
+            $armedService->strDescription = $request->armedServiceDescription;
+            
+            $armedService->save();
 
         return redirect()->route('armedServiceIndex');
+        } catch (Exception $e) {
+            //alert
+            alert();
+        }
+
+        
     }
 
     public function updateArmedService(Request $request){
-        
-        
-        ArmedService::where('intArmedServiceID', $request->armedServiceID)
-        ->update(['strArmedServiceName'=>$request->armedServiceName, 
-            'strDescription'=>$request->armedServiceDescription]);
-
-
+        try {
+            ArmedService::where('intArmedServiceID', $request->armedServiceID)
+            ->update(['strArmedServiceName'=>$request->armedServiceName, 
+                'strDescription'=>$request->armedServiceDescription]);
+        } catch (Exception $e) {
+            alert();
+        }
         return redirect()->route('armedServiceIndex');
     }
 }
