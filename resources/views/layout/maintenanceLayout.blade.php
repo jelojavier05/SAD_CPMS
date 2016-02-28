@@ -99,7 +99,9 @@
                  <div class="homeposition">
                     
                     <a href="#" class="brand-logo">
-						<h5 style="margin-top: 20px;">Client and Personnel Management System</h5>
+						<div class="flow-text">
+							<h5 style="margin-top: 20px;">Client and Personnel Management System</h5>
+						</div>
 					</a>
                 </div>
                 
