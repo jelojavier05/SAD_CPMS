@@ -23,6 +23,10 @@ Route::get('/maintenance/unitOfMeasurement', 'UnitOfMeasurementController@index'
 
 Route::post('/maintenance/insertUnitOfMeasurement', 'UnitOfMeasurementController@addUnitOfMeasurement')->name('unitOfMeasurementAdd');
 
+Route::post('/maintenance/updateUnitOfMeasurement', 'UnitOfMeasurementController@updateUnitOfMeasurement')->name('unitOfMeasurementUpdate');
+
+Route::post('/maintenance/deleteUnitOfMeasurement', 'UnitOfMeasurementController@deleteUnitOfMeasurement')->name('unitOfMeasurementDelete');
+
 Route::get('/maintenance/leave', 'LeaveController@index')->name('leaveIndex');
 
 Route::post('/maintenance/updateLeave', 'LeaveController@updateLeave')->name('leaveUpdate');
