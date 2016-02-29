@@ -39,6 +39,7 @@ Type of Gun
 						<th></th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Gun</th>
+              			<th data-field="number">Description</th>
 						
                     </tr>
 			</thead>
@@ -46,13 +47,14 @@ Type of Gun
            <tbody>
 			   
           			<tr>
-						@foreach ()
-            			<td><button class="btn large modal-trigger"  name="typeofGun" id="{{  }}" 
-            				onclick="radioClicked()" href="#modalguntypeEdit">Update</button>
-            			<label for="{{  }}"></label> </td>
-						<td>{{  }}</td>
-            			<td>{{  }}</td>
-            			<td>{{  }}</td>	
+						@foreach ($typeOfGuns as $typeOfGun)
+            			<td><button class="btn large modal-trigger"  name="typeofGun" id="{{ $typeOfGun->intTypeOfGunID }}" 
+            				onclick="radioClicked('{{$typeOfGun->intTypeOfGunID}}','{{$typeOfGun->strTypeOfGun}}', '{{$typeOfGun->strDescription}}')" 
+            				href="#modalguntypeEdit">Update</button>
+            			<label for="{{ $typeOfGun->intTypeOfGunID }}"></label> </td>
+						<td>{{ $typeOfGun->intTypeOfGunID }}</td>
+            			<td>{{ $typeOfGun->strTypeOfGun }}</td>
+            			<td>{{ $typeOfGun->strDescription }}</td>	
           			</tr>
           		@endforeach
           
@@ -63,7 +65,7 @@ Type of Gun
 				<!-- Pagination -->
 				<div class="row">
 					<div class="col s3 push-s4">
-						<div  style="position:absolute; margin-top: -115px;">{!!  !!}</div>
+						<div  style="position:absolute; margin-top: -115px;">{!! $typeOfGuns->render() !!}</div>
 					</div></div></div>
 				
 			
@@ -79,14 +81,14 @@ Type of Gun
 <div id="modalguntypeAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Type of Gun</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('') }}" method = "post">
+				<form action = "{{ route('typeOfGunAdd') }}" method = "post">
 							
-								<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+								<input  id="intTypeOfGunID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="" type="text" class="validate" name = "" disabled>
+								<input  id="" type="text" class="validate" name = "typeOfGunID" disabled>
 									<label for="">Type of Gun ID</label>
 							</div>
 						</div>
@@ -94,12 +96,20 @@ Type of Gun
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="" type="text" class="validate" name = "" required="" aria-required="true">
+								<input id="" type="text" class="validate" name = "typeOfGun" required="" aria-required="true">
 									<label for="">Type of Gun</label> 
 							</div>
 						</div>
 					</div>
-						
+					</div>
+						<div class="row">
+							<div class="col s5">
+								<div class="input-field">
+									<input id="strTypeOfGunDescription" type="text" class="validate"  name = "typeOfGunDescription" required="" aria-required="true">
+										<label for="strTypeOfGunDescription">Description</label> 
+								</div>
+							</div>
+						</div>	
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
@@ -115,13 +125,13 @@ Type of Gun
 <div id="modalguntypeEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Type of Gun</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('') }}" method = "post">
+				<form action = "{{ route('typeOfGunAdd') }}" method = "post">
 					<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 					
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="editID" type="text" class="validate" name = "" readonly required="" aria-required="true" value = "test">
+								<input  id="editID" type="text" class="validate" name = "typeOfGunID" readonly required="" aria-required="true" value = "test">
 									<label for="editID">Type of Gun ID</label>
 							</div>
 						</div>
@@ -129,17 +139,26 @@ Type of Gun
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "" required="" aria-required="true" value = "test">
+								<input id="editname" type="text" class="validate" name = "typeOfGun" required="" aria-required="true" value = "test">
 									<label for="editname">Type of Gun</label> 
 							</div>
 						</div>
 					</div>
+					</div>
+						<div class="row">
+							<div class="col s5">
+								<div class="input-field">
+									<input id="editdescription" type="text" class="validate"  name = "typeOfGunDescription" required="" aria-required="true">
+										<label for="strTypeOfGunDescription">Description</label> 
+								</div>
+							</div>
+						</div>	
 						
       
 	<!-- Modal Button Save -->
 				<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button formaction = "{{ route('') }}"class="btn waves-effect waves-light red" style="margin-right: 30px;"
+			<button formaction = "{{ route('typeOfGunAdd') }}"class="btn waves-effect waves-light red" style="margin-right: 30px;"
 			onclick = "deleteConfirmation()">Delete
     			<i class="material-icons right">stop</i>
   			</button>
@@ -170,7 +189,6 @@ function radioClicked(strID, strName, strDescription){
 	document.getElementById('editID').value = strID;
 	document.getElementById('editname').value = strName;
 	document.getElementById('editdescription').value = strDescription;
-
 }
 
 </script>

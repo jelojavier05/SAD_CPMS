@@ -11,6 +11,15 @@
 |
 */
 
+
+Route::get('/maintenance/typeOfGun', 'TypeOfGunController@index')->name('typeOfGunIndex');
+
+Route::post('/maintenance/addTypeOfGun', 'TypeOfGunController@addTypeOfGun')->name('typeOfGunAdd');
+
+Route::post('/maintenance/updateTypeOfGun', 'TypeOfGunController@updateTypeOfGun')->name('typeOfGunUpdate');
+
+Route::post('/maintenance/deleteTypeOfGun', 'TypeOfGunController@deleteTypeOfGun')->name('typeOfGunDelete');
+
 Route::get('/maintenance/vitalStatistics', 'VitalStatisticsController@index')->name('vitalStatisticsIndex');
 
 Route::post('/maintenance/insertVitalStatistics', 'VitalStatisticsController@addVitalStatistics')->name('vitalStatisticsAdd');
