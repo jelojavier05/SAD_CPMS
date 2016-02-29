@@ -9,13 +9,13 @@ Unit of Measurement
 <!-- ADD EDIT DELETE BUTTON-->
 	<div class="row">
     	<div class="col s12">
-			<div class="col s5 offset-s3">
+			<div class="col s6 offset-s3">
 				<div class="flow-text">
 					<h1 class="colortitle blue-text text-darken-3">Unit of Measurement</h1>
 				</div>
 			</div>
-			<div class="col s2 offset-s1">
-				<button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modaluomAdd"><i class="material-icons">add</i> ADD</button></br></br>
+			<div class="col s2">
+				<button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modaluomAdd"><i class="material-icons left">add</i> ADD</button></br></br>
 </div></div>
 
 <!-- TABLE -->
