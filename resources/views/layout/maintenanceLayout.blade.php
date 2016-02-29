@@ -122,9 +122,15 @@
   });
 	</script>
 	<script>
-		$('#scrollcontrol').click(function(){
-				$('#scrollhider').addClass('bodyscrollhider);
-	});
+	function deleteConfirmation(url) {
+        
+        var alertConfirm = confirm("Are you sure you want to delete?");
+        if (alertConfirm == true) {
+            document.getElementById('okayCancel').value = "okay";
+        } else {
+            document.getElementById('okayCancel').value = "cancel";
+        }
+    }
 	</script>
     
      

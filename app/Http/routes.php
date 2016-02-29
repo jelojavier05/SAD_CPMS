@@ -15,6 +15,10 @@ Route::get('/maintenance/vitalStatistics', 'VitalStatisticsController@index')->n
 
 Route::post('/maintenance/insertVitalStatistics', 'VitalStatisticsController@addVitalStatistics')->name('vitalStatisticsAdd');
 
+Route::post('/maintenance/updateVitalStatistics', 'VitalStatisticsController@updateVitalStatistics')->name('vitalStatisticsUpdate');
+
+Route::post('/maintenance/deleteVitalStatistics', 'VitalStatisticsController@deleteVitalStatistics')->name('vitalStatisticsDelete');
+
 Route::get('/maintenance/unitOfMeasurement', 'UnitOfMeasurementController@index')->name('unitOfMeasurementIndex');
 
 Route::post('/maintenance/insertUnitOfMeasurement', 'UnitOfMeasurementController@addUnitOfMeasurement')->name('unitOfMeasurementAdd');
@@ -33,11 +37,15 @@ Route::post('/maintenance/updategovernmentExam', 'GovernmentExamController@updat
 
 Route::post('/maintenance/insertGovernmentExam', 'GovernmentExamController@addGovernmentExam')->name('governmentExamAdd');
 
+Route::post('/maintenance/deletegovernmentExam', 'GovernmentExamController@deleteGovernmentExam')->name('governmentExamDelete');
+
 Route::get('/maintenance/armedservice', 'ArmedServiceController@index')->name('armedServiceIndex');
 
 Route::post('/maintenance/updateArmedService', 'ArmedServiceController@updateArmedService')->name('armedServiceUpdate');
 
 Route::post('/maintenance/insertArmedService', 'ArmedServiceController@addArmedService')->name('armedServiceAdd');
+
+Route::post('/maintenance/deleteArmedService', 'ArmedServiceController@deleteArmedService')->name('armedServiceDelete');
 
 Route::get('/', function () {
     return view('welcome');

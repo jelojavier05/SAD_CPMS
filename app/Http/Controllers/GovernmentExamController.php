@@ -23,6 +23,7 @@ class GovernmentExamController extends Controller
 
         try {
             $governmentExam->strGovernmentExam = $request->governmentExamName;
+            $governmentExam->strDescription = $request->governmentExamDescription;
 
             $governmentExam->save();
             
@@ -36,10 +37,27 @@ class GovernmentExamController extends Controller
     }
 
     public function updateGovernmentExam(Request $request){
-        GovernmentExam::where('intGovernmentExamID', $request->governmentExamID)
-        ->update(['strGovernmentExam'=>$request->governmentExam]);
+        try {
 
+            GovernmentExam::where('intGovernmentExamID', $request->governmentExamID)
+            ->update(['strGovernmentExam'=>$request->governmentExam,
+                'strDescription'=>$request->governmentExamDescription]);    
+        } catch (Exception $e) {
+            alert();
+        }
 
         return redirect()->route('governmentExamIndex');
+    }
+
+    public function deleteGovernmentExam(Request $request){
+        try {
+            if($request->okayCancelChecker == "okay"){
+                $governmentExam = GovernmentExam::destroy($request->governmentExamID);    
+                return redirect()->route('governmentExamIndex');  
+            }
+        } catch (Exception $e) {
+            
+        }
+         
     }
 }

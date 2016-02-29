@@ -46,4 +46,16 @@ class ArmedServiceController extends Controller
         }
         return redirect()->route('armedServiceIndex');
     }
+
+    public function deleteArmedService(Request $request){
+        try {
+            if($request->okayCancelChecker == "okay"){
+                $armedService = ArmedService::destroy($request->armedServiceID);    
+                return redirect()->route('armedServiceIndex');  
+            }
+        } catch (Exception $e) {
+            
+        }
+         
+    }
 }

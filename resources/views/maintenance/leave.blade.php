@@ -177,17 +177,12 @@ Leave
 @stop
 
 @section('script')
-	<script src = "/javascript/maintenance/leave.js"></script>
-
 	<script type="text/javascript">
-	function deleteConfirmation(url) {
-	    
-	    var alertConfirm = confirm("Are you sure you want to delete?");
-	    if (alertConfirm == true) {
-	        document.getElementById('okayCancel').value = "okay";
-	    } else {
-	        document.getElementById('okayCancel').value = "cancel";
-	    }
+
+	function radioClicked(strID, strName, strCount){
+		document.getElementById('editID').value = strID;
+		document.getElementById('editname').value = strName;
+		document.getElementById('editDefault').value = strCount;
 	}
 
 	</script>
