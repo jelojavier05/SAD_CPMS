@@ -4,7 +4,7 @@
 Armed Service
 @endsection
 
-@section('content')
+@section('content')	
 
 <!-- ADD EDIT DELETE BUTTON-->
 	<div class="row">
@@ -152,9 +152,10 @@ Armed Service
 					</div>
       
 	<!-- Modal Button Save -->
-				
+				<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button class="btn waves-effect waves-light red" style="margin-right: 30px;">Delete
+			<button formaction = "{{ route('armedServiceDelete') }}"class="btn waves-effect waves-light red" style="margin-right: 30px;"
+			onclick = "deleteConfirmation()">Delete
     			<i class="material-icons right">stop</i>
   			</button>
 			
@@ -178,5 +179,14 @@ Armed Service
 @section('script')
 
 
-<script src = "/javascript/maintenance/armedService.js"></script>
+<script type="text/javascript">
+function radioClicked(strID, strName, strDescription){
+	
+	document.getElementById('editID').value = strID;
+	document.getElementById('editname').value = strName;
+	document.getElementById('editdescription').value = strDescription;
+
+}
+
+</script>
 @stop

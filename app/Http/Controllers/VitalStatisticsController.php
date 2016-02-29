@@ -29,4 +29,26 @@ class VitalStatisticsController extends Controller
         }
         return redirect()->route('vitalStatisticsIndex');
     }
+
+    public function updateVitalStatistics(Request $request){
+        try {
+            VitalStatistics::where('intVitalStatisticsID', $request->vitalStatisticsID)
+            ->update(['strVitalStatisticsName'=>$request->vitalStatistics]);
+        } catch (Exception $e) {
+            alert();
+        }
+        return redirect()->route('vitalStatisticsIndex');
+    }
+    
+    public function deleteVitalStatistics(Request $request){
+        try {
+            if($request->okayCancelChecker == "okay"){
+                $vitalStatistics = VitalStatistics::destroy($request->vitalStatisticsID);    
+                return redirect()->route('vitalStatisticsIndex');  
+            }
+        } catch (Exception $e) {
+            
+        }
+         
+    }
 }

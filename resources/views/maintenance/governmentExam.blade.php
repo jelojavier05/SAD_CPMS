@@ -155,9 +155,10 @@ Government Exam
 						
       
 	<!-- Modal Button Save -->
-				
+		<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button class="btn waves-effect waves-light red" style="margin-right: 30px;">Delete
+			<button formaction = "{{ route('governmentExamDelete') }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
+			onclick = "deleteConfirmation()">Delete
     			<i class="material-icons right">stop</i>
   			</button>
 			
@@ -170,16 +171,17 @@ Government Exam
 				</form>
 </div>
 </div>
-	
-
-	
-	
-	
 
 @stop
 
 @section('script')
 
+<script type="text/javascript">
+function radioClicked(strID, strName, strDescription){
+	document.getElementById('editID').value = strID;
+	document.getElementById('editname').value = strName;
+	document.getElementById('editdescription').value = strDescription;
+}
 
-<script src = "/javascript/maintenance/governmentExam.js"></script>
+</script>
 @stop

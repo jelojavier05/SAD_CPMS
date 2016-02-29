@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Leave;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Validator;
 
 
 class LeaveController extends Controller
@@ -31,13 +32,16 @@ class LeaveController extends Controller
             $leave->strLeaveType = $request->leaveType;
             $leave->intDefaultLeave = $request->defaultLeave;
             $leave->save();
+            return redirect()->route('leaveIndex');   
+            
 
         } catch (Exception $e) {
             //
             alert();
         }   
 
-        return redirect()->route('leaveIndex');     
+             
+
     }
 
     public function updateLeave(Request $request){
@@ -56,11 +60,11 @@ class LeaveController extends Controller
         try {
             if($request->okayCancelChecker == "okay"){
                 $leave = Leave::destroy($request->editLeaveID);    
-                
+                return redirect()->route('leaveIndex');  
             }
         } catch (Exception $e) {
             
         }
-        return redirect()->route('leaveIndex');   
+         
     }
 }

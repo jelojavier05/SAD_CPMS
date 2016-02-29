@@ -49,10 +49,10 @@ Vital Statistics
 			   
           			<tr>
 						@foreach ($vitalStatistics as $vitalStatistic)
-            			<td><button class="btn large modal-trigger"  name="armedService" id="{{ $armedService->intArmedServiceID }}" 
-            				onclick="radioClicked('{{$armedService->intArmedServiceID}}', '{{$armedService->strArmedServiceName}}',
-				'{{$armedService->strDescription}}')" href="#modalvitalstatisticsEdit">Update</button>
-            			<label for="{{ $armedService->intArmedServiceID }}"></label> </td>
+            			<td><button class="btn large modal-trigger"  name="vitalStatistic" id="{{ $vitalStatistic->intVitalStatisticsID }}" 
+            				onclick="radioClicked('{{$vitalStatistic->intVitalStatisticsID}}', '{{$vitalStatistic->strVitalStatisticsName}}')" 
+            				href="#modalvitalstatisticsEdit">Update</button>
+            			<label for="{{ $vitalStatistic->intVitalStatisticsID }}"></label> </td>
 						<td>{{ $vitalStatistic->intVitalStatisticsID }}</td>
             			<td>{{ $vitalStatistic->strVitalStatisticsName }}</td>
             				
@@ -63,12 +63,7 @@ Vital Statistics
 				</table>
 				
 				</div>
-				<!-- Pagination -->
-<!--
-				<div class="row">
-					<div class="col s3 push-s4">
-						<div class="white" style="position:absolute; margin-top: -115px;">{!! $armedServices->render() !!}</div>
-					</div></div>--></div>
+				</div>
 
 				
 			
@@ -86,13 +81,13 @@ Vital Statistics
         	<div class="modal-content">
 				<form action = "{{ route('vitalStatisticsAdd') }}" method = "post">
 							
-								<input  id="intArmedServiceID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				<input  id="intVitalStatisticsID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="intArmedServiceID" type="text" class="validate" name = "vitalStatisticsID" disabled>
-									<label for="intArmedServiceID">Vital Statistic ID</label>
+								<input  id="intVitalStatisticsID" type="text" class="validate" name = "vitalStatisticsID" disabled>
+									<label for="intVitalStatisticsID">Vital Statistic ID</label>
 							</div>
 						</div>
 					</div>
@@ -120,7 +115,7 @@ Vital Statistics
 <div id="modalvitalstatisticsEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Vital Statistics</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('vitalStatisticsAdd') }}" method = "post">
+				<form action = "{{ route('vitalStatisticsUpdate') }}" method = "post">
 					<input  id="intArmedServiceID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 					
 					<div class="row">
@@ -143,8 +138,10 @@ Vital Statistics
       
 	<!-- Modal Button Save -->
 				
+				<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button class="btn waves-effect waves-light red" style="margin-right: 30px;">Delete
+			<button formaction = "{{ route('vitalStatisticsDelete') }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
+			onclick = "deleteConfirmation()">Delete
     			<i class="material-icons right">stop</i>
   			</button>
 			
@@ -159,45 +156,17 @@ Vital Statistics
 </div>
 	
 
-	
-	
-	
-
 @stop
 
 @section('script')
+<script type="text/javascript">
+function radioClicked(strID, strName){
+	
+	document.getElementById('editID').value = strID;
+	document.getElementById('editname').value = strName;
 
+}
 
-<!--<script src = "/javascript/maintenance/armedService.js"></script>-->
+</script>
+
 @stop
-<!--
-	<h1>Vital Statistics</h1>
-	<form action = "{{ route('vitalStatisticsAdd') }} " method = "post">
-		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-		<input type = "text" name = "vitalStatisticsID" placeholder = "ID" readonly>
-		<input type = "text" name = "vitalStatistics" placeholder = "Vital Statistics">
-		<input type = "submit" value = "Add">
-	</form>
-
-	<table>
-		<tr>
-			<td>ID</td>
-			<td>Vital Statistics</td>
-			<td>Action</td>
-		</tr>
--->
-
-<!--	@foreach ($vitalStatistics as $vitalStatistic)-->
-<!--
-		<tr>
-			<td>{{ $vitalStatistic->intVitalStatisticsID }}</td>
-			<td>{{ $vitalStatistic->strVitalStatisticsName }}</td>
-			<td>
-				<button>Edit</button>
-				<button>Delete</button>
-			</td>
-		</tr>
--->
-<!--	@endforeach-->
-<!--	</table>-->
-<!--@stop-->
