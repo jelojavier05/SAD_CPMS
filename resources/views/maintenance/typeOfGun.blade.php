@@ -144,7 +144,7 @@ Type of Gun
 							</div>
 						</div>
 					</div>
-					</div>
+					
 						<div class="row">
 							<div class="col s5">
 								<div class="input-field">
@@ -152,7 +152,7 @@ Type of Gun
 										<label for="strTypeOfGunDescription">Description</label> 
 								</div>
 							</div>
-						</div>	
+						</div>	</div>
 						
       
 	<!-- Modal Button Save -->
