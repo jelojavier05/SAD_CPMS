@@ -9,6 +9,7 @@ return array(
     'CreateArmedServiceTable' => $baseDir . '/database/migrations/2016_02_28_080305_create_armed_service_table.php',
     'CreateGovernmentExamTable' => $baseDir . '/database/migrations/2016_02_28_080528_create_government_exam_table.php',
     'CreateLeaveTable' => $baseDir . '/database/migrations/2016_02_28_075635_create_leave_table.php',
+    'CreateRequirementsTable' => $baseDir . '/database/migrations/2016_02_29_161132_create_requirements_table.php',
     'CreateUnitOfMeasurementTable' => $baseDir . '/database/migrations/2016_02_28_080816_create_unit_of_measurement_table.php',
     'CreateVitalStatistics' => $baseDir . '/database/migrations/2016_02_28_080730_create_vital_statistics.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',

@@ -48,7 +48,8 @@ Unit of Measurement
 			   
           			<tr>
 						@foreach ($unitOfMeasurements as $unitOfMeasurement)
-            			<td><button class="btn large modal-trigger"  name="unitOfMeasurement" id = "{{ $unitOfMeasurement->intUnitOfMeasurementID }}" onclick="radioClicked('{{$unitOfMeasurement->intUnitOfMeasurementID}}', '{{$unitOfMeasurement->strUnitOfMeasurement}}')" href="#modaluomEdit">Update</button>
+            			<td><button class="btn large modal-trigger"  name="unitOfMeasurement" id = "{{ $unitOfMeasurement->intUnitOfMeasurementID }}" 
+            				onclick="radioClicked('{{$unitOfMeasurement->intUnitOfMeasurementID}}', '{{$unitOfMeasurement->strUnitOfMeasurement}}')" href="#modaluomEdit">Update</button>
             			<label for="{{ $unitOfMeasurement->intUnitOfMeasurementID }}"></label> </td>
 						<td>{{ $unitOfMeasurement->intUnitOfMeasurementID }}</td>
             			<td>{{ $unitOfMeasurement->strUnitOfMeasurement }}</td>
@@ -64,7 +65,7 @@ Unit of Measurement
 				<!-- Pagination -->
 				<div class="row">
 					<div class="col s3 push-s4">
-						<div style="position:absolute; margin-top: -115px;">{!! $unitOfMeasurement->render() !!}</div>
+						<div style="position:absolute; margin-top: -115px;">{!! $unitOfMeasurements->render() !!}</div>
 					</div></div>
 			</div>
 				
@@ -141,9 +142,10 @@ Unit of Measurement
 						
       
 	<!-- Modal Button Save -->
-				
+				<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button class="btn waves-effect waves-light red" style="margin-right: 30px;">Delete
+			<button formaction = "{{ route('unitOfMeasurementDelete') }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
+			onclick = "deleteConfirmation()">Delete
     			<i class="material-icons right">stop</i>
   			</button>
 			
@@ -167,6 +169,12 @@ Unit of Measurement
 @section('script')
 
 
-<script src = "/javascript/maintenance/unitOfMeasurement.js"></script>
+<script type="text/javascript">
+function radioClicked(strID, strName){
+	document.getElementById('editID').value = strID;
+	document.getElementById('editname').value = strName;
+}
+
+</script>
 @stop
 	
