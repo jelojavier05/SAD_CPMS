@@ -25,6 +25,8 @@ Route::post('/maintenance/updateLeave', 'LeaveController@updateLeave')->name('le
 
 Route::post('/maintenance/insertLeave', 'LeaveController@addLeave')->name('leaveAdd');
 
+Route::post('/maintenance/deleteLeave', 'LeaveController@deleteLeave')->name('leaveDelete');
+
 Route::get('/maintenance/governmentExam', 'GovernmentExamController@index')->name('governmentExamIndex');
 
 Route::post('/maintenance/updategovernmentExam', 'GovernmentExamController@updateGovernmentExam')->name('governmentExamUpdate');
