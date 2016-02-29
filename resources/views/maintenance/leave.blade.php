@@ -13,7 +13,7 @@ Leave
 					<h1 class="colortitle blue-text text-darken-3">Leave</h1>
 				</div>
 				<div class="col s3 offset-s3">
-					<button style="margin-top: 30px;" id="btnAdd" class="z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalleaveAdd"><i class="material-icons">add</i> ADD</button></br></br>
+					<button style="margin-top: 30px;" id="btnAdd" class="z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalleaveAdd"><i class="material-icons left">add</i>ADD</button></br></br>
 				</div>
 
 		</div>

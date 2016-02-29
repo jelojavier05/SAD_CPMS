@@ -15,7 +15,7 @@ Government Exam
 				</div>
 			</div>
 			<div class="col s2 offset-s1">
-				<button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalgovexamAdd"><i class="material-icons">add</i> ADD</button></br></br>
+				<button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalgovexamAdd"><i class="material-icons left">add</i> ADD</button></br></br>
 </div></div>
 
 <!-- TABLE -->
@@ -125,7 +125,7 @@ Government Exam
 <div id="modalgovexamEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Government Exam</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('governmentExamAdd') }}" method = "post">
+				<form action = "{{ route('governmentExamUpdate') }}" method = "post">
 					<input  id="intGovernmentExamID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 					
 					<div class="row">

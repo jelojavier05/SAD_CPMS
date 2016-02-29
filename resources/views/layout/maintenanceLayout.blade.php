@@ -37,22 +37,33 @@
 						<div class="card-panel blue darken-4">
 
 							<div class="dashicoanpos center">
-								<img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="70%" height="70%">
+								<img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="50%" height="50%">
 							</div>
 						</div>
 					</div>	
                         <ul class="collapsible collapsible-accordion">
-                    <li class="bold">
+                    <li class="bold" style="width:280px;">
 						<a class="collapsible-header waves-effect waves-teal" href="#">
-							<i class="material-icons">settings</i>Maintenance
+							<i class="material-icons">settings</i>Maintenance<i class="mdi-navigation-arrow-drop-down right"></i>
 						</a>
-                            <div class="collapsible-body">
+                            <div class="collapsible-body grey lighten-2">
                                 <ul >
                                             <li>
                                                 <a href="#" >Client</a>
                                             </li>
                                             <li>
-                                                <a href="#">Security Guard</a>
+                                                <a href="#" class="dropdown-button" data-activates="dropdownsg" data-gutter="30">Security Guard</a>
+													<ul id='dropdownsg' class='dropdown-content'>
+														<li><a href="#!">Leave</a></li>
+														
+														<li><a href="#!">Armed Service</a></li>
+														
+														<li><a href="#!">Government Exam</a></li>
+														
+														<li><a href="#!">Vital Statistics</a></li>
+														
+														<li><a href="#!">Requirements</a></li>
+													</ul>
                                             </li>
                                             <li>
                                                 <a href="#">Equipment</a>
@@ -61,8 +72,9 @@
                             </div>
 							
 					</li>
-                    <li class="bold"><a class="collapsible-header waves-effect waves-teal" href="#"><i class="material-icons">assignment</i>Assignment</a>
-                            <div class="collapsible-body">
+                    <li class="bold" style="width:280px;">
+						<a class="collapsible-header waves-effect waves-teal" href="#"><i class="material-icons">assignment</i>Assignment</a>
+                            <div class="collapsible-body grey lighten-2">
                                 <ul class="black-text">
                                             <li>
                                                 <a href="#">Assignment1</a>
@@ -76,8 +88,9 @@
                                         </ul>
                             </div>
                     </li>
-                            <li class="bold"><a class="collapsible-header waves-effect waves-teal" href="#"><i class="material-icons">warning</i>LamanIkatlo</a>
-                            <div class="collapsible-body">
+                            <li class="bold" style="width:280px;">
+								<a class="collapsible-header waves-effect waves-teal" href="#"><i class="material-icons">warning</i>LamanIkatlo</a>
+                            <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             <li>
                                                 <a href="#">Palaman1</a>
@@ -107,7 +120,7 @@
                 
             </div>
         
-        </div>
+			</div></div>
     
     </nav>
 		
