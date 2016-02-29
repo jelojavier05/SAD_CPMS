@@ -56,11 +56,13 @@ class TypeOfGunController extends Controller
         try {
             if($request->okayCancelChecker == "okay"){
                 $typeOfGun = TypeOfGun::destroy($request->typeOfGunID);    
-                return redirect()->route('typeOfGunIndex');  
+                
             }
         } catch (Exception $e) {
             
         }
+
+        return redirect()->route('typeOfGunIndex');  
          
     }
 }

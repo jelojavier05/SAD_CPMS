@@ -16,23 +16,23 @@ class RequirementsController extends Controller
      */
     public function index()
     {
-         $requirements = TypeOfGun::where('deleted_at', null)->paginate(5);
+         $requirements = Requirements::where('deleted_at', null)->paginate(5);
 
-        return view('/maintenance/typeOfGUn', ['requirements'=>$requirements]);
+        return view('/maintenance/requirements', ['requirements'=>$requirements]);
     }
 
-    public function addTypeOfGun(Request $request)
+    public function addRequirements(Request $request)
     {
         try {
 
-            $typeOfGun = new TypeOfGun;
+            $requirements = new Requirements;
 
-            $typeOfGun->strTypeOfGun = $request->typeOfGun;
-            $typeOfGun->strDescription = $request->typeOfGunDescription;
+            $requirements->strRequirements = $request->requirements;
+            $requirements->strDescription = $request->requirementsDescription;
             
-            $typeOfGun->save();
+            $requirements->save();
 
-        return redirect()->route('typeOfGunIndex');
+        return redirect()->route('requirementsIndex');
         } catch (Exception $e) {
             //alert
             alert();
@@ -41,26 +41,27 @@ class RequirementsController extends Controller
         
     }
 
-    public function updateTypeOfGun(Request $request){
+    public function updateRequirements(Request $request){
         try {
-            TypeOfGun::where('intTypeOfGunID', $request->typeOfGunID)
-            ->update(['strTypeOfGun'=>$request->typeOfGun, 
-                'strDescription'=>$request->typeOfGunDescription]);
+            Requirements::where('intRequirementsID', $request->requirementsID)
+            ->update(['strRequirements'=>$request->requirements, 
+                'strDescription'=>$request->requirementsDescription]);
         } catch (Exception $e) {
             alert();
         }
-        return redirect()->route('typeOfGunIndex');
+        return redirect()->route('requirementsIndex');
     }
 
-    public function deleteTypeOfGun(Request $request){
+    public function deleteRequirements(Request $request){
         try {
             if($request->okayCancelChecker == "okay"){
-                $typeOfGun = TypeOfGun::destroy($request->typeOfGunID);    
-                return redirect()->route('typeOfGunIndex');  
+                $requirements = Requirements::destroy($request->requirementsID);    
+                
             }
         } catch (Exception $e) {
             
         }
+        return redirect()->route('requirementsIndex');  
          
     }
 }

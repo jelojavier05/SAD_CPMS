@@ -125,7 +125,7 @@ Type of Gun
 <div id="modalguntypeEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Type of Gun</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('typeOfGunAdd') }}" method = "post">
+				<form action = "{{ route('typeOfGunUpdate') }}" method = "post">
 					<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 					
 					<div class="row">
@@ -148,7 +148,7 @@ Type of Gun
 						<div class="row">
 							<div class="col s5">
 								<div class="input-field">
-									<input id="editdescription" type="text" class="validate"  name = "typeOfGunDescription" required="" aria-required="true">
+									<input id="editdescription" type="text" class="validate"  name = "typeOfGunDescription" required="" aria-required="true" value = "test">
 										<label for="strTypeOfGunDescription">Description</label> 
 								</div>
 							</div>
@@ -158,7 +158,7 @@ Type of Gun
 	<!-- Modal Button Save -->
 				<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button formaction = "{{ route('typeOfGunAdd') }}"class="btn waves-effect waves-light red" style="margin-right: 30px;"
+			<button formaction = "{{ route('typeOfGunDelete') }}"class="btn waves-effect waves-light red" style="margin-right: 30px;"
 			onclick = "deleteConfirmation()">Delete
     			<i class="material-icons right">stop</i>
   			</button>

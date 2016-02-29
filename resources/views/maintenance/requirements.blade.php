@@ -47,12 +47,13 @@ Requirements
            <tbody>
 			   
           			<tr>
-						@foreach ()
-            			<td><button class="btn large modal-trigger"  name="" id = "{{  }}" onclick="radioClicked('')" href="#modalrequirementsEdit">Update</button>
-            			<label for="{{  }}"></label> </td>
-						<td>{{  }}</td>
-            			<td>{{  }}</td>
-						<td>{{  }}</td>
+						@foreach ($requirements as $requirement)
+            			<td><button class="btn large modal-trigger"  name="" id = "{{ $requirement->intRequirementsID }}" 
+            				onclick="radioClicked('{{$requirement->intRequirementsID}}','{{$requirement->strRequirements}}', '{{$requirement->strDescription}}')" href="#modalrequirementsEdit">Update</button>
+            			<label for="{{ $requirement->intRequirementsID }}"></label> </td>
+						<td>{{ $requirement->intRequirementsID }}</td>
+            			<td>{{ $requirement->strRequirements }}</td>
+						<td>{{ $requirement->strDescription }}</td>
             				
           			</tr>
           		@endforeach
@@ -64,7 +65,7 @@ Requirements
 				<!-- Pagination -->
 				<div class="row">
 					<div class="col s3 push-s4">
-						<div style="position:absolute; margin-top: -115px;">{!!  !!}</div>
+						<div style="position:absolute; margin-top: -115px;">{!! $requirements->render() !!}</div>
 					</div></div>
 			</div>
 				
@@ -81,14 +82,14 @@ Requirements
 <div id="modalrequirementsAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Requirement</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('') }}" method = "post">
+				<form action = "{{ route('requirementsAdd') }}" method = "post">
 							
 								<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="" type="text" class="validate" name = "" disabled>
+								<input  id="" type="text" class="validate" name = "requirementsID" disabled>
 									<label for="">Requirement ID</label>
 							</div>
 						</div>
@@ -96,7 +97,7 @@ Requirements
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="" type="text" class="validate" name = "" required="" aria-required="true">
+								<input id="" type="text" class="validate" name = "requirements" required="" aria-required="true">
 									<label for="">Requirement Name</label> 
 							</div>
 						</div>
@@ -104,7 +105,7 @@ Requirements
 					<div class="row">
 							<div class="col s5">
 								<div class="input-field">
-									<input id="" type="text" class="validate"  name = "" required="" aria-required="true">
+									<input id="" type="text" class="validate"  name = "requirementsDescription" required="" aria-required="true">
 										<label for="">Description</label> 
 								</div>
 							</div>
@@ -125,13 +126,13 @@ Requirements
 <div id="modalrequirementsEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Requirement</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('') }}" method = "post">
+				<form action = "{{ route('requirementsUpdate') }}" method = "post">
 					<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 					
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="editID" type="text" class="validate"  name = "" readonly required="" aria-required="true" value = "test">
+								<input  id="editID" type="text" class="validate"  name = "requirementsID" readonly required="" aria-required="true" value = "test">
 									<label for="editID">Requirement ID</label>
 							</div>
 						</div>
@@ -139,7 +140,7 @@ Requirements
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "" required="" aria-required="true" value = "test">
+								<input id="editname" type="text" class="validate" name = "requirements" required="" aria-required="true" value = "test">
 									<label for="editname">Requirement Name</label> 
 							</div>
 						</div>
@@ -147,7 +148,7 @@ Requirements
 					<div class="row">
 							<div class="col s5">
 								<div class="input-field">
-									<input id="editdescription" type="text" class="validate"  name = "" required="" aria-required="true" value = "test">
+									<input id="editdescription" type="text" class="validate"  name = "requirementsDescription" required="" aria-required="true" value = "test">
 										<label for="editDescription">Description</label> 
 								</div>
 							</div>
@@ -157,7 +158,7 @@ Requirements
 	<!-- Modal Button Save -->
 		<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button formaction = "{{ route('') }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
+			<button formaction = "{{ route('requirementsDelete') }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
 			onclick = "deleteConfirmation()">Delete
     			<i class="material-icons right">stop</i>
   			</button>

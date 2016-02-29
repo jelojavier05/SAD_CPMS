@@ -11,6 +11,13 @@
 |
 */
 
+Route::get('/maintenance/requirements', 'RequirementsController@index')->name('requirementsIndex');
+
+Route::post('/maintenance/addRequirements', 'RequirementsController@addRequirements')->name('requirementsAdd');
+
+Route::post('/maintenance/updateRequirements', 'RequirementsController@updateRequirements')->name('requirementsUpdate');
+
+Route::post('/maintenance/deleteRequirements', 'RequirementsController@deleteRequirements')->name('requirementsDelete');
 
 Route::get('/maintenance/typeOfGun', 'TypeOfGunController@index')->name('typeOfGunIndex');
 

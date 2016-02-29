@@ -44,11 +44,11 @@ class VitalStatisticsController extends Controller
         try {
             if($request->okayCancelChecker == "okay"){
                 $vitalStatistics = VitalStatistics::destroy($request->vitalStatisticsID);    
-                return redirect()->route('vitalStatisticsIndex');  
+                
             }
         } catch (Exception $e) {
             
         }
-         
+         return redirect()->route('vitalStatisticsIndex');  
     }
 }
