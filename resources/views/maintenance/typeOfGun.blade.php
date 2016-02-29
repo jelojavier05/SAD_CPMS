@@ -9,11 +9,11 @@ Type of Gun
 	<!-- ADD EDIT DELETE BUTTON-->
 		<div class="row">
 			<div class="col s12">	
-				<div class="col s3 offset-s3">
+				<div class="col s4 offset-s3">
 					<h1 class="colortitle blue-text text-darken-3">Type of Gun</h1>
 				</div>
-				<div class="col s3 offset-s3">
-					<button style="margin-top: 30px;" id="btnAdd" class="z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#guntypeAdd"><i class="material-icons">add</i> ADD</button></br></br>
+				<div class="col s2 offset-s2">
+					<button style="margin-top: 30px;" id="btnAdd" class="z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalguntypeAdd"><i class="material-icons left">add</i> ADD</button></br></br>
 				</div>
 
 </div></div>
@@ -101,7 +101,7 @@ Type of Gun
 							</div>
 						</div>
 					</div>
-					</div>
+					
 						<div class="row">
 							<div class="col s5">
 								<div class="input-field">
@@ -109,7 +109,7 @@ Type of Gun
 										<label for="strTypeOfGunDescription">Description</label> 
 								</div>
 							</div>
-						</div>	
+						</div></div>	
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
