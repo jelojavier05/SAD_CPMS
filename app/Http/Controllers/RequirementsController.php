@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\TypeOfGun;
+use App\Model\Requirements;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class TypeOfGunController extends Controller
+class RequirementsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class TypeOfGunController extends Controller
      */
     public function index()
     {
-        $typeOfGuns = TypeOfGun::where('deleted_at', null)->paginate(5);
+         $requirements = TypeOfGun::where('deleted_at', null)->paginate(5);
 
-        return view('/maintenance/typeOfGUn', ['typeOfGuns'=>$typeOfGuns]);
+        return view('/maintenance/typeOfGUn', ['requirements'=>$requirements]);
     }
 
     public function addTypeOfGun(Request $request)
