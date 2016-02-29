@@ -151,11 +151,12 @@ Leave
 								</div>
 							</div>
 					</div>
-      
+      	<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
-			<button class="btn waves-effect waves-light red" style="margin-right: 30px;">Delete
+			<button  formaction = "{{ route('leaveDelete') }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
+			onclick = "deleteConfirmation()">Delete
     			<i class="material-icons right">stop</i>
   			</button>
 			
@@ -177,4 +178,17 @@ Leave
 
 @section('script')
 	<script src = "/javascript/maintenance/leave.js"></script>
+
+	<script type="text/javascript">
+	function deleteConfirmation(url) {
+	    
+	    var alertConfirm = confirm("Are you sure you want to delete?");
+	    if (alertConfirm == true) {
+	        document.getElementById('okayCancel').value = "okay";
+	    } else {
+	        document.getElementById('okayCancel').value = "cancel";
+	    }
+	}
+
+	</script>
 @stop

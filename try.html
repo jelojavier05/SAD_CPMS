@@ -7,7 +7,6 @@ use App\Model\Leave;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-
 class LeaveController extends Controller
 {
     /**
@@ -52,15 +51,9 @@ class LeaveController extends Controller
         return redirect()->route('leaveIndex');   
     }
 
-    public function deleteLeave(Request $request){
-        try {
-            if($request->okayCancelChecker == "okay"){
-                $leave = Leave::destroy($request->editLeaveID);    
-                
-            }
-        } catch (Exception $e) {
-            
-        }
-        return redirect()->route('leaveIndex');   
+    public function destroyLeave($id)
+    {
+        echo "<script type='text/javascript'>alert('$id');</script>";
     }
+
 }
