@@ -64,7 +64,7 @@ Unit of Measurement
 				<!-- Pagination -->
 				<div class="row">
 					<div class="col s3 push-s4">
-						<div style="position:absolute; margin-top: -115px;">{!! $unitOfMeasurement->render() !!}</div>
+						<div style="position:absolute; margin-top: -115px;">{!! $unitOfMeasurements->render() !!}</div>
 					</div></div>
 			</div>
 				
