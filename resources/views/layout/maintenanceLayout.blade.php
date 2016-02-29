@@ -73,7 +73,7 @@
 							
 					</li>
                     <li class="bold" style="width:280px;">
-						<a class="collapsible-header waves-effect waves-teal" href="#"><i class="material-icons">assignment</i>Assignment</a>
+						<a class="collapsible-header waves-effect waves-teal" href="#"><i class="material-icons">assignment</i>Assignment<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul class="black-text">
                                             <li>
@@ -89,7 +89,7 @@
                             </div>
                     </li>
                             <li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-teal" href="#"><i class="material-icons">warning</i>LamanIkatlo</a>
+								<a class="collapsible-header waves-effect waves-teal" href="#"><i class="material-icons">warning</i>LamanIkatlo<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             <li>
