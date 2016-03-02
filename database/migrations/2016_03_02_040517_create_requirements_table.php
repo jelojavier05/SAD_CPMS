@@ -16,6 +16,7 @@ class CreateRequirementsTable extends Migration
             $table->increments('intRequirementsID');
             $table->string('strRequirements', 100)->unique();
             $table->string('strDescription');
+            $table->smallInteger('intIdentifier');
             $table->softDeletes();
         });
     }
