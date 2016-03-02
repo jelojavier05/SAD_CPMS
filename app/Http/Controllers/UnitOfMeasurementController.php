@@ -49,11 +49,13 @@ class UnitOfMeasurementController extends Controller
         try {
             if($request->okayCancelChecker == "okay"){
                 $unitOfMeasurement = UnitOfMeasurement::destroy($request->unitOfMeasurementID);    
-                return redirect()->route('unitOfMeasurementIndex');  
+                
             }
         } catch (Exception $e) {
             
         }
+
+        return redirect()->route('unitOfMeasurementIndex');  
          
     }
 

@@ -53,11 +53,12 @@ class GovernmentExamController extends Controller
         try {
             if($request->okayCancelChecker == "okay"){
                 $governmentExam = GovernmentExam::destroy($request->governmentExamID);    
-                return redirect()->route('governmentExamIndex');  
+                
             }
         } catch (Exception $e) {
             
         }
          
+         return redirect()->route('governmentExamIndex');  
     }
 }

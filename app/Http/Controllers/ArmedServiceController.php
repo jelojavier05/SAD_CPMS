@@ -51,11 +51,13 @@ class ArmedServiceController extends Controller
         try {
             if($request->okayCancelChecker == "okay"){
                 $armedService = ArmedService::destroy($request->armedServiceID);    
-                return redirect()->route('armedServiceIndex');  
+                
             }
         } catch (Exception $e) {
             
         }
+
+        return redirect()->route('armedServiceIndex');  
          
     }
 }

@@ -25,7 +25,7 @@ class TypeOfGunController extends Controller
     {
         try {
 
-            $typeOfGun = new ArmedService;
+            $typeOfGun = new TypeOfGun;
 
             $typeOfGun->strTypeOfGun = $request->typeOfGun;
             $typeOfGun->strDescription = $request->typeOfGunDescription;
@@ -42,18 +42,27 @@ class TypeOfGunController extends Controller
     }
 
     public function updateTypeOfGun(Request $request){
-        
+        try {
+            TypeOfGun::where('intTypeOfGunID', $request->typeOfGunID)
+            ->update(['strTypeOfGun'=>$request->typeOfGun, 
+                'strDescription'=>$request->typeOfGunDescription]);
+        } catch (Exception $e) {
+            alert();
+        }
+        return redirect()->route('typeOfGunIndex');
     }
 
     public function deleteTypeOfGun(Request $request){
         try {
             if($request->okayCancelChecker == "okay"){
-                $armedService = ArmedService::destroy($request->armedServiceID);    
-                return redirect()->route('armedServiceIndex');  
+                $typeOfGun = TypeOfGun::destroy($request->typeOfGunID);    
+                
             }
         } catch (Exception $e) {
             
         }
+
+        return redirect()->route('typeOfGunIndex');  
          
     }
 }

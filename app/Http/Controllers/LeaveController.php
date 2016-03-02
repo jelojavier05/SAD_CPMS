@@ -60,11 +60,12 @@ class LeaveController extends Controller
         try {
             if($request->okayCancelChecker == "okay"){
                 $leave = Leave::destroy($request->editLeaveID);    
-                return redirect()->route('leaveIndex');  
+                
             }
         } catch (Exception $e) {
             
         }
+        return redirect()->route('leaveIndex');  
          
     }
 }
