@@ -49,24 +49,37 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul >
                                             <li>
-                                                <a href="#" >Client</a>
+                                                <button href="#" class="waves-effect grey lighten-2 black-text" style="width:240px; border:none;">Client</button>
                                             </li>
                                             <li>
-                                                <a href="#" class="dropdown-button" data-activates="dropdownsg" data-gutter="30">Security Guard</a>
-													<ul id='dropdownsg' class='dropdown-content'>
-														<li><a href="#!">Leave</a></li>
+                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownsg" data-gutter="240" data-hover="true" style="width:240px; border:none;">Security Guard</button>
+													
+													<ul id='dropdownsg' class='dropdown-content' style="margin-top:1px;">
+														<li><a class="blue-text" href="/maintenance/leave">Leave</a></li>
 														
-														<li><a href="#!">Armed Service</a></li>
+														<li><a class="blue-text" href="/maintenance/armedservice">Armed Service</a></li>
 														
-														<li><a href="#!">Government Exam</a></li>
+														<li><a class="blue-text" href="/maintenance/governmentExam">Government Exam</a></li>
 														
-														<li><a href="#!">Vital Statistics</a></li>
+														<li><a class="blue-text" href="/maintenance/vitalStatistics">Vital Statistics</a></li>
 														
-														<li><a href="#!">Requirements</a></li>
+														<li><a class="blue-text" href="#!">Requirements</a></li>
 													</ul>
+														
                                             </li>
                                             <li>
-                                                <a href="#">Equipment</a>
+                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdowneq" data-gutter="241" data-hover="true" style="width:240px; border:none;">Equipment</button>
+													<ul id='dropdowneq' class='dropdown-content' style="margin-top:1px;">
+														<li><a class="blue-text" href="/maintenance/unitOfMeasurement">Unit of Measurement</a></li>
+														
+														<li><a class="blue-text" href="/maintenance/typeOfGun">Type of Gun</a></li>
+														
+														<li><a class="blue-text" href="/maintenance/governmentExam">Equipment 3</a></li>
+														
+														<li><a class="blue-text" href="/maintenance/vitalStatistics">Equipment 4</a></li>
+														
+														
+													</ul>
                                             </li>
                                         </ul>
                             </div>
@@ -123,7 +136,28 @@
 			</div></div>
     
     </nav>
-		
+<!--
+	 Tab 
+
+
+	<div class="row">
+		<div class="col s10 push-s2">
+			<ul class="tabs">
+				<li class="tab col s2"><a class="active" href="#">Leave</a></li>
+				<li class="tab col s2"><a  href="#armedservice">Armed Service</a></li>
+				<li class="tab col s2"><a  href="#">Government Exam</a></li>
+				<li class="tab col s2"><a  href="#">Vital Statistic</a></li>
+				<li class="tab col s2"><a  href="#">Requirements</a></li>
+			</ul>
+		</div>	
+	</div>
+-->
+													
+<!-- Dropdown Trigger -->
+	
+  <a class='dropdown-button btn' href='#' data-activates='dropdownsg' style="display:none;">Drop Me!</a>
+  <a class='dropdown-button btn' href='#' data-activates='dropdowneq' style="display:none;">Drop Me!</a>
+
     
     @yield('content')
 	@yield('script')
@@ -134,6 +168,14 @@
     $('.modal-trigger').leanModal();
   });
 	</script>
+	
+<!--
+	<script>
+		$(document).ready(function(){
+			$('ul.tabs').tabs('select_tab', 'tab_id');
+		  });
+	</script>
+-->
 	<script>
 	function deleteConfirmation(url) {
         
