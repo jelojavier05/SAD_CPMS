@@ -11,6 +11,14 @@
 |
 */
 
+Route::get('/maintenance/NatureOfBusiness', 'NatureOfBusinessController@index')->name('natureOfBusinessIndex');
+
+Route::post('/maintenance/addNatureOfBusiness', 'NatureOfBusinessController@addNatureOfBusiness')->name('natureOfBusinessAdd');
+
+Route::post('/maintenance/updateNatureOfBusiness', 'NatureOfBusinessController@updateNatureOfBusiness')->name('natureOfBusinessUpdate');
+
+Route::post('/maintenance/deleteNatureOfBusiness', 'NatureOfBusinessController@deleteNatureOfBusiness')->name('natureOfBusinessDelete');
+
 Route::get('/maintenance/requirements', 'RequirementsController@index')->name('requirementsIndex');
 
 Route::post('/maintenance/addRequirements', 'RequirementsController@addRequirements')->name('requirementsAdd');

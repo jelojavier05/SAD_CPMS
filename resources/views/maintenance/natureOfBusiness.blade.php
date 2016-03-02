@@ -49,11 +49,11 @@ Nature of Business
            <tbody>
 			   
           			<tr>
-						@foreach ()
-            			<td><button class="btn large modal-trigger"  name="" id="{{  }}" 
-            				onclick="radioClicked('')" 
+						@foreach ($natureOfBusinesses as $natureOfBusiness)
+            			<td><button class="btn large modal-trigger"  name="" id="{{ $natureOfBusiness->intNatureOfBusinessID }}" 
+            				onclick="radioClicked('{{ $natureOfBusiness->intNatureOfBusinessID }}', '{{ $natureOfBusiness->strNatureOfBusiness }}')" 
             				href="#modalnobEdit" style="margin-left:50px;">Update</button>
-            			<label for="{{  }}"></label> </td>
+            			<label for="{{ $natureOfBusiness->intNatureOfBusinessID }}"></label> </td>
 <!--
 						<td>
 							<button class="btn waves-effect waves-light red" 
@@ -71,8 +71,8 @@ Nature of Business
 						  </div>
 						</td>
 -->
-						<td><div style="margin-right:50px;">{{  }}</div></td>
-            			<td>{{  }}</td>
+						<td><div style="margin-right:50px;">{{ $natureOfBusiness->intNatureOfBusinessID }}</div></td>
+            			<td>{{ $natureOfBusiness->strNatureOfBusiness }}</td>
             				
           			</tr>
           		@endforeach
@@ -84,7 +84,7 @@ Nature of Business
 				<!-- Pagination -->
 				<div class="row">
 					<div class="col s3 push-s4">
-						<div  style="position:absolute; margin-top:-115px;">{!!  !!}</div>
+						<div  style="position:absolute; margin-top:-115px;">{!! $natureOfBusinesses->render() !!}</div>
 				</div></div>
 				</div>
 
@@ -102,14 +102,14 @@ Nature of Business
 <div id="modalnobAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Nature of Business</h2></div>
         	<div class="modal-content">
-				<form action = "{{  }}" method = "post">
+				<form action = "{{ route('natureOfBusinessAdd') }}" method = "post">
 							
 				<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="" type="text" class="validate" name = "" disabled>
+								<input  id="" type="text" class="validate" name = "natureOfBusinessID" disabled>
 									<label for="">Nature of Business ID</label>
 							</div>
 						</div>
@@ -117,7 +117,7 @@ Nature of Business
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="" type="text" class="validate" name = "" required="" aria-required="true">
+								<input id="" type="text" class="validate" name = "natureOfBusiness" required="" aria-required="true">
 									<label for="">Nature of Business</label> 
 							</div>
 						</div>
@@ -138,13 +138,13 @@ Nature of Business
 <div id="modalnobEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Nature of Business</h2></div>
         	<div class="modal-content">
-				<form action = "{{  }}" method = "post">
+				<form action = "{{ route('natureOfBusinessUpdate') }}" method = "post">
 					<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 					
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="editID" type="text" class="validate" name = "" readonly required="" aria-required="true" value = "test">
+								<input  id="editID" type="text" class="validate" name = "natureOfBusinessID" readonly required="" aria-required="true" value = "test">
 									<label for="editID">Nature of Business ID</label>
 							</div>
 						</div>
@@ -152,7 +152,7 @@ Nature of Business
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "" required="" aria-required="true" value = "test">
+								<input id="editname" type="text" class="validate" name = "natureOfBusiness" required="" aria-required="true" value = "test">
 									<label for="editname">Nature of Business</label> 
 							</div>
 						</div>
@@ -163,7 +163,7 @@ Nature of Business
 				
 				<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button formaction = "{{  }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
+			<button formaction = "{{ route('natureOfBusinessDelete') }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
 			onclick = "deleteConfirmation()">Delete
     			<i class="material-icons right">stop</i>
   			</button>

@@ -48,9 +48,9 @@ Armed Service
 			   
           			<tr>
 						@foreach ($armedServices as $armedService)
-            			<td><button class="btn large modal-trigger"  name="armedService" id="{{ $armedService->intArmedServiceID }}" 
+            			<td><button class="buttonUpdate btn large modal-trigger"  name="armedService" id="{{ $armedService->intArmedServiceID }}" 
             				onclick="radioClicked('{{$armedService->intArmedServiceID}}', '{{$armedService->strArmedServiceName}}',
-				'{{$armedService->strDescription}}')" href="#modalarmedserviceEdit" style="margin-left: 70px;">Update</button>
+						'{{$armedService->strDescription}}')" href="#modalarmedserviceEdit" style="margin-left: 70px;">Update</button>
             			<label for="{{ $armedService->intArmedServiceID }}"></label> </td>
 						
 <!--
@@ -199,7 +199,6 @@ function radioClicked(strID, strName, strDescription){
 	document.getElementById('editID').value = strID;
 	document.getElementById('editname').value = strName;
 	document.getElementById('editdescription').value = strDescription;
-
 }
 
 </script>
