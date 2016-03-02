@@ -37,6 +37,7 @@ Type of Gun
            	<thead>
                     <tr>
 						<th></th>
+					
               			<th data-field="id">ID</th>
               			<th data-field="name">Gun</th>
               			<th data-field="number">Description</th>
@@ -50,10 +51,27 @@ Type of Gun
 						@foreach ($typeOfGuns as $typeOfGun)
             			<td><button class="btn large modal-trigger"  name="typeofGun" id="{{ $typeOfGun->intTypeOfGunID }}" 
             				onclick="radioClicked('{{$typeOfGun->intTypeOfGunID}}','{{$typeOfGun->strTypeOfGun}}', '{{$typeOfGun->strDescription}}')" 
-            				href="#modalguntypeEdit">Update</button>
+            				href="#modalguntypeEdit" style="margin-left: 80px;">Update</button>
             			<label for="{{ $typeOfGun->intTypeOfGunID }}"></label> </td>
-						<td>{{ $typeOfGun->intTypeOfGunID }}</td>
-            			<td>{{ $typeOfGun->strTypeOfGun }}</td>
+						
+<!--
+						<td>
+							<button class="btn waves-effect waves-light red" 
+							onclick = "deleteConfirmation()">Delete
+							</button>
+						</td>
+						<td> Switch 
+						  <div class="switch" style="margin-right: 20px;">
+							<label>
+							  Off
+							  <input type="checkbox">
+							  <span class="lever"></span>
+							  On
+							</label>
+</div></td>
+-->
+						<td><div style="margin-right:40px;">{{ $typeOfGun->intTypeOfGunID }}</div></td>
+						<td><div style="margin-right:40px;">{{ $typeOfGun->strTypeOfGun }}</div></td>
             			<td>{{ $typeOfGun->strDescription }}</td>	
           			</tr>
           		@endforeach
@@ -65,7 +83,7 @@ Type of Gun
 				<!-- Pagination -->
 				<div class="row">
 					<div class="col s3 push-s4">
-						<div  style="position:absolute; margin-top: -115px;">{!! $typeOfGuns->render() !!}</div>
+						<div  style="position:absolute; margin-top: -115px; ">{!! $typeOfGuns->render() !!}</div>
 					</div></div></div>
 				
 			

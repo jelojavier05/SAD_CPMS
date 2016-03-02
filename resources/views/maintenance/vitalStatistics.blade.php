@@ -39,6 +39,7 @@ Vital Statistics
            	<thead>
                     <tr>
 						<th></th>
+						
               			<th data-field="id">ID</th>
               			<th data-field="name">Name</th>
 						
@@ -51,9 +52,26 @@ Vital Statistics
 						@foreach ($vitalStatistics as $vitalStatistic)
             			<td><button class="btn large modal-trigger"  name="vitalStatistic" id="{{ $vitalStatistic->intVitalStatisticsID }}" 
             				onclick="radioClicked('{{$vitalStatistic->intVitalStatisticsID}}', '{{$vitalStatistic->strVitalStatisticsName}}')" 
-            				href="#modalvitalstatisticsEdit">Update</button>
+            				href="#modalvitalstatisticsEdit" style="margin-left:50px;">Update</button>
             			<label for="{{ $vitalStatistic->intVitalStatisticsID }}"></label> </td>
-						<td>{{ $vitalStatistic->intVitalStatisticsID }}</td>
+<!--
+						<td>
+							<button class="btn waves-effect waves-light red" 
+							onclick = "deleteConfirmation()">Delete
+							</button>
+						</td>
+						<td> Switch 
+						  <div class="switch" style="margin-right: 20px;">
+							<label>
+							  Off
+							  <input type="checkbox">
+							  <span class="lever"></span>
+							  On
+							</label>
+						  </div>
+						</td>
+-->
+						<td><div style="margin-right:50px;">{{ $vitalStatistic->intVitalStatisticsID }}</div></td>
             			<td>{{ $vitalStatistic->strVitalStatisticsName }}</td>
             				
           			</tr>
@@ -63,6 +81,11 @@ Vital Statistics
 				</table>
 				
 				</div>
+				<!-- Pagination -->
+				<div class="row">
+					<div class="col s3 push-s4">
+						<div  style="position:absolute; margin-top:-115px;">{!! $vitalStatistics->render() !!}</div>
+				</div></div>
 				</div>
 
 				

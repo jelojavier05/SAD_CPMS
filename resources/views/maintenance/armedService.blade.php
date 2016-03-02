@@ -5,7 +5,7 @@ Armed Service
 @endsection
 
 @section('content')	
-
+	
 <!-- ADD EDIT DELETE BUTTON-->
 	<div class="row">
     	<div class="col s12">
@@ -36,6 +36,7 @@ Armed Service
 					</div>
            	<thead>
                     <tr>
+						
 						<th></th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Armed Service</th>
@@ -49,8 +50,21 @@ Armed Service
 						@foreach ($armedServices as $armedService)
             			<td><button class="btn large modal-trigger"  name="armedService" id="{{ $armedService->intArmedServiceID }}" 
             				onclick="radioClicked('{{$armedService->intArmedServiceID}}', '{{$armedService->strArmedServiceName}}',
-				'{{$armedService->strDescription}}')" href="#modalarmedserviceEdit">Update</button>
+				'{{$armedService->strDescription}}')" href="#modalarmedserviceEdit" style="margin-left: 70px;">Update</button>
             			<label for="{{ $armedService->intArmedServiceID }}"></label> </td>
+						
+<!--
+						<td> Switch 
+						  <div class="switch" style="margin-right: 20px;">
+							<label>
+							  Off
+							  <input type="checkbox">
+							  <span class="lever"></span>
+							  On
+							</label>
+						  </div>
+						</td>
+-->
 						<td>{{ $armedService->intArmedServiceID }}</td>
             			<td>{{ $armedService->strArmedServiceName }}</td>
             			<td>{{ $armedService->strDescription }}</td>	
