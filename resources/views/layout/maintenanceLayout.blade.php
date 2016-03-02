@@ -49,10 +49,18 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul >
                                             <li>
-                                                <button href="#" class="waves-effect grey lighten-2 black-text" style="width:240px; border:none;">Client</button>
+                                                <button href="#" class="aaa dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownclient" data-gutter="240" data-hover="true" style="width:240px; border:none;" id="buttonhover">Client</button>
+													
+													<ul id='dropdownclient' class='dropdown-content' style="margin-top:1px;">
+														<li><a class="blue-text" href="/maintenance/leave">Nature of Business</a></li>
+														
+														<li><a class="blue-text" href="/maintenance/armedservice">Requirements</a></li>
+														
+														
+													</ul>
                                             </li>
                                             <li>
-                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownsg" data-gutter="240" data-hover="true" style="width:240px; border:none;">Security Guard</button>
+                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownsg" data-gutter="240" data-hover="true" style="width:240px; border:none;" id="buttonhover">Security Guard</button>
 													
 													<ul id='dropdownsg' class='dropdown-content' style="margin-top:1px;">
 														<li><a class="blue-text" href="/maintenance/leave">Leave</a></li>
@@ -68,7 +76,7 @@
 														
                                             </li>
                                             <li>
-                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdowneq" data-gutter="241" data-hover="true" style="width:240px; border:none;">Equipment</button>
+                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdowneq" data-gutter="241" data-hover="true" style="width:240px; border:none;" id="buttonhover">Equipment</button>
 													<ul id='dropdowneq' class='dropdown-content' style="margin-top:1px;">
 														<li><a class="blue-text" href="/maintenance/unitOfMeasurement">Unit of Measurement</a></li>
 														
@@ -155,6 +163,7 @@
 													
 <!-- Dropdown Trigger -->
 	
+  <a class='dropdown-button btn' href='#' data-activates='dropdownclient' style="display:none;">Drop Me!</a>
   <a class='dropdown-button btn' href='#' data-activates='dropdownsg' style="display:none;">Drop Me!</a>
   <a class='dropdown-button btn' href='#' data-activates='dropdowneq' style="display:none;">Drop Me!</a>
 
