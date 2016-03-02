@@ -36,8 +36,7 @@ Armed Service
 					</div>
            	<thead>
                     <tr>
-						<th></th>
-						<th></th>
+						
 						<th></th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Armed Service</th>
@@ -51,14 +50,11 @@ Armed Service
 						@foreach ($armedServices as $armedService)
             			<td><button class="btn large modal-trigger"  name="armedService" id="{{ $armedService->intArmedServiceID }}" 
             				onclick="radioClicked('{{$armedService->intArmedServiceID}}', '{{$armedService->strArmedServiceName}}',
-				'{{$armedService->strDescription}}')" href="#modalarmedserviceEdit">Update</button>
+				'{{$armedService->strDescription}}')" href="#modalarmedserviceEdit" style="margin-left: 70px;">Update</button>
             			<label for="{{ $armedService->intArmedServiceID }}"></label> </td>
-						<td>
-							<button class="btn waves-effect waves-light red" 
-							onclick = "deleteConfirmation()">Delete
-							</button>
-						</td>
-						<td><!-- Switch -->
+						
+<!--
+						<td> Switch 
 						  <div class="switch" style="margin-right: 20px;">
 							<label>
 							  Off
@@ -68,6 +64,7 @@ Armed Service
 							</label>
 						  </div>
 						</td>
+-->
 						<td>{{ $armedService->intArmedServiceID }}</td>
             			<td>{{ $armedService->strArmedServiceName }}</td>
             			<td>{{ $armedService->strDescription }}</td>	

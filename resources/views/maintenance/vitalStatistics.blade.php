@@ -39,8 +39,7 @@ Vital Statistics
            	<thead>
                     <tr>
 						<th></th>
-						<th></th>
-						<th></th>
+						
               			<th data-field="id">ID</th>
               			<th data-field="name">Name</th>
 						
@@ -53,14 +52,15 @@ Vital Statistics
 						@foreach ($vitalStatistics as $vitalStatistic)
             			<td><button class="btn large modal-trigger"  name="vitalStatistic" id="{{ $vitalStatistic->intVitalStatisticsID }}" 
             				onclick="radioClicked('{{$vitalStatistic->intVitalStatisticsID}}', '{{$vitalStatistic->strVitalStatisticsName}}')" 
-            				href="#modalvitalstatisticsEdit">Update</button>
+            				href="#modalvitalstatisticsEdit" style="margin-left:50px;">Update</button>
             			<label for="{{ $vitalStatistic->intVitalStatisticsID }}"></label> </td>
+<!--
 						<td>
 							<button class="btn waves-effect waves-light red" 
 							onclick = "deleteConfirmation()">Delete
 							</button>
 						</td>
-						<td><!-- Switch -->
+						<td> Switch 
 						  <div class="switch" style="margin-right: 20px;">
 							<label>
 							  Off
@@ -70,7 +70,8 @@ Vital Statistics
 							</label>
 						  </div>
 						</td>
-						<td><div style="margin-right:80px;">{{ $vitalStatistic->intVitalStatisticsID }}</div></td>
+-->
+						<td><div style="margin-right:50px;">{{ $vitalStatistic->intVitalStatisticsID }}</div></td>
             			<td>{{ $vitalStatistic->strVitalStatisticsName }}</td>
             				
           			</tr>
