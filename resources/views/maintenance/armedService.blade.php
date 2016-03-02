@@ -5,7 +5,7 @@ Armed Service
 @endsection
 
 @section('content')	
-
+	
 <!-- ADD EDIT DELETE BUTTON-->
 	<div class="row">
     	<div class="col s12">
@@ -37,6 +37,8 @@ Armed Service
            	<thead>
                     <tr>
 						<th></th>
+						<th></th>
+						<th></th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Armed Service</th>
 						<th data-field="number">Description</th>
@@ -51,6 +53,21 @@ Armed Service
             				onclick="radioClicked('{{$armedService->intArmedServiceID}}', '{{$armedService->strArmedServiceName}}',
 				'{{$armedService->strDescription}}')" href="#modalarmedserviceEdit">Update</button>
             			<label for="{{ $armedService->intArmedServiceID }}"></label> </td>
+						<td>
+							<button class="btn waves-effect waves-light red" 
+							onclick = "deleteConfirmation()">Delete
+							</button>
+						</td>
+						<td><!-- Switch -->
+						  <div class="switch" style="margin-right: 20px;">
+							<label>
+							  Off
+							  <input type="checkbox">
+							  <span class="lever"></span>
+							  On
+							</label>
+						  </div>
+						</td>
 						<td>{{ $armedService->intArmedServiceID }}</td>
             			<td>{{ $armedService->strArmedServiceName }}</td>
             			<td>{{ $armedService->strDescription }}</td>	

@@ -37,6 +37,8 @@ Unit of Measurement
            	<thead>
                     <tr>
 						<th></th>
+						<th></th>
+						<th></th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Name</th>
 						
@@ -51,6 +53,21 @@ Unit of Measurement
             			<td><button class="btn large modal-trigger"  name="unitOfMeasurement" id = "{{ $unitOfMeasurement->intUnitOfMeasurementID }}" 
             				onclick="radioClicked('{{$unitOfMeasurement->intUnitOfMeasurementID}}', '{{$unitOfMeasurement->strUnitOfMeasurement}}')" href="#modaluomEdit">Update</button>
             			<label for="{{ $unitOfMeasurement->intUnitOfMeasurementID }}"></label> </td>
+						<td>
+							<button class="btn waves-effect waves-light red" 
+							onclick = "deleteConfirmation()">Delete
+							</button>
+						</td>
+						<td><!-- Switch -->
+						  <div class="switch" style="margin-right: 20px;">
+							<label>
+							  Off
+							  <input type="checkbox">
+							  <span class="lever"></span>
+							  On
+							</label>
+						  </div>
+						</td>
 						<td>{{ $unitOfMeasurement->intUnitOfMeasurementID }}</td>
             			<td>{{ $unitOfMeasurement->strUnitOfMeasurement }}</td>
 						

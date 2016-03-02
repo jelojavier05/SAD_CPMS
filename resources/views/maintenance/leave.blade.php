@@ -6,7 +6,9 @@ Leave
 
 @section('content')
 
-	<!-- ADD EDIT DELETE BUTTON-->
+	
+
+<!-- ADD EDIT DELETE BUTTON-->
 		<div class="row">
 			<div class="col s12">	
 				<div class="col s3 offset-s3">
@@ -37,6 +39,8 @@ Leave
            	<thead>
                     <tr>
 						<th></th>
+						<th></th>
+						<th></th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Leave Type</th>
 						<th data-field="number">Default Leave</th>
@@ -51,9 +55,25 @@ Leave
             				onclick="radioClicked('{{$leave->intLeaveID}}','{{$leave->strLeaveType}}',
 							'{{$leave->intDefaultLeave}}')" href="#modalleaveEdit">Update</button>
             			<label for="{{ $leave->intLeaveID }}"></label> </td>
+						<td>
+							<button class="btn waves-effect waves-light red" style="margin-right: 10px;"
+							onclick = "deleteConfirmation()">Delete
+							</button>
+						</td>
+						<td><!-- Switch -->
+						  <div class="switch">
+							<label>
+							  Off
+							  <input type="checkbox">
+							  <span class="lever"></span>
+							  On
+							</label>
+						  </div>
+						</td>
 						<td>{{ $leave->intLeaveID }}</td>
             			<td>{{ $leave->strLeaveType }}</td>
-            			<td>{{ $leave->intDefaultLeave }}</td>	
+            			<td>{{ $leave->intDefaultLeave }}</td>
+						<td></td>
           			</tr>
           		@endforeach
           
@@ -155,10 +175,7 @@ Leave
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
-			<button  formaction = "{{ route('leaveDelete') }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
-			onclick = "deleteConfirmation()">Delete
-    			<i class="material-icons right">stop</i>
-  			</button>
+			
 			
 			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
     			<i class="material-icons right">send</i>

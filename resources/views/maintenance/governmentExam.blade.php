@@ -6,6 +6,7 @@ Government Exam
 
 @section('content')
 
+
 <!-- ADD EDIT DELETE BUTTON-->
 	<div class="row">
     	<div class="col s12">
@@ -37,6 +38,8 @@ Government Exam
            	<thead>
                     <tr>
 						<th></th>
+						<th></th>
+						<th></th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Name</th>
 						<th data-field="name">Description</th>
@@ -50,6 +53,21 @@ Government Exam
 						@foreach ($governmentExams as $governmentExam)
             			<td><button class="btn large modal-trigger"  name="governmentExam" id = "{{ $governmentExam->intGovernmentExamID }}" onclick="radioClicked('{{$governmentExam->intGovernmentExamID}}', '{{$governmentExam->strGovernmentExam}}', '{{$governmentExam->strDescription}}')" href="#modalgovexamEdit">Update</button>
             			<label for="{{ $governmentExam->intGovernmentExamID }}"></label> </td>
+						<td>
+							<button class="btn waves-effect waves-light red" 
+							onclick = "deleteConfirmation()">Delete
+							</button>
+						</td>
+						<td><!-- Switch -->
+						  <div class="switch" style="margin-right: 20px;">
+							<label>
+							  Off
+							  <input type="checkbox">
+							  <span class="lever"></span>
+							  On
+							</label>
+						  </div>
+						</td>
 						<td>{{ $governmentExam->intGovernmentExamID }}</td>
             			<td>{{ $governmentExam->strGovernmentExam }}</td>
 						<td>{{ $governmentExam->strDescription }}</td>
@@ -173,6 +191,7 @@ Government Exam
 </div>
 
 @stop
+
 
 @section('script')
 
