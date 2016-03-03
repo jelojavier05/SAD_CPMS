@@ -23,7 +23,7 @@ Armed Service
 	 <div class="row">
         
         	<div class="col s10 push-s2">
-            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-20px;">
+            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top: 55px;"><!-- margin-top: -20px-->
 					
 				<table class="highlight white" style="border-radius: 10px; margin-top: -8%;	" id = "dataTable">
                 	<div class="right-align">
@@ -37,6 +37,7 @@ Armed Service
            	<thead>
                     <tr>
 						
+						<th></th>
 						<th></th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Armed Service</th>
@@ -52,8 +53,7 @@ Armed Service
             			 href="#modalarmedserviceEdit" style="margin-left: 70px;">Update</button>
             			<label for="{{ $armedService->intArmedServiceID }}"></label> </td>
 						
-<!--
-						<td> Switch 
+						<td> 
 						  <div class="switch" style="margin-right: 20px;">
 							<label>
 							  Off
@@ -63,7 +63,6 @@ Armed Service
 							</label>
 						  </div>
 						</td>
--->
 						<td id = "id{{ $armedService->intArmedServiceID }}">{{ $armedService->intArmedServiceID }}</td>
             			<td id = "name{{ $armedService->intArmedServiceID }}">{{ $armedService->strArmedServiceName }}</td>
             			<td id = "description{{ $armedService->intArmedServiceID }}">{{ $armedService->strDescription }}</td>	

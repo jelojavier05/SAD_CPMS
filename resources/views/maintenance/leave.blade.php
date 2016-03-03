@@ -26,7 +26,7 @@ Leave
 	 <div class="row">
      
         	<div class="col s10 push-s2">
-            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-20px;">	
+            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:55px;">	
 				<table class="highlight white" style=" border-radius: 10px; margin-top: -8%" id="dataTable">
                 	<div class="right-align">
                  		<div class="fixed-action-btn horizontal click-to-toggle">
@@ -39,7 +39,8 @@ Leave
            	<thead>
                     <tr>
 						<th></th>
-						
+						<th></th>
+						<th></th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Leave Type</th>
 						<th data-field="name">Default Leave</th>
@@ -54,8 +55,8 @@ Leave
             				 href="#modalleaveEdit" style="margin-left:80px;">Update</button>
             			<label for="{{ $leave->intLeaveID }}"></label> </td>
 					
-<!--
-						<td> Switch 
+
+						<td>  
 						  <div class="switch">
 							<label>
 							  Off
@@ -65,7 +66,10 @@ Leave
 							</label>
 						  </div>
 						</td>
--->
+						<td><button formaction="{{ route('leaveDelete')}}" class="btn waves-effect waves-light red" 
+									onclick="deleteConfirmation()">Delete<i class="material-icons right">delete</i>
+							</button>
+						</td>
 						<td id = "id{{ $leave->intLeaveID }}">{{ $leave->intLeaveID }}</td>
             			<td id = "name{{ $leave->intLeaveID }}">{{ $leave->strLeaveType }}</td>
             			<td id = "description{{ $leave->intLeaveID }}">{{ $leave->intDefaultLeave }}</td>
@@ -171,9 +175,7 @@ Leave
     			<i class="material-icons right">send</i>
   			</button>
 			
-			<button formaction="{{ route('leaveDelete')}}" class="btn waves-effect waves-light red" style="margin-right: 10px;"
-							onclick = "deleteConfirmation()">Delete<i class="material-icons right">delete</i>
-							</button>
+			
 			
 			
     	</div>

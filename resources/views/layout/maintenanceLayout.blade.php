@@ -56,7 +56,7 @@
 													<ul id='dropdownclient' class='dropdown-content' style="margin-top:1px;">
 														<li><a class="blue-text" href="/maintenance/NatureOfBusiness">Nature of Business</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/armedservice">Requirements</a></li>
+														
 														
 														
 													</ul>
@@ -80,9 +80,25 @@
                                             <li>
                                                  <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdowneq" data-gutter="241" data-hover="true" style="width:240px; border:none;" id="buttonhover">Equipment</button>
 													<ul id='dropdowneq' class='dropdown-content' style="margin-top:1px;">
-														<li><a class="blue-text" href="/maintenance/unitOfMeasurement">Unit of Measurement</a></li>
+														
 														
 														<li><a class="blue-text" href="/maintenance/typeOfGun">Type of Gun</a></li>
+														
+														<li><a class="blue-text" href="/maintenance/typeOfGun">Add Gun</a></li>
+														
+														<li><a class="blue-text" href="/maintenance/typeOfGun">Add Supply Item</a></li>
+														
+														
+														
+														
+													</ul>
+                                            </li>
+											<li>
+                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownothers" data-gutter="241" data-hover="true" style="width:240px; border:none;" id="buttonhover">Others</button>
+													<ul id='dropdownothers' class='dropdown-content' style="margin-top:1px;">
+														<li><a class="blue-text" href="/maintenance/unitOfMeasurement">Unit of Measurement</a></li>
+														
+														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
 														
 														
 														
@@ -110,17 +126,17 @@
                             </div>
                     </li>
                             <li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">warning</i>LamanIkatlo<i class="mdi-navigation-arrow-drop-down right"></i></a>
+								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">warning</i>Reports<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             <li>
-                                                <a href="#">Palaman1</a>
+                                                <a href="#">Reports1</a>
                                             </li>
                                             <li>
-                                                <a href="#">Palaman2</a>
+                                                <a href="#">Reports2</a>
                                             </li>
                                             <li>
-                                                <a href="#">Palaman3</a>
+                                                <a href="#">Reports3</a>
                                             </li>
                                         </ul>
                             </div></li>
@@ -166,6 +182,7 @@
   <a class='dropdown-button btn' href='#' data-activates='dropdownclient' style="display:none;">Drop Me!</a>
   <a class='dropdown-button btn' href='#' data-activates='dropdownsg' style="display:none;">Drop Me!</a>
   <a class='dropdown-button btn' href='#' data-activates='dropdowneq' style="display:none;">Drop Me!</a>
+  <a class='dropdown-button btn' href='#' data-activates='dropdownothers' style="display:none;">Drop Me!</a>
 
     
     @yield('content')
