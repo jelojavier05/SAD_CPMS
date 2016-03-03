@@ -25,9 +25,9 @@ Vital Statistics
 	 <div class="row">
         
         	<div class="col s10 push-s2">
-            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%;">
+            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-20px;">
 					
-				<table class="highlight white" style="border-radius: 10px; margin-top: -8%">
+				<table class="highlight white" style="border-radius: 10px; margin-top: -8%" id="dataTable">
                 	<div class="right-align">
                  		<div class="fixed-action-btn horizontal click-to-toggle">
     						<button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalvitalstatisticsAdd">
@@ -50,8 +50,7 @@ Vital Statistics
 			   
           			<tr>
 						@foreach ($vitalStatistics as $vitalStatistic)
-            			<td><button class="btn large modal-trigger"  name="vitalStatistic" id="{{ $vitalStatistic->intVitalStatisticsID }}" 
-            				onclick="radioClicked('{{$vitalStatistic->intVitalStatisticsID}}', '{{$vitalStatistic->strVitalStatisticsName}}')" 
+            			<td><button class="buttonUpdate btn large modal-trigger"  name="vitalStatistic" id="{{ $vitalStatistic->intVitalStatisticsID }}" 
             				href="#modalvitalstatisticsEdit" style="margin-left:50px;">Update</button>
             			<label for="{{ $vitalStatistic->intVitalStatisticsID }}"></label> </td>
 <!--
@@ -71,8 +70,8 @@ Vital Statistics
 						  </div>
 						</td>
 -->
-						<td><div style="margin-right:50px;">{{ $vitalStatistic->intVitalStatisticsID }}</div></td>
-            			<td>{{ $vitalStatistic->strVitalStatisticsName }}</td>
+						<td id = "id{{ $vitalStatistic->intVitalStatisticsID }}">{{ $vitalStatistic->intVitalStatisticsID }}</td>
+            			<td id = "name{{ $vitalStatistic->intVitalStatisticsID }}">{{ $vitalStatistic->strVitalStatisticsName }}</td>
             				
           			</tr>
           		@endforeach
@@ -82,10 +81,7 @@ Vital Statistics
 				
 				</div>
 				<!-- Pagination -->
-				<div class="row">
-					<div class="col s3 push-s4">
-						<div  style="position:absolute; margin-top:-115px;">{!! $vitalStatistics->render() !!}</div>
-				</div></div>
+				
 				</div>
 
 				
@@ -183,13 +179,30 @@ Vital Statistics
 
 @section('script')
 <script type="text/javascript">
-function radioClicked(strID, strName){
-	
-	document.getElementById('editID').value = strID;
-	document.getElementById('editname').value = strName;
+$(function(){
+	$("#dataTable").DataTable({
+			"lengthChange": false,
+			"pageLength":5,
+			"columns":[
+			{"searchable": false},
+			null,
+			null
+			]
 
-}
+		});
 
+
+		$(".buttonUpdate").click(function(){
+
+			var itemID = "id" + this.id;
+			var itemName = "name" + this.id;
+
+			document.getElementById('editID').value = $("#"+itemID).html();
+			document.getElementById('editname').value = $("#"+itemName).html();
+
+		});
+
+	});
 </script>
 
 @stop

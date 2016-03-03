@@ -23,9 +23,9 @@ Armed Service
 	 <div class="row">
         
         	<div class="col s10 push-s2">
-            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%;">
+            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-20px;">
 					
-				<table class="highlight white" style="border-radius: 10px; margin-top: -8%">
+				<table class="highlight white" style="border-radius: 10px; margin-top: -8%;	" id = "dataTable">
                 	<div class="right-align">
                  		<div class="fixed-action-btn horizontal click-to-toggle">
     						<button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalarmedserviceAdd">
@@ -49,8 +49,7 @@ Armed Service
           			<tr>
 						@foreach ($armedServices as $armedService)
             			<td><button class="buttonUpdate btn large modal-trigger"  name="armedService" id="{{ $armedService->intArmedServiceID }}" 
-            				onclick="radioClicked('{{$armedService->intArmedServiceID}}', '{{$armedService->strArmedServiceName}}',
-						'{{$armedService->strDescription}}')" href="#modalarmedserviceEdit" style="margin-left: 70px;">Update</button>
+            			 href="#modalarmedserviceEdit" style="margin-left: 70px;">Update</button>
             			<label for="{{ $armedService->intArmedServiceID }}"></label> </td>
 						
 <!--
@@ -65,9 +64,9 @@ Armed Service
 						  </div>
 						</td>
 -->
-						<td>{{ $armedService->intArmedServiceID }}</td>
-            			<td>{{ $armedService->strArmedServiceName }}</td>
-            			<td>{{ $armedService->strDescription }}</td>	
+						<td id = "id{{ $armedService->intArmedServiceID }}">{{ $armedService->intArmedServiceID }}</td>
+            			<td id = "name{{ $armedService->intArmedServiceID }}">{{ $armedService->strArmedServiceName }}</td>
+            			<td id = "description{{ $armedService->intArmedServiceID }}">{{ $armedService->strDescription }}</td>	
           			</tr>
           		@endforeach
           
@@ -78,7 +77,7 @@ Armed Service
 				<!-- Pagination -->
 				<div class="row">
 					<div class="col s3 push-s4">
-						<div  style="position:absolute; margin-top: -115px;">{!! $armedServices->render() !!}</div>
+						
 					</div></div></div>
 				
 			
@@ -194,12 +193,37 @@ Armed Service
 
 
 <script type="text/javascript">
-function radioClicked(strID, strName, strDescription){
-	
-	document.getElementById('editID').value = strID;
-	document.getElementById('editname').value = strName;
-	document.getElementById('editdescription').value = strDescription;
-}
 
+	$(function(){
+		$("#dataTable").DataTable({
+			"lengthChange": false,
+			"pageLength":5,
+			"columns":[
+			{"searchable": false},
+			null,
+			null,
+			null
+			]
+
+		});
+
+
+
+
+		$(".buttonUpdate").click(function(){
+
+			var itemID = "id" + this.id;
+			var itemName = "name" + this.id;
+			var itemDescription = "description" + this.id;
+
+			document.getElementById('editID').value = $("#"+itemID).html();
+			document.getElementById('editname').value = $("#"+itemName).html();
+			document.getElementById('editdescription').value = $("#"+itemDescription).html();
+
+		});
+
+	});
+
+	
 </script>
 @stop

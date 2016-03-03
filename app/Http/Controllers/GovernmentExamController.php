@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class GovernmentExamController extends Controller
 {
     public function index(){
-        $governmentExams = GovernmentExam::where('deleted_at', null)->paginate(5);
+        $governmentExams = GovernmentExam::where('deleted_at', null)->get();
 
         return view('/maintenance/governmentExam', ['governmentExams'=>$governmentExams]);
     }

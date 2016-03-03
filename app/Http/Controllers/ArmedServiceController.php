@@ -11,7 +11,7 @@ class ArmedServiceController extends Controller
 {
     public function index()
     {
-        $armedServices = ArmedService::where('deleted_at', null)->paginate(5);
+        $armedServices = ArmedService::where('deleted_at', null)->get();
 
         return view('/maintenance/armedservice', ['armedServices'=>$armedServices]);
     }

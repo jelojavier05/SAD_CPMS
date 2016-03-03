@@ -11,7 +11,7 @@ class VitalStatisticsController extends Controller
 {
     public function index()
     {
-        $vitalStatistics = VitalStatistics::where('deleted_at', null)->paginate(5);
+        $vitalStatistics = VitalStatistics::where('deleted_at', null)->get();
 
         return view('maintenance.vitalStatistics',['vitalStatistics'=>$vitalStatistics]);
     }

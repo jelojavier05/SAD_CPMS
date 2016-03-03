@@ -23,9 +23,9 @@ Type of Gun
 	 <div class="row">
         
         	<div class="col s10 push-s2">
-            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%;">
+            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-20px;">
 					
-				<table class="highlight white" style="border-radius: 10px; margin-top: -8%">
+				<table class="highlight white" style="border-radius: 10px; margin-top: -8%;" id="dataTable">
                 	<div class="right-align">
                  		<div class="fixed-action-btn horizontal click-to-toggle">
     						<button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalguntypeAdd">
@@ -81,10 +81,7 @@ Type of Gun
 				
 				</div>
 				<!-- Pagination -->
-				<div class="row">
-					<div class="col s3 push-s4">
-						<div  style="position:absolute; margin-top: -115px; ">{!! $typeOfGuns->render() !!}</div>
-					</div></div></div>
+				</div>
 				
 			
 			
@@ -208,6 +205,6 @@ function radioClicked(strID, strName, strDescription){
 	document.getElementById('editname').value = strName;
 	document.getElementById('editdescription').value = strDescription;
 }
-
+$("#dataTable").DataTable();
 </script>
 @stop

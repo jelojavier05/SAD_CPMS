@@ -16,7 +16,7 @@ class TypeOfGunController extends Controller
      */
     public function index()
     {
-        $typeOfGuns = TypeOfGun::where('deleted_at', null)->paginate(5);
+        $typeOfGuns = TypeOfGun::where('deleted_at', null)->get();
 
         return view('/maintenance/typeOfGUn', ['typeOfGuns'=>$typeOfGuns]);
     }

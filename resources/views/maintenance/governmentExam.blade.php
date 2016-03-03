@@ -16,7 +16,8 @@ Government Exam
 				</div>
 			</div>
 			<div class="col s2 offset-s1">
-				<button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalgovexamAdd"><i class="material-icons left">add</i> ADD</button></br></br>
+				<button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large waves-effect waves-light 
+				green hide-on-med-and-down modal-trigger" href="#modalgovexamAdd"><i class="material-icons left">add</i> ADD</button></br></br>
 </div></div>
 
 <!-- TABLE -->
@@ -24,9 +25,9 @@ Government Exam
 	 <div class="row">
         
         	<div class="col s10 push-s2">
-            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%;">
+            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-20px;">
 					
-				<table class="highlight white" style="border-radius: 10px; margin-top: -8%">
+				<table class="highlight white" style="border-radius: 10px; margin-top: -8%" id = "dataTable">
                 	<div class="right-align">
                  		<div class="fixed-action-btn horizontal click-to-toggle">
     						<button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalgovexamAdd">
@@ -50,7 +51,8 @@ Government Exam
 			   
           			<tr>
 						@foreach ($governmentExams as $governmentExam)
-            			<td><button class="btn large modal-trigger"  name="governmentExam" id = "{{ $governmentExam->intGovernmentExamID }}" onclick="radioClicked('{{$governmentExam->intGovernmentExamID}}', '{{$governmentExam->strGovernmentExam}}', '{{$governmentExam->strDescription}}')" href="#modalgovexamEdit" style="margin-left: 40px;">Update</button>
+            			<td><button class="buttonUpdate btn large modal-trigger"  name="governmentExam" id = "{{ $governmentExam->intGovernmentExamID }}" 
+            				href="#modalgovexamEdit" style="margin-left: 40px;">Update</button>
             			<label for="{{ $governmentExam->intGovernmentExamID }}"></label> </td>
 <!--
 						<td>
@@ -69,9 +71,9 @@ Government Exam
 						  </div>
 						</td>
 -->
-						<td>{{ $governmentExam->intGovernmentExamID }}</td>
-            			<td>{{ $governmentExam->strGovernmentExam }}</td>
-						<td>{{ $governmentExam->strDescription }}</td>
+						<td id = "id{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->intGovernmentExamID }}</td>
+            			<td id = "name{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->strGovernmentExam }}</td>
+						<td id = "description{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->strDescription }}</td>
             				
           			</tr>
           		@endforeach
@@ -80,11 +82,7 @@ Government Exam
 				</table>
 				
 				</div>
-				<!-- Pagination -->
-				<div class="row">
-					<div class="col s3 push-s4">
-						<div style="position:absolute; margin-top: -115px;">{!! $governmentExams->render() !!}</div>
-					</div></div>
+				
 			</div>
 				
 			
@@ -197,11 +195,33 @@ Government Exam
 @section('script')
 
 <script type="text/javascript">
-function radioClicked(strID, strName, strDescription){
-	document.getElementById('editID').value = strID;
-	document.getElementById('editname').value = strName;
-	document.getElementById('editdescription').value = strDescription;
-}
+	$(function(){
+		$("#dataTable").DataTable({
+			"lengthChange": false,
+			"pageLength":5,
+			"columns":[
+			{"searchable": false},
+			null,
+			null,
+			null
+			]
+
+		});
+
+
+		$(".buttonUpdate").click(function(){
+
+			var itemID = "id" + this.id;
+			var itemName = "name" + this.id;
+			var itemDescription = "description" + this.id;
+
+			document.getElementById('editID').value = $("#"+itemID).html();
+			document.getElementById('editname').value = $("#"+itemName).html();
+			document.getElementById('editdescription').value = $("#"+itemDescription).html();
+
+		});
+
+	});
 
 </script>
 @stop

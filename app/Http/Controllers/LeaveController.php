@@ -11,14 +11,10 @@ use Validator;
 
 class LeaveController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        $leaves = Leave::where('deleted_at', null)->paginate(5);
+        $leaves = Leave::where('deleted_at', null)->get();
 
         return view('maintenance.leave', ['leaves'=>$leaves]);
     }

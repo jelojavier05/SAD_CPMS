@@ -17,6 +17,8 @@
     <script src="{!! URL::asset('../Materialize/jquery/jquery-1.12.0.min.js')!!}"></script>
   <script src="{!! URL::asset('../Materialize/js/init.js') !!}"></script>
 	<script src="{!! URL::asset('../Materialize/js/materialize.min.js') !!}"></script>
+    <link rel="stylesheet" type="text/css" href="{!! URL::asset('../datatable.css') !!}">
+    <script src="{!! URL::asset('../datatable.js') !!}"></script>
   
 </head>
 
@@ -43,7 +45,7 @@
 					</div>	
                         <ul class="collapsible collapsible-accordion">
                     <li class="bold" style="width:280px;">
-						<a class="collapsible-header waves-effect waves-teal" href="#">
+						<a class="collapsible-header waves-effect waves-blue" href="#">
 							<i class="material-icons">settings</i>Maintenance<i class="mdi-navigation-arrow-drop-down right"></i>
 						</a>
                             <div class="collapsible-body grey lighten-2">
@@ -52,7 +54,7 @@
                                                 <button href="#" class="aaa dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownclient" data-gutter="240" data-hover="true" style="width:240px; border:none;" id="buttonhover">Client</button>
 													
 													<ul id='dropdownclient' class='dropdown-content' style="margin-top:1px;">
-														<li><a class="blue-text" href="/maintenance/leave">Nature of Business</a></li>
+														<li><a class="blue-text" href="/maintenance/NatureOfBusiness">Nature of Business</a></li>
 														
 														<li><a class="blue-text" href="/maintenance/armedservice">Requirements</a></li>
 														
@@ -71,7 +73,7 @@
 														
 														<li><a class="blue-text" href="/maintenance/vitalStatistics">Vital Statistics</a></li>
 														
-														<li><a class="blue-text" href="#!">Requirements</a></li>
+														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
 													</ul>
 														
                                             </li>
@@ -82,9 +84,7 @@
 														
 														<li><a class="blue-text" href="/maintenance/typeOfGun">Type of Gun</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/governmentExam">Equipment 3</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/vitalStatistics">Equipment 4</a></li>
 														
 														
 													</ul>
@@ -94,7 +94,7 @@
 							
 					</li>
                     <li class="bold" style="width:280px;">
-						<a class="collapsible-header waves-effect waves-teal" href="#"><i class="material-icons">assignment</i>Assignment<i class="mdi-navigation-arrow-drop-down right"></i></a>
+						<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">assignment</i>Assignment<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul class="black-text">
                                             <li>
@@ -110,7 +110,7 @@
                             </div>
                     </li>
                             <li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-teal" href="#"><i class="material-icons">warning</i>LamanIkatlo<i class="mdi-navigation-arrow-drop-down right"></i></a>
+								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">warning</i>LamanIkatlo<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             <li>
@@ -170,12 +170,10 @@
     
     @yield('content')
 	@yield('script')
-        <script src = "SAD_SAMS/javascript/armedService.js"></script>
 	<script>
     $(document).ready(function(){
-   
-    $('.modal-trigger').leanModal();
-  });
+        $('.modal-trigger').leanModal();
+    });
 	</script>
 	
 <!--

@@ -26,8 +26,8 @@ Leave
 	 <div class="row">
      
         	<div class="col s10 push-s2">
-            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%;">	
-				<table class="highlight white" style=" border-radius: 10px; margin-top: -8%">
+            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-20px;">	
+				<table class="highlight white" style=" border-radius: 10px; margin-top: -8%" id="dataTable">
                 	<div class="right-align">
                  		<div class="fixed-action-btn horizontal click-to-toggle">
     						<button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalleaveAdd">
@@ -42,7 +42,7 @@ Leave
 						
               			<th data-field="id">ID</th>
               			<th data-field="name">Leave Type</th>
-						<th data-field="number">Default Leave</th>
+						<th data-field="name">Default Leave</th>
                     </tr>
 			</thead>
             
@@ -50,9 +50,8 @@ Leave
 			   
           			<tr>
 						@foreach ($leaves as $leave)
-            			<td><button class="btn large modal-trigger"  name="leave" id="{{ $leave->intLeaveID }}" 
-            				onclick="radioClicked('{{$leave->intLeaveID}}','{{$leave->strLeaveType}}',
-							'{{$leave->intDefaultLeave}}')" href="#modalleaveEdit" style="margin-left:80px;">Update</button>
+            			<td><button class="buttonUpdate btn large modal-trigger"  name="leave" id="{{ $leave->intLeaveID }}" 
+            				 href="#modalleaveEdit" style="margin-left:80px;">Update</button>
             			<label for="{{ $leave->intLeaveID }}"></label> </td>
 					
 <!--
@@ -67,10 +66,9 @@ Leave
 						  </div>
 						</td>
 -->
-						<td>{{ $leave->intLeaveID }}</td>
-            			<td>{{ $leave->strLeaveType }}</td>
-            			<td>{{ $leave->intDefaultLeave }}</td>
-						<td></td>
+						<td id = "id{{ $leave->intLeaveID }}">{{ $leave->intLeaveID }}</td>
+            			<td id = "name{{ $leave->intLeaveID }}">{{ $leave->strLeaveType }}</td>
+            			<td id = "description{{ $leave->intLeaveID }}">{{ $leave->intDefaultLeave }}</td>
           			</tr>
           		@endforeach
           
@@ -80,11 +78,7 @@ Leave
 				
 				</div>
 				
-				<!-- Pagination -->
-				<div class="row">
-					<div class="col s3 push-s4">
-						<div  style="position:absolute; margin-top:-115px;">{!! $leaves->render() !!}</div>
-				</div></div></div>
+				</div>
 			
 			</br></br></br></br></br>
 			
@@ -195,13 +189,34 @@ Leave
 @stop
 
 @section('script')
-	<script type="text/javascript">
+<script type="text/javascript">
+	$(function(){
+		$("#dataTable").DataTable({
+			"lengthChange": false,
+			"pageLength":5,
+			"columns":[
+			{"searchable": false},
+			null,
+			null,
+			null
+			]
 
-	function radioClicked(strID, strName, strCount){
-		document.getElementById('editID').value = strID;
-		document.getElementById('editname').value = strName;
-		document.getElementById('editDefault').value = strCount;
-	}
+		});
 
-	</script>
+		$(".buttonUpdate").click(function(){
+			var itemID = "id" + this.id;
+			var itemName = "name" + this.id;
+			var itemDescription = "description" + this.id;
+
+			document.getElementById('editID').value = $("#"+itemID).html();
+			document.getElementById('editname').value = $("#"+itemName).html();
+			document.getElementById('editDefault').value = $("#"+itemDescription).html();
+
+		});
+		
+	});
+
+
+</script>
+
 @stop

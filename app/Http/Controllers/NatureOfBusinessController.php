@@ -16,7 +16,7 @@ class NatureOfBusinessController extends Controller
      */
     public function index()
     {
-        $natureOfBusinesses = NatureOfBusiness::where('deleted_at', null)->paginate(5);
+        $natureOfBusinesses = NatureOfBusiness::where('deleted_at', null)->get();
 
         return view('/maintenance/natureOfBusiness', ['natureOfBusinesses'=>$natureOfBusinesses]);
     }
