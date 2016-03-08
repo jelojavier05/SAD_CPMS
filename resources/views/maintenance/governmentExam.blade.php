@@ -38,8 +38,7 @@ Government Exam
 					</div>
            	<thead>
                     <tr>
-						<th></th>
-						
+						<th></th> 
               			<th data-field="id">ID</th>
               			<th data-field="name">Name</th>
 						<th data-field="name">Description</th>
@@ -51,9 +50,9 @@ Government Exam
 			   
           			<tr>
 						@foreach ($governmentExams as $governmentExam)
-            			<td><button class="buttonUpdate btn large modal-trigger"  name="governmentExam" id = "{{ $governmentExam->intGovernmentExamID }}" 
+            			 <td><button class="buttonUpdate btn large modal-trigger"  name="governmentExam" id = "{{ $governmentExam->intGovernmentExamID }}" 
             				href="#modalgovexamEdit" style="margin-left: 40px;">Update</button>
-            			<label for="{{ $governmentExam->intGovernmentExamID }}"></label> </td>
+            			<label for="{{ $governmentExam->intGovernmentExamID }}"></label> </td> 
 <!--
 						<td>
 							<button class="btn waves-effect waves-light red" 
@@ -98,7 +97,7 @@ Government Exam
 <div id="modalgovexamAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Government Exam</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('governmentExamAdd') }}" method = "post">
+				<!-- <form action = "{{ route('governmentExamAdd') }}" method = "post"> -->
 							
 								<input  id="intGovernmentExamID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
@@ -113,16 +112,16 @@ Government Exam
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="strGovernmentExamDesc" type="text" class="validate" name = "governmentExamName" required="" aria-required="true">
-									<label for="strGovernmentExamDesc">Government Exam Type</label> 
+								<input id="strGovernmentExamAdd" type="text" class="validate" name = "governmentExamName" required="" aria-required="true">
+									<label for="strGovernmentExamAdd">Government Exam Type</label> 
 							</div>
 						</div>
 					</div>
 					<div class="row">
 							<div class="col s5">
 								<div class="input-field">
-									<input id="strGovernmentExamDesc" type="text" class="validate"  name = "governmentExamDescription" required="" aria-required="true">
-										<label for="strGovernmentExamDesc">Description</label> 
+									<input id="strGovernmentExamDescAdd" type="text" class="validate"  name = "governmentExamDescription" required="" aria-required="true">
+										<label for="strGovernmentExamDescAdd">Description</label> 
 								</div>
 							</div>
 						</div>
@@ -130,12 +129,12 @@ Government Exam
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
-			<button class="btn waves-effect waves-light" type="submit" name="action" style="margin-right: 30px;">Save
+			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
     			<i class="material-icons right">send</i>
   			</button>
     	</div>
     		</div>
-				</form>
+				<!-- </form> -->
 		</div>
 
 <!-- MODAL Government Exam EDIT -->
@@ -204,9 +203,12 @@ Government Exam
 			null,
 			null,
 			null
+			
 			]
 
 		});
+
+		// $("#dataTable").DataTable();
 
 
 		$(".buttonUpdate").click(function(){
@@ -221,7 +223,33 @@ Government Exam
 
 		});
 
+		
+
 	});
 
+	$(document).ready(function(){
+		$("#btnAddSave").click(function(){
+			
+			$.ajax({
+
+				url: "{{ action('GovernmentExamController@addGovernmentExam') }}",
+				type: "POST",
+				data: {
+					governmentExamName: $('#strGovernmentExamAdd').val(),
+					governmentExamDescription: $('#strGovernmentExamDescAdd').val(),
+				},
+				success: function(data){
+					alert("success");
+				},
+				error: function(xhr){
+					alert("failed");
+				}
+
+
+			});//ajax
+
+		});//button clicked
+
+	});//document ready
 </script>
 @stop
