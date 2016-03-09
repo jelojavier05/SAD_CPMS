@@ -39,6 +39,8 @@ Government Exam
            	<thead>
                     <tr>
 						<th></th>
+						<th></th>
+						<th></th>
 						
               			<th data-field="id">ID</th>
               			<th data-field="name">Name</th>
@@ -51,26 +53,23 @@ Government Exam
 			   
           			<tr>
 						@foreach ($governmentExams as $governmentExam)
-            			<td><button class="buttonUpdate btn large modal-trigger"  name="governmentExam" id = "{{ $governmentExam->intGovernmentExamID }}" 
-            				href="#modalgovexamEdit" style="margin-left: 40px;">Update</button>
-            			<label for="{{ $governmentExam->intGovernmentExamID }}"></label> </td>
-<!--
-						<td>
-							<button class="btn waves-effect waves-light red" 
-							onclick = "deleteConfirmation()">Delete
-							</button>
-						</td>
-						<td> Switch 
-						  <div class="switch" style="margin-right: 20px;">
+						
+						<td> 
+						  <div class="switch" style="margin-right: -80px;">
 							<label>
-							  Off
+							  Deactivate
 							  <input type="checkbox">
 							  <span class="lever"></span>
-							  On
+							  Activate
 							</label>
 						  </div>
 						</td>
--->
+						
+            			<td><button class="buttonUpdate btn modal-trigger"  name="governmentExam" id = "{{ $governmentExam->intGovernmentExamID }}" href="#modalgovexamEdit" style="margin-right: -40px;"><i class="material-icons">edit</i></button>
+            			<label for="{{ $governmentExam->intGovernmentExamID }}"></label> </td>
+						
+						<td><button class="btn red"><i class="material-icons">delete</i></button></td>
+
 						<td id = "id{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->intGovernmentExamID }}</td>
             			<td id = "name{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->strGovernmentExam }}</td>
 						<td id = "description{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->strDescription }}</td>
@@ -174,10 +173,7 @@ Government Exam
 	<!-- Modal Button Save -->
 		<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button formaction = "{{ route('governmentExamDelete') }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
-			onclick = "deleteConfirmation()">Delete
-    			<i class="material-icons right">stop</i>
-  			</button>
+			
 			
 			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
     			<i class="material-icons right">send</i>
@@ -203,7 +199,7 @@ Government Exam
 			{"searchable": false},
 			null,
 			null,
-			null
+			null,null,null
 			]
 
 		});

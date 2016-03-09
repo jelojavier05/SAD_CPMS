@@ -26,7 +26,7 @@ Leave
 	 <div class="row">
      
         	<div class="col s10 push-s2">
-            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:55px;">	
+            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-10px;">	
 				<table class="highlight white" style=" border-radius: 10px; margin-top: -8%" id="dataTable">
                 	<div class="right-align">
                  		<div class="fixed-action-btn horizontal click-to-toggle">
@@ -38,6 +38,7 @@ Leave
 					</div>
            	<thead>
                     <tr>
+						
 						<th></th>
 						<th></th>
 						<th></th>
@@ -51,25 +52,25 @@ Leave
 			   
           			<tr>
 						@foreach ($leaves as $leave)
-            			<td><button class="buttonUpdate btn large modal-trigger"  name="leave" id="{{ $leave->intLeaveID }}" 
-            				 href="#modalleaveEdit" style="margin-left:80px;">Update</button>
-            			<label for="{{ $leave->intLeaveID }}"></label> </td>
-					
-
-						<td>  
-						  <div class="switch">
+            			<td>  
+						  <div class="switch" style="margin-right: -80px;">
 							<label>
-							  Off
+							  Deactivate
 							  <input type="checkbox">
 							  <span class="lever"></span>
-							  On
+							  Activate
 							</label>
 						  </div>
 						</td>
-						<td><button formaction="{{ route('leaveDelete')}}" class="btn waves-effect waves-light red" 
-									onclick="deleteConfirmation()">Delete<i class="material-icons right">delete</i>
-							</button>
-						</td>
+						
+						
+						<td><button class="buttonUpdate btn modal-trigger"  name="leave" id="{{ $leave->intLeaveID }}" 
+            				 href="#modalleaveEdit" style="margin-right: -40px;"><i class="material-icons">edit</i></button>
+            			<label for="{{ $leave->intLeaveID }}"></label> </td>
+					
+
+						<td><button class="btn red"><i class="material-icons">delete</i></button></td>
+						
 						<td id = "id{{ $leave->intLeaveID }}">{{ $leave->intLeaveID }}</td>
             			<td id = "name{{ $leave->intLeaveID }}">{{ $leave->strLeaveType }}</td>
             			<td id = "description{{ $leave->intLeaveID }}">{{ $leave->intDefaultLeave }}</td>
@@ -200,7 +201,8 @@ Leave
 			{"searchable": false},
 			null,
 			null,
-			null
+			null,
+			null,null
 			]
 
 		});

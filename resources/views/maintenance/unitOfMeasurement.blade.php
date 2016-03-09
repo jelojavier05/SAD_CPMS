@@ -37,6 +37,8 @@ Unit of Measurement
            	<thead>
                     <tr>
 						<th></th>
+						<th></th>
+						<th></th>
 						
               			<th data-field="id">ID</th>
               			<th data-field="name">Name</th>
@@ -49,26 +51,23 @@ Unit of Measurement
 			   
           			<tr>
 						@foreach ($unitOfMeasurements as $unitOfMeasurement)
-            			<td><button class="btn large modal-trigger"  name="unitOfMeasurement" id = "{{ $unitOfMeasurement->intUnitOfMeasurementID }}" 
-            				onclick="radioClicked('{{$unitOfMeasurement->intUnitOfMeasurementID}}', '{{$unitOfMeasurement->strUnitOfMeasurement}}')" href="#modaluomEdit" style="margin-left:50px;">Update</button>
-            			<label for="{{ $unitOfMeasurement->intUnitOfMeasurementID }}"></label> </td>
-<!--
-						<td>
-							<button class="btn waves-effect waves-light red" 
-							onclick = "deleteConfirmation()">Delete
-							</button>
-						</td>
-						<td> Switch 
-						  <div class="switch" style="margin-right: 20px;">
+						
+						<td> 
+						  <div class="switch" style="margin-right: -140px;">
 							<label>
-							  Off
+							  Deactivate
 							  <input type="checkbox">
 							  <span class="lever"></span>
-							  On
+							  Activate
 							</label>
 						  </div>
 						</td>
--->
+						
+            			<td><button class="buttonUpdate btn  modal-trigger"  name="unitOfMeasurement" id = "{{ $unitOfMeasurement->intUnitOfMeasurementID }}" onclick="radioClicked('{{$unitOfMeasurement->intUnitOfMeasurementID}}', '{{$unitOfMeasurement->strUnitOfMeasurement}}')" href="#modaluomEdit" style="margin-left:70px;"><i class="material-icons">edit</i></button>
+            			<label for="{{ $unitOfMeasurement->intUnitOfMeasurementID }}"></label> </td>
+						
+						<td><button class="btn red" style="margin-left:-180px;"><i class="material-icons">delete</i></button></td>
+
 						<td><div style="margin-right:50px;">{{ $unitOfMeasurement->intUnitOfMeasurementID }}</div></td>
             			<td>{{ $unitOfMeasurement->strUnitOfMeasurement }}</td>
 						
@@ -159,10 +158,7 @@ Unit of Measurement
 	<!-- Modal Button Save -->
 				<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button formaction = "{{ route('unitOfMeasurementDelete') }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
-			onclick = "deleteConfirmation()">Delete
-    			<i class="material-icons right">stop</i>
-  			</button>
+			
 			
 			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
     			<i class="material-icons right">send</i>

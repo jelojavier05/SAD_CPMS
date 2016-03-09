@@ -8,7 +8,7 @@
   <!-- CSS  -->
   
    
-    
+<!--   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
   <link href="{!! URL::asset('../Materialize/css/materialize.css') !!}" type="text/css" rel="stylesheet"/>
   <link rel="stylesheet" type="text/css" media="screen,projection" href="{{!! URL::asset('../Materialize/css/materialize.min.css') !!}"/>
   <link href="{!! URL::asset('../Materialize/css/style.css') !!}" type="text/css" rel="stylesheet"/>
@@ -51,7 +51,7 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul >
                                             <li>
-                                                <button href="#" class="aaa dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownclient" data-gutter="240" data-hover="true" style="width:240px; border:none;" id="buttonhover">Client</button>
+                                                <button href="#" class="aaa dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownclient" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Client</button>
 													
 													<ul id='dropdownclient' class='dropdown-content' style="margin-top:1px;">
 														<li><a class="blue-text" href="/maintenance/NatureOfBusiness">Nature of Business</a></li>
@@ -62,7 +62,7 @@
 													</ul>
                                             </li>
                                             <li>
-                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownsg" data-gutter="240" data-hover="true" style="width:240px; border:none;" id="buttonhover">Security Guard</button>
+                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownsg" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Security Guard</button>
 													
 													<ul id='dropdownsg' class='dropdown-content' style="margin-top:1px;">
 														<li><a class="blue-text" href="/maintenance/leave">Leave</a></li>
@@ -73,12 +73,12 @@
 														
 														<li><a class="blue-text" href="/maintenance/vitalStatistics">Vital Statistics</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
+														
 													</ul>
 														
                                             </li>
                                             <li>
-                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdowneq" data-gutter="241" data-hover="true" style="width:240px; border:none;" id="buttonhover">Equipment</button>
+                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdowneq" data-gutter="241" data-hover="false" style="width:240px; border:none;" id="buttonhover">Equipment</button>
 													<ul id='dropdowneq' class='dropdown-content' style="margin-top:1px;">
 														
 														
@@ -94,7 +94,7 @@
 													</ul>
                                             </li>
 											<li>
-                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownothers" data-gutter="241" data-hover="true" style="width:240px; border:none;" id="buttonhover">Others</button>
+                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownothers" data-gutter="241" data-hover="false" style="width:240px; border:none;" id="buttonhover">Others</button>
 													<ul id='dropdownothers' class='dropdown-content' style="margin-top:1px;">
 														<li><a class="blue-text" href="/maintenance/unitOfMeasurement">Unit of Measurement</a></li>
 														
@@ -143,7 +143,11 @@
                             
                             
                 </ul>
-                        
+				
+                      <li class="bold">
+					  	<a href="#"><i class="material-icons left">face</i>Create Account</a>
+					  </li>
+				
                 </ul>
 				<div>
                  <div class="homeposition">

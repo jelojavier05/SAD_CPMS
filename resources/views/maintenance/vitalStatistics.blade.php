@@ -39,6 +39,8 @@ Vital Statistics
            	<thead>
                     <tr>
 						<th></th>
+						<th></th>
+						<th></th>
 						
               			<th data-field="id">ID</th>
               			<th data-field="name">Name</th>
@@ -50,26 +52,24 @@ Vital Statistics
 			   
           			<tr>
 						@foreach ($vitalStatistics as $vitalStatistic)
-            			<td><button class="buttonUpdate btn large modal-trigger"  name="vitalStatistic" id="{{ $vitalStatistic->intVitalStatisticsID }}" 
-            				href="#modalvitalstatisticsEdit" style="margin-left:50px;">Update</button>
-            			<label for="{{ $vitalStatistic->intVitalStatisticsID }}"></label> </td>
-<!--
-						<td>
-							<button class="btn waves-effect waves-light red" 
-							onclick = "deleteConfirmation()">Delete
-							</button>
-						</td>
-						<td> Switch 
-						  <div class="switch" style="margin-right: 20px;">
+						
+						<td> 
+						  <div class="switch" style="margin-right: -130px;">
 							<label>
-							  Off
+							  Deactivate
 							  <input type="checkbox">
 							  <span class="lever"></span>
-							  On
+							  Activate
 							</label>
 						  </div>
 						</td>
--->
+						
+						
+            			<td><button class="buttonUpdate btn modal-trigger"  name="vitalStatistic" id="{{ $vitalStatistic->intVitalStatisticsID }}" href="#modalvitalstatisticsEdit" style="margin-right:-80px;"><i class="material-icons">edit</i></button>
+            			<label for="{{ $vitalStatistic->intVitalStatisticsID }}"></label> </td>
+
+						<td><button class="btn red" style="margin-right:-50px;"><i class="material-icons">delete</i></button></td>
+						
 						<td id = "id{{ $vitalStatistic->intVitalStatisticsID }}">{{ $vitalStatistic->intVitalStatisticsID }}</td>
             			<td id = "name{{ $vitalStatistic->intVitalStatisticsID }}">{{ $vitalStatistic->strVitalStatisticsName }}</td>
             				
@@ -159,10 +159,7 @@ Vital Statistics
 				
 				<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button formaction = "{{ route('vitalStatisticsDelete') }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
-			onclick = "deleteConfirmation()">Delete
-    			<i class="material-icons right">stop</i>
-  			</button>
+			
 			
 			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
     			<i class="material-icons right">send</i>
@@ -186,7 +183,7 @@ $(function(){
 			"columns":[
 			{"searchable": false},
 			null,
-			null
+			null,null,null
 			]
 
 		});

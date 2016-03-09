@@ -39,7 +39,7 @@ Nature of Business
            	<thead>
                     <tr>
 						<th></th>
-						
+						<th></th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Name</th>
 						
@@ -50,17 +50,9 @@ Nature of Business
 			   
           			<tr>
 						@foreach ($natureOfBusinesses as $natureOfBusiness)
-            			<td><button class="buttonUpdate btn large modal-trigger"  name="" id="{{ $natureOfBusiness->intNatureOfBusinessID }}" 
-            				href="#modalnobEdit" style="margin-left:50px;">Update</button>
-            			<label for="{{ $natureOfBusiness->intNatureOfBusinessID }}"></label> </td>
-<!--
-						<td>
-							<button class="btn waves-effect waves-light red" 
-							onclick = "deleteConfirmation()">Delete
-							</button>
-						</td>
-						<td> Switch 
-						  <div class="switch" style="margin-right: 20px;">
+            			
+						<td>  
+						  <div class="switch" style="margin-right: -60px;">
 							<label>
 							  Off
 							  <input type="checkbox">
@@ -69,7 +61,12 @@ Nature of Business
 							</label>
 						  </div>
 						</td>
--->						<td id = "id{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->intNatureOfBusinessID }}</td>
+						
+						<td><button class="buttonUpdate btn modal-trigger"  name="" id="{{ $natureOfBusiness->intNatureOfBusinessID }}" 
+            				href="#modalnobEdit" style="margin-right:-40px;"><i class="material-icons">edit</i></button>
+            			<label for="{{ $natureOfBusiness->intNatureOfBusinessID }}"></label> </td>
+
+						<td id = "id{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->intNatureOfBusinessID }}</td>
             			<td id = "name{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->strNatureOfBusiness }}</td>
             				
           			</tr>
@@ -158,10 +155,7 @@ Nature of Business
 				
 				<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button formaction = "{{ route('natureOfBusinessDelete') }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
-			onclick = "deleteConfirmation()">Delete
-    			<i class="material-icons right">stop</i>
-  			</button>
+			
 			
 			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
     			<i class="material-icons right">send</i>
@@ -185,6 +179,7 @@ Nature of Business
 			"pageLength":5,
 			"columns":[
 			{"searchable": false},
+			null,
 			null,
 			null
 			]

@@ -23,7 +23,7 @@ Armed Service
 	 <div class="row">
         
         	<div class="col s10 push-s2">
-            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top: 55px;"><!-- margin-top: -20px-->
+            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top: -10px;"><!-- margin-top: -20px-->
 					
 				<table class="highlight white" style="border-radius: 10px; margin-top: -8%;	" id = "dataTable">
                 	<div class="right-align">
@@ -39,6 +39,7 @@ Armed Service
 						
 						<th></th>
 						<th></th>
+						<th></th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Armed Service</th>
 						<th data-field="number">Description</th>
@@ -49,20 +50,26 @@ Armed Service
 			   
           			<tr>
 						@foreach ($armedServices as $armedService)
-            			<td><button class="buttonUpdate btn large modal-trigger"  name="armedService" id="{{ $armedService->intArmedServiceID }}" 
-            			 href="#modalarmedserviceEdit" style="margin-left: 70px;">Update</button>
-            			<label for="{{ $armedService->intArmedServiceID }}"></label> </td>
-						
+            			
 						<td> 
-						  <div class="switch" style="margin-right: 20px;">
+						  <div class="switch" style="margin-right: -80px;">
 							<label>
-							  Off
+							  Deactivate
 							  <input type="checkbox">
 							  <span class="lever"></span>
-							  On
+							  Activate
 							</label>
 						  </div>
 						</td>
+						
+						
+						
+						<td><button class="buttonUpdate btn  modal-trigger"  name="armedService" id="{{ $armedService->intArmedServiceID }}" href="#modalarmedserviceEdit" style="margin-right: -40px;"><i class="material-icons">edit</i></button>
+            			<label for="{{ $armedService->intArmedServiceID }}"></label>
+						</td>
+						
+						<td><button class="btn red"><i class="material-icons">delete</i></button></td>
+						
 						<td id = "id{{ $armedService->intArmedServiceID }}">{{ $armedService->intArmedServiceID }}</td>
             			<td id = "name{{ $armedService->intArmedServiceID }}">{{ $armedService->strArmedServiceName }}</td>
             			<td id = "description{{ $armedService->intArmedServiceID }}">{{ $armedService->strDescription }}</td>	
@@ -166,10 +173,7 @@ Armed Service
 	<!-- Modal Button Save -->
 				<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button formaction = "{{ route('armedServiceDelete') }}"class="btn waves-effect waves-light red" style="margin-right: 30px;"
-			onclick = "deleteConfirmation()">Delete
-    			<i class="material-icons right">stop</i>
-  			</button>
+			
 			
 			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
     			<i class="material-icons right">send</i>
@@ -201,7 +205,7 @@ Armed Service
 			{"searchable": false},
 			null,
 			null,
-			null
+			null,null,null
 			]
 
 		});

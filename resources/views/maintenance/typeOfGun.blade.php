@@ -37,6 +37,8 @@ Type of Gun
            	<thead>
                     <tr>
 						<th></th>
+						<th></th>
+						<th></th>
 					
               			<th data-field="id">ID</th>
               			<th data-field="name">Gun</th>
@@ -49,27 +51,25 @@ Type of Gun
 			   
           			<tr>
 						@foreach ($typeOfGuns as $typeOfGun)
-            			<td><button class="btn large modal-trigger"  name="typeofGun" id="{{ $typeOfGun->intTypeOfGunID }}" 
-            				onclick="radioClicked('{{$typeOfGun->intTypeOfGunID}}','{{$typeOfGun->strTypeOfGun}}', '{{$typeOfGun->strDescription}}')" 
-            				href="#modalguntypeEdit" style="margin-left: 80px;">Update</button>
-            			<label for="{{ $typeOfGun->intTypeOfGunID }}"></label> </td>
 						
-<!--
-						<td>
-							<button class="btn waves-effect waves-light red" 
-							onclick = "deleteConfirmation()">Delete
-							</button>
-						</td>
-						<td> Switch 
-						  <div class="switch" style="margin-right: 20px;">
+						<td> 
+						  <div class="switch" style="margin-right: -100px;">
 							<label>
-							  Off
+							  Deactivate
 							  <input type="checkbox">
 							  <span class="lever"></span>
-							  On
+							  Activate
 							</label>
-</div></td>
--->
+						  </div>
+						</td>
+						
+            			<td><button class="buttonUpdate btn modal-trigger"  name="typeofGun" id="{{ $typeOfGun->intTypeOfGunID }}" 
+            				onclick="radioClicked('{{$typeOfGun->intTypeOfGunID}}','{{$typeOfGun->strTypeOfGun}}', '{{$typeOfGun->strDescription}}')" href="#modalguntypeEdit" style="margin-left:20px;"><i class="material-icons">edit</i></button>
+            			<label for="{{ $typeOfGun->intTypeOfGunID }}"></label> </td>
+						
+						<td><button class="btn red" style="margin-left:-90px;"><i class="material-icons">delete</i></button></td>
+						
+
 						<td><div style="margin-right:40px;">{{ $typeOfGun->intTypeOfGunID }}</div></td>
 						<td><div style="margin-right:40px;">{{ $typeOfGun->strTypeOfGun }}</div></td>
             			<td>{{ $typeOfGun->strDescription }}</td>	
@@ -173,10 +173,7 @@ Type of Gun
 	<!-- Modal Button Save -->
 				<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button formaction = "{{ route('typeOfGunDelete') }}"class="btn waves-effect waves-light red" style="margin-right: 30px;"
-			onclick = "deleteConfirmation()">Delete
-    			<i class="material-icons right">stop</i>
-  			</button>
+			
 			
 			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
     			<i class="material-icons right">send</i>
