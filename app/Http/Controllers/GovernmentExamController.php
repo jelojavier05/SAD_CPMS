@@ -22,10 +22,11 @@ class GovernmentExamController extends Controller
         $governmentExam = new GovernmentExam;
 
         try {
-            $governmentExam->strGovernmentExam = $request->governmentExamName;
-            $governmentExam->strDescription = $request->governmentExamDescription;
-
-            $governmentExam->save();
+            DB::table('tblgovernmentexam')
+            ->insertGetId([
+                'strGovernmentExam' => $request->input('governmentExamName'),
+                'strDescription' => $request->input('governmentExamDescription')
+            ]);
             
         } catch (Exception $e) {
             alert();

@@ -38,10 +38,14 @@ Government Exam
 					</div>
            	<thead>
                     <tr>
+<<<<<<< HEAD
 						<th></th>
 						<th></th>
 						<th></th>
 						
+=======
+						<th></th> 
+>>>>>>> 785be37b25715d4b86011f799309b69b57355bc7
               			<th data-field="id">ID</th>
               			<th data-field="name">Name</th>
 						<th data-field="name">Description</th>
@@ -53,9 +57,23 @@ Government Exam
 			   
           			<tr>
 						@foreach ($governmentExams as $governmentExam)
+<<<<<<< HEAD
 						
 						<td> 
 						  <div class="switch" style="margin-right: -80px;">
+=======
+            			 <td><button class="buttonUpdate btn large modal-trigger"  name="governmentExam" id = "{{ $governmentExam->intGovernmentExamID }}" 
+            				href="#modalgovexamEdit" style="margin-left: 40px;">Update</button>
+            			<label for="{{ $governmentExam->intGovernmentExamID }}"></label> </td> 
+<!--
+						<td>
+							<button class="btn waves-effect waves-light red" 
+							onclick = "deleteConfirmation()">Delete
+							</button>
+						</td>
+						<td> Switch 
+						  <div class="switch" style="margin-right: 20px;">
+>>>>>>> 785be37b25715d4b86011f799309b69b57355bc7
 							<label>
 							  Deactivate
 							  <input type="checkbox">
@@ -97,7 +115,7 @@ Government Exam
 <div id="modalgovexamAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Government Exam</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('governmentExamAdd') }}" method = "post">
+				<!-- <form action = "{{ route('governmentExamAdd') }}" method = "post"> -->
 							
 								<input  id="intGovernmentExamID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
@@ -112,16 +130,16 @@ Government Exam
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="strGovernmentExamDesc" type="text" class="validate" name = "governmentExamName" required="" aria-required="true">
-									<label for="strGovernmentExamDesc">Government Exam Type</label> 
+								<input id="strGovernmentExamAdd" type="text" class="validate" name = "governmentExamName" required="" aria-required="true">
+									<label for="strGovernmentExamAdd">Government Exam Type</label> 
 							</div>
 						</div>
 					</div>
 					<div class="row">
 							<div class="col s5">
 								<div class="input-field">
-									<input id="strGovernmentExamDesc" type="text" class="validate"  name = "governmentExamDescription" required="" aria-required="true">
-										<label for="strGovernmentExamDesc">Description</label> 
+									<input id="strGovernmentExamDescAdd" type="text" class="validate"  name = "governmentExamDescription" required="" aria-required="true">
+										<label for="strGovernmentExamDescAdd">Description</label> 
 								</div>
 							</div>
 						</div>
@@ -129,12 +147,12 @@ Government Exam
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
-			<button class="btn waves-effect waves-light" type="submit" name="action" style="margin-right: 30px;">Save
+			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
     			<i class="material-icons right">send</i>
   			</button>
     	</div>
     		</div>
-				</form>
+				<!-- </form> -->
 		</div>
 
 <!-- MODAL Government Exam EDIT -->
@@ -199,10 +217,17 @@ Government Exam
 			{"searchable": false},
 			null,
 			null,
+<<<<<<< HEAD
 			null,null,null
+=======
+			null
+			
+>>>>>>> 785be37b25715d4b86011f799309b69b57355bc7
 			]
 
 		});
+
+		// $("#dataTable").DataTable();
 
 
 		$(".buttonUpdate").click(function(){
@@ -217,7 +242,33 @@ Government Exam
 
 		});
 
+		
+
 	});
 
+	$(document).ready(function(){
+		$("#btnAddSave").click(function(){
+
+			$.ajax({
+				
+				type: "POST",
+				url: "{{ action('GovernmentExamController@addGovernmentExam') }}",
+				data: {
+					governmentExamName: $('#strGovernmentExamAdd').val(),
+					governmentExamDescription: $('#strGovernmentExamDescAdd').val(),
+				},
+				success: function(data){
+					alert("success");
+				},
+				error: function(xhr){
+					alert("failed");
+				}
+
+
+			});//ajax
+
+		});//button clicked
+
+	});//document ready
 </script>
 @stop

@@ -205,13 +205,12 @@ Armed Service
 			{"searchable": false},
 			null,
 			null,
+
 			null,null,null
+
 			]
 
 		});
-
-
-
 
 		$(".buttonUpdate").click(function(){
 

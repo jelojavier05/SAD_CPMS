@@ -16,6 +16,7 @@ class CreateVitalStatistics extends Migration
             $table->increments('intVitalStatisticsID');
             $table->string('strVitalStatisticsName', 100)->unique();
             $table->softDeletes();
+            $table->boolean('boolFlag')->default(true);
         });
     }
 
