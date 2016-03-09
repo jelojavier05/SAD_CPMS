@@ -17,6 +17,7 @@ class CreateArmedServiceTable extends Migration
             $table->string('strArmedServiceName', 100)->unique();
             $table->string('strDescription');
             $table->softDeletes();
+            $table->boolean('boolFlag')->default(true);
         });
     }
 

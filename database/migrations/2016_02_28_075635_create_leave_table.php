@@ -17,6 +17,7 @@ class CreateLeaveTable extends Migration
             $table->string('strLeaveType', 100)->unique();
             $table->integer('intDefaultLeave');
             $table->softDeletes();
+            $table->boolean('boolFlag')->default(true);
         });
     }
 

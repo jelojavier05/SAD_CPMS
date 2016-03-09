@@ -18,6 +18,7 @@ class CreateRequirementsTable extends Migration
             $table->string('strDescription');
             $table->smallInteger('intIdentifier');
             $table->softDeletes();
+            $table->boolean('boolFlag')->default(true);
         });
     }
 

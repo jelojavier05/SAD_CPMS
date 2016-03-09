@@ -17,6 +17,7 @@ class CreateTypeOfGunTable extends Migration
             $table->string('strTypeOfGun', 50)->unique();
             $table->string('strDescription');
             $table->softDeletes();
+            $table->boolean('boolFlag')->default(true);
         });
     }
 

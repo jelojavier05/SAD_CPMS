@@ -229,11 +229,11 @@ Government Exam
 
 	$(document).ready(function(){
 		$("#btnAddSave").click(function(){
-			
-			$.ajax({
 
-				url: "{{ action('GovernmentExamController@addGovernmentExam') }}",
+			$.ajax({
+				
 				type: "POST",
+				url: "{{ action('GovernmentExamController@addGovernmentExam') }}",
 				data: {
 					governmentExamName: $('#strGovernmentExamAdd').val(),
 					governmentExamDescription: $('#strGovernmentExamDescAdd').val(),

@@ -16,6 +16,7 @@ class CreateUnitOfMeasurementTable extends Migration
             $table->increments('intUnitOfMeasurementID');
             $table->string('strUnitOfMeasurement', 100)->unique();
             $table->softDeletes();
+            $table->boolean('boolFlag')->default(true);
         });
     }
 

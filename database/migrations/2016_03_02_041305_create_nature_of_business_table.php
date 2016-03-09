@@ -16,6 +16,7 @@ class CreateNatureOfBusinessTable extends Migration
             $table->increments('intNatureOfBusinessID');
             $table->string('strNatureOfBusiness', 100)->unique();
             $table->softDeletes();
+            $table->boolean('boolFlag')->default(true);
         });
     }
 

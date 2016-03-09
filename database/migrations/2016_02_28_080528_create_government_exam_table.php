@@ -17,6 +17,7 @@ class CreateGovernmentExamTable extends Migration
             $table->string('strGovernmentExam', 100)->unique();
             $table->string('strDescription');
             $table->softDeletes();
+            $table->boolean('boolFlag')->default(true);
         });
     }
 
