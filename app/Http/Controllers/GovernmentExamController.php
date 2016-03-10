@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\GovernmentExam;
 use App\Http\Requests;
+use DB;
 use App\Http\Controllers\Controller;
 
 class GovernmentExamController extends Controller
@@ -27,39 +28,42 @@ class GovernmentExamController extends Controller
                 'strGovernmentExam' => $request->input('governmentExamName'),
                 'strDescription' => $request->input('governmentExamDescription')
             ]);
-            
+        } catch (Exception $e) {
+             
+        }
+       
+    }
+    
+    public function flagGovernmentExam(Request $request){
+        try {
+
+            DB::table('tblgovernmentexam')
+                ->where('intGovernmentExamID', $request->input('governmentExamID'))
+                ->update(['boolFlag' => $request->input('flag')]);
         } catch (Exception $e) {
             alert();
         }
-
-        
-
-        return redirect()->route('governmentExamIndex');
     }
 
     public function updateGovernmentExam(Request $request){
         try {
 
-            GovernmentExam::where('intGovernmentExamID', $request->governmentExamID)
-            ->update(['strGovernmentExam'=>$request->governmentExam,
-                'strDescription'=>$request->governmentExamDescription]);    
+            DB::table('tblgovernmentexam')
+                ->where('intGovernmentExamID', $request->input('governmentExamID'))
+                ->update(['strGovernmentExam' => $request->input('governmentExamName'),
+                          'strDescription' => $request->input('governmentExamDescription')]);
         } catch (Exception $e) {
             alert();
         }
-
-        return redirect()->route('governmentExamIndex');
+        
     }
 
     public function deleteGovernmentExam(Request $request){
         try {
-            if($request->okayCancelChecker == "okay"){
-                $governmentExam = GovernmentExam::destroy($request->governmentExamID);    
-                
-            }
+//            DB::table('tblgovernmentexam')->where('intGovernmentExamID', $request->input('governmentExamID'))->destroy();
+            GovernmentExam::destroy($request->governmentExamID);
         } catch (Exception $e) {
             
         }
-         
-         return redirect()->route('governmentExamIndex');  
     }
 }

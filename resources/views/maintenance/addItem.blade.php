@@ -1,7 +1,7 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Armed Service
+Add Item
 @endsection
 
 @section('content')	
@@ -11,11 +11,11 @@ Armed Service
     	<div class="col s12">
 			<div class="col s4 offset-s3">
 				<div class="flow-text">
-					<h1 class="colortitle blue-text text-darken-3">Armed Service</h1>
+					<h1 class="colortitle blue-text text-darken-3">Add Item</h1>
 				</div>
 			</div>
 			<div class="col s3 offset-s2">
-				<button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalarmedserviceAdd"><i class="material-icons left">add</i> ADD</button></br></br>
+				<button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modaladdItemAdd"><i class="material-icons left">add</i> ADD</button></br></br>
 </div></div>
 
 <!-- TABLE -->
@@ -28,7 +28,7 @@ Armed Service
 				<table class="highlight white" style="border-radius: 10px; margin-top: -8%;	" id = "dataTable">
                 	<div class="right-align">
                  		<div class="fixed-action-btn horizontal click-to-toggle">
-    						<button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalarmedserviceAdd">
+    						<button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modaladdItemAdd">
       							<i class="material-icons">add</i>
     						</button>
 
@@ -41,13 +41,13 @@ Armed Service
 						<th></th>
 						<th></th>
               			<th data-field="id">ID</th>
-              			<th data-field="name">Armed Service</th>
+              			<th data-field="name">Item Name</th>
 						<th data-field="number">Description</th>
                     </tr>
 			</thead>
             
            <tbody>
-			   @foreach ($armedServices as $armedService)
+			   @foreach ()
           			<tr>
 						
             			
@@ -64,15 +64,15 @@ Armed Service
 						
 						
 						
-						<td><button class="buttonUpdate btn  modal-trigger"  name="armedService" id="{{ $armedService->intArmedServiceID }}" href="#modalarmedserviceEdit" style="margin-right: -40px;"><i class="material-icons">edit</i></button>
-            			<label for="{{ $armedService->intArmedServiceID }}"></label>
+						<td><button class="buttonUpdate btn  modal-trigger"  name="" id="{{  }}" href="#modaladdItemEdit" style="margin-right: -40px;"><i class="material-icons">edit</i></button>
+            			<label for="{{ }}"></label>
 						</td>
 						
 						<td><button class="btn red"><i class="material-icons">delete</i></button></td>
 						
-						<td id = "id{{ $armedService->intArmedServiceID }}">{{ $armedService->intArmedServiceID }}</td>
-            			<td id = "name{{ $armedService->intArmedServiceID }}">{{ $armedService->strArmedServiceName }}</td>
-            			<td id = "description{{ $armedService->intArmedServiceID }}">{{ $armedService->strDescription }}</td>	
+						<td id = "id{{  }}">{{  }}</td>
+            			<td id = "name{{  }}">{{  }}</td>
+            			<td id = "description{{  }}">{{  }}</td>	
           			</tr>
           		@endforeach
           
@@ -94,36 +94,36 @@ Armed Service
 				
 
 
-<!-- Modal Armed Service ADD -->
+<!-- Modal Add Item ADD -->
 
-<div id="modalarmedserviceAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
-        <div class="modal-header"><h2>Armed Service</h2></div>
+<div id="modaladdItemAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
+        <div class="modal-header"><h2>Add Item</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('armedServiceAdd') }}" method = "post">
+				<form action = "{{  }}" method = "post">
 							
-								<input  id="intArmedServiceID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+								<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="intArmedServiceID" type="text" class="validate" name = "armedServiceID" disabled>
-									<label for="intArmedServiceID">Armed Service ID</label>
+								<input  id="" type="text" class="validate" name = "" disabled>
+									<label for="">Item ID</label>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="strArmedServiceDesc" type="text" class="validate" name = "armedServiceName" required="" aria-required="true">
-									<label for="strArmedServiceDesc">Armed Service Type</label> 
+								<input id="" type="text" class="validate" name = "" required="" aria-required="true">
+									<label for="">Item Name</label> 
 							</div>
 						</div>
 					</div>
 						<div class="row">
 							<div class="col s5">
 								<div class="input-field">
-									<input id="strArmedServiceDesc" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true">
-										<label for="strArmedServiceDesc">Description</label> 
+									<input id="" type="text" class="validate"  name = "" required="" aria-required="true">
+										<label for="">Description</label> 
 								</div>
 							</div>
 						</div>
@@ -138,33 +138,33 @@ Armed Service
 				</form>
 		</div>
 
-<!-- MODAL Armed Service EDIT -->
-<div id="modalarmedserviceEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
-	<div class="modal-header"><h2>Armed Service</h2></div>
+<!-- MODAL Add Item EDIT -->
+<div id="modaladdItemEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
+	<div class="modal-header"><h2>Add Item</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('armedServiceUpdate') }}" method = "post">
-					<input  id="intArmedServiceID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				<form action = "" method = "post">
+					<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 					
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="editID" type="text" class="validate" name = "armedServiceID" readonly required="" aria-required="true" value = "test">
-									<label for="editID">Armed Service ID</label>
+								<input  id="editID" type="text" class="validate" name = "" readonly required="" aria-required="true" value = "test">
+									<label for="editID">Item ID</label>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "armedServiceName" required="" aria-required="true" value = "test">
-									<label for="editname">Armed Service Type</label> 
+								<input id="editname" type="text" class="validate" name = "" required="" aria-required="true" value = "test">
+									<label for="editname">Item Name</label> 
 							</div>
 						</div>
 					</div>
 						<div class="row">
 							<div class="col s5">
 								<div class="input-field">
-									<input id="editdescription" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true" value = "test">
+									<input id="editdescription" type="text" class="validate"  name = "" required="" aria-required="true" value = "test">
 										<label for="editDescription">Description</label> 
 								</div>
 							</div>
@@ -207,7 +207,7 @@ Armed Service
             null,
             null
             ] ,  
-//		    "pagingType": "full_numbers",
+		    "pagingType": "full_numbers",
 			"pageLength":5,
 
 

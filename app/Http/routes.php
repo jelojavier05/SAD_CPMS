@@ -65,6 +65,8 @@ Route::post('/maintenance/updategovernmentExam', 'GovernmentExamController@updat
 
 Route::post('/maintenance/insertGovernmentExam', 'GovernmentExamController@addGovernmentExam')->name('governmentExamAdd');
 
+Route::post('/maintenance/flagGovernmentExam', 'GovernmentExamController@flagGovernmentExam')->name('governmentExamFlag');
+
 Route::post('/maintenance/deletegovernmentExam', 'GovernmentExamController@deleteGovernmentExam')->name('governmentExamDelete');
 
 Route::get('/maintenance/armedservice', 'ArmedServiceController@index')->name('armedServiceIndex');

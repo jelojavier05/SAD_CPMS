@@ -27,7 +27,7 @@ Leave
      
         	<div class="col s10 push-s2">
             	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-10px;">	
-				<table class="highlight white" style=" border-radius: 10px; margin-top: -8%" id="dataTable">
+				<table class="highlight white" style=" border-radius: 10px; margin-top: -8%;" id="dataTable">
                 	<div class="right-align">
                  		<div class="fixed-action-btn horizontal click-to-toggle">
     						<button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalleaveAdd">
@@ -49,9 +49,9 @@ Leave
 			</thead>
             
            <tbody>
-			   
+			   @foreach ($leaves as $leave)
           			<tr>
-						@foreach ($leaves as $leave)
+						
             			<td>  
 						  <div class="switch" style="margin-right: -80px;">
 							<label>
@@ -194,16 +194,18 @@ Leave
 @section('script')
 <script type="text/javascript">
 	$(function(){
-		$("#dataTable").DataTable({
-			"lengthChange": false,
-			"pageLength":5,
-			"columns":[
-			{"searchable": false},
-			null,
-			null,
-			null,
-			null,null
-			]
+$("#dataTable").DataTable({
+             "columns": [
+            { "orderable": false },
+            { "orderable": false },
+            { "orderable": false },
+            null,
+            null,
+            null
+            ] ,  
+//		    "pagingType": "full_numbers",
+			"pageLength":5
+            
 
 		});
 

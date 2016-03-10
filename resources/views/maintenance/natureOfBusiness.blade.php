@@ -40,6 +40,7 @@ Nature of Business
                     <tr>
 						<th></th>
 						<th></th>
+                        <th></th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Name</th>
 						
@@ -47,9 +48,9 @@ Nature of Business
 			</thead>
             
            <tbody>
-			   
+			   @foreach ($natureOfBusinesses as $natureOfBusiness)
           			<tr>
-						@foreach ($natureOfBusinesses as $natureOfBusiness)
+						
             			
 						<td>  
 						  <div class="switch" style="margin-right: -60px;">
@@ -62,9 +63,10 @@ Nature of Business
 						  </div>
 						</td>
 						
-						<td><button class="buttonUpdate btn modal-trigger"  name="" id="{{ $natureOfBusiness->intNatureOfBusinessID }}" 
-            				href="#modalnobEdit" style="margin-right:-40px;"><i class="material-icons">edit</i></button>
+						<td><button class="buttonUpdate btn modal-trigger"  name="" id="{{ $natureOfBusiness->intNatureOfBusinessID }}" href="#modalnobEdit" style="margin-right:-40px;"><i class="material-icons">edit</i></button>
             			<label for="{{ $natureOfBusiness->intNatureOfBusinessID }}"></label> </td>
+                        
+                        <td><button class="btn red" style="margin-left:-100px;"><i class="material-icons">delete</i></button></td>
 
 						<td id = "id{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->intNatureOfBusinessID }}</td>
             			<td id = "name{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->strNatureOfBusiness }}</td>
@@ -175,14 +177,16 @@ Nature of Business
 
 	$(function(){
 		$("#dataTable").DataTable({
-			"lengthChange": false,
+             "columns": [
+            { "orderable": false },
+            { "orderable": false },
+            { "orderable": false },
+            null,
+            null
+            ] ,  
+//		    "pagingType": "full_numbers",
 			"pageLength":5,
-			"columns":[
-			{"searchable": false},
-			null,
-			null,
-			null
-			]
+
 
 		});
 

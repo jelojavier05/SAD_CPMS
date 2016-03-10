@@ -27,7 +27,7 @@ Government Exam
         	<div class="col s10 push-s2">
             	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-20px;">
 					
-				<table class="highlight white" style="border-radius: 10px; margin-top: -8%" id = "dataTable">
+				<table  style="border-radius: 10px; margin-top: -8%" id = "dataTable">
                 	<div class="right-align">
                  		<div class="fixed-action-btn horizontal click-to-toggle">
     						<button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalgovexamAdd">
@@ -38,14 +38,9 @@ Government Exam
 					</div>
            	<thead>
                     <tr>
-<<<<<<< HEAD
 						<th></th>
 						<th></th>
-						<th></th>
-						
-=======
 						<th></th> 
->>>>>>> 785be37b25715d4b86011f799309b69b57355bc7
               			<th data-field="id">ID</th>
               			<th data-field="name">Name</th>
 						<th data-field="name">Description</th>
@@ -54,29 +49,18 @@ Government Exam
 			</thead>
             
            <tbody>
-			   
+			   		@foreach ($governmentExams as $governmentExam)
           			<tr>
-						@foreach ($governmentExams as $governmentExam)
-<<<<<<< HEAD
 						
 						<td> 
-						  <div class="switch" style="margin-right: -80px;">
-=======
-            			 <td><button class="buttonUpdate btn large modal-trigger"  name="governmentExam" id = "{{ $governmentExam->intGovernmentExamID }}" 
-            				href="#modalgovexamEdit" style="margin-left: 40px;">Update</button>
-            			<label for="{{ $governmentExam->intGovernmentExamID }}"></label> </td> 
-<!--
-						<td>
-							<button class="btn waves-effect waves-light red" 
-							onclick = "deleteConfirmation()">Delete
-							</button>
-						</td>
-						<td> Switch 
 						  <div class="switch" style="margin-right: 20px;">
->>>>>>> 785be37b25715d4b86011f799309b69b57355bc7
 							<label>
 							  Deactivate
-							  <input type="checkbox">
+							  @if ($governmentExam->boolFlag==1)
+							  	<input type="checkbox" checked class = "checkboxFlag" id = "{{ $governmentExam->intGovernmentExamID }}">
+							  @else
+							  	<input type="checkbox" class = "checkboxFlag" id = "{{ $governmentExam->intGovernmentExamID }}">
+							  @endif
 							  <span class="lever"></span>
 							  Activate
 							</label>
@@ -86,7 +70,7 @@ Government Exam
             			<td><button class="buttonUpdate btn modal-trigger"  name="governmentExam" id = "{{ $governmentExam->intGovernmentExamID }}" href="#modalgovexamEdit" style="margin-right: -40px;"><i class="material-icons">edit</i></button>
             			<label for="{{ $governmentExam->intGovernmentExamID }}"></label> </td>
 						
-						<td><button class="btn red"><i class="material-icons">delete</i></button></td>
+						<td><button class="btn red buttonDelete" id = "{{ $governmentExam->intGovernmentExamID }}"><i class="material-icons">delete</i></button></td>
 
 						<td id = "id{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->intGovernmentExamID }}</td>
             			<td id = "name{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->strGovernmentExam }}</td>
@@ -115,10 +99,8 @@ Government Exam
 <div id="modalgovexamAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Government Exam</h2></div>
         	<div class="modal-content">
-				<!-- <form action = "{{ route('governmentExamAdd') }}" method = "post"> -->
-							
-								<input  id="intGovernmentExamID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-
+<!--				 <form action = "{{ route('governmentExamAdd') }}" method = "post"> -->
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
@@ -152,15 +134,15 @@ Government Exam
   			</button>
     	</div>
     		</div>
-				<!-- </form> -->
+<!--				 </form> -->
 		</div>
 
 <!-- MODAL Government Exam EDIT -->
 <div id="modalgovexamEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Government Exam</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('governmentExamUpdate') }}" method = "post">
-					<input  id="intGovernmentExamID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+<!--				<form action = "{{ route('governmentExamUpdate') }}" method = "post">-->
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
 					<div class="row">
 						<div class="col s8">
@@ -185,7 +167,7 @@ Government Exam
 										<label for="editDescription">Description</label> 
 								</div>
 							</div>
-					</div>
+					</div>     
 						
       
 	<!-- Modal Button Save -->
@@ -193,13 +175,13 @@ Government Exam
 		<div class="modal-footer">
 			
 			
-			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
+			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id ="btnUpdate">Update
     			<i class="material-icons right">send</i>
   			</button>
 			
     	</div>
     		</div>
-				</form>
+<!--				</form>-->
 </div>
 </div>
 
@@ -208,29 +190,45 @@ Government Exam
 
 @section('script')
 
+
 <script type="text/javascript">
-	$(function(){
-		$("#dataTable").DataTable({
-			"lengthChange": false,
-			"pageLength":5,
-			"columns":[
-			{"searchable": false},
-			null,
-			null,
-<<<<<<< HEAD
-			null,null,null
-=======
-			null
-			
->>>>>>> 785be37b25715d4b86011f799309b69b57355bc7
-			]
 
-		});
+    $(function(){
 
-		// $("#dataTable").DataTable();
+		$(".buttonDelete").click(function(){
+            if(confirm('Are you sure you want to delete the record?')){
 
+                $.ajax({
 
-		$(".buttonUpdate").click(function(){
+                    type: "POST",
+                    url: "{{action('GovernmentExamController@deleteGovernmentExam')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        governmentExamID: this.id
+
+                    },
+                    success: function(data){
+                        var toastContent = $('<span>Record Deleted.</span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+                        $("#dataTable").load(location.href + " #dataTable");
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occur. </span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+
+                    }
+
+                });//ajax
+            }
+        });
+        
+        $(".buttonUpdate").click(function(){
 
 			var itemID = "id" + this.id;
 			var itemName = "name" + this.id;
@@ -240,35 +238,139 @@ Government Exam
 			document.getElementById('editname').value = $("#"+itemName).html();
 			document.getElementById('editdescription').value = $("#"+itemDescription).html();
 
-		});
+		});//button update in table
 
-		
+		$(".checkboxFlag").click(function(){
+            
+            var $this = $(this);
+            var flag;
+            // $this will contain a reference to the checkbox   
+            if ($this.is(':checked')) {
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+           $.ajax({
+				
+				type: "POST",
+				url: "{{action('GovernmentExamController@flagGovernmentExam')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					governmentExamID: this.id,
+                    flag: flag
+				},
+				success: function(data){
+					
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                    
+				}
+
+			});//ajax
+             
+        });//checkbox clicked
 
 	});
 
 	$(document).ready(function(){
+		
+		$("#dataTable").DataTable({
+			"lengthChange": false,
+			"pageLength":5,
+			"columns":[
+			{"searchable": false},
+			{"searchable": false},
+			{"searchable": false},
+			null,
+			null,
+			null
+			
+			]
+
+		});
+ 
+
 		$("#btnAddSave").click(function(){
 
 			$.ajax({
 				
 				type: "POST",
-				url: "{{ action('GovernmentExamController@addGovernmentExam') }}",
+				url: "{{action('GovernmentExamController@addGovernmentExam')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
 				data: {
 					governmentExamName: $('#strGovernmentExamAdd').val(),
 					governmentExamDescription: $('#strGovernmentExamDescAdd').val(),
 				},
 				success: function(data){
-					alert("success");
+					var toastContent = $('<span>Record Added.</span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                    $('#strGovernmentExamAdd').val("");
+                    $('#strGovernmentExamDescAdd').val("");
+                    $("#dataTable").load(location.href + " #dataTable");
 				},
-				error: function(xhr){
-					alert("failed");
+				error: function(data){
+					var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                    
 				}
 
 
 			});//ajax
 
-		});//button clicked
+		});//button add clicked
+        
+        $("#btnUpdate").click(function(){
+
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('GovernmentExamController@updateGovernmentExam')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					governmentExamID: $('#editID').val(),
+                    governmentExamName: $('#editname').val(),
+					governmentExamDescription: $('#editdescription').val(),
+				},
+				success: function(data){
+					var toastContent = $('<span>Record Updated.</span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                    $("#dataTable").load(location.href + " #dataTable");
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                    
+				}
+
+
+			});//ajax
+
+		});//button add clicked
+        
+        
 
 	});//document ready
 </script>
+
+
 @stop

@@ -48,9 +48,9 @@ Unit of Measurement
 			</thead>
             
            <tbody>
-			   
+			   @foreach ($unitOfMeasurements as $unitOfMeasurement)
           			<tr>
-						@foreach ($unitOfMeasurements as $unitOfMeasurement)
+						
 						
 						<td> 
 						  <div class="switch" style="margin-right: -140px;">
@@ -185,7 +185,19 @@ function radioClicked(strID, strName){
 	document.getElementById('editID').value = strID;
 	document.getElementById('editname').value = strName;
 }
-$("#dataTable").DataTable();
+$(document).ready(function(){
+    $('#dataTable').DataTable({
+     "columns": [
+            { "orderable": false },
+            { "orderable": false },
+            { "orderable": false },
+            null,
+            null
+            ] ,  
+		    "pagingType": "full_numbers",
+			"pageLength":5
+});
+    });
 </script>
 @stop
 	

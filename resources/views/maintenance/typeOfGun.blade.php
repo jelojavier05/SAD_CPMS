@@ -48,9 +48,9 @@ Type of Gun
 			</thead>
             
            <tbody>
-			   
+			   @foreach ($typeOfGuns as $typeOfGun)
           			<tr>
-						@foreach ($typeOfGuns as $typeOfGun)
+						
 						
 						<td> 
 						  <div class="switch" style="margin-right: -100px;">
@@ -202,6 +202,20 @@ function radioClicked(strID, strName, strDescription){
 	document.getElementById('editname').value = strName;
 	document.getElementById('editdescription').value = strDescription;
 }
-$("#dataTable").DataTable();
+
+$(document).ready(function(){
+    $('#dataTable').DataTable({
+     "columns": [
+            { "orderable": false },
+            { "orderable": false },
+            { "orderable": false },
+            null,
+            null,
+            null
+            ] ,  
+//		    "pagingType": "full_numbers",
+			"pageLength":5,
+});
+    });
 </script>
 @stop

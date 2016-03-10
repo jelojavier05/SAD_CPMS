@@ -4,22 +4,33 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>@yield('title')</title>
-
-  <!-- CSS  -->
+<meta charset="utf-8">
+    <meta name="csrf_token" content="{{ csrf_token() }}" />
+  <!-- ================================CSS===========================================  -->
   
    
-<!--   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
-  <link href="{!! URL::asset('../Materialize/css/materialize.css') !!}" type="text/css" rel="stylesheet"/>
-  <link rel="stylesheet" type="text/css" media="screen,projection" href="{{!! URL::asset('../Materialize/css/materialize.min.css') !!}"/>
-  <link href="{!! URL::asset('../Materialize/css/style.css') !!}" type="text/css" rel="stylesheet"/>
-    <!-- JSjquery -->
-   <script src="{{!! URL::asset('../Materialize/js/materialize.js') !!}}"></script>
-    <script src="{!! URL::asset('../Materialize/jquery/jquery-1.12.0.min.js')!!}"></script>
-  <script src="{!! URL::asset('../Materialize/js/init.js') !!}"></script>
-	<script src="{!! URL::asset('../Materialize/js/materialize.min.js') !!}"></script>
-    <link rel="stylesheet" type="text/css" href="{!! URL::asset('../datatable.css') !!}">
-    <script src="{!! URL::asset('../datatable.js') !!}"></script>
+
+  <link href="{!! URL::asset('../css/materialize.css') !!}" type="text/css" rel="stylesheet"/>
+  <link rel="stylesheet" type="text/css" media="screen,projection" href="{{!! URL::asset('../css/materialize.min.css') !!}"/>
+  <link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
+  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../datatable.css') !!}">
+  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/dataTables.material.min.css') !!}">
+<!--  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/jquery.dataTables.min.css') !!}">-->
+<!--  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">-->
+    <!-- ===============================JSjquery======================================= -->
+   
+  <script src="{!! URL::asset('../javascript/jquery-2.2.1.js') !!}"></script>
+  <script src="{{!! URL::asset('../js/materialize.js') !!}}"></script>
+  <script src="{!! URL::asset('../jquery/jquery-1.12.0.min.js')!!}"></script> 
+  <script src="{!! URL::asset('../js/init.js') !!}"></script>
+  <script src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
+  <script src="{!! URL::asset('../datatable.js') !!}"></script>
+  <script src="{!! URL::asset('../dataTables.material.min.js') !!}"></script>
+  <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>
+  <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
   
+    
+
 </head>
 
 <body id="scrollhider" class="bodyscrollhider grey lighten-3">
@@ -110,23 +121,25 @@
 							
 					</li>
                     <li class="bold" style="width:280px;">
-						<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">assignment</i>Assignment<i class="mdi-navigation-arrow-drop-down right"></i></a>
+						<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">face</i>Accounts<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul class="black-text">
                                             <li>
-                                                <a href="#">Assignment1</a>
+                                                <a href="#" >Security Guard</a>
                                             </li>
                                             <li>
-                                                <a href="#">Assignment2</a>
+                                                <a href="#" >Client</a>
                                             </li>
-                                            <li>
-                                                <a href="#">Assignment3</a>
-                                            </li>
+                                           
                                         </ul>
                             </div>
                     </li>
+                            
+                      <li class="bold" style="width:280px;">
+					  	<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons left">people</i>Deployment</a>
+					  </li>
                             <li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">warning</i>Reports<i class="mdi-navigation-arrow-drop-down right"></i></a>
+								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">insert_chart</i>Reports<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             <li>
@@ -144,9 +157,9 @@
                             
                 </ul>
 				
-                      <li class="bold">
-					  	<a href="#"><i class="material-icons left">face</i>Create Account</a>
-					  </li>
+                    
+                    
+                     
 				
                 </ul>
 				<div>

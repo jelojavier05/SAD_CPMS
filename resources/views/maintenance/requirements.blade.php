@@ -37,6 +37,8 @@ Requirements
            	<thead>
                     <tr>
 						<th></th>
+                        <th></th>
+                        <th></th>
               			<th data-field="id">ID</th>
               			<th data-field="name">Name</th>
 						<th data-field="name">Description</th>
@@ -45,12 +47,27 @@ Requirements
 			</thead>
             
            <tbody>
-			   
+			   @foreach ($requirements as $requirement)
           			<tr>
-						@foreach ($requirements as $requirement)
-            			<td><button class="buttonUpdate btn large modal-trigger"  name="" id = "{{ $requirement->intRequirementsID }}" 
-            				href="#modalrequirementsEdit">Update</button>
+						
+						
+            			<td>  
+						  <div class="switch" style="margin-right: -80px;">
+							<label>
+							  Deactivate
+							  <input type="checkbox">
+							  <span class="lever"></span>
+							  Activate
+							</label>
+						  </div>
+						</td>
+                        
+            			<td><button class="buttonUpdate btn modal-trigger"  name="" id = "{{ $requirement->intRequirementsID }}" 
+            				href="#modalrequirementsEdit" style="margin-right: -40px;"><i class="material-icons">edit</i></button>
             			<label for="{{ $requirement->intRequirementsID }}"></label> </td>
+                        
+                        <td><button class="btn red"><i class="material-icons">delete</i></button></td>
+                        
 						<td id = "id{{ $requirement->intRequirementsID }}">{{ $requirement->intRequirementsID }}</td>
             			<td id = "name{{ $requirement->intRequirementsID }}">{{ $requirement->strRequirements }}</td>
 						<td id = "description{{ $requirement->intRequirementsID }}">{{ $requirement->strDescription }}</td>
@@ -155,10 +172,7 @@ Requirements
 	<!-- Modal Button Save -->
 		<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
-			<button formaction = "{{ route('requirementsDelete') }}" class="btn waves-effect waves-light red" style="margin-right: 30px;"
-			onclick = "deleteConfirmation()">Delete
-    			<i class="material-icons right">stop</i>
-  			</button>
+			
 			
 			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
     			<i class="material-icons right">send</i>
@@ -177,14 +191,17 @@ Requirements
 <script type="text/javascript">
 	$(function(){
 		$("#dataTable").DataTable({
-			"lengthChange": false,
-			"pageLength":5,
-			"columns":[
-			{"searchable": false},
-			null,
-			null,
-			null
-			]
+             "columns": [
+            { "orderable": false },
+            { "orderable": false },
+            { "orderable": false },
+            null,
+            null,
+            null
+            ] ,  
+//		    "pagingType": "full_numbers",
+			"pageLength":5
+            
 
 		});
 		

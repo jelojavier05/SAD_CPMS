@@ -49,9 +49,9 @@ Vital Statistics
 			</thead>
             
            <tbody>
-			   
+			   @foreach ($vitalStatistics as $vitalStatistic)
           			<tr>
-						@foreach ($vitalStatistics as $vitalStatistic)
+						
 						
 						<td> 
 						  <div class="switch" style="margin-right: -130px;">
@@ -178,13 +178,17 @@ Vital Statistics
 <script type="text/javascript">
 $(function(){
 	$("#dataTable").DataTable({
-			"lengthChange": false,
+             "columns": [
+            { "orderable": false },
+            { "orderable": false },
+            { "orderable": false },
+            null,
+            null
+            ] ,  
+//		    "pagingType": "full_numbers",
 			"pageLength":5,
-			"columns":[
-			{"searchable": false},
-			null,
-			null,null,null
-			]
+        
+
 
 		});
 
