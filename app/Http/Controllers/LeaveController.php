@@ -28,9 +28,7 @@ class LeaveController extends Controller
             $leave->strLeaveType = $request->leaveType;
             $leave->intDefaultLeave = $request->defaultLeave;
             $leave->save();
-            return redirect()->route('leaveIndex');   
             
-
         } catch (Exception $e) {
             //
             alert();
@@ -51,13 +49,22 @@ class LeaveController extends Controller
         }
         return redirect()->route('leaveIndex');   
     }
+	
+	public function flagLeave(Request $request){
+        
+        try {
+            Leave::where('intLeaveID', $request->leaveID)
+            ->update(['boolFlag'=>$request->flag]);
+        } catch (Exception $e) {
+            alert();
+        }  
+    }
 
     public function deleteLeave(Request $request){
         try {
-            if($request->okayCancelChecker == "okay"){
-                $leave = Leave::destroy($request->editLeaveID);    
+            
+			Leave::destroy($request->leaveID);    
                 
-            }
         } catch (Exception $e) {
             
         }

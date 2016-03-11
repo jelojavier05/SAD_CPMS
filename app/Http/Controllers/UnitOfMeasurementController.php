@@ -25,11 +25,10 @@ class UnitOfMeasurementController extends Controller
         $unitOfMeasurement = new UnitOfMeasurement;
         
         try {
-            $unitOfMeasurement->strUnitOfMeasurement = $request->unitOfMeasurementName;
+            $unitOfMeasurement->strUnitOfMeasurement = $request->unitOfMeasurement;
 
             $unitOfMeasurement->save();
         } catch (Exception $e) {
-            alert();
         }
         
         return redirect()->route('unitOfMeasurementIndex');
@@ -44,13 +43,23 @@ class UnitOfMeasurementController extends Controller
         }
         return redirect()->route('unitOfMeasurementIndex');
     }
+	
+	public function flagUnitOfMeasurement(Request $request){
+        try {
+            UnitOfMeasurement::where('intUnitOfMeasurementID', $request->unitOfMeasurementID)
+            ->update(['boolFlag'=>$request->flag]);
+        } catch (Exception $e) {
+            alert();
+        }
+        return redirect()->route('unitOfMeasurementIndex');
+    }
     
     public function deleteUnitOfMeasurement(Request $request){
         try {
-            if($request->okayCancelChecker == "okay"){
-                $unitOfMeasurement = UnitOfMeasurement::destroy($request->unitOfMeasurementID);    
+            
+			UnitOfMeasurement::destroy($request->unitOfMeasurementID);    
                 
-            }
+            
         } catch (Exception $e) {
             
         }

@@ -103,7 +103,6 @@ Armed Service
 <div id="modalarmedserviceAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Armed Service</h2></div>
         	<div class="modal-content">
-<!--				<form action = "{{ route('armedServiceAdd') }}" method = "post">-->
 							
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -222,7 +221,7 @@ Armed Service
                     success: function(data){
                         var toastContent = $('<span>Record Deleted.</span>');
                         Materialize.toast(toastContent, 1500, 'edit');
-                        $("#dataTable").load(location.href + " #dataTable");
+                        window.location.href = "{{action('ArmedServiceController@index')}}";
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occur. </span>');
@@ -322,12 +321,10 @@ Armed Service
 				success: function(data){
 					var toastContent = $('<span>Record Added.</span>');
                     Materialize.toast(toastContent, 1500,'green', 'edit');
-                    $('#strArmedServiceAdd').val("");
-                    $('#strArmedServiceDescAdd').val("");
-                    $("#dataTable").load(location.href + " #dataTable");
+					window.location.href = "{{action('ArmedServiceController@index')}}";
 				},
 				error: function(data){
-					var toastContent = $('<span>Error Occur. </span>');
+					var toastContent = $('<span>Error Occured. </span>');
                     Materialize.toast(toastContent, 1500,'red', 'edit');
                     
 				}
@@ -358,10 +355,10 @@ Armed Service
 				success: function(data){
 					var toastContent = $('<span>Record Updated.</span>');
                     Materialize.toast(toastContent, 1500,'green', 'edit');
-                    $("#dataTable").load(location.href + " #dataTable");
+                    window.location.href = "{{action('ArmedServiceController@index')}}";
 				},
 				error: function(data){
-					var toastContent = $('<span>Error Occur. </span>');
+					var toastContent = $('<span>Error Occured. </span>');
                     Materialize.toast(toastContent, 1500,'red', 'edit');
                     
 				}

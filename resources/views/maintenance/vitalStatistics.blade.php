@@ -54,10 +54,14 @@ Vital Statistics
 						
 						
 						<td> 
-						  <div class="switch" style="margin-right: -130px;">
+						  <div class="switch" style="margin-right: -80px;">
 							<label>
 							  Deactivate
-							  <input type="checkbox">
+							  @if ($vitalStatistic->boolFlag==1)
+							  	<input type="checkbox" checked class = "checkboxFlag" id = "{{ $vitalStatistic->intVitalStatisticsID }}">
+							  @else
+							  	<input type="checkbox" class = "checkboxFlag" id = "{{ $vitalStatistic->intVitalStatisticsID }}">
+							  @endif
 							  <span class="lever"></span>
 							  Activate
 							</label>
@@ -68,7 +72,7 @@ Vital Statistics
             			<td><button class="buttonUpdate btn modal-trigger"  name="vitalStatistic" id="{{ $vitalStatistic->intVitalStatisticsID }}" href="#modalvitalstatisticsEdit" style="margin-right:-80px;"><i class="material-icons">edit</i></button>
             			<label for="{{ $vitalStatistic->intVitalStatisticsID }}"></label> </td>
 
-						<td><button class="btn red" style="margin-right:-50px;"><i class="material-icons">delete</i></button></td>
+						<td><button class="buttonDelete btn red" style="margin-right:-50px;" id="{{ $vitalStatistic->intVitalStatisticsID }}"><i class="material-icons" >delete</i></button></td>
 						
 						<td id = "id{{ $vitalStatistic->intVitalStatisticsID }}">{{ $vitalStatistic->intVitalStatisticsID }}</td>
             			<td id = "name{{ $vitalStatistic->intVitalStatisticsID }}">{{ $vitalStatistic->strVitalStatisticsName }}</td>
@@ -98,9 +102,7 @@ Vital Statistics
 <div id="modalvitalstatisticsAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Vital Statistics</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('vitalStatisticsAdd') }}" method = "post">
-							
-				<input  id="intVitalStatisticsID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 					<div class="row">
 						<div class="col s8">
@@ -113,7 +115,7 @@ Vital Statistics
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="strArmedServiceDesc" type="text" class="validate" name = "vitalStatistics" required="" aria-required="true">
+								<input id="strVitalStatistics" type="text" class="validate" name = "vitalStatistics" required="" aria-required="true">
 									<label for="strArmedServiceDesc">Vital Statistic Type</label> 
 							</div>
 						</div>
@@ -122,20 +124,18 @@ Vital Statistics
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
-			<button class="btn waves-effect waves-light" type="submit" name="action" style="margin-right: 30px;">Save
+			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
     			<i class="material-icons right">send</i>
   			</button>
     	</div>
     		</div>
-				</form>
 		</div>
 
 <!-- MODAL Armed Service EDIT -->
 <div id="modalvitalstatisticsEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Vital Statistics</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('vitalStatisticsUpdate') }}" method = "post">
-					<input  id="intArmedServiceID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
 					<div class="row">
 						<div class="col s8">
@@ -161,13 +161,12 @@ Vital Statistics
 		<div class="modal-footer">
 			
 			
-			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
+			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
   			</button>
 			
     	</div>
     		</div>
-				</form>
 </div>
 </div>
 	
@@ -176,8 +175,95 @@ Vital Statistics
 
 @section('script')
 <script type="text/javascript">
-$(function(){
-	$("#dataTable").DataTable({
+	
+	$(function(){
+
+		$(".buttonDelete").click(function(){
+            if(confirm('Are you sure you want to delete the record?')){
+				
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{action('VitalStatisticsController@deleteVitalStatistics')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        vitalStatisticsID: this.id
+
+                    },
+                    success: function(data){
+                        var toastContent = $('<span>Record Deleted.</span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+                         window.location.href = "{{action('VitalStatisticsController@index')}}";
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occur. </span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+
+                    }
+
+                });//ajax
+            }
+        });
+        
+		$(".buttonUpdate").click(function(){
+
+			var itemID = "id" + this.id;
+			var itemName = "name" + this.id;
+
+			document.getElementById('editID').value = $("#"+itemID).html();
+			document.getElementById('editname').value = $("#"+itemName).html();
+
+		});
+
+		$(".checkboxFlag").click(function(){
+            
+            var $this = $(this);
+            var flag;
+            // $this will contain a reference to the checkbox   
+            if ($this.is(':checked')) {
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+           $.ajax({
+				
+				type: "POST",
+				url: "{{action('TypeOfGunController@flagTypeOfGun')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					typeOfGunID: this.id,
+                    flag: flag
+				},
+				success: function(data){
+					
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                    
+				}
+
+			});//ajax
+             
+        });//checkbox clicked
+
+	});
+
+	$(document).ready(function(){
+		
+		$("#dataTable").DataTable({
              "columns": [
             { "orderable": false },
             { "orderable": false },
@@ -191,19 +277,75 @@ $(function(){
 
 
 		});
+ 
+		$("#btnAddSave").click(function(){
+
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('VitalStatisticsController@addVitalStatistics')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					vitalStatistics: $('#strVitalStatistics').val(),
+				},
+				success: function(data){
+					var toastContent = $('<span>Record Added.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
+                    window.location.href = "{{action('VitalStatisticsController@index')}}";
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
 
 
-		$(".buttonUpdate").click(function(){
+			});//ajax
 
-			var itemID = "id" + this.id;
-			var itemName = "name" + this.id;
+		});//button add clicked
+        
+        $("#btnUpdate").click(function(){
 
-			document.getElementById('editID').value = $("#"+itemID).html();
-			document.getElementById('editname').value = $("#"+itemName).html();
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('VitalStatisticsController@updateVitalStatistics')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
 
-		});
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					vitalStatisticsID: $('#editID').val(),
+                    vitalStatistics: $('#editname').val(),
+				},
+				success: function(data){
+					var toastContent = $('<span>Record Updated.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
+                    window.location.href = "{{action('VitalStatisticsController@index')}}";
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
 
-	});
+
+			});//ajax
+
+		});//button add clicked
+        
+        
+
+	});//document ready
 </script>
 
 @stop

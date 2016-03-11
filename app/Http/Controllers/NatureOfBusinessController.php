@@ -36,6 +36,16 @@ class NatureOfBusinessController extends Controller
             alert();
         }
    }
+	
+	public function flagNatureOfBusiness(Request $request){
+        try {
+            NatureOfBusiness::where('intNatureOfBusinessID', $request->natureOfBusinessID)
+            ->update(['boolFlag'=>$request->flag]);
+        } catch (Exception $e) {
+            alert();
+        }
+        return redirect()->route('natureOfBusinessIndex');
+    }
 
    public function updateNatureOfBusiness(Request $request){
         try {
@@ -49,15 +59,14 @@ class NatureOfBusinessController extends Controller
 
     public function deleteNatureOfBusiness(Request $request){
         try {
-            if($request->okayCancelChecker == "okay"){
-                $natureOfBusiness = NatureOfBusiness::destroy($request->natureOfBusinessID);    
+            
+			NatureOfBusiness::destroy($request->natureOfBusinessID);    
                 
-            }
+            
         } catch (Exception $e) {
             
         }
 
-        return redirect()->route('natureOfBusinessIndex');  
          
     }
 }

@@ -52,11 +52,15 @@ Leave
 			   @foreach ($leaves as $leave)
           			<tr>
 						
-            			<td>  
+            			<td> 
 						  <div class="switch" style="margin-right: -80px;">
 							<label>
 							  Deactivate
-							  <input type="checkbox">
+							  @if ($leave->boolFlag==1)
+							  	<input type="checkbox" checked class = "checkboxFlag" id = "{{ $leave->intLeaveID }}">
+							  @else
+							  	<input type="checkbox" class = "checkboxFlag" id = "{{ $leave->intLeaveID }}">
+							  @endif
 							  <span class="lever"></span>
 							  Activate
 							</label>
@@ -69,7 +73,7 @@ Leave
             			<label for="{{ $leave->intLeaveID }}"></label> </td>
 					
 
-						<td><button class="btn red"><i class="material-icons">delete</i></button></td>
+						<td><button class="buttonDelete btn red" id="{{ $leave->intLeaveID }}" ><i class="material-icons">delete</i></button></td>
 						
 						<td id = "id{{ $leave->intLeaveID }}">{{ $leave->intLeaveID }}</td>
             			<td id = "name{{ $leave->intLeaveID }}">{{ $leave->strLeaveType }}</td>
@@ -98,9 +102,7 @@ Leave
 <div id="modalleaveAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Leave</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('leaveAdd') }} " method = "post">
-							
-								<input  id="intLeaveID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 					<div class="row">
 						<div class="col s8">
@@ -129,19 +131,17 @@ Leave
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
-			<button class="btn waves-effect waves-light" type="submit" name="action" style="margin-right: 30px;">Save
+			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
     			<i class="material-icons right">send</i>
   			</button>
     	</div>
     		</div>
-				</form>
 		</div>
 <!-- MODAL LEAVE EDIT -->
 <div id="modalleaveEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Leave</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('leaveUpdate') }}" method = "post">
-					<input  id="intLeaveID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
 					<div class="row">
 						<div class="col s8">
@@ -167,12 +167,11 @@ Leave
 								</div>
 							</div>
 					</div>
-      	<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
 			
-			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
+			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
   			</button>
 			
@@ -181,7 +180,6 @@ Leave
 			
     	</div>
     		</div>
-				</form>
 </div>
 </div>
 
@@ -194,21 +192,40 @@ Leave
 @section('script')
 <script type="text/javascript">
 	$(function(){
-$("#dataTable").DataTable({
-             "columns": [
-            { "orderable": false },
-            { "orderable": false },
-            { "orderable": false },
-            null,
-            null,
-            null
-            ] ,  
-//		    "pagingType": "full_numbers",
-			"pageLength":5
-            
 
-		});
+		$(".buttonDelete").click(function(){
+            if(confirm('Are you sure you want to delete the record?')){
 
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{action('LeaveController@deleteLeave')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        leaveID: this.id
+
+                    },
+                    success: function(data){
+                        var toastContent = $('<span>Record Deleted.</span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+                        window.location.href = "{{action('LeaveController@index')}}";
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occur. </span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+
+                    }
+
+                });//ajax
+            }
+        });
+        
 		$(".buttonUpdate").click(function(){
 			var itemID = "id" + this.id;
 			var itemName = "name" + this.id;
@@ -219,8 +236,133 @@ $("#dataTable").DataTable({
 			document.getElementById('editDefault').value = $("#"+itemDescription).html();
 
 		});
-		
+
+		$(".checkboxFlag").click(function(){
+            
+            var $this = $(this);
+            var flag;
+            // $this will contain a reference to the checkbox   
+            if ($this.is(':checked')) {
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+           $.ajax({
+				
+				type: "POST",
+				url: "{{action('LeaveController@flagLeave')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					leaveID: this.id,
+                    flag: flag
+				},
+				success: function(data){
+					
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                    
+				}
+
+			});//ajax
+             
+        });//checkbox clicked
+
 	});
+
+	$(document).ready(function(){
+		
+		$("#dataTable").DataTable({
+             "columns": [
+            { "orderable": false },
+            { "orderable": false },
+            { "orderable": false },
+            null,
+            null,
+            null
+            ] ,  
+//		    "pagingType": "full_numbers",
+			"pageLength":5
+         });   
+ 
+
+		$("#btnAddSave").click(function(){
+
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('LeaveController@addLeave')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					leaveType: $('#strLeaveType').val(),
+					defaultLeave: $('#intDefaultLeave').val(),
+				},
+				success: function(data){
+					var toastContent = $('<span>Record Added.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
+					window.location.href = "{{action('LeaveController@index')}}";
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
+
+
+			});//ajax
+
+		});//button add clicked
+        
+        $("#btnUpdate").click(function(){
+
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('LeaveController@updateLeave')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					editLeaveID: $('#editID').val(),
+                    editLeaveType: $('#editname').val(),
+					editDefaultLeave: $('#editDefault').val(),
+				},
+				success: function(data){
+					var toastContent = $('<span>Record Updated.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
+                    window.location.href = "{{action('LeaveController@index')}}";
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
+
+
+			});//ajax
+
+		});//button add clicked
+        
+        
+
+	});//document ready
 
 
 </script>

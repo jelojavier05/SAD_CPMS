@@ -50,15 +50,18 @@ Nature of Business
            <tbody>
 			   @foreach ($natureOfBusinesses as $natureOfBusiness)
           			<tr>
-						
             			
-						<td>  
-						  <div class="switch" style="margin-right: -60px;">
+						<td> 
+						  <div class="switch" style="margin-right: -80px;">
 							<label>
-							  Off
-							  <input type="checkbox">
+							  Deactivate
+							  @if ($natureOfBusiness->boolFlag==1)
+							  	<input type="checkbox" checked class = "checkboxFlag" id = "{{ $natureOfBusiness->intNatureOfBusinessID }}">
+							  @else
+							  	<input type="checkbox" class = "checkboxFlag" id = "{{ $natureOfBusiness->intNatureOfBusinessID }}">
+							  @endif
 							  <span class="lever"></span>
-							  On
+							  Activate
 							</label>
 						  </div>
 						</td>
@@ -66,7 +69,7 @@ Nature of Business
 						<td><button class="buttonUpdate btn modal-trigger"  name="" id="{{ $natureOfBusiness->intNatureOfBusinessID }}" href="#modalnobEdit" style="margin-right:-40px;"><i class="material-icons">edit</i></button>
             			<label for="{{ $natureOfBusiness->intNatureOfBusinessID }}"></label> </td>
                         
-                        <td><button class="btn red" style="margin-left:-100px;"><i class="material-icons">delete</i></button></td>
+                        <td><button class="buttonDelete btn red" style="margin-left:-100px;" id="{{ $natureOfBusiness->intNatureOfBusinessID }}"><i class="material-icons">delete</i></button></td>
 
 						<td id = "id{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->intNatureOfBusinessID }}</td>
             			<td id = "name{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->strNatureOfBusiness }}</td>
@@ -96,9 +99,9 @@ Nature of Business
 <div id="modalnobAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Nature of Business</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('natureOfBusinessAdd') }}" method = "post">
+				
 							
-				<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 					<div class="row">
 						<div class="col s8">
@@ -111,7 +114,7 @@ Nature of Business
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="" type="text" class="validate" name = "natureOfBusiness" required="" aria-required="true">
+								<input id="strNatureOfBusiness" type="text" class="validate" name = "natureOfBusiness" required="" aria-required="true">
 									<label for="">Nature of Business</label> 
 							</div>
 						</div>
@@ -120,20 +123,19 @@ Nature of Business
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
-			<button class="btn waves-effect waves-light" type="submit" name="action" style="margin-right: 30px;">Save
+			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
     			<i class="material-icons right">send</i>
   			</button>
     	</div>
     		</div>
-				</form>
 		</div>
 
 <!-- MODAL Nature of Business EDIT -->
 <div id="modalnobEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Nature of Business</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('natureOfBusinessUpdate') }}" method = "post">
-					<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
 					<div class="row">
 						<div class="col s8">
@@ -159,13 +161,13 @@ Nature of Business
 		<div class="modal-footer">
 			
 			
-			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
+			<button class="btn waves-effect waves-light"  name="action1" style="margin-right: 30px;" id ="btnUpdate">Update
     			<i class="material-icons right">send</i>
   			</button>
 			
     	</div>
     		</div>
-				</form>
+			
 </div>
 </div>
 	
@@ -174,23 +176,43 @@ Nature of Business
 
 @section('script')
 <script type="text/javascript">
-
+	
 	$(function(){
-		$("#dataTable").DataTable({
-             "columns": [
-            { "orderable": false },
-            { "orderable": false },
-            { "orderable": false },
-            null,
-            null
-            ] ,  
-//		    "pagingType": "full_numbers",
-			"pageLength":5,
 
+		$(".buttonDelete").click(function(){
+            if(confirm('Are you sure you want to delete the record?')){
 
-		});
+                $.ajax({
 
+                    type: "POST",
+                    url: "{{action('NatureOfBusinessController@deleteNatureOfBusiness')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
 
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        natureOfBusinessID: this.id
+
+                    },
+                    success: function(data){
+                        var toastContent = $('<span>Record Deleted.</span>');
+                        
+                        window.location.href = "{{action('NatureOfBusinessController@index')}}";
+						Materialize.toast(toastContent, 1500,'green', 'edit');
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occur. </span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+
+                    }
+
+                });//ajax
+            }
+        });
+        
 		$(".buttonUpdate").click(function(){
 
 			var itemID = "id" + this.id;
@@ -201,7 +223,131 @@ Nature of Business
 
 		});
 
+		$(".checkboxFlag").click(function(){
+            
+            var $this = $(this);
+            var flag;
+            // $this will contain a reference to the checkbox   
+            if ($this.is(':checked')) {
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+           $.ajax({
+				
+				type: "POST",
+				url: "{{action('NatureOfBusinessController@flagNatureOfBusiness')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					natureOfBusinessID: this.id,
+                    flag: flag
+				},
+				success: function(data){
+					
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                    
+				}
+
+			});//ajax
+             
+        });//checkbox clicked
+
 	});
+
+	$(document).ready(function(){
+		
+		$("#dataTable").DataTable({
+             "columns": [
+            {"searchable": false},
+			{"searchable": false},
+			{"searchable": false},
+            null,
+            null
+            ] ,  
+//		    "pagingType": "full_numbers",
+			"pageLength":5,
+
+
+		});
+ 
+
+		$("#btnAddSave").click(function(){
+
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('NatureOfBusinessController@addNatureOfBusiness')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					natureOfBusiness: $('#strNatureOfBusiness').val(),
+				},
+				success: function(data){
+					var toastContent = $('<span>Record Added.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
+					window.location.href = "{{action('NatureOfBusinessController@index')}}";
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
+
+
+			});//ajax
+
+		});//button add clicked
+        
+        $("#btnUpdate").click(function(){
+
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('NatureOfBusinessController@updateNatureOfBusiness')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					natureOfBusinessID: $('#editID').val(),
+                    natureOfBusiness: $('#editname').val(),
+				},
+				success: function(data){
+					var toastContent = $('<span>Record Updated.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
+                    window.location.href = "{{action('NatureOfBusinessController@index')}}";
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
+
+
+			});//ajax
+
+		});//button add clicked
+        
+        
+
+	});//document ready
 
 </script>
 

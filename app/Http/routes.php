@@ -19,6 +19,8 @@ Route::post('/maintenance/updateNatureOfBusiness', 'NatureOfBusinessController@u
 
 Route::post('/maintenance/deleteNatureOfBusiness', 'NatureOfBusinessController@deleteNatureOfBusiness')->name('natureOfBusinessDelete');
 
+Route::post('/maintenance/flagNatureOfBusiness', 'NatureOfBusinessController@flagNatureOfBusiness')->name('natureOfBusinessFlag');
+
 Route::get('/maintenance/requirements', 'RequirementsController@index')->name('requirementsIndex');
 
 Route::post('/maintenance/addRequirements', 'RequirementsController@addRequirements')->name('requirementsAdd');
@@ -32,6 +34,8 @@ Route::get('/maintenance/typeOfGun', 'TypeOfGunController@index')->name('typeOfG
 Route::post('/maintenance/addTypeOfGun', 'TypeOfGunController@addTypeOfGun')->name('typeOfGunAdd');
 
 Route::post('/maintenance/updateTypeOfGun', 'TypeOfGunController@updateTypeOfGun')->name('typeOfGunUpdate');
+
+Route::post('/maintenance/flagTypeOfGun', 'TypeOfGunController@flagTypeOfGun')->name('typeOfGunFlag');
 
 Route::post('/maintenance/deleteTypeOfGun', 'TypeOfGunController@deleteTypeOfGun')->name('typeOfGunDelete');
 
@@ -49,17 +53,23 @@ Route::post('/maintenance/insertUnitOfMeasurement', 'UnitOfMeasurementController
 
 Route::post('/maintenance/updateUnitOfMeasurement', 'UnitOfMeasurementController@updateUnitOfMeasurement')->name('unitOfMeasurementUpdate');
 
+Route::post('/maintenance/flagUnitOfMeasurement', 'UnitOfMeasurementController@flagUnitOfMeasurement')->name('unitOfMeasurementFlag');
+
 Route::post('/maintenance/deleteUnitOfMeasurement', 'UnitOfMeasurementController@deleteUnitOfMeasurement')->name('unitOfMeasurementDelete');
 
 Route::get('/maintenance/leave', 'LeaveController@index')->name('leaveIndex');
 
 Route::post('/maintenance/updateLeave', 'LeaveController@updateLeave')->name('leaveUpdate');
 
+Route::post('/maintenance/flagLeave', 'LeaveController@flagLeave')->name('leaveFlag');
+
 Route::post('/maintenance/insertLeave', 'LeaveController@addLeave')->name('leaveAdd');
 
 Route::post('/maintenance/deleteLeave', 'LeaveController@deleteLeave')->name('leaveDelete');
 
 Route::get('/maintenance/governmentExam', 'GovernmentExamController@index')->name('governmentExamIndex');
+
+Route::get('/maintenance/getGovernmentExam', 'GovernmentExamController@getGovernmentExam')->name('governmentExamGet');
 
 Route::post('/maintenance/updategovernmentExam', 'GovernmentExamController@updateGovernmentExam')->name('governmentExamUpdate');
 

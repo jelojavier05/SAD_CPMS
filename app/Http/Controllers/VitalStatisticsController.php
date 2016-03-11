@@ -42,13 +42,11 @@ class VitalStatisticsController extends Controller
     
     public function deleteVitalStatistics(Request $request){
         try {
-            if($request->okayCancelChecker == "okay"){
-                $vitalStatistics = VitalStatistics::destroy($request->vitalStatisticsID);    
+            
+			VitalStatistics::destroy($request->vitalStatisticsID);    
                 
-            }
         } catch (Exception $e) {
             
         }
-         return redirect()->route('vitalStatisticsIndex');  
     }
 }

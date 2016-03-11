@@ -32,7 +32,6 @@ class TypeOfGunController extends Controller
             
             $typeOfGun->save();
 
-        return redirect()->route('typeOfGunIndex');
         } catch (Exception $e) {
             //alert
             alert();
@@ -51,13 +50,22 @@ class TypeOfGunController extends Controller
         }
         return redirect()->route('typeOfGunIndex');
     }
+	
+	public function flagTypeOfGun(Request $request){
+        try {
+            TypeOfGun::where('intTypeOfGunID', $request->typeOfGunID)
+            ->update(['boolFlag'=>$request->flag]);
+        } catch (Exception $e) {
+            alert();
+        }
+    }
 
     public function deleteTypeOfGun(Request $request){
         try {
-            if($request->okayCancelChecker == "okay"){
-                $typeOfGun = TypeOfGun::destroy($request->typeOfGunID);    
+            
+			TypeOfGun::destroy($request->typeOfGunID);    
                 
-            }
+            
         } catch (Exception $e) {
             
         }

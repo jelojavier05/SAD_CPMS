@@ -53,10 +53,14 @@ Type of Gun
 						
 						
 						<td> 
-						  <div class="switch" style="margin-right: -100px;">
+						  <div class="switch" style="margin-right: -80px;">
 							<label>
 							  Deactivate
-							  <input type="checkbox">
+							  @if ($typeOfGun->boolFlag==1)
+							  	<input type="checkbox" checked class = "checkboxFlag" id = "{{ $typeOfGun->intTypeOfGunID }}">
+							  @else
+							  	<input type="checkbox" class = "checkboxFlag" id = "{{ $typeOfGun->intTypeOfGunID }}">
+							  @endif
 							  <span class="lever"></span>
 							  Activate
 							</label>
@@ -64,15 +68,15 @@ Type of Gun
 						</td>
 						
             			<td><button class="buttonUpdate btn modal-trigger"  name="typeofGun" id="{{ $typeOfGun->intTypeOfGunID }}" 
-            				onclick="radioClicked('{{$typeOfGun->intTypeOfGunID}}','{{$typeOfGun->strTypeOfGun}}', '{{$typeOfGun->strDescription}}')" href="#modalguntypeEdit" style="margin-left:20px;"><i class="material-icons">edit</i></button>
+            				 href="#modalguntypeEdit" style="margin-left:20px;"><i class="material-icons">edit</i></button>
             			<label for="{{ $typeOfGun->intTypeOfGunID }}"></label> </td>
 						
-						<td><button class="btn red" style="margin-left:-90px;"><i class="material-icons">delete</i></button></td>
+						<td><button class="buttonDelete btn red" style="margin-left:-90px;" id="{{ $typeOfGun->intTypeOfGunID }}"><i class="material-icons">delete</i></button></td>
 						
 
-						<td><div style="margin-right:40px;">{{ $typeOfGun->intTypeOfGunID }}</div></td>
-						<td><div style="margin-right:40px;">{{ $typeOfGun->strTypeOfGun }}</div></td>
-            			<td>{{ $typeOfGun->strDescription }}</td>	
+						<td id = "id{{ $typeOfGun->intTypeOfGunID }}">{{ $typeOfGun->intTypeOfGunID }}</td>
+						<td id = "name{{ $typeOfGun->intTypeOfGunID }}">{{ $typeOfGun->strTypeOfGun }}</td>
+            			<td id = "description{{ $typeOfGun->intTypeOfGunID }}">{{ $typeOfGun->strDescription }}</td>	
           			</tr>
           		@endforeach
           
@@ -96,14 +100,14 @@ Type of Gun
 <div id="modalguntypeAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Type of Gun</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('typeOfGunAdd') }}" method = "post">
+				
 							
-								<input  id="intTypeOfGunID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="" type="text" class="validate" name = "typeOfGunID" disabled>
+								<input  id="intTypeOfGunID" type="text" class="validate" name = "typeOfGunID" disabled>
 									<label for="">Type of Gun ID</label>
 							</div>
 						</div>
@@ -111,7 +115,7 @@ Type of Gun
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="" type="text" class="validate" name = "typeOfGun" required="" aria-required="true">
+								<input id="strTypeOfGun" type="text" class="validate" name = "typeOfGun" required="" aria-required="true">
 									<label for="">Type of Gun</label> 
 							</div>
 						</div>
@@ -128,20 +132,19 @@ Type of Gun
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
-			<button class="btn waves-effect waves-light" type="submit" name="action" style="margin-right: 30px;">Save
+			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
     			<i class="material-icons right">send</i>
   			</button>
     	</div>
     		</div>
-				</form>
+				
 		</div>
 
 <!-- MODAL Type of Gun EDIT -->
 <div id="modalguntypeEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Type of Gun</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('typeOfGunUpdate') }}" method = "post">
-					<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
 					<div class="row">
 						<div class="col s8">
@@ -175,13 +178,12 @@ Type of Gun
 		<div class="modal-footer">
 			
 			
-			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
+			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
   			</button>
 			
     	</div>
     		</div>
-				</form>
 </div>
 </div>
 	
@@ -196,16 +198,98 @@ Type of Gun
 
 
 <script type="text/javascript">
-function radioClicked(strID, strName, strDescription){
-	
-	document.getElementById('editID').value = strID;
-	document.getElementById('editname').value = strName;
-	document.getElementById('editdescription').value = strDescription;
-}
+		
+	$(function(){
 
-$(document).ready(function(){
-    $('#dataTable').DataTable({
-     "columns": [
+		$(".buttonDelete").click(function(){
+            if(confirm('Are you sure you want to delete the record?')){
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{action('TypeOfGunController@deleteTypeOfGun')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        typeOfGunID: this.id
+
+                    },
+                    success: function(data){
+                        var toastContent = $('<span>Record Deleted.</span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+                         window.location.href = "{{action('TypeOfGunController@index')}}";
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occur. </span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+
+                    }
+
+                });//ajax
+            }
+        });
+        
+		$(".buttonUpdate").click(function(){
+
+			var itemID = "id" + this.id;
+			var itemName = "name" + this.id;
+			var itemDescription = "description" + this.id;
+
+			document.getElementById('editID').value = $("#"+itemID).html();
+			document.getElementById('editname').value = $("#"+itemName).html();
+			document.getElementById('editdescription').value = $("#"+itemDescription).html();
+
+		});
+
+		$(".checkboxFlag").click(function(){
+            
+            var $this = $(this);
+            var flag;
+            // $this will contain a reference to the checkbox   
+            if ($this.is(':checked')) {
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+           $.ajax({
+				
+				type: "POST",
+				url: "{{action('TypeOfGunController@flagTypeOfGun')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					typeOfGunID: this.id,
+                    flag: flag
+				},
+				success: function(data){
+					
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                    
+				}
+
+			});//ajax
+             
+        });//checkbox clicked
+
+	});
+
+	$(document).ready(function(){
+		
+	$('#dataTable').DataTable({
+     	"columns": [
             { "orderable": false },
             { "orderable": false },
             { "orderable": false },
@@ -215,7 +299,79 @@ $(document).ready(function(){
             ] ,  
 //		    "pagingType": "full_numbers",
 			"pageLength":5,
-});
-    });
+		});
+ 
+
+		$("#btnAddSave").click(function(){
+
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('TypeOfGunController@addTypeOfGun')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					typeOfGun: $('#strTypeOfGun').val(),
+					typeOfGunDescription: $('#strTypeOfGunDescription').val(),
+				},
+				success: function(data){
+					var toastContent = $('<span>Record Added.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
+                    window.location.href = "{{action('TypeOfGunController@index')}}";
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
+
+
+			});//ajax
+
+		});//button add clicked
+        
+        $("#btnUpdate").click(function(){
+
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('TypeOfGunController@updateTypeOfGun')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					typeOfGunID: $('#editID').val(),
+                    typeOfGun: $('#editname').val(),
+					typeOfGunDescription: $('#editdescription').val(),
+				},
+				success: function(data){
+					var toastContent = $('<span>Record Updated.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
+                    window.location.href = "{{action('TypeOfGunController@index')}}";
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
+
+
+			});//ajax
+
+		});//button add clicked
+        
+        
+
+	});//document ready
+
 </script>
 @stop

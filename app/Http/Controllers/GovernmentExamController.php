@@ -15,6 +15,12 @@ class GovernmentExamController extends Controller
 
         return view('/maintenance/governmentExam', ['governmentExams'=>$governmentExams]);
     }
+	
+	public function getGovernmentExam(){
+		$governmentExams = GovernmentExam::where('deleted_at', null)->get();
+		
+		return response()->json($governmentExams);
+	}
 
     public function addGovernmentExam(Request $request)
     {
@@ -57,7 +63,7 @@ class GovernmentExamController extends Controller
 
     public function deleteGovernmentExam(Request $request){
         try {
-//            DB::table('tblgovernmentexam')->where('intGovernmentExamID', $request->input('governmentExamID'))->destroy();
+//          DB::table('tblgovernmentexam')->where('intGovernmentExamID', $request->input('governmentExamID'))->destroy();
             GovernmentExam::destroy($request->governmentExamID);
         } catch (Exception $e) {
             
