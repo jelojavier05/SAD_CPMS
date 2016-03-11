@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Model\Gun;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +16,8 @@ class GunController extends Controller
      */
     public function index()
     {
-        return view('/maintenance/addGun');
+		$guns = Gun::where('deleted_at', null)->get();
+        return view('/maintenance/addGun', ['guns'=>$guns]);
     }
 
     /**
@@ -41,7 +42,8 @@ class GunController extends Controller
         //
     }
 	
-	public function flag(Request $request){
+	public function flag(Request $request)
+	{
 		
 	}
 }

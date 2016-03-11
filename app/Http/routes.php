@@ -45,6 +45,8 @@ Route::post('/maintenance/deleteRequirements', 'RequirementsController@deleteReq
 
 Route::get('/maintenance/typeOfGun', 'TypeOfGunController@index')->name('typeOfGunIndex');
 
+Route::get('/maintenance/getTypeOfGun', 'TypeOfGunController@getTypeOfGun')->name('typeOfGunGet');
+
 Route::post('/maintenance/addTypeOfGun', 'TypeOfGunController@addTypeOfGun')->name('typeOfGunAdd');
 
 Route::post('/maintenance/updateTypeOfGun', 'TypeOfGunController@updateTypeOfGun')->name('typeOfGunUpdate');

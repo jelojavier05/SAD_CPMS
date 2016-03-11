@@ -5,7 +5,6 @@ Add Gun
 @endsection
 
 @section('content')
-
 	
 
 <!-- ADD EDIT DELETE BUTTON-->
@@ -15,15 +14,13 @@ Add Gun
 					<h1 class="colortitle blue-text text-darken-3">Add Gun</h1>
 				</div>
 				<div class="col s3 offset-s3">
-					<button style="margin-top: 30px;" id="btnAdd" class="z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modaladdgunAdd"><i class="material-icons left">add</i>ADD</button></br></br>
+					<button style="margin-top: 30px;" id="btnAdd" class="z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modaladdgunAdd" ><i class="material-icons left">add</i>ADD</button></br></br>
 				</div>
 
 		</div>
 	
 
 <!-- TABLE -->
-
-	 <div class="row">
      
         	<div class="col s10 push-s2">
             	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-10px;">	
@@ -46,7 +43,6 @@ Add Gun
               			
               			<th data-field="name">Serial No.</th>
 						<th data-field="name">Gun Name</th>
-                        <th data-field="name">Gun Maker</th>
                         <th data-field="name">Gun Type</th>
                         <th data-field="name">License Status</th>
                         
@@ -54,14 +50,18 @@ Add Gun
 			</thead>
             
            <tbody>
-			   @foreach ()
+			   @foreach ($guns as $gun)
           			<tr>
 						
-            			<td>  
+            			<td> 
 						  <div class="switch" style="margin-right: -80px;">
 							<label>
 							  Deactivate
-							  <input type="checkbox">
+							  @if ($armedService->boolFlag==1)
+							  	<input type="checkbox" checked class = "checkboxFlag" id = "{{ $gun->intGunID }}">
+							  @else
+							  	<input type="checkbox" class = "checkboxFlag" id = "{{ $gun->intGunID }}">
+							  @endif
 							  <span class="lever"></span>
 							  Activate
 							</label>
@@ -69,16 +69,16 @@ Add Gun
 						</td>
 						
 						
-						<td><button class="buttonUpdate btn modal-trigger"  name="" id="{{  }}" 
+						<td><button class="buttonUpdate btn modal-trigger"  name="" id="{{ $gun->intGunID }}" 
             				 href="#modaladdgunEdit" style="margin-right: -40px;"><i class="material-icons">edit</i></button>
-            			<label for="{{  }}"></label> </td>
+            			<label for="{{ $gun->intGunID }}"></label> </td>
 					
 
 						<td><button class="btn red"><i class="material-icons">delete</i></button></td>
 						
-						<td id = "id{{  }}">{{  }}</td>
-            			<td id = "name{{  }}">{{  }}</td>
-            			<td id = "description{{  }}">{{  }}</td>
+						<td id = "id{{ $gun->intGunID }}">{{ $gun->intGunID }}</td>
+            			<td id = "name{{ $gun->intGunID }}">{{ $gun->intGunID  }}</td>
+            			<td id = "description{{ $gun->intGunID }}">{{$gun->intGunID  }}</td>
           			</tr>
           		@endforeach
           
@@ -100,12 +100,10 @@ Add Gun
 
 <!-- Modal Add Gun ADD -->
 
-<div id="modaladdgunAdd" class="modal modal-fixed-footer" >
+<div id="modaladdgunAdd" class="modal modal-fixed-footer" style="overflow:hidden;" >
         <div class="modal-header"><h2>Add Gun</h2></div>
         	<div class="modal-content">
-				<form action = "{{  }} " method = "post">
-							
-								<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="containter grey lighten-4">
 					<div class="row">
 						<div class="col s8">
@@ -141,17 +139,14 @@ Add Gun
 				    </div>
                     <div class="row">
                         <div class="input-field col s5">
-                            <select>
-                              <option value="" disabled selected>Choose Gun Type</option>
-                              <option value="1">Option 1</option>
-                              <option value="2">Option 2</option>
-                              <option value="3">Option 3</option>
+                            <select id = "#selectTypeGunAdd">
+								<option value="" disabled selected>Choose Gun Type</option>
                             </select>
                             <label>Gun Type</label>
                         </div>
                     </div>
                 </div>
-                <div class="container grey lighten-4>">
+                <div class="container grey lighten-4">
                     <div class="row">
 							<div class="col s8">
 								<div class="input-field">
@@ -163,38 +158,35 @@ Add Gun
                             <div class="col s5">
 								<div class="input-field">
 									<input id="" type="date" class="validate"  name = "" required="" aria-required="true">
-										<label for="">Date Issued</label> 
+										<label class="active" for="">Date Issued</label> 
 								</div>
 							</div>
                              
                             <div class="col s5">
 								<div class="input-field">
 									<input id="" type="date" class="validate"  name = "" required="" aria-required="true">
-										<label for="">Expiration Date</label> 
+										<label class='active' for="">Expiration Date</label> 
 								</div>
-							</div>
+						</div>
 				     </div>
                 </div>
 
 	<!-- Modal Button Save -->
 				
-		<div class="modal-footer">
-			<button class="btn waves-effect waves-light" type="submit" name="action" style="margin-right: 30px;">Save
+		<button class="btn waves-effect waves-light right" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
     			<i class="material-icons right">send</i>
   			</button>
-    	</div>
     		</div>
-				</form>
+	
+			
+    	
 		</div>
 <!-- MODAL Add Gun EDIT -->
 <div id="modaladdgunEdit" class="modal modal-fixed-footer" >
 	 <div class="modal-header"><h2>Add Gun</h2></div>
         	<div class="modal-content">
-				<form action = "{{  }} " method = "post">
-							
-								<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-
-					<div class="containter grey lighten-4">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="containter grey lighten-4">
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
@@ -229,17 +221,14 @@ Add Gun
 				    </div>
                     <div class="row">
                         <div class="input-field col s5">
-                            <select>
+                            <select id = "selectTypeGun">
                               <option value="" disabled selected>Choose Gun Type</option>
-                              <option value="1">Option 1</option>
-                              <option value="2">Option 2</option>
-                              <option value="3">Option 3</option>
                             </select>
                             <label>Gun Type</label>
                         </div>
                     </div>
                 </div>
-                <div class="container grey lighten-4>">
+                <div class="container grey lighten-4">
                     <div class="row">
 							<div class="col s8">
 								<div class="input-field">
@@ -251,35 +240,28 @@ Add Gun
                             <div class="col s5">
 								<div class="input-field">
 									<input id="" type="date" class="validate"  name = "" required="" aria-required="true">
-										<label for="">Date Issued</label> 
+										<label class="active" for="">Date Issued</label> 
 								</div>
 							</div>
                              
                             <div class="col s5">
 								<div class="input-field">
 									<input id="" type="date" class="validate"  name = "" required="" aria-required="true">
-										<label for="">Expiration Date</label> 
+										<label class='active' for="">Expiration Date</label> 
 								</div>
-							</div>
+						</div>
 				     </div>
                 </div>
-      	<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
+
 	<!-- Modal Button Save -->
 				
-		<div class="modal-footer">
-			
-			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
+		<button class="btn waves-effect waves-light right" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
     			<i class="material-icons right">send</i>
   			</button>
-			
-			
-			
-			
-    	</div>
     		</div>
-				</form>
+    		</div>
 </div>
-</div>
+
 
 	
 	
@@ -290,7 +272,7 @@ Add Gun
 @section('script')
 <script type="text/javascript">
 	$(function(){
-$("#dataTable").DataTable({
+		$("#dataTable").DataTable({
              "columns": [
             { "orderable": false },
             { "orderable": false },
@@ -298,13 +280,10 @@ $("#dataTable").DataTable({
             null,
             null,
             null,
-            null,
             null
             ] ,  
 		    "pagingType": "full_numbers",
 			"pageLength":5
-            
-
 		});
 
 		$(".buttonUpdate").click(function(){
@@ -317,13 +296,39 @@ $("#dataTable").DataTable({
 			document.getElementById('editDefault').value = $("#"+itemDescription).html();
 
 		});
-        
-         $(document).ready(function() {
-    $('select').material_select();
-  });
-		
+			
 	});
+	
+		$(document).ready(function() {
+			$('select').material_select();
+			
+		});
+	
 
+		$(function(){
+			
+			$.ajax({
+				type: "GET",
+				url: "{{action('TypeOfGunController@getTypeOfGun')}}",
+				dataType: 'json',
+				success: function(jsondata){
+					
+					$.each( jsondata, function(i, item) {
+						$('#selectTypeGunAdd').append(
+							$("<option></option>")
+								.attr("value", jsondata[i].intTypeOfGunID)
+								.text(jsondata[i].strTypeOfGun)
+						);	 
+						
+					});	
+					
+					$('#selectTypeGunAdd').material_select();
+				},
+				error: function(data){
+					Console.log(data);
+				}
+			});//ajax select	
+		});
 
 </script>
 

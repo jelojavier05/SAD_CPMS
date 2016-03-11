@@ -20,6 +20,13 @@ class TypeOfGunController extends Controller
 
         return view('/maintenance/typeOfGUn', ['typeOfGuns'=>$typeOfGuns]);
     }
+	
+	public function getTypeOfGun(){
+		$typeOfGuns = TypeOfGun::where('deleted_at', null)->get();
+		
+		return response()->json($typeOfGuns);
+
+	}
 
     public function addTypeOfGun(Request $request)
     {
