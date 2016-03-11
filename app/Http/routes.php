@@ -11,6 +11,16 @@
 |
 */
 
+Route::get('/maintenance/gun', 'GunController@index');
+
+Route::post('/maintenance/gun/create', 'GunController@store');
+
+Route::post('/maintenance/gun/update', 'GunController@update');
+
+Route::post('/maintenance/gun/destroy', 'GunController@destroy');
+
+Route::post('/maintenance/gun/flag', 'GunController@flag');
+
 Route::get('/guardIndex', 'GuardController@index');
 
 Route::get('/maintenance/NatureOfBusiness', 'NatureOfBusinessController@index')->name('natureOfBusinessIndex');
