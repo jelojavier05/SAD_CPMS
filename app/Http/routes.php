@@ -13,6 +13,8 @@
 
 Route::get('/guardIndex', 'GuardController@index');
 
+Route::get('/guardForm', 'GuardController@guardForm');
+
 Route::get('/maintenance/NatureOfBusiness', 'NatureOfBusinessController@index')->name('natureOfBusinessIndex');
 
 Route::post('/maintenance/addNatureOfBusiness', 'NatureOfBusinessController@addNatureOfBusiness')->name('natureOfBusinessAdd');

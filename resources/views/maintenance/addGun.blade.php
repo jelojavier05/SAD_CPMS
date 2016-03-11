@@ -39,18 +39,17 @@ Add Gun
            	<thead>
                     <tr>
 						
-						<th></th>
-						<th></th>
-						<th></th>
+						
                         <th></th>
 						<th></th>
 						<th></th>
-              			<th data-field="id">ID</th>
+              			
               			<th data-field="name">Serial No.</th>
 						<th data-field="name">Gun Name</th>
+                        <th data-field="name">Gun Maker</th>
                         <th data-field="name">Gun Type</th>
-                        <th data-field="name">License No.</th>
-                        <th data-field="name">License Expiration Date</th>
+                        <th data-field="name">License Status</th>
+                        
                     </tr>
 			</thead>
             
@@ -107,7 +106,7 @@ Add Gun
 				<form action = "{{  }} " method = "post">
 							
 								<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-
+                <div class="containter grey lighten-4">
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
@@ -132,6 +131,14 @@ Add Gun
 								</div>
 							</div>
 				    </div>
+                     <div class="row">
+							<div class="col s5">
+								<div class="input-field">
+									<input id="" type="text" class="validate"  name = "" required="" aria-required="true">
+										<label for="">Gun Maker</label> 
+								</div>
+							</div>
+				    </div>
                     <div class="row">
                         <div class="input-field col s5">
                             <select>
@@ -143,8 +150,10 @@ Add Gun
                             <label>Gun Type</label>
                         </div>
                     </div>
+                </div>
+                <div class="container grey lighten-4>">
                     <div class="row">
-							<div class="col s5">
+							<div class="col s8">
 								<div class="input-field">
 									<input id="" type="text" class="validate"  name = "" required="" aria-required="true">
 										<label for="">License No.</label> 
@@ -154,10 +163,18 @@ Add Gun
                             <div class="col s5">
 								<div class="input-field">
 									<input id="" type="date" class="validate"  name = "" required="" aria-required="true">
-										<label for="">License Expiration Date</label> 
+										<label for="">Date Issued</label> 
 								</div>
 							</div>
-				    </div>
+                             
+                            <div class="col s5">
+								<div class="input-field">
+									<input id="" type="date" class="validate"  name = "" required="" aria-required="true">
+										<label for="">Expiration Date</label> 
+								</div>
+							</div>
+				     </div>
+                </div>
 
 	<!-- Modal Button Save -->
 				
@@ -177,6 +194,7 @@ Add Gun
 							
 								<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
+					<div class="containter grey lighten-4">
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
@@ -201,6 +219,14 @@ Add Gun
 								</div>
 							</div>
 				    </div>
+                     <div class="row">
+							<div class="col s5">
+								<div class="input-field">
+									<input id="" type="text" class="validate"  name = "" required="" aria-required="true">
+										<label for="">Gun Maker</label> 
+								</div>
+							</div>
+				    </div>
                     <div class="row">
                         <div class="input-field col s5">
                             <select>
@@ -212,8 +238,10 @@ Add Gun
                             <label>Gun Type</label>
                         </div>
                     </div>
+                </div>
+                <div class="container grey lighten-4>">
                     <div class="row">
-							<div class="col s5">
+							<div class="col s8">
 								<div class="input-field">
 									<input id="" type="text" class="validate"  name = "" required="" aria-required="true">
 										<label for="">License No.</label> 
@@ -223,10 +251,18 @@ Add Gun
                             <div class="col s5">
 								<div class="input-field">
 									<input id="" type="date" class="validate"  name = "" required="" aria-required="true">
-										<label for="">License Expiration Date</label> 
+										<label for="">Date Issued</label> 
 								</div>
 							</div>
-				    </div>
+                             
+                            <div class="col s5">
+								<div class="input-field">
+									<input id="" type="date" class="validate"  name = "" required="" aria-required="true">
+										<label for="">Expiration Date</label> 
+								</div>
+							</div>
+				     </div>
+                </div>
       	<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 	<!-- Modal Button Save -->
 				
@@ -259,7 +295,6 @@ $("#dataTable").DataTable({
             { "orderable": false },
             { "orderable": false },
             { "orderable": false },
-            null,
             null,
             null,
             null,
