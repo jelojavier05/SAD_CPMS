@@ -1,6 +1,6 @@
 .bodyscrollhider
 {
-	overflow:hidden;
+	overflow-x:hidden;
 	background-color:whitesmoke;
 }
 

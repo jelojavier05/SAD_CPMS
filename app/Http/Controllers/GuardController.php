@@ -18,6 +18,10 @@ class GuardController extends Controller
     {
         return view('/guardIndex');
     }
+    
+    public function guardForm(){
+        return view('/guardForm');
+    }
 
     /**
      * Show the form for creating a new resource.
