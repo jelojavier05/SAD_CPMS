@@ -55,7 +55,11 @@ Armed Service
 						  <div class="switch" style="margin-right: -80px;">
 							<label>
 							  Deactivate
-							  <input type="checkbox">
+							  @if ($armedService->boolFlag==1)
+							  	<input type="checkbox" checked class = "checkboxFlag" id = "{{ $armedService->intArmedServiceID }}">
+							  @else
+							  	<input type="checkbox" class = "checkboxFlag" id = "{{ $armedService->intArmedServiceID }}">
+							  @endif
 							  <span class="lever"></span>
 							  Activate
 							</label>
@@ -68,7 +72,7 @@ Armed Service
             			<label for="{{ $armedService->intArmedServiceID }}"></label>
 						</td>
 						
-						<td><button class="btn red"><i class="material-icons">delete</i></button></td>
+						<td><button class="btn red buttonDelete" id="{{ $armedService->intArmedServiceID }}"><i class="material-icons" >delete</i></button></td>
 						
 						<td id = "id{{ $armedService->intArmedServiceID }}">{{ $armedService->intArmedServiceID }}</td>
             			<td id = "name{{ $armedService->intArmedServiceID }}">{{ $armedService->strArmedServiceName }}</td>
@@ -99,9 +103,9 @@ Armed Service
 <div id="modalarmedserviceAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Armed Service</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('armedServiceAdd') }}" method = "post">
+<!--				<form action = "{{ route('armedServiceAdd') }}" method = "post">-->
 							
-								<input  id="intArmedServiceID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 					<div class="row">
 						<div class="col s8">
@@ -114,36 +118,35 @@ Armed Service
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="strArmedServiceDesc" type="text" class="validate" name = "armedServiceName" required="" aria-required="true">
-									<label for="strArmedServiceDesc">Armed Service Type</label> 
+								<input id="strArmedServiceAdd" type="text" class="validate" name = "armedServiceName" required="" aria-required="true">
+									<label for="strArmedServiceAdd">Armed Service Type</label> 
 							</div>
 						</div>
 					</div>
 						<div class="row">
 							<div class="col s5">
 								<div class="input-field">
-									<input id="strArmedServiceDesc" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true">
-										<label for="strArmedServiceDesc">Description</label> 
+									<input id="strArmedServiceDescAdd" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true">
+										<label for="strArmedServiceDescAdd">Description</label> 
 								</div>
 							</div>
 						</div>
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
-			<button class="btn waves-effect waves-light" type="submit" name="action" style="margin-right: 30px;">Save
+			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
     			<i class="material-icons right">send</i>
   			</button>
     	</div>
     		</div>
-				</form>
+<!--				</form>-->
 		</div>
 
 <!-- MODAL Armed Service EDIT -->
 <div id="modalarmedserviceEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Armed Service</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('armedServiceUpdate') }}" method = "post">
-					<input  id="intArmedServiceID" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
 					<div class="row">
 						<div class="col s8">
@@ -175,13 +178,12 @@ Armed Service
 		<div class="modal-footer">
 			
 			
-			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
+			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
   			</button>
 			
     	</div>
     		</div>
-				</form>
 </div>
 </div>
 	
@@ -196,23 +198,42 @@ Armed Service
 
 
 <script type="text/javascript">
-
+	
 	$(function(){
-		$("#dataTable").DataTable({
-             "columns": [
-            { "orderable": false },
-            { "orderable": false },
-            { "orderable": false },
-            null,
-            null,
-            null
-            ] ,  
-//		    "pagingType": "full_numbers",
-			"pageLength":5,
 
+		$(".buttonDelete").click(function(){
+            if(confirm('Are you sure you want to delete the record?')){
 
-		});
+                $.ajax({
 
+                    type: "POST",
+                    url: "{{action('ArmedServiceController@deleteArmedService')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        armedServiceID: this.id
+
+                    },
+                    success: function(data){
+                        var toastContent = $('<span>Record Deleted.</span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+                        $("#dataTable").load(location.href + " #dataTable");
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occur. </span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+
+                    }
+
+                });//ajax
+            }
+        });
+        
 		$(".buttonUpdate").click(function(){
 
 			var itemID = "id" + this.id;
@@ -225,7 +246,134 @@ Armed Service
 
 		});
 
+		$(".checkboxFlag").click(function(){
+            
+            var $this = $(this);
+            var flag;
+            // $this will contain a reference to the checkbox   
+            if ($this.is(':checked')) {
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+           $.ajax({
+				
+				type: "POST",
+				url: "{{action('ArmedServiceController@flagArmedService')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					armedServiceID: this.id,
+                    flag: flag
+				},
+				success: function(data){
+					
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                    
+				}
+
+			});//ajax
+             
+        });//checkbox clicked
+
 	});
+
+	$(document).ready(function(){
+		
+		$("#dataTable").DataTable({
+             "columns": [
+            { "orderable": false },
+            { "orderable": false },
+            { "orderable": false },
+            null,
+            null,
+            null
+            ] ,  
+//		    "pagingType": "full_numbers",
+			"pageLength":5,
+		});
+ 
+
+		$("#btnAddSave").click(function(){
+
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('ArmedServiceController@addArmedService')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					armedServiceName: $('#strArmedServiceAdd').val(),
+					armedServiceDescription: $('#strArmedServiceDescAdd').val(),
+				},
+				success: function(data){
+					var toastContent = $('<span>Record Added.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
+                    $('#strArmedServiceAdd').val("");
+                    $('#strArmedServiceDescAdd').val("");
+                    $("#dataTable").load(location.href + " #dataTable");
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
+
+
+			});//ajax
+
+		});//button add clicked
+        
+        $("#btnUpdate").click(function(){
+
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('ArmedServiceController@updateArmedService')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					armedServiceID: $('#editID').val(),
+                    armedServiceName: $('#editname').val(),
+					armedServiceDescription: $('#editdescription').val(),
+				},
+				success: function(data){
+					var toastContent = $('<span>Record Updated.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
+                    $("#dataTable").load(location.href + " #dataTable");
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
+
+
+			});//ajax
+
+		});//button add clicked
+        
+        
+
+	});//document ready
 
 	
 </script>

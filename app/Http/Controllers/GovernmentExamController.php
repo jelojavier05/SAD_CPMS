@@ -19,9 +19,6 @@ class GovernmentExamController extends Controller
     public function addGovernmentExam(Request $request)
     {
 
-
-        $governmentExam = new GovernmentExam;
-
         try {
             DB::table('tblgovernmentexam')
             ->insertGetId([

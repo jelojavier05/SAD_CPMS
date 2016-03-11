@@ -77,6 +77,8 @@ Route::post('/maintenance/insertArmedService', 'ArmedServiceController@addArmedS
 
 Route::post('/maintenance/deleteArmedService', 'ArmedServiceController@deleteArmedService')->name('armedServiceDelete');
 
+Route::post('/maintenance/flagArmedService', 'ArmedServiceController@flagArmedService')->name('armedServiceFlag');
+
 Route::get('/', function () {
     return view('welcome');
 });

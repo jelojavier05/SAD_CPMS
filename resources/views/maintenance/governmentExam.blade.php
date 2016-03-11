@@ -317,14 +317,14 @@ Government Exam
 				},
 				success: function(data){
 					var toastContent = $('<span>Record Added.</span>');
-                    Materialize.toast(toastContent, 1500, 'edit');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
                     $('#strGovernmentExamAdd').val("");
                     $('#strGovernmentExamDescAdd').val("");
                     $("#dataTable").load(location.href + " #dataTable");
 				},
 				error: function(data){
-					var toastContent = $('<span>Error Occur. </span>');
-                    Materialize.toast(toastContent, 1500, 'edit');
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
                     
 				}
 
@@ -357,8 +357,8 @@ Government Exam
                     $("#dataTable").load(location.href + " #dataTable");
 				},
 				error: function(data){
-					var toastContent = $('<span>Error Occur. </span>');
-                    Materialize.toast(toastContent, 1500, 'edit');
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
                     
 				}
 

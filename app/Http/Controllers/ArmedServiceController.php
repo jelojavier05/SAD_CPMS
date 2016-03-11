@@ -27,13 +27,20 @@ class ArmedServiceController extends Controller
             
             $armedService->save();
 
-        return redirect()->route('armedServiceIndex');
         } catch (Exception $e) {
-            //alert
-            alert();
+            
         }
 
         
+    }
+	
+	public function flagArmedService(Request $request){
+       	try {
+            ArmedService::where('intArmedServiceID', $request->armedServiceID)
+            ->update(['boolFlag' => $request->flag]);
+        } catch (Exception $e) {
+            alert();
+        }
     }
 
     public function updateArmedService(Request $request){
@@ -44,20 +51,18 @@ class ArmedServiceController extends Controller
         } catch (Exception $e) {
             alert();
         }
-        return redirect()->route('armedServiceIndex');
+        
     }
 
     public function deleteArmedService(Request $request){
         try {
-            if($request->okayCancelChecker == "okay"){
-                $armedService = ArmedService::destroy($request->armedServiceID);    
+            
+			ArmedService::destroy($request->armedServiceID);    
                 
-            }
+            
         } catch (Exception $e) {
             
         }
-
-        return redirect()->route('armedServiceIndex');  
          
     }
 }
