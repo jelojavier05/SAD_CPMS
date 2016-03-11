@@ -69,7 +69,7 @@ Leave
 						
 						
 						<td><button class="buttonUpdate btn modal-trigger"  name="leave" id="{{ $leave->intLeaveID }}" 
-            				 href="#modalleaveEdit" style="margin-right: -40px;"><i class="material-icons">edit</i></button>
+            				 href="#modalleaveEdit" style="margin-right: -40px; margin-left:40px;"><i class="material-icons">edit</i></button>
             			<label for="{{ $leave->intLeaveID }}"></label> </td>
 					
 
@@ -294,40 +294,45 @@ Leave
  
 
 		$("#btnAddSave").click(function(){
+            if ($('#strLeaveType').val().trim() && $('#intDefaultLeave').val().trim() && $('#intDefaultLeave').val() > 0){
+                $.ajax({
 
-			$.ajax({
-				
-				type: "POST",
-				url: "{{action('LeaveController@addLeave')}}",
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
+                    type: "POST",
+                    url: "{{action('LeaveController@addLeave')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
 
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        leaveType: $('#strLeaveType').val(),
+                        defaultLeave: $('#intDefaultLeave').val(),
+                    },
+                    success: function(data){
+                        var toastContent = $('<span>Record Added.</span>');
+                        Materialize.toast(toastContent, 1500,'green', 'edit');
+                        window.location.href = "{{action('LeaveController@index')}}";
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occured. </span>');
+                        Materialize.toast(toastContent, 1500,'red', 'edit');
+
                     }
-                },
-				data: {
-					leaveType: $('#strLeaveType').val(),
-					defaultLeave: $('#intDefaultLeave').val(),
-				},
-				success: function(data){
-					var toastContent = $('<span>Record Added.</span>');
-                    Materialize.toast(toastContent, 1500,'green', 'edit');
-					window.location.href = "{{action('LeaveController@index')}}";
-				},
-				error: function(data){
-					var toastContent = $('<span>Error Occured. </span>');
-                    Materialize.toast(toastContent, 1500,'red', 'edit');
-                    
-				}
 
 
-			});//ajax
+                });//ajax
+            }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+			
 
 		});//button add clicked
         
         $("#btnUpdate").click(function(){
-
+        if ($('#editname').val().trim() && $('#editDefault').val().trim() && $('#editDefault').val() > 0){
 			$.ajax({
 				
 				type: "POST",
@@ -357,6 +362,11 @@ Leave
 
 
 			});//ajax
+            
+         }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
 
 		});//button add clicked
         

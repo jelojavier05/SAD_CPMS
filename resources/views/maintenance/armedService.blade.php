@@ -58,7 +58,7 @@ Armed Service
 							  @if ($armedService->boolFlag==1)
 							  	<input type="checkbox" checked class = "checkboxFlag" id = "{{ $armedService->intArmedServiceID }}">
 							  @else
-							  	<input type="checkbox" class = "checkboxFlag" id = "{{ $armedService->intArmedServiceID }}">
+							  	<input type="checkbox" class = "checkboxFlag" id = "{{ $armedService->intArmedServiceID }}" >
 							  @endif
 							  <span class="lever"></span>
 							  Activate
@@ -68,7 +68,7 @@ Armed Service
 						
 						
 						
-						<td><button class="buttonUpdate btn  modal-trigger"  name="armedService" id="{{ $armedService->intArmedServiceID }}" href="#modalarmedserviceEdit" style="margin-right: -40px;"><i class="material-icons">edit</i></button>
+						<td><button class="buttonUpdate btn  modal-trigger"  name="armedService" id="{{ $armedService->intArmedServiceID }}" href="#modalarmedserviceEdit" style="margin-right: -40px; margin-left:40px;"><i class="material-icons">edit</i></button>
             			<label for="{{ $armedService->intArmedServiceID }}"></label>
 						</td>
 						
@@ -302,7 +302,7 @@ Armed Service
  
 
 		$("#btnAddSave").click(function(){
-
+          if ($('#strArmedServiceAdd').val().trim() && $('#strArmedServiceDescAdd').val().trim()){
 			$.ajax({
 				
 				type: "POST",
@@ -331,11 +331,16 @@ Armed Service
 
 
 			});//ajax
+            
+             }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
 
 		});//button add clicked
         
         $("#btnUpdate").click(function(){
-
+            if ($('#editID').val().trim() && $('#editname').val().trim()){
 			$.ajax({
 				
 				type: "POST",
@@ -365,6 +370,10 @@ Armed Service
 
 
 			});//ajax
+         }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
 
 		});//button add clicked
         

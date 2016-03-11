@@ -299,7 +299,7 @@ Government Exam
  
 
 		$("#btnAddSave").click(function(){
-
+            if ($('#strGovernmentExamAdd').val().trim() && $('#strGovernmentExamDescAdd').val().trim()){
 			$.ajax({
 				
 				type: "POST",
@@ -329,10 +329,16 @@ Government Exam
 
 
 			});//ajax
+            
+             }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
 
 		});//button add clicked
         
         $("#btnUpdate").click(function(){
+             if ($('#editID').val().trim() && $('#editname').val().trim()){
 			$.ajax({
 				
 				type: "POST",
@@ -362,6 +368,11 @@ Government Exam
 
 
 			});//ajax
+            
+             }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
 
 		});//button add clicked
         

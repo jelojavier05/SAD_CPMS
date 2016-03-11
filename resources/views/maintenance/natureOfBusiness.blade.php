@@ -281,7 +281,7 @@ Nature of Business
  
 
 		$("#btnAddSave").click(function(){
-
+           if ($('#strNatureOfBusiness').val().trim()){
 			$.ajax({
 				
 				type: "POST",
@@ -309,11 +309,14 @@ Nature of Business
 
 
 			});//ajax
-
+                }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
 		});//button add clicked
         
         $("#btnUpdate").click(function(){
-
+           if ($('#editname').val().trim()){
 			$.ajax({
 				
 				type: "POST",
@@ -342,6 +345,10 @@ Nature of Business
 
 
 			});//ajax
+               }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
 
 		});//button add clicked
         

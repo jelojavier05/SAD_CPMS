@@ -279,7 +279,7 @@ Vital Statistics
 		});
  
 		$("#btnAddSave").click(function(){
-
+          if ($('#strVitalStatistics').val().trim()){
 			$.ajax({
 				
 				type: "POST",
@@ -307,11 +307,16 @@ Vital Statistics
 
 
 			});//ajax
+            }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+
 
 		});//button add clicked
         
         $("#btnUpdate").click(function(){
-
+          if ($('#editname').val().trim()){
 			$.ajax({
 				
 				type: "POST",
@@ -340,6 +345,10 @@ Vital Statistics
 
 
 			});//ajax
+              }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
 
 		});//button add clicked
         
