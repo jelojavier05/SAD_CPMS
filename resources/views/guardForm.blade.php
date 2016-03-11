@@ -138,8 +138,60 @@ Guard Form
                         <legend><h4>Educational Background</h4></legend>
                             <div class="container-fluid grey lighten-4" style="border: 1px solid black;">
 
-                                <table class="highlight white" height="100%" width="100%">
+                                <table class="highlight white" height="100%" width="100%" style="border:1 px solid black; ">
+                                    <thead>
+                                            <tr>
+
+
+                                                <th>Level</th>
+                                                <th>Name of School</th>
+                                                <th>Degree Course</th>
+                                                <th>Year Graduated(if graduated)</th>
+                                                <th>Inclusive Dates of Attendance</th>
+                                                <th>Scholarship/Academic Honors Received</th>
+
+                                            </tr>
+                                    </thead>
                                     
+                                     <tbody>
+			   
+                                                <tr>
+
+                                                    <td>
+                                                        <p>Elementary</p>
+                                                    </td>
+
+
+                                                    <td> 
+                                                        <div class="input-field">
+                                          
+                                            <input  id="schoolName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
+                                            <label data-error="Incorrect" for="schoolevel"></label>
+                                                </div>
+                                                    </td>
+                                                    
+                                                    
+                                                    <td>
+                                                        <input  id="schoolName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
+                                            <label data-error="Incorrect" for="schoolevel"></label>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        <p>test</p>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        <p>test</p>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        <p>test</p>
+                                                    </td>
+
+                                                </tr>
+
+
+                                    </tbody>
                                 </table>
                         
                             </div>

@@ -303,7 +303,7 @@ Type of Gun
  
 
 		$("#btnAddSave").click(function(){
-
+           if ($('#strTypeOfGun').val().trim() && $('#strTypeOfGunDescription').val().trim()){
 			$.ajax({
 				
 				type: "POST",
@@ -332,11 +332,16 @@ Type of Gun
 
 
 			});//ajax
+               }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+
 
 		});//button add clicked
         
         $("#btnUpdate").click(function(){
-
+          if ($('#editID').val().trim() && $('#editname').val().trim()){
 			$.ajax({
 				
 				type: "POST",
@@ -366,6 +371,12 @@ Type of Gun
 
 
 			});//ajax
+              
+              }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+
 
 		});//button add clicked
         

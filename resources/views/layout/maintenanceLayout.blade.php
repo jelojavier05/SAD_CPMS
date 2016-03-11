@@ -138,7 +138,7 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul class="black-text">
                                             <li>
-                                                <a href="#" >Security Guard</a>
+                                                <a href="/guardIndex" >Security Guard</a>
                                             </li>
                                             <li>
                                                 <a href="#" >Client</a>
