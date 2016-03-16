@@ -10,12 +10,10 @@
   
    
 
-<!--
   <link href="{!! URL::asset('../css/materialize.css') !!}" type="text/css" rel="stylesheet"/>
   <link rel="stylesheet" type="text/css" media="screen,projection" href="{{!! URL::asset('../css/materialize.min.css') !!}"/>
--->
-	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">-->
+<!--		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
   <link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
 <!--  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../datatable.css') !!}">-->
 <!--  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/dataTables.material.min.css') !!}">-->
@@ -24,16 +22,12 @@
     <!-- ===============================JSjquery======================================= -->
    
   <script src="{!! URL::asset('../javascript/jquery-2.2.1.js') !!}"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+<!--	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>-->
 
-<!--
   <script src="{{!! URL::asset('../js/materialize.js') !!}}"></script>
-  <script src="{!! URL::asset('../jquery/jquery-1.12.0.min.js')!!}"></script> 
--->
-<!--
+<!--  <script src="{!! URL::asset('../jquery/jquery-1.12.0.min.js')!!}"></script> -->
   <script src="{!! URL::asset('../js/init.js') !!}"></script>
   <script src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
--->
 <!--  <script src="{!! URL::asset('../datatable.js') !!}"></script>-->
 <!--  <script src="{!! URL::asset('../dataTables.material.min.js') !!}"></script>-->
 <!--  <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>-->
@@ -97,6 +91,8 @@
 														
 														<li><a class="blue-text" href="/maintenance/vitalStatistics">Vital Statistics</a></li>
 														
+														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
+														
 														
 													</ul>
 														
@@ -117,18 +113,7 @@
 														
 													</ul>
                                             </li>
-											<li>
-                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownothers" data-gutter="241" data-hover="false" style="width:240px; border:none;" id="buttonhover">Others</button>
-													<ul id='dropdownothers' class='dropdown-content' style="margin-top:1px;">
-														<li><a class="blue-text" href="/maintenance/unitOfMeasurement">Unit of Measurement</a></li>
-														
-														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
-														
-														
-														
-														
-													</ul>
-                                            </li>
+											 	
                                         </ul>
                             </div>
 							
@@ -149,8 +134,9 @@
                     </li>
                             
                       <li class="bold" style="width:280px;">
-					  	<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons left">people</i>Deployment</a>
+					  	<a class="collapsible-header waves-effect waves-blue" href="/deployment/index"><i class="material-icons left">people</i>Deployment</a>
 					  </li>
+<!--
                             <li class="bold" style="width:280px;">
 								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">insert_chart</i>Reports<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
@@ -166,6 +152,7 @@
                                             </li>
                                         </ul>
                             </div></li>
+-->
                             
                             
                 </ul>
