@@ -1,7 +1,7 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Vital Statistics
+Body Attributes
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@ Vital Statistics
     	<div class="col s12">
 			<div class="col s4 offset-s3">
 				<div class="flow-text">
-					<h1 class="colortitle blue-text text-darken-3">Vital Statistics</h1>
+					<h1 class="colortitle blue-text text-darken-3">Body Attributes</h1>
 				</div>
 			</div>
 			<div class="col s3 offset-s2">

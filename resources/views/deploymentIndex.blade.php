@@ -264,25 +264,25 @@ Deployment
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td></td>
+                        <td>M4A1</td>
                         <td>M</td>
                     </tr>
                     
                     <tr>
                         <td>2</td>
-                        <td>Wew</td>
+                        <td>M16</td>
                         <td>F</td>
                     </tr>
                     
                     <tr>
                         <td>3</td>
-                        <td>Wiw</td>
+                        <td>Remington</td>
                         <td>M</td>
                     </tr>
                     
                     <tr>
                         <td>4</td>
-                        <td>Wow</td>
+                        <td>Desert Eagle</td>
                         <td>F</td>
                     </tr>
                 </tbody>

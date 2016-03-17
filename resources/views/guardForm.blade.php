@@ -9,7 +9,7 @@ Guard Form
 
 <div class="row" style="margin:5%;">
                 <div class="col s12 push-s1">
-                    <div class="container white z-depth-2" style="border-radius: 15px; padding:3%;">
+                    <div class="container white z-depth-2" style="border-radius: 15px; padding:5%;">
                        
 			
 				             <legend><h4>Personal Data</h4></legend>
@@ -309,7 +309,7 @@ Guard Form
 -->
 					                   <div class="input-field col s6">
                                             
-                                            <input  id="rank" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
+                                            <input  id="rank" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true" >
                                             <label data-error="Incorrect" for="rank">Rank</label>
 
 					                   </div>
@@ -364,8 +364,8 @@ Guard Form
                                                                 <td>
                                                                     <div>
 
-                                                                        <input class="with-gap" name="radioGovexam" type="radio" id="radioGovexam" />
-                                                                        <label for="radioGovexam"></label>
+                                                                        <input type="checkbox" id="checkGov" />
+      																	<label for="checkGov"></label>
 
                                                                     </div>
                                                                 </td>
@@ -380,7 +380,7 @@ Guard Form
 
                                                                 <td>
                                                                     <div>
-                                                                        <input size="9" id="rating" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+                                                                        <input size="9" id="rating" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
                                                                         <label data-error="Incorrect" for="rating"></label>
 
                                                                     </div>
@@ -388,7 +388,7 @@ Guard Form
 
                                                                 <td>
                                                                     <div>
-                                                                        <input id="dateTaken" type="date" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+                                                                        <input id="dateTaken" type="date" class="validate"  required="" aria-required="true">
                                                                         <label data-error="Incorrect" for="dateTaken"></label>
 
                                                                     </div>
@@ -406,10 +406,67 @@ Guard Form
 					
 					
 				                        </div>
+										
+										<!-- ====================Body Attributes ============ -->
+										
+										<div class="input-field col s12">
+                                            <p>Body Attributes:</p>
+										   		<table class="highlight white">
+										   			<thead>
+														<tr>
+															<th></th>
+                                                            <th>Name</th>
+															<th>Specification</th>
+															
+														</tr>
+													</thead>
+													
+													<tbody>
+														
+                                                            <tr>
+                                                                <td>
+                                                                    <div>
+
+                                                                        <input type="checkbox" id="checkGov" />
+      																	<label for="checkGov"></label>
+
+                                                                    </div>
+                                                                </td>
+
+                                                                <td>
+                                                                    <div>
+<!--                                                                        ito yon son, delete mo after.-->
+                                                                        
+
+                                                                    </div>
+                                                                </td>
+
+                                                                <td>
+                                                                    <div>
+                                                                        <input size="9" id="specification" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
+                                                                        <label data-error="Incorrect" for="specification"></label>
+
+                                                                    </div>
+                                                                </td>
+
+                                                                
+                                                            </tr>
+														
+													</tbody>
+										   		</table>
+
+<!--
+					                   </div>
+					
+                                       <div class="row" style="margin:5%;">
+-->
+					
+					
+				                        </div>
 					
 				                    </div>
 				
-				 <button class="btn waves-effect waves-light right" type="submit" name="action1" style="margin-right: 30px;">Save
+				 <button class="btn waves-effect waves-light right" type="submit" name="action1" style="margin-right: 30px; margin-top:10px;">Save
     			     <i class="material-icons right">send</i>
   			     </button>
                                 </div>
