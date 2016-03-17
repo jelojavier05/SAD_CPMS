@@ -1,7 +1,7 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Add Gun
+Gun
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Add Gun
 		<div class="row">
 			<div class="col s12">	
 				<div class="col s3 offset-s3">
-					<h1 class="colortitle blue-text text-darken-3">Add Gun</h1>
+					<h1 class="colortitle blue-text text-darken-3">Gun</h1>
 				</div>
 				<div class="col s3 offset-s3">
 					<button style="margin-top: 30px;" id="btnAdd" class="z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modaladdgunAdd" ><i class="material-icons left">add</i>ADD</button></br></br>
@@ -79,7 +79,7 @@ Add Gun
 						
 						<td id = "id{{ $gun->intGunID }}">{{ $gun->strSerialNumber }}</td>
             			<td id = "name{{ $gun->intGunID }}">{{ $gun->strGunName  }}</td>
-            			<td id = "description{{ $gun->intGunID }}">{{$gun->strMaker  }}</td>
+            			<td id = "description{{ $gun->intGunID }}">{{ $gun->strTypeOfGun }}</td>
           			</tr>
           		@endforeach
           

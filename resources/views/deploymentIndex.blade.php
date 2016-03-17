@@ -194,8 +194,8 @@ Deployment
                     <tr>
                         <th></th>
 						<th>ID</th>
-                        <th>Equipment Name</th>
-                        <th>Available Stock</th>
+                        <th>Name</th>
+                        <th>No. of Gun</th>
                     
                     </tr>
                     

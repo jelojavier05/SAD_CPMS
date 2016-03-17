@@ -326,7 +326,7 @@ Government Exam
 				success: function(data){
 					var toastContent = $('<span>Record Added.</span>');
                     Materialize.toast(toastContent, 3000,'green', 'edit');
-//					window.location.href = "{{action('GovernmentExamController@index')}}";
+					window.location.href = "{{action('GovernmentExamController@index')}}";
 
 				},
 				error: function(data){
@@ -384,62 +384,62 @@ Government Exam
 
 		});//button add clicked
         
-    	function clearTable(){
-			var table = $('#dataTable').DataTable();
-
-			table.clear().draw();
-			
-			$.ajax({
-				type: "GET",
-				url: "{{action('GovernmentExamController@getGovernmentExam')}}",
-				dataType: 'json',
-				success: function(jsondata){
-					var trHTML = '';
-					$.each( jsondata, function(i, item) {
-                        if (jsondata[i].boolFlag == 1){
-                            table.row.add([
-
-                                "<div class='switch' style='margin-right: 20px;'>" +
-                                "<label>" + 
-                                  "Deactivate" + 
-                                    "<input type='checkbox' checked class = 'checkboxFlag' id = " +jsondata[i].intGovernmentExamID + ">" +
-                                  "<span class='lever'></span>" + 
-                                  "Activate"+
-                                "</label>" +
-                                "</div>",
-
-                                "<button class='buttonUpdate btn modal-trigger'  name='governmentExam' id = '" + jsondata[i].intGovernmentExamID + "'href='#modalgovexamEdit' style='margin-right: -40px;'><i class= 'material-icons'>edit</i></button> <label for= '" + jsondata[i].intGovernmentExamID + "'></label>",
-
-                                '3',
-                                jsondata[i].boolFlag,
-                                jsondata[i].strGovernmentExam,
-                                jsondata[i].strDescription
-                            ]).draw();
-                        }else{
-                            table.row.add([
-
-                                "<div class='switch' style='margin-right: 20px;'>" +
-                                "<label>" + 
-                                  "Deactivate" + 
-                                    "<input type='checkbox' class = 'checkboxFlag' id = " +jsondata[i].intGovernmentExamID + ">" +
-                                  "<span class='lever'></span>" + 
-                                  "Activate"+
-                                "</label>" +
-                                "</div>",
-
-                                "<button class='buttonUpdate btn modal-trigger'  name='governmentExam' id = '" + jsondata[i].intGovernmentExamID + "'href='#modalgovexamEdit' style='margin-right: -40px;'><i class= 'material-icons'>edit</i></button> <label for= '" + jsondata[i].intGovernmentExamID + "'></label>",
-
-                                '3',
-                                jsondata[i].boolFlag,
-                                jsondata[i].strGovernmentExam,
-                                jsondata[i].strDescription
-                            ]).draw();
-                        }
-						
-				    });
-                }
-            });
-        }//clear table()    
+//    	function clearTable(){
+//			var table = $('#dataTable').DataTable();
+//
+//			table.clear().draw();
+//			
+//			$.ajax({
+//				type: "GET",
+//				url: "{{action('GovernmentExamController@getGovernmentExam')}}",
+//				dataType: 'json',
+//				success: function(jsondata){
+//					var trHTML = '';
+//					$.each( jsondata, function(i, item) {
+//                        if (jsondata[i].boolFlag == 1){
+//                            table.row.add([
+//
+//                                "<div class='switch' style='margin-right: 20px;'>" +
+//                                "<label>" + 
+//                                  "Deactivate" + 
+//                                    "<input type='checkbox' checked class = 'checkboxFlag' id = " +jsondata[i].intGovernmentExamID + ">" +
+//                                  "<span class='lever'></span>" + 
+//                                  "Activate"+
+//                                "</label>" +
+//                                "</div>",
+//
+//                                "<button class='buttonUpdate btn modal-trigger'  name='governmentExam' id = '" + jsondata[i].intGovernmentExamID + "'href='#modalgovexamEdit' style='margin-right: -40px;'><i class= 'material-icons'>edit</i></button> <label for= '" + jsondata[i].intGovernmentExamID + "'></label>",
+//
+//                                '3',
+//                                jsondata[i].boolFlag,
+//                                jsondata[i].strGovernmentExam,
+//                                jsondata[i].strDescription
+//                            ]).draw();
+//                        }else{
+//                            table.row.add([
+//
+//                                "<div class='switch' style='margin-right: 20px;'>" +
+//                                "<label>" + 
+//                                  "Deactivate" + 
+//                                    "<input type='checkbox' class = 'checkboxFlag' id = " +jsondata[i].intGovernmentExamID + ">" +
+//                                  "<span class='lever'></span>" + 
+//                                  "Activate"+
+//                                "</label>" +
+//                                "</div>",
+//
+//                                "<button class='buttonUpdate btn modal-trigger'  name='governmentExam' id = '" + jsondata[i].intGovernmentExamID + "'href='#modalgovexamEdit' style='margin-right: -40px;'><i class= 'material-icons'>edit</i></button> <label for= '" + jsondata[i].intGovernmentExamID + "'></label>",
+//
+//                                '3',
+//                                jsondata[i].boolFlag,
+//                                jsondata[i].strGovernmentExam,
+//                                jsondata[i].strDescription
+//                            ]).draw();
+//                        }
+//						
+//				    });
+//                }
+//            });
+//        }//clear table()    
         
     });
 //						trHTML += '<tr>' +

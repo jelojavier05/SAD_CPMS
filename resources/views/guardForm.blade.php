@@ -364,18 +364,15 @@ Guard Form
                                                                 <td>
                                                                     <div>
 
-                                                                        <input class="with-gap" name="radioGovexam" type="radio" id="radioGovexam" />
-                                                                        <label for="radioGovexam"></label>
+                                                                        <input class="with-gap" name="radioGovexam" type="radio" id="{{ $governmentexam->intGovernmentExamID }}" />
+                                                                        <label for="{{ $governmentexam->intGovernmentExamID }}"></label>
 
                                                                     </div>
                                                                 </td>
 
                                                                 <td>
-                                                                    <div>
-<!--                                                                        ito yon son, delete mo after.-->
                                                                         {{$governmentexam->strGovernmentExam}}
 
-                                                                    </div>
                                                                 </td>
 
                                                                 <td>
