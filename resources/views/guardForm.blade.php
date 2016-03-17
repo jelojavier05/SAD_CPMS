@@ -222,7 +222,7 @@ Guard Form
                                              
                                          </select>
                                             
-                                         <label>To</label>
+                                         <label></label>
                                                         <select>
                                               <option value="" disabled selected>----</option>  
                                               <option value="1">2005</option>
@@ -292,7 +292,7 @@ Guard Form
 					                   <div class="row">
                                             <div class="input-field col s5">
                                                 <select id = "selectArmedServices" name = "strTypeOfGun">
-                                                    <option disabled selected>Choose armed services if any</option>
+                                                    <option disabled selected   >Choose armed services if any</option>
                                                     @foreach($armedservices as $armedservice)
                                                         <option>{{$armedservice->strArmedServiceName}}</option>
                                                     @endforeach
