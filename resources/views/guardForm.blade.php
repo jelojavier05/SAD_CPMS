@@ -365,8 +365,8 @@ Guard Form
                                                                     <div>
 
 
-                                                                        <input type="checkbox" id="checkGov" />
-      																	<label for="checkGov"></label>
+                                                                        <input type="checkbox" id="{{$governmentexam->intGovernmentExamID}}" />
+      																	<label for="{{$governmentexam->intGovernmentExamID}}"></label>
 
 
                                                                     </div>
@@ -413,7 +413,6 @@ Guard Form
 										   		<table class="highlight white">
 										   			<thead>
 														<tr>
-															<th></th>
                                                             <th>Name</th>
 															<th>Specification</th>
 															
@@ -421,22 +420,13 @@ Guard Form
 													</thead>
 													
 													<tbody>
-														
+														@foreach($vitalStatistics as $vitalStatistic)
                                                             <tr>
-                                                                <td>
-                                                                    <div>
-
-                                                                        <input type="checkbox" id="checkGov" />
-      																	<label for="checkGov"></label>
-
-                                                                    </div>
-                                                                </td>
 
                                                                 <td>
                                                                     <div>
-<!--                                                                        ito yon son, delete mo after.-->
+                                                                        {{$vitalStatistic->strVitalStatisticsName}}
                                                                         
-
                                                                     </div>
                                                                 </td>
 
@@ -450,7 +440,7 @@ Guard Form
 
                                                                 
                                                             </tr>
-														
+														@endforeach
 													</tbody>
 										   		</table>
 

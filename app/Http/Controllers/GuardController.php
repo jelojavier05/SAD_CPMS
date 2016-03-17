@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\ArmedService;
 use App\Model\GovernmentExam;
+use App\Model\VitalStatistics;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -31,8 +32,17 @@ class GuardController extends Controller
             ->where('boolFlag', 1)
             ->get();
         
+        $vitalStatistics = VitalStatistics::
+            where('deleted_at', null)
+            ->where('boolFlag', 1)
+            ->get();
         
-        return view('/guardForm')->with ('armedservices', $armedservices)->with ('governmentexams', $governmentExams);
+        
+        return view('/guardForm')
+            ->with ('armedservices', $armedservices)
+            ->with ('governmentexams', $governmentExams)
+            ->with ('vitalStatistics', $vitalStatistics);;
+        
     }
 
     /**
