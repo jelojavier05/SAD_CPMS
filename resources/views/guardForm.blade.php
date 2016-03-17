@@ -359,41 +359,42 @@ Guard Form
 													</thead>
 													
 													<tbody>
-														<tr>
-															<td>
-																<div>
-																
-                                                        			<input class="with-gap" name="radioGovexam" type="radio" id="radioGovexam" />
-    																<label for="radioGovexam"></label>
-																
-																</div>
-															</td>
-															
-															<td>
-																<div>
-																	<input size="9" id="rating" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
-                                                        			<label data-error="Incorrect" for="rating"></label>
-																
-																</div>
-															</td>
-                                                            
-                                                            <td>
-																<div>
-																	<input size="9" id="rating" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
-                                                        			<label data-error="Incorrect" for="rating"></label>
-																
-																</div>
-															</td>
-															
-															<td>
-																<div>
-																	<input id="dateTaken" type="date" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
-                                                        			<label data-error="Incorrect" for="dateTaken"></label>
-																
-																</div>
-															</td>
-														</tr>
-														
+														@foreach($governmentexams as $governmentexam)
+                                                            <tr>
+                                                                <td>
+                                                                    <div>
+
+                                                                        <input class="with-gap" name="radioGovexam" type="radio" id="radioGovexam" />
+                                                                        <label for="radioGovexam"></label>
+
+                                                                    </div>
+                                                                </td>
+
+                                                                <td>
+                                                                    <div>
+<!--                                                                        ito yon son, delete mo after.-->
+                                                                        {{$governmentexam->strGovernmentExam}}
+
+                                                                    </div>
+                                                                </td>
+
+                                                                <td>
+                                                                    <div>
+                                                                        <input size="9" id="rating" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+                                                                        <label data-error="Incorrect" for="rating"></label>
+
+                                                                    </div>
+                                                                </td>
+
+                                                                <td>
+                                                                    <div>
+                                                                        <input id="dateTaken" type="date" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+                                                                        <label data-error="Incorrect" for="dateTaken"></label>
+
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+														@endforeach
 													</tbody>
 										   		</table>
 
