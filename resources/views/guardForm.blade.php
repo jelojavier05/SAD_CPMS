@@ -128,8 +128,57 @@ Guard Form
                                              </select>
                                             <label>Sex</label>
 					                   </div>
+									   
+										
+										<!-- ====================Body Attributes ============ -->
+										
+										<div class="input-field col s12">
+                                            <p>Body Attributes:</p>
+										   		<table class="highlight white">
+										   			<thead>
+														<tr>
+                                                            <th>Name</th>
+															<th>Specification</th>
+															
+														</tr>
+													</thead>
+													
+													<tbody>
+														@foreach($vitalStatistics as $vitalStatistic)
+                                                            <tr>
+
+                                                                <td>
+                                                                    <div>
+                                                                        {{$vitalStatistic->strVitalStatisticsName}}
+                                                                        
+                                                                    </div>
+                                                                </td>
+
+                                                                <td>
+                                                                    <div>
+                                                                        <input size="9" id="specification" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
+                                                                        <label data-error="Incorrect" for="specification"></label>
+
+                                                                    </div>
+                                                                </td>
+
+                                                                
+                                                            </tr>
+														@endforeach
+													</tbody>
+										   		</table>
+
+<!--
+					                   </div>
 					
+                                       <div class="row" style="margin:5%;">
+-->
+					
+					
+				                        </div>
 				                    </div>
+									
+									
                                 </div>  
                 <!-- Personal Data End == educ bg start -->  
                             
@@ -406,52 +455,7 @@ Guard Form
 					
 				                        </div>
 										
-										<!-- ====================Body Attributes ============ -->
 										
-										<div class="input-field col s12">
-                                            <p>Body Attributes:</p>
-										   		<table class="highlight white">
-										   			<thead>
-														<tr>
-                                                            <th>Name</th>
-															<th>Specification</th>
-															
-														</tr>
-													</thead>
-													
-													<tbody>
-														@foreach($vitalStatistics as $vitalStatistic)
-                                                            <tr>
-
-                                                                <td>
-                                                                    <div>
-                                                                        {{$vitalStatistic->strVitalStatisticsName}}
-                                                                        
-                                                                    </div>
-                                                                </td>
-
-                                                                <td>
-                                                                    <div>
-                                                                        <input size="9" id="specification" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
-                                                                        <label data-error="Incorrect" for="specification"></label>
-
-                                                                    </div>
-                                                                </td>
-
-                                                                
-                                                            </tr>
-														@endforeach
-													</tbody>
-										   		</table>
-
-<!--
-					                   </div>
-					
-                                       <div class="row" style="margin:5%;">
--->
-					
-					
-				                        </div>
 					
 				                    </div>
 				
