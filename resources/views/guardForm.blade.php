@@ -223,7 +223,8 @@ Guard Form
                                          </select>
                                             
                                          <label></label>
-                                                        <select>
+                                                        
+                                          <select>
                                               <option value="" disabled selected>----</option>  
                                               <option value="1">2005</option>
                                              <option value="2">2004</option>
@@ -315,8 +316,8 @@ Guard Form
 					
 					                   <div class="input-field col s6">
                         
-                                            <input  id="armedServiceYear" class="datepicker"  required="" aria-required="true">
-                                            <label data-error="Incorrect" for="armedServiceYear">Armed Service Year</label>
+                                            <input  id="armedServiceYear" type="date" class="datepicker"  required="" aria-required="true">
+                                            <label class="active" data-error="Incorrect" for="armedServiceYear">Armed Service Year</label>
 
 					                   </div>
 <!--
@@ -344,40 +345,57 @@ Guard Form
 -->
 				
 					                   <div class="input-field col s12">
-                                            <p>Government Exam:</br>
-                                              <input type="checkbox" id="exam1" />
-                                              <label for="exam1">Exam 1</label></br>
-                       
-                                              <input type="checkbox" id="exam2" />
-                                              <label for="exam2">Exam 2</label></br>
-                       
-                                              <input type="checkbox" id="exam3" />
-                                              <label for="exam3">Exam 3</label></br>
-                       
-                                              <input type="checkbox" id="exam4" />
-                                              <label for="exam4">Exam 4</label></br>
-                       
-                                              <input type="checkbox" id="exam5" />
-                                              <label for="exam5">Exam 5</label></br>
-                                            </p>
+                                            <p>Government Exam:</p>
+										   		<table class="highlight white">
+										   			<thead>
+														<tr>
+															<th>Name</th>
+															<th>Ratings</th>
+															<th>Date Taken</th>
+														</tr>
+													</thead>
+													
+													<tbody>
+														<tr>
+															<td>
+																<div>
+																
+                                                        			<select>
+																		<option disabled selected>Choose</option>
+																		<option value="test1">GovExam1</option>
+																		<option value="test2">GovExam2</option>
+																		<option value="test3">GovExam3</option>
+																		<option value="test4">GovExam4</option>
+																	</select>
+																
+																</div>
+															</td>
+															
+															<td>
+																<div>
+																	<input size="9" id="rating" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+                                                        			<label data-error="Incorrect" for="rating"></label>
+																
+																</div>
+															</td>
+															
+															<td>
+																<div>
+																	<input id="dateTaken" type="date" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+                                                        			<label data-error="Incorrect" for="dateTaken"></label>
+																
+																</div>
+															</td>
+														</tr>
+														
+													</tbody>
+										   		</table>
 
 <!--
 					                   </div>
 					
                                        <div class="row" style="margin:5%;">
 -->
-					                       <div class="input-field col s6">
-                                              <input  id="rating" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
-                                              <label data-error="Incorrect" for="rating">Rating</label>
-
-					                   </div>
-                    
-                                            <div class="input-field col s6">
-                        
-                                            <input  id="dateTaken" class="datepicker"  required="" aria-required="true">
-                                            <label data-error="Incorrect" for="dateTaken">Date Taken</label>
-
-					                       </div>
 					
 					
 				                        </div>

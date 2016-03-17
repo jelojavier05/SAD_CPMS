@@ -28,7 +28,8 @@ Deployment
             <table class="white z-depth-3" id="datatable" style="border-radius:10px;">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th></th>
+						<th>ID</th>
                         <th>Name</th>
                         <th>No. of Guards</th>
                     
@@ -38,25 +39,29 @@ Deployment
                 
                 <tbody>
                     <tr>
-                        <td>1</td>
+                        <td><input class="with-gap" name="selectClient" type="radio" id="test5" checked/><label for="test5"></label></td>
+						<td>1</td>
                         <td>Polytechnic University of the Philippines</td>
                         <td>23</td>
                     </tr>
                     
                     <tr>
-                        <td>2</td>
+						<td><input class="with-gap" name="selectClient" type="radio" id="test6"  /><label for="test6"></label></td>
+						<td>2</td>
                         <td>Ateneo De Manila</td>
                         <td>15</td>
                     </tr>
                     
                     <tr>
-                        <td>3</td>
+						<td><input class="with-gap" name="selectClient" type="radio" id="test3" /><label for="test3"></label></td>
+						<td>3</td>
                         <td>SWA Sta Lucia Village</td>
                         <td>19</td>
                     </tr>
                     
                     <tr>
-                        <td>4</td>
+						<td><input class="with-gap" name="selectClient" type="radio" id="test4" /><label for="test4"></label></td>
+						<td>4</td>
                         <td>Ferdinand Compound</td>
                         <td>12</td>
                     </tr>
