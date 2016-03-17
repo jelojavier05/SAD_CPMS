@@ -351,7 +351,8 @@ Guard Form
 										   		<table class="highlight white">
 										   			<thead>
 														<tr>
-															<th>Name</th>
+															<th></th>
+                                                            <th>Name</th>
 															<th>Ratings</th>
 															<th>Date Taken</th>
 														</tr>
@@ -369,6 +370,14 @@ Guard Form
 															</td>
 															
 															<td>
+																<div>
+																	<input size="9" id="rating" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+                                                        			<label data-error="Incorrect" for="rating"></label>
+																
+																</div>
+															</td>
+                                                            
+                                                            <td>
 																<div>
 																	<input size="9" id="rating" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
                                                         			<label data-error="Incorrect" for="rating"></label>
@@ -414,8 +423,8 @@ Guard Form
 <script>
     
     $(document).ready(function() {
-    $('select').material_select();
-  });
+        $('select').material_select();
+    });
         
   
     
