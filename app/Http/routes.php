@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/deployment/index', 'DeploymentController@index');
+
 Route::get('/maintenance/gun', 'GunController@index');
 
 Route::post('/maintenance/gun/create', 'GunController@store');

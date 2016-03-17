@@ -10,7 +10,7 @@ Nature of Business
 <!-- ADD EDIT DELETE BUTTON-->
 	<div class="row">
     	<div class="col s12">
-			<div class="col s5 push-s3">
+			<div class="col s6 push-s3">
 				<div class="flow-text">
 					<h1 class="colortitle blue-text text-darken-3">Nature of Business</h1>
 				</div>
@@ -66,7 +66,7 @@ Nature of Business
 						  </div>
 						</td>
 						
-						<td><button class="buttonUpdate btn modal-trigger"  name="" id="{{ $natureOfBusiness->intNatureOfBusinessID }}" href="#modalnobEdit" style="margin-right:-40px;"><i class="material-icons">edit</i></button>
+						<td><button class="buttonUpdate btn modal-trigger"  name="" id="{{ $natureOfBusiness->intNatureOfBusinessID }}" href="#modalnobEdit" style="margin-right:-20px;"><i class="material-icons">edit</i></button>
             			<label for="{{ $natureOfBusiness->intNatureOfBusinessID }}"></label> </td>
                         
                         <td><button class="buttonDelete btn red" style="margin-left:-100px;" id="{{ $natureOfBusiness->intNatureOfBusinessID }}"><i class="material-icons">delete</i></button></td>
