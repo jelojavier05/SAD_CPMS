@@ -32,44 +32,49 @@ Guard
   						</div>
 					</div>
 	                  	<thead>
-                    <tr>
-						<th></th>
-						<th></th>
-						<th></th>
-              			<th data-field="id">ID</th>
-              			<th data-field="name">Leave Type</th>
-						<th data-field="name">Default Leave</th>
-                    </tr>
-			</thead>
+							<tr>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th data-field="id">ID</th>
+								<th data-field="name">Leave Type</th>
+								<th data-field="name">Default Leave</th>
+							</tr>
+						</thead>
             
-           <tbody>
+           				<tbody>
 			   
           			<tr>
-
-            			<td><button class="buttonUpdate btn large modal-trigger"  name="leave" id="" 
-            				 href="#" style="margin-left:80px;">Update</button>
-            			<label for=""></label> </td>
-					
-
-						<td>  
-						  <div class="switch">
+						
+						
+						<td> 
+						  <div class="switch" style="margin-right: -80px;">
 							<label>
-							  Off
-							  <input type="checkbox">
+							  Deactivate
+							 
+							  	<input type="checkbox" checked class = "checkboxFlag" id = "">
+							 
+							  	<input type="checkbox" class = "checkboxFlag" id = "">
+							  
 							  <span class="lever"></span>
-							  On
+							  Activate
 							</label>
 						  </div>
 						</td>
-						<td><button formaction="" class="btn waves-effect waves-light red" 
-									onclick="">Delete<i class="material-icons right">delete</i>
-							</button>
-						</td>
+						
+						
+            			<td><button class="buttonUpdate btn modal-trigger"  name="vitalStatistic" id="" href="#" style="margin-right:80px;"><i class="material-icons">edit</i></button>
+            			<label for=""></label> </td>
 
+						<td><button class="buttonDelete btn red" style="margin-left:-200px;" id=""><i class="material-icons" >delete</i></button></td>
+						
+						<td></td>
+						<td></td>
+            				
           			</tr>
 
           
-        </tbody>
+        				</tbody>
 				
 					</table>
 				

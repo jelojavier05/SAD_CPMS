@@ -326,18 +326,20 @@ Guard Form
                                     <div class="row" style="margin:5%;">
 -->
 					                   <div class="input-field col s6">
-						                  <input  id="dischargeHonor" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
-										  <label data-error="Incorrect" for="dischargeHonor">Discharged Honorably</label>
+						                  <input class="with-gap" name="discharge" type="radio" id="dischargedHonorably" />
+    											<label for="dischargedHonorably">Discharged Honorably</label>
+										  <input class="with-gap" name="discharge" type="radio" id="dischargedDishonorably"  />
+    											<label for="dischargedDishonorably">Discharged Dishonorably</label>
+					                   </div>
+										
+									   <div class="input-field col s6">
+                                            
+                                            <input  id="reason" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
+                                            <label data-error="Incorrect" for="reason">Reason</label>
 
 					                   </div>
                     
-                                        <div class="input-field col s6">
-						                  <input  id="dischargeDishonor" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
-										  <label data-error="Incorrect" for="dischargeDishonor">Discharged Dishonorably</label>
-
-					                    </div>
-					
-					
+                                        
 <!--
 				                    </div>
 
@@ -360,13 +362,8 @@ Guard Form
 															<td>
 																<div>
 																
-                                                        			<select>
-																		<option disabled selected>Choose</option>
-																		<option value="test1">GovExam1</option>
-																		<option value="test2">GovExam2</option>
-																		<option value="test3">GovExam3</option>
-																		<option value="test4">GovExam4</option>
-																	</select>
+                                                        			<input class="with-gap" name="radioGovexam" type="radio" id="radioGovexam" />
+    																<label for="radioGovexam"></label>
 																
 																</div>
 															</td>
