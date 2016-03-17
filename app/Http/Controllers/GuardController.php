@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Model\ArmedService;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -20,7 +20,12 @@ class GuardController extends Controller
     }
     
     public function guardForm(){
-        return view('/guardForm');
+        $armedservices = ArmedService::
+            where('deleted_at', null)
+            ->where('boolFlag', 1)
+            ->get();
+        
+        return view('/guardForm')->with ('armedservices', $armedservices);
     }
 
     /**

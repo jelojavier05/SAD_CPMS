@@ -289,33 +289,17 @@ Guard Form
 				                <div class="container-fluid grey lighten-4" style="border: 1px solid black;">
                                     <div class="row" style="margin:5%;">
 					
-					                   <div class="input-field col s12">
-                                            <p>Armed Services:</br>
-                                                <input type="checkbox" id="pa" />
-                                                <label for="pa">PA</label></br>
-
-
-
-                                                <input type="checkbox" id="pn" />
-                                                <label for="pn">PN</label></br>
-
-
-
-                                                <input type="checkbox" id="paf" />
-                                                 <label for="paf">PAF</label></br>
-
-
-
-                                                  <input type="checkbox" id="pnp" />
-                                                  <label for="pnp">PNP</label></br>
-
-
-
-                                                  <input type="checkbox" id="rotc" />
-                                                  <label for="rotc">ROTC</label></br>
-                                            </p>
-
-					                   </div>
+					                   <div class="row">
+                                            <div class="input-field col s5">
+                                                <select id = "selectArmedServices" name = "strTypeOfGun">
+                                                    <option disabled selected>Choose armed services if any</option>
+                                                    @foreach($armedservices as $armedservice)
+                                                        <option>{{$armedservice->strArmedServiceName}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <label>Armed Service</label>
+                                            </div>
+                                        </div>
 					
 <!--
 				                    </div>
