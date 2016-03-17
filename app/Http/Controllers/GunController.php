@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Gun;
 use App\Http\Requests;
+use DB;
 use App\Http\Controllers\Controller;
+
 
 class GunController extends Controller
 {
@@ -29,8 +31,19 @@ class GunController extends Controller
     public function store(Request $request)
     {
         
-    }
 
+        DB::table('tblgun')
+        ->insertGetId([
+            'strSerialNumber' => $request->input('serialNumber'),
+            'intTypeOfGunID' => $request->input('typeOfGun'),
+            'strMaker' => $request->input('gunMaker'),
+            'strGunName' => $request->input('gunName')
+        ]);
+        
+        ///DB::transaction(function(){
+            
+       //  });
+    }
 
     public function update(Request $request)
     {

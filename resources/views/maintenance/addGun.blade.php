@@ -21,6 +21,7 @@ Add Gun
 	
 
 <!-- TABLE -->
+
      
         	<div class="col s10 push-s2">
             	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-10px;">	
@@ -57,7 +58,7 @@ Add Gun
 						  <div class="switch" style="margin-right: -80px;">
 							<label>
 							  Deactivate
-							  @if ($armedService->boolFlag==1)
+							  @if ($gun->boolFlag==1)
 							  	<input type="checkbox" checked class = "checkboxFlag" id = "{{ $gun->intGunID }}">
 							  @else
 							  	<input type="checkbox" class = "checkboxFlag" id = "{{ $gun->intGunID }}">
@@ -76,9 +77,9 @@ Add Gun
 
 						<td><button class="btn red"><i class="material-icons">delete</i></button></td>
 						
-						<td id = "id{{ $gun->intGunID }}">{{ $gun->intGunID }}</td>
-            			<td id = "name{{ $gun->intGunID }}">{{ $gun->intGunID  }}</td>
-            			<td id = "description{{ $gun->intGunID }}">{{$gun->intGunID  }}</td>
+						<td id = "id{{ $gun->intGunID }}">{{ $gun->strSerialNumber }}</td>
+            			<td id = "name{{ $gun->intGunID }}">{{ $gun->strGunName  }}</td>
+            			<td id = "description{{ $gun->intGunID }}">{{$gun->strMaker  }}</td>
           			</tr>
           		@endforeach
           
@@ -108,7 +109,7 @@ Add Gun
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="" type="text" class="validate" name = "" disabled>
+								<input  id="idGunID" type="text" class="validate" name = "" disabled>
 									<label for="">Gun ID</label>
 							</div>
 						</div>
@@ -116,7 +117,7 @@ Add Gun
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="" type="text" class="validate" name = "" required="" aria-required="true">
+								<input id="strSerialNumber" type="text" class="validate" name = "strSerialNumber" required="" aria-required="true">
 									<label for="">Serial No.</label> 
 							</div>
 						</div>
@@ -124,7 +125,7 @@ Add Gun
 				    <div class="row">
 							<div class="col s5">
 								<div class="input-field">
-									<input id="" type="text" class="validate"  name = "" required="" aria-required="true">
+									<input id="strGunName" type="text" class="validate"  name = "strGunName" required="" aria-required="true">
 										<label for="">Gun Name</label> 
 								</div>
 							</div>
@@ -132,43 +133,19 @@ Add Gun
                      <div class="row">
 							<div class="col s5">
 								<div class="input-field">
-									<input id="" type="text" class="validate"  name = "" required="" aria-required="true">
+									<input id="strGunMaker" type="text" class="validate"  name = "strGunMaker" required="" aria-required="true">
 										<label for="">Gun Maker</label> 
 								</div>
 							</div>
 				    </div>
                     <div class="row">
                         <div class="input-field col s5">
-                            <select id = "#selectTypeGunAdd">
-								<option value="" disabled selected>Choose Gun Type</option>
+                            <select id = "selectTypeGunAdd" name = "strTypeOfGun">
+								
                             </select>
                             <label>Gun Type</label>
                         </div>
                     </div>
-                </div>
-                <div class="container grey lighten-4">
-                    <div class="row">
-							<div class="col s8">
-								<div class="input-field">
-									<input id="" type="text" class="validate"  name = "" required="" aria-required="true">
-										<label for="">License No.</label> 
-								</div>
-							</div>
-                        
-                            <div class="col s5">
-								<div class="input-field">
-									<input id="" type="date" class="validate"  name = "" required="" aria-required="true">
-										<label class="active" for="">Date Issued</label> 
-								</div>
-							</div>
-                             
-                            <div class="col s5">
-								<div class="input-field">
-									<input id="" type="date" class="validate"  name = "" required="" aria-required="true">
-										<label class='active' for="">Expiration Date</label> 
-								</div>
-						</div>
-				     </div>
                 </div>
 
 	<!-- Modal Button Save -->
@@ -177,9 +154,6 @@ Add Gun
     			<i class="material-icons right">send</i>
   			</button>
     		</div>
-	
-			
-    	
 		</div>
 <!-- MODAL Add Gun EDIT -->
 <div id="modaladdgunEdit" class="modal modal-fixed-footer" >
@@ -221,7 +195,7 @@ Add Gun
 				    </div>
                     <div class="row">
                         <div class="input-field col s5">
-                            <select id = "selectTypeGun">
+                            <select id = "selectTypeGunEdit">
                               <option value="" disabled selected>Choose Gun Type</option>
                             </select>
                             <label>Gun Type</label>
@@ -262,31 +236,55 @@ Add Gun
     		</div>
 </div>
 
-
-	
-	
-
-
 @stop
 
 @section('script')
 <script type="text/javascript">
-	$(function(){
-		$("#dataTable").DataTable({
-             "columns": [
-            { "orderable": false },
-            { "orderable": false },
-            { "orderable": false },
-            null,
-            null,
-            null,
-            null
-            ] ,  
-		    "pagingType": "full_numbers",
-			"pageLength":5
-		});
+	
+    $(function(){
+        $("#btnAddSave").click(function(){
+            if ($('#strSerialNumber').val().trim() && $('#strGunName').val().trim()){
+                $.ajax({
 
-		$(".buttonUpdate").click(function(){
+                    type: "POST",
+                    url: "{{action('GunController@store')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        serialNumber: $('#strSerialNumber').val(),
+                        gunName: $('#strGunName').val(),
+                        gunMaker: $('#strGunMaker').val(),
+                        typeOfGun: $('#selectTypeGunAdd').val(),
+                    },
+                    success: function(data){
+                        var toastContent = $('<span>Record Added.</span>');
+                        Materialize.toast(toastContent, 3000,'green', 'edit');
+    					window.location.href = "{{action('GunController@index')}}";
+
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occured. </span>');
+                        Materialize.toast(toastContent, 1500,'red', 'edit');
+                        console.log(data);
+                    }
+
+
+                });//ajax
+             }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }//validations
+        });
+        
+    });
+    
+    $(function(){
+        $(".buttonUpdate").click(function(){
 			var itemID = "id" + this.id;
 			var itemName = "name" + this.id;
 			var itemDescription = "description" + this.id;
@@ -296,40 +294,56 @@ Add Gun
 			document.getElementById('editDefault').value = $("#"+itemDescription).html();
 
 		});
+        
+    });//button update clicked
+    
+    $(function(){
+		$("#dataTable").DataTable({
+             "columns": [
+            { "orderable": false },
+            { "orderable": false },
+            { "orderable": false },
+            null,
+            null,
+            null
+            ] ,  
+		    //"pagingType": "full_numbers",
+			"pageLength":5
+		});
 			
-	});
-	
-		$(document).ready(function() {
+	});//data table
+
+    $(function(){
+        $.ajax({
+            type: "GET",
+            url: "{{action('TypeOfGunController@getTypeOfGun')}}",
+            dataType: 'json',
+            success: function(jsondata){
+                var $dropDown = 
+                    $("#selectTypeGunAdd")
+                        .empty()
+                        .html(' ');
+                $.each( jsondata, function(index, item) { 
+                    $dropDown.append(
+                          $("<option></option>")
+                            .attr("value",item.intTypeOfGunID)
+                            .text(item.strTypeOfGun)
+                    );
+
+                });	//for each
+
+                $('select').material_select();
+
+            },//success
+            error: function(data){
+                Console.log(data);
+            }
+        });//ajax select
+    });//function insert element in option
+
+    $(document).ready(function() {
 			$('select').material_select();
-			
 		});
-	
-
-		$(function(){
-			
-			$.ajax({
-				type: "GET",
-				url: "{{action('TypeOfGunController@getTypeOfGun')}}",
-				dataType: 'json',
-				success: function(jsondata){
-					
-					$.each( jsondata, function(i, item) {
-						$('#selectTypeGunAdd').append(
-							$("<option></option>")
-								.attr("value", jsondata[i].intTypeOfGunID)
-								.text(jsondata[i].strTypeOfGun)
-						);	 
-						
-					});	
-					
-					$('#selectTypeGunAdd').material_select();
-				},
-				error: function(data){
-					Console.log(data);
-				}
-			});//ajax select	
-		});
-
 </script>
 
 @stop

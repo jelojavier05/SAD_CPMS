@@ -291,7 +291,7 @@ Type of Gun
 	$('#dataTable').DataTable({
      	"columns": [
             { "orderable": false },
-            { "orderable": false },
+            { "orderable": false }, 
             { "orderable": false },
             null,
             null,
