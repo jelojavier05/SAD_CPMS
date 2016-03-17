@@ -104,7 +104,7 @@
 														
 														<li><a class="blue-text" href="/maintenance/typeOfGun">Type of Gun</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/typeOfGun">Add Gun</a></li>
+														<li><a class="blue-text" href="/maintenance/gun">Add Gun</a></li>
 														
 														<li><a class="blue-text" href="/maintenance/typeOfGun">Add Supply Item</a></li>
 														

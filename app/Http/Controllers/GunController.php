@@ -18,7 +18,12 @@ class GunController extends Controller
      */
     public function index()
     {
-		$guns = Gun::where('deleted_at', null)->get();
+		$guns = DB::table('tblGun')
+            ->join('tbltypeofgun', 'tblGun.intTypeOfGunID', '=', 'tbltypeofgun.intTypeOfGunID')
+            ->select('tblGun.*', 'tbltypeofgun.strTypeOfGun')
+            ->where('tblgun.deleted_at', null)
+            ->get();
+            
         return view('/maintenance/addGun', ['guns'=>$guns]);
     }
 

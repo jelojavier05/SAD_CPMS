@@ -364,18 +364,17 @@ Guard Form
                                                                 <td>
                                                                     <div>
 
+
                                                                         <input type="checkbox" id="checkGov" />
       																	<label for="checkGov"></label>
+
 
                                                                     </div>
                                                                 </td>
 
                                                                 <td>
-                                                                    <div>
-<!--                                                                        ito yon son, delete mo after.-->
                                                                         {{$governmentexam->strGovernmentExam}}
 
-                                                                    </div>
                                                                 </td>
 
                                                                 <td>
