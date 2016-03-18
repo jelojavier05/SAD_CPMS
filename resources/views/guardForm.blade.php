@@ -459,11 +459,25 @@ Guard Form
 					
 				                    </div>
 				
-				 <button class="btn waves-effect waves-light right" type="submit" name="action1" style="margin-right: 30px; margin-top:10px;">Save
+				 
+                                </div>
+
+						<!-- =====================Military Training End =========================== -->
+							<legend><h4>Requirements</h4></legend>
+							<div class="container-fluid grey lighten-4" style="border: 1px solid black;">
+								<div class="row" style="margin: 5%;">
+                                   <div class="row">
+								   		<div class="col s3">
+									    	<input type="checkbox" id="nbiClearance" />
+      							   			<label for="nbiClearance" class="black-text">NBI Clearance</label>
+									    </div>
+								   </div>
+                                </div>
+							</div>
+							
+				<button class="btn waves-effect waves-light right" type="submit" name="action1" style="margin-right: 30px; margin-top:10px;">Save
     			     <i class="material-icons right">send</i>
   			     </button>
-                                </div>
-				
 				
 				
             </div>

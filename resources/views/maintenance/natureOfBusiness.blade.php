@@ -297,9 +297,10 @@ Nature of Business
 					natureOfBusiness: $('#strNatureOfBusiness').val(),
 				},
 				success: function(data){
+					window.location.href = "{{action('NatureOfBusinessController@index')}}";
 					var toastContent = $('<span>Record Added.</span>');
                     Materialize.toast(toastContent, 1500,'green', 'edit');
-					window.location.href = "{{action('NatureOfBusinessController@index')}}";
+					
 				},
 				error: function(data){
 					var toastContent = $('<span>Error Occured. </span>');
