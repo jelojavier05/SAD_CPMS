@@ -10,12 +10,12 @@ Body Attributes
 <!-- ADD EDIT DELETE BUTTON-->
 	<div class="row">
     	<div class="col s12">
-			<div class="col s4 offset-s3">
+			<div class="col s5 push-s3">
 				<div class="flow-text">
 					<h1 class="colortitle blue-text text-darken-3">Body Attributes</h1>
 				</div>
 			</div>
-			<div class="col s3 offset-s2">
+			<div class="col s2 push-s4">
 				<button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalvitalstatisticsAdd"><i class="material-icons left">add</i> ADD</button></br></br>
 </div></div>
 
@@ -69,10 +69,10 @@ Body Attributes
 						</td>
 						
 						
-            			<td><button class="buttonUpdate btn modal-trigger"  name="vitalStatistic" id="{{ $vitalStatistic->intVitalStatisticsID }}" href="#modalvitalstatisticsEdit" style="margin-right:-80px;"><i class="material-icons">edit</i></button>
+            			<td><button class="buttonUpdate btn modal-trigger"  name="vitalStatistic" id="{{ $vitalStatistic->intVitalStatisticsID }}" href="#modalvitalstatisticsEdit" style="margin-right:-20px;"><i class="material-icons">edit</i></button>
             			<label for="{{ $vitalStatistic->intVitalStatisticsID }}"></label> </td>
 
-						<td><button class="buttonDelete btn red" style="margin-right:-50px;" id="{{ $vitalStatistic->intVitalStatisticsID }}"><i class="material-icons" >delete</i></button></td>
+						<td><button class="buttonDelete btn red" style="margin-left:-100px;" id="{{ $vitalStatistic->intVitalStatisticsID }}"><i class="material-icons" >delete</i></button></td>
 						
 						<td id = "id{{ $vitalStatistic->intVitalStatisticsID }}">{{ $vitalStatistic->intVitalStatisticsID }}</td>
             			<td id = "name{{ $vitalStatistic->intVitalStatisticsID }}">{{ $vitalStatistic->strVitalStatisticsName }}</td>
@@ -133,7 +133,7 @@ Body Attributes
 
 <!-- MODAL Armed Service EDIT -->
 <div id="modalvitalstatisticsEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
-	<div class="modal-header"><h2>Vital Statistics</h2></div>
+	<div class="modal-header"><h2>Body Attributes</h2></div>
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
@@ -141,7 +141,7 @@ Body Attributes
 						<div class="col s8">
 							<div class="input-field">
 								<input  id="editID" type="text" class="validate" name = "vitalStatisticsID" readonly required="" aria-required="true" value = "test">
-									<label for="editID">Vital Statistic ID</label>
+									<label for="editID">Body Attribute ID</label>
 							</div>
 						</div>
 					</div>
@@ -149,7 +149,7 @@ Body Attributes
 						<div class="col s5">
 							<div class="input-field">
 								<input id="editname" type="text" class="validate" name = "vitalStatistics" required="" aria-required="true" value = "test">
-									<label for="editname">Vital Statistic Type</label> 
+									<label for="editname">Body Attribute Type</label> 
 							</div>
 						</div>
 					</div>
@@ -333,9 +333,10 @@ Body Attributes
                     vitalStatistics: $('#editname').val(),
 				},
 				success: function(data){
+					 window.location.href = "{{action('VitalStatisticsController@index')}}";
 					var toastContent = $('<span>Record Updated.</span>');
                     Materialize.toast(toastContent, 1500,'green', 'edit');
-                    window.location.href = "{{action('VitalStatisticsController@index')}}";
+                   
 				},
 				error: function(data){
 					var toastContent = $('<span>Error Occured. </span>');

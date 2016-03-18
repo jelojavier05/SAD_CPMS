@@ -265,25 +265,25 @@ Deployment
                     <tr>
                         <td>1</td>
                         <td>M4A1</td>
-                        <td>M</td>
+                        <td>OK</td>
                     </tr>
                     
                     <tr>
                         <td>2</td>
                         <td>M16</td>
-                        <td>F</td>
+                        <td>OK</td>
                     </tr>
                     
                     <tr>
                         <td>3</td>
                         <td>Remington</td>
-                        <td>M</td>
+                        <td>OK</td>
                     </tr>
                     
                     <tr>
                         <td>4</td>
                         <td>Desert Eagle</td>
-                        <td>F</td>
+                        <td>OK</td>
                     </tr>
                 </tbody>
     
@@ -309,7 +309,7 @@ Deployment
             			 </td>
                         <td>1</td>
                         <td>Tat</td>
-                        <td>F</td>
+                        <td>OK</td>
                     </tr>
                     
                     <tr>
@@ -317,7 +317,7 @@ Deployment
             			 </td>
                         <td>2</td>
                         <td>Tet</td>
-                        <td>M</td>
+                        <td>OK</td>
                     </tr>
                     
                     <tr>
@@ -325,7 +325,7 @@ Deployment
             			 </td>
                         <td>3</td>
                         <td>PUP</td>
-                        <td>F</td>
+                        <td>OK</td>
                     </tr>
                     
                     <tr>
@@ -333,7 +333,7 @@ Deployment
             			 </td>
                         <td>4</td>
                         <td>PUP</td>
-                        <td>M</td>
+                        <td>OK</td>
                     </tr>
                 </tbody>
     

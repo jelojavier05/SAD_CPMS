@@ -71,7 +71,7 @@ Gun
 						
 						
 						<td><button class="buttonUpdate btn modal-trigger"  name="" id="{{ $gun->intGunID }}" 
-            				 href="#modaladdgunEdit" style="margin-right: -40px;"><i class="material-icons">edit</i></button>
+            				 href="#modaladdgunEdit" style="margin-right: -20px; margin-left:30px;"><i class="material-icons">edit</i></button>
             			<label for="{{ $gun->intGunID }}"></label> </td>
 					
 

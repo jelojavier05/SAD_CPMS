@@ -63,7 +63,7 @@ Requirements
 						</td>
                         
             			<td><button class="buttonUpdate btn modal-trigger"  name="" id = "{{ $requirement->intRequirementsID }}" 
-            				href="#modalrequirementsEdit" style="margin-right: -40px;"><i class="material-icons">edit</i></button>
+            				href="#modalrequirementsEdit" style="margin-right: -40px;margin-left:50px;"><i class="material-icons">edit</i></button>
             			<label for="{{ $requirement->intRequirementsID }}"></label> </td>
                         
                         <td><button class="btn red"><i class="material-icons">delete</i></button></td>

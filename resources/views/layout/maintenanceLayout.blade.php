@@ -89,7 +89,7 @@
 														
 														<li><a class="blue-text" href="/maintenance/governmentExam">Government Exam</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/vitalStatistics">Vital Statistics</a></li>
+														<li><a class="blue-text" href="/maintenance/vitalStatistics">Body Attributes</a></li>
 														
 														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
 														
@@ -106,7 +106,7 @@
 														
 														<li><a class="blue-text" href="/maintenance/gun">Add Gun</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/typeOfGun">Add Supply Item</a></li>
+														<li><a class="blue-text" href="#">Add Supply Item</a></li>
 														
 														
 														
