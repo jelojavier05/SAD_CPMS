@@ -11,7 +11,7 @@
    
 
   <link href="{!! URL::asset('../css/materialize.css') !!}" type="text/css" rel="stylesheet"/>
-  <link href="{{!! URL::asset('../css/materialize.min.css') !!}" rel="stylesheet" type="text/css" media="screen,projection" />
+  <link rel="stylesheet" type="text/css" media="screen,projection" href="{{!! URL::asset('../css/materialize.min.css') !!}"/>
 <!--	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">-->
 <!--		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
   <link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
