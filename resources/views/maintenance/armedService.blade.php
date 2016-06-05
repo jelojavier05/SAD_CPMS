@@ -86,7 +86,7 @@ Armed Service
 
 <!-- Modal armedservice ADD -->
 
-<div id="#modalarmedserviceAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
+<div id="modalarmedserviceAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Armed Service</h2></div>
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -126,7 +126,7 @@ Armed Service
     		</div>
 		</div>
 <!-- MODAL armedservice EDIT -->
-<div id="modalnobEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
+<div id="modalarmedserviceEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Armed Service</h2></div>
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
