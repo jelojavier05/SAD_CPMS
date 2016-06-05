@@ -91,31 +91,54 @@ Leave
         <div class="modal-header"><h2>Leave</h2></div>
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
 					<div class="row">
-						<div class="col s8">
-							<div class="input-field">
-								<input  id="intLeaveID" type="text" class="validate" name = "leaveID" disabled>
-									<label for="intLeaveID">Leave ID</label>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="strLeaveType" type="text" class="validate" name = "leaveType" required="" aria-required="true">
-									<label for="strLeaveType">Leave Type</label> 
-							</div>
-						</div>
-					</div>
-						<div class="row">
-							<div class="col s5">
-								<div class="input-field">
-									<input id="intDefaultLeave" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
-										<label for="intDefaultLeave">DefaultLeave</label> 
+						<div class="col s6">
+							<div class="row">
+								<div class="col s12">
+									<div class="input-field">
+										<input  id="intLeaveID" type="text" class="validate" name = "leaveID" disabled>
+											<label for="intLeaveID">Leave ID</label>
+									</div>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col s12">
+									<div class="input-field">
+										<input id="strLeaveType" type="text" class="validate" name = "leaveType" required="" aria-required="true">
+											<label for="strLeaveType">Leave Type</label> 
+									</div>
+								</div>
+							</div>
+								<div class="row">
+									<div class="col s12">
+										<div class="input-field">
+											<input id="intNumberOfDays" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
+												<label for="intNumberOfDays">Number of Days</label> 
+										</div>
+									</div>
+								</div>
 						</div>
+						
+						<div class ="col s6">
+							
+							<div class="row">
+									<div class="col s12">
+										<div class="input-field">
+											<input id="intNumberOfRequest" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
+												<label for="intNumberOfRequest">Number of Request</label> 
+										</div>
+									</div>
+							</div>
+							<div class="row">
+									<div class="col s12">
+										<div class="input-field">
+											<input id="intNotificationPeriod" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
+												<label for="intNotificationPeriod">Notification Period</label> 
+										</div>
+									</div>
+							</div>
+						</div>
+				</div>
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
@@ -132,29 +155,52 @@ Leave
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
 					<div class="row">
-						<div class="col s8">
-							<div class="input-field">
-								<input  id="editID" type="text" class="validate" name = "editLeaveID" readonly required="" aria-required="true" value = "test">
-									<label for="intLeaveID">Leave ID</label>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "editLeaveType" required="" aria-required="true" value = "test">
-									<label for="strLeaveType">Leave Type</label> 
-							</div>
-						</div>
-					</div>
-						<div class="row">
-							<div class="col s5">
-								<div class="input-field">
-									<input id="editDefault" type="text" class="validate" pattern="[0-9]{0,}" name = "editDefaultLeave" required="" aria-required="true" value = "test">
-										<label for="intDefaultLeave">DefaultLeave</label> 
+						<div class="col s6">
+							<div class="row">
+								<div class="col s12">
+									<div class="input-field">
+										<input  id="editID" type="text" class="validate" name = "editLeaveID" readonly required="" aria-required="true" value = "test">
+											<label for="intLeaveID">Leave ID</label>
+									</div>
 								</div>
 							</div>
-					</div>
+							<div class="row">
+								<div class="col s12">
+									<div class="input-field">
+										<input id="editname" type="text" class="validate" name = "editLeaveType" required="" aria-required="true" value = "test">
+											<label for="strLeaveType">Leave Type</label> 
+									</div>
+								</div>
+							</div>
+							<div class="row">
+									<div class="col s12">
+										<div class="input-field">
+											<input id="editDefault" type="text" class="validate" pattern="[0-9]{0,}" name = "editDefaultLeave" required="" aria-required="true" value = "test">
+												<label for="intDefaultLeave">Number of Days</label> 
+										</div>
+									</div>
+							</div>
+						</div>
+						
+						<div class ="col s6">
+							<div class="row">
+									<div class="col s12">
+										<div class="input-field">
+											<input id="editNumberOfRequest" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
+												<label for="editNumberOfRequest">Number of Request</label> 
+										</div>
+									</div>
+							</div>
+							<div class="row">
+									<div class="col s12">
+										<div class="input-field">
+											<input id="editNotificationPeriod" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
+												<label for="editNotificationPeriod">Notification Period</label> 
+										</div>
+									</div>
+							</div>
+						</div>
+				</div>
 	<!-- Modal Button Save -->
 				
 		<div class="modal-footer">
