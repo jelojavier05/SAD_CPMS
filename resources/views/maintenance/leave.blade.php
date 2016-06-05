@@ -352,7 +352,7 @@ Leave
 		});//button update clicked
         
         $("#btnDelete").click(function(){
-            $.ajax({
+                $.ajax({
 
                     type: "POST",
                     url: "{{action('LeaveController@deleteLeave')}}",

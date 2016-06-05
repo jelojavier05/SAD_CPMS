@@ -55,14 +55,6 @@ Body Attributes
                                     </div>
                                 	</td>
 									
-									
-									
-<!--
-									<td>
-										<button class="buttonUpdate btn modal-trigger"  name="" id="{{ $vitalStatistic->intVitalStatisticsID }}" href="#modalvitstatsEdit" style="margin-right:-20px;"><i class="material-icons">edit</i></button>
-										<label for="{{ $vitalStatistic->intVitalStatisticsID }}"></label> 
-									</td>
--->
 									<td>
                                         <button class="buttonUpdate btn modal-trigger"  name="" id="{{ $vitalStatistic->intVitalStatisticsID }}" href="#modalvitstatsEdit" >
                                             <i class="material-icons">edit</i>
@@ -76,13 +68,9 @@ Body Attributes
                                         </button>
                                     </td>
 
-									<td id = "id{{ $vitalStatistic->intVitalStatisticsID }}">
-										{{ $vitalStatistic->intVitalStatisticsID }}
-									</td>
+									<td id = "id{{ $vitalStatistic->intVitalStatisticsID }}">{{ $vitalStatistic->intVitalStatisticsID }}</td>
 
-									<td id = "name{{ $vitalStatistic->intVitalStatisticsID }}">
-										{{ $vitalStatistic->strVitalStatisticsName }}
-									</td>
+									<td id = "name{{ $vitalStatistic->intVitalStatisticsID }}">{{ $vitalStatistic->strVitalStatisticsName }}</td>
                                </tr>
                             @endforeach
                         </tbody>
@@ -135,7 +123,7 @@ Body Attributes
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="editID" type="text" class="validate" name = "vitalStatisticsID" readonly required="" aria-required="true" value = "test">
+								<input  id="editID" type="text" class="validate" name = "vitalStatisticsID" readonly required="" aria-required="true" value = " ">
 								<label for="editID">Body Attribute ID</label>
 							</div>
 						</div>
@@ -143,7 +131,7 @@ Body Attributes
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "vitalStatistics" required="" aria-required="true" value = "test">
+								<input id="editname" type="text" class="validate" name = "vitalStatistics" required="" aria-required="true" value = " ">
 								<label for="editname">Body Attribute Type</label> 
 							</div>
 						</div>
@@ -281,37 +269,38 @@ Body Attributes
 
 		});//button add clicked
         
-        $(".buttonDelete").click(function(){
-            if(confirm('Are you sure you want to delete the record?')){
-				
-                $.ajax({
+        $("#btnDelete").click(function(){
+            $.ajax({
 
-                    type: "POST",
-                    url: "{{action('VitalStatisticsController@deleteVitalStatistics')}}",
-                    beforeSend: function (xhr) {
-                        var token = $('meta[name="csrf_token"]').attr('content');
+                type: "POST",
+                url: "{{action('VitalStatisticsController@deleteVitalStatistics')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
 
-                        if (token) {
-                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                        }
-                    },
-                    data: {
-                        vitalStatisticsID: this.id
-
-                    },
-                    success: function(data){
-                        var toastContent = $('<span>Record Deleted.</span>');
-                        Materialize.toast(toastContent, 1500, 'edit');
-                         window.location.href = "{{action('VitalStatisticsController@index')}}";
-                    },
-                    error: function(data){
-                        var toastContent = $('<span>Error Occur. </span>');
-                        Materialize.toast(toastContent, 1500, 'edit');
-
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                     }
+                },
+                data: {
+                    vitalStatisticsID: deleteID.value 
 
-                });//ajax
-            }
+                },
+                success: function(data){
+                    var toastContent = $('<span>Record Deleted.</span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                     window.location.href = "{{action('VitalStatisticsController@index')}}";
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+
+                }
+
+            });//ajax
+        });
+        
+        $(".buttonDelete").click(function(){
+            document.getElementById('deleteID').value =this.id;
         });
         
 		$(".buttonUpdate").click(function(){
@@ -321,6 +310,7 @@ Body Attributes
 
 			document.getElementById('editID').value = $("#"+itemID).html();
 			document.getElementById('editname').value = $("#"+itemName).html();
+            
 
 		});
 

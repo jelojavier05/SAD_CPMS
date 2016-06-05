@@ -69,17 +69,11 @@ Armed Service
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
-                                    <td id = "id{{ $armedService->intArmedServiceID }}">
-                                        {{ $armedService->intArmedServiceID }}
-                                    </td>
+                                    <td id = "id{{ $armedService->intArmedServiceID }}">{{ $armedService->intArmedServiceID }}</td>
             						
-									<td id = "name{{ $armedService->intArmedServiceID }}">
-                                        {{ $armedService->strArmedServiceName }}
-                                    </td>
+									<td id = "name{{ $armedService->intArmedServiceID }}">{{ $armedService->strArmedServiceName }}</td>
                                     
-                                    <td id = "description{{ $armedService->intArmedServiceID }}">
-                                        {{ $armedService->strDescription }}
-                                    </td>
+                                    <td id = "description{{ $armedService->intArmedServiceID }}">{{ $armedService->strDescription }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -140,7 +134,7 @@ Armed Service
 					<div class="row">
 						<div class="col s8">
 							<div class="input-field">
-								<input  id="editID" type="text" class="validate" name = "armedServiceID" readonly required="" aria-required="true" value = "test">
+								<input  id="editID" type="text" class="validate" name = "armedServiceID" readonly required="" aria-required="true" value = " ">
 									<label for="editID">Armed Service ID</label>
 							</div>
 						</div>
@@ -148,7 +142,7 @@ Armed Service
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "armedServiceName" required="" aria-required="true" value = "test">
+								<input id="editname" type="text" class="validate" name = "armedServiceName" required="" aria-required="true" value = " ">
 									<label for="editname">Armed Service Type</label> 
 							</div>
 						</div>
@@ -156,7 +150,7 @@ Armed Service
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="editdescription" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true" value = "test">
+								<input id="editdescription" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true" value = " ">
 								<label for="editDescription">Description</label> 
 							</div>
 						</div>
