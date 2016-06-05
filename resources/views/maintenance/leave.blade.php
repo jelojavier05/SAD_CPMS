@@ -67,7 +67,7 @@ Leave
                                     </td>
 
                                     <td>
-                                        <button class="buttonDelete btn red modal-trigger" id="{{$leave->intLeaveID}}" href="#modalbreedDelete">
+                                        <button class="buttonDelete btn red modal-trigger" id="{{$leave->intLeaveID}}" href="#modalleaveDelete">
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
@@ -169,6 +169,30 @@ Leave
     	</div>
     		</div>
 </div>
+<!---------- modal delete leave--------------------------------->
+<div id="modalleaveDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">
+        <form method="post" action="">
+            <div class="modal-header orange"><h2 class="white-text">Delete</h2></div>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="modal-content">
+
+                <div class="row">
+                    <div class="col s12">
+                        <h3 class="center">Confirm Delete</h3>
+                    </div>
+                </div>
+                <input type="hidden" name="idDelete" id = "deleteID">
+                <div class="row">
+                    <div class="col s3 push-s5">
+                        <button class=" btn waves-effect waves-light red large" name="action" style="margin-left: 20px;">
+                            <i class="material-icons left">delete</i>Delete
+                        </button>
+
+                    </div>	
+                </div>
+
+            </div>
+        </form>
 </div>
 
 	
@@ -182,36 +206,7 @@ Leave
 	$(function(){
 
 		$(".buttonDelete").click(function(){
-            if(confirm('Are you sure you want to delete the record?')){
-
-                $.ajax({
-
-                    type: "POST",
-                    url: "{{action('LeaveController@deleteLeave')}}",
-                    beforeSend: function (xhr) {
-                        var token = $('meta[name="csrf_token"]').attr('content');
-
-                        if (token) {
-                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                        }
-                    },
-                    data: {
-                        leaveID: this.id
-
-                    },
-                    success: function(data){
-                        var toastContent = $('<span>Record Deleted.</span>');
-                        Materialize.toast(toastContent, 1500, 'edit');
-                        window.location.href = "{{action('LeaveController@index')}}";
-                    },
-                    error: function(data){
-                        var toastContent = $('<span>Error Occur. </span>');
-                        Materialize.toast(toastContent, 1500, 'edit');
-
-                    }
-
-                });//ajax
-            }
+            document.getElementById('deleteID').value =this.id;
         });
         
 		$(".buttonUpdate").click(function(){

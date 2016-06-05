@@ -7,100 +7,87 @@ Nature of Business
 @section('content')
 
 
-<!-- ADD EDIT DELETE BUTTON-->
-	<div class="row">
-    	<div class="col s12">
-			<div class="col s6 push-s3">
-				<div class="flow-text">
-					<h1 class="colortitle blue-text text-darken-3">Nature of Business</h1>
-				</div>
-			</div>
-			<div class="col s3 push-s4">
-				<button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalnobAdd"><i class="material-icons left">add</i> ADD</button></br></br>
-</div></div>
+<div class="row">
+    <div class="col s12 push-s1">
+        <div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:40px;">
+            <div class="row">
+                <div class="col s4 push-s1">
+                    <h2 class="blue-text">Nature of Business</h2>
+                </div>
 
-
-<!-- TABLE -->
-
-	 <div class="row">
+                <div class="col s3 offset-s4">
+                    <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalnobAdd">
+                        <i class="material-icons left">add</i> ADD
+                    </button>
+                </div>
+            </div>
         
-        	<div class="col s10 push-s2">
-            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-20px;">
-					
-				<table class="highlight white" style="border-radius: 10px; margin-top: -8%" id="dataTable">
-                	<div class="right-align">
-                 		<div class="fixed-action-btn horizontal click-to-toggle">
-    						<button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalnobAdd">
-      							<i class="material-icons">add</i>
-    						</button>
+            <div class="row">
+                <div class="col s12">
+                    <table class="highlight white" style="border-radius:10px;" id="dataTable">
 
-  						</div>
-					</div>
-           	<thead>
-                    <tr>
-						<th></th>
-						<th></th>
-                        <th></th>
-              			<th data-field="id">ID</th>
-              			<th data-field="name">Name</th>
-						
-                    </tr>
-			</thead>
-            
-           <tbody>
-			   @foreach ($natureOfBusinesses as $natureOfBusiness)
-          			<tr>
-            			
-						<td> 
-						  <div class="switch" style="margin-right: -80px;">
-							<label>
-							  Deactivate
-							  @if ($natureOfBusiness->boolFlag==1)
-							  	<input type="checkbox" checked class = "checkboxFlag" id = "{{ $natureOfBusiness->intNatureOfBusinessID }}">
-							  @else
-							  	<input type="checkbox" class = "checkboxFlag" id = "{{ $natureOfBusiness->intNatureOfBusinessID }}">
-							  @endif
-							  <span class="lever"></span>
-							  Activate
-							</label>
-						  </div>
-						</td>
-						
-						<td><button class="buttonUpdate btn modal-trigger"  name="" id="{{ $natureOfBusiness->intNatureOfBusinessID }}" href="#modalnobEdit" style="margin-right:-20px;"><i class="material-icons">edit</i></button>
-            			<label for="{{ $natureOfBusiness->intNatureOfBusinessID }}"></label> </td>
-                        
-                        <td><button class="buttonDelete btn red" style="margin-left:-100px;" id="{{ $natureOfBusiness->intNatureOfBusinessID }}"><i class="material-icons">delete</i></button></td>
+                        <thead>
+                            <tr>
+                                <th style="width:160px;"></th>
+                                <th style="width:50px;"></th>
+								<th style="width:50px;"></th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                
+                            </tr>
+                        </thead>
 
-						<td id = "id{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->intNatureOfBusinessID }}</td>
-            			<td id = "name{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->strNatureOfBusiness }}</td>
-            				
-          			</tr>
-          		@endforeach
-          
-        </tbody>
-				</table>
-				
-				</div>
-				<!-- Pagination -->
-				
-				</div>
+                        <tbody>
+                            @foreach($natureOfBusinesses as $natureOfBusiness)
+                                <tr>
+                                    
+									<td> 
+									  <div class="switch" style="margin-right: -80px;">
+										<label>
+										  Deactivate
+										  @if ($natureOfBusiness->boolFlag==1)
+											<input type="checkbox" checked class = "checkboxFlag" id = "{{ $natureOfBusiness->intNatureOfBusinessID }}">
+										  @else
+											<input type="checkbox" class = "checkboxFlag" id = "{{ $natureOfBusiness->intNatureOfBusinessID }}">
+										  @endif
+										  <span class="lever"></span>
+										  Activate
+										</label>
+									  </div>
+									</td>
+									
+									
+									
+									<td>
+                                        <button class="buttonUpdate btn modal-trigger"  name="" id="{{$natureOfBusiness->intNatureOfBusinessID}}" href="#modalnobEdit" >
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                    <label for="{{ $natureOfBusiness->intNatureOfBusinessID }}"></label>
+                                    </td>
 
-				
-			
-			
-			</br></br></br></br></br>
+                                    <td>
+                                        <button class="buttonDelete btn red modal-trigger" id="{{ $natureOfBusiness->intNatureOfBusinessID }}" href="#modalnobDelete">
+                                            <i class="material-icons">delete</i>
+                                        </button>
+                                    </td>
+                                    <td id = "id{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->intNatureOfBusinessID }}</td>
+            						<td id = "name{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->strNatureOfBusiness }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
-				
 
-
-<!-- Modal Nature of Business ADD -->
+<!-- Modal Leave ADD -->
 
 <div id="modalnobAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Nature of Business</h2></div>
         	<div class="modal-content">
-				
-							
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 					<div class="row">
@@ -129,13 +116,11 @@ Nature of Business
     	</div>
     		</div>
 		</div>
-
-<!-- MODAL Nature of Business EDIT -->
+<!-- MODAL LEAVE EDIT -->
 <div id="modalnobEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Nature of Business</h2></div>
         	<div class="modal-content">
-				
-					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
 					<div class="row">
 						<div class="col s8">
@@ -154,20 +139,19 @@ Nature of Business
 						</div>
 					</div>
 						
-      
 	<!-- Modal Button Save -->
 				
-				<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
 		<div class="modal-footer">
 			
-			
-			<button class="btn waves-effect waves-light"  name="action1" style="margin-right: 30px;" id ="btnUpdate">Update
+			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
   			</button>
 			
+			
+			
+			
     	</div>
     		</div>
-			
 </div>
 </div>
 	
@@ -275,6 +259,7 @@ Nature of Business
             ] ,  
 //		    "pagingType": "full_numbers",
 			"pageLength":5,
+			"lengthMenu": [5,10,15,20]
 
 
 		});

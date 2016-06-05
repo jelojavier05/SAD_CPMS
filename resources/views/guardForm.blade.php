@@ -187,6 +187,7 @@ Guard Form
 
 
 				</div>
+			   <button style="margin-top:20px;" class=" z-depth-2 btn-large green right" href="#">Next</button>
 			</div>
 		</div>
 	</div>
