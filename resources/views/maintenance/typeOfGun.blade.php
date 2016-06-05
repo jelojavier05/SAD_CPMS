@@ -6,192 +6,185 @@ Type of Gun
 
 @section('content')
 
-	<!-- ADD EDIT DELETE BUTTON-->
-		<div class="row">
-			<div class="col s12">	
-				<div class="col s4 offset-s3">
-					<h1 class="colortitle blue-text text-darken-3">Type of Gun</h1>
-				</div>
-				<div class="col s2 offset-s2">
-					<button style="margin-top: 30px;" id="btnAdd" class="z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalguntypeAdd"><i class="material-icons left">add</i> ADD</button></br></br>
-				</div>
-
-</div></div>
+<!-- ADD EDIT DELETE BUTTON-->
+<div class="row">
+    <div class="col s12">	
+        <div class="col s4 offset-s3">
+            <h1 class="colortitle blue-text text-darken-3">Type of Gun</h1>
+        </div>
+    <div class="col s2 offset-s2">
+        <button style="margin-top: 30px;" id="btnAdd" class="z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalguntypeAdd">
+            <i class="material-icons left">add</i> ADD
+        </button>
+        </br></br>
+        </div>
+    </div>
+</div>
 
 <!-- TABLE -->
 
-	 <div class="row">
-        
-        	<div class="col s10 push-s2">
-            	<div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-20px;">
-					
-				<table class="highlight white" style="border-radius: 10px; margin-top: -8%;" id="dataTable">
-                	<div class="right-align">
-                 		<div class="fixed-action-btn horizontal click-to-toggle">
-    						<button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalguntypeAdd">
-      							<i class="material-icons">add</i>
-    						</button>
-
-  						</div>
-					</div>
-           	<thead>
+<div class="row">
+    <div class="col s10 push-s2">
+        <div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-20px;">
+            <table class="highlight white" style="border-radius: 10px; margin-top: -8%;" id="dataTable">
+                <div class="right-align">
+                    <div class="fixed-action-btn horizontal click-to-toggle">
+                        <button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalguntypeAdd">
+                            <i class="material-icons">add</i>
+                        </button>
+                    </div>
+                </div>
+                
+                <thead>
                     <tr>
-						<th></th>
-						<th></th>
-						<th></th>
-					
-              			<th data-field="id">ID</th>
-              			<th data-field="name">Gun</th>
-              			<th data-field="number">Description</th>
-						
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th data-field="id">ID</th>
+                        <th data-field="name">Gun</th>
+                        <th data-field="number">Description</th>
                     </tr>
-			</thead>
-            
-           <tbody>
-			   @foreach ($typeOfGuns as $typeOfGun)
-          			<tr>
-						
-						
-						<td> 
-						  <div class="switch" style="margin-right: -80px;">
-							<label>
-							  Deactivate
-							  @if ($typeOfGun->boolFlag==1)
-							  	<input type="checkbox" checked class = "checkboxFlag" id = "{{ $typeOfGun->intTypeOfGunID }}">
-							  @else
-							  	<input type="checkbox" class = "checkboxFlag" id = "{{ $typeOfGun->intTypeOfGunID }}">
-							  @endif
-							  <span class="lever"></span>
-							  Activate
-							</label>
-						  </div>
-						</td>
-						
-            			<td><button class="buttonUpdate btn modal-trigger"  name="typeofGun" id="{{ $typeOfGun->intTypeOfGunID }}" 
-            				 href="#modalguntypeEdit" style="margin-left:20px;"><i class="material-icons">edit</i></button>
-            			<label for="{{ $typeOfGun->intTypeOfGunID }}"></label> </td>
-						
-						<td><button class="buttonDelete btn red" style="margin-left:-90px;" id="{{ $typeOfGun->intTypeOfGunID }}"><i class="material-icons">delete</i></button></td>
-						
-
-						<td id = "id{{ $typeOfGun->intTypeOfGunID }}">{{ $typeOfGun->intTypeOfGunID }}</td>
-						<td id = "name{{ $typeOfGun->intTypeOfGunID }}">{{ $typeOfGun->strTypeOfGun }}</td>
-            			<td id = "description{{ $typeOfGun->intTypeOfGunID }}">{{ $typeOfGun->strDescription }}</td>	
-          			</tr>
-          		@endforeach
-          
-        </tbody>
-				</table>
-				
-				</div>
-				<!-- Pagination -->
-				</div>
-				
-			
-			
-			</br></br></br></br></br>
-
+                </thead>
+                
+                <tbody>
+                    @foreach ($typeOfGuns as $typeOfGun)
+                        <tr>
+                            <td> 
+                                <div class="switch" style="margin-right: -80px;">
+                                    <label>
+                                        Deactivate
+                                        @if ($typeOfGun->boolFlag==1)
+                                            <input type="checkbox" checked class = "checkboxFlag" id = "{{ $typeOfGun->intTypeOfGunID }}">
+                                        @else
+                                            <input type="checkbox" class = "checkboxFlag" id = "{{ $typeOfGun->intTypeOfGunID }}">
+                                        @endif
+                                        <span class="lever"></span>
+                                        Activate
+                                    </label>
+                                </div>
+                            </td>
+                            
+                            <td>
+                                <button class="buttonUpdate btn modal-trigger"  name="typeofGun" id="{{ $typeOfGun->intTypeOfGunID }}" href="#modalguntypeEdit" style="margin-left:20px;">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                <label for="{{ $typeOfGun->intTypeOfGunID }}"></label> 
+                            </td>
+                            <td>
+                                <button class="buttonDelete btn red" style="margin-left:-90px;" id="{{ $typeOfGun->intTypeOfGunID }}">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                            </td>
+                            
+                            <td id = "id{{ $typeOfGun->intTypeOfGunID }}">
+                                {{ $typeOfGun->intTypeOfGunID }}
+                            </td>
+                            
+                            <td id = "name{{ $typeOfGun->intTypeOfGunID }}">
+                                {{ $typeOfGun->strTypeOfGun }}
+                            </td>
+                            
+                            <td id = "description{{ $typeOfGun->intTypeOfGunID }}">
+                                {{ $typeOfGun->strDescription }}
+                            </td>	
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </br></br></br></br></br>
 </div>
-				
-
-
 <!-- Modal Type of Gun ADD -->
-
 <div id="modalguntypeAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
-        <div class="modal-header"><h2>Type of Gun</h2></div>
-        	<div class="modal-content">
-				
-							
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-					<div class="row">
-						<div class="col s8">
-							<div class="input-field">
-								<input  id="intTypeOfGunID" type="text" class="validate" name = "typeOfGunID" disabled>
-									<label for="">Type of Gun ID</label>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="strTypeOfGun" type="text" class="validate" name = "typeOfGun" required="" aria-required="true">
-									<label for="">Type of Gun</label> 
-							</div>
-						</div>
-					</div>
-					
-						<div class="row">
-							<div class="col s5">
-								<div class="input-field">
-									<input id="strTypeOfGunDescription" type="text" class="validate"  name = "typeOfGunDescription" required="" aria-required="true">
-										<label for="strTypeOfGunDescription">Description</label> 
-								</div>
-							</div>
-						</div></div>	
-	<!-- Modal Button Save -->
-				
-		<div class="modal-footer">
-			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
-    			<i class="material-icons right">send</i>
-  			</button>
-    	</div>
-    		</div>
-				
-		</div>
+    <div class="modal-header">
+        <h2>Type of Gun</h2>
+    </div>
+    
+    <div class="modal-content">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div class="row">
+            <div class="col s8">
+                <div class="input-field">
+                    <input  id="intTypeOfGunID" type="text" class="validate" name = "typeOfGunID" disabled>
+                    <label for="">Type of Gun ID</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col s5">
+                <div class="input-field">
+                    <input id="strTypeOfGun" type="text" class="validate" name = "typeOfGun" required="" aria-required="true">
+                    <label for="">Type of Gun</label> 
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col s5">
+                <div class="input-field">
+                    <input id="strTypeOfGunDescription" type="text" class="validate"  name = "typeOfGunDescription" required="" aria-required="true">
+                    <label for="strTypeOfGunDescription">Description</label> 
+                </div>
+            </div>
+        </div>
+    </div>	
+    
+    <!-- Modal Button Save -->
+    <div class="modal-footer">
+        <button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+    <!-- Modal Button Save -->
+</div>
+<!-- Modal Type of Gun ADD -->
 
 <!-- MODAL Type of Gun EDIT -->
 <div id="modalguntypeEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
-	<div class="modal-header"><h2>Type of Gun</h2></div>
-        	<div class="modal-content">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					
-					<div class="row">
-						<div class="col s8">
-							<div class="input-field">
-								<input  id="editID" type="text" class="validate" name = "typeOfGunID" readonly required="" aria-required="true" value = "test">
-									<label for="editID">Type of Gun ID</label>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "typeOfGun" required="" aria-required="true" value = "test">
-									<label for="editname">Type of Gun</label> 
-							</div>
-						</div>
-					</div>
-					
-						<div class="row">
-							<div class="col s5">
-								<div class="input-field">
-									<input id="editdescription" type="text" class="validate"  name = "typeOfGunDescription" required="" aria-required="true" value = "test">
-										<label for="strTypeOfGunDescription">Description</label> 
-								</div>
-							</div>
-						</div>	</div>
-						
-      
-	<!-- Modal Button Save -->
-				<input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
-		<div class="modal-footer">
-			
-			
-			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
-    			<i class="material-icons right">send</i>
-  			</button>
-			
-    	</div>
-    		</div>
+    <div class="modal-header">
+        <h2>Type of Gun</h2>
+    </div>
+    
+    <div class="modal-content">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div class="row">
+            <div class="col s8">
+                <div class="input-field">
+                    <input  id="editID" type="text" class="validate" name = "typeOfGunID" readonly required="" aria-required="true" value = "test">
+                    <label for="editID">Type of Gun ID</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col s5">
+                <div class="input-field">
+                    <input id="editname" type="text" class="validate" name = "typeOfGun" required="" aria-required="true" value = "test">
+                    <label for="editname">Type of Gun</label> 
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col s5">
+                <div class="input-field">
+                    <input id="editdescription" type="text" class="validate"  name = "typeOfGunDescription" required="" aria-required="true" value = "test">
+                    <label for="strTypeOfGunDescription">Description</label> 
+                </div>
+            </div>
+        </div>	
+    </div>
+    <!-- Modal Button Save -->
+    <input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
+    <div class="modal-footer">
+        <button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+    <!-- Modal Button Save -->
 </div>
-</div>
-	
-
-	
-	
-	
-
 @stop
 
 @section('script')
