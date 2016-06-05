@@ -31,22 +31,22 @@ Guard Form
 
 				<div class="input-field col s4">
 					   <i class="material-icons prefix">account_circle</i>
-						   <input  id="firstName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
-								<label data-error="Incorrect" for="firstName">First Name</label>
+					   <input  id="firstName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
+					   <label data-error="Incorrect" for="firstName">First Name</label>
 
 				</div>
 
 				<div class="input-field col s4">
-													<i class="material-icons prefix">account_circle</i>
-													<input  id="middleName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
-																	<label data-error="Incorrect" for="middleName">Middle Name</label>
+						<i class="material-icons prefix">account_circle</i>
+					    <input  id="middleName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+						<label data-error="Incorrect" for="middleName">Middle Name</label>
 
 				</div>
 
 				<div class="input-field col s4">
-													<i class="material-icons prefix">account_circle</i>
-													<input  id="lastName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
-																	<label data-error="Incorrect" for="lastName">Last Name</label>
+						<i class="material-icons prefix">account_circle</i>
+						<input  id="lastName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+						<label data-error="Incorrect" for="lastName">Last Name</label>
 
 				</div>
 
@@ -59,38 +59,38 @@ Guard Form
 
 											<div class="row" style="margin:5%;">
 		-->
-												<div class="input-field col s6">
-													<i class="material-icons prefix">home</i>
-													<input  id="address" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
+				<div class="input-field col s6">
+					    <i class="material-icons prefix">home</i>
+						<input  id="address" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
 
-													<label data-error="Incorrect" for="address">Address</label>
+						<label data-error="Incorrect" for="address">Address</label>
 
-											   </div>
+				</div>
 
-												<div class="input-field col s6">
-													<i class="material-icons prefix">home</i>
-													<input  id="provaddress" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
-													<label data-error="Incorrect" for="provaddress">Provincial Address</label>
+				<div class="input-field col s6">
+						<i class="material-icons prefix">home</i>
+						<input  id="provaddress" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
+						<label data-error="Incorrect" for="provaddress">Provincial Address</label>
 
-												</div>
+				</div>
 		<!--
 											</div>
 
 											<div class="row" style="margin:5%;">
 		-->
 
-												<div class="input-field col s6">
-													<input  id="dateOfbirth" type="date" class="datepicker"  required="" aria-required="true">
-													<label class="active" data-error="Incorrect" for="dateOfbirth">Date of Birth</label>
+				<div class="input-field col s6">
+						<input  id="dateOfbirth" type="date" class="datepicker"  required="" aria-required="true">
+						<label class="active" data-error="Incorrect" for="dateOfbirth">Date of Birth</label>
 
-												</div>
+				</div>
 
 
-												<div class="input-field col s6">
-													  <input  id="placeofbirth" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
-													  <label data-error="Incorrect" for="placeofbirth">Place of Birth</label>
+				<div class="input-field col s6">
+						<input  id="placeofbirth" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
+						<label data-error="Incorrect" for="placeofbirth">Place of Birth</label>
 
-												</div>
+				</div>
 
 
 		<!--
@@ -99,18 +99,19 @@ Guard Form
 
 											<div class="row" style="margin:5%;">
 		-->
-											   <div class="input-field col s6">
-													<i class="material-icons prefix">smartphone</i>
-													<input  id="contactCp" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
-													<label data-error="Incorrect" for="contactCp">Contact Number (Mobile)</label>
+				<div class="input-field col s6">
+						<i class="material-icons prefix">smartphone</i>
+						<input  id="contactCp" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
+						<label data-error="Incorrect" for="contactCp">Contact Number (Mobile)</label>
 
-											   </div>
-											   <div class="input-field col s6">
-													<i class="material-icons prefix">phone</i>
-													<input  id="contactLandline" maxlength="10" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
-													<label data-error="Incorrect" for="contactLandline">Contact Number (Landline)</label>
+				</div>
+				
+			    <div class="input-field col s6">
+						<i class="material-icons prefix">phone</i>
+						<input  id="contactLandline" maxlength="10" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
+						<label data-error="Incorrect" for="contactLandline">Contact Number (Landline)</label>
 
-											   </div>
+				</div>
 		<!--
 											</div>
 
@@ -118,27 +119,27 @@ Guard Form
 		-->
 
 
-											   <div class="input-field col s4">
-													  <input  id="citizenship" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
-													  <label data-error="Incorrect" for="citizenship">Citizenship</label>
+				<div class="input-field col s4">
+						<input  id="citizenship" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
+						<label data-error="Incorrect" for="citizenship">Citizenship</label>
 
-											   </div>
+				</div>
 
-											   <div class="input-field col s4">
-													  <input  id="civilStatus" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
-													  <label data-error="Incorrect" for="civilStatus">Civil Status</label>
+				<div class="input-field col s4">
+						<input  id="civilStatus" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+						<label data-error="Incorrect" for="civilStatus">Civil Status</label>
 
-											   </div>
+				</div>
 
-											   <div class="input-field col s4">
+				<div class="input-field col s4">
 
-													 <select>
-														  <option value="" disabled selected>Choose</option>
-														  <option value="1">Male</option>
-														  <option value="2">Female</option>
-													 </select>
-													<label>Sex</label>
-											   </div>
+						<select>
+							<option value="" disabled selected>Choose</option>
+							<option value="1">Male</option>
+							<option value="2">Female</option>
+						</select>
+					    <label>Sex</label>
+				 </div>
 
 
 												<!-- ====================Body Attributes ============ -->

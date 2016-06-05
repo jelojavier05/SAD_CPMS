@@ -172,7 +172,7 @@ Leave
 <!---------- modal delete leave--------------------------------->
 <div id="modalleaveDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">
         <form method="post" action="">
-            <div class="modal-header orange"><h2 class="white-text">Delete</h2></div>
+            <div class="modal-header blue"><h2 class="white-text">Delete</h2></div>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="modal-content">
 
