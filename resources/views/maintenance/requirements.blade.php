@@ -50,12 +50,15 @@ Requirements
 			   @foreach ($requirements as $requirement)
           			<tr>
 						
-						
-            			<td>  
+						<td> 
 						  <div class="switch" style="margin-right: -80px;">
 							<label>
 							  Deactivate
-							  <input type="checkbox">
+							  @if ($requirement->boolFlag==1)
+							  	<input type="checkbox" checked class = "checkboxFlag" id = "{{ $requirement->intRequirementID }}">
+							  @else
+							  	<input type="checkbox" class = "checkboxFlag" id = "{{ $requirement->intRequirementID }}">
+							  @endif
 							  <span class="lever"></span>
 							  Activate
 							</label>
@@ -140,7 +143,6 @@ Requirements
 <div id="modalrequirementsEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Requirement</h2></div>
         	<div class="modal-content">
-				<form action = "{{ route('requirementsUpdate') }}" method = "post">
 					<input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 					
 					<div class="row">
@@ -174,13 +176,12 @@ Requirements
 		<div class="modal-footer">
 			
 			
-			<button class="btn waves-effect waves-light" type="submit" name="action1" style="margin-right: 30px;">Update
+			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
   			</button>
 			
     	</div>
     		</div>
-				</form>
 </div>
 </div>
 
@@ -218,6 +219,47 @@ Requirements
 
 		});
 
+	});
+	
+	$(function(){
+		$("#btnUpdate").click(function(){
+          if ($('#editname').val().trim() && $('#editdescription').val().trim()){
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('RequirementsController@updateRequirements')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					requirementsID: $('#editID').val(),
+                    requirements: $('#editname').val(),
+					requirementsDescription: $('#editdescription').val()
+				},
+				success: function(data){
+					window.location.href = "{{action('RequirementsController@index')}}";
+					var toastContent = $('<span>Record Updated.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
+                   
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
+
+
+			});//ajax
+              }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+
+		});//button add clicked
 	});
 </script>
 @stop

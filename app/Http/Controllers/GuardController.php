@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\ArmedService;
 use App\Model\GovernmentExam;
 use App\Model\VitalStatistics;
+use App\Model\Requirements;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -36,12 +37,19 @@ class GuardController extends Controller
             where('deleted_at', null)
             ->where('boolFlag', 1)
             ->get();
+		
+		$requirements = Requirements::
+            where('deleted_at', null)
+            ->where('boolFlag', 1)
+            ->get();
         
         
         return view('/guardForm')
             ->with ('armedservices', $armedservices)
             ->with ('governmentexams', $governmentExams)
-            ->with ('vitalStatistics', $vitalStatistics);;
+            ->with ('vitalStatistics', $vitalStatistics)
+			->with ('requirements', $requirements);
+		
         
     }
 
