@@ -58,14 +58,14 @@ Armed Service
 									
 									
 									<td>
-                                        <button class="buttonUpdate btn modal-trigger"  name="" id="{{ $armedService->intArmedServiceID }}" href="#modalarmedserviceEdit" >
+                                        <button class="buttonUpdate btn"  name="" id="{{ $armedService->intArmedServiceID }}" >
                                             <i class="material-icons">edit</i>
                                         </button>
                                     <label for="{{ $armedService->intArmedServiceID }}"></label>
                                     </td>
 
                                     <td>
-                                        <button class="buttonDelete btn red modal-trigger" id="{{ $armedService->intArmedServiceID }}" href="#modalarmedserviceDelete">
+                                        <button class="buttonDelete btn red" id="{{ $armedService->intArmedServiceID }}" href="#modalarmedserviceDelete">
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
@@ -288,64 +288,11 @@ Armed Service
                 }
 
             });//button add clicked
-
-            $(".buttonDelete").click(function(){
-                if(confirm('Are you sure you want to delete the record?')){
-
-                    $.ajax({
-                        
-                        type: "POST",
-                        url: "{{action('ArmedServiceController@deleteArmedService')}}",
-                        beforeSend: function (xhr) {
-                            var token = $('meta[name="csrf_token"]').attr('content');
-
-                            if (token) {
-                                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                            }
-                        },
-                        data: {
-                            armedServiceID: this.id
-                        },
-                        success: function(data){
-                            var toastContent = $('<span>Record Deleted.</span>');
-                            Materialize.toast(toastContent, 1500, 'edit');
-                            window.location.href = "{{action('ArmedServiceController@index')}}";
-                        },
-                        error: function(data){
-                            var toastContent = $('<span>Error Occur. </span>');
-                            Materialize.toast(toastContent, 1500, 'edit');
-                        }
-
-                    });//ajax
-                }
-            });//button delete
-
-            $(".buttonUpdate").click(function(){
-
-                var itemID = "id" + this.id;
-                var itemName = "name" + this.id;
-                var itemDescription = "description" + this.id;
-
-                document.getElementById('editID').value = $("#"+itemID).html();
-                document.getElementById('editname').value = $("#"+itemName).html();
-                document.getElementById('editdescription').value = $("#"+itemDescription).html();
-
-            });//button update
-
-            $(".checkboxFlag").click(function(){
-
-                var $this = $(this);
-                var flag;
-                // $this will contain a reference to the checkbox   
-                if ($this.is(':checked')) {
-                    flag = 1;
-                } else {
-                    flag = 0;
-                }
-               $.ajax({
-
+            
+            $("#btnDelete").click(function(){
+                $.ajax({
                     type: "POST",
-                    url: "{{action('ArmedServiceController@flagArmedService')}}",
+                    url: "{{action('ArmedServiceController@deleteArmedService')}}",
                     beforeSend: function (xhr) {
                         var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -354,21 +301,72 @@ Armed Service
                         }
                     },
                     data: {
-                        armedServiceID: this.id,
-                        flag: flag
+                        armedServiceID: deleteID.value
                     },
                     success: function(data){
-
+                        var toastContent = $('<span>Record Deleted.</span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+                        window.location.href = "{{action('ArmedServiceController@index')}}";
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occur. </span>');
                         Materialize.toast(toastContent, 1500, 'edit');
-
                     }
 
                 });//ajax
+            });
+            
+            $('#dataTable').on('click', '.buttonUpdate', function(){
+                $('#modalarmedserviceEdit').openModal();
+                var itemID = "id" + this.id;
+                var itemName = "name" + this.id;
+                var itemDescription = "description" + this.id;
 
-            });//checkbox clicked
+                document.getElementById('editID').value = $("#"+itemID).html();
+                document.getElementById('editname').value = $("#"+itemName).html();
+                document.getElementById('editdescription').value = $("#"+itemDescription).html();
+
+            });
+            
+            $('#dataTable').on('click', '.buttonDelete', function(){
+                $('#modalarmedserviceDelete').openModal();
+                document.getElementById('deleteID').value =this.id;
+            });
+            
+            $('#dataTable').on('click', '.checkboxFlag', function(){
+                var $this = $(this);
+                var flag;
+                // $this will contain a reference to the checkbox   
+                if ($this.is(':checked')) {
+                    flag = 1;
+                } else {
+                    flag = 0;
+                }
+                
+                $.ajax({
+                    type: "POST",
+                    url: "{{action('ArmedServiceController@flagArmedService')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                            return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        armedServiceID: this.id,
+                        flag: flag
+                    },
+                    success: function(data){
+                        var toastContent = $('<span>Status Changed.</span>');
+                        Materialize.toast(toastContent, 1500,'green', 'edit');
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occur. </span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+                    }
+                });//ajax
+            });
 
         });//document ready
     </script>
