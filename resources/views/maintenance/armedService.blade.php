@@ -5,51 +5,42 @@ Armed Service
 @endsection
 
 @section('content')	
-    <div class="row">
-        <div class="col s12">
-            <div class="col s4 offset-s3">
-                <div class="flow-text">
-                    <h1 class="colortitle blue-text text-darken-3">Armed Service</h1>
+<div class="row">
+    <div class="col s12 push-s1">
+        <div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:40px;">
+            <div class="row">
+                <div class="col s4 push-s1">
+                    <h2 class="blue-text">Armed Service</h2>
+                </div>
+
+                <div class="col s3 offset-s4">
+                    <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalarmedserviceAdd">
+                        <i class="material-icons left">add</i> ADD
+                    </button>
                 </div>
             </div>
-            
-            <div class="col s3 offset-s2">
-            
-                <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large waves-effect waves-light green hide-on-med-and-down modal-trigger" href="#modalarmedserviceAdd">
-                    <i class="material-icons left">add</i> ADD
-                </button>
-                </br></br>
-            </div>
-        </div>
+        
+            <div class="row">
+                <div class="col s12">
+                    <table class="highlight white" style="border-radius:10px;" id="dataTable">
 
-        <!-- TABLE -->
-        <div class="row">
-            <div class="col s10 push-s2">
-                <div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top: -10px;">
-                    <table class="highlight white" style="border-radius: 10px; margin-top: -8%;	" id = "dataTable">
-                        <div class="right-align">
-                            <div class="fixed-action-btn horizontal click-to-toggle">
-                                <button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalarmedserviceAdd">
-                                    <i class="material-icons">add</i>
-                                </button>
-                            </div>
-                        </div>
-                        
                         <thead>
                             <tr>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th data-field="id">ID</th>
-                                <th data-field="name">Armed Service</th>
-                                <th data-field="number">Description</th>
+                                <th style="width:160px;"></th>
+                                <th style="width:50px;"></th>
+								<th style="width:50px;"></th>
+                                <th>ID</th>
+                                <th>Name</th>
+								<th>Description</th>
+                                
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach ($armedServices as $armedService)
                                 <tr>
-                                    <td> 
+                                    
+									<td> 
                                         <div class="switch" style="margin-right: -80px;">
                                         <label>
                                             Deactivate
@@ -63,142 +54,152 @@ Armed Service
                                         </label>
                                         </div>
                                     </td>
-                                    
-                                    <td>
-                                        <button class="buttonUpdate btn  modal-trigger"  name="armedService" id="{{ $armedService->intArmedServiceID }}" href="#modalarmedserviceEdit" style="margin-right: -40px; margin-left:40px;">
+									
+									
+									
+									<td>
+                                        <button class="buttonUpdate btn modal-trigger"  name="" id="{{ $armedService->intArmedServiceID }}" href="#modalarmedserviceEdit" >
                                             <i class="material-icons">edit</i>
                                         </button>
-                                        <label for="{{ $armedService->intArmedServiceID }}"></label>
+                                    <label for="{{ $armedService->intArmedServiceID }}"></label>
                                     </td>
 
                                     <td>
-                                        <button class="btn red buttonDelete" id="{{ $armedService->intArmedServiceID }}">
-                                            <i class="material-icons" >delete</i>
+                                        <button class="buttonDelete btn red modal-trigger" id="{{ $armedService->intArmedServiceID }}" href="#modalarmedserviceDelete">
+                                            <i class="material-icons">delete</i>
                                         </button>
                                     </td>
-
                                     <td id = "id{{ $armedService->intArmedServiceID }}">
                                         {{ $armedService->intArmedServiceID }}
                                     </td>
-                                    
-                                    <td id = "name{{ $armedService->intArmedServiceID }}">
+            						
+									<td id = "name{{ $armedService->intArmedServiceID }}">
                                         {{ $armedService->strArmedServiceName }}
                                     </td>
                                     
                                     <td id = "description{{ $armedService->intArmedServiceID }}">
                                         {{ $armedService->strDescription }}
-                                    </td>	
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-                <!-- Pagination -->
-                <div class="row">
-                <div class="col s3 push-s4">
-
-                </div>
-                </div>
             </div>
-            </br></br></br></br></br>
+<!--        </br></br></br></br></br>-->
         </div>
-        <!-- TABLE -->
-
-        <!-- Modal Armed Service ADD -->
-        <div id="modalarmedserviceAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
-            <div class="modal-header">
-                <h2>Armed Service</h2>
-            </div>
-            
-            <div class="modal-content">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                <div class="row">
-                    <div class="col s8">
-                        <div class="input-field">
-                            <input  id="intArmedServiceID" type="text" class="validate" name = "armedServiceID" disabled>
-                            <label for="intArmedServiceID">Armed Service ID</label>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col s5">
-                        <div class="input-field">
-                            <input id="strArmedServiceAdd" type="text" class="validate" name = "armedServiceName" required="" aria-required="true">
-                            <label for="strArmedServiceAdd">Armed Service Type</label> 
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col s5">
-                        <div class="input-field">
-                            <input id="strArmedServiceDescAdd" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true">
-                            <label for="strArmedServiceDescAdd">Description</label> 
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Modal Button Save -->
-                <div class="modal-footer">
-                    <button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
-                        <i class="material-icons right">send</i>
-                    </button>
-                </div>
-                <!-- Modal Button Save -->
-            </div>
-        </div>
-        <!-- Modal Armed Service ADD -->
-
-        <!-- MODAL Armed Service EDIT -->
-        <div id="modalarmedserviceEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
-            <div class="modal-header">
-                <h2>Armed Service</h2>
-            </div>
-            
-            <div class="modal-content">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                <div class="row">
-                    <div class="col s8">
-                        <div class="input-field">
-                            <input  id="editID" type="text" class="validate" name = "armedServiceID" readonly required="" aria-required="true" value = "test">
-                            <label for="editID">Armed Service ID</label>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col s5">
-                        <div class="input-field">
-                            <input id="editname" type="text" class="validate" name = "armedServiceName" required="" aria-required="true" value = "test">
-                            <label for="editname">Armed Service Type</label> 
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col s5">
-                        <div class="input-field">
-                            <input id="editdescription" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true" value = "test">
-                            <label for="editDescription">Description</label> 
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal Button Save -->
-                <input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
-                <div class="modal-footer">
-                    <button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
-                        <i class="material-icons right">send</i>
-                    </button>
-                </div>
-                <!-- Modal Button Save -->
-            </div>
-        </div>
-        <!-- MODAL Armed Service EDIT -->
     </div>
+
+<!-- Modal armedservice ADD -->
+
+<div id="#modalarmedserviceAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
+        <div class="modal-header"><h2>Armed Service</h2></div>
+        	<div class="modal-content">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+					<div class="row">
+						<div class="col s8">
+							<div class="input-field">
+								<input  id="intArmedServiceID" type="text" class="validate" name = "armedServiceID" disabled>
+									<label for="intArmedServiceID">Armed Service ID</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s5">
+							<div class="input-field">
+								<input id="strArmedServiceAdd" type="text" class="validate" name = "armedServiceName" required="" aria-required="true">
+									<label for="strArmedServiceAdd">Armed Service Type</label> 
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s5">
+							<div class="input-field">
+								<input id="strArmedServiceDescAdd" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true">
+								<label for="strArmedServiceDescAdd">Description</label> 
+							</div>
+						</div>
+                	</div>
+						
+	<!-- Modal Button Save -->
+				
+		<div class="modal-footer">
+			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
+    			<i class="material-icons right">send</i>
+  			</button>
+    	</div>
+    		</div>
+		</div>
+<!-- MODAL armedservice EDIT -->
+<div id="modalnobEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
+	<div class="modal-header"><h2>Armed Service</h2></div>
+        	<div class="modal-content">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					
+					<div class="row">
+						<div class="col s8">
+							<div class="input-field">
+								<input  id="editID" type="text" class="validate" name = "armedServiceID" readonly required="" aria-required="true" value = "test">
+									<label for="editID">Armed Service ID</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s5">
+							<div class="input-field">
+								<input id="editname" type="text" class="validate" name = "armedServiceName" required="" aria-required="true" value = "test">
+									<label for="editname">Armed Service Type</label> 
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s5">
+							<div class="input-field">
+								<input id="editdescription" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true" value = "test">
+								<label for="editDescription">Description</label> 
+							</div>
+						</div>
+                	</div>
+						
+	<!-- Modal Button Save -->
+				
+		<div class="modal-footer">
+			
+			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
+    			<i class="material-icons right">send</i>
+  			</button>
+			
+			
+			
+			
+    	</div>
+    		</div>
+</div>
+<!----------------------------modal delete armedservice ------------------------------>
+
+<div id="modalarmedserviceDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">
+            <div class="modal-header blue"><h2 class="white-text">Delete</h2></div>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="modal-content">
+
+                <div class="row">
+                    <div class="col s12">
+                        <h3 class="center">Confirm Delete</h3>
+                    </div>
+                </div>
+                <input type="hidden" name="idDelete" id = "deleteID">
+                <div class="row">
+                    <div class="col s3 push-s5">
+                        <button class=" btn waves-effect waves-light red large" name="action" style="margin-left: 20px;" id = "btnDelete">
+                            <i class="material-icons left">delete</i>Delete
+                        </button>
+
+                    </div>	
+                </div>
+
+            </div>
+</div>
 @stop
 
 @section('script')
@@ -215,6 +216,7 @@ Armed Service
                 null
                 ] ,  
                 "pageLength":5,
+				"lengthMenu": [5,10,15,20]
             });
 
             $("#btnAddSave").click(function(){

@@ -77,11 +77,11 @@ Nature of Business
                     </table>
                 </div>
             </div>
-        </br></br></br></br></br>
+<!--        </br></br></br></br></br>-->
         </div>
     </div>
 
-<!-- Modal Leave ADD -->
+<!-- Modal nob ADD -->
 
 <div id="modalnobAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
         <div class="modal-header"><h2>Nature of Business</h2></div>
@@ -114,7 +114,7 @@ Nature of Business
     	</div>
     		</div>
 		</div>
-<!-- MODAL LEAVE EDIT -->
+<!-- MODAL nob EDIT -->
 <div id="modalnobEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Nature of Business</h2></div>
         	<div class="modal-content">
@@ -124,7 +124,7 @@ Nature of Business
 						<div class="col s8">
 							<div class="input-field">
 								<input  id="editID" type="text" class="validate" name = "natureOfBusinessID" readonly required="" aria-required="true" value = "test">
-									<label for="editID">Nature of Business ID</label>
+								<label for="editID">Nature of Business ID</label>
 							</div>
 						</div>
 					</div>
@@ -132,7 +132,7 @@ Nature of Business
 						<div class="col s5">
 							<div class="input-field">
 								<input id="editname" type="text" class="validate" name = "natureOfBusiness" required="" aria-required="true" value = "test">
-									<label for="editname">Nature of Business</label> 
+								<label for="editname">Nature of Business</label> 
 							</div>
 						</div>
 					</div>
@@ -151,7 +151,31 @@ Nature of Business
     	</div>
     		</div>
 </div>
+<!----------------------------modal delete nature of business ------------------------------>
+
+<div id="modalnobDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">
+            <div class="modal-header blue"><h2 class="white-text">Delete</h2></div>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="modal-content">
+
+                <div class="row">
+                    <div class="col s12">
+                        <h3 class="center">Confirm Delete</h3>
+                    </div>
+                </div>
+                <input type="hidden" name="idDelete" id = "deleteID">
+                <div class="row">
+                    <div class="col s3 push-s5">
+                        <button class=" btn waves-effect waves-light red large" name="action" style="margin-left: 20px;" id = "btnDelete">
+                            <i class="material-icons left">delete</i>Delete
+                        </button>
+
+                    </div>	
+                </div>
+
+            </div>
 </div>
+
 @stop
 @section('script')
 <script type="text/javascript">
@@ -247,37 +271,7 @@ Nature of Business
 		});//button add clicked
         
         $(".buttonDelete").click(function(){
-            if(confirm('Are you sure you want to delete the record?')){
-
-                $.ajax({
-
-                    type: "POST",
-                    url: "{{action('NatureOfBusinessController@deleteNatureOfBusiness')}}",
-                    beforeSend: function (xhr) {
-                        var token = $('meta[name="csrf_token"]').attr('content');
-
-                        if (token) {
-                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                        }
-                    },
-                    data: {
-                        natureOfBusinessID: this.id
-
-                    },
-                    success: function(data){
-                        var toastContent = $('<span>Record Deleted.</span>');
-                        
-                        window.location.href = "{{action('NatureOfBusinessController@index')}}";
-						Materialize.toast(toastContent, 1500,'green', 'edit');
-                    },
-                    error: function(data){
-                        var toastContent = $('<span>Error Occur. </span>');
-                        Materialize.toast(toastContent, 1500, 'edit');
-
-                    }
-
-                });//ajax
-            }
+            
         });
         
 		$(".buttonUpdate").click(function(){

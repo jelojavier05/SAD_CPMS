@@ -6,53 +6,42 @@ Government Exam
 
 @section('content')
 
-
-<!--START-->
 <div class="row">
-    <div class="col s12">
-        <div class="col s5 offset-s3">
-            <div class="flow-text">
-                <h1 class="colortitle blue-text text-darken-3">Government Exam</h1>
+    <div class="col s12 push-s1">
+        <div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:40px;">
+            <div class="row">
+                <div class="col s4 push-s1">
+                    <h2 class="blue-text">Government Exam</h2>
+                </div>
+
+                <div class="col s3 offset-s4">
+                    <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalgovexamAdd">
+                        <i class="material-icons left">add</i> ADD
+                    </button>
+                </div>
             </div>
-        </div>
         
-        <div class="col s2 offset-s1">
-            <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large waves-effect waves-light 
-            green hide-on-med-and-down modal-trigger" href="#modalgovexamAdd">
-                <i class="material-icons left">add</i> ADD
-            </button>
-            </br></br>
-        </div>
-    </div>
+            <div class="row">
+                <div class="col s12">
+                    <table class="highlight white" style="border-radius:10px;" id="dataTable">
 
-    <!-- TABLE -->
-    <div class="row">
-        <div class="col s10 push-s2">
-            <div class="scroll z-depth-2" style=" border-radius: 10px; margin: 5%; margin-top:-20px;">
-                <table  style="border-radius: 10px; margin-top: -8%" id = "dataTable">
-                    <div class="right-align">
-                        <div class="fixed-action-btn horizontal click-to-toggle">
-                            <button class="btn-floating btn-large green hide-on-large-only waves-effect waves-light modal-trigger" href="#modalgovexamAdd">
-                                <i class="material-icons">add</i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th> 
-                            <th data-field="id">ID</th>
-                            <th data-field="name">Name</th>
-                            <th data-field="name">Description</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @foreach ($governmentExams as $governmentExam)
+                        <thead>
                             <tr>
-                                <td> 
+                                <th style="width:160px;"></th>
+                                <th style="width:50px;"></th>
+								<th style="width:50px;"></th>
+                                <th>ID</th>
+                                <th>Name</th>
+								<th>Description</th>
+                                
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($governmentExams as $governmentExam)
+                                <tr>
+                                    
+									<td> 
                                     <div class="switch" style="margin-right: 20px;">
                                         <label>
                                             Deactivate
@@ -67,124 +56,144 @@ Government Exam
                                     </div>
                                 </td>
                                 
-                                <td>
-                                    <button class="buttonUpdate btn modal-trigger"  name="governmentExam" id = "{{ $governmentExam->intGovernmentExamID }}" href="#modalgovexamEdit" style="margin-right: -40px;">
-                                        <i class="material-icons">edit</i>
-                                    </button>
-                                    <label for="{{ $governmentExam->intGovernmentExamID }}"></label> 
-                                </td>
+                                
+									
+									
+									
+									<td>
+                                        <button class="buttonUpdate btn modal-trigger"  name="" id="{{ $governmentExam->intGovernmentExamID }}" href="#modalgovexamEdit" >
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                    <label for="{{ $governmentExam->intGovernmentExamID }}"></label>
+                                    </td>
 
-                                <td>
-                                    <button class="btn red buttonDelete" id = "{{ $governmentExam->intGovernmentExamID }}">     <i class="material-icons">delete</i>
-                                    </button>
-                                </td>
-
-                                <td id = "id{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->intGovernmentExamID }}</td>
-                                <td id = "name{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->strGovernmentExam }}</td>
-                                <td id = "description{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->strDescription }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                    <td>
+                                        <button class="buttonDelete btn red modal-trigger" id="{{ $governmentExam->intGovernmentExamID }}" href="#modalgovexamDelete">
+                                            <i class="material-icons">delete</i>
+                                        </button>
+                                    </td>
+                                    <td id = "id{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->intGovernmentExamID }}</td>
+                                	<td id = "name{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->strGovernmentExam }}</td>
+                                	<td id = "description{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->strDescription }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
+<!--        </br></br></br></br></br>-->
         </div>
-        </br></br></br></br></br>
     </div>
 
+<!-- Modal govexam ADD -->
 
+<div id="modalgovexamAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
+        <div class="modal-header"><h2>Government Exam</h2></div>
+        	<div class="modal-content">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-    <!-- Modal Government Exam ADD -->
+					<div class="row">
+						<div class="col s8">
+							<div class="input-field">
+								<input  id="intGovernmentExamID" type="text" class="validate" name = "governmentExamID" disabled>
+								<label for="intGovernmentExamID">Government Exam ID</label>
+							</div>
+						</div>
+            		</div>
+					<div class="row">
+						<div class="col s5">
+							<div class="input-field">
+								<input id="strGovernmentExamAdd" type="text" class="validate" name = "governmentExamName" required="" aria-required="true">
+								<label for="strGovernmentExamAdd">Government Exam Type</label> 
+							</div>
+						</div>
+            		</div>
+					<div class="row">
+						<div class="col s5">
+							<div class="input-field">
+								<input id="strGovernmentExamDescAdd" type="text" class="validate"  name = "governmentExamDescription" required="" aria-required="true">
+								<label for="strGovernmentExamDescAdd">Description</label> 
+							</div>
+						</div>
+            		</div>
+						
+	<!-- Modal Button Save -->
+				
+		<div class="modal-footer">
+			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
+    			<i class="material-icons right">send</i>
+  			</button>
+    	</div>
+    		</div>
+		</div>
+<!-- MODAL govexam EDIT -->
+<div id="modalgovexamEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
+	<div class="modal-header"><h2>Government Exam</h2></div>
+        	<div class="modal-content">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					
+					<div class="row">
+						<div class="col s8">
+							<div class="input-field">
+								<input  id="editID" type="text" class="validate"  name = "governmentExamID" readonly required="" aria-required="true" value = "test">
+								<label for="editID">Government Exam ID</label>
+							</div>
+						</div>
+            		</div>
+					<div class="row">
+						<div class="col s5">
+							<div class="input-field">
+								<input id="editname" type="text" class="validate" name = "governmentExam" required="" aria-required="true" value = "test">
+								<label for="editname">Government Exam Type</label> 
+							</div>
+						</div>
+            		</div>
+					<div class="row">
+						<div class="col s5">
+							<div class="input-field">
+								<input id="editdescription" type="text" class="validate"  name = "governmentExamDescription" required="" aria-required="true" value = "test">
+								<label for="editDescription">Description</label> 
+							</div>
+						</div>
+            		</div>
+						
+	<!-- Modal Button Save -->
+				
+		<div class="modal-footer">
+			
+			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
+    			<i class="material-icons right">send</i>
+  			</button>
+			
+			
+			
+			
+    	</div>
+    		</div>
+</div>
+<!----------------------------modal delete nature of business ------------------------------>
 
-    <div id="modalgovexamAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
-        <div class="modal-header">
-            <h2>Government Exam</h2>
-        </div>
-        
-        <div class="modal-content">
+<div id="modalgovexamDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">
+            <div class="modal-header blue"><h2 class="white-text">Delete</h2></div>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="row">
-                <div class="col s8">
-                    <div class="input-field">
-                        <input  id="intGovernmentExamID" type="text" class="validate" name = "governmentExamID" disabled>
-                        <label for="intGovernmentExamID">Government Exam ID</label>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col s5">
-                    <div class="input-field">
-                        <input id="strGovernmentExamAdd" type="text" class="validate" name = "governmentExamName" required="" aria-required="true">
-                        <label for="strGovernmentExamAdd">Government Exam Type</label> 
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col s5">
-                    <div class="input-field">
-                        <input id="strGovernmentExamDescAdd" type="text" class="validate"  name = "governmentExamDescription" required="" aria-required="true">
-                        <label for="strGovernmentExamDescAdd">Description</label> 
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Modal Button Save -->
-            <div class="modal-footer">
-                <button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
-                    <i class="material-icons right">send</i>
-                </button>
-            </div>
-            <!-- Modal Button Save -->
-        </div>
-    </div>
+            <div class="modal-content">
 
-    <!-- MODAL Government Exam EDIT -->
-    <div id="modalgovexamEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
-        <div class="modal-header">
-            <h2>Government Exam</h2>
-        </div>
-        
-        <div class="modal-content">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="row">
+                    <div class="col s12">
+                        <h3 class="center">Confirm Delete</h3>
+                    </div>
+                </div>
+                <input type="hidden" name="idDelete" id = "deleteID">
+                <div class="row">
+                    <div class="col s3 push-s5">
+                        <button class=" btn waves-effect waves-light red large" name="action" style="margin-left: 20px;" id = "btnDelete">
+                            <i class="material-icons left">delete</i>Delete
+                        </button>
 
-            <div class="row">
-                <div class="col s8">
-                    <div class="input-field">
-                        <input  id="editID" type="text" class="validate"  name = "governmentExamID" readonly required="" aria-required="true" value = "test">
-                        <label for="editID">Government Exam ID</label>
-                    </div>
+                    </div>	
                 </div>
-            </div>
-            
-            <div class="row">
-                <div class="col s5">
-                    <div class="input-field">
-                        <input id="editname" type="text" class="validate" name = "governmentExam" required="" aria-required="true" value = "test">
-                        <label for="editname">Government Exam Type</label> 
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col s5">
-                    <div class="input-field">
-                        <input id="editdescription" type="text" class="validate"  name = "governmentExamDescription" required="" aria-required="true" value = "test">
-                        <label for="editDescription">Description</label> 
-                    </div>
-                </div>
-            </div>     
 
-            <!-- Modal Button Save -->
-            <input id = "okayCancel"type="hidden" name="okayCancelChecker" value="">
-            <div class="modal-footer">
-                <button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id ="btnUpdate">Update
-                    <i class="material-icons right">send</i>
-                </button>
             </div>
-            <!-- Modal Button Save -->
-        </div>
-    </div>
 </div>
 
 @stop
@@ -195,21 +204,18 @@ Government Exam
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#dataTable").DataTable({
-			"lengthChange": false,
-			"pageLength":5,
-			"columns":[
-			{"searchable": false},
-			{"searchable": false},
-			{"searchable": false},
-			null,
-			null,
-			null
-		
-			
-			],
-
-		});
+		 $("#dataTable").DataTable({
+                 "columns": [
+                { "orderable": false },
+                { "orderable": false },
+                { "orderable": false },
+                null,
+                null,
+                null
+                ] ,  
+                "pageLength":5,
+				"lengthMenu": [5,10,15,20]
+            });
  
 		$("#btnAddSave").click(function(){
             if ($('#strGovernmentExamAdd').val().trim() && $('#strGovernmentExamDescAdd').val().trim()){
