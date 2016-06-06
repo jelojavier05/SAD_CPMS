@@ -269,7 +269,7 @@ Nature of Business
                 Materialize.toast(toastContent, 1500,'red', 'edit');
             }
 
-		});//button add clicked
+		});//button update clicked
         
         $("#btnDelete").click(function(){
             $.ajax({
@@ -299,7 +299,7 @@ Nature of Business
                 }
 
             });//ajax
-        });
+        }); //button delete
         
         $('#dataTable').on('click', '.buttonUpdate', function(){
             $('#modalnobEdit').openModal();
@@ -326,7 +326,8 @@ Nature of Business
             } else {
                 flag = 0;
             }
-           $.ajax({
+            
+            $.ajax({
 				
 				type: "POST",
 				url: "{{action('NatureOfBusinessController@flagNatureOfBusiness')}}",

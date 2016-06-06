@@ -42,7 +42,6 @@ class NatureOfBusinessController extends Controller
         } catch (Exception $e) {
             alert();
         }
-        return redirect()->route('natureOfBusinessIndex');
     }
 
    public function updateNatureOfBusiness(Request $request){
@@ -50,7 +49,7 @@ class NatureOfBusinessController extends Controller
             NatureOfBusiness::where('intNatureOfBusinessID', $request->natureOfBusinessID)
             ->update(['strNatureOfBusiness'=>$request->natureOfBusiness]);
         } catch (Exception $e) {
-            alert();
+            
         }
     }
 
