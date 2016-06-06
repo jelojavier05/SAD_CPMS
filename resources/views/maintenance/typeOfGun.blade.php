@@ -308,7 +308,7 @@ Type of Gun
                     }
                 },
                 data: {
-                    typeOfGunID: this.id
+                    typeOfGunID: deleteID.value
 
                 },
                 success: function(data){
