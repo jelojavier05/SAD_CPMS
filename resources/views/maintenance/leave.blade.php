@@ -34,7 +34,9 @@ Leave
 								<th style="width:50px;"></th>
                                 <th>ID</th>
                                 <th>Leave Type</th>
-                                <th>Default Leave</th>
+                                <th>Number Of Days</th>
+                                <th>Number Of Request</th>
+                                <th>Notification Period</th>
                             </tr>
                         </thead>
 
@@ -60,20 +62,22 @@ Leave
 									
 									
 									<td>
-                                        <button class="buttonUpdate btn modal-trigger"  name="" id="{{$leave->intLeaveID}}" href="#modalleaveEdit" >
+                                        <button class="buttonUpdate btn "  name="" id="{{$leave->intLeaveID}}"  >
                                             <i class="material-icons">edit</i>
                                         </button>
                                     <label for="edit"></label>
                                     </td>
 
                                     <td>
-                                        <button class="buttonDelete btn red modal-trigger" id="{{$leave->intLeaveID}}" href="#modalleaveDelete">
+                                        <button class="buttonDelete btn red " id="{{$leave->intLeaveID}}" >
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
                                     <td id = "id{{ $leave->intLeaveID }}">{{ $leave->intLeaveID }}</td>
 									<td id = "name{{ $leave->intLeaveID }}">{{ $leave->strLeaveType }}</td>
-									<td id = "description{{ $leave->intLeaveID }}">{{ $leave->intDefaultLeave }}</td>
+									<td id = "daysDuration{{ $leave->intLeaveID }}">{{ $leave->intDaysDuration }}</td>
+                                    <td id = "countLeave{{ $leave->intLeaveID }}">{{ $leave->intCountLeave }}</td>
+                                    <td id = "daysBeforeLeave{{ $leave->intLeaveID }}">{{ $leave->intDaysBeforeLeave }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -175,7 +179,7 @@ Leave
 							<div class="row">
 									<div class="col s12">
 										<div class="input-field">
-											<input id="editDefault" type="text" class="validate" pattern="[0-9]{0,}" name = "editDefaultLeave" required="" aria-required="true" value = "test">
+											<input id="editDaysDuration" type="text" class="validate" pattern="[0-9]{0,}" name = "editDefaultLeave" required="" aria-required="true" value = "test">
 												<label for="intDefaultLeave">Number of Days Allowed</label> 
 										</div>
 									</div>
@@ -186,7 +190,7 @@ Leave
 							<div class="row">
 									<div class="col s12">
 										<div class="input-field">
-											<input id="editNumberOfRequest" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
+											<input id="editNumberOfRequest" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true" value = "test">
 												<label for="editNumberOfRequest">Number of Requests Allowed</label> 
 										</div>
 									</div>
@@ -194,7 +198,7 @@ Leave
 							<div class="row">
 									<div class="col s12">
 										<div class="input-field">
-											<input id="editNotificationPeriod" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
+											<input id="editNotificationPeriod" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true" value = "test">
 												<label for="editNotificationPeriod">Notification Period</label> 
 										</div>
 									</div>
@@ -247,63 +251,6 @@ Leave
 
 @section('script')
 <script type="text/javascript">
-	$(function(){
-
-		$(".buttonDelete").click(function(){
-            document.getElementById('deleteID').value =this.id;
-        });
-        
-		$(".buttonUpdate").click(function(){
-			var itemID = "id" + this.id;
-			var itemName = "name" + this.id;
-			var itemDescription = "description" + this.id;
-
-			document.getElementById('editID').value = $("#"+itemID).html();
-			document.getElementById('editname').value = $("#"+itemName).html();
-			document.getElementById('editDefault').value = $("#"+itemDescription).html();
-
-		});
-
-		$(".checkboxFlag").click(function(){
-            
-            var $this = $(this);
-            var flag;
-            // $this will contain a reference to the checkbox   
-            if ($this.is(':checked')) {
-                flag = 1;
-            } else {
-                flag = 0;
-            }
-           $.ajax({
-				
-				type: "POST",
-				url: "{{action('LeaveController@flagLeave')}}",
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-				data: {
-					leaveID: this.id,
-                    flag: flag
-				},
-				success: function(data){
-					
-				},
-				error: function(data){
-					var toastContent = $('<span>Error Occur. </span>');
-                    Materialize.toast(toastContent, 1500, 'edit');
-                    
-				}
-
-			});//ajax
-             
-        });//checkbox clicked
-
-	});
-
 	$(document).ready(function(){
 		
 		$("#dataTable").DataTable({
@@ -313,15 +260,16 @@ Leave
             { "orderable": false },
             null,
             null,
+            null,
+            null,
             null
             ] ,  
-//		    "pagingType": "full_numbers",
 			"pageLength":5,
 			"lengthMenu": [5,10,15,20]
          });   
  
 		$("#btnAddSave").click(function(){
-            if ($('#strLeaveType').val().trim() && $('#intDefaultLeave').val().trim() && $('#intDefaultLeave').val() > 0){
+            if ($('#strLeaveType').val().trim() && $('#intNumberOfDays').val().trim() > 0 && $('#intNumberOfRequest').val().trim() > 0 && $('#intNotificationPeriod').val().trim() > 0){
                 $.ajax({
 
                     type: "POST",
@@ -335,7 +283,9 @@ Leave
                     },
                     data: {
                         leaveType: $('#strLeaveType').val(),
-                        defaultLeave: $('#intDefaultLeave').val(),
+                        daysDuration: $('#intNumberOfDays').val(),
+                        countLeave: $('#intNumberOfRequest').val(),
+                        daysBeforeLeave: $('#intNotificationPeriod').val()
                     },
                     success: function(data){
                         var toastContent = $('<span>Record Added.</span>');
@@ -359,7 +309,7 @@ Leave
 		});//button add clicked
         
         $("#btnUpdate").click(function(){
-            if ($('#editname').val().trim() && $('#editDefault').val().trim() && $('#editDefault').val() > 0){
+            if ($('#editname').val().trim() && $('#editDaysDuration').val().trim() > 0 && $('#editNumberOfRequest').val().trim() > 0 && $('#editNotificationPeriod').val().trim() > 0){
                 $.ajax({
 
                     type: "POST",
@@ -373,8 +323,10 @@ Leave
                     },
                     data: {
                         editLeaveID: $('#editID').val(),
-                        editLeaveType: $('#editname').val(),
-                        editDefaultLeave: $('#editDefault').val(),
+                        editname: $('#editname').val(),
+                        editDaysDuration: $('#editDaysDuration').val(),
+                        editNumberOfRequest: $('#editNumberOfRequest').val(),
+                        editNotificationPeriod: $('#editNotificationPeriod').val(),
                     },
                     success: function(data){
                         var toastContent = $('<span>Record Updated.</span>');
@@ -427,7 +379,64 @@ Leave
                 });//ajax
 		});//button add clicked
         
-        
+        $('#dataTable').on('click', '.buttonUpdate', function(){
+            $('#modalleaveEdit').openModal();
+            var itemID = "id" + this.id;
+            var itemName = "name" + this.id;
+            var daysDuration = "daysDuration" + this.id;
+            var countLeave = "countLeave" + this.id;
+            var daysBeforeLeave = "daysBeforeLeave" + this.id;
+                
+
+            document.getElementById('editID').value = $("#"+itemID).html();
+            document.getElementById('editname').value = $("#"+itemName).html();
+            document.getElementById('editDaysDuration').value = $("#"+daysDuration).html();
+            document.getElementById('editNumberOfRequest').value = $("#"+countLeave).html();
+            document.getElementById('editNotificationPeriod').value = $("#"+daysBeforeLeave).html();
+
+        });
+
+        $('#dataTable').on('click', '.buttonDelete', function(){
+            $('#modalleaveDelete').openModal();
+            document.getElementById('deleteID').value =this.id;
+        });
+
+        $('#dataTable').on('click', '.checkboxFlag', function(){
+            var $this = $(this);
+            var flag;
+            // $this will contain a reference to the checkbox   
+            if ($this.is(':checked')) {
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+            $.ajax({
+				
+				type: "POST",
+				url: "{{action('LeaveController@flagLeave')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					leaveID: this.id,
+                    flag: flag
+				},
+				success: function(data){
+					var toastContent = $('<span>Status Changed.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                    
+				}
+
+			});//ajax
+        });
 
 	});//document ready
 

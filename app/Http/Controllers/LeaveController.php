@@ -26,28 +26,26 @@ class LeaveController extends Controller
             $leave = new Leave;
 
             $leave->strLeaveType = $request->leaveType;
-            $leave->intDefaultLeave = $request->defaultLeave;
+            $leave->intDaysDuration = $request->daysDuration;
+            $leave->intCountLeave = $request->countLeave;
+            $leave->intDaysBeforeLeave = $request->daysBeforeLeave;
             $leave->save();
             
         } catch (Exception $e) {
-            //
-            alert();
+            
         }   
-
-             
-
     }
 
     public function updateLeave(Request $request){
-        
         try {
             Leave::where('intLeaveID', $request->editLeaveID)
-            ->update(['strLeaveType'=>$request->editLeaveType, 
-                'intDefaultLeave'=>$request->editDefaultLeave]);
+            ->update(['strLeaveType'=>$request->editname, 
+                'intDaysDuration'=>$request->editDaysDuration,
+                'intCountLeave'=>$request->editNumberOfRequest,
+                'intDaysBeforeLeave'=>$request->editNotificationPeriod]);
         } catch (Exception $e) {
-            alert();
+            
         }
-        return redirect()->route('leaveIndex');   
     }
 	
 	public function flagLeave(Request $request){
@@ -56,7 +54,7 @@ class LeaveController extends Controller
             Leave::where('intLeaveID', $request->leaveID)
             ->update(['boolFlag'=>$request->flag]);
         } catch (Exception $e) {
-            alert();
+            
         }  
     }
 
@@ -67,8 +65,6 @@ class LeaveController extends Controller
                 
         } catch (Exception $e) {
             
-        }
-        return redirect()->route('leaveIndex');  
-         
+        }  
     }
 }
