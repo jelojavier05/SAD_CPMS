@@ -15,8 +15,6 @@ return array(
     'CreateNatureOfBusinessTable' => $baseDir . '/database/migrations/2016_03_02_041305_create_nature_of_business_table.php',
     'CreateRequirementsTable' => $baseDir . '/database/migrations/2016_03_02_040517_create_requirements_table.php',
     'CreateTypeOfGunTable' => $baseDir . '/database/migrations/2016_02_29_164748_create_type_of_gun_table.php',
-    'CreateUnitOfMeasurementTable' => $baseDir . '/database/migrations/2016_02_28_080816_create_unit_of_measurement_table.php',
-    'CreateVitalStatistics' => $baseDir . '/database/migrations/2016_02_28_080730_create_vital_statistics.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
