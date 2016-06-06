@@ -342,7 +342,7 @@ Armed Service
                 } else {
                     flag = 0;
                 }
-                
+                 
                 $.ajax({
                     type: "POST",
                     url: "{{action('ArmedServiceController@flagArmedService')}}",

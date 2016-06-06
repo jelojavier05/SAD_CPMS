@@ -30,10 +30,8 @@ class NatureOfBusinessController extends Controller
             
             $natureOfBusiness->save();
 
-            return redirect()->route('natureOfBusinessIndex');
         } catch (Exception $e) {
-            //alert
-            alert();
+            
         }
    }
 	
@@ -54,7 +52,6 @@ class NatureOfBusinessController extends Controller
         } catch (Exception $e) {
             alert();
         }
-        return redirect()->route('natureOfBusinessIndex');
     }
 
     public function deleteNatureOfBusiness(Request $request){
