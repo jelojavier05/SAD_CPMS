@@ -10,9 +10,9 @@ Leave
 
 <div class="row">
     <div class="col s12 push-s1">
-        <div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:40px;">
-            <div class="row">
-                <div class="col s4 push-s1">
+        <div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:25px;">
+<!--            <div class="row">-->
+                <div class="col s4 push-s1" style="margin-top:-15px;">
                     <h2 class="blue-text">Leave</h2>
                 </div>
 
@@ -21,15 +21,15 @@ Leave
                         <i class="material-icons left">add</i> ADD
                     </button>
                 </div>
-            </div>
+<!--            </div>-->
         
             <div class="row">
-                <div class="col s12">
+                <div class="col s12" style="margin-top:-20px;">
                     <table class="highlight white" style="border-radius:10px;" id="dataTable">
 
                         <thead>
                             <tr>
-                                <th style="width:160px;"></th>
+                                <th style="width:50px;"></th>
                                 <th style="width:50px;"></th>
 								<th style="width:50px;"></th>
                                 <th>ID</th>
@@ -45,14 +45,14 @@ Leave
 									<td> 
 									  <div class="switch" style="margin-right: -80px;">
 										<label>
-										  Deactivate
+										  
 										  @if ($leave->boolFlag==1)
 											<input type="checkbox" checked class = "checkboxFlag" id = "{{ $leave->intLeaveID }}">
 										  @else
 											<input type="checkbox" class = "checkboxFlag" id = "{{ $leave->intLeaveID }}">
 										  @endif
 										  <span class="lever"></span>
-										  Activate
+										  
 										</label>
 									  </div>
 									</td>
@@ -113,7 +113,7 @@ Leave
 									<div class="col s12">
 										<div class="input-field">
 											<input id="intNumberOfDays" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
-												<label for="intNumberOfDays">Number of Days</label> 
+												<label for="intNumberOfDays">Number of Days Allowed</label> 
 										</div>
 									</div>
 								</div>
@@ -125,7 +125,7 @@ Leave
 									<div class="col s12">
 										<div class="input-field">
 											<input id="intNumberOfRequest" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
-												<label for="intNumberOfRequest">Number of Request</label> 
+												<label for="intNumberOfRequest">Number of Requests Allowed</label> 
 										</div>
 									</div>
 							</div>
@@ -176,7 +176,7 @@ Leave
 									<div class="col s12">
 										<div class="input-field">
 											<input id="editDefault" type="text" class="validate" pattern="[0-9]{0,}" name = "editDefaultLeave" required="" aria-required="true" value = "test">
-												<label for="intDefaultLeave">Number of Days</label> 
+												<label for="intDefaultLeave">Number of Days Allowed</label> 
 										</div>
 									</div>
 							</div>
@@ -187,7 +187,7 @@ Leave
 									<div class="col s12">
 										<div class="input-field">
 											<input id="editNumberOfRequest" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
-												<label for="editNumberOfRequest">Number of Request</label> 
+												<label for="editNumberOfRequest">Number of Requests Allowed</label> 
 										</div>
 									</div>
 							</div>
