@@ -61,14 +61,14 @@ Government Exam
 									
 									
 									<td>
-                                        <button class="buttonUpdate btn modal-trigger"  name="" id="{{ $governmentExam->intGovernmentExamID }}" href="#modalgovexamEdit" >
+                                        <button class="buttonUpdate btn"  name="" id="{{ $governmentExam->intGovernmentExamID }}" >
                                             <i class="material-icons">edit</i>
                                         </button>
                                     <label for="{{ $governmentExam->intGovernmentExamID }}"></label>
                                     </td>
 
                                     <td>
-                                        <button class="buttonDelete btn red modal-trigger" id="{{ $governmentExam->intGovernmentExamID }}" href="#modalgovexamDelete">
+                                        <button class="buttonDelete btn red" id="{{ $governmentExam->intGovernmentExamID }}">
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
@@ -276,7 +276,7 @@ Government Exam
 				},
 				success: function(data){
 					var toastContent = $('<span>Record Updated.</span>');
-                    Materialize.toast(toastContent, 1500, 'edit');
+                    Materialize.toast(toastContent, 1500,'green','edit');
                     window.location.href = "{{action('GovernmentExamController@index')}}";
 				},
 				error: function(data){
@@ -295,42 +295,39 @@ Government Exam
 
 		});//button add clicked
         
-		$(".buttonDelete").click(function(){
-            if(confirm('Are you sure you want to delete the record?')){
+        $("#btnDelete").click(function(){
+            $.ajax({
 
-                $.ajax({
+                type: "POST",
+                url: "{{action('GovernmentExamController@deleteGovernmentExam')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
 
-                    type: "POST",
-                    url: "{{action('GovernmentExamController@deleteGovernmentExam')}}",
-                    beforeSend: function (xhr) {
-                        var token = $('meta[name="csrf_token"]').attr('content');
-
-                        if (token) {
-                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                        }
-                    },
-                    data: {
-                        governmentExamID: this.id
-
-                    },
-                    success: function(data){
-                        var toastContent = $('<span>Record Deleted.</span>');
-                        Materialize.toast(toastContent, 1500, 'edit');
-						window.location.href = "{{action('GovernmentExamController@index')}}";
-                    },
-                    error: function(data){
-                        var toastContent = $('<span>Error Occur. </span>');
-                        Materialize.toast(toastContent, 1500, 'edit');
-
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                     }
+                },
+                data: {
+                    governmentExamID: deleteID.value
 
-                });//ajax
-            }
+                },
+                success: function(data){
+                    var toastContent = $('<span>Record Deleted.</span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                    window.location.href = "{{action('GovernmentExamController@index')}}";
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+
+                }
+
+            });//ajax
         });
-        
-        $(".buttonUpdate").click(function(){
-			
-			var itemID = "id" + this.id;
+    
+        $('#dataTable').on('click', '.buttonUpdate', function(){
+            $('#modalgovexamEdit').openModal();
+            var itemID = "id" + this.id;
 			var itemName = "name" + this.id;
 			var itemDescription = "description" + this.id;
 
@@ -338,10 +335,14 @@ Government Exam
 			document.getElementById('editname').value = $("#"+itemName).html();
 			document.getElementById('editdescription').value = $("#"+itemDescription).html();
 
-		});//button update in table
-
-		$(".checkboxFlag").click(function(){
+        });
             
+        $('#dataTable').on('click', '.buttonDelete', function(){
+            $('#modalgovexamDelete').openModal();
+            document.getElementById('deleteID').value =this.id;
+        });
+            
+        $('#dataTable').on('click', '.checkboxFlag', function(){
             var $this = $(this);
             var flag;
             // $this will contain a reference to the checkbox   
@@ -351,9 +352,7 @@ Government Exam
                 flag = 0;
             }
             
-            var toastContent = $('<span>Status Changed.</span>');
-            Materialize.toast(toastContent, 3000,'green', 'edit');
-           $.ajax({
+            $.ajax({
 				
 				type: "POST",
 				url: "{{action('GovernmentExamController@flagGovernmentExam')}}",
@@ -369,77 +368,18 @@ Government Exam
                     flag: flag
 				},
 				success: function(data){
-					
+					var toastContent = $('<span>Status Changed.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
 				},
 				error: function(data){
 					var toastContent = $('<span>Error Occur. </span>');
                     Materialize.toast(toastContent, 1500, 'edit');
-                    
 				}
-
 			});//ajax
-             
-        });//checkbox clicked
+        });
 
         
-//    	function clearTable(){
-//			var table = $('#dataTable').DataTable();
-//
-//			table.clear().draw();
-//			
-//			$.ajax({
-//				type: "GET",
-//				url: "{{action('GovernmentExamController@getGovernmentExam')}}",
-//				dataType: 'json',
-//				success: function(jsondata){
-//					var trHTML = '';
-//					$.each( jsondata, function(i, item) {
-//                        if (jsondata[i].boolFlag == 1){
-//                            table.row.add([
-//
-//                                "<div class='switch' style='margin-right: 20px;'>" +
-//                                "<label>" + 
-//                                  "Deactivate" + 
-//                                    "<input type='checkbox' checked class = 'checkboxFlag' id = " +jsondata[i].intGovernmentExamID + ">" +
-//                                  "<span class='lever'></span>" + 
-//                                  "Activate"+
-//                                "</label>" +
-//                                "</div>",
-//
-//                                "<button class='buttonUpdate btn modal-trigger'  name='governmentExam' id = '" + jsondata[i].intGovernmentExamID + "'href='#modalgovexamEdit' style='margin-right: -40px;'><i class= 'material-icons'>edit</i></button> <label for= '" + jsondata[i].intGovernmentExamID + "'></label>",
-//
-//                                '3',
-//                                jsondata[i].boolFlag,
-//                                jsondata[i].strGovernmentExam,
-//                                jsondata[i].strDescription
-//                            ]).draw();
-//                        }else{
-//                            table.row.add([
-//
-//                                "<div class='switch' style='margin-right: 20px;'>" +
-//                                "<label>" + 
-//                                  "Deactivate" + 
-//                                    "<input type='checkbox' class = 'checkboxFlag' id = " +jsondata[i].intGovernmentExamID + ">" +
-//                                  "<span class='lever'></span>" + 
-//                                  "Activate"+
-//                                "</label>" +
-//                                "</div>",
-//
-//                                "<button class='buttonUpdate btn modal-trigger'  name='governmentExam' id = '" + jsondata[i].intGovernmentExamID + "'href='#modalgovexamEdit' style='margin-right: -40px;'><i class= 'material-icons'>edit</i></button> <label for= '" + jsondata[i].intGovernmentExamID + "'></label>",
-//
-//                                '3',
-//                                jsondata[i].boolFlag,
-//                                jsondata[i].strGovernmentExam,
-//                                jsondata[i].strDescription
-//                            ]).draw();
-//                        }
-//						
-//				    });
-//                }
-//            });
-//        }//clear table()    
-        
-    });
+    });//document.ready
 
 	
 	
