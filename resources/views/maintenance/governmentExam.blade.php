@@ -8,26 +8,26 @@ Government Exam
 
 <div class="row">
     <div class="col s12 push-s1">
-        <div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:40px;">
-            <div class="row">
-                <div class="col s4 push-s1">
+        <div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:25px;">
+<!--            <div class="row">-->
+                <div class="col s6 push-s1">
                     <h2 class="blue-text">Government Exam</h2>
                 </div>
 
-                <div class="col s3 offset-s4">
+                <div class="col s3 offset-s3">
                     <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalgovexamAdd">
                         <i class="material-icons left">add</i> ADD
                     </button>
                 </div>
-            </div>
+<!--            </div>-->
         
             <div class="row">
-                <div class="col s12">
+                <div class="col s12" style="margin-top:-20px;">
                     <table class="highlight white" style="border-radius:10px;" id="dataTable">
 
                         <thead>
                             <tr>
-                                <th style="width:160px;"></th>
+                                <th style="width:50px;"></th>
                                 <th style="width:50px;"></th>
 								<th style="width:50px;"></th>
                                 <th>ID</th>
@@ -44,14 +44,14 @@ Government Exam
 									<td> 
                                     <div class="switch" style="margin-right: 20px;">
                                         <label>
-                                            Deactivate
+                                            
                                             @if ($governmentExam->boolFlag==1)
                                                 <input type="checkbox" checked class = "checkboxFlag" id = "{{ $governmentExam->intGovernmentExamID }}">
                                             @else
                                                 <input type="checkbox" class = "checkboxFlag" id = "{{ $governmentExam->intGovernmentExamID }}">
                                             @endif
                                             <span class="lever"></span>
-                                            Activate
+                                            
                                         </label>
                                     </div>
                                 </td>

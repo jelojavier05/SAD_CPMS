@@ -89,9 +89,9 @@
 														
 														<li><a class="blue-text" href="/maintenance/governmentExam">Government Exam</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/vitalStatistics">Body Attributes</a></li>
+														<li><a class="blue-text" href="/maintenance/bodyAttribute">Body Attributes</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
+														<li><a class="blue-text" href="#">Requirements</a></li>
 														
 														
 													</ul>
