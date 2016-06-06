@@ -25,7 +25,7 @@ class BodyAttributeController extends Controller
             $vitalStatistics->save();
 
         } catch (Exception $e) {
-            alert();            
+            
         }
     }
 

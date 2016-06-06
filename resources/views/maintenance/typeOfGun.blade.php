@@ -202,43 +202,6 @@ Type of Gun
 
 <script type="text/javascript">
 		
-	$(function(){
-
-		$(".buttonDelete").click(function(){
-            if(confirm('Are you sure you want to delete the record?')){
-
-                $.ajax({
-
-                    type: "POST",
-                    url: "{{action('TypeOfGunController@deleteTypeOfGun')}}",
-                    beforeSend: function (xhr) {
-                        var token = $('meta[name="csrf_token"]').attr('content');
-
-                        if (token) {
-                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                        }
-                    },
-                    data: {
-                        typeOfGunID: this.id
-
-                    },
-                    success: function(data){
-                        var toastContent = $('<span>Record Deleted.</span>');
-                        Materialize.toast(toastContent, 1500, 'edit');
-                         window.location.href = "{{action('TypeOfGunController@index')}}";
-                    },
-                    error: function(data){
-                        var toastContent = $('<span>Error Occur. </span>');
-                        Materialize.toast(toastContent, 1500, 'edit');
-
-                    }
-
-                });//ajax
-            }
-        });
-        
-	});
-
 	$(document).ready(function(){
 		
         $("#dataTable").DataTable({
@@ -332,6 +295,36 @@ Type of Gun
 
 		});//button add clicked
         
+        $("#btnDelete").click(function(){
+            $.ajax({
+
+                type: "POST",
+                url: "{{action('TypeOfGunController@deleteTypeOfGun')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    typeOfGunID: this.id
+
+                },
+                success: function(data){
+                    var toastContent = $('<span>Record Deleted.</span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+                     window.location.href = "{{action('TypeOfGunController@index')}}";
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+
+                }
+
+            });//ajax
+        });
+        
         $('#dataTable').on('click', '.buttonUpdate', function(){
             $('#modalguntypeEdit').openModal();
             var itemID = "id" + this.id;
@@ -345,7 +338,7 @@ Type of Gun
         });
             
         $('#dataTable').on('click', '.buttonDelete', function(){
-            $('#modaltypeofgunDelete').openModal();
+            $('#modalguntypeDelete').openModal();
             document.getElementById('deleteID').value =this.id;
         });
 

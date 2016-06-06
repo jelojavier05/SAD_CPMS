@@ -40,8 +40,7 @@ class TypeOfGunController extends Controller
             $typeOfGun->save();
 
         } catch (Exception $e) {
-            //alert
-            alert();
+            
         }
 
         
@@ -55,7 +54,6 @@ class TypeOfGunController extends Controller
         } catch (Exception $e) {
             alert();
         }
-        return redirect()->route('typeOfGunIndex');
     }
 	
 	public function flagTypeOfGun(Request $request){
@@ -63,7 +61,7 @@ class TypeOfGunController extends Controller
             TypeOfGun::where('intTypeOfGunID', $request->typeOfGunID)
             ->update(['boolFlag'=>$request->flag]);
         } catch (Exception $e) {
-            alert();
+            
         }
     }
 
@@ -76,8 +74,6 @@ class TypeOfGunController extends Controller
         } catch (Exception $e) {
             
         }
-
-        return redirect()->route('typeOfGunIndex');  
          
     }
 }

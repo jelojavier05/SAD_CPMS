@@ -39,7 +39,7 @@ class ArmedServiceController extends Controller
             ArmedService::where('intArmedServiceID', $request->armedServiceID)
             ->update(['boolFlag' => $request->flag]);
         } catch (Exception $e) {
-            alert();
+            
         }
     }
 
@@ -49,7 +49,7 @@ class ArmedServiceController extends Controller
             ->update(['strArmedServiceName'=>$request->armedServiceName, 
                 'strDescription'=>$request->armedServiceDescription]);
         } catch (Exception $e) {
-            alert();
+            
         }
         
     }
