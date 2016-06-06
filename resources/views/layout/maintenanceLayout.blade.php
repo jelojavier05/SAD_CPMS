@@ -74,6 +74,8 @@
 													<ul id='dropdownclient' class='dropdown-content' style="margin-top:1px;">
 														<li><a class="blue-text" href="/maintenance/NatureOfBusiness">Nature of Business</a></li>
 														
+														<li><a class="blue-text" href="/maintenance/typeOfContract">Type of Contract</a></li>
+														
 														
 														
 														
