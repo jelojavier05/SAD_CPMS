@@ -99,6 +99,8 @@ Route::post('/maintenance/armedservice/delete', 'ArmedServiceController@deleteAr
 
 Route::post('/maintenance/armedservice/flag', 'ArmedServiceController@flagArmedService');
 
+Route::get('/maintenance/typeOfContract', 'TypeOfContractController@index');
+
 Route::get('/', function () {
     return view('welcome');
 });
