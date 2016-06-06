@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVitalStatistics extends Migration
+class CreateBodyAttribute extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateVitalStatistics extends Migration
      */
     public function up()
     {
-        Schema::create('tblvitalstatistics', function (Blueprint $table) {
-            $table->increments('intVitalStatisticsID');
-            $table->string('strVitalStatisticsName', 100)->unique();
+        Schema::create('tblbodyattribute', function (Blueprint $table) {
+            $table->increments('intBodyAttributeID');
+            $table->string('strBodyAttributeName', 100)->unique();
             $table->softDeletes();
             $table->boolean('boolFlag')->default(true);
         });
@@ -27,6 +27,6 @@ class CreateVitalStatistics extends Migration
      */
     public function down()
     {
-        Schema::drop('tblvitalstatistics');
+        Schema::drop('tblbodyattribute');
     }
 }

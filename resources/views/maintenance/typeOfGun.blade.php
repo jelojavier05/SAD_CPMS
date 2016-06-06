@@ -58,28 +58,22 @@ Type of Gun
 									
 									
 									<td>
-										<button class="buttonUpdate btn modal-trigger"  name="typeofGun" id="{{ $typeOfGun->intTypeOfGunID }}" href="#modalguntypeEdit" style="margin-left:20px;">
+										<button class="buttonUpdate btn"  name="typeofGun" id="{{ $typeOfGun->intTypeOfGunID }}" style="margin-left:20px;">
 											<i class="material-icons">edit</i>
 										</button>
 										<label for="{{ $typeOfGun->intTypeOfGunID }}"></label> 
                             		</td>
 
                                     <td>
-                                        <button class="buttonDelete btn red modal-trigger" id="{{ $typeOfGun->intTypeOfGunID }}" href="#modalguntypeDelete">
+                                        <button class="buttonDelete btn red" id="{{ $typeOfGun->intTypeOfGunID }}" >
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
-                                    <td id = "id{{ $typeOfGun->intTypeOfGunID }}">
-                                		{{ $typeOfGun->intTypeOfGunID }}
-                            		</td>
+                                    <td id = "id{{ $typeOfGun->intTypeOfGunID }}">{{ $typeOfGun->intTypeOfGunID }}</td>
                             
-									<td id = "name{{ $typeOfGun->intTypeOfGunID }}">
-										{{ $typeOfGun->strTypeOfGun }}
-									</td>
+									<td id = "name{{ $typeOfGun->intTypeOfGunID }}">{{ $typeOfGun->strTypeOfGun }}</td>
                             
-									<td id = "description{{ $typeOfGun->intTypeOfGunID }}">
-										{{ $typeOfGun->strDescription }}
-									</td>
+									<td id = "description{{ $typeOfGun->intTypeOfGunID }}">{{ $typeOfGun->strDescription }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -243,61 +237,11 @@ Type of Gun
             }
         });
         
-		$(".buttonUpdate").click(function(){
-
-			var itemID = "id" + this.id;
-			var itemName = "name" + this.id;
-			var itemDescription = "description" + this.id;
-
-			document.getElementById('editID').value = $("#"+itemID).html();
-			document.getElementById('editname').value = $("#"+itemName).html();
-			document.getElementById('editdescription').value = $("#"+itemDescription).html();
-
-		});
-
-		$(".checkboxFlag").click(function(){
-            
-            var $this = $(this);
-            var flag;
-            // $this will contain a reference to the checkbox   
-            if ($this.is(':checked')) {
-                flag = 1;
-            } else {
-                flag = 0;
-            }
-           $.ajax({
-				
-				type: "POST",
-				url: "{{action('TypeOfGunController@flagTypeOfGun')}}",
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-				data: {
-					typeOfGunID: this.id,
-                    flag: flag
-				},
-				success: function(data){
-					
-				},
-				error: function(data){
-					var toastContent = $('<span>Error Occur. </span>');
-                    Materialize.toast(toastContent, 1500, 'edit');
-                    
-				}
-
-			});//ajax
-             
-        });//checkbox clicked
-
 	});
 
 	$(document).ready(function(){
 		
-	$("#dataTable").DataTable({
+        $("#dataTable").DataTable({
                  "columns": [
                 { "orderable": false },
                 { "orderable": false },
@@ -309,7 +253,6 @@ Type of Gun
                 "pageLength":5,
 				"lengthMenu": [5,10,15,20]
             });
- 
 
 		$("#btnAddSave").click(function(){
            if ($('#strTypeOfGun').val().trim() && $('#strTypeOfGunDescription').val().trim()){
@@ -350,11 +293,75 @@ Type of Gun
 		});//button add clicked
         
         $("#btnUpdate").click(function(){
-          if ($('#editID').val().trim() && $('#editname').val().trim()){
-			$.ajax({
+          
+            if ($('#editID').val().trim() && $('#editname').val().trim()){
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{action('TypeOfGunController@updateTypeOfGun')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        typeOfGunID: $('#editID').val(),
+                        typeOfGun: $('#editname').val(),
+                        typeOfGunDescription: $('#editdescription').val(),
+                    },
+                    success: function(data){
+                        var toastContent = $('<span>Record Updated.</span>');
+                        Materialize.toast(toastContent, 1500,'green', 'edit');
+                        window.location.href = "{{action('TypeOfGunController@index')}}";
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occured. </span>');
+                        Materialize.toast(toastContent, 1500,'red', 'edit');
+
+                    }
+
+                });//ajax
+
+            }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+
+
+		});//button add clicked
+        
+        $('#dataTable').on('click', '.buttonUpdate', function(){
+            $('#modalguntypeEdit').openModal();
+            var itemID = "id" + this.id;
+			var itemName = "name" + this.id;
+			var itemDescription = "description" + this.id;
+
+			document.getElementById('editID').value = $("#"+itemID).html();
+			document.getElementById('editname').value = $("#"+itemName).html();
+			document.getElementById('editdescription').value = $("#"+itemDescription).html();
+
+        });
+            
+        $('#dataTable').on('click', '.buttonDelete', function(){
+            $('#modaltypeofgunDelete').openModal();
+            document.getElementById('deleteID').value =this.id;
+        });
+
+        $('#dataTable').on('click', '.checkboxFlag', function(){
+            var $this = $(this);
+            var flag;
+            // $this will contain a reference to the checkbox   
+            if ($this.is(':checked')) {
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+            $.ajax({
 				
 				type: "POST",
-				url: "{{action('TypeOfGunController@updateTypeOfGun')}}",
+				url: "{{action('TypeOfGunController@flagTypeOfGun')}}",
                 beforeSend: function (xhr) {
                     var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -363,33 +370,21 @@ Type of Gun
                     }
                 },
 				data: {
-					typeOfGunID: $('#editID').val(),
-                    typeOfGun: $('#editname').val(),
-					typeOfGunDescription: $('#editdescription').val(),
+					typeOfGunID: this.id,
+                    flag: flag
 				},
 				success: function(data){
-					var toastContent = $('<span>Record Updated.</span>');
+					var toastContent = $('<span>Status Changed.</span>');
                     Materialize.toast(toastContent, 1500,'green', 'edit');
-                    window.location.href = "{{action('TypeOfGunController@index')}}";
 				},
 				error: function(data){
-					var toastContent = $('<span>Error Occured. </span>');
-                    Materialize.toast(toastContent, 1500,'red', 'edit');
+					var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
                     
 				}
 
-
 			});//ajax
-              
-              }else{
-                var toastContent = $('<span>Please Check Your Input. </span>');
-                Materialize.toast(toastContent, 1500,'red', 'edit');
-            }
-
-
-		});//button add clicked
-        
-        
+        });
 
 	});//document ready
 

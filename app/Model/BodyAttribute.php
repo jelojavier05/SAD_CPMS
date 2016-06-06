@@ -5,12 +5,12 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class VitalStatistics extends Model
+class BodyAttribute extends Model
 {
 
 	use SoftDeletes;
 	protected $dates = ['deleted_at'];
-    protected $table = 'tblvitalstatistics';
-    protected $primaryKey = 'intVitalStatisticsID';
+    protected $table = 'tblbodyattribute';
+    protected $primaryKey = 'intBodyAttributeID';
     public $timestamps = false;
 }

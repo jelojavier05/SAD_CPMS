@@ -7,7 +7,10 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'CreateArmedServiceTable' => $baseDir . '/database/migrations/2016_02_28_080305_create_armed_service_table.php',
+    'CreateBodyAttribute' => $baseDir . '/database/migrations/2016_06_06_110811_create_body_attribute.php',
     'CreateGovernmentExamTable' => $baseDir . '/database/migrations/2016_02_28_080528_create_government_exam_table.php',
+    'CreateGunLicenseNumberTable' => $baseDir . '/database/migrations/2016_03_11_182629_create_gun_license_number_table.php',
+    'CreateGunTable' => $baseDir . '/database/migrations/2016_03_11_181358_create_gun_table.php',
     'CreateLeaveTable' => $baseDir . '/database/migrations/2016_02_28_075635_create_leave_table.php',
     'CreateNatureOfBusinessTable' => $baseDir . '/database/migrations/2016_03_02_041305_create_nature_of_business_table.php',
     'CreateRequirementsTable' => $baseDir . '/database/migrations/2016_03_02_040517_create_requirements_table.php',

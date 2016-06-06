@@ -58,14 +58,14 @@ Nature of Business
 									
 									
 									<td>
-                                        <button class="buttonUpdate btn modal-trigger"  name="" id="{{$natureOfBusiness->intNatureOfBusinessID}}" href="#modalnobEdit" >
+                                        <button class="buttonUpdate btn"  name="" id="{{$natureOfBusiness->intNatureOfBusinessID}}">
                                             <i class="material-icons">edit</i>
                                         </button>
                                     <label for="{{ $natureOfBusiness->intNatureOfBusinessID }}"></label>
                                     </td>
 
                                     <td>
-                                        <button class="buttonDelete btn red modal-trigger" id="{{ $natureOfBusiness->intNatureOfBusinessID }}" href="#modalnobDelete">
+                                        <button class="buttonDelete btn red" id="{{ $natureOfBusiness->intNatureOfBusinessID }}" >
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
@@ -195,7 +195,6 @@ Nature of Business
 
 
 		});
- 
 
 		$("#btnAddSave").click(function(){
            if ($('#strNatureOfBusiness').val().trim()){
@@ -251,9 +250,9 @@ Nature of Business
                     natureOfBusiness: $('#editname').val(),
 				},
 				success: function(data){
-					var toastContent = $('<span>Record Updated.</span>');
-                    Materialize.toast(toastContent, 1500,'green', 'edit');
                     window.location.href = "{{action('NatureOfBusinessController@index')}}";
+                    var toastContent = $('<span>Record Updated.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
 				},
 				error: function(data){
 					var toastContent = $('<span>Error Occured. </span>');
@@ -270,21 +269,52 @@ Nature of Business
 
 		});//button add clicked
         
-        $(".buttonDelete").click(function(){
-            
+        $("#btnDelete").click(function(){
+            $.ajax({
+
+                type: "POST",
+                url: "{{action('NatureOfBusinessController@deleteNatureOfBusiness')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    natureOfBusinessID: deleteID.value 
+
+                },
+                success: function(data){
+                    var toastContent = $('<span>Record Deleted.</span>');
+                    Materialize.toast(toastContent, 1500, 'green', 'edit');
+                    window.location.href = "{{action('NatureOfBusinessController@index')}}";
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+
+                }
+
+            });//ajax
         });
         
-		$(".buttonUpdate").click(function(){
-
-			var itemID = "id" + this.id;
+        $('#dataTable').on('click', '.buttonUpdate', function(){
+            $('#modalnobEdit').openModal();
+            var itemID = "id" + this.id;
 			var itemName = "name" + this.id;
 
 			document.getElementById('editID').value = $("#"+itemID).html();
 			document.getElementById('editname').value = $("#"+itemName).html();
 
-		});
+        });
 
-		$(".checkboxFlag").click(function(){
+        $('#dataTable').on('click', '.buttonDelete', function(){
+            $('#modalnobDelete').openModal();
+            document.getElementById('deleteID').value =this.id;
+        });
+
+        $('#dataTable').on('click', '.checkboxFlag', function(){
             
             var $this = $(this);
             var flag;
@@ -310,17 +340,16 @@ Nature of Business
                     flag: flag
 				},
 				success: function(data){
-					
+					var toastContent = $('<span>Status Changed.</span>');
+                    Materialize.toast(toastContent, 1500,'green', 'edit');
 				},
 				error: function(data){
 					var toastContent = $('<span>Error Occur. </span>');
                     Materialize.toast(toastContent, 1500, 'edit');
                     
 				}
-
 			});//ajax
-             
-        });//checkbox clicked
+        });
 
 	});//document ready
 </script>
