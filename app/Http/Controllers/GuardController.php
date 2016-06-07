@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\ArmedService;
 use App\Model\GovernmentExam;
 use App\Model\Requirements;
+use App\Model\BodyAttribute;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -36,6 +37,11 @@ class GuardController extends Controller
             where('deleted_at', null)
             ->where('boolFlag', 1)
             ->get();
+        
+        $bodyAttributes = BodyAttribute::
+            where('deleted_at', null)
+                ->where('boolFlag', 1)
+                ->get();
         
         return view('/guardForm')
             ->with ('armedservices', $armedservices)
