@@ -105,8 +105,7 @@ Requirements
         </div>
         
         <div class="modal-content">
-            <form action = "{{ route('requirementsAdd') }}" method = "post">
-            <input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="row">
                 <div class="col s8">
                     <div class="input-field">
@@ -141,7 +140,6 @@ Requirements
                 </button>
             </div>
             <!-- Modal Button Save -->
-            </form>
         </div>
     </div>
 
@@ -152,7 +150,7 @@ Requirements
         </div>
         
         <div class="modal-content">
-            <input  id="" type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="row">
                 <div class="col s8">
                     <div class="input-field">

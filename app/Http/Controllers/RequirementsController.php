@@ -16,7 +16,7 @@ class RequirementsController extends Controller
      */
     public function index()
     {
-         $requirements = Requirements::where('deleted_at', null)->get();
+        $requirements = Requirements::where('deleted_at', null)->get();
 
         return view('/maintenance/requirements', ['requirements'=>$requirements]);
     }
