@@ -19,7 +19,11 @@ class GuardController extends Controller
      */
     public function index()
     {
-        return view('/guardIndex');
+        //return view('/guardIndex');
+    }
+    
+    public function pangalan kung ano nakalagay dun sa specific bc(){
+        return view('/lagay mo dito kung anong pangalan nung .blade mo');
     }
     
     public function guardForm(){
@@ -48,8 +52,6 @@ class GuardController extends Controller
             ->with ('governmentexams', $governmentExams)
             ->with ('bodyAttributes', $bodyAttributes)
 			->with ('requirements', $requirements);
-		
-        
     }
 
     /**
