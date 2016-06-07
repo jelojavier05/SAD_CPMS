@@ -101,6 +101,14 @@ Route::post('/maintenance/armedservice/flag', 'ArmedServiceController@flagArmedS
 
 Route::get('/maintenance/typeOfContract', 'TypeOfContractController@index');
 
+Route::post('/maintenance/typeOfContract/insert', 'TypeOfContractController@addTypeOfContract');
+
+Route::post('/maintenance/typeOfContract/update', 'TypeOfContractController@updateTypeOfContract');
+
+Route::post('/maintenance/typeOfContract/delete', 'TypeOfContractController@deleteTypeOfContract');
+
+Route::post('/maintenance/typeOfContract/flag', 'TypeOfContractController@flagTypeOfContract');
+
 Route::get('/', function () {
     return view('welcome');
 });

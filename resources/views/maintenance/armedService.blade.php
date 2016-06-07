@@ -65,7 +65,7 @@ Armed Service
                                     </td>
 
                                     <td>
-                                        <button class="buttonDelete btn red" id="{{ $armedService->intArmedServiceID }}" href="#modalarmedserviceDelete">
+                                        <button class="buttonDelete btn red" id="{{ $armedService->intArmedServiceID }}">
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>

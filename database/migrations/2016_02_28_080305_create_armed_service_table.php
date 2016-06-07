@@ -15,7 +15,6 @@ class CreateArmedServiceTable extends Migration
         Schema::create('tblarmedservice', function (Blueprint $table) {
             $table->increments('intArmedServiceID');
             $table->string('strArmedServiceName', 100)->unique();
-            $table->string('strDescription');
             $table->softDeletes();
             $table->boolean('boolFlag')->default(true);
         });
