@@ -17,11 +17,16 @@ class GuardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('/guardIndex');
-    }
-    
+//    public function index()
+//    {
+//        return view('/guardIndex');
+//    }
+	
+	public function index()
+	{
+		return view('/militaryTraining');
+	}
+	
     public function guardForm(){
         $armedservices = ArmedService::
             where('deleted_at', null)
