@@ -17,6 +17,7 @@ class GuardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
 //    public function index()
 //    {
 //        return view('/guardIndex');
@@ -27,6 +28,7 @@ class GuardController extends Controller
 		return view('/militaryTraining');
 	}
 	
+
     public function guardForm(){
         $armedservices = ArmedService::
             where('deleted_at', null)
@@ -53,8 +55,6 @@ class GuardController extends Controller
             ->with ('governmentexams', $governmentExams)
             ->with ('bodyAttributes', $bodyAttributes)
 			->with ('requirements', $requirements);
-		
-        
     }
 
     /**
