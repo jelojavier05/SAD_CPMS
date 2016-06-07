@@ -40,7 +40,7 @@ class GuardController extends Controller
         return view('/guardForm')
             ->with ('armedservices', $armedservices)
             ->with ('governmentexams', $governmentExams)
-            ->with ('vitalStatistics', $vitalStatistics)
+            ->with ('bodyAttributes', $bodyAttributes)
 			->with ('requirements', $requirements);
 		
         

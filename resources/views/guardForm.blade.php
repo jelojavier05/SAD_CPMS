@@ -156,12 +156,12 @@ Guard Form
 															</thead>
 
 															<tbody>
-																@foreach($vitalStatistics as $vitalStatistic)
+																@foreach ($bodyAttributes as $bodyAttribute)
 																	<tr>
 
 																		<td>
 																			<div>
-																				{{$vitalStatistic->strVitalStatisticsName}}
+																				{{ $bodyAttribute->strBodyAttributeName }}
 
 																			</div>
 																		</td>
