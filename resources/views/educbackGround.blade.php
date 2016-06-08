@@ -26,7 +26,7 @@ Guard Form
 <div class="row">
 	<div class="col s10 push-s2" style="margin-left:10px;">
 		 
-								<div class="container-fluid grey lighten-4" style="border: 1px solid black;">
+							<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
 									<legend><h4>Educational Background</h4></legend>
 									<table class="highlight white" height="100%" width="100%" style="border:1 px solid black; ">
 										<thead>

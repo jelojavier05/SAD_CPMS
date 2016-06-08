@@ -25,7 +25,7 @@ class GuardController extends Controller
 	
 	public function index()
 	{
-		return view('/militaryTraining');
+		return view('/govexamForm');
 	}
 	
 

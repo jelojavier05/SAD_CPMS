@@ -12,7 +12,7 @@ Guard Form
 			<div class="nav-wrapper blue">
 				<div class="row">	
 					<div class="col s12">
-						<a href="#personaldata" class="breadcrumb">Personal Data</a>
+						<a class="breadcrumb">Personal Data</a>
 					</div>
 				</div>
 			</div>
@@ -25,7 +25,7 @@ Guard Form
 <!-------------------------------------Personal Data Page Start---------------------------------->
 <div class="row">
 	<div class="col s10 push-s2" style=" margin-left:10px;">
-		<div class="container-fluid grey lighten-4" style="border: 1px solid black;" id="personaldata">
+		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;" id="personaldata">
 		   <legend><h4>Personal Data</h4></legend>
 		   <div class="row" style="margin:5%;">
 

@@ -12,9 +12,9 @@ Guard Form
 			<div class="nav-wrapper blue">
 				<div class="row">	
 					<div class="col s12">
-						<a href="#personaldata" class="breadcrumb">Personal Data</a>
-						<a href="#" class="breadcrumb">Educational Background</a>
-						<a href="#" class="breadcrumb">Military Training</a>
+						<a class="breadcrumb">Personal Data</a>
+						<a class="breadcrumb">Educational Background</a>
+						<a class="breadcrumb">Armed Services</a>
 					</div>
 				</div>
 			</div>
@@ -27,8 +27,8 @@ Guard Form
 <div class="row">
 	<div class="col s10 push-s2" style="margin-left:10px;">
 		
-				                <div class="container-fluid grey lighten-4" style="border: 1px solid black;">
-									<legend><h4>Military Training (If Any)</h4></legend>
+				                <div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
+									<legend><h4>Armed Services</h4></legend>
                                     <div class="row" style="margin:5%;">
 					
 					                   <div class="row">
@@ -87,65 +87,7 @@ Guard Form
                                     <div class="row" style="margin:5%;">
 -->
 				
-					                   <div class="input-field col s12">
-                                            <p>Government Exam:</p>
-										   		<table class="highlight white">
-										   			<thead>
-														<tr>
-															<th></th>
-                                                            <th>Name</th>
-															<th>Ratings</th>
-															<th>Date Taken</th>
-														</tr>
-													</thead>
-													
-													<tbody>
-<!--														@foreach($governmentexams as $governmentexam)-->
-                                                            <tr>
-                                                                <td>
-                                                                    <div>
-
-
-                                                                        <input type="checkbox" id="" />
-      																	<label for=""></label>
-
-
-                                                                    </div>
-                                                                </td>
-
-                                                                <td>
-<!--                                                                        {{$governmentexam->strGovernmentExam}}-->
-
-                                                                </td>
-
-                                                                <td>
-                                                                    <div>
-                                                                        <input size="9" id="rating" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
-                                                                        <label data-error="Incorrect" for="rating"></label>
-
-                                                                    </div>
-                                                                </td>
-
-                                                                <td>
-                                                                    <div>
-                                                                        <input id="dateTaken" type="date" class="validate"  required="" aria-required="true">
-                                                                        <label data-error="Incorrect" for="dateTaken"></label>
-
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-<!--														@endforeach-->
-													</tbody>
-										   		</table>
-
-<!--
-					                   </div>
-					
-                                       <div class="row" style="margin:5%;">
--->
-					
-					
-				                        </div>
+					                   
 										
 										
 					
@@ -156,6 +98,8 @@ Guard Form
                                 </div>
 	</div>
 </div>
+		</div>
+	</div>
 <!-------------------------------------Personal Data Page End---------------------------------->
 
 @stop
