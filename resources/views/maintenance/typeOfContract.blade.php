@@ -134,12 +134,13 @@ Type of Contract
 						
 	<!-- Modal Button Save -->
 				
-		<div class="modal-footer">
+		
+    		</div>
+		<div class="modal-footer" style="background-color:#01579b !important;">
 			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
     			<i class="material-icons right">send</i>
   			</button>
     	</div>
-    		</div>
 		</div>
 <!-- MODAL contracttype EDIT -->
 <div id="modalcontracttypeEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
@@ -189,7 +190,9 @@ Type of Contract
 						
 	<!-- Modal Button Save -->
 				
-		<div class="modal-footer">
+		
+    		</div>
+		<div class="modal-footer" style="background-color:#01579b !important;">
 			
 			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
@@ -199,7 +202,6 @@ Type of Contract
 			
 			
     	</div>
-    		</div>
 </div>
 <!----------------------------modal delete contracttype ------------------------------>
 

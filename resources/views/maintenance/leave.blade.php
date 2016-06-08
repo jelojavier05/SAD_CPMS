@@ -145,12 +145,13 @@ Leave
 				</div>
 	<!-- Modal Button Save -->
 				
-		<div class="modal-footer">
-			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
-    			<i class="material-icons right">send</i>
-  			</button>
-    	</div>
+		
     		</div>
+				<div class="modal-footer" style="background-color:#01579b !important;">
+				<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
+					<i class="material-icons right">send</i>
+				</button>
+				</div>
 		</div>
 <!-- MODAL LEAVE EDIT -->
 <div id="modalleaveEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
@@ -207,17 +208,15 @@ Leave
 				</div>
 	<!-- Modal Button Save -->
 				
-		<div class="modal-footer">
+		
+    		</div>
+		<div class="modal-footer" style="background-color:#01579b !important;">
 			
 			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
-  			</button>
-			
-			
-			
+			</button>
 			
     	</div>
-    		</div>
 </div>
 <!---------- modal delete leave--------------------------------->
 <div id="modalleaveDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">

@@ -100,39 +100,63 @@ Requirements
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-					<div class="row">
-						<div class="col s8">
-							<div class="input-field">
-								<input  id="" type="text" class="validate" name = "requirementsID" disabled>
-								<label for="">Requirements ID</label>
+				<div class = "row">
+					<div class="col s6">
+							<div class="row">
+								<div class="col s12">
+									<div class="input-field">
+										<input  id="" type="text" class="validate" name = "requirementsID" disabled>
+										<label for="">Requirements ID</label>
+									</div>
+								</div>
 							</div>
-						</div>
-            		</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="" type="text" class="validate" name = "requirements" required="" aria-required="true">
-								<label for="">Requirements Name</label> 
+							<div class="row">
+								<div class="col s12">
+									<div class="input-field">
+										<input id="" type="text" class="validate" name = "requirements" required="" aria-required="true">
+										<label for="">Requirements Name</label> 
+									</div>
+								</div>
 							</div>
-						</div>
-            		</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="" type="text" class="validate"  name = "requirementsDescription" required="" aria-required="true">
-								<label for="">Description</label> 
+					</div>
+					<div class ="col s6">
+							<div class="row">
+								<div class="col s12">
+									<div class="input-field">
+										<input id="" type="text" class="validate"  name = "requirementsDescription" required="" aria-required="true">
+										<label for="">Description</label> 
+									</div>
+								</div>
 							</div>
-						</div>
-            		</div>
+							
+							<div class="row">	
+								<div class="col s4">
+									<p>
+									  <input type="checkbox" id="clientcbox" />
+									  <label for="clientcbox">Client</label>
+									</p>
+								</div>
+								
+								<div class="col s6">
+									<p>
+									  <input type="checkbox" id="sgcbox" />
+									  <label for="sgcbox">Security Guard</label>
+									</p>
+								</div>
+							</div>
+					
+					</div>
+				</div>
 						
 	<!-- Modal Button Save -->
 				
-		<div class="modal-footer">
-			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
-    			<i class="material-icons right">send</i>
-  			</button>
-    	</div>
+		
     		</div>
+				<div class="modal-footer" style="background-color:#01579b !important;">
+					<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
+						<i class="material-icons right">send</i>
+					</button>
+				</div>
 		</div>
 <!-- MODAL requirements EDIT -->
 <div id="modalrequirementsEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
@@ -141,33 +165,59 @@ Requirements
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
 					<div class="row">
-						<div class="col s8">
-							<div class="input-field">
-								<input  id="editID" type="text" class="validate"  name = "requirementsID" readonly required="" aria-required="true" value = "test">
-								<label for="editID">Requirements ID</label>
+						<div class="col s6">
+							<div class="row">
+								<div class="col s12">
+									<div class="input-field">
+										<input  id="editID" type="text" class="validate"  name = "requirementsID" readonly required="" aria-required="true" value = "test">
+										<label for="editID">Requirements ID</label>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12">
+									<div class="input-field">
+										<input id="editname" type="text" class="validate" name = "requirements" required="" aria-required="true" value = "test">
+										<label for="editname">Requirements Name</label> 
+									</div>
+								</div>
 							</div>
 						</div>
-            		</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "requirements" required="" aria-required="true" value = "test">
-								<label for="editname">Requirements Name</label> 
+						<div class = "col s6">
+							<div class="row">
+								<div class="col s12">
+									<div class="input-field">
+										<input id="editdescription" type="text" class="validate"  name = "requirementsDescription" required="" aria-required="true" value = "test">
+										<label for="editDescription">Description</label> 
+									</div>
+								</div>
 							</div>
-						</div>
-            		</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="editdescription" type="text" class="validate"  name = "requirementsDescription" required="" aria-required="true" value = "test">
-								<label for="editDescription">Description</label> 
+							
+							<div class="row">	
+								<div class="col s4">
+									<p>
+									  <input type="checkbox" id="clientcbox" />
+									  <label for="clientcbox">Client</label>
+									</p>
+								</div>
+								
+								<div class="col s6">
+									<p>
+									  <input type="checkbox" id="sgcbox" />
+									  <label for="sgcbox">Security Guard</label>
+									</p>
+								</div>
 							</div>
+							
 						</div>
-            		</div>
 						
+						
+				</div>
 	<!-- Modal Button Save -->
 				
-		<div class="modal-footer">
+		
+    		</div>
+	<div class="modal-footer" style="background-color:#01579b !important;">
 			
 			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
@@ -177,7 +227,6 @@ Requirements
 			
 			
     	</div>
-    		</div>
 </div>
 <!----------------------------modal delete requirements ------------------------------>
 
