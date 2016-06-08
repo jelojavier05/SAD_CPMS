@@ -45,6 +45,8 @@ Route::post('/maintenance/requirements/update', 'RequirementsController@updateRe
 
 Route::post('/maintenance/requirements/delete', 'RequirementsController@deleteRequirements');
 
+Route::post('/maintenance/requirements/flag', 'RequirementsController@flagRequirements');
+
 Route::get('/maintenance/typeOfGun', 'TypeOfGunController@index');
 
 Route::get('/maintenance/typeOfGun/get', 'TypeOfGunController@getTypeOfGun');

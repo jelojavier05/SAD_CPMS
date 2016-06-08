@@ -33,6 +33,7 @@ Requirements
                                 <th>ID</th>
                                 <th>Name</th>
 								<th>Description</th>
+                                <th>For</th>
                                 
                             </tr>
                         </thead>
@@ -46,9 +47,9 @@ Requirements
                                         <label>
                                             
                                             @if ($requirement->boolFlag==1)
-                                             <input type="checkbox" checked class = "checkboxFlag" id = "{{ $requirement->intRequirementID }}">
+                                                <input type="checkbox" checked class = "checkboxFlag" id = "{{ $requirement->intRequirementsID }}">
                                             @else
-                                                <input type="checkbox" class = "checkboxFlag" id = "{{ $requirement->intRequirementID }}">
+                                                <input type="checkbox" class = "checkboxFlag" id = "{{ $requirement->intRequirementsID }}">
                                             @endif
                                             <span class="lever"></span>
                                             
@@ -56,33 +57,32 @@ Requirements
                                     </div>
                                 	</td>
                                 
-                                
-									
-									
-									
 									<td>
-                                    <button class="buttonUpdate btn modal-trigger"  name="" id = "{{ $requirement->intRequirementsID }}" href="#modalrequirementsEdit" style="margin-right: -40px;margin-left:50px;">
+                                    <button class="buttonUpdate btn"  name="" id = "{{ $requirement->intRequirementsID }}"  style="margin-right: -40px;margin-left:50px;">
                                         <i class="material-icons">edit</i>
                                     </button>
                                     <label for="{{ $requirement->intRequirementsID }}"></label> 
                                 	</td>
 
                                     <td>
-                                        <button class="buttonDelete btn red" id="">
+                                        <button class="buttonDelete btn red" id="{{ $requirement->intRequirementsID }}">
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
-                                    <td id = "id{{ $requirement->intRequirementsID }}">
-                                    {{ $requirement->intRequirementsID }}
-                                	</td>
+                                    <td id = "id{{ $requirement->intRequirementsID }}">{{ $requirement->intRequirementsID }}</td>
                                 
-                                	<td id = "name{{ $requirement->intRequirementsID }}">
-                                    	{{ $requirement->strRequirements }}
-                                	</td>
+                                	<td id = "name{{ $requirement->intRequirementsID }}">{{ $requirement->strRequirements }}</td>
                                 
-									<td id = "description{{ $requirement->intRequirementsID }}">
-										{{ $requirement->strDescription }}
-									</td>
+									<td id = "description{{ $requirement->intRequirementsID }}">{{ $requirement->strDescription }}</td>
+                                    
+                                    @if ($requirement->intIdentifier == 1)
+                                        <td id = "identifier{{ $requirement->intRequirementsID }}">Client</td>
+                                    @elseif ($requirement->intIdentifier == 2)
+                                        <td id = "identifier{{ $requirement->intRequirementsID }}">Guard</td>
+                                    @elseif ($requirement->intIdentifier == 3)
+                                        <td id = "identifier{{ $requirement->intRequirementsID }}">Client and Guard</td>
+                                    @endif
+                                    
                                 </tr>
                             @endforeach
                         </tbody>
@@ -113,7 +113,7 @@ Requirements
 							<div class="row">
 								<div class="col s12">
 									<div class="input-field">
-										<input id="" type="text" class="validate" name = "requirements" required="" aria-required="true">
+										<input id="addRequirementName" type="text" class="validate" name = "requirements" required="" aria-required="true">
 										<label for="">Requirements Name</label> 
 									</div>
 								</div>
@@ -123,7 +123,7 @@ Requirements
 							<div class="row">
 								<div class="col s12">
 									<div class="input-field">
-										<input id="" type="text" class="validate"  name = "requirementsDescription" required="" aria-required="true">
+										<input id="addDescription" type="text" class="validate"  name = "requirementsDescription" required="" aria-required="true">
 										<label for="">Description</label> 
 									</div>
 								</div>
@@ -132,15 +132,15 @@ Requirements
 							<div class="row">	
 								<div class="col s4">
 									<p>
-									  <input type="checkbox" id="clientcbox" />
-									  <label for="clientcbox">Client</label>
+									  <input type="checkbox" id="clientcboxadd" />
+									  <label for="clientcboxadd">Client</label>
 									</p>
 								</div>
 								
 								<div class="col s6">
 									<p>
-									  <input type="checkbox" id="sgcbox" />
-									  <label for="sgcbox">Security Guard</label>
+									  <input type="checkbox" id="sgcboxadd" />
+									  <label for="sgcboxadd">Security Guard</label>
 									</p>
 								</div>
 							</div>
@@ -160,7 +160,7 @@ Requirements
 		</div>
 <!-- MODAL requirements EDIT -->
 <div id="modalrequirementsEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
-	<div class="modal-header"><h2>Government Exam</h2></div>
+	<div class="modal-header"><h2>Requirement</h2></div>
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
@@ -196,15 +196,15 @@ Requirements
 							<div class="row">	
 								<div class="col s4">
 									<p>
-									  <input type="checkbox" id="clientcbox" />
-									  <label for="clientcbox">Client</label>
+									  <input type="checkbox" id="clientcboxedit" />
+									  <label for="clientcboxedit">Client</label>
 									</p>
 								</div>
 								
 								<div class="col s6">
 									<p>
-									  <input type="checkbox" id="sgcbox" />
-									  <label for="sgcbox">Security Guard</label>
+									  <input type="checkbox" id="sgcboxedit" />
+									  <label for="sgcboxedit">Security Guard</label>
 									</p>
 								</div>
 							</div>
@@ -229,7 +229,6 @@ Requirements
     	</div>
 </div>
 <!----------------------------modal delete requirements ------------------------------>
-
 <div id="modalrequirementsDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">
             <div class="modal-header blue"><h2 class="white-text">Delete</h2></div>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -258,10 +257,76 @@ Requirements
 @section('script')
 
 <script type="text/javascript">
-	$(function(){
-		$("#btnUpdate").click(function(){
+	$(document).ready(function(){
+		$("#btnAddSave").click(function(){
+            var checkboxIdentifier;
+            if ($('#clientcboxadd').is(":checked")){
+                checkboxIdentifier = 1;
+            }else if ($('#sgcboxadd').is(":checked")){
+                checkboxIdentifier = 2
+            }else{
+                
+            }
+            
+            if ($('#clientcboxadd').is(":checked") && $('#sgcboxadd').is(":checked")){
+                checkboxIdentifier = 3;
+            }
+            
+            if ($('#addRequirementName').val().trim() && $('#addDescription').val().trim()){
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{action('RequirementsController@addRequirements')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        requirements: $('#addRequirementName').val(),
+                        requirementsDescription: $('#addDescription').val(),
+                        identifier: checkboxIdentifier
+                    },
+                    success: function(data){
+                        var toastContent = $('<span>Record Added.</span>');
+                        Materialize.toast(toastContent, 1500,'green', 'edit');
+                        window.location.href = "{{action('RequirementsController@index')}}";
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occured. </span>');
+                        Materialize.toast(toastContent, 1500,'red', 'edit');
+
+                    }
+
+
+                });//ajax
+
+                 }else{
+                    var toastContent = $('<span>Please Check Your Input. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                }
+            
+        });// button add clicked
+        
+        $("#btnUpdate").click(function(){
           if ($('#editname').val().trim() && $('#editdescription').val().trim()){
-			$.ajax({
+              var checkboxIdentifier;
+            if ($('#clientcboxedit').is(":checked")){
+                checkboxIdentifier = 1;
+            }else if ($('#sgcboxedit').is(":checked")){
+                checkboxIdentifier = 2
+            }else{
+                
+            }
+            
+            if ($('#clientcboxedit').is(":checked") && $('#sgcboxedit').is(":checked")){
+                checkboxIdentifier = 3;
+            }
+              
+              
+              $.ajax({
 				
 				type: "POST",
 				url: "{{action('RequirementsController@updateRequirements')}}",
@@ -275,12 +340,14 @@ Requirements
 				data: {
 					requirementsID: $('#editID').val(),
                     requirements: $('#editname').val(),
-					requirementsDescription: $('#editdescription').val()
+					requirementsDescription: $('#editdescription').val(),
+                    identifier: checkboxIdentifier
 				},
 				success: function(data){
-					window.location.href = "{{action('RequirementsController@index')}}";
+					
 					var toastContent = $('<span>Record Updated.</span>');
                     Materialize.toast(toastContent, 1500,'green', 'edit');
+                    window.location.href = "{{action('RequirementsController@index')}}";
                    
 				},
 				error: function(data){
@@ -296,7 +363,35 @@ Requirements
                 Materialize.toast(toastContent, 1500,'red', 'edit');
             }
 
-		});//button add clicked
+		});//button update clicked
+        
+        $("#btnDelete").click(function(){
+                $.ajax({
+                    type: "POST",
+                    url: "{{action('RequirementsController@deleteRequirements')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        requirementsID: deleteID.value
+                    },
+                    success: function(data){
+                        var toastContent = $('<span>Record Deleted.</span>');
+                        Materialize.toast(toastContent, 1500,'Green','edit');
+                        window.location.href = "{{action('RequirementsController@index')}}";
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occur. </span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+                    }
+
+                });//ajax
+            });
+        
         
         $("#dataTable").DataTable({
              "columns": [
@@ -305,26 +400,99 @@ Requirements
             { "orderable": false },
             null,
             null,
+            null,
             null
             ] ,  
-//		    "pagingType": "full_numbers",
 			"pageLength":5,
 			"lengthMenu": [5,10,15,20]
             
 
 		});
-		
-		$(".buttonUpdate").click(function(){
+        
+        $('#dataTable').on('click', '.checkboxFlag', function(){
+                var $this = $(this);
+                var flag;
+                // $this will contain a reference to the checkbox   
+                if ($this.is(':checked')) {
+                    flag = 1;
+                } else {
+                    flag = 0;
+                }
+                 
+                $.ajax({
+                    type: "POST",
+                    url: "{{action('RequirementsController@flagRequirements')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
 
-			var itemID = "id" + this.id;
-			var itemName = "name" + this.id;
-			var itemDescription = "description" + this.id;
-
-			document.getElementById('editID').value = $("#"+itemID).html();
-			document.getElementById('editname').value = $("#"+itemName).html();
-			document.getElementById('editdescription').value = $("#"+itemDescription).html();
-
-		});
+                        if (token) {
+                            return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        requirementID: this.id,
+                        flag: flag
+                    },
+                    success: function(data){
+                        var toastContent = $('<span>Status Changed.</span>');
+                        Materialize.toast(toastContent, 1500,'green', 'edit');
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occur. </span>');
+                        Materialize.toast(toastContent, 1500, 'edit');
+                    }
+                });//ajax
+            });
+        
+        $('#dataTable').on('click', '.buttonUpdate', function(){
+            $('#modalrequirementsEdit').openModal();
+            var itemID = "id" + this.id;
+            var itemName = "name" + this.id;
+            var itemDescription = "description" + this.id;
+            var identifier = "identifier" + this.id;
+            var identifierValue = $("#" + identifier).html();
+            
+            if (identifierValue == "Client"){
+                $('#clientcboxedit').prop('checked', true);
+                $('#sgcboxedit').prop('checked', false);
+                
+            }else if (identifierValue == "Guard"){
+                $('#sgcboxedit').prop('checked', true);
+                $('#clientcboxedit').prop('checked', false);
+                
+            }else if (identifierValue == "Client and Guard"){
+                $('#sgcboxedit').prop('checked', true);
+                $('#clientcboxedit').prop('checked', true);      
+            }
+          
+            
+            document.getElementById('editID').value = $("#"+itemID).html();
+            document.getElementById('editname').value = $("#"+itemName).html();
+            document.getElementById('editdescription').value = $("#"+itemDescription).html();   
+            
+        });
+        
+        $('#dataTable').on('click', '.buttonDelete', function(){
+            $('#modalrequirementsDelete').openModal();
+            document.getElementById('deleteID').value =this.id;
+        });
+            
+        
+        $('#clientcboxedit').click(function(){
+            if ($('#clientcboxedit').attr('checked')){
+                $('#clientcboxedit').attr('checked');
+            }else{
+                $('#clientcboxedit').attr('checked', true);
+            }
+        });
+        
+        $('#sgcboxedit').click(function(){
+            if ($('#sgcboxedit').attr('checked')){
+                $('#sgcboxedit').attr('checked', false);
+            }else{
+                $('#sgcboxedit').attr('checked', true);
+            }
+        });
 	});
 </script>
 @stop
