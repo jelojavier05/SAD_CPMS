@@ -179,9 +179,9 @@ Requirements
     	</div>
     		</div>
 </div>
-<!----------------------------modal delete nature of business ------------------------------>
+<!----------------------------modal delete requirements ------------------------------>
 
-<div id="modalgovexamDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">
+<div id="modalrequirementsDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">
             <div class="modal-header blue"><h2 class="white-text">Delete</h2></div>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="modal-content">
