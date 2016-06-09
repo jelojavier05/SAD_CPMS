@@ -12,9 +12,9 @@ Guard Form
 			<div class="nav-wrapper blue">
 				<div class="row">	
 					<div class="col s12">
-						<a href="#personaldata" class="breadcrumb">Personal Data</a>
-						<a href="#" class="breadcrumb">Educational Background</a>
-						<a href="#" class="breadcrumb">Military Training</a>
+						<a class="breadcrumb">Personal Data</a>
+						<a class="breadcrumb">Educational Background</a>
+						<a class="breadcrumb">Armed Services</a>
 					</div>
 				</div>
 			</div>
@@ -27,8 +27,8 @@ Guard Form
 <div class="row">
 	<div class="col s10 push-s2" style="margin-left:10px;">
 		
-				                <div class="container-fluid grey lighten-4" style="border: 1px solid black;">
-									<legend><h4>Military Training (If Any)</h4></legend>
+				                <div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
+									<legend><h4>Armed Services</h4></legend>
                                     <div class="row" style="margin:5%;">
 					
 					                   <div class="row">
@@ -139,6 +139,7 @@ Guard Form
 					
 					
 				                        </div>
+
 										
 										
 					
@@ -149,6 +150,8 @@ Guard Form
                                 </div>
 	</div>
 </div>
+		</div>
+	</div>
 <!-------------------------------------Personal Data Page End---------------------------------->
 
 @stop
