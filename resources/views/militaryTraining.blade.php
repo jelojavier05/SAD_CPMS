@@ -100,7 +100,6 @@ Guard Form
 													</thead>
 													
 													<tbody>
-<!--														@foreach($governmentexams as $governmentexam)-->
                                                             <tr>
                                                                 <td>
                                                                     <div>
@@ -114,7 +113,6 @@ Guard Form
                                                                 </td>
 
                                                                 <td>
-<!--                                                                        {{$governmentexam->strGovernmentExam}}-->
 
                                                                 </td>
 
@@ -134,15 +132,10 @@ Guard Form
                                                                     </div>
                                                                 </td>
                                                             </tr>
-<!--														@endforeach-->
+
 													</tbody>
 										   		</table>
 
-<!--
-					                   </div>
-					
-                                       <div class="row" style="margin:5%;">
--->
 					
 					
 				                        </div>

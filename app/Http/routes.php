@@ -93,6 +93,8 @@ Route::post('/maintenance/governmentExam/delete', 'GovernmentExamController@dele
 
 Route::get('/maintenance/armedservice', 'ArmedServiceController@index');
 
+Route::get('/maintenance/armedservice/get', 'ArmedServiceController@getArmedService');
+
 Route::post('/maintenance/armedservice/update', 'ArmedServiceController@updateArmedService');
 
 Route::post('/maintenance/armedservice/insert', 'ArmedServiceController@addArmedService');

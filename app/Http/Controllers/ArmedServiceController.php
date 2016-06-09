@@ -9,15 +9,19 @@ use App\Http\Controllers\Controller;
 
 class ArmedServiceController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         $armedServices = ArmedService::where('deleted_at', null)->get();
 
         return view('/maintenance/armedservice', ['armedServices'=>$armedServices]);
     }
+    
+    public function getArmedService(){
+        $armedServices = ArmedService::where('deleted_at', null)->get();
+        
+        return response()->json($armedServices);
+    }
 
-    public function addArmedService(Request $request)
-    {
+    public function addArmedService(Request $request){
         try {
 
             $armedService = new ArmedService;

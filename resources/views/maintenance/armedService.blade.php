@@ -25,7 +25,7 @@ Armed Service
                     <table class="highlight white" style="border-radius:10px;" id="dataTable">
 
                         <thead>
-                            <tr>
+                            <tr >
                                 <th style="width:50px;"></th>
                                 <th style="width:50px;"></th>
 								<th style="width:50px;"></th>
@@ -230,9 +230,12 @@ Armed Service
                         armedServiceDescription: $('#strArmedServiceDescAdd').val(),
                     },
                     success: function(data){
+                        
                         var toastContent = $('<span>Record Added.</span>');
                         Materialize.toast(toastContent, 1500,'green', 'edit');
-                        window.location.href = "{{action('ArmedServiceController@index')}}";
+                        //window.location.href = "{{action('ArmedServiceController@index')}}";
+                        refreshTable();
+                        
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occured. </span>');
@@ -320,7 +323,7 @@ Armed Service
                 var itemID = "id" + this.id;
                 var itemName = "name" + this.id;
                 var itemDescription = "description" + this.id;
-
+                
                 document.getElementById('editID').value = $("#"+itemID).html();
                 document.getElementById('editname').value = $("#"+itemName).html();
                 document.getElementById('editdescription').value = $("#"+itemDescription).html();
@@ -366,7 +369,36 @@ Armed Service
                     }
                 });//ajax
             });
-
+            
+            function refreshTable(){
+                var dataTable = $('#dataTable').DataTable();
+                dataTable.clear().draw(); //clear all the row
+                $.ajax({ 
+                    type: 'GET', 
+                    url: '{{ URL::to("/maintenance/armedservice/get") }}', 
+                    data: { get_param: 'value' },
+                    dataType: 'json',
+                    success: function (data) { 
+                        $.each(data, function(index, element) {
+                            dataTable.row.add([
+                                '<button class="buttonUpdate btn" name="" id="' +data[index].intArmedServiceID+'" ><i class="material-icons">edit</i></button>',
+                                '<button class="buttonDelete btn red" id="'+ data[index].intArmedServiceID +'"><i class="material-icons">delete</i></button>',
+                                data[index].intArmedServiceID,'<p style="height:10%;"id = "name' +data[index].intArmedServiceID + '">' + data[index].strArmedServiceName +'</p>',
+                                '4',
+                                '5']).draw();
+                        });
+                        
+                        $("#dataTable tr").css({ 'margin-bottom': "-5%" });
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occur. </span>');
+                        Materialize.toast(toastContent, 1500,'red', 'edit');
+                         console.log(data);
+                    }
+                });
+                
+            }
+            
         });//document ready
     </script>
 @stop
