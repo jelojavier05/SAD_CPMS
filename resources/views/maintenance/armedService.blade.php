@@ -379,13 +379,23 @@ Armed Service
                     data: { get_param: 'value' },
                     dataType: 'json',
                     success: function (data) { 
+                        
                         $.each(data, function(index, element) {
+                            var flag = data[index].boolFlag;
+                            
+                            if (flag){
+                                var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" checked class = "checkboxFlag" id = "'+data[index].intArmedServiceID+'"><span class="lever"></span></label></div>';
+                            }else{
+                                var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" class = "checkboxFlag" id = "'+data[index].intArmedServiceID+'"><span class="lever"></span></label></div>';
+                            }
+                            
                             dataTable.row.add([
+                                checkbox,
                                 '<button class="buttonUpdate btn" name="" id="' +data[index].intArmedServiceID+'" ><i class="material-icons">edit</i></button>',
                                 '<button class="buttonDelete btn red" id="'+ data[index].intArmedServiceID +'"><i class="material-icons">delete</i></button>',
-                                data[index].intArmedServiceID,'<p style="height:10%;"id = "name' +data[index].intArmedServiceID + '">' + data[index].strArmedServiceName +'</p>',
-                                '4',
-                                '5']).draw();
+                                data[index].intArmedServiceID,
+                                '<pid = "name' +data[index].intArmedServiceID + '">' + data[index].strArmedServiceName +'</p>',
+                                '<pid = "name' +data[index].intArmedServiceID + '">' + data[index].strDescription +'</p>']).draw();
                         });
                         
                         $("#dataTable tr").css({ 'margin-bottom': "-5%" });
