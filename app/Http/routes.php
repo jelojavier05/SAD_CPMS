@@ -11,6 +11,18 @@
 |
 */
 
+Route::get('/guardIndex', 'GuardController@index');
+
+Route::get('/guardRegistration/personalData', 'GuardController@personalDataBC');
+
+Route::get('/guardRegistration/educationalBackground', 'GuardController@educationalBackgroundBC');
+
+Route::get('/guardRegistration/armedService', 'GuardController@armedServiceBC');
+
+Route::get('/guardRegistration/governmentExam', 'GuardController@governmentExamBC');
+
+Route::get('/guardRegistration/requirement', 'GuardController@requirementBC');
+
 Route::get('/deployment/index', 'DeploymentController@index');
 
 Route::get('/maintenance/gun', 'GunController@index');
@@ -22,8 +34,6 @@ Route::post('/maintenance/gun/update', 'GunController@update');
 Route::post('/maintenance/gun/destroy', 'GunController@destroy');
 
 Route::post('/maintenance/gun/flag', 'GunController@flag');
-
-Route::get('/guardIndex', 'GuardController@index');
 
 Route::get('/guardForm', 'GuardController@guardForm');
 

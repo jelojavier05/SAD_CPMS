@@ -460,10 +460,30 @@ Guard Form
 									</table>
 									
 								</div>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" href="#">Next</button>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id = "backEducation">Back</button>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextEducation">Next</button>
 	</div>
 </div>
 
 <!-------------------------------------Personal Data Page End---------------------------------->
+@stop
+
+@section('script')
+<script>
+    
+    $(document).ready(function() {
+        $('select').material_select();
+        
+        $('#backEducation').click(function(){
+            window.location.href = '{{ URL::to("/guardRegistration/personalData") }}';
+        });
+        
+        $('#nextEducation').click(function(){
+            window.location.href = '{{ URL::to("/guardRegistration/armedService") }}';
+        });
+        
+    });
+        
+</script>
+
 @stop

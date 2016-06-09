@@ -50,29 +50,12 @@ Guard Form
 				
 				
 				<div class="col s6">
-					<input type="checkbox" id="1" />
-					<label for="1">TEST</label></br>
-					
-					<input type="checkbox" id="2" />
-      				<label for="2">TEST</label></br>
-					
-					<input type="checkbox" id="3" />
-      				<label for="3">TEST</label></br>
-					
-					<input type="checkbox" id="4" />
-      				<label for="4">TEST</label></br>
-	
-					<input type="checkbox" id="5" />
-      				<label for="5">TEST</label></br>
-				
-					<input type="checkbox" id="6" />
-      				<label for="6">TEST</label></br>
-
-					<input type="checkbox" id="7" />
-      				<label for="7">TEST</label></br>
-
-					<input type="checkbox" id="8" />
-      				<label for="8">TEST</label></br>
+				    @foreach($requirements as $requirement) 
+                       <div class="col s12" style="margin:1%;">
+                            <input type="checkbox" id="requirements{{$requirement->intRequirementsID}}" />
+                            <label for="requirements{{$requirement->intRequirementsID}}" class="black-text">{{$requirement->strRequirements}}</label></br>
+                       </div>
+                    @endforeach
 				</div>
 				
 				
@@ -80,8 +63,28 @@ Guard Form
 				
 			</div>
 		</div>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" href="#">Next</button>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id = "backRequirement">Back</button>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextRequirement">Next</button>
 	</div>
 </div>
+@stop
+
+@section('script')
+<script>
+    
+    $(document).ready(function() {
+        $('select').material_select();
+        
+        $('#backRequirement').click(function(){
+            window.location.href = '{{ URL::to("/guardRegistration/governmentExam") }}';
+        });
+        
+        $('#nextRequirement').click(function(){
+            
+        });
+        
+    });
+        
+</script>
+
 @stop

@@ -25,9 +25,57 @@ class GuardController extends Controller
 	
 	public function index()
 	{
-		return view('/requirementsForm');
+		$requirements = Requirements::
+            where('deleted_at', null)
+            ->where('boolFlag', 1)
+            ->get();
+        
+        return view('/requirement')
+            ->with ('requirements', $requirements);
 	}
 	
+    public function personalDataBC(){
+        $bodyAttributes = BodyAttribute::
+                where('deleted_at', null)
+                    ->where('boolFlag', 1)
+                    ->get();
+        
+        return view ('/personalData')
+            ->with ('bodyAttributes', $bodyAttributes);
+    }
+    
+    public function educationalBackgroundBC(){
+        return view ('/educbackGround');
+    }
+    
+    public function armedServiceBC(){
+        $armedservices = ArmedService::
+            where('deleted_at', null)
+            ->where('boolFlag', 1)
+            ->get();
+        return view ('/armedService')
+            ->with ('armedservices', $armedservices);
+    }
+    
+    public function governmentExamBC(){
+        $governmentExams = GovernmentExam::
+            where('deleted_at', null)
+            ->where('boolFlag', 1)
+            ->get();
+        return view ('/governmentExam')
+            ->with ('governmentexams', $governmentExams);
+    }
+    
+    public function requirementBC(){
+        $requirements = Requirements::
+            where('deleted_at', null)
+            ->where('boolFlag', 1)
+            ->where('intIdentifier','>=', 2)
+            ->get();
+        
+        return view('/requirement')
+            ->with ('requirements', $requirements);
+    }
 
     public function guardForm(){
         $armedservices = ArmedService::

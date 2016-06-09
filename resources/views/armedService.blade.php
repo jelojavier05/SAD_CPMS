@@ -35,19 +35,9 @@ Guard Form
                                             <div class="input-field col s5">
                                                 <select id = "" name = "strTypeOfGun">
                                                     <option disabled selected   >Choose armed services if any</option>
-<!--                                                    
-                                                        <option>test</option>
-
-                                                </select>
-                                                <label>Armed Service</label>
-                                            </div>
-                                        </div>
-					
-<!--
-				                    </div>
-				
-				                    <div class="row" style="margin:5%;">
--->
+                                                    @foreach($armedservices as $armedservice)
+                                                        <option id = "option{{$armedservice->intArmedServiceID}}">{{$armedservice->strArmedServiceName}}</option>
+                                                    @endforeach
 					                   <div class="input-field col s6">
                                             
                                             <input  id="rank" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true" >
@@ -61,11 +51,6 @@ Guard Form
                                             <label class="active" data-error="Incorrect" for="armedServiceYear">Armed Service Year</label>
 
 					                   </div>
-<!--
-				                    </div>
-                
-                                    <div class="row" style="margin:5%;">
--->
 					                   <div class="input-field col s6">
 						                  <input class="with-gap" name="discharge" type="radio" id="dischargedHonorably" />
     											<label for="dischargedHonorably">Discharged Honorably</label>
@@ -79,13 +64,6 @@ Guard Form
                                             <label data-error="Incorrect" for="reason">Reason</label>
 
 					                   </div>
-                    
-                                        
-<!--
-				                    </div>
-
-                                    <div class="row" style="margin:5%;">
--->
 				
 					                   <div class="input-field col s12">
                                             <p>Government Exam:</p>
@@ -145,12 +123,33 @@ Guard Form
 					
 				                    </div>
                                 </div>
-									<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
-									<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" href="#">Next</button>
+                    <button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id="backArmed">Back</button>
+                    <button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextArmed">Next</button>
 	</div>
 </div>
 		</div>
 	</div>
 <!-------------------------------------Personal Data Page End---------------------------------->
+
+@stop
+    
+
+@section('script')
+<script>
+    
+    $(document).ready(function() {
+        $('select').material_select();
+        
+        $('#backArmed').click(function(){
+            window.location.href = '{{ URL::to("/guardRegistration/educationalBackground") }}';
+        });
+        
+        $('#nextArmed').click(function(){
+            window.location.href = '{{ URL::to("/guardRegistration/governmentExam") }}';
+        });
+        
+    });
+        
+</script>
 
 @stop

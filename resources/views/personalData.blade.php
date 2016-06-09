@@ -189,7 +189,7 @@ Guard Form
 
 				</div>
 			   <button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
-			   <button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" href="#">Next</button>
+			   <button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextPersonalData">Next</button>
 			</div>
 		</div>
 	</div>
@@ -203,9 +203,14 @@ Guard Form
     
     $(document).ready(function() {
         $('select').material_select();
+        
+        $('#nextPersonalData').click(function(){
+            window.location.href = '{{ URL::to("/guardRegistration/educationalBackground") }}';
+        });
+        
     });
         
-  
+    
     
     
    

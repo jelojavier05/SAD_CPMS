@@ -41,20 +41,21 @@ Guard Form
 													
 													<tbody>
 
+                                                           @foreach($governmentexams as $governmentexam)
                                                             <tr>
                                                                 <td>
                                                                     <div>
 
 
-                                                                        <input type="checkbox" id="" />
-      																	<label for=""></label>
+                                                                        <input type="checkbox" id="governmentexam{{$governmentexam->intGovernmentExamID}}" />
+      																	<label for="governmentexam{{$governmentexam->intGovernmentExamID}}"></label>
 
 
                                                                     </div>
                                                                 </td>
 
                                                                 <td>
-
+                                                                        {{$governmentexam->strGovernmentExam}}
 
                                                                 </td>
 
@@ -74,7 +75,7 @@ Guard Form
                                                                     </div>
                                                                 </td>
                                                             </tr>
-
+														@endforeach
 													</tbody>
 										   		</table>
 
@@ -86,11 +87,32 @@ Guard Form
 					
 					
 				                        </div>
-									<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
-									<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" href="#">Next</button>
+        <button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id = "backGovernment">Back</button>
+        <button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextGovernment">Next</button>
 		</div>
                                             
 	</div>
 </div>
 <!-------------------------------------Personal Data Page End---------------------------------->
+@stop
+
+
+@section('script')
+<script>
+    
+    $(document).ready(function() {
+        $('select').material_select();
+        
+        $('#backGovernment').click(function(){
+            window.location.href = '{{ URL::to("/guardRegistration/armedService") }}';
+        });
+        
+        $('#nextGovernment').click(function(){
+            window.location.href = '{{ URL::to("/guardRegistration/requirement") }}';
+        });
+        
+    });
+        
+</script>
+
 @stop
