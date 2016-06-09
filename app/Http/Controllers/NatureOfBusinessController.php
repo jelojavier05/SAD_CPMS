@@ -14,14 +14,19 @@ class NatureOfBusinessController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $natureOfBusinesses = NatureOfBusiness::where('deleted_at', null)->get();
 
         return view('/maintenance/natureOfBusiness', ['natureOfBusinesses'=>$natureOfBusinesses]);
     }
+    
+    public function getNatureOfBusiness(){
+        $natureOfBusiness = NatureOfBusiness::where('deleted_at', null)->get();
+        
+        return response()->json($natureOfBusiness);
+    }
 
-   public function addNatureOfBusiness(Request $request){
+    public function addNatureOfBusiness(Request $request){
        try {
 
             $natureOfBusiness = new NatureOfBusiness;
@@ -44,7 +49,7 @@ class NatureOfBusinessController extends Controller
         }
     }
 
-   public function updateNatureOfBusiness(Request $request){
+    public function updateNatureOfBusiness(Request $request){
         try {
             NatureOfBusiness::where('intNatureOfBusinessID', $request->natureOfBusinessID)
             ->update(['strNatureOfBusiness'=>$request->natureOfBusiness]);

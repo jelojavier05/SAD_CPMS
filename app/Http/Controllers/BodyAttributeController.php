@@ -15,6 +15,12 @@ class BodyAttributeController extends Controller
 
         return view('maintenance.bodyAttribute',['bodyAttributes'=>$bodyAttributes]);
     }
+    
+    public function getBodyAttribute(){
+        $bodyAttribute = BodyAttribute::where('deleted_at', null)->get();
+        
+        return response()->json($bodyAttribute);
+    }
 
     public function addBodyAttribute(Request $request){
         $vitalStatistics = new BodyAttribute;

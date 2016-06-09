@@ -254,7 +254,9 @@ Type of Contract
                     success: function(data){
                         var toastContent = $('<span>Record Added.</span>');
                         Materialize.toast(toastContent, 1500,'green', 'edit');
-                        window.location.href = "{{action('TypeOfContractController@index')}}";
+                        refreshTextfield();
+                        refreshTable();
+                        $('#modalcontracttypeAdd').closeModal();
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occured. </span>');
@@ -293,7 +295,8 @@ Type of Contract
                         success: function(data){
                             var toastContent = $('<span>Record Updated.</span>');
                             Materialize.toast(toastContent, 1500,'green', 'edit');
-                            window.location.href = "{{action('TypeOfContractController@index')}}";
+                            refreshTable();
+                            $('#modalcontracttypeEdit').closeModal();
                         },
                         error: function(data){
                             var toastContent = $('<span>Error Occured. </span>');
@@ -325,7 +328,8 @@ Type of Contract
                     success: function(data){
                         var toastContent = $('<span>Record Deleted.</span>');
                         Materialize.toast(toastContent, 1500, 'edit');
-                        window.location.href = "{{action('TypeOfContractController@index')}}";
+                        refreshTable();
+                        $('#modalcontracttypeDelete').closeModal();
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occur. </span>');
@@ -402,6 +406,56 @@ Type of Contract
                 "pageLength":5,
 				"lengthMenu": [5,10,15,20]
             });//data table
+            
+            function refreshTable(){
+            var dataTable = $('#dataTable').DataTable();
+            dataTable.clear().draw(); //clear all the row
+            $.ajax({ 
+                type: 'GET', 
+                url: '{{ URL::to("/maintenance/typeOfContract/get") }}', 
+                data: { get_param: 'value' },
+                dataType: 'json',
+                success: function (data) { 
+
+                    $.each(data, function(index, element) {
+                        var flag = data[index].boolFlag;
+
+                        if (flag){
+                            var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" checked class = "checkboxFlag" id = "'+data[index].intTypeOfContractID+'"><span class="lever"></span></label></div>';
+                        }else{
+                            var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" class = "checkboxFlag" id = "'+data[index].intTypeOfContractID+'"><span class="lever"></span></label></div>';
+                        }
+
+                        dataTable.row.add([
+                            checkbox,
+                            '<button class="buttonUpdate btn" name="" id="' +data[index].intTypeOfContractID+'" ><i class="material-icons">edit</i></button>',
+                            '<button class="buttonDelete btn red" id="'+ data[index].intTypeOfContractID +'"><i class="material-icons">delete</i></button>',
+                            '<h id = "id' +data[index].intTypeOfContractID + '">' + data[index].intTypeOfContractID +'</h>',
+                            '<h id = "name' +data[index].intTypeOfContractID + '">' + data[index].strTypeOfContractName +'</h>',
+                            '<h id = "description' +data[index].intTypeOfContractID + '">' + data[index].strDescription +'</h>',
+                            '<h id = "monthDuration' +data[index].intTypeOfContractID + '">' + data[index].intMonthDuration +'</h>'
+                        ]).draw();
+                    });//foreach
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                     console.log(data);
+                }
+            });
+
+        }
+
+            function refreshTextfield(){
+                document.getElementById('strContractTypeAdd').value = "";
+                document.getElementById('strContractTypeDescAdd').value = "";   
+
+                document.getElementById('intDurationAdd').value = "";   
+
+            
+
+
+            }
 		});//document.ready
 	</script>
 @stop

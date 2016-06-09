@@ -218,7 +218,9 @@ Nature of Business
 					
 					var toastContent = $('<span>Record Added.</span>');
                     Materialize.toast(toastContent, 1500,'green', 'edit');
-                    window.location.href = "{{action('NatureOfBusinessController@index')}}";
+                    refreshTable();
+                    $('#modalnobAdd').closeModal();
+                    refreshTextfield();
 					
 				},
 				error: function(data){
@@ -256,7 +258,8 @@ Nature of Business
                     
                     var toastContent = $('<span>Record Updated.</span>');
                     Materialize.toast(toastContent, 1500,'green', 'edit');
-                    window.location.href = "{{action('NatureOfBusinessController@index')}}";
+                    refreshTable();
+                    $('#modalnobEdit').closeModal();
 				},
 				error: function(data){
 					var toastContent = $('<span>Error Occured. </span>');
@@ -292,7 +295,8 @@ Nature of Business
                 success: function(data){
                     var toastContent = $('<span>Record Deleted.</span>');
                     Materialize.toast(toastContent, 1500, 'green', 'edit');
-                    window.location.href = "{{action('NatureOfBusinessController@index')}}";
+                    refreshTable();
+                    $('#modalnobDelete').closeModal();
                 },
                 error: function(data){
                     var toastContent = $('<span>Error Occur. </span>');
@@ -355,6 +359,50 @@ Nature of Business
 				}
 			});//ajax
         });
+        
+        function refreshTable(){
+            var dataTable = $('#dataTable').DataTable();
+            dataTable.clear().draw(); //clear all the row
+            $.ajax({ 
+                type: 'GET', 
+                url: '{{ URL::to("/maintenance/NatureOfBusiness/get") }}', 
+                data: { get_param: 'value' },
+                dataType: 'json',
+                success: function (data) { 
+
+                    $.each(data, function(index, element) {
+                        var flag = data[index].boolFlag;
+
+                        if (flag){
+                            var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" checked class = "checkboxFlag" id = "'+data[index].intNatureOfBusinessID+'"><span class="lever"></span></label></div>';
+                        }else{
+                            var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" class = "checkboxFlag" id = "'+data[index].intNatureOfBusinessID+'"><span class="lever"></span></label></div>';
+                        }
+
+                        dataTable.row.add([
+                            checkbox,
+                            '<button class="buttonUpdate btn" name="" id="' +data[index].intNatureOfBusinessID+'" ><i class="material-icons">edit</i></button>',
+                            '<button class="buttonDelete btn red" id="'+ data[index].intNatureOfBusinessID +'"><i class="material-icons">delete</i></button>',
+                            '<h id = "id' +data[index].intNatureOfBusinessID + '">' + data[index].intNatureOfBusinessID +'</h>',
+                            '<h id = "name' +data[index].intNatureOfBusinessID + '">' + data[index].strNatureOfBusiness +'</h>'
+                        ]).draw();
+                    });//foreach
+
+                    refreshTextfield();
+
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    console.log(data);
+                }
+            });
+
+        }
+
+        function refreshTextfield(){
+            document.getElementById('strNatureOfBusiness').value = "";
+        }
 
 	});//document ready
 </script>

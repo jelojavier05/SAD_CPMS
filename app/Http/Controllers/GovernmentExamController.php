@@ -22,15 +22,15 @@ class GovernmentExamController extends Controller
 		return response()->json($governmentExams);
 	}
 
-    public function addGovernmentExam(Request $request)
-    {
+    public function addGovernmentExam(Request $request){
 
         try {
-            DB::table('tblgovernmentexam')
-            ->insertGetId([
-                'strGovernmentExam' => $request->input('governmentExamName'),
-                'strDescription' => $request->input('governmentExamDescription')
-            ]);
+            $governmentExam = new GovernmentExam;
+
+            $governmentExam->strGovernmentExam = $request->governmentExamName;
+            $governmentExam->strDescription = $request->governmentExamDescription;
+            
+            $governmentExam->save();
         } catch (Exception $e) {
              
         }
@@ -40,30 +40,27 @@ class GovernmentExamController extends Controller
     public function flagGovernmentExam(Request $request){
         try {
 
-            DB::table('tblgovernmentexam')
-                ->where('intGovernmentExamID', $request->input('governmentExamID'))
-                ->update(['boolFlag' => $request->input('flag')]);
+            GovernmentExam::where('intGovernmentExamID', $request->governmentExamID)
+            ->update(['boolFlag' => $request->flag]);
+            
         } catch (Exception $e) {
-            alert();
+
         }
     }
 
     public function updateGovernmentExam(Request $request){
         try {
-
-            DB::table('tblgovernmentexam')
-                ->where('intGovernmentExamID', $request->input('governmentExamID'))
-                ->update(['strGovernmentExam' => $request->input('governmentExamName'),
-                          'strDescription' => $request->input('governmentExamDescription')]);
+            GovernmentExam::where('intGovernmentExamID', $request->governmentExamID)
+            ->update(['strGovernmentExam'=>$request->governmentExamName, 
+                'strDescription'=>$request->governmentExamDescription]);
         } catch (Exception $e) {
-            alert();
+
         }
         
     }
 
     public function deleteGovernmentExam(Request $request){
         try {
-//          DB::table('tblgovernmentexam')->where('intGovernmentExamID', $request->input('governmentExamID'))->destroy();
             GovernmentExam::destroy($request->governmentExamID);
         } catch (Exception $e) {
             

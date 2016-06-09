@@ -242,10 +242,6 @@ Leave
             </div>
 </div>
 
-	
-	
-
-
 @stop
 
 @section('script')
@@ -289,7 +285,10 @@ Leave
                     success: function(data){
                         var toastContent = $('<span>Record Added.</span>');
                         Materialize.toast(toastContent, 1500,'green', 'edit');
-                        window.location.href = "{{action('LeaveController@index')}}";
+                        refreshTable();
+                        refreshTextfield();
+                        $('#modalleaveAdd').closeModal();
+                        
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occured. </span>');
@@ -330,7 +329,8 @@ Leave
                     success: function(data){
                         var toastContent = $('<span>Record Updated.</span>');
                         Materialize.toast(toastContent, 1500,'green', 'edit');
-                        window.location.href = "{{action('LeaveController@index')}}";
+                        refreshTable();
+                        $('#modalleaveEdit').closeModal();
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occured. </span>');
@@ -367,7 +367,8 @@ Leave
                     success: function(data){
                         var toastContent = $('<span>Record Deleted.</span>');
                         Materialize.toast(toastContent, 1500, 'edit');
-						window.location.href = "{{action('LeaveController@index')}}";
+						refreshTable();
+                        $('#modalleaveDelete').closeModal();
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occur. </span>');
@@ -436,6 +437,55 @@ Leave
 
 			});//ajax
         });
+        
+        function refreshTable(){
+            var dataTable = $('#dataTable').DataTable();
+            dataTable.clear().draw(); //clear all the row
+            $.ajax({ 
+                type: 'GET', 
+                url: '{{ URL::to("/maintenance/leave/get") }}', 
+                data: { get_param: 'value' },
+                dataType: 'json',
+                success: function (data) { 
+
+                    $.each(data, function(index, element) {
+                        var flag = data[index].boolFlag;
+
+                        if (flag){
+                            var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" checked class = "checkboxFlag" id = "'+data[index].intLeaveID+'"><span class="lever"></span></label></div>';
+                        }else{
+                            var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" class = "checkboxFlag" id = "'+data[index].intLeaveID+'"><span class="lever"></span></label></div>';
+                        }
+
+                        dataTable.row.add([
+                            checkbox,
+                            '<button class="buttonUpdate btn" name="" id="' +data[index].intLeaveID+'" ><i class="material-icons">edit</i></button>',
+                            '<button class="buttonDelete btn red" id="'+ data[index].intLeaveID +'"><i class="material-icons">delete</i></button>',
+                            '<h id = "id' +data[index].intLeaveID + '">' + data[index].intLeaveID +'</h>',
+                            '<h id = "name' +data[index].intLeaveID + '">' + data[index].strLeaveType +'</h>',
+                            '<h id = "daysDuration' +data[index].intLeaveID + '">' + data[index].intDaysDuration +'</h>',
+                            '<h id = "countLeave' +data[index].intLeaveID + '">' + data[index].intCountLeave +'</h>',
+                            '<h id = "daysBeforeLeave' +data[index].intLeaveID + '">' + data[index].intDaysBeforeLeave +'</h>'
+                        ]).draw();
+                        
+                        
+
+                    });//foreach
+
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    console.log(data);
+                }
+            });
+
+        }
+
+        function refreshTextfield(){
+            document.getElementById('strArmedServiceAdd').value = "";
+            document.getElementById('strArmedServiceDescAdd').value = "";   
+        }
 
 	});//document ready
 

@@ -27,7 +27,7 @@ Requirements
 
                         <thead>
                             <tr>
-                                <th style="width:10px;"></th>
+                                <th style="width:50px;"></th>
                                 <th style="width:100px;"></th>
 								<th style="width:50px;"></th>
                                 <th>ID</th>
@@ -292,7 +292,9 @@ Requirements
                     success: function(data){
                         var toastContent = $('<span>Record Added.</span>');
                         Materialize.toast(toastContent, 1500,'green', 'edit');
-                        window.location.href = "{{action('RequirementsController@index')}}";
+                        refreshTable();
+                        refreshTextfield();
+                        $('#modalrequirementsAdd').closeModal();
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occured. </span>');
@@ -347,7 +349,8 @@ Requirements
 					
 					var toastContent = $('<span>Record Updated.</span>');
                     Materialize.toast(toastContent, 1500,'green', 'edit');
-                    window.location.href = "{{action('RequirementsController@index')}}";
+                    refreshTable();
+                    $('#modalrequirementsEdit').closeModal();
                    
 				},
 				error: function(data){
@@ -382,7 +385,8 @@ Requirements
                     success: function(data){
                         var toastContent = $('<span>Record Deleted.</span>');
                         Materialize.toast(toastContent, 1500,'Green','edit');
-                        window.location.href = "{{action('RequirementsController@index')}}";
+                        refreshTable();
+                        $('#modalrequirementsDelete').closeModal();
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occur. </span>');
@@ -391,7 +395,6 @@ Requirements
 
                 });//ajax
             });
-        
         
         $("#dataTable").DataTable({
              "columns": [
@@ -476,6 +479,65 @@ Requirements
             $('#modalrequirementsDelete').openModal();
             document.getElementById('deleteID').value =this.id;
         });
+        
+        function refreshTable(){
+            var dataTable = $('#dataTable').DataTable();
+            dataTable.clear().draw(); //clear all the row
+            $.ajax({ 
+                type: 'GET', 
+                url: '{{ URL::to("/maintenance/requirements/get") }}', 
+                data: { get_param: 'value' },
+                dataType: 'json',
+                success: function (data) { 
+
+                    $.each(data, function(index, element) {
+                        var flag = data[index].boolFlag;
+                        
+                        
+                        if (flag){
+                            var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" checked class = "checkboxFlag" id = "'+data[index].intRequirementsID+'"><span class="lever"></span></label></div>';
+                        }else{
+                            var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" class = "checkboxFlag" id = "'+data[index].intRequirementsID+'"><span class="lever"></span></label></div>';
+                        }
+                        
+                        var identifier = data[index].intIdentifier;
+                        
+                        if (identifier == 1){
+                            var tableIdentifier = 'Client';
+                        }else if (identifier == 2){
+                            var tableIdentifier = 'Guard';
+                        }else if (identifier == 3){
+                            var tableIdentifier = 'Client and Guard';
+                        }
+
+                        dataTable.row.add([
+                            checkbox,
+                            '<button class="buttonUpdate btn" name="" id="' +data[index].intRequirementsID+'" ><i class="material-icons">edit</i></button>',
+                            '<button class="buttonDelete btn red" id="'+ data[index].intRequirementsID +'"><i class="material-icons">delete</i></button>',
+                            '<h id = "id' +data[index].intRequirementsID + '">' + data[index].intRequirementsID +'</h>',
+                            '<h id = "name' +data[index].intRequirementsID + '">' + data[index].strRequirements +'</h>',
+                            '<h id = "description' +data[index].intRequirementsID + '">' + data[index].strDescription +'</h>',
+                            '<h id = "identifier' +data[index].intRequirementsID + '">' + tableIdentifier + '</h>'
+                        ]).draw();
+                    });//foreach
+
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                     console.log(data);
+                }
+            });
+
+        }
+
+        function refreshTextfield(){
+            document.getElementById('addRequirementName').value = "";
+            document.getElementById('addDescription').value = "";   
+            $('#clientcboxadd').attr('checked', false);
+            $('#sgcboxadd').attr('checked', false);
+        }
+
             
         
         $('#clientcboxedit').click(function(){

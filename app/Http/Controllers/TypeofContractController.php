@@ -21,6 +21,12 @@ class TypeOfContractController extends Controller
         return view('/maintenance/typeOfContract', ['typeOfContracts'=>$typeOfContracts]);
     }
     
+    public function getTypeOfContract(){
+        $typeOfContract = TypeOfContract::where('deleted_at', null)->get();
+        
+        return response()->json($typeOfContract);
+    }
+    
     public function addTypeOfContract(Request $request){
         try {
 

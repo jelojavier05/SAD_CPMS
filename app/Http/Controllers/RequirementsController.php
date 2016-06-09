@@ -19,6 +19,12 @@ class RequirementsController extends Controller
 
         return view('/maintenance/requirements', ['requirements'=>$requirements]);
     }
+    
+    public function getRequirement(){
+        $requirements = Requirements::where('deleted_at', null)->get();
+        
+        return response()->json($requirements);
+    }
 
     public function addRequirements(Request $request){
         try {

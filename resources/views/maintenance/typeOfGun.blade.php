@@ -235,7 +235,9 @@ Type of Gun
 				success: function(data){
 					var toastContent = $('<span>Record Added.</span>');
                     Materialize.toast(toastContent, 1500,'green', 'edit');
-                    window.location.href = "{{action('TypeOfGunController@index')}}";
+                    refreshTextfield();
+                    refreshTable();
+                    $('#modaltypeofgunAdd').closeModal();
 				},
 				error: function(data){
 					var toastContent = $('<span>Error Occured. </span>');
@@ -275,7 +277,8 @@ Type of Gun
                     success: function(data){
                         var toastContent = $('<span>Record Updated.</span>');
                         Materialize.toast(toastContent, 1500,'green', 'edit');
-                        window.location.href = "{{action('TypeOfGunController@index')}}";
+                        refreshTable();
+                        $('#modalguntypeEdit').closeModal();
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occured. </span>');
@@ -312,7 +315,8 @@ Type of Gun
                 success: function(data){
                     var toastContent = $('<span>Record Deleted.</span>');
                     Materialize.toast(toastContent, 1500, 'edit');
-                     window.location.href = "{{action('TypeOfGunController@index')}}";
+                    refreshTable();
+                    $('#modalguntypeDelete').closeModal();
                 },
                 error: function(data){
                     var toastContent = $('<span>Error Occur. </span>');
@@ -376,6 +380,51 @@ Type of Gun
 
 			});//ajax
         });
+        
+        function refreshTable(){
+            var dataTable = $('#dataTable').DataTable();
+            dataTable.clear().draw(); //clear all the row
+            $.ajax({ 
+                type: 'GET', 
+                url: '{{ URL::to("/maintenance/typeOfGun/get") }}', 
+                data: { get_param: 'value' },
+                dataType: 'json',
+                success: function (data) { 
+
+                    $.each(data, function(index, element) {
+                        var flag = data[index].boolFlag;
+
+                        if (flag){
+                            var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" checked class = "checkboxFlag" id = "'+data[index].intTypeOfGunID+'"><span class="lever"></span></label></div>';
+                        }else{
+                            var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" class = "checkboxFlag" id = "'+data[index].intTypeOfGunID+'"><span class="lever"></span></label></div>';
+                        }
+
+                        dataTable.row.add([
+                            checkbox,
+                            '<button class="buttonUpdate btn" name="" id="' +data[index].intTypeOfGunID+'" ><i class="material-icons">edit</i></button>',
+                            '<button class="buttonDelete btn red" id="'+ data[index].intTypeOfGunID +'"><i class="material-icons">delete</i></button>',
+                            '<h id = "id' +data[index].intTypeOfGunID + '">' + data[index].intTypeOfGunID +'</h>',
+                            '<h id = "name' +data[index].intTypeOfGunID + '">' + data[index].strTypeOfGun +'</h>',
+                            '<h id = "description' +data[index].intTypeOfGunID + '">' + data[index].strDescription +'</h>']).draw();
+                    });//foreach
+
+                    refreshTextfield();
+
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    console.log(data);
+                }
+            });
+
+        }
+
+        function refreshTextfield(){
+            document.getElementById('strTypeOfGun').value = "";
+            document.getElementById('strTypeOfGunDescription').value = "";   
+        }
 
 	});//document ready
 

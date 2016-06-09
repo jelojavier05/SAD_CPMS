@@ -203,7 +203,7 @@ Government Exam
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		 $("#dataTable").DataTable({
+        $("#dataTable").DataTable({
                  "columns": [
                 { "orderable": false },
                 { "orderable": false },
@@ -236,7 +236,11 @@ Government Exam
 				success: function(data){
 					var toastContent = $('<span>Record Added.</span>');
                     Materialize.toast(toastContent, 3000,'green', 'edit');
-					window.location.href = "{{action('GovernmentExamController@index')}}";
+					$('#modalgovexamAdd').closeModal();
+                    refreshTable();
+                    
+
+
 
 				},
 				error: function(data){
@@ -276,7 +280,8 @@ Government Exam
 				success: function(data){
 					var toastContent = $('<span>Record Updated.</span>');
                     Materialize.toast(toastContent, 1500,'green','edit');
-                    window.location.href = "{{action('GovernmentExamController@index')}}";
+                    $('#modalgovexamEdit').closeModal();
+                    refreshTable();
 				},
 				error: function(data){
 					var toastContent = $('<span>Error Occured. </span>');
@@ -313,7 +318,8 @@ Government Exam
                 success: function(data){
                     var toastContent = $('<span>Record Deleted.</span>');
                     Materialize.toast(toastContent, 1500, 'edit');
-                    window.location.href = "{{action('GovernmentExamController@index')}}";
+                    $('#modalgovexamDelete').closeModal();
+                    refreshTable();
                 },
                 error: function(data){
                     var toastContent = $('<span>Error Occur. </span>');
@@ -376,7 +382,52 @@ Government Exam
 				}
 			});//ajax
         });
+        
+        function refreshTable(){
+            var dataTable = $('#dataTable').DataTable();
+            dataTable.clear().draw(); //clear all the row
+            $.ajax({ 
+                type: 'GET', 
+                url: '{{ URL::to("/maintenance/governmentExam/get") }}', 
+                data: { get_param: 'value' },
+                dataType: 'json',
+                success: function (data) { 
 
+                    $.each(data, function(index, element) {
+                        var flag = data[index].boolFlag;
+
+                        if (flag){
+                            var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" checked class = "checkboxFlag" id = "'+data[index].intGovernmentExamID+'"><span class="lever"></span></label></div>';
+                        }else{
+                            var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" class = "checkboxFlag" id = "'+data[index].intGovernmentExamID+'"><span class="lever"></span></label></div>';
+                        }
+
+                        dataTable.row.add([
+                            checkbox,
+                            '<button class="buttonUpdate btn" name="" id="' +data[index].intGovernmentExamID+'" ><i class="material-icons">edit</i></button>',
+                            '<button class="buttonDelete btn red" id="'+ data[index].intGovernmentExamID +'"><i class="material-icons">delete</i></button>',
+                            '<h id = "id' +data[index].intGovernmentExamID + '">' + data[index].intGovernmentExamID +'</h>',
+                            '<h id = "name' +data[index].intGovernmentExamID + '">' + data[index].strGovernmentExam +'</h>',
+                            '<h id = "description' +data[index].intGovernmentExamID + '">' + data[index].strDescription +'</h>']).draw();
+                    });//foreach
+
+                    refreshTextfield();
+
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occur. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                     console.log(data);
+                }
+            });
+                
+        }
+            
+        function refreshTextfield(){
+            document.getElementById('strGovernmentExamAdd').value = "";
+            document.getElementById('strGovernmentExamDescAdd').value = "";   
+
+        }
         
     });//document.ready
 

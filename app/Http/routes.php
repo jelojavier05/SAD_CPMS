@@ -29,6 +29,8 @@ Route::get('/guardForm', 'GuardController@guardForm');
 
 Route::get('/maintenance/NatureOfBusiness', 'NatureOfBusinessController@index');
 
+Route::get('/maintenance/NatureOfBusiness/get', 'NatureOfBusinessController@getNatureOfBusiness');
+
 Route::post('/maintenance/NatureOfBusiness/add', 'NatureOfBusinessController@addNatureOfBusiness');
 
 Route::post('/maintenance/NatureOfBusiness/update', 'NatureOfBusinessController@updateNatureOfBusiness');
@@ -38,6 +40,8 @@ Route::post('/maintenance/NatureOfBusiness/delete', 'NatureOfBusinessController@
 Route::post('/maintenance/NatureOfBusiness/flag', 'NatureOfBusinessController@flagNatureOfBusiness');
 
 Route::get('/maintenance/requirements', 'RequirementsController@index');
+
+Route::get('/maintenance/requirements/get', 'RequirementsController@getRequirement');
 
 Route::post('/maintenance/requirements/add', 'RequirementsController@addRequirements');
 
@@ -61,6 +65,8 @@ Route::post('/maintenance/typeOfGun/delete', 'TypeOfGunController@deleteTypeOfGu
 
 Route::get('/maintenance/bodyAttribute', 'BodyAttributeController@index');
 
+Route::get('/maintenance/bodyAttribute/get', 'BodyAttributeController@getBodyAttribute');
+
 Route::post('/maintenance/bodyStatistics/insert', 'BodyAttributeController@addBodyAttribute');
 
 Route::post('/maintenance/bodyStatistics/update', 'BodyAttributeController@updateBodyAttribute');
@@ -70,6 +76,8 @@ Route::post('/maintenance/bodyStatistics/delete', 'BodyAttributeController@delet
 Route::post('/maintenance/bodyStatistics/flag', 'BodyAttributeController@flagBodyAttribute');
 
 Route::get('/maintenance/leave', 'LeaveController@index');
+
+Route::get('/maintenance/leave/get', 'LeaveController@getLeave');
 
 Route::post('/maintenance/leave/update', 'LeaveController@updateLeave');
 
@@ -104,6 +112,8 @@ Route::post('/maintenance/armedservice/delete', 'ArmedServiceController@deleteAr
 Route::post('/maintenance/armedservice/flag', 'ArmedServiceController@flagArmedService');
 
 Route::get('/maintenance/typeOfContract', 'TypeOfContractController@index');
+
+Route::get('/maintenance/typeOfContract/get', 'TypeOfContractController@getTypeOfContract');
 
 Route::post('/maintenance/typeOfContract/insert', 'TypeOfContractController@addTypeOfContract');
 

@@ -12,16 +12,19 @@ use Validator;
 class LeaveController extends Controller
 {
     
-    public function index()
-    {
+    public function index(){
         $leaves = Leave::where('deleted_at', null)->get();
 
         return view('maintenance.leave', ['leaves'=>$leaves]);
     }
 
-    public function addLeave(Request $request)
-    {
-
+    public function getLeave(){
+        $leaves = Leave::where('deleted_at', null)->get();
+        
+        return response()->json($leaves);
+    }
+    
+    public function addLeave(Request $request){
         try {
             $leave = new Leave;
 
@@ -37,6 +40,7 @@ class LeaveController extends Controller
     }
 
     public function updateLeave(Request $request){
+        
         try {
             Leave::where('intLeaveID', $request->editLeaveID)
             ->update(['strLeaveType'=>$request->editname, 
@@ -67,4 +71,6 @@ class LeaveController extends Controller
             
         }  
     }
+    
+    
 }
