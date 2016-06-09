@@ -232,9 +232,9 @@ Armed Service
                     success: function(data){
                         
                         var toastContent = $('<span>Record Added.</span>');
-                        Materialize.toast(toastContent, 1500,'green', 'edit');
-                        //window.location.href = "{{action('ArmedServiceController@index')}}";
+                        Materialize.toast(toastContent, 2000,'green', 'edit');
                         refreshTable();
+                        $('#modalarmedserviceAdd').closeModal();
                         
                     },
                     error: function(data){
@@ -274,7 +274,8 @@ Armed Service
                     success: function(data){
                         var toastContent = $('<span>Record Updated.</span>');
                         Materialize.toast(toastContent, 1500,'green', 'edit');
-                        window.location.href = "{{action('ArmedServiceController@index')}}";
+                        refreshTable();
+                        $('#modalarmedserviceEdit').closeModal();
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occured. </span>');
@@ -308,7 +309,8 @@ Armed Service
                     success: function(data){
                         var toastContent = $('<span>Record Deleted.</span>');
                         Materialize.toast(toastContent, 1500, 'edit');
-                        window.location.href = "{{action('ArmedServiceController@index')}}";
+                        refreshTable();
+                        $('#modalarmedserviceDelete').closeModal();
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occur. </span>');
@@ -323,6 +325,8 @@ Armed Service
                 var itemID = "id" + this.id;
                 var itemName = "name" + this.id;
                 var itemDescription = "description" + this.id;
+                
+                
                 
                 document.getElementById('editID').value = $("#"+itemID).html();
                 document.getElementById('editname').value = $("#"+itemName).html();
@@ -393,12 +397,13 @@ Armed Service
                                 checkbox,
                                 '<button class="buttonUpdate btn" name="" id="' +data[index].intArmedServiceID+'" ><i class="material-icons">edit</i></button>',
                                 '<button class="buttonDelete btn red" id="'+ data[index].intArmedServiceID +'"><i class="material-icons">delete</i></button>',
-                                data[index].intArmedServiceID,
-                                '<pid = "name' +data[index].intArmedServiceID + '">' + data[index].strArmedServiceName +'</p>',
-                                '<pid = "name' +data[index].intArmedServiceID + '">' + data[index].strDescription +'</p>']).draw();
-                        });
+                                '<h id = "id' +data[index].intArmedServiceID + '">' + data[index].intArmedServiceID +'</h>',
+                                '<h id = "name' +data[index].intArmedServiceID + '">' + data[index].strArmedServiceName +'</h>',
+                                '<h id = "description' +data[index].intArmedServiceID + '">' + data[index].strDescription +'</h>']).draw();
+                        });//foreach
                         
-                        $("#dataTable tr").css({ 'margin-bottom': "-5%" });
+                        refreshTextfield();
+                        
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occur. </span>');
@@ -407,6 +412,12 @@ Armed Service
                     }
                 });
                 
+            }
+            
+            function refreshTextfield(){
+                document.getElementById('strArmedServiceAdd').value = "";
+                document.getElementById('strArmedServiceDescAdd').value = "";
+
             }
             
         });//document ready
