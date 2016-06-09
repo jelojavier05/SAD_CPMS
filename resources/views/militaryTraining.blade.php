@@ -25,7 +25,7 @@ Guard Form
 <!----------------------------------------------PAGES-------------------------------------->
 <!-------------------------------------Military Training Page Start---------------------------------->
 <div class="row">
-	<div class="col s10 push-s2" style="margin-left:10px;">
+	<div class="col s8 push-s3" style="margin-left:10px;">
 		
 				                <div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
 									<legend><h4>Armed Services</h4></legend>
@@ -144,10 +144,9 @@ Guard Form
 										
 					
 				                    </div>
-				
-				 					<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
-									<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" href="#">Next</button>
                                 </div>
+									<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
+									<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" href="#">Next</button>
 	</div>
 </div>
 		</div>

@@ -80,6 +80,8 @@ Guard Form
 				
 			</div>
 		</div>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" href="#">Next</button>
 	</div>
 </div>
 @stop
