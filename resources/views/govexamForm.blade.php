@@ -26,7 +26,7 @@ Guard Form
 <!----------------------------------------------PAGES-------------------------------------->
 <!-------------------------------------Military Training Page Start---------------------------------->
 <div class ="row">
-	<div class = "col s10 push-s2" style="margin-left:10px;">
+	<div class = "col s8 push-s3" style="margin-left:10px;">
 		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
 			<legend><h4>Government Exam</h4></legend>
 			<table class="highlight white">
