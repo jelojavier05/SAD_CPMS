@@ -31,13 +31,15 @@ Guard Form
 									<legend><h4>Armed Services</h4></legend>
                                     <div class="row" style="margin:5%;">
 					
-					                   <div class="row">
-                                            <div class="input-field col s5">
+					              <div class="row">
+                                      <div class = "col s7">    
                                                 <select id = "" name = "strTypeOfGun">
                                                     <option disabled selected   >Choose armed services if any</option>
                                                     @foreach($armedservices as $armedservice)
                                                         <option id = "option{{$armedservice->intArmedServiceID}}">{{$armedservice->strArmedServiceName}}</option>
                                                     @endforeach
+										  		</select>
+									  </div>
 					                   <div class="input-field col s6">
                                             
                                             <input  id="rank" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true" >
@@ -65,58 +67,7 @@ Guard Form
 
 					                   </div>
 				
-					                   <div class="input-field col s12">
-                                            <p>Government Exam:</p>
-										   		<table class="highlight white">
-										   			<thead>
-														<tr>
-															<th></th>
-                                                            <th>Name</th>
-															<th>Ratings</th>
-															<th>Date Taken</th>
-														</tr>
-													</thead>
-													
-													<tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <div>
-
-
-                                                                        <input type="checkbox" id="" />
-      																	<label for=""></label>
-
-
-                                                                    </div>
-                                                                </td>
-
-                                                                <td>
-
-                                                                </td>
-
-                                                                <td>
-                                                                    <div>
-                                                                        <input size="9" id="rating" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
-                                                                        <label data-error="Incorrect" for="rating"></label>
-
-                                                                    </div>
-                                                                </td>
-
-                                                                <td>
-                                                                    <div>
-                                                                        <input id="dateTaken" type="date" class="validate"  required="" aria-required="true">
-                                                                        <label data-error="Incorrect" for="dateTaken"></label>
-
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-
-													</tbody>
-										   		</table>
-
-					
-					
-				                        </div>
+					                   
 
 										
 										

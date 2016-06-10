@@ -24,7 +24,7 @@ Guard Form
 <!----------------------------------------------PAGES-------------------------------------->
 <!-------------------------------------Personal Data Page Start---------------------------------->
 <div class="row">
-	<div class="col s10 push-s2" style=" margin-left:10px;">
+	<div class="col s8 push-s3" style=" margin-left:10px;">
 		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;" id="personaldata">
 		   <legend><h4>Personal Data</h4></legend>
 		   <div class="row" style="margin:5%;">
@@ -144,8 +144,8 @@ Guard Form
 
 												<!-- ====================Body Attributes ============ -->
 
-				<div class="input-field col s12">
-													<p>Body Attributes:</p>
+				<div class="input-field col s8 push-s2">
+													<h5>Body Attributes:</h5>
 														<table class="highlight white">
 															<thead>
 																<tr>
@@ -168,7 +168,7 @@ Guard Form
 
 																		<td>
 																			<div>
-																				<input size="9" id="specification" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
+																				<input size ="7" id="specification" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
 																				<label data-error="Incorrect" for="specification"></label>
 
 																			</div>
@@ -188,9 +188,9 @@ Guard Form
 
 
 				</div>
-			   <button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
-			   <button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextPersonalData">Next</button>
 			</div>
+				<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
+				<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextPersonalData">Next</button>
 		</div>
 	</div>
 </div>

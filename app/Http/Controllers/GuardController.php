@@ -30,8 +30,8 @@ class GuardController extends Controller
             ->where('boolFlag', 1)
             ->get();
         
-        return view('/requirement')
-            ->with ('requirements', $requirements);
+        return view('/accountForm');
+//            ->with ('requirements', $requirements);
 	}
 	
     public function personalDataBC(){
