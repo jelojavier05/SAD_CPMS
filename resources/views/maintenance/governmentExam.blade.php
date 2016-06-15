@@ -299,8 +299,66 @@ Government Exam
 
 		});//button add clicked
         
-        $("#btnDelete").click(function(){
-            $.ajax({
+//        $("#btnDelete").click(function(){
+//            $.ajax({
+//
+//                type: "POST",
+//                url: "{{action('GovernmentExamController@deleteGovernmentExam')}}",
+//                beforeSend: function (xhr) {
+//                    var token = $('meta[name="csrf_token"]').attr('content');
+//
+//                    if (token) {
+//                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+//                    }
+//                },
+//                data: {
+//                    governmentExamID: deleteID.value
+//
+//                },
+//                success: function(data){
+//                    var toastContent = $('<span>Record Deleted.</span>');
+//                    Materialize.toast(toastContent, 1500, 'edit');
+//                    $('#modalgovexamDelete').closeModal();
+//                    refreshTable();
+//                },
+//                error: function(data){
+//                    var toastContent = $('<span>Error Occur. </span>');
+//                    Materialize.toast(toastContent, 1500, 'edit');
+//
+//                }
+//
+//            });//ajax
+//        });
+    
+        $('#dataTable').on('click', '.buttonUpdate', function(){
+            $('#modalgovexamEdit').openModal();
+            var itemID = "id" + this.id;
+			var itemName = "name" + this.id;
+			var itemDescription = "description" + this.id;
+
+			document.getElementById('editID').value = $("#"+itemID).html();
+			document.getElementById('editname').value = $("#"+itemName).html();
+			document.getElementById('editdescription').value = $("#"+itemDescription).html();
+
+        });
+            
+//        $('#dataTable').on('click', '.buttonDelete', function(){
+//            $('#modalgovexamDelete').openModal();
+//            document.getElementById('deleteID').value =this.id;
+//        });
+		
+		  $('#dataTable').on('click', '.buttonDelete', function(){
+			document.getElementById('deleteID').value =this.id;  
+            swal({   title: "Are you sure?",   
+				  	 text: "Record will be deleted!",   
+				     type: "warning",   
+				     showCancelButton: true,   
+				     confirmButtonColor: "#DD6B55",   
+				     confirmButtonText: "Yes, delete it!",   
+				     closeOnConfirm: false 
+				 }, 
+				 function(){
+					$.ajax({
 
                 type: "POST",
                 url: "{{action('GovernmentExamController@deleteGovernmentExam')}}",
@@ -315,37 +373,16 @@ Government Exam
                     governmentExamID: deleteID.value
 
                 },
-                success: function(data){
-                    var toastContent = $('<span>Record Deleted.</span>');
-                    Materialize.toast(toastContent, 1500, 'edit');
-                    $('#modalgovexamDelete').closeModal();
-                    refreshTable();
-                },
-                error: function(data){
-                    var toastContent = $('<span>Error Occur. </span>');
-                    Materialize.toast(toastContent, 1500, 'edit');
+                success: function(data) {
+					swal("Deleted!", "Record has been successfully deleted!", "success");
+				  },
+			  	error: function(data) {
+					swal("Oops", "We couldn't connect to the server!", "error");
+			  	  }
 
-                }
-
-            });//ajax
-        });
-    
-        $('#dataTable').on('click', '.buttonUpdate', function(){
-            $('#modalgovexamEdit').openModal();
-            var itemID = "id" + this.id;
-			var itemName = "name" + this.id;
-			var itemDescription = "description" + this.id;
-
-			document.getElementById('editID').value = $("#"+itemID).html();
-			document.getElementById('editname').value = $("#"+itemName).html();
-			document.getElementById('editdescription').value = $("#"+itemDescription).html();
-
-        });
-            
-        $('#dataTable').on('click', '.buttonDelete', function(){
-            $('#modalgovexamDelete').openModal();
-            document.getElementById('deleteID').value =this.id;
-        });
+            	});//ajax
+			});
+          });
             
         $('#dataTable').on('click', '.checkboxFlag', function(){
             var $this = $(this);
@@ -434,6 +471,7 @@ Government Exam
 	
 	
 </script>
+
 
 
 @stop
