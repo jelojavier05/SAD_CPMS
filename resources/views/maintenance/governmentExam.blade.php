@@ -278,9 +278,10 @@ Government Exam
 					governmentExamDescription: $('#editdescription').val(),
 				},
 				success: function(data){
-					var toastContent = $('<span>Record Updated.</span>');
-                    Materialize.toast(toastContent, 1500,'green','edit');
+//					var toastContent = $('<span>Record Updated.</span>');
+//                    Materialize.toast(toastContent, 1500,'green','edit');
                     $('#modalgovexamEdit').closeModal();
+                    swal("Record Updated.");
                     refreshTable();
 				},
 				error: function(data){
