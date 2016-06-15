@@ -259,6 +259,7 @@ Government Exam
 
 		});//button add clicked
         
+<<<<<<< HEAD
 //        $("#btnUpdate").click(function(){
 //             if ($('#editID').val().trim() && $('#editname').val().trim()){
 //			$.ajax({
@@ -340,6 +341,47 @@ Government Exam
           });
         
 
+=======
+        $("#btnUpdate").click(function(){
+             if ($('#editID').val().trim() && $('#editname').val().trim()){
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('GovernmentExamController@updateGovernmentExam')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+				data: {
+					governmentExamID: $('#editID').val(),
+                    governmentExamName: $('#editname').val(),
+					governmentExamDescription: $('#editdescription').val(),
+				},
+				success: function(data){
+					var toastContent = $('<span>Record Updated.</span>');
+                    Materialize.toast(toastContent, 1500,'green','edit');
+                    $('#modalgovexamEdit').closeModal();
+                    refreshTable();
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
+
+
+			});//ajax
+            
+             }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+
+		});//button add clicked
+>>>>>>> 60814d2b6541a465817f74be3ef78cdd9f922422
     
         $('#dataTable').on('click', '.buttonUpdate', function(){
             $('#modalgovexamEdit').openModal();
@@ -353,9 +395,13 @@ Government Exam
 
         });
             
+<<<<<<< HEAD
 
 		
 		  $('#dataTable').on('click', '.buttonDelete', function(){
+=======
+        $('#dataTable').on('click', '.buttonDelete', function(){
+>>>>>>> 60814d2b6541a465817f74be3ef78cdd9f922422
 			document.getElementById('deleteID').value =this.id;  
             swal({   title: "Are you sure?",   
 				  	 text: "Record will be deleted!",   
@@ -383,7 +429,11 @@ Government Exam
                 },
                 success: function(data) {
 					swal("Deleted!", "Record has been successfully deleted!", "success");
+<<<<<<< HEAD
 					refreshTable();
+=======
+                    refreshTable();
+>>>>>>> 60814d2b6541a465817f74be3ef78cdd9f922422
 				  },
 			  	error: function(data) {
 					swal("Oops", "We couldn't connect to the server!", "error");
