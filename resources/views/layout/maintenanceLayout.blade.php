@@ -124,22 +124,24 @@
 							
 					</li>
                     <li class="bold" style="width:280px;">
-						<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">face</i>Accounts<i class="mdi-navigation-arrow-drop-down right"></i></a>
+						<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">face</i>Security Guard<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul class="black-text">
                                             <li>
-                                                <a href="/guardIndex" >Security Guard</a>
+                                                <a href="/guardRegistration/personalData" >Register</a>
                                             </li>
-                                            <li>
-                                                <a href="#" >Client</a>
+											
+											<li>
+                                                <a href="#" >License</a>
                                             </li>
+                                           
                                            
                                         </ul>
                             </div>
                     </li>
                             
                       <li class="bold" style="width:280px;">
-					  	<a class="collapsible-header waves-effect waves-blue" href="/deployment/index"><i class="material-icons left">people</i>Deployment</a>
+					  	<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons left">people</i>Client</a>
 					  </li>
 <!--
                             <li class="bold" style="width:280px;">

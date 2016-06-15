@@ -164,7 +164,7 @@ Government Exam
     		</div>
 		<div class="modal-footer" style="background-color:#01579b !important;">
 			
-			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
+			<button class="btn waves-effect waves-light btnUpdate" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
   			</button>
 			
@@ -259,51 +259,12 @@ Government Exam
 
 		});//button add clicked
         
-        $("#btnUpdate").click(function(){
-             if ($('#editID').val().trim() && $('#editname').val().trim()){
-			$.ajax({
-				
-				type: "POST",
-				url: "{{action('GovernmentExamController@updateGovernmentExam')}}",
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-				data: {
-					governmentExamID: $('#editID').val(),
-                    governmentExamName: $('#editname').val(),
-					governmentExamDescription: $('#editdescription').val(),
-				},
-				success: function(data){
-					var toastContent = $('<span>Record Updated.</span>');
-                    Materialize.toast(toastContent, 1500,'green','edit');
-                    $('#modalgovexamEdit').closeModal();
-                    refreshTable();
-				},
-				error: function(data){
-					var toastContent = $('<span>Error Occured. </span>');
-                    Materialize.toast(toastContent, 1500,'red', 'edit');
-                    
-				}
-
-
-			});//ajax
-            
-             }else{
-                var toastContent = $('<span>Please Check Your Input. </span>');
-                Materialize.toast(toastContent, 1500,'red', 'edit');
-            }
-
-		});//button add clicked
-        
-//        $("#btnDelete").click(function(){
-//            $.ajax({
-//
-//                type: "POST",
-//                url: "{{action('GovernmentExamController@deleteGovernmentExam')}}",
+//        $("#btnUpdate").click(function(){
+//             if ($('#editID').val().trim() && $('#editname').val().trim()){
+//			$.ajax({
+//				
+//				type: "POST",
+//				url: "{{action('GovernmentExamController@updateGovernmentExam')}}",
 //                beforeSend: function (xhr) {
 //                    var token = $('meta[name="csrf_token"]').attr('content');
 //
@@ -311,24 +272,74 @@ Government Exam
 //                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
 //                    }
 //                },
-//                data: {
-//                    governmentExamID: deleteID.value
-//
-//                },
-//                success: function(data){
-//                    var toastContent = $('<span>Record Deleted.</span>');
-//                    Materialize.toast(toastContent, 1500, 'edit');
-//                    $('#modalgovexamDelete').closeModal();
+//				data: {
+//					governmentExamID: $('#editID').val(),
+//                    governmentExamName: $('#editname').val(),
+//					governmentExamDescription: $('#editdescription').val(),
+//				},
+//				success: function(data){
+//					var toastContent = $('<span>Record Updated.</span>');
+//                    Materialize.toast(toastContent, 1500,'green','edit');
+//                    $('#modalgovexamEdit').closeModal();
 //                    refreshTable();
-//                },
-//                error: function(data){
-//                    var toastContent = $('<span>Error Occur. </span>');
-//                    Materialize.toast(toastContent, 1500, 'edit');
+//				},
+//				error: function(data){
+//					var toastContent = $('<span>Error Occured. </span>');
+//                    Materialize.toast(toastContent, 1500,'red', 'edit');
+//                    
+//				}
 //
-//                }
 //
-//            });//ajax
-//        });
+//			});//ajax
+//            
+//             }else{
+//                var toastContent = $('<span>Please Check Your Input. </span>');
+//                Materialize.toast(toastContent, 1500,'red', 'edit');
+//            }
+//
+//		});//button add clicked
+		
+		
+		$('#dataTable').on('click', '.btnUpdate', function(){
+			  
+            
+					if ($('#editID').val().trim() && $('#editname').val().trim()){	
+					$.ajax({
+
+					type: "POST",
+					url: "{{action('GovernmentExamController@updateGovernmentExam')}}",
+					beforeSend: function (xhr) {
+						var token = $('meta[name="csrf_token"]').attr('content');
+
+						if (token) {
+							  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+						}
+					},
+					data: {
+						governmentExamID: $('#editID').val(),
+						governmentExamName: $('#editname').val(),
+						governmentExamDescription: $('#editdescription').val(),
+
+					},
+					success: function(data) {
+						swal("Updated!", "Record has been successfully Updated!", "success");
+						refreshTable();
+					  }
+					
+
+					});//ajax
+						
+					}
+//					else{
+//						error: function(data) {
+//							swal("Oops", "We couldn't connect to the server!", "error");
+//			  	  		}
+//					};
+				
+			
+          });
+        
+
     
         $('#dataTable').on('click', '.buttonUpdate', function(){
             $('#modalgovexamEdit').openModal();
@@ -342,10 +353,7 @@ Government Exam
 
         });
             
-//        $('#dataTable').on('click', '.buttonDelete', function(){
-//            $('#modalgovexamDelete').openModal();
-//            document.getElementById('deleteID').value =this.id;
-//        });
+
 		
 		  $('#dataTable').on('click', '.buttonDelete', function(){
 			document.getElementById('deleteID').value =this.id;  
@@ -375,6 +383,7 @@ Government Exam
                 },
                 success: function(data) {
 					swal("Deleted!", "Record has been successfully deleted!", "success");
+					refreshTable();
 				  },
 			  	error: function(data) {
 					swal("Oops", "We couldn't connect to the server!", "error");

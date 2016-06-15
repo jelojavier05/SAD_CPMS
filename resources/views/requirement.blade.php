@@ -14,8 +14,7 @@ Guard Form
 					<div class="col s12">
 						<a class="breadcrumb">Personal Data</a>
 						<a class="breadcrumb">Educational Background</a>
-						<a class="breadcrumb">Armed Services</a>
-						<a class="breadcrumb">Government Exam</a>
+						<a class="breadcrumb">SG Background</a>
 						<a class="breadcrumb">Requirements</a>
 					</div>
 				</div>
@@ -76,11 +75,11 @@ Guard Form
         $('select').material_select();
         
         $('#backRequirement').click(function(){
-            window.location.href = '{{ URL::to("/guardRegistration/governmentExam") }}';
+            window.location.href = '{{ URL::to("/guardRegistration/armedService") }}';
         });
         
         $('#nextRequirement').click(function(){
-            
+             window.location.href = '{{ URL::to("/guardIndex") }}';
         });
         
     });
