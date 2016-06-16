@@ -27,9 +27,9 @@ Requirements
 
                         <thead>
                             <tr>
-                                <th style="width:50px;"></th>
+                                <th style="width:40px;"></th>
                                 <th style="width:100px;"></th>
-								<th style="width:50px;"></th>
+								<th style="width:40px;"></th>
                                 <th>ID</th>
                                 <th>Name</th>
 								<th>Description</th>
@@ -313,7 +313,7 @@ Requirements
         });// button add clicked
         
         $("#btnUpdate").click(function(){
-          if ($('#editname').val().trim() && $('#editdescription').val().trim()){
+             if ($('#editname').val().trim() && $('#editdescription').val().trim()){
               var checkboxIdentifier;
             if ($('#clientcboxedit').is(":checked")){
                 checkboxIdentifier = 1;
@@ -326,9 +326,7 @@ Requirements
             if ($('#clientcboxedit').is(":checked") && $('#sgcboxedit').is(":checked")){
                 checkboxIdentifier = 3;
             }
-              
-              
-              $.ajax({
+			$.ajax({
 				
 				type: "POST",
 				url: "{{action('RequirementsController@updateRequirements')}}",
@@ -342,16 +340,16 @@ Requirements
 				data: {
 					requirementsID: $('#editID').val(),
                     requirements: $('#editname').val(),
-					requirementsDescription: $('#editdescription').val(),
+                    requirementsDescription: $('#editdescription').val(),
                     identifier: checkboxIdentifier
+					
 				},
 				success: function(data){
-					
-					var toastContent = $('<span>Record Updated.</span>');
-                    Materialize.toast(toastContent, 1500,'green', 'edit');
-                    refreshTable();
+//					var toastContent = $('<span>Record Updated.</span>');
+//                    Materialize.toast(toastContent, 1500,'green','edit');
                     $('#modalrequirementsEdit').closeModal();
-                   
+                    swal("Success!", "Record has been Updated!", "success");
+                    refreshTable();
 				},
 				error: function(data){
 					var toastContent = $('<span>Error Occured. </span>');
@@ -361,40 +359,54 @@ Requirements
 
 
 			});//ajax
-              }else{
+            
+             }else{
                 var toastContent = $('<span>Please Check Your Input. </span>');
                 Materialize.toast(toastContent, 1500,'red', 'edit');
             }
 
-		});//button update clicked
+		});//button add clicked
         
-        $("#btnDelete").click(function(){
-                $.ajax({
-                    type: "POST",
-                    url: "{{action('RequirementsController@deleteRequirements')}}",
-                    beforeSend: function (xhr) {
-                        var token = $('meta[name="csrf_token"]').attr('content');
+ 		  $('#dataTable').on('click', '.buttonDelete', function(){
 
-                        if (token) {
-                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                        }
-                    },
-                    data: {
-                        requirementsID: deleteID.value
-                    },
-                    success: function(data){
-                        var toastContent = $('<span>Record Deleted.</span>');
-                        Materialize.toast(toastContent, 1500,'Green','edit');
-                        refreshTable();
-                        $('#modalrequirementsDelete').closeModal();
-                    },
-                    error: function(data){
-                        var toastContent = $('<span>Error Occur. </span>');
-                        Materialize.toast(toastContent, 1500, 'edit');
+			document.getElementById('deleteID').value =this.id;  
+            swal({   title: "Are you sure?",   
+				  	 text: "Record will be deleted!",   
+				     type: "warning",   
+				     showCancelButton: true,   
+				     confirmButtonColor: "#DD6B55",   
+				     confirmButtonText: "Yes, delete it!",   
+				     closeOnConfirm: false 
+				 }, 
+				 function(){
+					$.ajax({
+
+                type: "POST",
+                url: "{{action('RequirementsController@deleteRequirements')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                     }
+                },
+                data: {
+                    requirementsID: deleteID.value
 
-                });//ajax
-            });
+                },
+                success: function(data) {
+					swal("Deleted!", "Record has been successfully deleted!", "success");
+
+					refreshTable();
+
+				  },
+			  	error: function(data) {
+					swal("Oops", "We couldn't connect to the server!", "error");
+			  	  }
+
+            	});//ajax
+			});
+          });
         
         $("#dataTable").DataTable({
              "columns": [
@@ -475,10 +487,10 @@ Requirements
             
         });
         
-        $('#dataTable').on('click', '.buttonDelete', function(){
-            $('#modalrequirementsDelete').openModal();
-            document.getElementById('deleteID').value =this.id;
-        });
+//        $('#dataTable').on('click', '.buttonDelete', function(){
+//            $('#modalrequirementsDelete').openModal();
+//            document.getElementById('deleteID').value =this.id;
+//        });
         
         function refreshTable(){
             var dataTable = $('#dataTable').DataTable();

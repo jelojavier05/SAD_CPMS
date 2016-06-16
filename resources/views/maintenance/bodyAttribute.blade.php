@@ -235,7 +235,7 @@ Body Attributes
 		});//button add clicked
         
         $("#btnUpdate").click(function(){
-          if ($('#editname').val().trim()){
+             if ($('#editname').val().trim()){
 			$.ajax({
 				
 				type: "POST",
@@ -250,12 +250,14 @@ Body Attributes
 				data: {
 					vitalStatisticsID: $('#editID').val(),
                     vitalStatistics: $('#editname').val(),
+					
 				},
 				success: function(data){
-					var toastContent = $('<span>Record Updated.</span>');
-                    Materialize.toast(toastContent, 1500,'green', 'edit');
-                    refreshTable();
+//					var toastContent = $('<span>Record Updated.</span>');
+//                    Materialize.toast(toastContent, 1500,'green','edit');
                     $('#modalvitstatsEdit').closeModal();
+                    swal("Success!", "Record has been Updated!", "success");
+                    refreshTable();
 				},
 				error: function(data){
 					var toastContent = $('<span>Error Occured. </span>');
@@ -265,15 +267,27 @@ Body Attributes
 
 
 			});//ajax
-              }else{
+            
+             }else{
                 var toastContent = $('<span>Please Check Your Input. </span>');
                 Materialize.toast(toastContent, 1500,'red', 'edit');
             }
 
 		});//button add clicked
         
-        $("#btnDelete").click(function(){
-            $.ajax({
+ 		  $('#dataTable').on('click', '.buttonDelete', function(){
+
+			document.getElementById('deleteID').value =this.id;  
+            swal({   title: "Are you sure?",   
+				  	 text: "Record will be deleted!",   
+				     type: "warning",   
+				     showCancelButton: true,   
+				     confirmButtonColor: "#DD6B55",   
+				     confirmButtonText: "Yes, delete it!",   
+				     closeOnConfirm: false 
+				 }, 
+				 function(){
+					$.ajax({
 
                 type: "POST",
                 url: "{{action('BodyAttributeController@deleteBodyAttribute')}}",
@@ -285,23 +299,22 @@ Body Attributes
                     }
                 },
                 data: {
-                    vitalStatisticsID: deleteID.value 
+                    vitalStatisticsID: deleteID.value
 
                 },
-                success: function(data){
-                    var toastContent = $('<span>Record Deleted.</span>');
-                    Materialize.toast(toastContent, 1500, 'green', 'edit');
-                    refreshTable();
-                    $('#modalvitstatsDelete').closeModal();
-                },
-                error: function(data){
-                    var toastContent = $('<span>Error Occur. </span>');
-                    Materialize.toast(toastContent, 1500, 'edit');
+                success: function(data) {
+					swal("Deleted!", "Record has been successfully deleted!", "success");
 
-                }
+					refreshTable();
 
-            });//ajax
-        });
+				  },
+			  	error: function(data) {
+					swal("Oops", "We couldn't connect to the server!", "error");
+			  	  }
+
+            	});//ajax
+			});
+          });
         
         $('#dataTable').on('click', '.buttonUpdate', function(){
             $('#modalvitstatsEdit').openModal();
@@ -312,10 +325,10 @@ Body Attributes
 			document.getElementById('editname').value = $("#"+itemName).html();
         });
 
-        $('#dataTable').on('click', '.buttonDelete', function(){
-            $('#modalvitstatsDelete').openModal();
-            document.getElementById('deleteID').value =this.id;
-        });
+//        $('#dataTable').on('click', '.buttonDelete', function(){
+//            $('#modalvitstatsDelete').openModal();
+//            document.getElementById('deleteID').value =this.id;
+//        });
 
         $('#dataTable').on('click', '.checkboxFlag', function(){
             var $this = $(this);
