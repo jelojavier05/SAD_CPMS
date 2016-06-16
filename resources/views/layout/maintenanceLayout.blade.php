@@ -131,9 +131,11 @@
                                                 <a href="/guardRegistration/personalData" >Register</a>
                                             </li>
 											
+<!--
 											<li>
                                                 <a href="#" >License</a>
                                             </li>
+-->
                                            
                                            
                                         </ul>
@@ -241,6 +243,8 @@
         $('select').material_select();
 		 });
 	</script>
+	
+	
     
      
     </body>

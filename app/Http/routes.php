@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/guardIndex', 'GuardController@index');
 
 Route::get('/guardRegistration/personalData', 'GuardController@personalDataBC');

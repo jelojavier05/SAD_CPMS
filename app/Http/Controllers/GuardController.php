@@ -30,7 +30,7 @@ class GuardController extends Controller
             ->where('boolFlag', 1)
             ->get();
         
-        return view('/accountForm');
+        return view('/sgLicense');
 //            ->with ('requirements', $requirements);
 	}
 	

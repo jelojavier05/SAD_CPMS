@@ -137,7 +137,7 @@ Guard Form
 					
 					
 				                        </div>
-        <button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id="backArmed">Back</button>
+        		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id="backArmed">Back</button>
 				<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextArmed">Next</button>
 		</div>
                                             
