@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/gunRegistration', 'GunRegistrationController@index');
 
 Route::get('/guardIndex', 'GuardController@index');
 

@@ -128,7 +128,7 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul class="black-text">
                                             <li>
-                                                <a href="/guardRegistration/personalData" >Register</a>
+                                                <a href="/guardRegistration/personalData" >Registration</a>
                                             </li>
 											
 <!--
@@ -142,26 +142,24 @@
                             </div>
                     </li>
                             
+<!--
                       <li class="bold" style="width:280px;">
 					  	<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons left">people</i>Client</a>
 					  </li>
-<!--
+-->
                             <li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">insert_chart</i>Reports<i class="mdi-navigation-arrow-drop-down right"></i></a>
+								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">gun</i>Gun<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             <li>
-                                                <a href="#">Reports1</a>
+                                                <a href="#">Records</a>
                                             </li>
                                             <li>
-                                                <a href="#">Reports2</a>
+                                                <a href="#">Registration</a>
                                             </li>
-                                            <li>
-                                                <a href="#">Reports3</a>
-                                            </li>
+                                           
                                         </ul>
                             </div></li>
--->
                             
                             
                 </ul>
