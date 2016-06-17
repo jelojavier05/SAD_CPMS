@@ -155,7 +155,7 @@
                                                 <a href="#">Records</a>
                                             </li>
                                             <li>
-                                                <a href="#">Registration</a>
+                                                <a href="/gunRegistration">Registration</a>
                                             </li>
                                            
                                         </ul>
