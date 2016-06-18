@@ -285,9 +285,10 @@ Leave
                     success: function(data){
                         var toastContent = $('<span>Record Added.</span>');
                         Materialize.toast(toastContent, 1500,'green', 'edit');
+                        $('#modalleaveAdd').closeModal();
                         refreshTable();
                         refreshTextfield();
-                        $('#modalleaveAdd').closeModal();
+                        
                         
                     },
                     error: function(data){

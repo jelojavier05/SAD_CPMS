@@ -15,6 +15,7 @@ class CreateNatureOfBusinessTable extends Migration
         Schema::create('tblnatureofbusiness', function (Blueprint $table) {
             $table->increments('intNatureOfBusinessID');
             $table->string('strNatureOfBusiness', 100)->unique();
+            $table->decimal('deciRate', 5, 2);
             $table->softDeletes();
             $table->boolean('boolFlag')->default(true);
         });
