@@ -234,9 +234,8 @@ Government Exam
 					governmentExamDescription: $('#strGovernmentExamDescAdd').val(),
 				},
 				success: function(data){
-					var toastContent = $('<span>Record Added.</span>');
-                    Materialize.toast(toastContent, 3000,'green', 'edit');
 					$('#modalgovexamAdd').closeModal();
+                    swal("Success!", "Record has been Added!", "success");
                     refreshTable();
                     
 
@@ -259,7 +258,6 @@ Government Exam
 
 		});//button add clicked
         
-
         $("#btnUpdate").click(function(){
              if ($('#editID').val().trim() && $('#editname').val().trim()){
 			$.ajax({

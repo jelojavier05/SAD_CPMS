@@ -230,13 +230,11 @@ Armed Service
                     armedServiceDescription: $('#strArmedServiceDescAdd').val(),
                 },
                 success: function(data){
-
-                    var toastContent = $('<span>Record Added.</span>');
-                    Materialize.toast(toastContent, 2000,'green', 'edit');
                     
                     refreshTable();
                     refreshTextfield();
                     $('#modalarmedserviceAdd').closeModal();
+                    swal("Success!", "Record has been Added!", "success");
 
                 },
                 error: function(data){
@@ -274,8 +272,7 @@ Armed Service
                     armedServiceDescription: $('#editdescription').val(),
                 },
                 success: function(data){
-                    var toastContent = $('<span>Record Updated.</span>');
-                    Materialize.toast(toastContent, 1500,'green', 'edit');
+                    swal("Success!", "Record has been Updated!", "success");
                     refreshTable();
                     $('#modalarmedserviceEdit').closeModal();
                 },
@@ -309,8 +306,7 @@ Armed Service
                     armedServiceID: deleteID.value
                 },
                 success: function(data){
-                    var toastContent = $('<span>Record Deleted.</span>');
-                    Materialize.toast(toastContent, 1500, 'edit');
+                    swal("Success!", "Record has been Deleted!", "success");
                     refreshTable();
                     $('#modalarmedserviceDelete').closeModal();
                 },

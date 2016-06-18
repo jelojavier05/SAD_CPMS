@@ -75,11 +75,11 @@ Guard Form
         $('select').material_select();
         
         $('#backRequirement').click(function(){
-            window.location.href = '{{ URL::to("/guardRegistration/armedService") }}';
+            window.location.href = '{{ URL::to("/guardRegistration/sgBackground") }}';
         });
         
         $('#nextRequirement').click(function(){
-             window.location.href = '{{ URL::to("/guardIndex") }}';
+             window.location.href = '{{ URL::to("/guardRegistration/account") }}';
         });
         
     });

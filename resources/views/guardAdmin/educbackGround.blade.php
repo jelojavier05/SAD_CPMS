@@ -479,7 +479,7 @@ Guard Form
         });
         
         $('#nextEducation').click(function(){
-            window.location.href = '{{ URL::to("/guardRegistration/armedService") }}';
+            window.location.href = '{{ URL::to("/guardRegistration/sgBackground") }}';
         });
         
     });

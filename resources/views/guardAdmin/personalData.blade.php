@@ -28,7 +28,8 @@ Guard Form
 		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;" id="personaldata">
 		   <legend><h4>Personal Data</h4></legend>
 		   <div class="row" style="margin:5%;">
-
+               
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="input-field col s4">
 					   <i class="material-icons prefix">account_circle</i>
 					   <input  id="firstName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
@@ -50,15 +51,6 @@ Guard Form
 
 				</div>
 
-		<!--
-											</div>
-
-
-
-
-
-											<div class="row" style="margin:5%;">
-		-->
 				<div class="input-field col s6">
 					    <i class="material-icons prefix">home</i>
 						<input  id="address" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
@@ -73,11 +65,6 @@ Guard Form
 						<label data-error="Incorrect" for="provaddress">Provincial Address</label>
 
 				</div>
-		<!--
-											</div>
-
-											<div class="row" style="margin:5%;">
-		-->
 
 				<div class="input-field col s6">
 						<input  id="dateOfbirth" type="date" class="datepicker"  required="" aria-required="true">
@@ -85,20 +72,12 @@ Guard Form
 
 				</div>
 
-
 				<div class="input-field col s6">
 						<input  id="placeofbirth" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
 						<label data-error="Incorrect" for="placeofbirth">Place of Birth</label>
 
 				</div>
 
-
-		<!--
-											</div>
-
-
-											<div class="row" style="margin:5%;">
-		-->
 				<div class="input-field col s6">
 						<i class="material-icons prefix">smartphone</i>
 						<input  id="contactCp" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
@@ -112,18 +91,6 @@ Guard Form
 						<label data-error="Incorrect" for="contactLandline">Contact Number (Landline)</label>
 
 				</div>
-		<!--
-											</div>
-
-											<div class="row" style="margin:5%;">
-		-->
-
-
-				<div class="input-field col s4">
-						<input  id="citizenship" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
-						<label data-error="Incorrect" for="citizenship">Citizenship</label>
-
-				</div>
 
 				<div class="input-field col s4">
 						<input  id="civilStatus" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
@@ -132,61 +99,43 @@ Guard Form
 				</div>
 
 				<div class="input-field col s4">
-
-						<select>
+						<select id = "gender">
 							<option value="" disabled selected>Choose</option>
-							<option value="1">Male</option>
-							<option value="2">Female</option>
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
 						</select>
-					    <label>Sex</label>
+					    <label>Gender</label>
 				 </div>
 
 
 												<!-- ====================Body Attributes ============ -->
 
 				<div class="input-field col s8 push-s2">
-													<h5>Body Attributes:</h5>
-														<table class="highlight white">
-															<thead>
-																<tr>
-																	<th>Name</th>
-																	<th>Specification</th>
+                    <h5>Body Attributes:</h5>
+                    <table class="highlight white">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Specification</th>
+                            </tr>
+                        </thead>
 
-																</tr>
-															</thead>
-
-															<tbody>
-																@foreach ($bodyAttributes as $bodyAttribute)
-																	<tr>
-
-																		<td>
-																			<div>
-																				{{ $bodyAttribute->strBodyAttributeName }}
-
-																			</div>
-																		</td>
-
-																		<td>
-																			<div>
-																				<input size ="7" id="specification" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
-																				<label data-error="Incorrect" for="specification"></label>
-
-																			</div>
-																		</td>
-
-
-																	</tr>
-																@endforeach
-															</tbody>
-														</table>
-
-		<!--
-											   </div>
-
-											   <div class="row" style="margin:5%;">
-		-->
-
-
+                        <tbody>
+                            @foreach ($bodyAttributes as $bodyAttribute)
+                            <tr>
+                                <td>
+                                    <div>{{ $bodyAttribute->strBodyAttributeName }}</div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input size ="7" id="specification{{ $bodyAttribute->strBodyAttributeName }}" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
+                                        <label data-error="Incorrect" for="specification"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
 				</div>
 			</div>
 				<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
@@ -205,14 +154,48 @@ Guard Form
         $('select').material_select();
         
         $('#nextPersonalData').click(function(){
-            window.location.href = '{{ URL::to("/guardRegistration/educationalBackground") }}';
+            
+            //window.location.href = '{{ URL::to("/guardRegistration/educationalBackground") }}';
+            
         });
         
-    });
         
-    
-    
-    
+        function sendData(){
+            $.ajax({
+
+                type: "POST",
+                url: "{{action('GuardRegistrationController@personalDataSession')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    strFirstName: $('#firstName').val(),
+                    strMiddleName:$('#middleName').val(),
+                    strLastName:$('#strLastName').val(),
+                    strAddress:$('#strAddress').val(),
+                    strProvincialAddress:$('#provaddress').val(),
+                    dateBirth:$('#dateOfbirth').val(),
+                    strPlaceBirth:$('#placeofbirth').val(),
+                    strMobileNumber:$('#contactCp').val(),
+                    strLandlineNumber:$('#contactLandline').val(),
+                    strCivilStatus:$('#civilStatus').val(),
+                    strGender:$('#gender').val()
+                },
+                success: function(data){
+                    swal("Success!", "Record has been Added!", "success");
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+
+                }
+            });//ajax
+        }//sendData()
+    });
    
 </script>
 
