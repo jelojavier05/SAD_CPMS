@@ -272,72 +272,48 @@ Type of Contract
                 }
             });
             
-            $("#btnUpdate").click(function(){
-                if ($('#editname').val().trim() && $('#editdescription').val().trim() && $('#editDuration').val().trim()>0){
-                
-                    $.ajax({
+        $("#btnUpdate").click(function(){
+             if ($('#editname').val().trim() && $('#editdescription').val().trim() && $('#editDuration').val().trim()>0){
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('TypeOfContractController@updateTypeOfContract')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
 
-                        type: "POST",
-                        url: "{{action('TypeOfContractController@updateTypeOfContract')}}",
-                        beforeSend: function (xhr) {
-                            var token = $('meta[name="csrf_token"]').attr('content');
-
-                            if (token) {
-                                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                            }
-                        },
-                        data: {
-                            editTypeOfContractID: $('#editID').val(),
-                            editTypeOfContractName: $('#editname').val(),
-                            editDescription: $('#editdescription').val(),
-                            editMonthDuration: $('#editDuration').val()
-                        },
-                        success: function(data){
-                            var toastContent = $('<span>Record Updated.</span>');
-                            Materialize.toast(toastContent, 1500,'green', 'edit');
-                            refreshTable();
-                            $('#modalcontracttypeEdit').closeModal();
-                        },
-                        error: function(data){
-                            var toastContent = $('<span>Error Occured. </span>');
-                            Materialize.toast(toastContent, 1500,'red', 'edit');
-                        }
-
-                    });//ajax
-
-                 }else{
-                    var toastContent = $('<span>Please Check Your Input. </span>');
-                    Materialize.toast(toastContent, 1500,'red', 'edit');
-                }
-            });
-            
-            $("#btnDelete").click(function(){
-                $.ajax({
-                    type: "POST",
-                    url: "{{action('TypeOfContractController@deleteTypeOfContract')}}",
-                    beforeSend: function (xhr) {
-                        var token = $('meta[name="csrf_token"]').attr('content');
-
-                        if (token) {
-                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                        }
-                    },
-                    data: {
-                        intTypeOfContractID: deleteID.value
-                    },
-                    success: function(data){
-                        var toastContent = $('<span>Record Deleted.</span>');
-                        Materialize.toast(toastContent, 1500, 'edit');
-                        refreshTable();
-                        $('#modalcontracttypeDelete').closeModal();
-                    },
-                    error: function(data){
-                        var toastContent = $('<span>Error Occur. </span>');
-                        Materialize.toast(toastContent, 1500, 'edit');
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                     }
+                },
+				data: {
+					editTypeOfContractID: $('#editID').val(),
+                    editTypeOfContractName: $('#editname').val(),
+                    editDescription: $('#editdescription').val(),
+                    editMonthDuration: $('#editDuration').val()
+					
+				},
+				success: function(data){
+//					var toastContent = $('<span>Record Updated.</span>');
+//                    Materialize.toast(toastContent, 1500,'green','edit');
+                    $('#modalcontracttypeEdit').closeModal();
+                    swal("Success!", "Record has been Updated!", "success");
+                    refreshTable();
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
 
-                });//ajax
-            });
+
+			});//ajax
+            
+             }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+
+		});//button add clicked
             
             $('#dataTable').on('click', '.buttonUpdate', function(){
                 $('#modalcontracttypeEdit').openModal();
@@ -353,10 +329,10 @@ Type of Contract
 
             });
             
-            $('#dataTable').on('click', '.buttonDelete', function(){
-                $('#modalcontracttypeDelete').openModal();
-                document.getElementById('deleteID').value =this.id;
-            });
+//            $('#dataTable').on('click', '.buttonDelete', function(){
+//                $('#modalcontracttypeDelete').openModal();
+//                document.getElementById('deleteID').value =this.id;
+//            });
             
             $('#dataTable').on('click', '.checkboxFlag', function(){
                 var $this = $(this);

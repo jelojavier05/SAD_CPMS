@@ -93,8 +93,13 @@ Guard Form
 				</div>
 
 				<div class="input-field col s4">
-						<input  id="civilStatus" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
-						<label data-error="Incorrect" for="civilStatus">Civil Status</label>
+						<select>
+						  <option value="" disabled selected>Choose</option>
+						  <option value="1">Single</option>
+						  <option value="2">Married</option>
+						  <option value="3">Widowed</option>
+						</select>
+    					<label>Civil Status</label>
 
 				</div>
 

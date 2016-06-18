@@ -238,7 +238,7 @@ Nature of Business
 		});//button add clicked
         
         $("#btnUpdate").click(function(){
-           if ($('#editname').val().trim()){
+             if ($('#editID').val().trim() && $('#editname').val().trim()){
 			$.ajax({
 				
 				type: "POST",
@@ -253,13 +253,14 @@ Nature of Business
 				data: {
 					natureOfBusinessID: $('#editID').val(),
                     natureOfBusiness: $('#editname').val(),
+					
 				},
 				success: function(data){
-                    
-                    var toastContent = $('<span>Record Updated.</span>');
-                    Materialize.toast(toastContent, 1500,'green', 'edit');
-                    refreshTable();
+//					var toastContent = $('<span>Record Updated.</span>');
+//                    Materialize.toast(toastContent, 1500,'green','edit');
                     $('#modalnobEdit').closeModal();
+                    swal("Success!", "Record has been Updated!", "success");
+                    refreshTable();
 				},
 				error: function(data){
 					var toastContent = $('<span>Error Occured. </span>');
@@ -269,15 +270,27 @@ Nature of Business
 
 
 			});//ajax
-               }else{
+            
+             }else{
                 var toastContent = $('<span>Please Check Your Input. </span>');
                 Materialize.toast(toastContent, 1500,'red', 'edit');
             }
 
-		});//button update clicked
+		});//button add clicked
         
-        $("#btnDelete").click(function(){
-            $.ajax({
+ 		  $('#dataTable').on('click', '.buttonDelete', function(){
+
+			document.getElementById('deleteID').value =this.id;  
+            swal({   title: "Are you sure?",   
+				  	 text: "Record will be deleted!",   
+				     type: "warning",   
+				     showCancelButton: true,   
+				     confirmButtonColor: "#DD6B55",   
+				     confirmButtonText: "Yes, delete it!",   
+				     closeOnConfirm: false 
+				 }, 
+				 function(){
+					$.ajax({
 
                 type: "POST",
                 url: "{{action('NatureOfBusinessController@deleteNatureOfBusiness')}}",
@@ -289,23 +302,22 @@ Nature of Business
                     }
                 },
                 data: {
-                    natureOfBusinessID: deleteID.value 
+                    natureOfBusinessID: deleteID.value
 
                 },
-                success: function(data){
-                    var toastContent = $('<span>Record Deleted.</span>');
-                    Materialize.toast(toastContent, 1500, 'green', 'edit');
-                    refreshTable();
-                    $('#modalnobDelete').closeModal();
-                },
-                error: function(data){
-                    var toastContent = $('<span>Error Occur. </span>');
-                    Materialize.toast(toastContent, 1500, 'edit');
+                success: function(data) {
+					swal("Deleted!", "Record has been successfully deleted!", "success");
 
-                }
+					refreshTable();
 
-            });//ajax
-        }); //button delete
+				  },
+			  	error: function(data) {
+					swal("Oops", "We couldn't connect to the server!", "error");
+			  	  }
+
+            	});//ajax
+			});
+          });
         
         $('#dataTable').on('click', '.buttonUpdate', function(){
             $('#modalnobEdit').openModal();
@@ -317,10 +329,10 @@ Nature of Business
 
         });
 
-        $('#dataTable').on('click', '.buttonDelete', function(){
-            $('#modalnobDelete').openModal();
-            document.getElementById('deleteID').value =this.id;
-        });
+//        $('#dataTable').on('click', '.buttonDelete', function(){
+//            $('#modalnobDelete').openModal();
+//            document.getElementById('deleteID').value =this.id;
+//        });
 
         $('#dataTable').on('click', '.checkboxFlag', function(){
             

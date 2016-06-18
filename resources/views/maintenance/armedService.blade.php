@@ -254,11 +254,11 @@ Armed Service
         });//button add clicked
 
         $("#btnUpdate").click(function(){
-            if ($('#editID').val().trim() && $('#editname').val().trim()){
-            $.ajax({
-
-                type: "POST",
-                url: "{{action('ArmedServiceController@updateArmedService')}}",
+             if ($('#editID').val().trim() && $('#editname').val().trim()){
+			$.ajax({
+				
+				type: "POST",
+				url: "{{action('ArmedServiceController@updateArmedService')}}",
                 beforeSend: function (xhr) {
                     var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -266,33 +266,56 @@ Armed Service
                           return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                     }
                 },
-                data: {
-                    armedServiceID: $('#editID').val(),
+				data: {
+					armedServiceID: $('#editID').val(),
                     armedServiceName: $('#editname').val(),
                     armedServiceDescription: $('#editdescription').val(),
+<<<<<<< HEAD
                 },
                 success: function(data){
                     swal("Success!", "Record has been Updated!", "success");
                     refreshTable();
+=======
+					
+				},
+				success: function(data){
+//					var toastContent = $('<span>Record Updated.</span>');
+//                    Materialize.toast(toastContent, 1500,'green','edit');
+>>>>>>> 16af68503b724b64980abefa03e834438cfa06cc
                     $('#modalarmedserviceEdit').closeModal();
-                },
-                error: function(data){
-                    var toastContent = $('<span>Error Occured. </span>');
+                    swal("Success!", "Record has been Updated!", "success");
+                    refreshTable();
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
                     Materialize.toast(toastContent, 1500,'red', 'edit');
+                    
+				}
 
-                }
 
-
-            });//ajax
-         }else{
+			});//ajax
+            
+             }else{
                 var toastContent = $('<span>Please Check Your Input. </span>');
                 Materialize.toast(toastContent, 1500,'red', 'edit');
             }
 
-        });//button add clicked
+		});//button add clicked
 
-        $("#btnDelete").click(function(){
-            $.ajax({
+ 		  $('#dataTable').on('click', '.buttonDelete', function(){
+
+			document.getElementById('deleteID').value =this.id;  
+            swal({   title: "Are you sure?",   
+				  	 text: "Record will be deleted!",   
+				     type: "warning",   
+				     showCancelButton: true,   
+				     confirmButtonColor: "#DD6B55",   
+				     confirmButtonText: "Yes, delete it!",   
+				     closeOnConfirm: false 
+				 }, 
+				 function(){
+					$.ajax({
+
                 type: "POST",
                 url: "{{action('ArmedServiceController@deleteArmedService')}}",
                 beforeSend: function (xhr) {
@@ -304,7 +327,9 @@ Armed Service
                 },
                 data: {
                     armedServiceID: deleteID.value
+
                 },
+<<<<<<< HEAD
                 success: function(data){
                     swal("Success!", "Record has been Deleted!", "success");
                     refreshTable();
@@ -314,9 +339,21 @@ Armed Service
                     var toastContent = $('<span>Error Occur. </span>');
                     Materialize.toast(toastContent, 1500, 'edit');
                 }
+=======
+                success: function(data) {
+					swal("Deleted!", "Record has been successfully deleted!", "success");
+>>>>>>> 16af68503b724b64980abefa03e834438cfa06cc
 
-            });//ajax
-        });
+					refreshTable();
+
+				  },
+			  	error: function(data) {
+					swal("Oops", "We couldn't connect to the server!", "error");
+			  	  }
+
+            	});//ajax
+			});
+          });
 
         $('#dataTable').on('click', '.buttonUpdate', function(){
             $('#modalarmedserviceEdit').openModal();
@@ -332,10 +369,10 @@ Armed Service
 
         });
 
-        $('#dataTable').on('click', '.buttonDelete', function(){
-            $('#modalarmedserviceDelete').openModal();
-            document.getElementById('deleteID').value =this.id;
-        });
+//        $('#dataTable').on('click', '.buttonDelete', function(){
+//            $('#modalarmedserviceDelete').openModal();
+//            document.getElementById('deleteID').value =this.id;
+//        });
 
         $('#dataTable').on('click', '.checkboxFlag', function(){
             var $this = $(this);
