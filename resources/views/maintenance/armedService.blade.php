@@ -270,18 +270,8 @@ Armed Service
 					armedServiceID: $('#editID').val(),
                     armedServiceName: $('#editname').val(),
                     armedServiceDescription: $('#editdescription').val(),
-<<<<<<< HEAD
                 },
                 success: function(data){
-                    swal("Success!", "Record has been Updated!", "success");
-                    refreshTable();
-=======
-					
-				},
-				success: function(data){
-//					var toastContent = $('<span>Record Updated.</span>');
-//                    Materialize.toast(toastContent, 1500,'green','edit');
->>>>>>> 16af68503b724b64980abefa03e834438cfa06cc
                     $('#modalarmedserviceEdit').closeModal();
                     swal("Success!", "Record has been Updated!", "success");
                     refreshTable();
@@ -329,20 +319,8 @@ Armed Service
                     armedServiceID: deleteID.value
 
                 },
-<<<<<<< HEAD
-                success: function(data){
-                    swal("Success!", "Record has been Deleted!", "success");
-                    refreshTable();
-                    $('#modalarmedserviceDelete').closeModal();
-                },
-                error: function(data){
-                    var toastContent = $('<span>Error Occur. </span>');
-                    Materialize.toast(toastContent, 1500, 'edit');
-                }
-=======
                 success: function(data) {
 					swal("Deleted!", "Record has been successfully deleted!", "success");
->>>>>>> 16af68503b724b64980abefa03e834438cfa06cc
 
 					refreshTable();
 
@@ -368,11 +346,6 @@ Armed Service
             document.getElementById('editdescription').value = $("#"+itemDescription).html();
 
         });
-
-//        $('#dataTable').on('click', '.buttonDelete', function(){
-//            $('#modalarmedserviceDelete').openModal();
-//            document.getElementById('deleteID').value =this.id;
-//        });
 
         $('#dataTable').on('click', '.checkboxFlag', function(){
             var $this = $(this);
