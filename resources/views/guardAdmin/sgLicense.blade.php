@@ -56,11 +56,31 @@ Security Guard License
 				</div>
 			
 			</div>
-			<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id="backArmed">Back</button>
-			<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextArmed">Next</button>
+			<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id="backLicense">Back</button>
+			<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextLicense">Next</button>
 		</div>
 	</div>
 </div>
+@stop
+
+@section('script')
+<script>
+    
+    $(document).ready(function() {
+        $('select').material_select();
+        
+        $('#backLicense').click(function(){
+            window.location.href = '{{ URL::to("/guard/registration/requirement") }}';
+        });
+        
+        $('#nextLicense').click(function(){
+             window.location.href = '{{ URL::to("/guard/registration/account") }}';
+        });
+        
+    });
+        
+</script>
+
 @stop
 
 

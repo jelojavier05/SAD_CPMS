@@ -11,17 +11,19 @@
 |
 */
 
-Route::get('/guardRegistration/personalData', 'GuardRegistrationController@personalDataBC');
+Route::get('/guard/registration/personalData', 'GuardRegistrationController@personalDataBC');
 
-Route::get('/guardRegistration/educationalBackground', 'GuardRegistrationController@educationalBackgroundBC');
+Route::get('/guard/registration/educationalBackground', 'GuardRegistrationController@educationalBackgroundBC');
 
-Route::get('/guardRegistration/sgBackground', 'GuardRegistrationController@sgBackgroundBC');
+Route::get('/guard/registration/sgBackground', 'GuardRegistrationController@sgBackgroundBC');
 
-Route::get('/guardRegistration/requirement', 'GuardRegistrationController@requirementBC');
+Route::get('/guard/registration/requirement', 'GuardRegistrationController@requirementBC');
 
-Route::get('/guardRegistration/account', 'GuardRegistrationController@accountBC');
+Route::get('/guard/registration/sgLicense', 'GuardRegistrationController@licenseBC');
 
-Route::post('/guardRegistration/personalData/session', 'GuardRegistrationController@personalDataSession');
+Route::get('/guard/registration/account', 'GuardRegistrationController@accountBC');
+
+Route::post('/guard/registration/personalData/session', 'GuardRegistrationController@personalDataSession');
 
 
 

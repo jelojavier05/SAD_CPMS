@@ -75,11 +75,11 @@ Guard Form
         $('select').material_select();
         
         $('#backRequirement').click(function(){
-            window.location.href = '{{ URL::to("/guardRegistration/sgBackground") }}';
+            window.location.href = '{{ URL::to("/guard/registration/sgBackground") }}';
         });
         
         $('#nextRequirement').click(function(){
-             window.location.href = '{{ URL::to("/guardRegistration/account") }}';
+             window.location.href = '{{ URL::to("/guard/registration/sgLicense") }}';
         });
         
     });

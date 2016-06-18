@@ -58,8 +58,24 @@ Guard Form
 				</div>
             </div>
 		</div>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large green right animated infinite flash" href="#">Save</button>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#" id = "backAccount">Back</button>
+		<button id = "saveButton"style="margin-top:20px;" class=" z-depth-2 btn-large green right animated infinite flash" href="#">Save</button>
 	</div>
 </div>
+@stop
+
+@section('script')
+<script>
+    
+    $(document).ready(function() {
+        $('select').material_select();
+        
+        $('#backAccount').click(function(){
+            window.location.href = '{{ URL::to("/guard/registration/requirement") }}';
+        });
+        
+    });
+        
+</script>
+
 @stop

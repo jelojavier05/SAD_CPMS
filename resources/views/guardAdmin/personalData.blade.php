@@ -160,7 +160,7 @@ Guard Form
         
         $('#nextPersonalData').click(function(){
             
-            //window.location.href = '{{ URL::to("/guardRegistration/educationalBackground") }}';
+            window.location.href = '{{ URL::to("/guard/registration/educationalBackground") }}';
             
         });
         

@@ -114,11 +114,11 @@ Guard Form
         $('select').material_select();
         
         $('#backArmed').click(function(){
-            window.location.href = '{{ URL::to("/guardRegistration/educationalBackground") }}';
+            window.location.href = '{{ URL::to("/guard/registration/educationalBackground") }}';
         });
         
         $('#nextArmed').click(function(){
-            window.location.href = '{{ URL::to("guardRegistration/requirement") }}';
+            window.location.href = '{{ URL::to("guard/registration/requirement") }}';
         });
         
     });

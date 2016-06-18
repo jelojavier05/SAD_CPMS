@@ -475,11 +475,11 @@ Guard Form
         $('select').material_select();
         
         $('#backEducation').click(function(){
-            window.location.href = '{{ URL::to("/guardRegistration/personalData") }}';
+            window.location.href = '{{ URL::to("/guard/registration/personalData") }}';
         });
         
         $('#nextEducation').click(function(){
-            window.location.href = '{{ URL::to("/guardRegistration/sgBackground") }}';
+            window.location.href = '{{ URL::to("/guard/registration/sgBackground") }}';
         });
         
     });

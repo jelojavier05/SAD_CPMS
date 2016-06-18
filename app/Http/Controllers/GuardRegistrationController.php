@@ -54,6 +54,10 @@ class GuardRegistrationController extends Controller
             ->with ('requirements', $requirements);
     }
     
+    public function licenseBC(){
+        return view('/guardAdmin/sgLicense');
+    }
+    
     public function accountBC(){
         return view('/guardAdmin/accountForm');
     }
