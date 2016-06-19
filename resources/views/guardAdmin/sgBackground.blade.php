@@ -132,7 +132,7 @@ Guard Form
 		<div class="modal-content">
 			<div class="row">
 				<div class = "col s10 push-s1">    
-				   <select id = "" name = "">
+				   <select class="browser-default" id = "" name = "">
 					   <option disabled selected>Choose Government Exam</option>
 						  <option id = "1">Test1</option>
 						  <option id = "2">Test2</option>
@@ -167,13 +167,17 @@ Guard Form
 		<div class="modal-content">
 			<div class="row">
 				<div class = "col s10 push-s1">    
-				   <select id = "" name = "">
+				   <select class="browser-default" id = "" name = "">
 					   <option disabled selected>Choose Government Exam</option>
 						  <option id = "1">Test1</option>
 						  <option id = "2">Test2</option>
 						  <option id = "3">Test3</option>
 					   	  <option id = "4">Test4</option>
 						  <option id = "5">Test5</option>
+					   <option id = "6">Test6</option>
+					   <option id = "5">Test5</option>
+					   
+					   
 						  
 				   </select>
 				</div>
