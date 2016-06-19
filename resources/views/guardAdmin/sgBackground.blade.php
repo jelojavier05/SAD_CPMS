@@ -67,10 +67,12 @@ Guard Form
 			<button style="margin-top:-10%; margin-left:650px;" id="btnAdd" class="z-depth-1 btn green modal-trigger" href="#modalgovexamAdd">
                         <i class="material-icons left">add</i> ADD
             </button>
-            <table class="highlight white">
+            <table class="striped white">
                 <thead>
                     <tr>
                         <th></th>
+						<th style="width:50px;"></th>
+                        <th style="width:50px;"></th>
                         <th>Name</th>
                         <th>Ratings</th>
                         <th>Date Taken</th>
@@ -85,7 +87,23 @@ Guard Form
                                     <label for=""></label>
                                 </div>
                             </td>
-                            <td></td>
+                            <td>
+                                  <button class="buttonUpdate btn modal-trigger "  name="" id="" href="#modalgovexamEdit" >
+                                     <i class="material-icons">edit</i>
+                                  </button>
+                                    	<label for="edit"></label>
+                             </td>
+							
+							
+                            
+							<td>
+                                  <button class="buttonDelete btn red " id="" >
+                                       <i class="material-icons">delete</i>
+                                  </button>
+                            </td>
+							
+							<td><!--- dito ung name--->HELLO EXAM</td>
+							
                             <td>
                                 <div>
                                     <input size="9" id="rating" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
@@ -93,7 +111,7 @@ Guard Form
                                 </div>
                             </td>
                             <td>
-                                <div>
+                                <div class="col s7">
                                     <input id="dateTaken" type="date" class="validate"  required="" aria-required="true">
                                     <label data-error="Incorrect" for="dateTaken"></label>
                                 </div>
@@ -139,6 +157,41 @@ Guard Form
 				
 				<div class = "center-align">
 					<button style="margin-top:20px;" class=" z-depth-2 btn-large green " id="">Add</button>
+				</div>
+			</div>
+		</div>
+</div>
+<!------------------------------------modal govexamEdit--------------------------------------------------->
+<div id="modalgovexamEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:420px !important;">
+	<div class="modal-header"><h3>Government Exam</h3></div>
+		<div class="modal-content">
+			<div class="row">
+				<div class = "col s10 push-s1">    
+				   <select id = "" name = "">
+					   <option disabled selected>Choose Government Exam</option>
+						  <option id = "1">Test1</option>
+						  <option id = "2">Test2</option>
+						  <option id = "3">Test3</option>
+					   	  <option id = "4">Test4</option>
+						  <option id = "5">Test5</option>
+						  
+				   </select>
+				</div>
+				
+				<div class="col s10 push-s1">
+					<div class="input-field">
+						<input id="editRating" type="text" class="validate" name = "rating" required="" aria-required="true">
+							<label for="editRating">Rating</label> 
+					</div>
+				</div>
+				
+				<div class="input-field col s10 push-s1">
+						<input  id="editdateTaken" type="date" class="datepicker"  required="" aria-required="true">
+						<label class="active" data-error="Incorrect" for="editdateTaken">Date Taken</label>
+				</div>
+				
+				<div class = "center-align">
+					<button style="margin-top:20px;" class=" z-depth-2 btn-large blue " id="">Save</button>
 				</div>
 			</div>
 		</div>
