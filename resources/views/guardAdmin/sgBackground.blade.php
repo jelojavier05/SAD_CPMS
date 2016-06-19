@@ -12,9 +12,9 @@ Guard Form
             <div class="nav-wrapper blue">
                 <div class="row">	
                     <div class="col s12">
-                        <a class="breadcrumb">Personal Data</a>
-                        <a class="breadcrumb">Educational Background</a>
-                        <a class="breadcrumb">SG Background</a>
+                        <a href="{{URL::route('personalDataBC')}}" class="breadcrumb">Personal Data</a>
+                        <a href="{{URL::route('educationalBackgroundBC')}}" class="breadcrumb">Educational Background</a>
+                        <a href="{{URL::route('sgBackground')}}" class="breadcrumb">SG Background</a>
                     </div>
                 </div>
             </div>
@@ -64,6 +64,9 @@ Guard Form
     <div class = "col s8 push-s3" style="margin-left:10px;">
         <div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
             <legend><h4>Government Exam</h4></legend>
+			<button style="margin-top:-10%; margin-left:650px;" id="btnAdd" class="z-depth-1 btn green modal-trigger" href="#modalgovexamAdd">
+                        <i class="material-icons left">add</i> ADD
+            </button>
             <table class="highlight white">
                 <thead>
                     <tr>
@@ -74,15 +77,15 @@ Guard Form
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($governmentExams as $governmentExam)
+                    
                         <tr>
                             <td>
                                 <div>
-                                    <input type="checkbox" id="{{ $governmentExam->strGovernmentExam }}" />
-                                    <label for="{{ $governmentExam->strGovernmentExam }}"></label>
+                                    <input type="checkbox" id="" />
+                                    <label for=""></label>
                                 </div>
                             </td>
-                            <td>{{ $governmentExam->strGovernmentExam }}</td>
+                            <td></td>
                             <td>
                                 <div>
                                     <input size="9" id="rating" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
@@ -96,13 +99,49 @@ Guard Form
                                 </div>
                             </td>
                         </tr>
-                    @endforeach   
+                       
                 </tbody>
             </table>
         </div>
         <button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id="backArmed">Back</button>
         <button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextArmed">Next</button>
     </div>
+</div>
+
+<!------------------------------------Modal govexamAdd--------------------------->
+<div id="modalgovexamAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:420px !important;">
+	<div class="modal-header"><h3>Government Exam</h3></div>
+		<div class="modal-content">
+			<div class="row">
+				<div class = "col s10 push-s1">    
+				   <select id = "" name = "">
+					   <option disabled selected>Choose Government Exam</option>
+						  <option id = "1">Test1</option>
+						  <option id = "2">Test2</option>
+						  <option id = "3">Test3</option>
+					   	  <option id = "4">Test4</option>
+						  <option id = "5">Test5</option>
+						  
+				   </select>
+				</div>
+				
+				<div class="col s10 push-s1">
+					<div class="input-field">
+						<input id="strRating" type="text" class="validate" name = "rating" required="" aria-required="true">
+							<label for="strRating">Rating</label> 
+					</div>
+				</div>
+				
+				<div class="input-field col s10 push-s1">
+						<input  id="dateTaken" type="date" class="datepicker"  required="" aria-required="true">
+						<label class="active" data-error="Incorrect" for="startDate">Date Taken</label>
+				</div>
+				
+				<div class = "center-align">
+					<button style="margin-top:20px;" class=" z-depth-2 btn-large green " id="">Add</button>
+				</div>
+			</div>
+		</div>
 </div>
 
 @stop

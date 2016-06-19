@@ -32,6 +32,7 @@ Nature of Business
 								<th style="width:50px;"></th>
                                 <th>ID</th>
                                 <th>Name</th>
+								<th>Rate</th>
                                 
                             </tr>
                         </thead>
@@ -71,6 +72,8 @@ Nature of Business
                                     </td>
                                     <td id = "id{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->intNatureOfBusinessID }}</td>
             						<td id = "name{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->strNatureOfBusiness }}</td>
+									<td>Test
+									</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -102,6 +105,14 @@ Nature of Business
 								<input id="strNatureOfBusiness" type="text" class="validate" name = "natureOfBusiness" required="" aria-required="true">
 									<label for="">Nature of Business</label> 
 							</div>
+						</div>
+					</div>
+				
+					<div class = "row">
+						<div class="input-field col s5">
+							<input  id="deciRate" maxlength="6" type="text" class="validate" pattern="[0-9.]{3,}" required="" aria-required="true">
+							<label data-error="Incorrect" for="deciRate">Rate</label>
+
 						</div>
 					</div>
 						
@@ -137,6 +148,15 @@ Nature of Business
 							</div>
 						</div>
 					</div>
+					<div class = "row">
+						<div class="input-field col s5">
+							<input  id="editRate" maxlength="6" type="text" class="validate" pattern="[0-9.]{3,}" required="" aria-required="true">
+							<label data-error="Incorrect" for="editRate">Rate</label>
+
+						</div>
+					</div>
+				
+					
 						
 	<!-- Modal Button Save -->
 				
@@ -189,7 +209,8 @@ Nature of Business
 			{"searchable": false},
 			{"searchable": false},
             null,
-            null
+            null,
+			null
             ] ,  
 //		    "pagingType": "full_numbers",
 			"pageLength":5,
@@ -216,10 +237,11 @@ Nature of Business
 				},
 				success: function(data){
 					
-					var toastContent = $('<span>Record Added.</span>');
-                    Materialize.toast(toastContent, 1500,'green', 'edit');
+//					var toastContent = $('<span>Record Added.</span>');
+//                    Materialize.toast(toastContent, 1500,'green', 'edit');
                     refreshTable();
                     $('#modalnobAdd').closeModal();
+					swal("Success!", "Record has been Added!", "success");
                     refreshTextfield();
 					
 				},

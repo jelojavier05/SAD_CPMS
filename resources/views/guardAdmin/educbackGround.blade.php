@@ -13,7 +13,7 @@ Guard Form
 				<div class="row">	
 					<div class="col s12">
 						<a href="{{URL::route('personalDataBC')}}" class="breadcrumb">Personal Data</a>
-						<a href="#" class="breadcrumb">Educational Background</a>
+						<a href="{{URL::route('educationalBackgroundBC')}}" class="breadcrumb">Educational Background</a>
 					</div>
 				</div>
 			</div>

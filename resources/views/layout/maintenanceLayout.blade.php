@@ -128,7 +128,7 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul class="black-text">
                                             <li>
-                                                <a href="/guardRegistration/personalData" >Registration</a>
+                                                <a href="/guard/registration/personalData" >Registration</a>
                                             </li>
 											
 <!--

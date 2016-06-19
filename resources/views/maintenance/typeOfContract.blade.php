@@ -252,11 +252,12 @@ Type of Contract
                         intMonthDuration: $('#intDurationAdd').val()
                     },
                     success: function(data){
-                        var toastContent = $('<span>Record Added.</span>');
-                        Materialize.toast(toastContent, 1500,'green', 'edit');
+//                        var toastContent = $('<span>Record Added.</span>');
+//                        Materialize.toast(toastContent, 1500,'green', 'edit');
                         refreshTextfield();
                         refreshTable();
                         $('#modalcontracttypeAdd').closeModal();
+						swal("Success!", "Record has been Added!", "success");
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occured. </span>');

@@ -12,12 +12,12 @@ Guard Form
 			<div class="nav-wrapper blue">
 				<div class="row">	
 					<div class="col s12">
-						<a class="breadcrumb">Personal Data</a>
-						<a class="breadcrumb">Educational Background</a>
-						<a class="breadcrumb">SG Background</a>
-						<a class="breadcrumb">Requirements</a>
-						<a class="breadcrumb">Guard License</a>
-						<a class="breadcrumb">Account</a>
+						<a href="{{URL::route('personalDataBC')}}" class="breadcrumb">Personal Data</a>
+						<a href="{{URL::route('educationalBackgroundBC')}}" class="breadcrumb">Educational Background</a>
+						<a href="{{URL::route('sgBackground')}}" class="breadcrumb">SG Background</a>
+						<a href="{{URL::route('requirement')}}" class="breadcrumb">Requirements</a>
+						<a href="{{URL::route('sgLicense')}}" class="breadcrumb">Guard License</a>
+						<a href="{{URL::route('account')}}" class="breadcrumb">Account</a>
 					</div>
 				</div>
 			</div>

@@ -283,11 +283,13 @@ Leave
                         daysBeforeLeave: $('#intNotificationPeriod').val()
                     },
                     success: function(data){
-                        var toastContent = $('<span>Record Added.</span>');
-                        Materialize.toast(toastContent, 1500,'green', 'edit');
-                        $('#modalleaveAdd').closeModal();
-                        refreshTable();
-                        refreshTextfield();
+ 						
+						$('#modalleaveAdd').closeModal();
+						swal("Success!", "Record has been Added!", "success");
+						refreshTable();
+						refreshTextfield();
+						
+						
                         
                         
                     },
@@ -496,8 +498,10 @@ Leave
         }
 
         function refreshTextfield(){
-            document.getElementById('strArmedServiceAdd').value = "";
-            document.getElementById('strArmedServiceDescAdd').value = "";   
+            document.getElementById('strLeaveType').value = "";
+            document.getElementById('intNumberOfDays').value = "";
+			document.getElementById('intNumberOfRequest').value = "";
+			document.getElementById('intNotificationPeriod').value = "";
         }
 
 	});//document ready

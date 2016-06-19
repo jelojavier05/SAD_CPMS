@@ -290,11 +290,12 @@ Requirements
                         identifier: checkboxIdentifier
                     },
                     success: function(data){
-                        var toastContent = $('<span>Record Added.</span>');
-                        Materialize.toast(toastContent, 1500,'green', 'edit');
+//                        var toastContent = $('<span>Record Added.</span>');
+//                        Materialize.toast(toastContent, 1500,'green', 'edit');
                         refreshTable();
                         refreshTextfield();
                         $('#modalrequirementsAdd').closeModal();
+						swal("Success!", "Record has been Added!", "success");
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occured. </span>');

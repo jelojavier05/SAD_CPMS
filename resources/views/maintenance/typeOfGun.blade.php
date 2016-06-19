@@ -233,11 +233,12 @@ Type of Gun
 					typeOfGunDescription: $('#strTypeOfGunDescription').val(),
 				},
 				success: function(data){
-					var toastContent = $('<span>Record Added.</span>');
-                    Materialize.toast(toastContent, 1500,'green', 'edit');
+//					var toastContent = $('<span>Record Added.</span>');
+//                    Materialize.toast(toastContent, 1500,'green', 'edit');
                     refreshTextfield();
                     refreshTable();
                     $('#modaltypeofgunAdd').closeModal();
+					swal("Success!", "Record has been Added!", "success");
 				},
 				error: function(data){
 					var toastContent = $('<span>Error Occured. </span>');
