@@ -11,20 +11,20 @@
 |
 */
 
-Route::get('/guard/registration/personalData', 'GuardRegistrationController@personalDataBC');
+Route::get('/guard/registration/personalData', 'GuardRegistrationController@personalDataBC')->name('personalDataBC');
 
-Route::get('/guard/registration/educationalBackground', 'GuardRegistrationController@educationalBackgroundBC');
+Route::get('/guard/registration/educationalBackground', 'GuardRegistrationController@educationalBackgroundBC')->name('educationalBackgroundBC');
 
-Route::get('/guard/registration/sgBackground', 'GuardRegistrationController@sgBackgroundBC');
+Route::get('/guard/registration/sgBackground', 'GuardRegistrationController@sgBackgroundBC')->name('sgBackground');
 
-Route::get('/guard/registration/requirement', 'GuardRegistrationController@requirementBC');
+Route::get('/guard/registration/requirement', 'GuardRegistrationController@requirementBC')->name('requirement');
 
-Route::get('/guard/registration/sgLicense', 'GuardRegistrationController@licenseBC');
+Route::get('/guard/registration/sgLicense', 'GuardRegistrationController@licenseBC')->name('sgLicense');
 
-Route::get('/guard/registration/account', 'GuardRegistrationController@accountBC');
+Route::get('/guard/registration/account', 'GuardRegistrationController@accountBC')->name('account');
 
 Route::post('/guard/registration/personalData/session', 'GuardRegistrationController@personalDataSession');
-
+    
 
 
 Route::get('/deployment/index', 'DeploymentController@index');
