@@ -61,7 +61,7 @@ Guard Form
 
 				</div>
 
-				<div class="input-field col s6">
+				<div class="input-field col s4">
 					    <i class="material-icons prefix">home</i>
 						<input  id="address" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
 
@@ -69,11 +69,64 @@ Guard Form
 
 				</div>
 
-				<div class="input-field col s6">
-						<i class="material-icons prefix">home</i>
-						<input  id="provaddress" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
-						<label data-error="Incorrect" for="provaddress">Provincial Address</label>
+				<div class = "input-field col s4">    
+					   <select  id = "" name = "" >
+						   <option disabled selected>Choose Province</option>
+							  <option id = "1" >Test1</option>
+							  <option id = "2">Test2</option>
+							  <option id = "3">Test3</option>
+							  <option id = "4">Test4</option>
+							  <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
 
+					   </select>
+				</div>
+			   
+			   	<div class = "input-field col s4">    
+					   <select  id = "" name = "" >
+						   <option disabled selected>Choose City</option>
+							  <option id = "1" >Test1</option>
+							  <option id = "2">Test2</option>
+							  <option id = "3">Test3</option>
+							  <option id = "4">Test4</option>
+							  <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+						   <option id = "5">Test5</option>
+
+					   </select>
 				</div>
 
 				<div class="input-field col s6">
@@ -112,7 +165,7 @@ Guard Form
 
 				</div>
 
-				<div class="input-field col s4">
+				<div class="input-field col s4 push-s2">
 						<select id = "gender">
 							<option value="" disabled selected>Choose</option>
 							<option value="Male">Male</option>
@@ -124,32 +177,37 @@ Guard Form
 
 												<!-- ====================Body Attributes ============ -->
 
-				<div class="input-field col s8 push-s2">
+				<div class="input-field col s10 push-s1">
                     <h5>Body Attributes:</h5>
-                    <table class="highlight white">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Specification</th>
-                            </tr>
-                        </thead>
+					<div class="row">
+						<div class="col s12">
+					
+							<table class="striped white">
+								<thead>
+									<tr>
+										<th style="width:260px;">Name</th>
+										<th>Specification</th>
+									</tr>
+								</thead>
 
-                        <tbody>
-                            @foreach ($bodyAttributes as $bodyAttribute)
-                            <tr>
-                                <td>
-                                    <div>{{ $bodyAttribute->strBodyAttributeName }}</div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <input size ="7" id="specification{{ $bodyAttribute->strBodyAttributeName }}" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
-                                        <label data-error="Incorrect" for="specification"></label>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+								<tbody>
+									@foreach ($bodyAttributes as $bodyAttribute)
+									<tr style="height:-10px !important;">
+										<td>
+											<div class="col s3">{{ $bodyAttribute->strBodyAttributeName }}</div>
+										</td>
+										<td>
+											<div class="input-field col s7">
+												<input  id="specification{{ $bodyAttribute->strBodyAttributeName }}" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
+												<label data-error="Incorrect" for="specification"></label>
+											</div>
+										</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 				<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>

@@ -99,19 +99,27 @@
 														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
 														
 														
+														
+														
 													</ul>
 														
                                             </li>
                                             <li>
-                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdowneq" data-gutter="241" data-hover="false" style="width:240px; border:none;" id="buttonhover">Equipment</button>
+                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdowneq" data-gutter="241" data-hover="false" style="width:240px; border:none;" id="buttonhover">Others</button>
 													<ul id='dropdowneq' class='dropdown-content' style="margin-top:1px;">
 														
 														
 														<li><a class="blue-text" href="/maintenance/typeOfGun">Type of Gun</a></li>
 														
+														<li><a class="blue-text" href="/maintenance/province">Province</a></li>
+														
+														<li><a class="blue-text" href="/maintenance/city">City</a></li>
+														
+<!--
 														<li><a class="blue-text" href="/maintenance/gun">Add Gun</a></li>
 														
 														<li><a class="blue-text" href="#">Add Supply Item</a></li>
+-->
 														
 														
 														

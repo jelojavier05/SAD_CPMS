@@ -30,7 +30,12 @@ Route::post('/guard/registration/educationalBackground/session', 'GuardRegistrat
     
 
 
+Route::get('/maintenance/province', 'ProvinceController@index');
+Route::get('/maintenance/city', 'CityController@index');
+
 Route::get('/deployment/index', 'DeploymentController@index');
+
+
 
 Route::get('/maintenance/gun', 'GunController@index');
 
