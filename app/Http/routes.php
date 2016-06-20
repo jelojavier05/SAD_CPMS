@@ -24,6 +24,9 @@ Route::get('/guard/registration/sgLicense', 'GuardRegistrationController@license
 Route::get('/guard/registration/account', 'GuardRegistrationController@accountBC')->name('account');
 
 Route::post('/guard/registration/personalData/session', 'GuardRegistrationController@personalDataSession');
+
+Route::post('/guard/registration/educationalBackground/session', 'GuardRegistrationController@educationalBackgroundSession');
+
     
 
 
