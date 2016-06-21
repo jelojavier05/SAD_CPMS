@@ -30,8 +30,7 @@ Route::post('/guard/registration/educationalBackground/session', 'GuardRegistrat
     
 
 
-Route::get('/maintenance/province', 'ProvinceController@index');
-Route::get('/maintenance/city', 'CityController@index');
+
 
 Route::get('/deployment/index', 'DeploymentController@index');
 
@@ -46,6 +45,30 @@ Route::post('/maintenance/gun/update', 'GunController@update');
 Route::post('/maintenance/gun/destroy', 'GunController@destroy');
 
 Route::post('/maintenance/gun/flag', 'GunController@flag');
+
+Route::get('/maintenance/province', 'ProvinceController@index');
+
+Route::get('/maintenance/province/get', 'ProvinceController@get');
+
+Route::post('/maintenance/province/create', 'ProvinceController@create');
+
+Route::post('/maintenance/province/update', 'ProvinceController@update');
+
+Route::post('/maintenance/province/delete', 'ProvinceController@delete');
+
+Route::post('/maintenance/province/flag', 'ProvinceController@flag');
+
+Route::get('/maintenance/city', 'CityController@index');
+
+Route::get('/maintenance/city/get', 'CityController@get');
+
+Route::post('/maintenance/city/create', 'CityController@create');
+
+Route::post('/maintenance/city/update', 'CityController@update');
+
+Route::post('/maintenance/city/delete', 'CityController@delete');
+
+Route::post('/maintenance/city/flag', 'CityController@flag');
 
 Route::get('/maintenance/NatureOfBusiness', 'NatureOfBusinessController@index');
 
@@ -146,3 +169,5 @@ Route::post('/maintenance/typeOfContract/flag', 'TypeOfContractController@flagTy
 Route::get('/', function () {
     return view('welcome');
 });
+
+
