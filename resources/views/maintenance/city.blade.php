@@ -62,7 +62,8 @@ City
                                         </button>
                                     </td>
                                     <td id = "id{{$city->intCityID}}">{{$city->intCityID}}</td>
-                                    <td id = "province{{$city->intCityID}}">{{$city->Province->strProvinceName}}</td>
+                                    <td id = "province{{$city->intCityID}}" value = "{{$city->Province->intProvinceID}}">{{$city->Province->strProvinceName}}</td>
+                                    <input type="hidden" id = "provinceID{{$city->intCityID}}" value = "{{$city->Province->intProvinceID}}" >
                                     <td id = "name{{$city->intCityID}}">{{$city->strCityName}}</td>
                                 </tr>
                             @endforeach
@@ -161,7 +162,6 @@ City
 </div>
 
 <input type="hidden" id = "deleteID">
-<input type="hidden" id = "provinceName">
 @stop
 
 @section('script')
@@ -259,11 +259,12 @@ City
             $('#modalcityEdit').openModal();
             var itemID = "id" + this.id;
             var itemName = "name" + this.id;
-            var itemProvince = "province" + this.id;
+            var itemProvince = "provinceID" + this.id;
             
             document.getElementById('editID').value = $("#"+itemID).html();
             document.getElementById('editname').value = $("#"+itemName).html();
-            $('#editProvince select').val($("#"+itemName).html());
+            $('#editProvince').val($('#'+itemProvince).val());
+
         });  //button update in table
         
         $('#dataTable').on('click', '.buttonDelete', function(){
@@ -348,6 +349,7 @@ City
                 success: function (data) { 
                     console.log(data);
                     $.each(data, function(index, element) {
+                        $('#provinceID' + data[index].intCityID).remove();
                         var flag = data[index].boolFlag;
                         provinceName = getProvince(data[index].intProvinceID);
                         if (flag){
@@ -361,10 +363,14 @@ City
                             '<button class="buttonUpdate btn" name="" id="' +data[index].intCityID+'" ><i class="material-icons">edit</i></button>',
                             '<button class="buttonDelete btn red" id="'+ data[index].intCityID +'"><i class="material-icons">delete</i></button>',
                             '<h id = "id' +data[index].intCityID + '">' + data[index].intCityID +'</h>',
-                            '<h id = "province' +data[index].intCityID + '">' + provinceName +'</h>',
-                            '<h id = "name' +data[index].intCityID + '">' + data[index].strCityName +'</h>']).draw();
+                            '<h id = "province' +data[index].intCityID + '" value = "' + data[index].intProvinceID+'">' + provinceName +'</h>',
+                            '<h id = "name' +data[index].intCityID + '">' + data[index].strCityName +'</h>' ]).draw();
                         
-                        
+                        $('<input>').attr({
+                            type: 'hidden',
+                            id: 'provinceID' + data[index].intCityID ,
+                            value: data[index].intProvinceID
+                        }).appendTo('#dataTable');
                     });//foreach
 
                 },
