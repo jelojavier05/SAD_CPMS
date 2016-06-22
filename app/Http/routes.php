@@ -27,6 +27,9 @@ Route::post('/guard/registration/personalData/session', 'GuardRegistrationContro
     
 
 
+
+Route::get('/clientForm', 'ClientFormController@index');
+
 Route::get('/maintenance/province', 'ProvinceController@index');
 Route::get('/maintenance/city', 'CityController@index');
 
