@@ -20,15 +20,25 @@ Guard Form
 	</div>
 </div>
 
-
-<!----------------------------------------------PAGES-------------------------------------->
-<!-------------------------------------Personal Data Page Start---------------------------------->
 <div class="row">
-	<div class="col s8 push-s3" style=" margin-left:10px;">
+    <div class="col s8 push-s3" style=" margin-left:10px;">
 		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;" id="personaldata">
 		   <legend><h4>Personal Data</h4></legend>
 		   <div class="row" style="margin:5%;">
-               
+                @if (isset($data))
+                    <input type="hidden" id="session" value="active">
+                    <input type="hidden" id="firstNameSession" value="{{$data['firstName']}}">
+                    <input type="hidden" id="middleNameSession" value="{{$data['middleName']}}">
+                    <input type="hidden" id="lastNameSession" value="{{$data['lastName']}}">
+                    <input type="hidden" id="addressSession" value="{{$data['address']}}">
+                    <input type="hidden" id="dateOfbirthSession" value="{{$data['dateOfbirth']}}">
+                    <input type="hidden" id="contactCpSession" value="{{$data['contactCp']}}">
+                    <input type="hidden" id="contactLandlineSession" value="{{$data['contactLandline']}}">
+                    <input type="hidden" id="civilStatusSession" value="{{$data['civilStatus']}}">
+                    <input type="hidden" id="genderSession" value="{{$data['gender']}}">
+                @else
+                    <input type="hidden" id="session" value="deactive">
+                @endif
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="input-field col s4">
 					   <i class="material-icons prefix">account_circle</i>
@@ -122,7 +132,6 @@ Guard Form
 				<div class="input-field col s6">
 						<input  id="dateOfbirth" type="date" class="datepicker"  required="" aria-required="true">
 						<label class="active" data-error="Incorrect" for="dateOfbirth">Date of Birth</label>
-
 				</div>
 
 				<div class="input-field col s6">
@@ -145,12 +154,12 @@ Guard Form
 
 				</div>
 
-				<div class="input-field col s4 push-s2">
-						<select>
+				<div class="input-field col s4">
+						<select id = "civilStatus">
 						  <option value="" disabled selected>Choose</option>
-						  <option value="1">Single</option>
-						  <option value="2">Married</option>
-						  <option value="3">Widowed</option>
+						  <option value="Single">Single</option>
+						  <option value="Married">Married</option>
+						  <option value="Widowed">Widowed</option>
 						</select>
     					<label>Civil Status</label>
 
@@ -206,7 +215,6 @@ Guard Form
 		</div>
 	</div>
 </div>
-<!-------------------------------------Personal Data Page End---------------------------------->
 
 
 @stop
@@ -214,14 +222,27 @@ Guard Form
 <script>
     
     $(document).ready(function() {
+        
         $('select').material_select();
         
+        if ($('#session').val() == "active"){
+            $('#firstName').val($('#firstNameSession').val());
+            $('#middleName').val($('#middleNameSession').val());
+            $('#lastName').val($('#lastNameSession').val());
+            $('#address').val($('#addressSession').val());
+            $('#dateOfbirth').val($('#dateOfbirthSession').val());
+            $('#contactCp').val($('#contactCpSession').val());
+            $('#contactLandline').val($('#contactLandlineSession').val());
+            $('#civilStatus').val($('#civilStatusSession').val());
+            $('#gender').val($('#genderSession').val());
+        }
+        
         $('#nextPersonalData').click(function(){
-            
+            //validations here
+            sendData();
             window.location.href = '{{ URL::to("/guard/registration/educationalBackground") }}';
             
         });
-        
         
         function sendData(){
             $.ajax({
@@ -238,23 +259,19 @@ Guard Form
                 data: {
                     strFirstName: $('#firstName').val(),
                     strMiddleName:$('#middleName').val(),
-                    strLastName:$('#strLastName').val(),
-                    strAddress:$('#strAddress').val(),
-                    strProvincialAddress:$('#provaddress').val(),
+                    strLastName:$('#lastName').val(),
+                    strAddress:$('#address').val(),
                     dateBirth:$('#dateOfbirth').val(),
-                    strPlaceBirth:$('#placeofbirth').val(),
                     strMobileNumber:$('#contactCp').val(),
                     strLandlineNumber:$('#contactLandline').val(),
                     strCivilStatus:$('#civilStatus').val(),
                     strGender:$('#gender').val()
                 },
                 success: function(data){
-                    swal("Success!", "Record has been Added!", "success");
+
                 },
                 error: function(data){
-                    var toastContent = $('<span>Error Occured. </span>');
-                    Materialize.toast(toastContent, 1500,'red', 'edit');
-
+                    
                 }
             });//ajax
         }//sendData()
