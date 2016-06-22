@@ -82,17 +82,9 @@ City
     
     <div class="modal-content">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        
-        <div class="row">
-            <div class="col s4 push-s1">
-                <div class="input-field">
-                    <input  id="" type="text" class="validate" disabled>
-                    <label for="">City ID</label>
-                </div>
-            </div>
-        </div>
-        
-        <div class = "col s10 push-s1 selectheight">    
+     
+		<div class="row">
+        <div class = "col 9 push-s1">    
             <select  class="browser-default" id = "addSelectProvince">
                 <option disabled selected value = "0">Choose Province</option>
                 @foreach($provinces as $province)
@@ -100,6 +92,7 @@ City
                 @endforeach
             </select>
         </div>
+		</div>
         
         <div class="row">
             <div class="col s10 push-s1">
@@ -129,20 +122,23 @@ City
         <div class="row">
             <div class="col s3 push-s1">
                 <div class="input-field">
-                    <input  id="editID" type="text" class="validate" name = "cityID" readonly required="" aria-required="true" value = "1">
+                    <input  id="editID" type="text" class="validate blue-text center-align" name = "cityID" readonly required="" aria-required="true" value = "1">
                     <label for="editID">City ID</label>
                 </div>
             </div>
-        </div>
+		</div>
         
-        <div class = "col s10 push-s1 selectheight">    
-            <select  class="browser-default selection" id = "editProvince" >
-                <option disabled>Choose Province</option>
-                @foreach($provinces as $province)
-                    <option id = "{{$province->intProvinceID}}" value = "{{$province->intProvinceID}}">{{$province->strProvinceName}}</option>
-                @endforeach
-            </select>
-        </div>
+		<div class="row">
+			<div class = "col s5 push-s1">    
+				<select  class="browser-default" id = "editProvince" >
+					<option disabled>Choose Province</option>
+					@foreach($provinces as $province)
+						<option id = "{{$province->intProvinceID}}" value = "{{$province->intProvinceID}}">{{$province->strProvinceName}}</option>
+					@endforeach
+				</select>
+			</div>
+		</div>
+		
         
         <div class="row">
             <div class="col s10 push-s1">

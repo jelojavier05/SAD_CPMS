@@ -154,7 +154,7 @@ Guard Form
 
 				</div>
 
-				<div class="input-field col s4">
+				<div class="input-field col s4 push-s2">
 						<select id = "civilStatus">
 						  <option value="" disabled selected>Choose</option>
 						  <option value="Single">Single</option>

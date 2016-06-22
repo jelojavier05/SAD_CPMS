@@ -75,20 +75,13 @@ Province
     </div>
 </div>
 
-<div id="modalprovinceAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:420px !important;">
+<div id="modalprovinceAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:330px !important;">
     <div class="modal-header"><h2>Province</h2></div>
     
     <div class="modal-content">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         
-        <div class="row">
-            <div class="col s4 push-s1">
-                <div class="input-field">
-                    <input  id="addProvinceID" type="text" class="validate" disabled>
-                    <label for="">Province ID</label>
-                </div>
-            </div>
-        </div>
+       
         
         <div class="row">
             <div class="col s10 push-s1">
@@ -116,7 +109,7 @@ Province
         <div class="row">
             <div class="col s3 push-s1">
                 <div class="input-field">
-                    <input  id="editID" type="text" class="validate" readonly required="" aria-required="true" value = " ">
+                    <input  id="editID" type="text" class="validate blue-text center-align" readonly required="" aria-required="true" value = " ">
                     <label for="editID">Province ID</label>
                 </div>
             </div>
