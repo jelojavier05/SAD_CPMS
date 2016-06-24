@@ -19,6 +19,8 @@ class GuardRegistrationController extends Controller
                     ->where('boolFlag', 1)
                     ->get();
         
+        $counter = BodyAttribute::count();
+        
         if ($request->session()->has('personalDataSession')) {
             
             $firstName = $request->session()->get('firstName');
@@ -43,11 +45,14 @@ class GuardRegistrationController extends Controller
             
             return view ('/guardAdmin/personalData')
                 ->with ('bodyAttributes', $bodyAttributes)
-                ->with ('data', $data);
+                ->with ('data', $data)
+                ->with ('counter', $counter);
             
         }else{
-             return view ('/guardAdmin/personalData')
-                ->with ('bodyAttributes', $bodyAttributes);
+//            $request->session()->flush(); 
+            return view ('/guardAdmin/personalData')
+                    ->with ('bodyAttributes', $bodyAttributes)
+                    ->with ('counter', $counter);
         }
     }
     
@@ -99,7 +104,7 @@ class GuardRegistrationController extends Controller
         
         $request->session()->put('personalDataSession', 'active');
         
-        $request->session()->put('firstName', $request->strFirstName);
+        //$request->session()->put('firstName', $request->strFirstName);
         $request->session()->put('middleName', $request->strMiddleName);
         $request->session()->put('lastName', $request->strLastName);
         $request->session()->put('address', $request->strAddress);
@@ -108,6 +113,13 @@ class GuardRegistrationController extends Controller
         $request->session()->put('contactLandline', $request->strLandlineNumber);
         $request->session()->put('civilStatus', $request->strCivilStatus);
         $request->session()->put('gender', $request->strGender);
+        
+        $array = $request->bodyAttribute;
+        
+        $request->session()->put('firstName', array_get($array, '10'));
+        
+        $request->session()->flush(); 
+        
     }
     
     public function educationalBackgroundSession(Request $request){

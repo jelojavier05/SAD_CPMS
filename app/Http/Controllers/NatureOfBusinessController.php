@@ -32,6 +32,7 @@ class NatureOfBusinessController extends Controller
             $natureOfBusiness = new NatureOfBusiness;
 
             $natureOfBusiness->strNatureOfBusiness = $request->natureOfBusiness;
+            $natureOfBusiness->deciRate = $request->deciRate;
             
             $natureOfBusiness->save();
 
@@ -52,7 +53,8 @@ class NatureOfBusinessController extends Controller
     public function updateNatureOfBusiness(Request $request){
         try {
             NatureOfBusiness::where('intNatureOfBusinessID', $request->natureOfBusinessID)
-            ->update(['strNatureOfBusiness'=>$request->natureOfBusiness]);
+            ->update(['strNatureOfBusiness'=>$request->natureOfBusiness,
+                      'deciRate' => $request->deciRate]);
         } catch (Exception $e) {
             
         }

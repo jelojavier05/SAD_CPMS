@@ -174,9 +174,6 @@ Guard Form
 					    <label>Gender</label>
 				 </div>
 
-
-												<!-- ====================Body Attributes ============ -->
-
 				<div class="input-field col s10 push-s1">
                     <h5>Body Attributes:</h5>
 					<div class="row">
@@ -191,15 +188,15 @@ Guard Form
 								</thead>
 
 								<tbody>
-									@foreach ($bodyAttributes as $bodyAttribute)
+                                    @foreach ($bodyAttributes as $bodyAttribute)
 									<tr style="height:-10px !important;">
 										<td>
 											<div class="col s3">{{ $bodyAttribute->strBodyAttributeName }}</div>
 										</td>
 										<td>
 											<div class="input-field col s7">
-												<input  id="specification{{ $bodyAttribute->strBodyAttributeName }}" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
-												<label data-error="Incorrect" for="specification"></label>
+												<input  id="specification{{ $bodyAttribute->intBodyAttributeID }}" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
+												<label data-error="Incorrect" for="specification{{ $bodyAttribute->intBodyAttributeID }}"></label>
 											</div>
 										</td>
 									</tr>
@@ -210,12 +207,13 @@ Guard Form
 					</div>
 				</div>
 			</div>
-				<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
+				<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id = "backPersonalData">Back</button>
 				<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextPersonalData">Next</button>
 		</div>
 	</div>
 </div>
 
+<input type = "hidden" id = "counter" value = "{{$counter}}">
 
 @stop
 @section('script')
@@ -240,11 +238,43 @@ Guard Form
         $('#nextPersonalData').click(function(){
             //validations here
             sendData();
-            window.location.href = '{{ URL::to("/guard/registration/educationalBackground") }}';
-            
+            //window.location.href = '{{ URL::to("/guard/registration/educationalBackground") }}';
         });
         
         function sendData(){
+            var bodyAttribute = {}; 
+            $.ajax({
+
+                type: "GET",
+                url: "{{action('BodyAttributeController@getBodyAttribute')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    
+                },
+                success: function(data){
+                     
+                    for(intLoop = 0; intLoop < $('#counter').val(); intLoop ++){
+                        if (data[intLoop]['boolFlag'] == 1){
+                            var specification = 'specification' + data[intLoop]['intBodyAttributeID'];
+                             
+                            bodyAttribute[data[intLoop]['intBodyAttributeID']] = $('#'+specification).val();
+                        }
+                    }  
+                },
+                
+                error: function(data){
+                    
+                },
+                async: false
+                
+            });//ajax
+            
             $.ajax({
 
                 type: "POST",
@@ -265,10 +295,11 @@ Guard Form
                     strMobileNumber:$('#contactCp').val(),
                     strLandlineNumber:$('#contactLandline').val(),
                     strCivilStatus:$('#civilStatus').val(),
-                    strGender:$('#gender').val()
+                    strGender:$('#gender').val(),
+                    bodyAttribute: bodyAttribute
                 },
                 success: function(data){
-
+                
                 },
                 error: function(data){
                     

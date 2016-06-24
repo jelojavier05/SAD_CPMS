@@ -72,8 +72,7 @@ Nature of Business
                                     </td>
                                     <td id = "id{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->intNatureOfBusinessID }}</td>
             						<td id = "name{{$natureOfBusiness->intNatureOfBusinessID}}">{{ $natureOfBusiness->strNatureOfBusiness }}</td>
-									<td>Test
-									</td>
+									<td id = "rate{{ $natureOfBusiness->intNatureOfBusinessID }}">{{ $natureOfBusiness->deciRate }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -150,7 +149,7 @@ Nature of Business
 					</div>
 					<div class = "row">
 						<div class="input-field col s5">
-							<input  id="editRate" maxlength="6" type="text" class="validate" pattern="[0-9.]{3,}" required="" aria-required="true">
+							<input  id="editRate" maxlength="6" type="text" class="validate" pattern="[0-9.]{3,}" required="" value = " "aria-required="true">
 							<label data-error="Incorrect" for="editRate">Rate</label>
 
 						</div>
@@ -172,30 +171,6 @@ Nature of Business
 			
 			
     	</div>
-</div>
-<!----------------------------modal delete nature of business ------------------------------>
-
-<div id="modalnobDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">
-            <div class="modal-header blue"><h2 class="white-text">Delete</h2></div>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="modal-content">
-
-                <div class="row">
-                    <div class="col s12">
-                        <h3 class="center">Confirm Delete</h3>
-                    </div>
-                </div>
-                <input type="hidden" name="idDelete" id = "deleteID">
-                <div class="row">
-                    <div class="col s3 push-s5">
-                        <button class=" btn waves-effect waves-light red large" name="action" style="margin-left: 20px;" id = "btnDelete">
-                            <i class="material-icons left">delete</i>Delete
-                        </button>
-
-                    </div>	
-                </div>
-
-            </div>
 </div>
 
 @stop
@@ -234,11 +209,10 @@ Nature of Business
                 },
 				data: {
 					natureOfBusiness: $('#strNatureOfBusiness').val(),
+                    deciRate: $('#deciRate').val()
 				},
 				success: function(data){
 					
-//					var toastContent = $('<span>Record Added.</span>');
-//                    Materialize.toast(toastContent, 1500,'green', 'edit');
                     refreshTable();
                     $('#modalnobAdd').closeModal();
 					swal("Success!", "Record has been Added!", "success");
@@ -275,6 +249,7 @@ Nature of Business
 				data: {
 					natureOfBusinessID: $('#editID').val(),
                     natureOfBusiness: $('#editname').val(),
+                    deciRate: $('#editRate').val()
 					
 				},
 				success: function(data){
@@ -300,7 +275,7 @@ Nature of Business
 
 		});//button add clicked
         
- 		  $('#dataTable').on('click', '.buttonDelete', function(){
+        $('#dataTable').on('click', '.buttonDelete', function(){
 
 			document.getElementById('deleteID').value =this.id;  
             swal({   title: "Are you sure?",   
@@ -345,16 +320,13 @@ Nature of Business
             $('#modalnobEdit').openModal();
             var itemID = "id" + this.id;
 			var itemName = "name" + this.id;
+            var itemRate = "rate" + this.id;
 
 			document.getElementById('editID').value = $("#"+itemID).html();
 			document.getElementById('editname').value = $("#"+itemName).html();
+            document.getElementById('editRate').value = $("#"+itemRate).html();
 
         });
-
-//        $('#dataTable').on('click', '.buttonDelete', function(){
-//            $('#modalnobDelete').openModal();
-//            document.getElementById('deleteID').value =this.id;
-//        });
 
         $('#dataTable').on('click', '.checkboxFlag', function(){
             
@@ -418,7 +390,8 @@ Nature of Business
                             '<button class="buttonUpdate btn" name="" id="' +data[index].intNatureOfBusinessID+'" ><i class="material-icons">edit</i></button>',
                             '<button class="buttonDelete btn red" id="'+ data[index].intNatureOfBusinessID +'"><i class="material-icons">delete</i></button>',
                             '<h id = "id' +data[index].intNatureOfBusinessID + '">' + data[index].intNatureOfBusinessID +'</h>',
-                            '<h id = "name' +data[index].intNatureOfBusinessID + '">' + data[index].strNatureOfBusiness +'</h>'
+                            '<h id = "name' +data[index].intNatureOfBusinessID + '">' + data[index].strNatureOfBusiness +'</h>',
+                            '<h id = "rate' +data[index].intNatureOfBusinessID + '">' + data[index].deciRate +'</h>'
                         ]).draw();
                     });//foreach
 
@@ -435,7 +408,9 @@ Nature of Business
         }
 
         function refreshTextfield(){
+            
             document.getElementById('strNatureOfBusiness').value = "";
+            document.getElementById('deciRate').value = "";
         }
 
 	});//document ready
