@@ -210,7 +210,7 @@ Guard Form
 					</div>
 				</div>
 			</div>
-				<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#">Back</button>
+				
 				<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextPersonalData">Next</button>
 		</div>
 	</div>

@@ -12,7 +12,7 @@ Client
 			<h2 class = "blue white-text" style="margin-top:0px;">Client</h2>
 			<div class = "row">
 				<div class='col s10 push-s1'>
-					<form>
+					
 					<div class="input-field col s6">
 						<select>
 						  <option value="" disabled selected>Choose</option>
@@ -63,7 +63,7 @@ Client
 					   </select>
 					</div>
 					
-					<div class = "input-field col s6 offset-s3">    
+					<div class = "input-field col s6">    
 					   <select  id = "" name = "" >
 						   <option disabled selected>Choose City</option>
 							  <option id = "1" >Test1</option>
@@ -83,31 +83,18 @@ Client
 					   </select>
 					</div>
 					
-					<div class = "input-field col s6">    
-					   <select  id = "" name = "" >
-						   <option disabled selected>Type of Contract</option>
-							  <option id = "1" >Test1</option>
-							  <option id = "2">Test2</option>
-							  <option id = "3">Test3</option>
-							  <option id = "4">Test4</option>
-							  <option id = "5">Test5</option>
-					   </select>
-					</div>
 					
-					<div class="col s3 push-s3">
-						<button type="reset" class="btn-large blue waves-effect z-depth-1">Reset Fields</button>
-					</div>
 					
-					<div class="col s3 push-s3">
-						<button class="btn-large blue waves-effect center-align z-depth-1">Save</button>
-					</div>
 					
-					</form>
+					
 				
 				</div>
 			</div>
+		
 		</div>
+		<button class="btn-large blue waves-effect z-depth-1 right" style="margin-top:20px;">Next</button>	
 	</div>
+	
 </div>
 
 @stop
