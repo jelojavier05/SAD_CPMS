@@ -154,7 +154,7 @@ Guard Form
 
 				</div>
 
-				<div class="input-field col s4">
+				<div class="input-field col s4 push-s2">
 						<select id = "civilStatus">
 						  <option value="" disabled selected>Choose</option>
 						  <option value="Single">Single</option>
@@ -208,6 +208,7 @@ Guard Form
 				</div>
 			</div>
 				<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id = "backPersonalData">Back</button>
+
 				<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextPersonalData">Next</button>
 		</div>
 	</div>

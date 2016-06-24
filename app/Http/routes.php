@@ -32,6 +32,12 @@ Route::post('/guard/registration/educationalBackground/session', 'GuardRegistrat
 
 
 
+Route::get('/clientForm', 'ClientFormController@index');
+
+Route::get('/gunDelivery', 'GunDeliveryController@index');
+
+
+
 Route::get('/deployment/index', 'DeploymentController@index');
 
 

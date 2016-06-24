@@ -96,7 +96,7 @@
 														
 														<li><a class="blue-text" href="/maintenance/bodyAttribute">Body Attributes</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
+														
 														
 														
 														
@@ -114,6 +114,8 @@
 														<li><a class="blue-text" href="/maintenance/province">Province</a></li>
 														
 														<li><a class="blue-text" href="/maintenance/city">City</a></li>
+														
+														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
 														
 <!--
 														<li><a class="blue-text" href="/maintenance/gun">Add Gun</a></li>
