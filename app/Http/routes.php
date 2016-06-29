@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/guard/registration/personalData', 'GuardRegistrationController@personalDataBC')->name('personalDataBC');
+Route::get('/login', 'LoginController@index')->name('login');
 
 Route::get('/guard/registration/educationalBackground', 'GuardRegistrationController@educationalBackgroundBC')->name('educationalBackgroundBC');
 
