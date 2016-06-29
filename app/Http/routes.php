@@ -1,15 +1,5 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+Route::get('/login', 'LoginController@index')->name('login');
 
 Route::get('/guard/registration/personalData', 'GuardRegistrationController@personalDataBC')->name('personalDataBC');
 
@@ -27,16 +17,12 @@ Route::post('/guard/registration/personalData/session', 'GuardRegistrationContro
 
 Route::post('/guard/registration/educationalBackground/session', 'GuardRegistrationController@educationalBackgroundSession');
 
-    
-
-
-
 
 Route::get('/clientForm', 'ClientFormController@index');
 
 Route::get('/gunDelivery', 'GunDeliveryController@index');
 
-
+Route::get('/gunRegistration', 'GunRegistrationController@index');
 
 Route::get('/deployment/index', 'DeploymentController@index');
 

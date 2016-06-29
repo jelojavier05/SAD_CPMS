@@ -13,8 +13,9 @@ class ClientFormController extends Controller
 {
     
     public function index(){
-        
-
-        return view('/clientGuardTagging');
+    
+        //return view('/clientGuardTagging');
+        //return view('/clientForm');
+        return view('/gunDelivery'); 
     }
 }

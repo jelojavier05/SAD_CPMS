@@ -9,6 +9,7 @@ use App\Model\Requirements;
 use App\Model\BodyAttribute;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Collection;
 use Carbon;
 class GuardRegistrationController extends Controller
 {
@@ -114,12 +115,19 @@ class GuardRegistrationController extends Controller
         $request->session()->put('civilStatus', $request->strCivilStatus);
         $request->session()->put('gender', $request->strGender);
         
-        $array = $request->bodyAttribute;
+        $bodyAttribute = $request->bodyAttribute;
+        $bodyAttributeID = $request->bodyAttributeID;
+        $intCounter = 0;
         
-        $request->session()->put('firstName', array_get($array, '10'));
+        for ($intLoop = 0; $intLoop < count($bodyAttribute); $intLoop ++){
+            $name = 'firstName' . $bodyAttributeID[$intLoop];
+            $request->session()->put($name, $bodyAttribute[$intLoop]); 
+        }
         
-        $request->session()->flush(); 
+        //$request->session()->put('firstName', array_get($bodyAttribute,$intCounter)); 
         
+        
+        //$request->session()->flush();
     }
     
     public function educationalBackgroundSession(Request $request){

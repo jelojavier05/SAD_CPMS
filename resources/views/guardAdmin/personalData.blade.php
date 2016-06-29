@@ -239,11 +239,12 @@ Guard Form
         $('#nextPersonalData').click(function(){
             //validations here
             sendData();
-            //window.location.href = '{{ URL::to("/guard/registration/educationalBackground") }}';
+            window.location.href = '{{ URL::to("/guard/registration/educationalBackground") }}';
         });
         
         function sendData(){
             var bodyAttribute = {}; 
+            var bodyAttributeID = {}; 
             $.ajax({
 
                 type: "GET",
@@ -259,12 +260,15 @@ Guard Form
                     
                 },
                 success: function(data){
-                     
+                    var intCounter = 0;
                     for(intLoop = 0; intLoop < $('#counter').val(); intLoop ++){
                         if (data[intLoop]['boolFlag'] == 1){
                             var specification = 'specification' + data[intLoop]['intBodyAttributeID'];
-                             
-                            bodyAttribute[data[intLoop]['intBodyAttributeID']] = $('#'+specification).val();
+                            
+                            bodyAttributeID[intCounter] = data[intLoop]['intBodyAttributeID'];
+                            bodyAttribute[intCounter] = $('#'+specification).val();
+                            
+                            intCounter = intCounter + 1;
                         }
                     }  
                 },
@@ -297,10 +301,11 @@ Guard Form
                     strLandlineNumber:$('#contactLandline').val(),
                     strCivilStatus:$('#civilStatus').val(),
                     strGender:$('#gender').val(),
-                    bodyAttribute: bodyAttribute
+                    bodyAttribute: bodyAttribute,
+                    bodyAttributeID: bodyAttributeID
                 },
                 success: function(data){
-                
+
                 },
                 error: function(data){
                     
