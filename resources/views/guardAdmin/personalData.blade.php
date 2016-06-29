@@ -36,6 +36,8 @@ Guard Form
                     <input type="hidden" id="contactLandlineSession" value="{{$data['contactLandline']}}">
                     <input type="hidden" id="civilStatusSession" value="{{$data['civilStatus']}}">
                     <input type="hidden" id="genderSession" value="{{$data['gender']}}">
+                    <input type="hidden" id="provinceSession" value="{{$data['province']}}">
+                    <input type="hidden" id="citySession" value="{{$data['city']}}">
                 @else
                     <input type="hidden" id="session" value="deactive">
                 @endif
@@ -70,63 +72,22 @@ Guard Form
 				</div>
 
 				<div class = "input-field col s4">    
-					   <select  id = "" name = "" >
-						   <option disabled selected>Choose Province</option>
-							  <option id = "1" >Test1</option>
-							  <option id = "2">Test2</option>
-							  <option id = "3">Test3</option>
-							  <option id = "4">Test4</option>
-							  <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-
-					   </select>
+                    <select  id = "provinceSelect">
+                        <option disabled selected>Choose Province</option>
+                        @foreach($provinces as $province)
+                        
+                        <option id = "{{$province -> intProvinceID}}" >{{$province->strProvinceName}}</option>
+                        
+                        @endforeach
+                        
+                        
+                    </select>
 				</div>
 			   
 			   	<div class = "input-field col s4">    
-					   <select  id = "" name = "" >
-						   <option disabled selected>Choose City</option>
-							  <option id = "1" >Test1</option>
-							  <option id = "2">Test2</option>
-							  <option id = "3">Test3</option>
-							  <option id = "4">Test4</option>
-							  <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-						   <option id = "5">Test5</option>
-
-					   </select>
+                    <select  id = "citySelect">
+                        <option disabled selected>Choose City</option>
+                    </select>
 				</div>
 
 				<div class="input-field col s6">
@@ -188,19 +149,22 @@ Guard Form
 								</thead>
 
 								<tbody>
+
                                     @foreach ($bodyAttributes as $bodyAttribute)
-									<tr style="height:-10px !important;">
-										<td>
-											<div class="col s3">{{ $bodyAttribute->strBodyAttributeName }}</div>
-										</td>
-										<td>
-											<div class="input-field col s7">
-												<input  id="specification{{ $bodyAttribute->intBodyAttributeID }}" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
-												<label data-error="Incorrect" for="specification{{ $bodyAttribute->intBodyAttributeID }}"></label>
-											</div>
-										</td>
-									</tr>
-									@endforeach
+                                    <tr style="height:-10px !important;">
+                                        <td>
+                                            <div class="col s3">{{ $bodyAttribute->strBodyAttributeName }}</div>
+                                        </td>
+                                        <td>
+                                            <div class="input-field col s7">
+                                                <input  id="specification{{ $bodyAttribute->intBodyAttributeID }}" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
+                                                <label data-error="Incorrect" for="specification{{ $bodyAttribute->intBodyAttributeID }}"></label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    
+                                        
 								</tbody>
 							</table>
 						</div>
@@ -225,6 +189,8 @@ Guard Form
         $('select').material_select();
         
         if ($('#session').val() == "active"){
+            var provinceID = $('#provinceSession').val();
+            
             $('#firstName').val($('#firstNameSession').val());
             $('#middleName').val($('#middleNameSession').val());
             $('#lastName').val($('#lastNameSession').val());
@@ -234,17 +200,109 @@ Guard Form
             $('#contactLandline').val($('#contactLandlineSession').val());
             $('#civilStatus').val($('#civilStatusSession').val());
             $('#gender').val($('#genderSession').val());
-        }
+            $("#provinceSelect option[id='"+ provinceID +"']").attr("selected", "selected");
+            $.ajax({
+
+                type: "GET",
+                url: "{{action('CityController@get')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    
+                },
+                success: function(data){
+                    
+                    var $selectDropdown = 
+                        $("#citySelect")
+                        .empty()
+                        .html(' ');
+                    $selectDropdown.append(
+                                $("<option></option>")
+                                .attr("value",0)
+                                .attr("disabled", 'disabled')
+                                .text('Choose City')
+                            );
+                    $.each(data, function(index, subcatObj){
+                        if (subcatObj.intProvinceID == provinceID){
+                            $selectDropdown.append(
+                                $("<option></option>")
+                                .attr("id",subcatObj.intCityID)
+                                .text(subcatObj.strCityName)
+                            );
+                        }
+                    });
+
+                    
+                    $("#citySelect").material_select();
+                },async:false
+            });
+            
+            $("#citySelect option[id='"+ $('#citySession').val() +"']").attr("selected", "selected");
+            
+            
+        };
         
         $('#nextPersonalData').click(function(){
-            //validations here
             sendData();
             window.location.href = '{{ URL::to("/guard/registration/educationalBackground") }}';
         });
         
+        $('#provinceSelect').on('change',function(){
+            var id = $(this).children(":selected").attr("id");
+            
+            $.ajax({
+
+                type: "GET",
+                url: "{{action('CityController@get')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    
+                },
+                success: function(data){
+                    
+                    var $selectDropdown = 
+                        $("#citySelect")
+                        .empty()
+                        .html(' ');
+                    $selectDropdown.append(
+                                $("<option></option>")
+                                .attr("value",0)
+                                .attr("disabled", 'disabled')
+                                .text('Choose City')
+                            );
+                    $.each(data, function(index, subcatObj){
+                        if (subcatObj.intProvinceID == id){
+                            $selectDropdown.append(
+                                $("<option></option>")
+                                .attr("id",subcatObj.intCityID)
+                                .text(subcatObj.strCityName)
+                            );
+                        }
+                    });
+
+                    $("#citySelect").material_select();
+
+                }
+            });
+        });
+       
         function sendData(){
             var bodyAttribute = {}; 
             var bodyAttributeID = {}; 
+            var province = $('#provinceSelect').children(":selected").attr("id");
+            var city = $('#citySelect').children(":selected").attr("id");
+            
             $.ajax({
 
                 type: "GET",
@@ -302,7 +360,10 @@ Guard Form
                     strCivilStatus:$('#civilStatus').val(),
                     strGender:$('#gender').val(),
                     bodyAttribute: bodyAttribute,
-                    bodyAttributeID: bodyAttributeID
+                    bodyAttributeID: bodyAttributeID,
+                    province: province,
+                    city: city
+                    
                 },
                 success: function(data){
 

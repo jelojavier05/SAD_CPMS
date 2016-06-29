@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\ArmedService;
+use App\Model\Province;
+use App\Model\City;
 use App\Model\GovernmentExam;
 use App\Model\Requirements;
 use App\Model\BodyAttribute;
@@ -20,8 +22,13 @@ class GuardRegistrationController extends Controller
                     ->where('boolFlag', 1)
                     ->get();
         
-        $counter = BodyAttribute::count();
+        $provinces = Province::
+            where('deleted_at', null)
+                ->where('boolFlag',1)
+                ->get();
         
+        $counter = BodyAttribute::count();
+        //$request->session()->flush();
         if ($request->session()->has('personalDataSession')) {
             
             $firstName = $request->session()->get('firstName');
@@ -33,7 +40,10 @@ class GuardRegistrationController extends Controller
             $contactLandline = $request->session()->get('contactLandline');
             $civilStatus = $request->session()->get('civilStatus');
             $gender = $request->session()->get('gender');
-
+            $bodyAttributeValue = collect($request->session()->get('bodyAttributeValue'));
+            $province = $request->session()->get('province');
+            $city = $request->session()->get('city');
+            
             $data = collect(['firstName' => $firstName,
                              'middleName' => $middleName,
                              'lastName' => $lastName,
@@ -42,18 +52,22 @@ class GuardRegistrationController extends Controller
                              'contactCp' => $contactCp,
                              'contactLandline' => $contactLandline,
                              'civilStatus' => $civilStatus,
-                             'gender' => $gender]);
+                             'gender' => $gender,
+                             'province' => $province,
+                             'city' => $city]);
             
             return view ('/guardAdmin/personalData')
                 ->with ('bodyAttributes', $bodyAttributes)
                 ->with ('data', $data)
-                ->with ('counter', $counter);
+                ->with ('counter', $counter)
+                ->with ('bodyAttributeValue', $bodyAttributeValue)
+                ->with ('provinces', $provinces);
             
         }else{
-//            $request->session()->flush(); 
             return view ('/guardAdmin/personalData')
                     ->with ('bodyAttributes', $bodyAttributes)
-                    ->with ('counter', $counter);
+                    ->with ('counter', $counter)
+                    ->with('provinces', $provinces);
         }
     }
     
@@ -103,9 +117,13 @@ class GuardRegistrationController extends Controller
     
     public function personalDataSession(Request $request){
         
-        $request->session()->put('personalDataSession', 'active');
+        $arrayBodyAttributeValue = collect([
+                'value' => $request->bodyAttribute, 
+                'key' => $request->bodyAttributeID
+            ]);
         
-        //$request->session()->put('firstName', $request->strFirstName);
+        $request->session()->put('personalDataSession', 'active');
+        $request->session()->put('firstName', $request->strFirstName);
         $request->session()->put('middleName', $request->strMiddleName);
         $request->session()->put('lastName', $request->strLastName);
         $request->session()->put('address', $request->strAddress);
@@ -114,20 +132,15 @@ class GuardRegistrationController extends Controller
         $request->session()->put('contactLandline', $request->strLandlineNumber);
         $request->session()->put('civilStatus', $request->strCivilStatus);
         $request->session()->put('gender', $request->strGender);
+        $request->session()->put('bodyAttributeValue', $arrayBodyAttributeValue);
+        $request->session()->put('province', $request->province);
+        $request->session()->put('city', $request->city);
+
+        //$request->session()->put('firstName', $arrayBodyAttributeValue['key'][0]);
         
-        $bodyAttribute = $request->bodyAttribute;
-        $bodyAttributeID = $request->bodyAttributeID;
-        $intCounter = 0;
-        
-        for ($intLoop = 0; $intLoop < count($bodyAttribute); $intLoop ++){
-            $name = 'firstName' . $bodyAttributeID[$intLoop];
-            $request->session()->put($name, $bodyAttribute[$intLoop]); 
-        }
-        
-        //$request->session()->put('firstName', array_get($bodyAttribute,$intCounter)); 
+       // $data = $request->session()->get('arrayBodyAttribute');
         
         
-        //$request->session()->flush();
     }
     
     public function educationalBackgroundSession(Request $request){
