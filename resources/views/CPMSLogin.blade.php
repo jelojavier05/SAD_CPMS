@@ -69,88 +69,39 @@
                         <ul class="collapsible collapsible-accordion">
                     <li class="bold" style="width:280px;">
 						<a class="collapsible-header waves-effect waves-blue" href="#">
-							<i class="material-icons">settings</i>Requests<i class="mdi-navigation-arrow-drop-down right"></i>
+							<i class="material-icons">ring_volume</i>Requests<i class="mdi-navigation-arrow-drop-down right"></i>
 						</a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul >
                                             <li>
-                                                <button href="#" class="aaa dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownclient" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Client</button>
+                                                <button href="#" class="aaa dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownclient" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Leave</button>
 													
-													<ul id='dropdownclient' class='dropdown-content' style="margin-top:1px;">
-														<li><a class="blue-text" href="/maintenance/NatureOfBusiness">Nature of Business</a></li>
-														
-														<li><a class="blue-text" href="/maintenance/typeOfContract">Type of Contract</a></li>
-														
-														
-														
-														
-													</ul>
+
                                             </li>
                                             <li>
-                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownsg" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Security Guard</button>
+                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownsg" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Location</button>
 													
-													<ul id='dropdownsg' class='dropdown-content' style="margin-top:1px;">
-														<li><a class="blue-text" href="/maintenance/leave">Leave</a></li>
-														
-														<li><a class="blue-text" href="/maintenance/armedservice">Armed Service</a></li>
-														
-														<li><a class="blue-text" href="/maintenance/governmentExam">Government Exam</a></li>
-														
-														<li><a class="blue-text" href="/maintenance/bodyAttribute">Body Attributes</a></li>
-														
-														
-														
-														
-														
-														
-													</ul>
-														
+													
                                             </li>
-                                            <li>
-                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdowneq" data-gutter="241" data-hover="false" style="width:240px; border:none;" id="buttonhover">Others</button>
-													<ul id='dropdowneq' class='dropdown-content' style="margin-top:1px;">
-														
-														
-														<li><a class="blue-text" href="/maintenance/typeOfGun">Type of Gun</a></li>
-														
-														<li><a class="blue-text" href="/maintenance/province">Province</a></li>
-														
-														<li><a class="blue-text" href="/maintenance/city">City</a></li>
-														
-														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
-														
-<!--
-														<li><a class="blue-text" href="/maintenance/gun">Add Gun</a></li>
-														
-														<li><a class="blue-text" href="#">Add Supply Item</a></li>
--->
-														
-														
-														
-														
-													</ul>
-                                            </li>
-											 	
-                                        </ul>
+                                           
+                                </ul>
                             </div>
 							
 					</li>
                     <li class="bold" style="width:280px;">
-						<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">face</i>Security Guard<i class="mdi-navigation-arrow-drop-down right"></i></a>
+						<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">web
+                            </i>Attendance</a>
                             <div class="collapsible-body grey lighten-2">
-                                <ul class="black-text">
-                                            <li>
-                                                <a href="/guard/registration/personalData" >Registration</a>
-                                            </li>
-											
-<!--
-											<li>
-                                                <a href="#" >License</a>
-                                            </li>
--->
-                                           
-                                           
-                                        </ul>
+                               
+                            </div>
+                    </li>
+                            
+                            
+                               <li class="bold" style="width:280px;">
+						<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">settings
+                            </i>Account Settings<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                            <div class="collapsible-body grey lighten-2">
+                               
                             </div>
                     </li>
                             
@@ -159,19 +110,7 @@
 					  	<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons left">people</i>Client</a>
 					  </li>
 -->
-                            <li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">gun</i>Gun<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                            <div class="collapsible-body grey lighten-2">
-                                <ul>
-                                            <li>
-                                                <a href="#">Records</a>
-                                            </li>
-                                            <li>
-                                                <a href="/gunRegistration">Registration</a>
-                                            </li>
-                                           
-                                        </ul>
-                            </div></li>
+                            
                             
                             
                 </ul>
@@ -184,14 +123,46 @@
 				<div>
                  <div class="homeposition">
                     
-                    <a href="#" class="brand-logo">
+                    <div class="row">
+                       <div class="col l12">
+                           <div class="col l7 push-l3">
+                     <a href="#" class="brand-logo">
 						<div class="flow-text">
 							<h5 style="margin-top: 20px;">Client and Personnel Management System</h5>
 						</div>
 					</a>
+                               </div>
+                           <div class="row"></div>
+                           <div class="col l5 push-l10  ">
+                               
+   
+                               <ul id="dropdown2" class="dropdown-content">
+    <li><a href="#!">@@@@@@@@@@@@@@<i class="material-icons"></i></a></li>
+    <li><a href="#!">@@@@@@@@@@@@@@<i class="material-icons"></i></a></li>
+  </ul>
+                               
+                             <ul id="dropdown3" class="dropdown-content">
+    <li><a href="#!">Profile<i class="material-icons">perm_contact_calendar</i></a></li>
+    <li><a href="#!">Log Out<i class="material-icons">input</i></a></li>
+  </ul>
+  
+                               <a class="btn dropdown-button col l3 push-l1" style="background-color:transparent" href="#!" data-activates=""><i class="mdi-action-home center" style="font-size:3.3rem;margin-top:-22%"></i></a>
+                               
+                                <a class="btn dropdown-button col l3 push-l1" style="background-color:transparent" href="#!" data-activates="dropdown2"><i class="material-icons" style="font-size:3.3rem;margin-top:-22%">language</i></a>
+               
+                               <a class="btn dropdown-button col l3 push-l1" style="background-color:transparent" href="#!" data-activates="dropdown3"><i class="mdi-navigation-arrow-drop-down-circle center" style="font-size:3.3rem;margin-top:-22%"></i></a>
+       </div>
+                           </div>
+      
+                        
+                           
+                     
+                     </div>
                 </div>
+                    
                 
             </div>
+
         
 			</div></div>
     
