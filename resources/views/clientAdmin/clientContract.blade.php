@@ -76,10 +76,31 @@ Client
 					
 				</div>
 			</div>
-			<button class="btn-large blue waves-effect z-depth-2 left" style="margin-top:20px;">Back</button>	
-			<button class="btn-large blue waves-effect z-depth-2 right" style="margin-top:20px;">Next</button>	
+			<button class="btn-large blue waves-effect z-depth-2 left" id="backclientContract" style="margin-top:20px;">Back</button>	
+			<button class="btn-large blue waves-effect z-depth-2 right" id="nextclientContract" style="margin-top:20px;">Next</button>	
 		</div>
 	</div>
 </div>
+
+@stop
+
+@section('script')
+<script>
+    
+    $(document).ready(function() {
+        $('select').material_select();
+        
+        
+        $('#nextclientContract').click(function(){
+             window.location.href = '{{ URL::to("/client/registration/guardDeployment") }}';
+        });
+		
+		$('#backclientContract').click(function(){
+             window.location.href = '{{ URL::to("/client/registration/basicInfo") }}';
+        });
+        
+    });
+        
+</script>
 
 @stop

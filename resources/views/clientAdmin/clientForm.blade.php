@@ -107,7 +107,7 @@ Client
         
         
         $('#nextclientForm').click(function(){
-             window.location.href = '{{ URL::to("/guard/registration/sgLicense") }}';
+             window.location.href = '{{ URL::to("/client/registration/contractInfo") }}';
         });
         
     });

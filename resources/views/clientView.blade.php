@@ -15,7 +15,7 @@ Client
                 </div>
 
                 <div class="col s3 offset-s3">
-					<a style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="/clientForm">
+					<a style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="/client/registration/basicInfo">
                         <i class="material-icons left">add</i> ADD
                     </a>
                 </div>

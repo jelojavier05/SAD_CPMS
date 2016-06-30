@@ -106,8 +106,8 @@ Client
 					</div>
 				</div>
 			</div>
-			<button class="btn-large blue waves-effect z-depth-1 left" style="margin-top:20px;">Back</button>	
-			<button class="btn-large blue waves-effect z-depth-1 right" style="margin-top:20px;">Next</button>	
+			<button class="btn-large blue waves-effect z-depth-1 left" id="nextguardDeployment" style="margin-top:20px;">Back</button>	
+			<button class="btn-large blue waves-effect z-depth-1 right" id="backguardDeployment" style="margin-top:20px;">Next</button>	
 		</div>
 	</div>
 </div>
@@ -127,7 +127,15 @@ Client
             ] ,  
 			"pageLength":5,
 			"lengthMenu": [5,10,15,20]
-         });   
+         }); 
+		
+		$('#nextguardDeployment').click(function(){
+             window.location.href = '{{ URL::to("/client/registration/contractInfo") }}';
+        });
+		
+		$('#backguardDeployment').click(function(){
+             window.location.href = '{{ URL::to("/client/registration/gunTagging") }}';
+        });
 	});
 </script>
 @stop
