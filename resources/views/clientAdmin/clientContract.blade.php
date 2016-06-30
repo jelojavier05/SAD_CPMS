@@ -12,8 +12,8 @@ Client
 			<div class="nav-wrapper blue">
 				<div class="row">	
 					<div class="col s12">
-						<a href="#" class="breadcrumb">Basic Information</a>
-						<a href="#" class="breadcrumb">Contract Information</a>
+						<a href="{{URL::route('basicInfoBC')}}" class="breadcrumb">Basic Information</a>
+						<a href="{{URL::route('contractInfoBC')}}" class="breadcrumb">Contract Information</a>
 					</div>
 				</div>
 			</div>
@@ -23,7 +23,7 @@ Client
 
 <div class="row">
 	<div class="col s6 push-s4" style=" margin-left:10px; margin-top: 1%;">
-		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;" id="personaldata">
+		<div class="container-fluid grey lighten-4 z-depth-2" style="border: 1px solid black; border-radius:5px;" id="personaldata">
 			<h2 class = "blue white-text" style="margin-top:0px;">Contract</h2>
 			<div class = "row">
 				<div class="col s10 push-s1">
@@ -76,8 +76,8 @@ Client
 					
 				</div>
 			</div>
-			<button class="btn-large blue waves-effect z-depth-1 left" style="margin-top:20px;">Back</button>	
-			<button class="btn-large blue waves-effect z-depth-1 right" style="margin-top:20px;">Next</button>	
+			<button class="btn-large blue waves-effect z-depth-2 left" style="margin-top:20px;">Back</button>	
+			<button class="btn-large blue waves-effect z-depth-2 right" style="margin-top:20px;">Next</button>	
 		</div>
 	</div>
 </div>

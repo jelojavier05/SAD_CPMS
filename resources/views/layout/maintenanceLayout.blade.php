@@ -139,7 +139,7 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             
-                                  <a href="/clientForm" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
+                                  <a href="/clientView" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
                                            
                                 </ul>
                             </div>
@@ -164,13 +164,9 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             
-                                            <li>
-                                                <a href="/gunRegistration">Registration</a>
-                                            </li>
+                                            <a href="/gunRegistration" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
 											
-											<li>
-                                                <a href="/gunDelivery">Delivery</a>
-                                            </li>
+											<a href="/gunDelivery" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Delivery</a>
                                            
                                         </ul>
                             </div>

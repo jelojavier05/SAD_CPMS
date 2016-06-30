@@ -31,10 +31,23 @@ Route::post('/guard/registration/educationalBackground/session', 'GuardRegistrat
 
 
 Route::get('/guardView', 'GuardViewController@index');
+Route::get('/clientView', 'ClientViewController@index');
 
 
 
-Route::get('/clientForm', 'ClientFormController@index');
+Route::get('/client/registration/basicInfo', 'ClientFormController@basicInfoBC')->name('basicInfoBC');
+
+Route::get('/client/registration/contractInfo', 'ClientFormController@contractInfoBC')->name('contractInfoBC');
+
+Route::get('/client/registration/guardDeployment', 'ClientFormController@guardDeploymentBC')->name('guardDeploymentBC');
+
+Route::get('/client/registration/gunTagging', 'ClientFormController@gunTaggingBC')->name('gunTaggingBC');
+
+
+
+
+
+
 
 Route::get('/gunDelivery', 'GunDeliveryController@index');
 

@@ -12,7 +12,7 @@ Client
 			<div class="nav-wrapper blue">
 				<div class="row">	
 					<div class="col s12">
-						<a href="#" class="breadcrumb">Basic Information</a>
+						<a href="{{URL::route('basicInfoBC')}}" class="breadcrumb">Basic Information</a>
 					</div>
 				</div>
 			</div>
