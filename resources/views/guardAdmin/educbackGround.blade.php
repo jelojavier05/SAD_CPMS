@@ -393,6 +393,7 @@ Guard Form
         });
         
         $('#nextEducation').click(function(){
+            sendData();
             window.location.href = '{{ URL::to("/guard/registration/sgBackground") }}';
             
         });
@@ -415,8 +416,7 @@ Guard Form
                     toPrimary:$('#toPrimary').val(),
                     schoolNameSecondary:$('#schoolNameSecondary').val(),
                     fromSecondary:$('#fromSecondary').val(),
-                    toSecondary:$('#toSecondary').val(),
-                    schoolNameTertiary:$('#schoolNameTertiary').val(),
+                    toSecondary:$('#toSecondary').val(),                    schoolNameTertiary:$('#schoolNameTertiary').val(),
                     fromTertiary:$('#fromTertiary').val(),
                     toTertiary:$('#toTertiary').val(),
                 },

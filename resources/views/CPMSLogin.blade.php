@@ -1,10 +1,4 @@
 
-@section('title')
-Client
-@endsection
-
-@section
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -268,5 +262,3 @@ Client
     
 </html>
 
-
-@stop

@@ -28,7 +28,7 @@ class GuardRegistrationController extends Controller
                 ->get();
         
         $counter = BodyAttribute::count();
-        //$request->session()->flush();
+        $request->session()->flush();
         if ($request->session()->has('personalDataSession')) {
             
             $firstName = $request->session()->get('firstName');
@@ -72,11 +72,11 @@ class GuardRegistrationController extends Controller
     }
     
     public function educationalBackgroundBC(Request $request){
-        if ($request->session()->get('personalDataSession') == 'active') {
+        if ($request->session()->has('personalDataSession')) {
             
             return view ('/guardAdmin/educbackGround');    
         }else{
-            return view ('/guardAdmin/educbackGround');
+            return view ('/guardAdmin/personalData');
         }
     }
     
@@ -135,10 +135,6 @@ class GuardRegistrationController extends Controller
         $request->session()->put('bodyAttributeValue', $arrayBodyAttributeValue);
         $request->session()->put('province', $request->province);
         $request->session()->put('city', $request->city);
-
-        //$request->session()->put('firstName', $arrayBodyAttributeValue['key'][0]);
-        
-       // $data = $request->session()->get('arrayBodyAttribute');
         
         
     }

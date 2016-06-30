@@ -24,7 +24,7 @@ Route::post('/guard/registration/educationalBackground/session', 'GuardRegistrat
 
 
 
-    Route::get('/maintenance/cpmslogin', 'CPMSLoginController@index');
+    Route::get('/login', 'CPMSLoginController@index');
 
 
 
