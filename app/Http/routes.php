@@ -20,6 +20,17 @@ Route::post('/guard/registration/personalData/session', 'GuardRegistrationContro
 Route::post('/guard/registration/educationalBackground/session', 'GuardRegistrationController@educationalBackgroundSession');
 
 
+
+
+
+
+    Route::get('/maintenance/cpmslogin', 'CPMSLoginController@index');
+
+
+
+
+
+
 Route::get('/clientForm', 'ClientFormController@index');
 
 Route::get('/gunDelivery', 'GunDeliveryController@index');
