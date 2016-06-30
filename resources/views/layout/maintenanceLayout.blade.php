@@ -72,7 +72,7 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul >
                                             <li>
-                                                <button href="#" class="aaa dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownclient" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Client</button>
+                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownclient" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Client</button>
 													
 													<ul id='dropdownclient' class='dropdown-content' style="margin-top:1px;">
 														<li><a class="blue-text" href="/maintenance/NatureOfBusiness">Nature of Business</a></li>
@@ -133,43 +133,48 @@
                             </div>
 							
 					</li>
+					
+					<li class="bold" style="width:280px;">
+								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">people</i>Client<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                            <div class="collapsible-body grey lighten-2">
+                                <ul>
+                                            
+                                  <a href="/clientForm" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
+                                           
+                                </ul>
+                            </div>
+					</li>
+							
+							
                     <li class="bold" style="width:280px;">
 						<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">face</i>Security Guard<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul class="black-text">
-                                            <li>
-                                                <a href="/guard/registration/personalData" >Registration</a>
-                                            </li>
-											
-<!--
-											<li>
-                                                <a href="#" >License</a>
-                                            </li>
--->
+                                            
+									<a href="/guardView" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
                                            
                                            
-                                        </ul>
+                                </ul>
                             </div>
                     </li>
                             
-<!--
-                      <li class="bold" style="width:280px;">
-					  	<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons left">people</i>Client</a>
-					  </li>
--->
-                            <li class="bold" style="width:280px;">
+                      
+                    <li class="bold" style="width:280px;">
 								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">gun</i>Gun<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
-                                            <li>
-                                                <a href="#">Records</a>
-                                            </li>
+                                            
                                             <li>
                                                 <a href="/gunRegistration">Registration</a>
                                             </li>
+											
+											<li>
+                                                <a href="/gunDelivery">Delivery</a>
+                                            </li>
                                            
                                         </ul>
-                            </div></li>
+                            </div>
+					</li>
                             
                             
                 </ul>

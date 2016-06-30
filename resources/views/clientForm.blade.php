@@ -7,8 +7,22 @@ Client
 @section('content')
 
 <div class="row">
-	<div class="col s6 push-s4" style=" margin-left:10px; margin-top: 3%;">
-		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;" id="personaldata">
+	<div class="col s10 push-s2" style="margin-left:10px;">
+		<nav>
+			<div class="nav-wrapper blue">
+				<div class="row">	
+					<div class="col s12">
+						<a href="#" class="breadcrumb">Basic Information</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6 push-s4" style=" margin-left:10px; margin-top: 1%;">
+		<div class="container-fluid grey lighten-4 z-depth-2" style="border: 1px solid black; border-radius:5px;" id="personaldata">
 			<h2 class = "blue white-text" style="margin-top:0px;">Client</h2>
 			<div class = "row">
 				<div class='col s10 push-s1'>
@@ -46,7 +60,7 @@ Client
 
 					</div>
 					
-					<div class="input-field col s6">
+					<div class="input-field col s12">
 						<input placeholder=" " id="address" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
 						<label data-error="Incorrect" for="address">Address</label>
 
@@ -73,28 +87,31 @@ Client
 							  <option id = "5">Test5</option>
 					   </select>
 					</div>
-					
-					
-					<div class = "input-field col s6">    
-					   <select  id = "" name = "" >
-						   <option disabled selected>Type of Payment</option>
-							  <option id = "1" >Monthly</option>
-						   	  <option id = "1" >Semi-Monthly</option>
-					   </select>
-					</div>
-					
-					
-					
-					
-					
 				
 				</div>
 			</div>
 		
 		</div>
-		<button class="btn-large blue waves-effect z-depth-1 right" style="margin-top:20px;">Next</button>	
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextclientForm">Next</button>
 	</div>
 	
 </div>
+
+@stop
+
+@section('script')
+<script>
+    
+    $(document).ready(function() {
+        $('select').material_select();
+        
+        
+        $('#nextclientForm').click(function(){
+             window.location.href = '{{ URL::to("/guard/registration/sgLicense") }}';
+        });
+        
+    });
+        
+</script>
 
 @stop

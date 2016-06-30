@@ -9,13 +9,13 @@ use App\Http\Controllers\Controller;
 use Validator;
 
 
-class ClientFormController extends Controller
+class GuardViewController extends Controller
 {
     
     public function index(){
     
 //        return view('/clientGuardTagging');
-        return view('/clientForm');
+        return view('/guardView');
 //        return view('/clientContract'); 
     }
 }

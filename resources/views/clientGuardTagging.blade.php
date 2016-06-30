@@ -7,7 +7,23 @@ Client
 @section('content')
 
 <div class="row">
-	<div class="col s10 push-s2" style=" margin-left:10px; margin-top: 3%;">
+	<div class="col s10 push-s2" style="margin-left:10px;">
+		<nav>
+			<div class="nav-wrapper blue">
+				<div class="row">	
+					<div class="col s12">
+						<a href="#" class="breadcrumb">Basic Information</a>
+						<a href="#" class="breadcrumb">Contract Information</a>
+						<a href="#" class="breadcrumb">Guard Deployment</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s10 push-s2" style=" margin-left:10px; margin-top: 0.5%;">
 		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;" id="personaldata">
 			<h2 class = "blue darken-3 white-text" style="margin-top:0px; padding-bottom:10px;">Deployment</h2>
 			<div class = "row">
