@@ -219,7 +219,7 @@
   <a class='dropdown-button btn' href='#' data-activates='dropdownothers' style="display:none;">Drop Me!</a>
 
     
-    @yield('content')
+     @yield('content')
 	@yield('script')
 	<script>
 
