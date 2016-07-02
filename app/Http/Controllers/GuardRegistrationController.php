@@ -76,16 +76,6 @@ class GuardRegistrationController extends Controller
     
     public function educationalBackgroundBC(Request $request){
         
-        $request->session()->put('schoolNamePrimary', $request->schoolNamePrimary);
-        $request->session()->put('fromPrimary', $request->fromPrimary);
-        $request->session()->put('toPrimary', $request->toPrimary);
-        $request->session()->put('schoolNameSecondary', $request->schoolNameSecondary);
-        $request->session()->put('fromSecondary', $request->fromSecondary);
-        $request->session()->put('toSecondary', $request->toSecondary);
-        $request->session()->put('schoolNameTertiary', $request->schoolNameTertiary);
-        $request->session()->put('fromTertiary', $request->fromTertiary);
-        $request->session()->put('toTertiary', $request->toTertiary);
-        
         $schoolNamePrimary = $request->session()->get('schoolNamePrimary');
         $fromPrimary = $request->session()->get('fromPrimary');
         $toPrimary = $request->session()->get('toPrimary');
@@ -99,18 +89,16 @@ class GuardRegistrationController extends Controller
         $data = collect(['schoolNamePrimary' => $schoolNamePrimary,
                          'fromPrimary' => $fromPrimary,
                          'toPrimary' => $toPrimary,
-                         'address' => $address,
-                         'dateOfbirth' => $dateOfbirth,
-                         'placeofbirth' => $placeofbirth,
-                         'contactCp' => $contactCp,
-                         'contactLandline' => $contactLandline,
-                         'civilStatus' => $civilStatus,
-                         'gender' => $gender,
-                         'province' => $province,
-                         'city' => $city]);
+                         'schoolNameSecondary' => $schoolNameSecondary,
+                         'fromSecondary' => $fromSecondary,
+                         'toSecondary' => $toSecondary,
+                         'schoolNameTertiary' => $schoolNameTertiary,
+                         'fromTertiary' => $fromTertiary,
+                         'toTertiary' => $toTertiary]);
         
         
-        return view ('/guardAdmin/educbackGround');    
+        return view ('/guardAdmin/educbackGround')
+            ->with('data',$data);    
         
         
     }
@@ -119,11 +107,13 @@ class GuardRegistrationController extends Controller
         $armedservices = ArmedService::
             where('deleted_at', null)
             ->where('boolFlag', 1)
+            ->orderBy('strArmedServiceName', 'asc')
             ->get();
         
         $governmentExams = GovernmentExam::
             where('deleted_at', null)
             ->where('boolFlag', 1)
+            ->orderBy('strGovernmentExam', 'asc')
             ->get();
         
         return view ('/guardAdmin/sgBackground')

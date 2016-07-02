@@ -64,13 +64,12 @@ Guard Form
     <div class = "col s8 push-s3" style="margin-left:10px;">
         <div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
             <legend><h4>Government Exam</h4></legend>
-			<button style="margin-top:-10%; margin-left:650px;" id="btnAdd" class="z-depth-1 btn green modal-trigger" href="#modalgovexamAdd">
-                        <i class="material-icons left">add</i> ADD
+			<button style="margin-top:-10%; margin-left:650px;" class="z-depth-1 btn green modal-trigger" href="#modalgovexamAdd">
+            <i class="material-icons left">add</i> ADD
             </button>
-            <table class="striped white">
+            <table class="striped white" id = "dataTable">
                 <thead>
                     <tr>
-                        <th></th>
 						<th style="width:50px;"></th>
                         <th style="width:50px;"></th>
                         <th>Name</th>
@@ -78,46 +77,8 @@ Guard Form
                         <th>Date Taken</th>
                     </tr>
                 </thead>
-                <tbody>
-                    
-                        <tr>
-                            <td>
-                                <div>
-                                    <input type="checkbox" id="" />
-                                    <label for=""></label>
-                                </div>
-                            </td>
-                            <td>
-                                  <button class="buttonUpdate btn modal-trigger "  name="" id="" href="#modalgovexamEdit" >
-                                     <i class="material-icons">edit</i>
-                                  </button>
-                                    	<label for="edit"></label>
-                             </td>
-							
-							
-                            
-							<td>
-                                  <button class="buttonDelete btn red " id="" >
-                                       <i class="material-icons">delete</i>
-                                  </button>
-                            </td>
-							
-							<td><!--- dito ung name--->HELLO EXAM</td>
-							
-                            <td>
-                                <div>
-                                    <input size="9" id="rating" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
-                                    <label data-error="Incorrect" for="rating"></label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="col s7">
-                                    <input id="dateTaken" type="date" class="validate"  required="" aria-required="true">
-                                    <label data-error="Incorrect" for="dateTaken"></label>
-                                </div>
-                            </td>
-                        </tr>
-                       
+                <tbody> 
+
                 </tbody>
             </table>
         </div>
@@ -132,14 +93,11 @@ Guard Form
 		<div class="modal-content">
 			<div class="row">
 				<div class = "col s10 push-s1">    
-				   <select class="browser-default" id = "" name = "">
-					   <option disabled selected>Choose Government Exam</option>
-						  <option id = "1">Test1</option>
-						  <option id = "2">Test2</option>
-						  <option id = "3">Test3</option>
-					   	  <option id = "4">Test4</option>
-						  <option id = "5">Test5</option>
-						  
+				   <select class="browser-default" id = "addGovernmentExam">
+                       <option disabled selected>Choose Government Exam</option>
+                       @foreach ($governmentExams as $governmentExam)
+                            <option id = "{{$governmentExam->intGovernmentExamID}}" value = "{{$governmentExam->strGovernmentExam}}">{{$governmentExam->strGovernmentExam}}</option>
+                       @endforeach
 				   </select>
 				</div>
 				
@@ -151,12 +109,12 @@ Guard Form
 				</div>
 				
 				<div class="input-field col s10 push-s1">
-						<input  id="dateTaken" type="date" class="datepicker"  required="" aria-required="true">
+						<input  id="addDateTaken" type="date" class="datepicker"  required="" aria-required="true">
 						<label class="active" data-error="Incorrect" for="startDate">Date Taken</label>
 				</div>
 				
 				<div class = "center-align">
-					<button style="margin-top:20px;" class=" z-depth-2 btn-large green " id="">Add</button>
+					<button style="margin-top:20px;" class=" z-depth-2 btn-large green " id="btnAdd">Add</button>
 				</div>
 			</div>
 		</div>
@@ -167,24 +125,18 @@ Guard Form
 		<div class="modal-content">
 			<div class="row">
 				<div class = "col s10 push-s1">    
-				   <select class="browser-default" id = "" name = "">
+				   <select class="browser-default" id = "editGovernmentExam" name = "">
 					   <option disabled selected>Choose Government Exam</option>
-						  <option id = "1">Test1</option>
-						  <option id = "2">Test2</option>
-						  <option id = "3">Test3</option>
-					   	  <option id = "4">Test4</option>
-						  <option id = "5">Test5</option>
-					   <option id = "6">Test6</option>
-					   <option id = "5">Test5</option>
-					   
-					   
+					   @foreach ($governmentExams as $governmentExam)
+                            <option id = "{{$governmentExam->intGovernmentExamID}}" value = "{{$governmentExam->strGovernmentExam}}">{{$governmentExam->strGovernmentExam}}</option>
+                       @endforeach
 						  
 				   </select>
 				</div>
 				
 				<div class="col s10 push-s1">
 					<div class="input-field">
-						<input id="editRating" type="text" class="validate" name = "rating" required="" aria-required="true">
+						<input id="editRating" type="text" class="validate" name = "rating" required="" aria-required="true" value = " ">
 							<label for="editRating">Rating</label> 
 					</div>
 				</div>
@@ -208,6 +160,7 @@ Guard Form
     
     $(document).ready(function() {
         $('select').material_select();
+        var table = $('#dataTable').DataTable();
         
         $('#backArmed').click(function(){
             window.location.href = '{{ URL::to("/guard/registration/educationalBackground") }}';
@@ -217,6 +170,29 @@ Guard Form
             window.location.href = '{{ URL::to("guard/registration/requirement") }}';
         });
         
+        $('#btnAdd').click(function(){
+            var governmentExamID = $('#addGovernmentExam').children(":selected").attr("id");
+            var governmentExam = $('#addGovernmentExam').val();
+            table.row.add([
+                '<button class="buttonUpdate btn" id = "id'+ governmentExamID +'" value = "'+ governmentExamID + '"><i class="material-icons">edit</i></button><label for="edit"></label>',
+                '<button class="buttonDelete btn red " id="" ><i class="material-icons">delete</i></button>',
+                '<h id = "name' + governmentExamID+ '">' + governmentExam + '</h>',
+                '<h id = "rating' + governmentExamID + '">' + $('#strRating').val() + '</h>',
+                '<h id = "date' + governmentExamID + '">' +  $('#addDateTaken').val() + '</h>'
+               
+            ]).draw(false);
+            $('#modalgovexamAdd').closeModal();
+        });
+        
+        table.on('click', '.buttonUpdate', function(){
+            $('#modalgovexamEdit').openModal();
+            $("#editGovernmentExam option[id='"+ this.value +"']").attr("selected", "selected");
+            var rating = 'rating' + this.value;
+            var date = 'date' + this.value;
+            
+            $('#editRating').val($('#' + rating).text());
+            $('#editdateTaken').val($('#' + date).text());
+        });
     });
         
 </script>

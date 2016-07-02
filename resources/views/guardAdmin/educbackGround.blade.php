@@ -114,6 +114,21 @@ Guard Form
 		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id = "backEducation">Back</button>
         
 		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextEducation">Next</button>
+        
+        @if (isset($data))
+            <input type="hidden" id="session" value="active">
+            <input type="hidden" id="schoolNamePrimarySession" value="{{$data['schoolNamePrimary']}}">
+            <input type="hidden" id="fromPrimarySession" value="{{$data['fromPrimary']}}">
+            <input type="hidden" id="toPrimarySession" value="{{$data['toPrimary']}}">
+            <input type="hidden" id="schoolNameSecondarySession" value="{{$data['schoolNameSecondary']}}">
+            <input type="hidden" id="fromSecondarySession" value="{{$data['fromSecondary']}}">
+            <input type="hidden" id="toSecondarySession" value="{{$data['toSecondary']}}">
+            <input type="hidden" id="schoolNameTertiarySession" value="{{$data['schoolNameTertiary']}}">
+            <input type="hidden" id="fromTertiarySession" value="{{$data['fromTertiary']}}">
+            <input type="hidden" id="toTertiarySession" value="{{$data['toTertiary']}}">
+        @else
+            <input type="hidden" id="session" value="deactive">
+        @endif
 	</div>
 </div>
 @stop
@@ -122,6 +137,8 @@ Guard Form
 <script>
     $(document).ready(function() {
         $('select').material_select();
+        
+        
         
         var $fromPrimary = $("#fromPrimary");
         var $toPrimary = $("#toPrimary");
@@ -166,6 +183,19 @@ Guard Form
             
         }
         
+        if ($('#session').val() == "active"){
+            
+            $('#schoolNamePrimary').val($('#schoolNamePrimarySession').val());
+            $("#fromPrimary option[id='"+ $('#fromPrimarySession').val() +"']").attr("selected", "selected");
+            $("#toPrimary option[id='"+ $('#toPrimarySession').val() +"']").attr("selected", "selected");
+            $('#schoolNameSecondary').val($('#schoolNameSecondarySession').val());
+            $("#fromSecondary option[id='"+ $('#fromSecondarySession').val() +"']").attr("selected", "selected");
+            $("#toSecondary option[id='"+ $('#toSecondarySession').val() +"']").attr("selected", "selected");
+            $('#schoolNameTertiary').val($('#schoolNameTertiarySession').val());
+            $("#fromTertiary option[id='"+ $('#fromTertiarySession').val() +"']").attr("selected", "selected");
+            $("#toTertiary option[id='"+ $('#toTertiarySession').val() +"']").attr("selected", "selected");
+        };
+        
         $('#backEducation').click(function(){
             window.location.href = '{{ URL::to("/guard/registration/personalData") }}';
         });
@@ -177,6 +207,13 @@ Guard Form
         });
         
         function sendData(){
+            var fromPrimary = $('#fromPrimary').children(":selected").attr("id");
+            var toPrimary = $('#toPrimary').children(":selected").attr("id");
+            var fromSecondary = $('#fromSecondary').children(":selected").attr("id");
+            var toSecondary = $('#toSecondary').children(":selected").attr("id");
+            var fromTertiary = $('#fromTertiary').children(":selected").attr("id");
+            var toTertiary = $('#toTertiary').children(":selected").attr("id");
+            
             $.ajax({
 
                 type: "POST",
@@ -189,17 +226,18 @@ Guard Form
                     }
                 },
                 data: {
+                    
                     schoolNamePrimary: $('#schoolNamePrimary').val(),
-                    fromPrimary:$('#fromPrimary').val(),
-                    toPrimary:$('#toPrimary').val(),
+                    fromPrimary:fromPrimary,
+                    toPrimary:toPrimary,
                     schoolNameSecondary:$('#schoolNameSecondary').val(),
-                    fromSecondary:$('#fromSecondary').val(),
-                    toSecondary:$('#toSecondary').val(),                    schoolNameTertiary:$('#schoolNameTertiary').val(),
-                    fromTertiary:$('#fromTertiary').val(),
-                    toTertiary:$('#toTertiary').val(),
+                    fromSecondary:fromSecondary,
+                    toSecondary:toSecondary,                    schoolNameTertiary:$('#schoolNameTertiary').val(),
+                    fromTertiary:fromTertiary,
+                    toTertiary:toTertiary,
                 },
                 success: function(data){
-
+                    
                 },
                 error: function(data){
                     
