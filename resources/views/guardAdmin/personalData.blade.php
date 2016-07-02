@@ -32,6 +32,7 @@ Guard Form
                     <input type="hidden" id="lastNameSession" value="{{$data['lastName']}}">
                     <input type="hidden" id="addressSession" value="{{$data['address']}}">
                     <input type="hidden" id="dateOfbirthSession" value="{{$data['dateOfbirth']}}">
+                    <input type="hidden" id="placeofbirthSession" value="{{$data['placeofbirth']}}">
                     <input type="hidden" id="contactCpSession" value="{{$data['contactCp']}}">
                     <input type="hidden" id="contactLandlineSession" value="{{$data['contactLandline']}}">
                     <input type="hidden" id="civilStatusSession" value="{{$data['civilStatus']}}">
@@ -149,7 +150,22 @@ Guard Form
 								</thead>
 
 								<tbody>
-
+                                    
+                                    @if (isset($data))
+                                    @foreach ($bodyAttributeValues as $bodyAttributeValue)
+                                    <tr style="height:-10px !important;">
+                                        <td>
+                                            <div class="col s3">{{ $bodyAttributeValue->strBodyAttribute }}</div>
+                                        </td>
+                                        <td>
+                                            <div class="input-field col s7">
+                                                <input  id="specification{{ $bodyAttributeValue->intBodyAttributeID }}" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true" value = "{{ $bodyAttributeValue->strValue }}">
+                                                <label data-error="Incorrect" for="specification{{ $bodyAttributeValue->intBodyAttributeID }}"></label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    @else
                                     @foreach ($bodyAttributes as $bodyAttribute)
                                     <tr style="height:-10px !important;">
                                         <td>
@@ -163,6 +179,7 @@ Guard Form
                                         </td>
                                     </tr>
                                     @endforeach
+                                    @endif
                                     
                                         
 								</tbody>
@@ -195,6 +212,7 @@ Guard Form
             $('#lastName').val($('#lastNameSession').val());
             $('#address').val($('#addressSession').val());
             $('#dateOfbirth').val($('#dateOfbirthSession').val());
+            $('#placeofbirth').val($('#placeofbirthSession').val());
             $('#contactCp').val($('#contactCpSession').val());
             $('#contactLandline').val($('#contactLandlineSession').val());
             $('#civilStatus').val($('#civilStatusSession').val());
@@ -297,6 +315,7 @@ Guard Form
         });
        
         function sendData(){
+            var value = {};
             var bodyAttribute = {}; 
             var bodyAttributeID = {}; 
             var province = $('#provinceSelect').children(":selected").attr("id");
@@ -323,8 +342,8 @@ Guard Form
                             var specification = 'specification' + data[intLoop]['intBodyAttributeID'];
                             
                             bodyAttributeID[intCounter] = data[intLoop]['intBodyAttributeID'];
-                            bodyAttribute[intCounter] = $('#'+specification).val();
-                            
+                            value[intCounter] = $('#'+specification).val();
+                            bodyAttribute[intCounter] = data[intLoop]['strBodyAttributeName'];
                             intCounter = intCounter + 1;
                         }
                     }  
@@ -333,7 +352,7 @@ Guard Form
                 error: function(data){
                     
                 },
-                async: false
+                async:false
                 
             });//ajax
             
@@ -354,10 +373,12 @@ Guard Form
                     strLastName:$('#lastName').val(),
                     strAddress:$('#address').val(),
                     dateBirth:$('#dateOfbirth').val(),
+                    placeofbirth:$('#placeofbirth').val(),
                     strMobileNumber:$('#contactCp').val(),
                     strLandlineNumber:$('#contactLandline').val(),
                     strCivilStatus:$('#civilStatus').val(),
                     strGender:$('#gender').val(),
+                    value: value,
                     bodyAttribute: bodyAttribute,
                     bodyAttributeID: bodyAttributeID,
                     province: province,
@@ -365,10 +386,10 @@ Guard Form
                     
                 },
                 success: function(data){
-
+                    
                 },
                 error: function(data){
-                    
+                    confirm();
                 }
             });//ajax
         }//sendData()

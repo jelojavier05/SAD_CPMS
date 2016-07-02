@@ -28,7 +28,7 @@ class GuardRegistrationController extends Controller
                 ->get();
         
         $counter = BodyAttribute::count();
-        $request->session()->flush();
+        //$request->session()->flush();
         if ($request->session()->has('personalDataSession')) {
             
             $firstName = $request->session()->get('firstName');
@@ -36,19 +36,22 @@ class GuardRegistrationController extends Controller
             $lastName = $request->session()->get('lastName');
             $address = $request->session()->get('address');
             $dateOfbirth = $request->session()->get('dateOfbirth');
+            $placeofbirth = $request->session()->get('placeofbirth');
             $contactCp = $request->session()->get('contactCp');
             $contactLandline = $request->session()->get('contactLandline');
             $civilStatus = $request->session()->get('civilStatus');
             $gender = $request->session()->get('gender');
-            $bodyAttributeValue = collect($request->session()->get('bodyAttributeValue'));
+            $bodyAttributeValue = $request->session()->get('bodyAttributeValue');
             $province = $request->session()->get('province');
             $city = $request->session()->get('city');
+            
             
             $data = collect(['firstName' => $firstName,
                              'middleName' => $middleName,
                              'lastName' => $lastName,
                              'address' => $address,
                              'dateOfbirth' => $dateOfbirth,
+                             'placeofbirth' => $placeofbirth,
                              'contactCp' => $contactCp,
                              'contactLandline' => $contactLandline,
                              'civilStatus' => $civilStatus,
@@ -60,7 +63,7 @@ class GuardRegistrationController extends Controller
                 ->with ('bodyAttributes', $bodyAttributes)
                 ->with ('data', $data)
                 ->with ('counter', $counter)
-                ->with ('bodyAttributeValue', $bodyAttributeValue)
+                ->with ('bodyAttributeValues', $bodyAttributeValue)
                 ->with ('provinces', $provinces);
             
         }else{
@@ -72,12 +75,44 @@ class GuardRegistrationController extends Controller
     }
     
     public function educationalBackgroundBC(Request $request){
-        if ($request->session()->has('personalDataSession')) {
-            
-            return view ('/guardAdmin/educbackGround');    
-        }else{
-            return view ('/guardAdmin/personalData');
-        }
+        
+        $request->session()->put('schoolNamePrimary', $request->schoolNamePrimary);
+        $request->session()->put('fromPrimary', $request->fromPrimary);
+        $request->session()->put('toPrimary', $request->toPrimary);
+        $request->session()->put('schoolNameSecondary', $request->schoolNameSecondary);
+        $request->session()->put('fromSecondary', $request->fromSecondary);
+        $request->session()->put('toSecondary', $request->toSecondary);
+        $request->session()->put('schoolNameTertiary', $request->schoolNameTertiary);
+        $request->session()->put('fromTertiary', $request->fromTertiary);
+        $request->session()->put('toTertiary', $request->toTertiary);
+        
+        $schoolNamePrimary = $request->session()->get('schoolNamePrimary');
+        $fromPrimary = $request->session()->get('fromPrimary');
+        $toPrimary = $request->session()->get('toPrimary');
+        $schoolNameSecondary = $request->session()->get('schoolNameSecondary');
+        $fromSecondary = $request->session()->get('fromSecondary');
+        $toSecondary = $request->session()->get('toSecondary');
+        $schoolNameTertiary = $request->session()->get('schoolNameTertiary');
+        $fromTertiary = $request->session()->get('fromTertiary');
+        $toTertiary = $request->session()->get('toTertiary');
+
+        $data = collect(['schoolNamePrimary' => $schoolNamePrimary,
+                         'fromPrimary' => $fromPrimary,
+                         'toPrimary' => $toPrimary,
+                         'address' => $address,
+                         'dateOfbirth' => $dateOfbirth,
+                         'placeofbirth' => $placeofbirth,
+                         'contactCp' => $contactCp,
+                         'contactLandline' => $contactLandline,
+                         'civilStatus' => $civilStatus,
+                         'gender' => $gender,
+                         'province' => $province,
+                         'city' => $city]);
+        
+        
+        return view ('/guardAdmin/educbackGround');    
+        
+        
     }
     
     public function sgBackgroundBC(){
@@ -117,10 +152,20 @@ class GuardRegistrationController extends Controller
     
     public function personalDataSession(Request $request){
         
-        $arrayBodyAttributeValue = collect([
-                'value' => $request->bodyAttribute, 
-                'key' => $request->bodyAttributeID
-            ]);
+        $array = array(); 
+        
+        $arrBodyAttributeID = $request->bodyAttributeID;
+        $arrValue = $request->value;
+        $arrBodyAttribute = $request->bodyAttribute;
+        
+        for ($intLoop = 0; $intLoop < count($arrBodyAttributeID); $intLoop ++){
+            $value = new \stdClass();
+            $value->intBodyAttributeID = $arrBodyAttributeID[$intLoop];
+            $value->strValue = $arrValue[$intLoop];
+            $value->strBodyAttribute = $arrBodyAttribute[$intLoop];
+            
+            array_push($array, $value);
+        }   
         
         $request->session()->put('personalDataSession', 'active');
         $request->session()->put('firstName', $request->strFirstName);
@@ -128,11 +173,12 @@ class GuardRegistrationController extends Controller
         $request->session()->put('lastName', $request->strLastName);
         $request->session()->put('address', $request->strAddress);
         $request->session()->put('dateOfbirth', $request->dateBirth);
+        $request->session()->put('placeofbirth', $request->placeofbirth);
         $request->session()->put('contactCp', $request->strMobileNumber);
         $request->session()->put('contactLandline', $request->strLandlineNumber);
         $request->session()->put('civilStatus', $request->strCivilStatus);
         $request->session()->put('gender', $request->strGender);
-        $request->session()->put('bodyAttributeValue', $arrayBodyAttributeValue);
+        $request->session()->put('bodyAttributeValue', $array);
         $request->session()->put('province', $request->province);
         $request->session()->put('city', $request->city);
         
