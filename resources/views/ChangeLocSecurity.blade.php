@@ -3,10 +3,13 @@
 
 @section('content')
 
-
+<div class="row"></div>
+<div class="row"></div>
+<div class="row"></div>
+<div class="row"></div>
 <div class="row">
-<div class="col l12">
-    <div class="col l6 offset-l3 z-depth-3" style="margin-top:4%">
+<div class="col l12 gray">
+    <div class="col l6 offset-l3 z-depth-3">
     
     
     <table class="responsive-table">
@@ -97,43 +100,96 @@
         </tbody>
       </table>
     
-    
-    
-    </div>
+        </div>
+
     
     <div class="col l3">
    <form action="#">
-    <p>
-      <input name="group1" type="radio" id="test1" />
-      <label for="test1">Red</label>
-    </p>
-    <p>
-      <input name="group1" type="radio" id="test2" />
-      <label for="test2">Yellow</label>
-    </p>
-    <p>
-      <input class="with-gap" name="group1" type="radio" id="test3"  />
-      <label for="test3">Green</label>
-    </p>
-      <p>
-        <input name="group1" type="radio" id="test4" disabled="disabled" />
-        <label for="test4">Brown</label>
-    </p>
+       <div class="card medium offset-l1 z-depth-3" style="margin-top:1%">
+           
+           <th data-field="price"><center><bold>Selection of Guard</bold></center></th>
+           <hr>
+           
+           <p>
+                <input class="with-gap" name="group1" type="radio" id="test4" />
+                <label for="test4">Brown</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test1" />
+              <label for="test1">Red</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test2" />
+              <label for="test2">Yellow</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test3"  />
+              <label for="test3">Green</label>
+            </p>
+              <p>
+                <input class="with-gap" name="group1" type="radio" id="test4" />
+                <label for="test4">Brown</label>
+            </p>
+       </div>
   </form>
+        </div>
+    </div>
+    
+    <div class="col l12">
         
+        <div class="col l6 offset-l3 z-depth-3">
+        
+          <div class="row"></div>
+                       <div class="row"></div>
+                <div class="col l10 offset-l1">
+            <label class="ft1">Approval Form for Location Request Swapping</label>
+        
+                </div>
+                <div class="row"></div>
+                <div class="col l5 offset-l2">
+                    <label class="ft" for="ClientName">Client Name:</label><br>
+                    <label class="ft" for="BAddress">Business Address:</label><br>
+                    <label class="ft" for="TaggedGuard">Guard for Replacement:</label><br>
+                    <label class="ft" for="GuardSwap">Guard to Swap:</label><br>
+                    <label class="ft" for="RequestApprovedDate">Request Approved Date:</label><br> 
+                    <label class="ft" for="EffDate" >Effectivity Date:</label>  
+                 </div>
+
+      <div class="row"></div>
+                       <div class="row"></div>
+        </div>
+        
+                  <div class="col l3">
+                        <div class="row"></div>
+                       <div class="row"></div>
+                        <div class="row"></div>
+                       <div class="row"></div>
+                <div class="row"></div>
+                      <div class="col l12">
+                <div class="col l12">
+                    <div class="row">
+                        <div class="col l12">
+                                
+                      <a href="#!" class="btn blue darken-4 z-depth-3">Send</a>
+                     <a href="#!" class="btn red darken-4 z-depth-3">Reset</a>
+                
+                    
+                    </div>
+                        </div>
+                   
+                    <center><a href="#!" class="btn green darken-4 z-depth-3">Save</a></center> 
+                 </div>
+                            <div class="row"></div>
+                       <div class="row"></div>
+                     
+                       
+                  </div>              
     
-    
-    
+        </div>
+        
+
+  
     </div>
-    
-    
-    
-    
-    </div>
-
-
-
-</div>
 
  
 

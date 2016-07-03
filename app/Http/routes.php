@@ -22,11 +22,14 @@ Route::post('/guard/registration/educationalBackground/session', 'GuardRegistrat
 
 
 
-
+//SECURITY GUARD INTERFACE ----------------------------------------------------
 
     Route::get('/login', 'CPMSLoginController@index');
     Route::get('/homepage', 'HomePageSecurityController@index');
-   Route::get('/changeloc', 'ChangeLocSecurityController@index');
+    Route::get('/changeloc', 'ChangeLocSecurityController@index');
+    Route::get('/attendance', 'AttendanceSecurityController@index');
+
+//SECURITY GUARD INTERFACE ----------------------------------------------------
 
 
 
@@ -58,6 +61,8 @@ Route::get('/gunRegistration', 'GunRegistrationController@index');
 Route::get('/deployment/index', 'DeploymentController@index');
 
 
+
+Route::get('/maintenance/dashboardadmin', 'DashboardAdminController@index');
 
 Route::get('/maintenance/gun', 'GunController@index');
 
