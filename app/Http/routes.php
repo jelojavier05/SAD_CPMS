@@ -46,8 +46,11 @@ Route::get('/client/registration/guardDeployment', 'ClientFormController@guardDe
 
 Route::get('/client/registration/gunTagging', 'ClientFormController@gunTaggingBC')->name('gunTaggingBC');
 
+
+
 Route::get('/guard/deployment', 'GuardDeploymentController@index');
 
+Route::get('/gun/tagging', 'GunTaggingController@index');
 
 
 

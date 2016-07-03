@@ -157,7 +157,7 @@
 									
 									<a href="/guard/registration/personalData" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
 									
-									<a href="#" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Deployment</a>
+									<a href="/guard/deployment" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Deployment</a>
                                            
                                            
                                 </ul>
@@ -172,7 +172,7 @@
                                             
                                             <a href="/gunRegistration" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
 											
-											<a href="#" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Tagging</a>		
+											<a href="/gun/tagging" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Tagging</a>		
 									
 											<a href="/gunDelivery" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Delivery</a>
                                            

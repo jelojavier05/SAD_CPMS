@@ -9,11 +9,11 @@ use App\Http\Controllers\Controller;
 use Validator;
 
 
-class GuardDeploymentController extends Controller
+class GunTaggingController extends Controller
 {
     
     public function index(){
-        return view('/guardDeployment');
+        return view('/gunTagging');
  
     }
 }
