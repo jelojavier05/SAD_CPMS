@@ -3,6 +3,22 @@
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+.ds
+{
+    font-family: Hobo Std;
+    font-size:20px;
+    color:black;
+}
+.ft
+{
+    font-family: Hobo Std;
+    font-size:17px;
+}
+.ft1
+{
+    font-family: Verdana;
+    font-size:20px;
+}
 .materialize-red.lighten-5 {
   background-color: #fdeaeb !important;
 }
