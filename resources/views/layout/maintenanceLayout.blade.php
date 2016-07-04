@@ -139,7 +139,9 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             
-                                  <a href="/clientView" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
+                                  	<a href="/clientView" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Records</a>
+									
+									<a href="/client/registration/basicInfo" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
                                            
                                 </ul>
                             </div>
@@ -151,7 +153,11 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul class="black-text">
                                             
-									<a href="/guardView" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
+									<a href="/guardView" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Records</a>
+									
+									<a href="/guard/registration/personalData" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
+									
+									<a href="/guard/deployment" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Deployment</a>
                                            
                                            
                                 </ul>
@@ -166,6 +172,8 @@
                                             
                                             <a href="/gunRegistration" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
 											
+											<a href="/gun/tagging" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Tagging</a>		
+									
 											<a href="/gunDelivery" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Delivery</a>
                                            
                                         </ul>

@@ -128,44 +128,78 @@
                            <div class="col l7 push-l3">
                      <a href="#" class="brand-logo">
 						<div class="flow-text">
+                         
 							<h5 style="margin-top: 20px;">Client and Personnel Management System</h5>
 						</div>
 					</a>
                                </div>
-                           <div class="row"></div>
+                        <div class="row"></div>
                            <div class="col l5 push-l10  ">
                                
-   
-                               <ul id="dropdown2" class="dropdown-content">
-    <li><a href="#!">@@@@@@@@@@@@@@<i class="material-icons"></i></a></li>
-    <li><a href="#!">@@@@@@@@@@@@@@<i class="material-icons"></i></a></li>
-  </ul>
+                <ul id="dropdown3" class="dropdown-content">
+                    <li><a href="#!">Profile<i class="material-icons">perm_contact_calendar</i></a></li>
+                    <li><a href="#!">Log Out<i class="material-icons">input</i></a></li>
+                </ul>
+                               <div class="row">
+                                   <div class="col l12">
+                                       <div class="col l10">
+                                         
+                               <a class="btn dropdown-button col l2" style="background-color:transparent" href="#!" data-activates=""><i class="mdi-action-home center" style="font-size:3rem;margin-top:-50%"></i></a>
                                
-                             <ul id="dropdown3" class="dropdown-content">
-    <li><a href="#!">Profile<i class="material-icons">perm_contact_calendar</i></a></li>
-    <li><a href="#!">Log Out<i class="material-icons">input</i></a></li>
-  </ul>
-  
-                               <a class="btn dropdown-button col l3 push-l1" style="background-color:transparent" href="#!" data-activates=""><i class="mdi-action-home center" style="font-size:3.3rem;margin-top:-22%"></i></a>
-                               
-                                <a class="btn dropdown-button col l3 push-l1" style="background-color:transparent" href="#!" data-activates="dropdown2"><i class="material-icons" style="font-size:3.3rem;margin-top:-22%">language</i></a>
+                                <a class="btn dropdown-button col l2 push-l1" style="background-color:transparent" href="#!" data-activates="dropdown2"><i class="material-icons" style="font-size:3rem;margin-top:-50% ">language</i></a>
+                                
+                                <a class="btn dropdown-button col l2 push-l2" style="background-color:transparent" href="#!" data-activates="dropdown2"><i class="material-icons" style="font-size:3rem;margin-top:-50% ">message</i></a>
                
-                               <a class="btn dropdown-button col l3 push-l1" style="background-color:transparent" href="#!" data-activates="dropdown3"><i class="mdi-navigation-arrow-drop-down-circle center" style="font-size:3.3rem;margin-top:-22%"></i></a>
-       </div>
-                           </div>
-      
+                               <a class="btn dropdown-button col l2 push-l3" style="background-color:transparent" href="#!" data-activates="dropdown3"><i class="mdi-navigation-arrow-drop-down-circle center" style="font-size:3rem;margin-top:-50%"></i></a>
+                                              
+                               </div>
+                                       </div>
+                                   </div>
+                 
+              
+                 
                         
+                        
+                        </div>
+            
+               
+                            
+           
                            
                      
                      </div>
-                </div>
-                    
-                
-            </div>
+              </div>
+                     
+                  
+                    <!-- 
+                     <div class="row">
+                     <div class="col l12">
+                            <div class="col l5 offset-l9 ">
+                            
+                            
+                        <ul id="card1" class="card small">
+                                <li><a href="#!">@@@@@@@@@@@@@@<i class="material-icons"></i></a></li>
+                         </ul>
+                                                              
+                            </div>
+                            
+                            
+                           
+                            </div>
 
+                        </div>
+                -->
+            </div>   
+                           
+                </div>
+                 
+            </div>
+           
+        </div>
         
-			</div></div>
-    
+        
+        
+        
     </nav>
 <!--
 	 Tab 

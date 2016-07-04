@@ -7,22 +7,6 @@ Client
 @section('content')
 
 <div class="row">
-	<div class="col s10 push-s2" style="margin-left:10px;">
-		<nav>
-			<div class="nav-wrapper blue">
-				<div class="row">	
-					<div class="col s12">
-						<a href="{{URL::route('basicInfoBC')}}" class="breadcrumb">Basic Information</a>
-						<a href="{{URL::route('contractInfoBC')}}" class="breadcrumb">Contract Information</a>
-						<a href="{{URL::route('guardDeploymentBC')}}" class="breadcrumb">Guard Deployment</a>
-					</div>
-				</div>
-			</div>
-		</nav>
-	</div>
-</div>
-
-<div class="row">
 	<div class="col s10 push-s2" style=" margin-left:10px; margin-top: 0.5%;">
 		<div class="container-fluid grey lighten-4 z-depth-2" style="border: 1px solid black; border-radius:5px;" id="">
 			<h2 class = "blue darken-3 white-text" style="margin-top:0px; padding-bottom:10px;">Deployment</h2>
@@ -32,6 +16,15 @@ Client
 							<div class='col s12' style="margin-top:-3%;">
 								<div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:5px; padding-bottom:1%;">
 								<h3 class="blue darken-1 white-text">Guards</h3>
+									
+									<div class = "input-field col s4 push-s1">    
+									   <select  id = "" name = "" >
+										   <option disabled selected>Choose an option</option>
+											  <option id = "1" >Test1</option>
+											  <option id = "2" >Test2</option>
+									   </select>
+									   <label>Client</label>
+									</div>
 									<div class="row">
 										<div class="col s10 push-s1">
 											<table class="striped grey lighten-1" style="border-radius:10px;" id="dataTable">
@@ -145,9 +138,8 @@ Client
 								</div>
 							</div>
 						</div>
-							<div class="center-align">	
-							<button class="btn-large blue waves-effect z-depth-1 left" id="nextguardDeployment" style="margin-top:-20px;">Back</button>	
-							<button class="btn-large blue waves-effect z-depth-1 right" id="backguardDeployment" style="margin-top:-20px;">Next</button>	
+							<div class="center-align">		
+							<button class="btn-large green waves-effect z-depth-1" id="" style="margin-top:-20px;">Save</button>	
 							</div>
 				</div>
 				
@@ -199,7 +191,6 @@ Client
 		</div>
 	</div>
 
-
 @stop
 
 @section('script')
@@ -230,13 +221,6 @@ Client
 			"lengthMenu": [5,10,15,20]
          }); 
 		
-		$('#nextguardDeployment').click(function(){
-             window.location.href = '{{ URL::to("/client/registration/contractInfo") }}';
-        });
-		
-		$('#backguardDeployment').click(function(){
-             window.location.href = '{{ URL::to("/client/registration/gunTagging") }}';
-        });
 	});
 </script>
 @stop

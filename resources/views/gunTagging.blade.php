@@ -5,22 +5,6 @@ Client
 @endsection
 
 @section('content')
-<div class="row">
-	<div class="col s10 push-s2" style="margin-left:10px;">
-		<nav>
-			<div class="nav-wrapper blue">
-				<div class="row">	
-					<div class="col s12">
-						<a href="{{URL::route('basicInfoBC')}}" class="breadcrumb">Basic Information</a>
-						<a href="{{URL::route('contractInfoBC')}}" class="breadcrumb">Contract Information</a>
-						<a href="{{URL::route('guardDeploymentBC')}}" class="breadcrumb">Guard Deployment</a>
-						<a href="{{URL::route('gunTaggingBC')}}" class="breadcrumb">Gun Tagging</a>
-					</div>
-				</div>
-			</div>
-		</nav>
-	</div>
-</div>
 
 <div class="row">
 	<div class="col s10 push-s2" style=" margin-left:10px; margin-top: 0.5%;">
@@ -30,6 +14,14 @@ Client
 				<div class='col s6' style="margin-top:-3%;">
 					<div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:5px; padding-bottom:1%;">
 					<h3 class="blue darken-1 white-text">Guns</h3>
+						<div class = "input-field col s5">    
+							<select  id = "" name = "" >
+								<option disabled selected>Choose an option</option>
+									<option id = "1" >Test1</option>
+									<option id = "2" >Test2</option>
+							</select>
+							<label>Client</label>
+						</div>
 						<div class="row">
 							<div class="col s12">
 								<table class="striped grey lighten-1" style="border-radius:10px;" id="dataTable">
@@ -94,6 +86,10 @@ Client
 				<div class="col s6" style="margin-top:-3%;">
 					<div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:5px;">
 						<h3 class="blue darken-1 white-text">Selected</h3>
+							<div class="input-field col s5">
+								<input placeholder=" " id="clientName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" readonly>
+								<label for="clientName"  data-error="Incorrect">Client Name</label>
+							</div>
 						<div class="row">
 							<div class="col s12">
 								<table class="striped grey lighten-1" style="border-radius:10px;" id="dataTable2">
@@ -142,31 +138,11 @@ Client
 					</div>
 				</div>
 			</div>
-			<button class="btn-large blue waves-effect z-depth-2 left" id="backgunTagging" style="margin-top:20px;">Back</button>
-			<button class="btn-large green waves-effect z-depth-2 right animated infinite flash" id="" style="margin-top:20px;">Save</button>
+		</div>
+		<div class="center-align">
+				<button class="btn-large green waves-effect z-depth-2" id="" style="margin-top:20px;">Save</button>
 		</div>
 	</div>
-</div>
-
-<!-------------------------------------------------modalRounds---------------------->
-<div id="modalRounds" class="modal modal-fixed-footer" style="overflow:hidden; width:200px !important; height:260px !important; border-radius:15px; margin-top:100px;">
-    <div class="modal-header"><h2 class="center-align">Rounds</h2></div>
-    
-    <div class="modal-content"> 
-        <div class="row">
-            <div class="col s10 push-s1">
-                <div class="input-field">
-                    <input id="addRounds" type="number" class="validate" required="" aria-required="true">
-                    <label for="">Rounds</label> 
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal-footer" style="background-color:#01579b !important;">
-        <button class="btn waves-effect waves-light green" name="action" style="margin-right:47px;" id = "">Add
-        </button>
-    </div>
 </div>
 
 @stop
@@ -198,9 +174,7 @@ Client
          }); 
 		
 		
-		$('#backgunTagging').click(function(){
-             window.location.href = '{{ URL::to("/client/registration/guardDeployment") }}';
-        });
+		
 	});
 </script>
 @stop
