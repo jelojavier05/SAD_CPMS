@@ -24,9 +24,6 @@ Security Guard License
 	</div>
 </div>
 
-
-
-
 <div style="margin-top:3%;">
 	<div class="row">
 		<div class="col s5 push-s4" style="margin-left:10px;">
@@ -35,8 +32,8 @@ Security Guard License
 				<div class="row">
 					<div class="col s8 push-s2">
 						<div class="input-field">
-							<input id="intLicenseNo" type="text" class="validate" name = "licenseNo" required="" aria-required="true">
-							<label for="intLicenseNo">License Number</label> 
+							<input id="strLicenseNo" type="text" class="validate" name = "licenseNo" required="" aria-required="true">
+							<label for="strLicenseNo">License Number</label> 
 						</div>
 					</div>
 				</div>
@@ -74,8 +71,39 @@ Security Guard License
         });
         
         $('#nextLicense').click(function(){
-             window.location.href = '{{ URL::to("/guard/registration/account") }}';
+            sendData(); 
+            window.location.href = '{{ URL::to("/guard/registration/account") }}';
         });
+        
+        function sendData(){
+            var licenseNumber = $('#strLicenseNo').val();
+            var dateStart = $('#startDate').val();
+            var dateEnd = $('#endDate').val();
+            
+            $.ajax({
+
+                type: "POST",
+                url: "{{action('GuardRegistrationController@sgLicenseSession')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    licenseNumber:licenseNumber,
+                    dateStart:dateStart,
+                    dateEnd:dateEnd
+                },
+                success: function(data){
+                    
+                },
+                error: function(data){
+                    confirm('error send data');
+                }
+            });//ajax
+        }
         
     });
         

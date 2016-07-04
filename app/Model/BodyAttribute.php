@@ -13,4 +13,8 @@ class BodyAttribute extends Model
     protected $table = 'tblbodyattribute';
     protected $primaryKey = 'intBodyAttributeID';
     public $timestamps = false;
+    
+    public function GuardBodyAttribute(){
+        return $this->hasMany('App\Model\GuardBodyAttribute', 'intBodyAttributeID', 'intBodyAttributeID');
+    }
 }

@@ -51,15 +51,11 @@ Guard Form
 				<div class="col s6">
 				    @foreach($requirements as $requirement) 
                        <div class="col s12" style="margin:1%;">
-                            <input type="checkbox" id="requirements{{$requirement->intRequirementsID}}" />
+                            <input type="checkbox" id="requirements{{$requirement->intRequirementsID}}" value = "{{$requirement->intRequirementsID}}"/>
                             <label for="requirements{{$requirement->intRequirementsID}}" class="black-text">{{$requirement->strRequirements}}</label></br>
                        </div>
                     @endforeach
 				</div>
-				
-				
-				
-				
 			</div>
 		</div>
 		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id = "backRequirement">Back</button>
@@ -74,13 +70,78 @@ Guard Form
     $(document).ready(function() {
         $('select').material_select();
         
+        var requirement = [];
+        
         $('#backRequirement').click(function(){
             window.location.href = '{{ URL::to("/guard/registration/sgBackground") }}';
         });
         
         $('#nextRequirement').click(function(){
-             window.location.href = '{{ URL::to("/guard/registration/sgLicense") }}';
+            getCheckedRequirement();
+            sendData();
+            window.location.href = '{{ URL::to("/guard/registration/sgLicense") }}';
         });
+        
+        function getCheckedRequirement(){
+            $.ajax({
+
+                type: "GET",
+                url: "{{action('RequirementsController@getRequirement')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: { 
+                    
+                },
+                success: function(data){
+                    var intCounter = 0;
+                    requirement = [];
+                    for(intLoop = 0; intLoop < data.length; intLoop ++){
+                        if (data[intLoop]['boolFlag'] == 1 && data[intLoop]['intIdentifier'] >= 2){
+                            var reqID = 'requirements' + data[intLoop]['intRequirementsID'];
+                            if ($('#' + reqID).is(':checked')){
+                                requirement[intCounter] = data[intLoop]['intRequirementsID'];
+                                intCounter++;
+                            }
+                        }
+                    }  
+                },
+                
+                error: function(data){
+                    
+                },
+                async:false
+                
+            });//ajax
+        }
+        
+        function sendData(){
+            $.ajax({
+
+                type: "POST",
+                url: "{{action('GuardRegistrationController@requirementSession')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    requirement:requirement
+                },
+                success: function(data){
+                    
+                },
+                error: function(data){
+                    confirm('error send data');
+                }
+            });//ajax
+        }
         
     });
         

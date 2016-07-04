@@ -389,7 +389,7 @@ Guard Form
                     
                 },
                 error: function(data){
-                    confirm();
+                    confirm('error send data');
                 }
             });//ajax
         }//sendData()

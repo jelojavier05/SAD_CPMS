@@ -9,9 +9,11 @@ use App\Model\City;
 use App\Model\GovernmentExam;
 use App\Model\Requirements;
 use App\Model\BodyAttribute;
+use App\Model\Guard;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Collection;
+use DB;
 use Carbon;
 class GuardRegistrationController extends Controller
 {
@@ -103,7 +105,7 @@ class GuardRegistrationController extends Controller
         
     }
     
-    public function sgBackgroundBC(){
+    public function sgBackgroundBC(Request $request){
         $armedservices = ArmedService::
             where('deleted_at', null)
             ->where('boolFlag', 1)
@@ -116,9 +118,20 @@ class GuardRegistrationController extends Controller
             ->orderBy('strGovernmentExam', 'asc')
             ->get();
         
-        return view ('/guardAdmin/sgBackground')
-            ->with ('armedservices', $armedservices)
-            ->with ('governmentExams', $governmentExams);
+        $armedService = $request->session()->get('armedService');
+        
+        if ($request->session()->has('sgBackgroundSession')){
+            return view ('/guardAdmin/sgBackground')
+                ->with ('armedservices', $armedservices)
+                ->with ('governmentExams', $governmentExams)
+                ->with ('armedService', $armedService);
+        }else{
+            return view ('/guardAdmin/sgBackground')
+                ->with ('armedservices', $armedservices)
+                ->with ('governmentExams', $governmentExams);
+        }
+        
+            
     }
     
     public function requirementBC(){
@@ -136,8 +149,9 @@ class GuardRegistrationController extends Controller
         return view('/guardAdmin/sgLicense');
     }
     
-    public function accountBC(){
-        return view('/guardAdmin/accountForm');
+    public function accountBC(Request $request){
+        return view('/guardAdmin/accountForm')
+            ->with('firstName', $request->session()->get('firstName'));
     }
     
     public function personalDataSession(Request $request){
@@ -187,6 +201,100 @@ class GuardRegistrationController extends Controller
         $request->session()->put('schoolNameTertiary', $request->schoolNameTertiary);
         $request->session()->put('fromTertiary', $request->fromTertiary);
         $request->session()->put('toTertiary', $request->toTertiary);
+    }
+    
+    public function sgBackgroundSession(Request $request){
+        $request->session()->put('sgBackgroundSession', 'active');
+
+        $array = array();
+        $geID = $request->governmentExamID;
+        $ge = $request->governmentExam;
+        $geRating = $request->governmentExamRating;
+        $geDateTaken = $request->governmentExamDateTaken;
+
+        for ($intLoop = 0; $intLoop < count($geID); $intLoop ++){
+            $value = new \stdClass();
+            $value->id = $geID[intLoop];
+            $value->name = $ge[intLoop];
+            $value->rating = $geRating[intLoop];
+            $value->dateTaken = $geDateTaken[intLoop];
+
+            array_push($array,$value);
+        }
+        $request->session()->put('governmentExam', $array);
+        
+        $armedservice = new \stdClass();
+        $armedservice->id = $request->armedServiceID;
+        $armedservice->rank = $request->armedServiceRank;
+        $armedservice->year = $request->armedServiceYear;
+        $armedservice->reason = $request->armedServiceReason;
+        $armedservice->radio = $request->armedServiceRadio;
+        
+        $request->session()->put('armedService', $armedservice);    
+        
+    }
+    
+    public function requirementSession(Request $request){
+        $request->session()->put('requestSession', 'active');
+        
+        $array = $request->requirement;
+        
+        $request->session()->put('requirement', $array);
+        
+    }
+    
+    public function sgLicenseSession(Request $request){
+        $request->session()->put('sgLicenseSession', 'active');
+        
+        $request->session()->put('licenseNumber', $request->licenseNumber);
+        $request->session()->put('dateStart', $request->dateStart);
+        $request->session()->put('dateEnd', $request->dateEnd);
+    }
+    
+    public function insertGuard(Request $request){
+        try{
+            DB::beginTransaction();
+            
+            $id = DB::table('tblguard')->insertGetId([
+                'strFirstName' => $request->session()->get('firstName'), 
+                'strMiddleName' => $request->session()->get('middleName'),
+                'strLastName' => $request->session()->get('lastName'),
+                'dateBirthday' => $request->session()->get('dateOfbirth'),
+                'strPlaceBirth' => $request->session()->get('placeofbirth'),
+                'strContactNumberMobile' => $request->session()->get('contactCp'),
+                'strContactNumberLandline' => $request->session()->get('contactLandline'),
+                'strCivilStatus' => $request->session()->get('civilStatus'),
+                'strGender' => $request->session()->get('gender'),
+                'strLicenseNumber' => $request->session()->get('licenseNumber')
+            ]);
+            
+            $bodyAttributeValues = $request->session()->get('bodyAttributeValue');
+            foreach ($bodyAttributeValues as $value) {
+                DB::table('tblguardbodyattribute')->insert([
+                    'intGuardID' => $id, 
+                    'intBodyAttributeID' => $value->intBodyAttributeID,
+                    'strValue' => $value->strValue
+                ]);
+            }
+            
+            $armedService = $request->session()->get('armedService');
+            DB::table('tblguardarmedservice')->insert([
+                'intGuardID' => $id, 
+                'intArmedServiceID' => $armedService->id,
+                'strRank' => $armedService->rank,
+                'intYear' => $armedService->year,
+                'strDischarge' => $armedService->radio,
+                'strReason' => $armedService->reason
+            ]);
+            
+            
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollBack();
+        }
+        
+            
     }
     
 }

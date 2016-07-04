@@ -19,6 +19,14 @@ Route::post('/guard/registration/personalData/session', 'GuardRegistrationContro
 
 Route::post('/guard/registration/educationalBackground/session', 'GuardRegistrationController@educationalBackgroundSession');
 
+Route::post('/guard/registration/sgBackground/session', 'GuardRegistrationController@sgBackgroundSession');
+
+Route::post('/guard/registration/requirement/session', 'GuardRegistrationController@requirementSession');
+
+Route::post('/guard/registration/sgLicense/session', 'GuardRegistrationController@sgLicenseSession');
+
+Route::post('/guard/registration/guard/insert', 'GuardRegistrationController@insertGuard');
+
 
 
 

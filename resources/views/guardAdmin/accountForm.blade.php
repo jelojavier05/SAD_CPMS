@@ -24,14 +24,16 @@ Guard Form
 		</nav>
 	</div>
 </div>
-<!----------------------------------------------PAGES-------------------------------------->
 
+
+<!----------------------------------------------PAGES-------------------------------------->
 
 <div class="row">
 	<div class="col s5 push-s4" style="margin-left:10px;">
 		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
 			<center><legend><h4>Account</h4></legend></center></br>
-			<div class="row">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="row">
 				<div class="col s8 push-s2">
 					<div class="input-field">
 						<input id="strUserName" type="text" class="validate" name = "userName" required="" aria-required="true">
@@ -59,9 +61,11 @@ Guard Form
             </div>
 		</div>
 		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#" id = "backAccount">Back</button>
-		<button id = "saveButton"style="margin-top:20px;" class=" z-depth-2 btn-large green right animated infinite flash" href="#">Save</button>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large green right animated infinite flash" id = "btnSave">Save</button>
 	</div>
 </div>
+
+<input type = "hidden" id = "test" value = "{{$firstName}}">
 @stop
 
 @section('script')
@@ -70,8 +74,38 @@ Guard Form
     $(document).ready(function() {
         $('select').material_select();
         
+        $('#strUserName').val($('#test').val());
+        
         $('#backAccount').click(function(){
             window.location.href = '{{ URL::to("/guard/registration/requirement") }}';
+        });
+        
+        $('#btnSave').click(function(){
+            var username = $('#strUserName').val();
+            var password = $('#password').val();
+            $.ajax({
+
+                type: "POST",
+                url: "{{action('GuardRegistrationController@insertGuard')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    username:username,
+                    password:password
+                },
+                success: function(data){
+                    confirm('success');
+                },
+                error: function(data){
+                    confirm('error send data');
+                    console.error();
+                }
+            });//ajax
         });
         
     });

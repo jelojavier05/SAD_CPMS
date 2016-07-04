@@ -137,9 +137,6 @@ Guard Form
 <script>
     $(document).ready(function() {
         $('select').material_select();
-        
-        
-        
         var $fromPrimary = $("#fromPrimary");
         var $toPrimary = $("#toPrimary");
         var $fromSecondary = $("#fromSecondary");
