@@ -17,4 +17,8 @@ class BodyAttribute extends Model
     public function GuardBodyAttribute(){
         return $this->hasMany('App\Model\GuardBodyAttribute', 'intBodyAttributeID', 'intBodyAttributeID');
     }
+    
+    public function Measurement(){
+        return $this->hasOne('App\Model\Measurement', 'intMeasurementID', 'intMeasurementID');
+    }
 }

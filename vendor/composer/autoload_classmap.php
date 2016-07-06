@@ -8,7 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'CreateAccountTable' => $baseDir . '/database/migrations/2016_07_04_085519_create_account_table.php',
     'CreateArmedServiceTable' => $baseDir . '/database/migrations/2016_02_28_080305_create_armed_service_table.php',
-    'CreateBodyAttribute' => $baseDir . '/database/migrations/2016_06_06_110811_create_body_attribute.php',
+    'CreateBodyAttribute' => $baseDir . '/database/migrations/2016_07_06_170814_create_body_attribute.php',
     'CreateCityTable' => $baseDir . '/database/migrations/2016_06_20_172410_create_city_table.php',
     'CreateGovernmentExamTable' => $baseDir . '/database/migrations/2016_02_28_080528_create_government_exam_table.php',
     'CreateGuardArmedserviceTable' => $baseDir . '/database/migrations/2016_07_04_033854_create_guard_armedservice_table.php',
@@ -18,6 +18,7 @@ return array(
     'CreateGunLicenseNumberTable' => $baseDir . '/database/migrations/2016_03_11_182629_create_gun_license_number_table.php',
     'CreateGunTable' => $baseDir . '/database/migrations/2016_03_11_181358_create_gun_table.php',
     'CreateLeaveTable' => $baseDir . '/database/migrations/2016_06_06_130835_create_leave_table.php',
+    'CreateMeasurementTable' => $baseDir . '/database/migrations/2016_07_06_170018_create_measurement_table.php',
     'CreateNatureOfBusinessTable' => $baseDir . '/database/migrations/2016_06_18_172817_create_nature_of_business_table.php',
     'CreateProvinceTable' => $baseDir . '/database/migrations/2016_06_20_172404_create_province_table.php',
     'CreateRequirementsTable' => $baseDir . '/database/migrations/2016_06_08_164140_create_requirements_table.php',

@@ -71,8 +71,18 @@ Route::get('/gunRegistration', 'GunRegistrationController@index');
 
 Route::get('/deployment/index', 'DeploymentController@index');
 
+
 Route::get('/maintenance/unitOfMeasurement', 'UnitOfMeasurementController@index');
 
+Route::get('/maintenance/unitOfMeasurement/get', 'UnitOfMeasurementController@get');
+
+Route::post('/maintenance/unitOfMeasurement/create', 'UnitOfMeasurementController@create');
+
+Route::post('/maintenance/unitOfMeasurement/update', 'UnitOfMeasurementController@update');
+
+Route::post('/maintenance/unitOfMeasurement/delete', 'UnitOfMeasurementController@delete');
+
+Route::post('/maintenance/unitOfMeasurement/flag', 'UnitOfMeasurementController@flag');
 
 
 Route::get('/maintenance/dashboardadmin', 'DashboardAdminController@index');

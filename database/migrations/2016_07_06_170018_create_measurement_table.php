@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBodyAttribute extends Migration
+class CreateMeasurementTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,13 @@ class CreateBodyAttribute extends Migration
      */
     public function up()
     {
-        Schema::create('tblbodyattribute', function (Blueprint $table) {
-            $table->increments('intBodyAttributeID');
-            $table->string('strBodyAttributeName', 100)->unique();
+        Schema::create('tblmeasurement', function (Blueprint $table) {
+            $table->increments('intMeasurementID');
+            $table->string('strMeasurement', 100)->unique();
             $table->softDeletes();
             $table->boolean('boolFlag')->default(true);
         });
+
     }
 
     /**
@@ -27,6 +28,6 @@ class CreateBodyAttribute extends Migration
      */
     public function down()
     {
-        Schema::drop('tblbodyattribute');
+        Schema::drop('tblmeasurement');
     }
 }
