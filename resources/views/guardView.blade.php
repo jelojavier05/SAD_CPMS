@@ -62,7 +62,7 @@ Guard
     
     
 <!------------------------containerMoreDetails----------------------------------->
-<div class ="col s4" style="overflow:scroll; height:500px; margin-top:30px;">
+<div class ="col s4" style="overflow:scroll; overflow-x:hidden; height:500px; margin-top:30px;">
     <div class="col s12">
         <div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:15px;">
             <div class="blue darken-1 white-text" style="position:fixed; z-index:100; width:395px; height: 38px; font-size:30px;">Details</div>

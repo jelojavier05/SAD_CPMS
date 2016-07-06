@@ -63,9 +63,14 @@ Route::get('/gun/tagging', 'GunTaggingController@index');
 
 
 
+Route::get('/gunDeliveryView', 'GunDeliveryViewController@index');
 
+Route::get('/gunDeliveryCart', 'GunDeliveryCartController@index');
 
 Route::get('/gunDelivery', 'GunDeliveryController@index');
+
+
+
 
 Route::get('/gunRegistration', 'GunRegistrationController@index');
 

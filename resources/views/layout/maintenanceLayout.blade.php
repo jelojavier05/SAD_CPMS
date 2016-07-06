@@ -176,7 +176,7 @@
 											
 											<a href="/gun/tagging" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Tagging</a>		
 									
-											<a href="/gunDelivery" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Delivery</a>
+											<a href="/gunDeliveryView" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Delivery</a>
                                            
                                         </ul>
                             </div>
