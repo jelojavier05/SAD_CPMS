@@ -12,17 +12,15 @@ class CreateGuardGovernmentexamTable extends Migration
      */
     public function up()
     {
-        Schema::create('tblguardarmedservice', function (Blueprint $table) {
-            $table->increments('intGuardArmedServiceID');
+        Schema::create('tblguardgovernmentexam', function (Blueprint $table) {
+            $table->increments('intGuardGovernmentExamID');
             $table->integer('intGuardID')->unsigned();
-            $table->integer('intArmedServiceID')->unsigned();
-            $table->string('strRank', 50);
-            $table->integer('intYear');
-            $table->string('strDischarge', 15);
-            $table->string('strReason');
+            $table->integer('intGovernmentExamID')->unsigned();
+            $table->string('strRating', 20);
+            $table->date('dateTaken');
             
             $table->foreign('intGuardID')->references('intGuardID')->on('tblguard');
-            $table->foreign('intArmedServiceID')->references('intArmedServiceID')->on('tblarmedservice');
+            $table->foreign('intGovernmentExamID')->references('intGovernmentExamID')->on('tblgovernmentexam');
         });
  
     }
@@ -34,6 +32,6 @@ class CreateGuardGovernmentexamTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tblguardarmedservice');
+        Schema::drop('tblguardgovernmentexam');
     }
 }

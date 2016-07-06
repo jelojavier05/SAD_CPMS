@@ -189,7 +189,6 @@ Guard Form
         
         if ($('#session').val() == 'active'){
             
-            
             $("#armedService option[id='option"+ $('#idSession').val() +"']").attr("selected", "selected");
             $("#armedServiceYear option[id='"+ $('#yearSession').val() +"']").attr("selected", "selected");
             $('#rank').val($('#rankSession').val());
@@ -203,7 +202,7 @@ Guard Form
         
         $('#nextArmed').click(function(){
             sendData();
-//            window.location.href = '{{ URL::to("guard/registration/requirement") }}';
+            window.location.href = '{{ URL::to("guard/registration/requirement") }}';
         });
         
         $('#btnAdd').click(function(){
@@ -364,7 +363,7 @@ Guard Form
             var armedServiceYear = $('#armedServiceYear option:selected').text();
             var armedServiceReason = $('#reason').val();
             var armedServiceRadio = $('input[name = radio]:checked').val();
-            
+
             var governmentExamID = [];
             var governmentExam = [];
             var governmentExamRating = [];
@@ -376,6 +375,7 @@ Guard Form
                 governmentExamDateTaken[intLoop] = arrGovernmentExam[intLoop][2];
                 governmentExam[intLoop] = arrGovernmentExam[intLoop][4];
             }
+            confirm(armedServiceID);
                 
             $.ajax({
 
@@ -405,6 +405,7 @@ Guard Form
                 },
                 error: function(data){
                     confirm('error send data');
+                    console.error();
                 }
             });//ajax
         }

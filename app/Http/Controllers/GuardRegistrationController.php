@@ -214,13 +214,14 @@ class GuardRegistrationController extends Controller
 
         for ($intLoop = 0; $intLoop < count($geID); $intLoop ++){
             $value = new \stdClass();
-            $value->id = $geID[intLoop];
-            $value->name = $ge[intLoop];
-            $value->rating = $geRating[intLoop];
-            $value->dateTaken = $geDateTaken[intLoop];
+            $value->id = $geID[$intLoop];
+            $value->name = $ge[$intLoop];
+            $value->rating = $geRating[$intLoop];
+            $value->dateTaken = $geDateTaken[$intLoop];
 
             array_push($array,$value);
         }
+        
         $request->session()->put('governmentExam', $array);
         
         $armedservice = new \stdClass();
@@ -265,7 +266,7 @@ class GuardRegistrationController extends Controller
                 'strContactNumberLandline' => $request->session()->get('contactLandline'),
                 'strCivilStatus' => $request->session()->get('civilStatus'),
                 'strGender' => $request->session()->get('gender'),
-                'strLicenseNumber' => $request->session()->get('licenseNumber')
+                //'strLicenseNumber' => $request->session()->get('licenseNumber')
             ]);
             
             $bodyAttributeValues = $request->session()->get('bodyAttributeValue');
@@ -287,8 +288,24 @@ class GuardRegistrationController extends Controller
                 'strReason' => $armedService->reason
             ]);
             
+            $governmentExam = $request->session()->get('governmentExam');
+            foreach($governmentExam as $value){
+                DB::table('tblguardgovernmentexam')->insert([
+                    'intGuardID' => $id, 
+                    'intGovernmentExamID' => $value->id,
+                    'strRating' => $value->rating,
+                    'dateTaken' => $value->dateTaken
+                ]);
+            }
             
-
+            DB::table('tblaccount')->insert([
+                'intGuardID' => $id, 
+                'strUsername' => $request->username,
+                'strPassword' => $request->password,
+                'intAccountType' => 2
+            ]);
+            
+            
             DB::commit();
         }catch(Exception $e){
             DB::rollBack();

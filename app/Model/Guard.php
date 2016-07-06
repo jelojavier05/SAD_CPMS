@@ -19,4 +19,12 @@ class Guard extends Model
     public function GuardArmedService(){
         return $this->hasOne('App\Model\GuardArmedService', 'intGuardID', 'intGuardID');
     }
+    
+    public function GuardGovernmentExam(){
+        return $this->hasOne('App\Model\GuardGovernmentExam', 'intGuardID', 'intGuardID');
+    }
+    
+    public function Account(){
+        return $this->hasOne('App\Model\Account', 'intGuardID', 'intGuardID');
+    }
 }
