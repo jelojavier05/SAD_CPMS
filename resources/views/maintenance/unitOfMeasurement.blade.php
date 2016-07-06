@@ -75,9 +75,9 @@ Unit of Measurement
 </div>
 
 <!-----------------------------------------------------------modal start-------------------------->
-<div id="modaluomAdd" class="modal modal-fixed-footer" style="overflow:hidden; width: 500px !important; height:420px !important;">
+<div id="modaluomAdd" class="modal modal-fixed-footer" style="overflow:hidden; width: 400px !important; height:250px !important; margin-top:100px; border-radius:10px;">
     <div class="modal-header">
-        <h3>Unit of Measurement</h3>
+        <h4>Unit of Measurement</h4>
     </div>
     
     <div class="modal-content">
@@ -101,9 +101,9 @@ Unit of Measurement
     </div>
 </div>
 <!-----------------------------------------------------------modal start-------------------------->
-<div id="modaluomEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:420px !important;">
+<div id="modaluomEdit" class="modal modal-fixed-footer" style="overflow:hidden; width: 400px !important; height:350px !important; margin-top:100px; border-radius:10px;">
     <div class="modal-header">
-        <h3>Unit of Measurement</h3>
+        <h4>Unit of Measurement</h4>
     </div>
     
     <div class="modal-content">

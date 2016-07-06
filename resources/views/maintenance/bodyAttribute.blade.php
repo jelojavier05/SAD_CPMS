@@ -83,8 +83,8 @@ Body Attributes
 
 <!-- Modal BA ADD -->
 
-<div id="modalvitstatsAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
-        <div class="modal-header"><h2>Body Attributes</h2></div>
+<div id="modalvitstatsAdd" class="modal modal-fixed-footer" style="overflow:hidden; width: 500px !important; height:400px !important; margin-top:50px;  border-radius:10px;">
+        <div class="modal-header"><h4>Body Attributes</h4></div>
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -96,6 +96,16 @@ Body Attributes
 							</div>
 						</div>
             		</div>
+					
+					<div class="row">
+						<div class = "col 9">    
+							<select  class="browser-default" id = "">
+								<option disabled selected value = "0">Unit of Measurement</option>
+									<option id = "" value = "">test1</option>
+							</select>
+						</div>
+					</div>
+					
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
@@ -116,7 +126,7 @@ Body Attributes
     		</div>
 		</div>
 <!-- MODAL BA EDIT -->
-<div id="modalvitstatsEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
+<div id="modalvitstatsEdit" class="modal modal-fixed-footer" style="overflow:hidden; width: 500px !important; height:400px !important; margin-top:50px;  border-radius:10px;">
 	<div class="modal-header"><h2>Body Attributes</h2></div>
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -129,6 +139,16 @@ Body Attributes
 							</div>
 						</div>
             		</div>
+				
+					<div class="row">
+						<div class = "col 9">    
+							<select  class="browser-default" id = "">
+								<option disabled selected value = "0">Unit of Measurement</option>
+									<option id = "" value = "">test1</option>
+							</select>
+						</div>
+					</div>
+				
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
