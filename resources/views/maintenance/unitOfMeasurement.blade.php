@@ -27,7 +27,8 @@ Unit of Measurement
                                 <th style="width:50px;"></th>
                                 <th style="width:50px;"></th>
                                 <th>ID</th>
-                                <th>Name</th>
+                                <th>Body Attribute</th>
+								<th>Unit of Measurement</th>
                                 
                             </tr>
                         </thead>
@@ -61,6 +62,7 @@ Unit of Measurement
                                     
                                     <td id = "">test1</td>
                                     <td id = "">Test1</td>
+									<td>test1</td>
                                     
                                 </tr>
                            
@@ -168,7 +170,8 @@ Unit of Measurement
 			{"searchable": false},
 			{"searchable": false},
             null,
-            null
+            null,
+			null
             ] ,  
 //		    "pagingType": "full_numbers",
 			"pageLength":5,
