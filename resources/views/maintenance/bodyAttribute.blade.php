@@ -32,6 +32,7 @@ Body Attributes
 								<th style="width:50px;"></th>
                                 <th>ID</th>
                                 <th>Name</th>
+								<th>Unit of Measurement</th>
                                 
                             </tr>
                         </thead>
@@ -210,7 +211,8 @@ Body Attributes
             { "orderable": false },
             { "orderable": false },
             null,
-            null
+            null,
+			null
             ] ,  
             "pageLength":5,
             "lengthMenu": [5,10,15,20]
