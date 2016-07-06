@@ -117,6 +117,8 @@
 														
 														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
 														
+														<li><a class="blue-text" href="/maintenance/unitOfMeasurement">Unit of Measurement</a></li>
+														
 <!--
 														<li><a class="blue-text" href="/maintenance/gun">Add Gun</a></li>
 														
