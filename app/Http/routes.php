@@ -71,6 +71,8 @@ Route::get('/gunRegistration', 'GunRegistrationController@index');
 
 Route::get('/deployment/index', 'DeploymentController@index');
 
+Route::get('/maintenance/unitOfMeasurement', 'UnitOfMeasurementController@index');
+
 
 
 Route::get('/maintenance/dashboardadmin', 'DashboardAdminController@index');
