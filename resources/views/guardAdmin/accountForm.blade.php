@@ -18,6 +18,7 @@ Guard Form
 						<a href="{{URL::route('requirement')}}" class="breadcrumb">Requirements</a>
 						<a href="{{URL::route('sgLicense')}}" class="breadcrumb">Guard License</a>
 						<a href="{{URL::route('account')}}" class="breadcrumb">Account</a>
+						
 					</div>
 				</div>
 			</div>
@@ -61,7 +62,7 @@ Guard Form
             </div>
 		</div>
 		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#" id = "backAccount">Back</button>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large green right animated infinite flash" id = "btnSave">Save</button>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" href="#" id = "nextAccount">Next</button>
 	</div>
 </div>
 
@@ -78,6 +79,10 @@ Guard Form
         
         $('#backAccount').click(function(){
             window.location.href = '{{ URL::to("/guard/registration/requirement") }}';
+        });
+		
+		$('#nextAccount').click(function(){
+            window.location.href = '{{ URL::to("/guard/registration/guardSummary") }}';
         });
         
         $('#btnSave').click(function(){
