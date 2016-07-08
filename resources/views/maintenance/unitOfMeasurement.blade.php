@@ -88,7 +88,7 @@ Unit of Measurement
             <div class="col s10 push-s1">
                 <div class="input-field">
                     <input id="addMeasurement" type="text" class="validate" required="" aria-required="true">
-                    <label for="">Measurement</label> 
+                    <label for="">Unit of Measurement</label> 
                 </div>
             </div>
         </div>

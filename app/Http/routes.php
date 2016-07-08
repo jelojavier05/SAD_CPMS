@@ -15,6 +15,8 @@ Route::get('/guard/registration/sgLicense', 'GuardRegistrationController@license
 
 Route::get('/guard/registration/account', 'GuardRegistrationController@accountBC')->name('account');
 
+Route::get('/guard/registration/guardSummary', 'GuardRegistrationController@guardSummaryBC')->name('guardSummary');
+
 Route::post('/guard/registration/personalData/session', 'GuardRegistrationController@personalDataSession');
 
 Route::post('/guard/registration/educationalBackground/session', 'GuardRegistrationController@educationalBackgroundSession');
@@ -39,7 +41,7 @@ Route::post('/guard/registration/guard/insert', 'GuardRegistrationController@ins
 
 //SECURITY GUARD INTERFACE ----------------------------------------------------
 
-
+Route::get('/admin/home', 'AdminHomeController@index');
 
 Route::get('/guardView', 'GuardViewController@index');
 Route::get('/clientView', 'ClientViewController@index');

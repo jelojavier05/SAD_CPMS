@@ -154,6 +154,10 @@ class GuardRegistrationController extends Controller
             ->with('firstName', $request->session()->get('firstName'));
     }
     
+	public function guardSummaryBC(Request $request){
+        return view('/guardAdmin/guardSummary');
+    }
+	
     public function personalDataSession(Request $request){
         
         $array = array(); 

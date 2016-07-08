@@ -49,13 +49,18 @@
     <nav class="indigo darken-4">
         
         <div class="container">
-<!--            <div class="parallax"><img class="responsive-img;" style="width: 100%;" src="{!! URL::asset('../Materialize/images/background3.jpg') !!}" alt="Unsplashed background img 1"></div>-->
+
             <div class="nav-wrapper">
                
                 
                 <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
-                
-                    <ul class="side-nav fixed white" id="mobile-nav">
+                	
+					
+							
+						
+					
+                    
+					<ul class="side-nav fixed white" id="mobile-nav">
                     <div class="iconposition">
 						<div class="card-panel blue darken-4">
 
@@ -201,8 +206,14 @@
                 </div>
                 
             </div>
+				
+							<ul class="right hide-on-med-and-down">
+							  <li><a href="/admin/home" class="blue darken-3">Home</a></li>
+							  <li><a href="#" class="red darken-3">Log Out</a></li>
+							</ul>
         
-			</div></div>
+			</div>
+		</div>
     
     </nav>
 <!--
