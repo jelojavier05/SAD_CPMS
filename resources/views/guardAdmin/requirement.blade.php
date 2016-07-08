@@ -79,7 +79,7 @@ Guard Form
         $('#nextRequirement').click(function(){
             getCheckedRequirement();
             sendData();
-            window.location.href = '{{ URL::to("/guard/registration/sgLicense") }}';
+            window.location.href = '{{ URL::to("/guard/registration/account") }}';
         });
         
         function getCheckedRequirement(){
