@@ -72,6 +72,8 @@ Body Attributes
 									<td id = "id{{ $bodyAttribute->intBodyAttributeID }}">{{ $bodyAttribute->intBodyAttributeID }}</td>
 
 									<td id = "name{{ $bodyAttribute->intBodyAttributeID }}">{{ $bodyAttribute->strBodyAttributeName }}</td>
+                                    <input type="hidden" id = "measurementID{{ $bodyAttribute->intBodyAttributeID }}" value = "{{ $bodyAttribute->Measurement->intMeasurementID }}" >
+                                    <td id = "uom{{ $bodyAttribute->intBodyAttributeID }}" value = "{{ $bodyAttribute->Measurement->intMeasurementID }}">{{ $bodyAttribute->Measurement->strMeasurement }} </td>
                                </tr>
                             @endforeach
                         </tbody>
@@ -100,9 +102,11 @@ Body Attributes
 					
 					<div class="row">
 						<div class = "col 9">    
-							<select  class="browser-default" id = "">
+							<select  class="browser-default" id = "addMeasurement">
 								<option disabled selected value = "0">Unit of Measurement</option>
-									<option id = "" value = "">test1</option>
+								@foreach ($measurements as $measurement)
+                                    <option id = "{{$measurement->intMeasurementID}}" value = "{{$measurement->intMeasurementID}}">{{$measurement->strMeasurement}}</option>
+                                @endforeach
 							</select>
 						</div>
 					</div>
@@ -110,15 +114,13 @@ Body Attributes
 					<div class="row">
 						<div class="col s5">
 							<div class="input-field">
-								<input id="strVitalStatistics" type="text" class="validate" name = "vitalStatistics" required="" aria-required="true">
+								<input id="addBodyAttribute" type="text" class="validate" name = "vitalStatistics" required="" aria-required="true">
 								<label for="strArmedServiceDesc">Body Attribute Type</label> 
 							</div>
 						</div>
             		</div>
 						
 	<!-- Modal Button Save -->
-				
-		
     		</div>
 			<div class="modal-footer" style="background-color:#01579b !important;">
 			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
@@ -143,9 +145,11 @@ Body Attributes
 				
 					<div class="row">
 						<div class = "col 9">    
-							<select  class="browser-default" id = "">
+							<select  class="browser-default" id = "editMeasurement">
 								<option disabled selected value = "0">Unit of Measurement</option>
-									<option id = "" value = "">test1</option>
+								@foreach ($measurements as $measurement)
+                                    <option id = "measurement{{$measurement->intMeasurementID}}"    value = "{{$measurement->intMeasurementID}}">{{$measurement->strMeasurement}}</option>
+                                @endforeach
 							</select>
 						</div>
 					</div>
@@ -219,7 +223,9 @@ Body Attributes
         });
  
 		$("#btnAddSave").click(function(){
-          if ($('#strVitalStatistics').val().trim()){
+            
+          if ($('#addBodyAttribute').val().trim() && $('#addMeasurement').val() != 0){
+              var measurementID = $('#addMeasurement').val();
               $.ajax({
 				
 				type: "POST",
@@ -232,11 +238,10 @@ Body Attributes
                     }
                 },
 				data: {
-					vitalStatistics: $('#strVitalStatistics').val(),
+					bodyAttribute: $('#addBodyAttribute').val(),
+                    measurementID: measurementID
 				},
 				success: function(data){
-//					var toastContent = $('<span>Record Added.</span>');
-//                    Materialize.toast(toastContent, 1500,'green', 'edit');
                     refreshTable();
                     $('#modalvitstatsAdd').closeModal();
 					swal("Success!", "Record has been Added!", "success");
@@ -249,10 +254,10 @@ Body Attributes
 
 
 			});//ajax
-            }else{
-                var toastContent = $('<span>Please Check Your Input. </span>');
-                Materialize.toast(toastContent, 1500,'red', 'edit');
-            }
+        }else{
+            var toastContent = $('<span>Please Check Your Input. </span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
 
 
 		});//button add clicked
@@ -273,6 +278,7 @@ Body Attributes
 				data: {
 					vitalStatisticsID: $('#editID').val(),
                     vitalStatistics: $('#editname').val(),
+                    measurementID: $('#editMeasurement').val()
 					
 				},
 				success: function(data){
@@ -298,7 +304,7 @@ Body Attributes
 
 		});//button add clicked
         
- 		  $('#dataTable').on('click', '.buttonDelete', function(){
+        $('#dataTable').on('click', '.buttonDelete', function(){
 
 			document.getElementById('deleteID').value =this.id;  
             swal({   title: "Are you sure?",   
@@ -343,15 +349,12 @@ Body Attributes
             $('#modalvitstatsEdit').openModal();
             var itemID = "id" + this.id;
 			var itemName = "name" + this.id;
-
+            var itemMeasurement = "measurementID" + this.id;
+            
 			document.getElementById('editID').value = $("#"+itemID).html();
 			document.getElementById('editname').value = $("#"+itemName).html();
+            $('#editMeasurement').val($('#'+itemMeasurement).val());
         });
-
-//        $('#dataTable').on('click', '.buttonDelete', function(){
-//            $('#modalvitstatsDelete').openModal();
-//            document.getElementById('deleteID').value =this.id;
-//        });
 
         $('#dataTable').on('click', '.checkboxFlag', function(){
             var $this = $(this);
@@ -403,6 +406,7 @@ Body Attributes
                         $.each(data, function(index, element) {
                             var flag = data[index].boolFlag;
                             
+                            var measurement = getMeasurement(data[index].intMeasurementID);
                             if (flag){
                                 var checkbox = '<div class="switch" style="margin-right: -80px;"><label><input type="checkbox" checked class = "checkboxFlag" id = "'+data[index].intBodyAttributeID+'"><span class="lever"></span></label></div>';
                             }else{
@@ -414,11 +418,16 @@ Body Attributes
                                 '<button class="buttonUpdate btn" name="" id="' +data[index].intBodyAttributeID+'" ><i class="material-icons">edit</i></button>',
                                 '<button class="buttonDelete btn red" id="'+ data[index].intBodyAttributeID +'"><i class="material-icons">delete</i></button>',
                                 '<h id = "id' +data[index].intBodyAttributeID + '">' + data[index].intBodyAttributeID +'</h>',
-                                '<h id = "name' +data[index].intBodyAttributeID + '">' + data[index].strBodyAttributeName +'</h>']).draw();
+                                '<h id = "name' +data[index].intBodyAttributeID + '">' + data[index].strBodyAttributeName +'</h>',
+                                '<h id = "uom' +data[index].intBodyAttributeID + '" value = "value' +data[index].intMeasurementID + '">' + measurement +'</h>']).draw();
+                                $('<input>').attr({
+                                    type: 'hidden',
+                                    id: 'measurementID' + data[index].intBodyAttributeID ,
+                                    value: data[index].intMeasurementID
+                                }).appendTo('#dataTable');
                         });//foreach
                         
                         refreshTextfield();
-                        
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occur. </span>');
@@ -429,9 +438,34 @@ Body Attributes
                 
             }
         
+        function getMeasurement(measurementID){
+            var measurement;
+            
+            $.each(listMeasurement, function(index, element) {
+                if (measurementID == listMeasurement[index].intMeasurementID){
+                    measurement = listMeasurement[index].strMeasurement;
+                    return false;              
+                }
+            });//foreach
+            return measurement;
+        }
+        
         function refreshTextfield(){
                 document.getElementById('strVitalStatistics').value = "";
             }
+        var listMeasurement ;
+        $.ajax({    
+            type: 'GET', 
+            url: '{{ URL::to("/maintenance/unitOfMeasurement/get") }}', 
+            data: { get_param: 'value' },
+            dataType: 'json',
+            success: function (data) { 
+                listMeasurement = data;
+            },
+            error: function(data){
+
+            },async: false
+        });
 	});//document ready
 </script>
 

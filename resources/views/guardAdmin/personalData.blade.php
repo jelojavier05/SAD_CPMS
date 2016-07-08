@@ -146,6 +146,7 @@ Guard Form
 									<tr>
 										<th style="width:260px;">Name</th>
 										<th>Specification</th>
+                                        <th>Measurement</th>
 									</tr>
 								</thead>
 
@@ -163,6 +164,7 @@ Guard Form
                                                 <label data-error="Incorrect" for="specification{{ $bodyAttributeValue->intBodyAttributeID }}"></label>
                                             </div>
                                         </td>
+                                        <td id = "measurement {{$bodyAttribute->intMeasurementID}}">{{$bodyAttribute->Measurement->strMeasurement}}</td>
                                     </tr>
                                     @endforeach
                                     @else
@@ -177,6 +179,7 @@ Guard Form
                                                 <label data-error="Incorrect" for="specification{{ $bodyAttribute->intBodyAttributeID }}"></label>
                                             </div>
                                         </td>
+                                        <td id = "measurement {{$bodyAttribute->intMeasurementID}}">{{$bodyAttribute->Measurement->strMeasurement}}</td>
                                     </tr>
                                     @endforeach
                                     @endif

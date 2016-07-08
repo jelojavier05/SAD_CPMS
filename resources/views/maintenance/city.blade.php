@@ -62,8 +62,8 @@ City
                                         </button>
                                     </td>
                                     <td id = "id{{$city->intCityID}}">{{$city->intCityID}}</td>
-                                    <td id = "province{{$city->intCityID}}" value = "{{$city->Province->intProvinceID}}">{{$city->Province->strProvinceName}}</td>
-                                    <input type="hidden" id = "provinceID{{$city->intCityID}}" value = "{{$city->Province->intProvinceID}}" >
+                                    <td id = "province{{$city->intCityID}}" value = "{{$city->intProvinceID}}">{{$city->Province->strProvinceName}}</td>
+                                    <input type="hidden" id = "provinceID{{$city->intCityID}}" value = "{{$city->intProvinceID}}" >
                                     <td id = "name{{$city->intCityID}}">{{$city->strCityName}}</td>
                                 </tr>
                             @endforeach
@@ -394,9 +394,7 @@ City
                     });//foreach                    
                 },
                 error: function(data){
-                    var toastContent = $('<span>Error Occur. </span>');
-                    Materialize.toast(toastContent, 1500,'red', 'edit');
-                    console.log(data);
+                    
                 },async: false
             });//ajax       
             return provinceName;

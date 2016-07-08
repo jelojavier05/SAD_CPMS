@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\BodyAttribute;
+use App\Model\Measurement;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -12,8 +13,12 @@ class BodyAttributeController extends Controller
     public function index()
     {
         $bodyAttributes = BodyAttribute::where('deleted_at', null)->get();
+        $measurements = Measurement::where('deleted_at', null)
+            ->where('boolFlag', 1)->get();
 
-        return view('maintenance.bodyAttribute',['bodyAttributes'=>$bodyAttributes]);
+        return view('maintenance.bodyAttribute')
+            ->with('bodyAttributes', $bodyAttributes)
+            ->with('measurements', $measurements);
     }
     
     public function getBodyAttribute(){
@@ -23,12 +28,13 @@ class BodyAttributeController extends Controller
     }
 
     public function addBodyAttribute(Request $request){
-        $vitalStatistics = new BodyAttribute;
+        $bodyAttribute = new BodyAttribute;
 
         try {
-            $vitalStatistics->strBodyAttributeName = $request->vitalStatistics;
+            $bodyAttribute->strBodyAttributeName = $request->bodyAttribute;
+            $bodyAttribute->intMeasurementID = $request->measurementID;
 
-            $vitalStatistics->save();
+            $bodyAttribute->save();
 
         } catch (Exception $e) {
             
@@ -38,7 +44,8 @@ class BodyAttributeController extends Controller
     public function updateBodyAttribute(Request $request){
         try {
             BodyAttribute::where('intBodyAttributeID', $request->vitalStatisticsID)
-            ->update(['strBodyAttributeName'=>$request->vitalStatistics]);
+            ->update(['strBodyAttributeName'=>$request->vitalStatistics,
+                      'intMeasurementID' => $request->measurementID]);
         } catch (Exception $e) {
             
         }
