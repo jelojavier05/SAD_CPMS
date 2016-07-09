@@ -45,7 +45,7 @@
 
 </head>
 
-<body id="scrollhider" class="bodyscrollhider grey lighten-3">
+<body id="scrollhider" class="bodyscrollhider red lighten-3">
     
     
     <nav class="indigo darken-4">
@@ -57,7 +57,7 @@
                 
                 <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
                 
-                    <ul class="side-nav fixed white" id="mobile-nav">
+                    <div class="side-nav fixed white" id="mobile-nav">
                     <div class="iconposition">
 						<div class="card-panel blue darken-4">
 
@@ -113,13 +113,9 @@
                             
                             
                             
-                </ul>
+                </ul>   
 				
-                    
-                    
-                     
-				
-                </ul>
+                </div>
 				<div>
                  <div class="homeposition">
                     
@@ -226,8 +222,7 @@
   <a class='dropdown-button btn' href='#' data-activates='dropdownothers' style="display:none;">Drop Me!</a>
 
     
-    @yield('content')
-	@yield('script')
+
 	<script>
 
        

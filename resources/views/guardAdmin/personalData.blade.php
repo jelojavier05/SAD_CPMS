@@ -112,7 +112,7 @@ Guard Form
 
 				</div>
 
-				<div class="input-field col s4 push-s2">
+				<div class="input-field col s4">
 						<select id = "civilStatus">
 						  <option value="" disabled selected>Choose</option>
 						  <option value="Single">Single</option>
@@ -123,7 +123,7 @@ Guard Form
 
 				</div>
 
-				<div class="input-field col s4 push-s2">
+				<div class="input-field col s4">
 						<select id = "gender">
 							<option value="" disabled selected>Choose</option>
 							<option value="Male">Male</option>
@@ -131,7 +131,14 @@ Guard Form
 						</select>
 					    <label>Gender</label>
 				 </div>
-
+			   	
+			   	 <div class="col s4">
+						<div class="input-field">
+							<input id="strLicenseNo" type="text" class="validate" name = "licenseNo" required="" aria-required="true">
+							<label for="strLicenseNo">License Number</label> 
+						</div>
+				</div>
+			   
 				<div class="input-field col s10 push-s1">
                     <h5>Body Attributes:</h5>
 					<div class="row">

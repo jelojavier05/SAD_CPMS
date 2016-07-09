@@ -27,7 +27,7 @@ div.scroll {
 
 .iconposition
 {
-    margin-top: -10px;
+    margin-top: -8px;
 }
 
 .dashiconpos
@@ -117,7 +117,15 @@ div.scroll {
      color: #64b5f6;
    }
 
+.sidenavhover
+{
+	overflow:hidden;
+}
 
+.sidenavhover:hover
+{
+	overflow:scroll;
+}
 
 /*
 .selectheight .selection{

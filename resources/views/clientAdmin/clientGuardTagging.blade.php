@@ -12,7 +12,6 @@ Client
 			<div class="nav-wrapper blue">
 				<div class="row">	
 					<div class="col s12">
-						<a href="{{URL::route('basicInfoBC')}}" class="breadcrumb">Basic Information</a>
 						<a href="{{URL::route('contractInfoBC')}}" class="breadcrumb">Contract Information</a>
 						<a href="{{URL::route('guardDeploymentBC')}}" class="breadcrumb">Guard Deployment</a>
 					</div>

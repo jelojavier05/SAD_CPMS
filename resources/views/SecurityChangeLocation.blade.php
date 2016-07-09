@@ -1,15 +1,15 @@
-@extends('CPMSLogin')
+@extends('SecurityGuardDashboard')
+
+@section('title')
+Security Change Location
+@endsection
 
 
 @section('content')
 
-<div class="row"></div>
-<div class="row"></div>
-<div class="row"></div>
-<div class="row"></div>
 <div class="row">
 <div class="col l12">
-    <div class="col l6 offset-l3 z-depth-3">
+    <div class="col l12 z-depth-3 white">
     
     
     <table class="responsive-table">
@@ -28,11 +28,20 @@
         <tbody>
          
             <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td></td>
-            <td></td>
+            <td>SWA Company</td>
+            <td>Steel Works</td>
+            <td>Manila</td>
+            <td>212 Sagigilid St. Sta. Mesa, Manila</td>
+            <td>
+                <div class="switch">
+    <label>
+      Off
+      <input type="checkbox">
+      <span class="lever"></span>
+      On
+    </label>
+  </div>
+                </td>
             <td>
                 <div class="col l2">
                 
@@ -42,11 +51,18 @@
           </tr>
             
          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td></td>
-            <td></td>
+            <td>San Miguel Corp</td>
+            <td>Eklabush</td>
+            <td>Makati</td>
+            <td>521 Seses St. Makati City</td>
+                            <td><div class="switch">
+                                <label>
+                                  Off
+                                  <input type="checkbox">
+                                  <span class="lever"></span>
+                                  On
+                                </label>
+                                </div></td>
             <td>
                 <div class="col l2">
                 
@@ -56,11 +72,20 @@
           </tr>
             
             <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td></td>
-            <td></td>
+            <td>Polytechnic University of the Philippines</td>
+            <td>University</td>
+            <td>Manila</td>
+            <td>Anonas, Maynila, Kalakhang Maynila</td>
+            <td>
+                            <div class="switch">
+                            <label>
+                              Off
+                              <input type="checkbox">
+                              <span class="lever"></span>
+                              On
+                            </label>
+              </div>
+                </td>
             <td>
                 <div class="col l2">
                 
@@ -70,11 +95,18 @@
           </tr>
             
             <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td></td>
-            <td></td>
+            <td>Santibanez Company</td>
+            <td>Recruitment Agency</td>
+            <td>Pasay</td>
+            <td>529 blk.1 Pasay City</td>
+            <td><div class="switch">
+    <label>
+      Off
+      <input type="checkbox">
+      <span class="lever"></span>
+      On
+    </label>
+  </div></td>
             <td>
                 <div class="col l2">
                 
@@ -84,11 +116,18 @@
           </tr>
             
             <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td></td>
-            <td></td>
+            <td>Senyora Dede Pueblo</td>
+            <td>Brick and Stones</td>
+            <td>Mandaluyong</td>
+            <td>35103 St. Barangka Mandaluyong City</td>
+            <td><div class="switch">
+    <label>
+      Off
+      <input type="checkbox">
+      <span class="lever"></span>
+      On
+    </label>
+  </div></td>
             <td>
                 <div class="col l2">
                 
@@ -102,46 +141,73 @@
     
         </div>
 
+    <!-- SELECT GUARD-->
     
-    <div class="col l3">
+    
+<!--    <div class="col l4">
    <form action="#">
-       <div class="card medium offset-l1 z-depth-3" style="margin-top:1%">
-           
-           <th data-field="price"><center><bold>Selection of Guard</bold></center></th>
+       <div class="z-depth-3 white">
+           <div class="row"></div>
+           <label><bold><center><h5>SELECT GUARD</h5></center></bold></label><br>
+
            <hr>
+           <label>Select one (1) guard to be swapped</label>
            
-           <p>
-                <input class="with-gap" name="group1" type="radio" id="test4" />
-                <label for="test4">Brown</label>
-            </p>
-            <p>
-              <input class="with-gap" name="group1" type="radio" id="test1" />
-              <label for="test1">Red</label>
-            </p>
-            <p>
-              <input class="with-gap" name="group1" type="radio" id="test2" />
-              <label for="test2">Yellow</label>
-            </p>
-            <p>
-              <input class="with-gap" name="group1" type="radio" id="test3"  />
-              <label for="test3">Green</label>
-            </p>
-              <p>
-                <input class="with-gap" name="group1" type="radio" id="test4" />
-                <label for="test4">Brown</label>
-            </p>
-       </div>
+                         <form action="#">
+    <p>
+      <input class="with-gap" name="group1" type="radio" id="test1" />
+      <label for="test1">Randy</label>
+    </p>
+    <p>
+      <input class="with-gap" name="group1" type="radio" id="test2" />
+      <label for="test2">Michael</label>
+    </p>
+    <p>
+      <input class="with-gap" name="group1" type="radio" id="test3"  />
+      <label for="test3">Bernie</label>
+    </p>
+      <p>
+        <input class="with-gap" name="group1" type="radio" id="test4"/>
+        <label for="test4">Anson</label>
+    </p>
+         <p>
+      <input class="with-gap" name="group1" type="radio" id="test5"  />
+      <label for="test5">Eden</label>
+    </p>
+      <p>
+        <input class="with-gap" name="group1" type="radio" id="test6"/>
+        <label for="test6">Carlito</label>
+    </p>
+                                <p>
+        <input class="with-gap" name="group1" type="radio" id="test7"/>
+        <label for="test7">Romnick</label>
+    </p>
+         <p>
+      <input class="with-gap" name="group1" type="radio" id="test7"  />
+      <label for="test8">Green</label>
+    </p>
+      <p>
+        <input class="with-gap" name="group1" type="radio" id="test9"/>
+        <label for="test9">Joe</label>
+    </p>
   </form>
+       </div>
+       
+  </form>
+        
         </div>
+      <!--END OF SELECT GUARD-->
+    
+    
     </div>
     
     <div class="col l12">
         
-        <div class="col l6 offset-l3 z-depth-3">
+        <div class="col l6 z-depth-3">
         
           <div class="row"></div>
                        <div class="row"></div>
-                <div class="col l10 offset-l1">
+                <div class="col l10">
             <label class="ft1">Approval Form for Location Request Swapping</label>
         
                 </div>
@@ -190,7 +256,21 @@
 
   
     </div>
+    
+    
 
- 
+
+
+</div>
+
+<script>
+
+
+    $(document).ready(function(){
+      $('.slider').slider({full_width: true});
+    });
+</script>
+
+
 
 @stop

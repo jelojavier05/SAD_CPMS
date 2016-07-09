@@ -22,11 +22,12 @@ Guard
 <!--            </div>-->
         
             <div class="row">
-                <div class="col s12" style="margin-top:-20px;">
+                <div class="col s12" style="margin-top:-5px;">
                     <table class="highlight white" style="border-radius:10px;" id="dataTable">
 
                         <thead>
                             <tr>
+								<th style="width:50px;"></th>
 								<th style="width:50px;"></th>
                                 <th>ID</th>
                                 <th>Name</th>
@@ -42,6 +43,13 @@ Guard
                                     
 
                                     <td>
+                                        <button class="buttonUpdate btn modal-trigger" name="" id="" href="#modalRequirements">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <label for=""></label>
+                                    </td>
+									
+									<td>
                                         <button class="buttonDelete btn blue "  id="">
                                             MORE
                                         </button>
@@ -90,11 +98,11 @@ Guard
 								<!------------------Date Expired------------------>
 
 										<div>
-											<span class = "card-title white-text">Gender:</span>
+											<span class = "card-title white-text">License Number:</span>
 										</div>
 
 										<div>
-											<p>Male</p>
+											<p>2012-12345-MN-0</p>
 										</div>
                                 <!--------------------------------------------------->
                                         
@@ -200,6 +208,55 @@ Guard
 					</div>
 				</div>	
     </div>
+<!---------------------------------------------------------------------------------------------------------->
+<div id="modalRequirements" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:330px !important;">
+    <div class="modal-header"><h2>Requirements</h2></div>
+    
+    <div class="modal-content">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        
+       
+        
+        <div class="row">
+            <div class="col s3">
+                <input type="checkbox" id="1" value = ""/>
+                <label for="1" class="black-text">test1</label></br>
+			
+            </div>
+			
+			<div class="col s3">
+                <input type="checkbox" id="2" value = ""/>
+                <label for="2" class="black-text">test2</label></br>
+			
+            </div>
+	
+			<div class="col s3">
+                <input type="checkbox" id="3" value = ""/>
+                <label for="3" class="black-text">test3</label></br>
+			
+            </div>
+
+			<div class="col s3">
+                <input type="checkbox" id="4" value = ""/>
+                <label for="4" class="black-text">test4</label></br>
+			
+            </div>
+
+			<div class="col s3">
+                <input type="checkbox" id="5" value = ""/>
+                <label for="5" class="black-text">test5</label></br>
+			
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="modal-footer" style="background-color:#01579b !important;">
+        <button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+</div>
 </div>
 
 
@@ -213,8 +270,9 @@ Guard
         $("#dataTable").DataTable({
                  "columns": [
                 { "orderable": false },
+                { "orderable": false },
                 null,
-                null,
+				null,
 				null
                 ] ,  
                 "pageLength":5,
