@@ -95,6 +95,40 @@ Delivery
 										<div>
 											<p>09123456789</p>
 										</div>
+										
+								<!------------------Items------------------>
+
+										<div>
+											<span class = "card-title white-text">Items:</span>
+										</div>
+										
+										<table>
+											<thead>
+											  <tr>
+												  <th>License No</th>
+												  <th>Name</th>
+												  <th>Type of Gun</th>
+											  </tr>
+											</thead>
+
+											<tbody>
+											  <tr>
+												<td>2013-12345-MN-0</td>
+
+												<td>M4A1</td>
+												
+												<td>Rifle</td>
+											  </tr>
+											  <tr>
+												<td>2014-01231-MN-0</td>
+
+												<td>Arctic Warfare Magnum</td>
+
+												<td>Rifle</td>
+											  </tr>
+											  
+											</tbody>
+										</table>
                                         
 
                                         
