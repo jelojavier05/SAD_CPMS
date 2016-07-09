@@ -1,5 +1,12 @@
 <?php
 
+Route::get('/guard/registration/personaldata', 'PersonalDataController@index')->name('personaldata');
+
+Route::get('/guard/registration/personaldata/get', 'PersonalDataController@get');
+
+Route::post('/guard/registration/personaldata/post', 'PersonalDataController@post');
+
+
 
 //Route::get('/login', 'LoginController@index')->name('login');
 
@@ -106,7 +113,7 @@ Route::post('/maintenance/gun/flag', 'GunController@flag');
 
 Route::get('/maintenance/province', 'ProvinceController@index');
 
-Route::get('/maintenance/province/get', 'ProvinceController@get');
+Route::get( '/maintenance/province/get', 'ProvinceController@get');
 
 Route::post('/maintenance/province/create', 'ProvinceController@create');
 

@@ -8,7 +8,7 @@
     <meta name="csrf_token" content="{{ csrf_token() }}" />
   <!-- ================================CSS===========================================  -->
   
-   
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
   <link href="{!! URL::asset('../css/materialize.css') !!}" type="text/css" rel="stylesheet"/>
   <link rel="stylesheet" type="text/css" media="screen,projection" href="{{!! URL::asset('../css/materialize.min.css') !!}"/>
@@ -38,8 +38,6 @@
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
   
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
-
-    <script data-require="angular.js@1.3.0-beta.5" data-semver="1.3.0-beta.5" src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
 
 </head>
 

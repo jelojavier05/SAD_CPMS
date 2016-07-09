@@ -16,7 +16,6 @@ Guard Form
 						<a href="{{URL::route('educationalBackgroundBC')}}" class="breadcrumb">Educational Background</a>
 						<a href="{{URL::route('sgBackground')}}" class="breadcrumb">SG Background</a>
 						<a href="{{URL::route('requirement')}}" class="breadcrumb">Requirements</a>
-						<a href="{{URL::route('sgLicense')}}" class="breadcrumb">Guard License</a>
 						<a href="{{URL::route('account')}}" class="breadcrumb">Account</a>
 						
 					</div>
@@ -52,14 +51,6 @@ Guard Form
 				</div>
             </div>
 		
-			<div class="row">
-				<div class="col s8 push-s2">
-					<div class="input-field">
-						<input id="rePassword" type="text" class="validate" name = "repassWord" required="" aria-required="true">
-						<label for="rePassword">Re-Type Password</label> 
-					</div>
-				</div>
-            </div>
 		</div>
 		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#" id = "backAccount">Back</button>
 		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" href="#" id = "nextAccount">Next</button>

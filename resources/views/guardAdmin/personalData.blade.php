@@ -76,12 +76,8 @@ Guard Form
                     <select  id = "provinceSelect">
                         <option disabled selected>Choose Province</option>
                         @foreach($provinces as $province)
-                        
                         <option id = "{{$province -> intProvinceID}}" >{{$province->strProvinceName}}</option>
-                        
                         @endforeach
-                        
-                        
                     </select>
 				</div>
 			   
@@ -164,7 +160,7 @@ Guard Form
                                                 <label data-error="Incorrect" for="specification{{ $bodyAttributeValue->intBodyAttributeID }}"></label>
                                             </div>
                                         </td>
-                                        <td id = "measurement {{$bodyAttribute->intMeasurementID}}">{{$bodyAttribute->Measurement->strMeasurement}}</td>
+                                        <td id = "measurement {{$bodyAttributeValue->intMeasurementID}}">{{$bodyAttributeValue->Measurement->strMeasurement}}</td>
                                     </tr>
                                     @endforeach
                                     @else
@@ -179,7 +175,7 @@ Guard Form
                                                 <label data-error="Incorrect" for="specification{{ $bodyAttribute->intBodyAttributeID }}"></label>
                                             </div>
                                         </td>
-                                        <td id = "measurement {{$bodyAttribute->intMeasurementID}}">{{$bodyAttribute->Measurement->strMeasurement}}</td>
+                                        <td id = "measurement {{$bodyAttribute->intBodyAttributeID}}">{{$bodyAttribute->Measurement->strMeasurement}}</td>
                                     </tr>
                                     @endforeach
                                     @endif
@@ -263,8 +259,6 @@ Guard Form
             });
             
             $("#citySelect option[id='"+ $('#citySession').val() +"']").attr("selected", "selected");
-            
-            
         };
         
         $('#nextPersonalData').click(function(){
@@ -321,6 +315,7 @@ Guard Form
             var value = {};
             var bodyAttribute = {}; 
             var bodyAttributeID = {}; 
+            var measurement = {}; 
             var province = $('#provinceSelect').children(":selected").attr("id");
             var city = $('#citySelect').children(":selected").attr("id");
             
@@ -343,10 +338,12 @@ Guard Form
                     for(intLoop = 0; intLoop < $('#counter').val(); intLoop ++){
                         if (data[intLoop]['boolFlag'] == 1){
                             var specification = 'specification' + data[intLoop]['intBodyAttributeID'];
+                            var measurement = 'measurement' + data[intLoop]['intBodyAttributeID'];
                             
                             bodyAttributeID[intCounter] = data[intLoop]['intBodyAttributeID'];
                             value[intCounter] = $('#'+specification).val();
                             bodyAttribute[intCounter] = data[intLoop]['strBodyAttributeName'];
+                            measurement[intCounter] = $('#' + measurement).val();
                             intCounter = intCounter + 1;
                         }
                     }  

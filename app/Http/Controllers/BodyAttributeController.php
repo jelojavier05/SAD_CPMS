@@ -23,8 +23,8 @@ class BodyAttributeController extends Controller
     
     public function getBodyAttribute(){
         $bodyAttribute = BodyAttribute::where('deleted_at', null)->get();
-        
         return response()->json($bodyAttribute);
+        //return $bodyAttribute;
     }
 
     public function addBodyAttribute(Request $request){

@@ -27,4 +27,8 @@ class Guard extends Model
     public function Account(){
         return $this->hasOne('App\Model\Account', 'intGuardID', 'intGuardID');
     }
+    
+    public function License(){
+        return $this->hasOne('App\Model\GuardLicense', 'intGuardID', 'intGuardID');
+    }
 }

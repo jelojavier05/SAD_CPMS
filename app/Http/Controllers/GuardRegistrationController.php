@@ -269,8 +269,7 @@ class GuardRegistrationController extends Controller
                 'strContactNumberMobile' => $request->session()->get('contactCp'),
                 'strContactNumberLandline' => $request->session()->get('contactLandline'),
                 'strCivilStatus' => $request->session()->get('civilStatus'),
-                'strGender' => $request->session()->get('gender'),
-                //'strLicenseNumber' => $request->session()->get('licenseNumber')
+                'strGender' => $request->session()->get('gender')
             ]);
             
             $bodyAttributeValues = $request->session()->get('bodyAttributeValue');

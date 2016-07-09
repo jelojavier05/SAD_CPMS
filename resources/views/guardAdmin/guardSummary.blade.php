@@ -16,7 +16,6 @@ Guard Form
 						<a href="{{URL::route('educationalBackgroundBC')}}" class="breadcrumb">Educational Background</a>
 						<a href="{{URL::route('sgBackground')}}" class="breadcrumb">SG Background</a>
 						<a href="{{URL::route('requirement')}}" class="breadcrumb">Requirements</a>
-						<a href="{{URL::route('sgLicense')}}" class="breadcrumb">Guard License</a>
 						<a href="{{URL::route('account')}}" class="breadcrumb">Account</a>
 						<a href="{{URL::route('guardSummary')}}" class="breadcrumb">Summary</a>
 					</div>

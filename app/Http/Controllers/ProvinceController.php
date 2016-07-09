@@ -21,6 +21,7 @@ class ProvinceController extends Controller
         $provinces = Province::where('deleted_at', null)->get();
         
         return response()->json($provinces);
+        
     }
     
     public function create(Request $request){
