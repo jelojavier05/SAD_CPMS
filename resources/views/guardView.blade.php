@@ -270,7 +270,7 @@ Guard
         $("#dataTable").DataTable({
                  "columns": [
                 { "orderable": false },
-                null,
+                { "orderable": false },
                 null,
 				null,
 				null
