@@ -60,12 +60,16 @@
 						
 					
                     
-					<ul class="side-nav fixed white" id="mobile-nav">
+					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >
                     <div class="iconposition">
-						<div class="card-panel blue darken-4">
+						<div class="card-panel blue darken-4" style="height:210px;">
 
-							<div class="dashicoanpos center">
+							<div class="dashiconpos center">
 								<img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="50%" height="50%">
+								<div class="card-content white-text">
+								  <span class="card-title" style="font-size:20px; position:absolute; margin-top:-30px; margin-left:-45px;">John Cena</span>
+								  <span  style=" font-size: 14px; position:absolute; margin-left:-40px;">Administrator</span>
+								</div>
 							</div>
 						</div>
 					</div>	
@@ -93,6 +97,13 @@
                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownsg" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Security Guard</button>
 													
 													<ul id='dropdownsg' class='dropdown-content' style="margin-top:1px;">
+														
+														
+														
+														
+														
+														
+														
 														<li><a class="blue-text" href="/maintenance/leave">Leave</a></li>
 														
 														<li><a class="blue-text" href="/maintenance/armedservice">Armed Service</a></li>
@@ -141,6 +152,102 @@
 							
 					</li>
 					
+					
+					<li class="bold" style="width:280px;">
+								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">assignment</i>Registration<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                            <div class="collapsible-body grey lighten-2">
+                                <ul>
+                                            
+                                  <a href="/guard/registration/personalData" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Guard</a>
+														
+								  <a href="/gunRegistration" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Gun</a>
+									
+								  <a href="/client/registration/basicInfo" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Client</a>
+                                           
+                                </ul>
+                            </div>
+					</li>		
+							
+							
+					
+							
+					<li class="bold" style="width:280px;">
+								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">send</i>Deployment<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                            <div class="collapsible-body grey lighten-2">
+                                <ul>
+                                            
+                                  	<a href="/guard/deployment" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Guard</a>
+									
+									<a href="/gun/tagging" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Gun</a>
+									
+									
+                                           
+                                </ul>
+                            </div>
+					</li>	
+							
+					<li class="bold" style="width:280px;">
+								<a class="collapsible-header waves-effect waves-blue" href="/gunDeliveryView"><i class="material-icons">local_shipping</i>Delivery</a>
+                            <div class="collapsible-body grey lighten-2">
+<!--
+                                <ul>
+                                            
+                                  
+									
+									
+                                           
+                                </ul>
+-->
+                            </div>
+					</li>
+							
+					<li class="bold" style="width:280px;">
+								<a class="collapsible-header waves-effect waves-blue" href="/gunDeliveryView"><i class="material-icons">notifications</i>Request</a>
+                            <div class="collapsible-body grey lighten-2">
+<!--
+                                <ul>
+                                            
+                                  
+									
+									
+                                           
+                                </ul>
+-->
+                            </div>
+					</li>
+							
+					<li class="bold" style="width:280px;">
+								<a class="collapsible-header waves-effect waves-blue" href="/gunDeliveryView"><i class="material-icons">event</i>Attendance</a>
+                            <div class="collapsible-body grey lighten-2">
+<!--
+                                <ul>
+                                            
+                                  
+									
+									
+                                           
+                                </ul>
+-->
+                            </div>
+					</li>
+							
+					<li class="bold" style="width:280px;">
+								<a class="collapsible-header waves-effect waves-blue" href="/gunDeliveryView"><i class="material-icons">settings_input_component</i>Settings</a>
+                            <div class="collapsible-body grey lighten-2">
+<!--
+                                <ul>
+                                            
+                                  
+									
+									
+                                           
+                                </ul>
+-->
+                            </div>
+					</li>
+							
+							
+<!--
 					<li class="bold" style="width:280px;">
 								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">people</i>Client<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
@@ -148,13 +255,15 @@
                                             
                                   	<a href="/clientView" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Records</a>
 									
-									<a href="/client/registration/basicInfo" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
+									
                                            
                                 </ul>
                             </div>
 					</li>
+-->
 							
 							
+<!--
                     <li class="bold" style="width:280px;">
 						<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">face</i>Security Guard<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
@@ -162,7 +271,7 @@
                                             
 									<a href="/guardView" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Records</a>
 									
-									<a href="/guard/registration/personalData" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
+									
 									
 									<a href="/guard/deployment" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Deployment</a>
                                            
@@ -170,14 +279,16 @@
                                 </ul>
                             </div>
                     </li>
+-->
                             
                       
+<!--
                     <li class="bold" style="width:280px;">
 								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">gun</i>Gun<i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             
-                                            <a href="/gunRegistration" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Registration</a>
+                                           
 											
 											<a href="/gun/tagging" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Tagging</a>		
 									
@@ -186,6 +297,7 @@
                                         </ul>
                             </div>
 					</li>
+-->
                             
                             
                 </ul>
@@ -195,6 +307,7 @@
                      
 				
                 </ul>
+			
 				<div>
                  <div class="homeposition">
                     
