@@ -27,29 +27,29 @@ Guard Form
                    <legend><h4>Personal Data @{{errorMessage}}</h4></legend>
                    <div class="row" style="margin:5%;">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="input-field col s4" ng-model = "firstname">
+                        <div class="input-field col s4">
                                <i class="material-icons prefix">account_circle</i>
-                               <input placeholder=" " id="firstName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" ng-value = "firstname">
+                               <input placeholder=" " id="firstName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" value = "@{{personalData.firstName}}">
                                <label data-error="Incorrect" for="firstName">First Name</label>
                         </div>
 
                         <div class="input-field col s4">
                                 <i class="material-icons prefix">account_circle</i>
-                                <input  id="middleName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" value = "">
+                                <input  id="middleName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" placeholder=" " value = "@{{personalData.middleName}}">
                                 <label data-error="Incorrect" for="middleName">Middle Name</label>
 
                         </div>
 
                         <div class="input-field col s4">
                                 <i class="material-icons prefix">account_circle</i>
-                                <input  id="lastName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+                                <input  id="lastName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" placeholder=" " value = "@{{personalData.lastName}}">
                                 <label data-error="Incorrect" for="lastName">Last Name</label>
 
                         </div>
 
                         <div class="input-field col s4">
                                 <i class="material-icons prefix">home</i>
-                                <input  id="address" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
+                                <input  id="address" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true" placeholder=" " value = "@{{personalData.address}}">
 
                                 <label data-error="Incorrect" for="address">Address</label>
 
@@ -131,7 +131,7 @@ Guard Form
                                                 </td>
                                                 <td>
                                                     <div class="input-field col s7">
-                                                        <input  ng-attr-id = "@{{'specification' + bodyAttribute.intBodyAttributeID}}" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
+                                                        <input  ng-attr-id = "@{{'specification' + bodyAttribute.intBodyAttributeID}}" type="text" ng-value = "@{{bodyAttribute.strValue}}" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
                                                         <label data-error="Incorrect" for=""></label>
                                                     </div>
                                                 </td>
@@ -150,19 +150,24 @@ Guard Form
                     <button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextPersonalData">Next</button>
                 </div>
             </div>
+            <input type = "hidden" id = "counter" value = "@{{counter}}">
+            <input type = "hidden" id = "provinceSession" value = "@{{personalData.province}}">
+            <input type = "hidden" id = "counter" value = "@{{counter}}">
+            <input type = "hidden" id = "boolFlag" value = "@{{personalData.flag}}">
         </div>
-        <input type = "hidden" id = "counter" value = "@{{counter}}">
+        
     </div>
 </div>
 
 
 @stop
 @section('script')
-<script type="text/javascript" src="{!! asset('js/personalData.js') !!}"></script>
+
 
 <script>
     
     $(document).ready(function() {
+        
 //        if ($('#session').val() == "active"){
 //            var provinceID = $('#provinceSession').val();
 //            
@@ -277,8 +282,8 @@ Guard Form
         });//city get
         
         $('#nextPersonalData').click(function(){
-            
-            sendData();
+            confirm($('#provinceSession').val());
+            //sendData();
 //            window.location.href = '{{ URL::to("/guard/registration/educationalBackground") }}';
         });
         
@@ -319,8 +324,7 @@ Guard Form
             var measurement = {}; 
             var province = $('#provinceSelect').children(":selected").attr("id");
             var city = $('#citySelect').children(":selected").attr("id");
-            confirm($('#measurement30').html());
-            
+            confirm(province);
             $.ajax({
                 type: "GET",
                 url: "{{action('BodyAttributeController@getBodyAttribute')}}",
@@ -329,9 +333,6 @@ Guard Form
                     if (token) {
                           return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                     }
-                },
-                data: {
-                    
                 },
                 success: function(data){
                     var intCounter = 0;
@@ -356,46 +357,47 @@ Guard Form
                 
             });//ajax
             
-//            $.ajax({
-//
-//                type: "POST",
-//                url: "{{action('GuardRegistrationController@personalDataSession')}}",
-//                beforeSend: function (xhr) {
-//                    var token = $('meta[name="csrf_token"]').attr('content');
-//
-//                    if (token) {
-//                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-//                    }
-//                },
-//                data: {
-//                    strFirstName: $('#firstName').val(),
-//                    strMiddleName:$('#middleName').val(),
-//                    strLastName:$('#lastName').val(),
-//                    strAddress:$('#address').val(),
-//                    dateBirth:$('#dateOfbirth').val(),
-//                    placeofbirth:$('#placeofbirth').val(),
-//                    strMobileNumber:$('#contactCp').val(),
-//                    strLandlineNumber:$('#contactLandline').val(),
-//                    strCivilStatus:$('#civilStatus').val(),
-//                    strGender:$('#gender').val(),
-//                    value: value,
-//                    bodyAttribute: bodyAttribute,
-//                    bodyAttributeID: bodyAttributeID,
-//                    province: province,
-//                    city: city
-//                    
-//                },
-//                success: function(data){
-//                    
-//                },
-//                error: function(data){
-//                    confirm('error send data');
-//                }
-//            });//ajax
+            $.ajax({
+
+                type: "POST",
+                url: "{{action('PersonalDataController@post')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    strFirstName: $('#firstName').val(),
+                    strMiddleName:$('#middleName').val(),
+                    strLastName:$('#lastName').val(),
+                    strAddress:$('#address').val(),
+                    dateBirth:$('#dateOfbirth').val(),
+                    placeofbirth:$('#placeofbirth').val(),
+                    strMobileNumber:$('#contactCp').val(),
+                    strLandlineNumber:$('#contactLandline').val(),
+                    strCivilStatus:$('#civilStatus').val(),
+                    strGender:$('#gender').val(),
+                    value: value,
+                    bodyAttribute: bodyAttribute,
+                    bodyAttributeID: bodyAttributeID,
+                    measurement:measurement,
+                    province: province,
+                    city: city
+                    
+                },
+                success: function(data){
+                    
+                },
+                error: function(data){
+                    confirm('error send data');
+                }
+            });//ajax
         }//sendData()
     });
    
 </script>
-
+<script type="text/javascript" src="{!! asset('js/personalData.js') !!}"></script>
 
 @stop

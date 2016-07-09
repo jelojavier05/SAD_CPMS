@@ -1,16 +1,16 @@
 <?php
 
-Route::get('/guard/registration/personaldata', 'PersonalDataController@index')->name('personaldata');
+Route::get('/guard/registration/personaldata', 'PersonalDataController@index')
+    ->name('personaldata');
 
 Route::get('/guard/registration/personaldata/get', 'PersonalDataController@get');
 
 Route::post('/guard/registration/personaldata/post', 'PersonalDataController@post');
 
-
+Route::get('/guard/registration/educationalbackground', 'EducationalBackgroundController@index')
+    ->name('educationalbackground');
 
 //Route::get('/login', 'LoginController@index')->name('login');
-
-Route::get('/guard/registration/personalData', 'GuardRegistrationController@personalDataBC')->name('personalDataBC');
 
 Route::get('/guard/registration/educationalBackground', 'GuardRegistrationController@educationalBackgroundBC')->name('educationalBackgroundBC');
 

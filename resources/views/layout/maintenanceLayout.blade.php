@@ -156,7 +156,7 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             
-                                  <a href="/guard/registration/personalData" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Guard</a>
+                                  <a href="/guard/registration/personaldata" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Guard</a>
 														
 								  <a href="/gunRegistration" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Gun</a>
 									

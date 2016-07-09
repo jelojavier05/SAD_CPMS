@@ -4,14 +4,9 @@
         var measurement;
         
         var onPersonaldataComplete = function(response){
-            var data = response.data; 
-            $scope.firstname = data.firstname;
+            $scope.personalData = response.data; 
             
-            if (data){
-                
-            }else{
-                
-            }
+            
         }; 
         
         var onMeasurementCompelete = function(response){
@@ -23,7 +18,7 @@
             
             var bodyAttribute = response.data;
             for (intLoop = 0; intLoop < bodyAttribute.length; intLoop ++){
-                for (intLoop2 = 0; intLoop2 <measurement.length; intLoop2 ++){
+                for (intLoop2 = 0; intLoop2 < measurement.length; intLoop2 ++){
                     if (bodyAttribute[intLoop].intMeasurementID == measurement[intLoop2].intMeasurementID){
                         bodyAttribute[intLoop].intMeasurementID = measurement[intLoop2].strMeasurement;
                     }
