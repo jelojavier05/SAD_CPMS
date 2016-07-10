@@ -32,5 +32,18 @@ class SGBackgroundController extends Controller
             ->with ('armedservices', $armedservices)
             ->with ('governmentExams', $governmentExams);
     }
+    
+    public function getArmedService(Request $request){
+        
+    }
+    
+    public function getGovernmentExam(Request $request){
+        
+    }
+    
+    public function post(Request $request){
+        $request->session()->put('armedService', $request->armedService);
+        $request->session()->put('governmentExam', $request->governmentExam);
+    }
 
 }

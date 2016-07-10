@@ -175,6 +175,46 @@ Guard Form
             );
         }//year
         
+        $.ajax({
+
+            type: "GET",
+            url: "{{action('SGBackgroundController@getGovernmentExam')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                if (data){
+                    console.log(data);
+                }else{
+                    
+                }
+            }
+        }); //get govermentExam
+        
+        $.ajax({
+
+            type: "GET",
+            url: "{{action('SGBackgroundController@getArmedService')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                if (data){
+                    
+                }else{
+                    
+                }
+            }
+        }); //get govermentExam
+        
         $('#backArmed').click(function(){
             window.location.href = '{{ URL::to("/guard/registration/educationalbackground") }}';
         });
@@ -310,6 +350,13 @@ Guard Form
             
         });
         
+        function GovernmentExam(id, rating, date, name) {
+            this.id = id;
+            this.rating = rating;
+            this.date = date;
+            this.name = name;
+        }
+        
         function isGovernmentExamExist(governmentExamID){
             var boolChecker = true;
             for (intLoop = 0; intLoop < intCounter; intLoop ++){
@@ -337,6 +384,7 @@ Guard Form
         
         function sendData(){
             var armedServiceID = $("#armedService option:selected").val();
+            var governmentExam = [];
             
             if (armedServiceID != 0){
                 var objArmedService = {
@@ -348,50 +396,47 @@ Guard Form
                 };  
             }
             
-            var governmentExamID = [];
-            var governmentExam = [];
-            var governmentExamRating = [];
-            var governmentExamDateTaken = []; 
-            
-            for (intLoop = 0; intLoop < intCounter; intLoop ++){
-                governmentExamID[intLoop] = arrGovernmentExam[intLoop][0];
-                governmentExamRating[intLoop] = arrGovernmentExam[intLoop][1];
-                governmentExamDateTaken[intLoop] = arrGovernmentExam[intLoop][2];
-                governmentExam[intLoop] = arrGovernmentExam[intLoop][4];
+            if (arrGovernmentExam.length != 0){
+                for (intLoop = 0; intLoop < intCounter; intLoop ++){
+                    var objGovernmentExam = new GovernmentExam(
+                        arrGovernmentExam[intLoop][0],
+                        arrGovernmentExam[intLoop][1],
+                        arrGovernmentExam[intLoop][2],
+                        arrGovernmentExam[intLoop][4]
+                    );
+
+                    governmentExam.push(objGovernmentExam);
+                }
+                console.log(governmentExam);
             }
             
+            
+            
                 
-//            $.ajax({
-//
-//                type: "POST",
-//                url: "{{action('GuardRegistrationController@sgBackgroundSession')}}",
-//                beforeSend: function (xhr) {
-//                    var token = $('meta[name="csrf_token"]').attr('content');
-//
-//                    if (token) {
-//                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-//                    }
-//                },
-//                data: {
-//                    armedServiceID: armedServiceID,
-//                    armedServiceRank:armedServiceRank,
-//                    armedServiceYear:armedServiceYear,
-//                    armedServiceReason:armedServiceReason,
-//                    armedServiceRadio:armedServiceRadio,
-//                    governmentExamID:governmentExamID,
-//                    governmentExam:governmentExam,
-//                    governmentExamRating:governmentExamRating,
-//                    governmentExamDateTaken:governmentExamDateTaken
-//                    
-//                },
-//                success: function(data){
-//                    
-//                },
-//                error: function(data){
-//                    confirm('error send data');
-//                    console.error();
-//                }
-//            });//ajax
+            $.ajax({
+
+                type: "POST",
+                url: "{{action('SGBackgroundController@post')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    armedService: objArmedService,
+                    governmentExam:governmentExam
+                    
+                },
+                success: function(data){
+                    
+                },
+                error: function(data){
+                    confirm('error send data');
+                    console.error();
+                }
+            });//ajax
         }
         
     });

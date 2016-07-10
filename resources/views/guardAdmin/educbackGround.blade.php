@@ -272,7 +272,7 @@ Guard Form
                     school: school
                 },
                 success: function(data){
-                    
+
                 },
                 error: function(data){
                     console.log(data);
