@@ -4,7 +4,7 @@
 
 <div class="row l2">
     <div class="col l10">
-        <div class="col l10 offset-l4 z-depth-1" style="margin-top:2%">
+        <div class="col l4 offset-l4 z-depth-1" style="margin-top:2%">
             
 <!-------------------------------------------------------JAVASCRIPT---------------------------------->
             	<script type="text/javascript">
@@ -215,8 +215,8 @@
  
               <div class="row">
                  
-
-            <div class="col l12 offset-l4">  
+                  <div class="col l12">
+            <div class="col l12">  
                 <button  id="btnPrev" class=" btn waves-effect waves-light" type="submit" name="action"> PREV 
                     <i class="material-icons left"> skip_previous </i>
                 </button>
@@ -226,44 +226,21 @@
                 </button>
             </div>
                       
-                  </div>
+                  
       
-       
+    
+            <div class="col l4">
                   <div id="divCalendar">
                              </div>
-
-    
-<!--------------------------------------------------VIEW MONTHLY RATE------------------------------------------->
-         <div>
-
-        <div class="row">
-            <div class="col l8 offset-l2 z-depth-1" style="margin-top:2%">
-             
-                <div class="card-content white-text">
-                  <center><span class="card-title" style="color:black"> Total Monthly Rate </span></center>
+                
                 </div>
-                <table class="centered">
-                    <thead>
-                        <tr>
-                            <th data-field="time"> Time </th>
-                            <th data-field="rate"> Rate per Hour </th>
-                            <th data-field="number"> Salary </th>
-                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> 120 </td>
-                            <td> 58 </td>
-                            <td> P 6960 </td>
-                        </tr>
-                    </tbody>
-                </table>
-            
-            </div>
+                      </div>
+                </div>
         </div>
+    </div></div>
+
     
 <!--------------------------------------------------VIEW MONTHLY RATE------------------------------------------->
-    
-</div>
+       
 
 @stop
