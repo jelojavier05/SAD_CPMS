@@ -319,7 +319,7 @@
             </div>
 				
 							<ul class="right hide-on-med-and-down">
-							  <li><a href="/admin/home" class="blue darken-3">Home</a></li>
+							  <li><a href="/dashboardadmin" class="blue darken-3">Home</a></li>
 							  <li><a href="#" class="red darken-3">Log Out</a></li>
 							</ul>
         

@@ -77,7 +77,7 @@ City
 
 <div id="modalcityAdd" class="modal modal-fixed-footer" style="overflow:hidden; width: 500px !important; height:420px !important;">
     <div class="modal-header">
-        <h2>City</h2>
+        <h4>City</h4>
     </div>
     
     <div class="modal-content">
@@ -113,7 +113,7 @@ City
 
 <div id="modalcityEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:420px !important;">
     <div class="modal-header">
-        <h2>Province</h2>
+        <h2>City</h2>
     </div>
     
     <div class="modal-content">

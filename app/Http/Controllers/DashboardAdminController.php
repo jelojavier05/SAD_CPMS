@@ -16,7 +16,7 @@ class DashboardAdminController extends Controller
      */
     public function index()
     {
-        return view('/maintenance/DashboardAdmin');
+        return view('/DashboardAdmin');
     }
 
     /**
