@@ -36,9 +36,11 @@ Guard Form
                             @endforeach
                         </select>
                     </div>
-                    <div class="input-field col s6">
-                        <input  id="rank" placeholder=" " type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true" >
-                        <label data-error="Incorrect" for="rank">Rank</label>
+                     <div class="input-field col s6">
+                        <select id = "armedServiceRank">
+                            <option value="" disabled selected>Choose Rank</option>  
+                        </select>
+                        <label data-error="Incorrect" for="armedServiceRank">Rank</label>
                     </div>
                     <div class="input-field col s6">
                         <select id = "armedServiceYear">
