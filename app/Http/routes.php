@@ -58,13 +58,24 @@ Route::post('/guard/registration/guard/insert', 'GuardRegistrationController@ins
     Route::get('/changeloc', 'ChangeLocSecurityController@index');
     Route::get('/attendance', 'AttendanceSecurityController@index');
 
+//LATEST SECURITY GUARD INTERFACE ----------------------------------------------------
 
     Route::get('/securityguard', 'SecurityGuardDashboardController@index');
     Route::get('/securityhomepage', 'SecurityHomepageController@index');
     Route::get('/securityleaverequest', 'SecurityLeaveRequestController@index');
     Route::get('/securitychangelocation', 'SecurityChangeLocationController@index');
 
-//SECURITY GUARD INTERFACE ----------------------------------------------------
+//CLIENT INTERFACE ----------------------------------------------------
+
+
+    Route::get('/client', 'ClientDashboardController@index');
+    Route::get('/clienthomepage', 'ClientHomepageController@index');
+    Route::get('/clientguardrequest', 'ClientGuardRequestController@index');
+    Route::get('/clientgunrequest', 'ClientGunRequestController@index');
+    Route::get('/clientguardattendance', 'ClientGuardAttendanceController@index');
+    Route::get('/clientsettings', 'ClientSettingsController@index');
+
+
 
 Route::get('/admin/home', 'AdminHomeController@index');
 

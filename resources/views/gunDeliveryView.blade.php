@@ -102,12 +102,13 @@ Delivery
 											<span class = "card-title white-text">Items:</span>
 										</div>
 										
-										<table>
+										<table class="bordered">
 											<thead>
 											  <tr>
-												  <th>License No</th>
-												  <th>Name</th>
-												  <th>Type of Gun</th>
+												  <th class="white-text">License No</th>
+												  <th class="white-text">Name</th>
+												  <th class="white-text">Type of Gun</th>
+												  <th class="white-text">Rounds</th>
 											  </tr>
 											</thead>
 
@@ -118,6 +119,8 @@ Delivery
 												<td>M4A1</td>
 												
 												<td>Rifle</td>
+												 
+												<td>90</td>
 											  </tr>
 											  <tr>
 												<td>2014-01231-MN-0</td>
@@ -125,6 +128,8 @@ Delivery
 												<td>Arctic Warfare Magnum</td>
 
 												<td>Rifle</td>
+												  
+												<td>15</td>
 											  </tr>
 											  
 											</tbody>

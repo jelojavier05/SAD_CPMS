@@ -11,7 +11,7 @@ Delivery
 <!--		<div class="container-fluid grey lighten-4 z-depth-2" style="border: 1px solid black; border-radius:5px;" id="">-->
 <!--			<h3 class = "blue darken-3 white-text" style="margin-top:0px; padding-bottom:10px;">Tagging</h3>-->
 			<div class = "row">
-				<div class='col s7' style="margin-top:0px;">
+				<div class='col s6' style="margin-top:0px;">
 					<div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:5px; padding-bottom:1%;">
 					<h4 class="blue darken-1 white-text">Tagged Guns</h4>
 						<div class = "input-field col s5">    
@@ -32,13 +32,14 @@ Delivery
 											<th>License No</th>
 											<th>Name</th>
 											<th>Type of Gun</th>
+											<th>Rounds</th>
 										</tr>
 									</thead>
 
 									<tbody>                        
 											<tr>                                    
 												<td>
-													<button class="btn green modal-trigger" href="#modalRounds"><i class="material-icons">add</i></button>
+													<button class="btn green" href="#"><i class="material-icons">add</i></button>
 												</td>																	
 
 												<td>2013-12345-MN-0</td>
@@ -46,13 +47,15 @@ Delivery
 												<td>M4A1</td>
 												
 												<td>Rifle</td>
+												
+												<td>90</td>
 
 												
 											</tr>
 											
 											<tr>                                    
 												<td>
-													<button class="btn green modal-trigger" href="#modalRounds"><i class="material-icons">add</i></button>
+													<button class="btn green" href="#"><i class="material-icons">add</i></button>
 												</td>																	
 
 												<td>2014-01231-MN-0</td>
@@ -61,11 +64,13 @@ Delivery
 
 												<td>Rifle</td>
 												
+												<td>15</td>
+												
 											</tr>
 										
 											<tr>                                    
 												<td>
-													<button class="btn green modal-trigger" href="#modalRounds"><i class="material-icons">add</i></button>
+													<button class="btn green" href="#"><i class="material-icons">add</i></button>
 												</td>																	
 
 												<td>2023-09876-MN-0</td>
@@ -73,6 +78,8 @@ Delivery
 												<td>P90</td>
 												
 												<td>SMG</td>
+												
+												<td>150</td>
 												
 											</tr>
 											
@@ -83,7 +90,7 @@ Delivery
 					</div>
 				</div>
 				
-				<div class="col s5" style="margin-top:0px;">
+				<div class="col s6" style="margin-top:0px;">
 					<div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:5px;">
 						<h4 class="blue darken-1 white-text">Selected</h4>
 						<div class="row">
@@ -96,6 +103,7 @@ Delivery
 											<th>License No</th>
 											<th>Name</th>
 											<th>Type of Gun</th>
+											<th>Rounds</th>
 										</tr>
 									</thead>
 
@@ -110,6 +118,8 @@ Delivery
 												<td>M4A1</td>
 												
 												<td>Rifle</td>
+												
+												<td>90</td>
 
 												
 											</tr>
@@ -124,6 +134,8 @@ Delivery
 												<td>Arctic Warfare Magnum</td>
 
 												<td>Rifle</td>
+												
+												<td>15</td>
 												
 											</tr>
 											
@@ -153,6 +165,7 @@ Delivery
             { "orderable": false },
             null,
             null,
+			null,
 			null
             ] ,  
 			"pageLength":5,
@@ -164,6 +177,7 @@ Delivery
             { "orderable": false },
             null,
             null,
+			null,
 			null
             ] ,  
 			"pageLength":5,
