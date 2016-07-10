@@ -7,6 +7,7 @@ Route::get('/guard/registration/personaldata/get', 'PersonalDataController@get')
 
 Route::post('/guard/registration/personaldata/post', 'PersonalDataController@post');
 
+
 Route::get('/guard/registration/educationalbackground', 'EducationalBackgroundController@index')
     ->name('educationalbackground');
 
@@ -14,8 +15,16 @@ Route::get('/guard/registration/educationalbackground/get', 'EducationalBackgrou
 
 Route::post('/guard/registration/educationalbackground/post', 'EducationalBackgroundController@post');
 
+
 Route::get('/guard/registration/sgbackground', 'SGBackgroundController@index')
     ->name('sgbackground');
+
+Route::get('/guard/registration/sgbackground/getArmedService', 'SGBackgroundController@getArmedService');
+
+Route::get('/guard/registration/sgbackground/getGovernmentExam', 'SGBackgroundController@getGovernmentExam');
+
+Route::post('/guard/registration/sgbackground/post', 'SGBackgroundController@post');
+
 
 //Route::get('/login', 'LoginController@index')->name('login');
 

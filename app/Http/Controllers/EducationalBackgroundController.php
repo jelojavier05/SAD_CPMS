@@ -31,5 +31,7 @@ class EducationalBackgroundController extends Controller
 
     public function post(Request $request){        
         $request->session()->put('educationalBackground', $request->school);
+        
+        return $request;
     }
 }
