@@ -37,7 +37,7 @@ Guard Form
                         </select>
                     </div>
                     <div class="input-field col s6">
-                        <input  id="rank" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true" >
+                        <input  id="rank" placeholder=" " type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true" >
                         <label data-error="Incorrect" for="rank">Rank</label>
                     </div>
                     <div class="input-field col s6">
@@ -53,7 +53,7 @@ Guard Form
                         <label for="dischargedDishonorably">Discharged Dishonorably</label>
                     </div>
                     <div class="input-field col s6">
-                        <input  id="reason" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
+                        <input placeholder = " " id="reason" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
                         <label data-error="Incorrect" for="reason">Reason</label>
                     </div>
                 </div>
@@ -188,7 +188,16 @@ Guard Form
             },
             success: function(data){
                 if (data){
+                    for (intLoop = 0; intLoop < data.length; intLoop ++){
+                        arrGovernmentExam[intLoop] = [];
+                        arrGovernmentExam[intLoop][0] = data[intLoop].id;
+                        arrGovernmentExam[intLoop][1] = data[intLoop].rating;
+                        arrGovernmentExam[intLoop][2] = data[intLoop].date;
+                        arrGovernmentExam[intLoop][4] = data[intLoop].name;
+                        intCounter ++;
+                    }
                     console.log(data);
+                    refreshTable();
                 }else{
                     
                 }
@@ -208,12 +217,18 @@ Guard Form
             },
             success: function(data){
                 if (data){
+                    $("#armedService option[id='option"+ data.id +"']").attr("selected", "selected");
+                    $('#rank').val(data.rank);
+                    $('#armedServiceYear').val(data.year);
+                    $('#reason').val(data.reason);
+                    $("#discharged" + data.radio).prop( "checked", true );
                     
+                    $('select').material_select();
                 }else{
                     
                 }
             }
-        }); //get govermentExam
+        }); //get armed service
         
         $('#backArmed').click(function(){
             window.location.href = '{{ URL::to("/guard/registration/educationalbackground") }}';
@@ -221,7 +236,7 @@ Guard Form
         
         $('#nextArmed').click(function(){
             sendData();
-            //window.location.href = '{{ URL::to("guard/registration/requirement") }}';
+            window.location.href = '{{ URL::to("guard/registration/requirement") }}';
         });
         
         $('#btnAdd').click(function(){

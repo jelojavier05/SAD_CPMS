@@ -34,11 +34,23 @@ class SGBackgroundController extends Controller
     }
     
     public function getArmedService(Request $request){
-        
+        if ($request->session()->has('armedService')) {
+            $armedService = new \stdClass();
+            $armedService = $request->session()->get('armedService');
+            return response()->json($armedService);
+        }else{
+            return response()->json(false);
+        }
     }
     
     public function getGovernmentExam(Request $request){
-        
+        if ($request->session()->has('governmentExam')) {
+            $governmentExam = new \stdClass();
+            $governmentExam = $request->session()->get('governmentExam');
+            return response()->json($governmentExam);
+        }else{
+            return response()->json(false);
+        }
     }
     
     public function post(Request $request){

@@ -180,7 +180,7 @@ Guard Form
 					<div class="row" style="margin:2%;">
 						<div class="col s8 push-s2">
 							<div class="input-field">
-								<input placeholder=" " id="strLicenseNo" type="text" class="validate" name = "licenseNo" required="" aria-required="true">
+								<input placeholder=" " id="licenseNumber" type="text" class="validate" name = "licenseNo" required="" aria-required="true">
 								<label for="strLicenseNo">License Number</label> 
 							</div>
 						</div>
@@ -188,14 +188,14 @@ Guard Form
 
 					<div class="row">
 						<div class="input-field col s8 push-s2">
-							<input  id="startDate" type="date" class="datepicker"  required="" aria-required="true">
+							<input  id="dateIssued" type="date" class="datepicker"  required="" aria-required="true">
 							<label class="active" data-error="Incorrect" for="startDate">Date Issued</label>
 						</div>
 					</div>
 
 					<div class = "row">
 						<div class="input-field col s8 push-s2">
-							<input  id="endDate" type="date" class="datepicker" required="" aria-required="true">
+							<input  id="dateExpiration" type="date" class="datepicker" required="" aria-required="true">
 							<label class="active" data-error="Incorrect" for="endDate">Date Expired</label>
 						</div>
 					</div>
