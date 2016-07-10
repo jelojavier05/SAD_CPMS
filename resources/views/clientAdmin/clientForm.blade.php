@@ -6,19 +6,7 @@ Client
 
 @section('content')
 
-<div class="row">
-	<div class="col s10 push-s2" style="margin-left:10px;">
-		<nav>
-			<div class="nav-wrapper blue">
-				<div class="row">	
-					<div class="col s12">
-						<a href="{{URL::route('basicInfoBC')}}" class="breadcrumb">Basic Information</a>
-					</div>
-				</div>
-			</div>
-		</nav>
-	</div>
-</div>
+
 
 <div class="row">
 	<div class="col s6 push-s4" style=" margin-left:10px; margin-top: 1%;">
@@ -27,7 +15,7 @@ Client
 			<div class = "row">
 				<div class='col s10 push-s1'>
 					
-					<div class="input-field col s6">
+					<div class="input-field col s6 offset-s6 pull-s6">
 						<select>
 						  <option value="" disabled selected>Choose</option>
 						  <option value="1">test1</option>
@@ -38,27 +26,29 @@ Client
 
 					</div>
 					
-					<div class="input-field col s12">
+					<div class="input-field col s6">
 						<input placeholder=" " id="clientName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
 						<label for="clientName"  data-error="Incorrect">Client Name</label>
 					</div>
 					
-					<div class="input-field col s12">
+				
+					<div class="input-field col s6">
+							<input placeholder=" " id="clientcontactLandline" maxlength="10" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
+							<label data-error="Incorrect" for="clientcontactLandline">Contact Number (Client)</label>
+
+					</div>
+					
+					<div class="input-field col s6">
 						<input placeholder=" " id="personInCharge" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
 						<label for="personInCharge" data-error="Incorrect">Person in Charge</label>
 					</div>
 					
 					<div class="input-field col s6">
-						<input placeholder=" " id="clientcontactCp" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
-						<label data-error="Incorrect" for="clientcontactCp">Contact Number (Mobile)</label>
+						<input placeholder=" " id="piccontactCp" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
+						<label data-error="Incorrect" for="clientcontactCp">Contact Number (Person In Charge)</label>
 
 					</div>
 				
-					<div class="input-field col s6">
-							<input placeholder=" " id="clientcontactLandline" maxlength="10" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
-							<label data-error="Incorrect" for="clientcontactLandline">Contact Number (Landline)</label>
-
-					</div>
 					
 					<div class="input-field col s12">
 						<input placeholder=" " id="address" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
@@ -92,7 +82,7 @@ Client
 			</div>
 		
 		</div>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextclientForm">Next</button>
+		<center><a style="margin-top:20px;" class=" z-depth-2 btn-large green" href="/admin/home" id = "">Save</a></center>
 	</div>
 	
 </div>
@@ -106,9 +96,6 @@ Client
         $('select').material_select();
         
         
-        $('#nextclientForm').click(function(){
-             window.location.href = '{{ URL::to("/client/registration/contractInfo") }}';
-        });
         
     });
         
