@@ -6,7 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CreateAccountTable' => $baseDir . '/database/migrations/2016_07_04_085519_create_account_table.php',
+    'AddAccountIdFkColumn' => $baseDir . '/database/migrations/2016_07_10_230402_add_account_id_fk_column.php',
+    'CreateAccountTable' => $baseDir . '/database/migrations/2016_07_10_225221_create_account_table.php',
     'CreateArmedServiceTable' => $baseDir . '/database/migrations/2016_02_28_080305_create_armed_service_table.php',
     'CreateBodyAttribute' => $baseDir . '/database/migrations/2016_07_06_170814_create_body_attribute.php',
     'CreateCityTable' => $baseDir . '/database/migrations/2016_06_20_172410_create_city_table.php',
@@ -14,7 +15,9 @@ return array(
     'CreateGuardArmedserviceTable' => $baseDir . '/database/migrations/2016_07_04_033854_create_guard_armedservice_table.php',
     'CreateGuardBodyattributeTable' => $baseDir . '/database/migrations/2016_07_06_171018_create_guard_bodyattribute_table.php',
     'CreateGuardGovernmentexamTable' => $baseDir . '/database/migrations/2016_07_04_052613_create_guard_governmentexam_table.php',
+    'CreateGuardRequirementTable' => $baseDir . '/database/migrations/2016_07_10_134104_create_guard_requirement_table.php',
     'CreateGuardTable' => $baseDir . '/database/migrations/2016_07_03_201700_create_guard_table.php',
+    'CreateGuardaddressTable' => $baseDir . '/database/migrations/2016_07_10_211240_create_guardaddress_table.php',
     'CreateGuardlicenseTable' => $baseDir . '/database/migrations/2016_07_08_092013_create_guardlicense_table.php',
     'CreateGunLicenseNumberTable' => $baseDir . '/database/migrations/2016_03_11_182629_create_gun_license_number_table.php',
     'CreateGunTable' => $baseDir . '/database/migrations/2016_03_11_181358_create_gun_table.php',

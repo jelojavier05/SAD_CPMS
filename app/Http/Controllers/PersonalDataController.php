@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 class PersonalDataController extends Controller
 {
     
-    public function index(Request $request){
+    public function index(){
         $bodyAttributes = BodyAttribute::
                 where('deleted_at', null)
                     ->where('boolFlag', 1)
@@ -31,7 +31,6 @@ class PersonalDataController extends Controller
     }
     
     public function get(Request $request){
-        //$request->session()->forget('personalData');
         
         if ($request->session()->has('personalData')) {
             $personalData = new \stdClass();
@@ -49,11 +48,13 @@ class PersonalDataController extends Controller
         
         $arrBodyAttributeID = $request->bodyAttributeID;
         $arrValue = $request->value;
+        $arrMeasurement = $request->measurement;
         
         for ($intLoop = 0; $intLoop < count($arrBodyAttributeID); $intLoop ++){
             $value = new \stdClass();
             $value->intBodyAttributeID = $arrBodyAttributeID[$intLoop];
             $value->strValue = $arrValue[$intLoop];
+            $value->measurement = $arrMeasurement[$intLoop];
             array_push($bodyAttributes, $value);
         }   
         
@@ -63,7 +64,7 @@ class PersonalDataController extends Controller
         $license->dateExpiration = $request->dateExpiration;
         
         $personalData = new \stdClass();
-
+        
         $personalData->firstName = $request->strFirstName;
         $personalData->middleName = $request->strMiddleName;
         $personalData->lastName = $request->strLastName;
@@ -78,7 +79,9 @@ class PersonalDataController extends Controller
         $personalData->province = $request->province;
         $personalData->city = $request->city;
         $personalData->license = $license;
-        $personalData->flag = 'active';
+        $personalData->provinceID = $request->provinceID;
+        $personalData->cityID = $request->cityID;
+        
         
         $request->session()->put('personalData', $personalData);
         

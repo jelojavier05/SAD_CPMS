@@ -12,9 +12,9 @@ Guard Form
 			<div class="nav-wrapper blue">
 				<div class="row">	
 					<div class="col s12">
-						<a href="{{URL::route('personalDataBC')}}" class="breadcrumb">Personal Data</a>
-						<a href="{{URL::route('educationalBackgroundBC')}}" class="breadcrumb">Educational Background</a>
-						<a href="{{URL::route('sgBackground')}}" class="breadcrumb">SG Background</a>
+						<a href="{{URL::route('personaldata')}}" class="breadcrumb">Personal Data</a>
+						<a href="{{URL::route('educationalbackground')}}" class="breadcrumb">Educational Background</a>
+						<a href="{{URL::route('sgbackground')}}" class="breadcrumb">SG Background</a>
 						<a href="{{URL::route('requirement')}}" class="breadcrumb">Requirements</a>
 						<a href="{{URL::route('account')}}" class="breadcrumb">Account</a>
 						
@@ -36,7 +36,7 @@ Guard Form
             <div class="row">
 				<div class="col s8 push-s2">
 					<div class="input-field">
-						<input id="strUserName" type="text" class="validate" name = "userName" required="" aria-required="true">
+						<input placeholder=" " id="strUserName" type="text" class="validate" name = "userName" required="" aria-required="true">
 						<label for="strUserName">Username</label> 
 					</div>
 				</div>
@@ -45,7 +45,7 @@ Guard Form
 			<div class="row">
 				<div class="col s8 push-s2">
 					<div class="input-field">
-						<input id="password" type="text" class="validate" name = "passWord" required="" aria-required="true">
+						<input placeholder=" " id="password" type="text" class="validate" name = "passWord" required="" aria-required="true">
 						<label for="password">Password</label> 
 					</div>
 				</div>
@@ -57,32 +57,76 @@ Guard Form
 	</div>
 </div>
 
-<input type = "hidden" id = "test" value = "{{$firstName}}">
 @stop
 
 @section('script')
 <script>
     
     $(document).ready(function() {
-        $('select').material_select();
         
-        $('#strUserName').val($('#test').val());
+        $.ajax({
+
+            type: "GET",
+            url: "{{action('AccountController@get')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                if (data){
+                    $('#strUserName').val(data.username);
+                    $('#password').val(data.password);
+                }else{
+                    $.ajax({
+
+                        type: "GET",
+                        url: "{{action('PersonalDataController@get')}}",
+                        beforeSend: function (xhr) {
+                            var token = $('meta[name="csrf_token"]').attr('content');
+
+                            if (token) {
+                                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                            }
+                        },
+                        success: function(data){
+                            if (data){
+                                var randomNumber = (Math.floor(Math.random() * 9999) + 1);
+                                var year = data.dateOfbirth.substring(0,4);
+                                var temp = year + data.firstName + data.lastName + randomNumber;
+                                var userName = temp.replace(/ /g,'').toLowerCase();
+                                $('#strUserName').val(userName);
+                                $('#password').val(getRandomPassword());
+                            }else{
+
+                            }
+                        }
+                    }); //get personal data
+                }
+            }
+        }); //get personal data
         
         $('#backAccount').click(function(){
             window.location.href = '{{ URL::to("/guard/registration/requirement") }}';
         });
 		
 		$('#nextAccount').click(function(){
+            sendData();
             window.location.href = '{{ URL::to("/guard/registration/guardSummary") }}';
         });
         
-        $('#btnSave').click(function(){
-            var username = $('#strUserName').val();
-            var password = $('#password').val();
+        function sendData(){
+            
+            var objAccount = {
+                username: $('#strUserName').val(),
+                password: $('#password').val()
+            };
             $.ajax({
 
                 type: "POST",
-                url: "{{action('GuardRegistrationController@insertGuard')}}",
+                url: "{{action('AccountController@post')}}",
                 beforeSend: function (xhr) {
                     var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -91,18 +135,30 @@ Guard Form
                     }
                 },
                 data: {
-                    username:username,
-                    password:password
+                    account: objAccount,
+                    username: $('#strUserName').val(),
+                    password: $('#password').val()
+                    
                 },
                 success: function(data){
-                    confirm('success');
+
                 },
                 error: function(data){
                     confirm('error send data');
                     console.error();
                 }
             });//ajax
-        });
+        }
+        
+        function getRandomPassword(){
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for( var i=0; i < 8; i++ ){
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            return text;
+        }
         
     });
         

@@ -166,6 +166,9 @@ Guard Form
         var intCounter = 0;
         var intIndex;
         var $armedServiceYear = $('#armedServiceYear');
+        var geID = [];
+        var geDate = [];
+        var geRating = [];
         
         for(intLoop = (new Date).getFullYear(); intLoop >= 1980; intLoop --){
             $armedServiceYear.append(
@@ -400,10 +403,14 @@ Guard Form
         function sendData(){
             var armedServiceID = $("#armedService option:selected").val();
             var governmentExam = [];
+            var geID =[];
+            var geRating =[];
+            var geDate =[];
             
             if (armedServiceID != 0){
                 var objArmedService = {
                     id: armedServiceID,
+                    name: $('#armedService option:selected').text(),
                     rank: $('#rank').val(),
                     year: $("#armedServiceYear").val(),
                     reason: $('#reason').val(),
@@ -419,14 +426,15 @@ Guard Form
                         arrGovernmentExam[intLoop][2],
                         arrGovernmentExam[intLoop][4]
                     );
-
+                    
+                    geID[intLoop] = arrGovernmentExam[intLoop][0];
+                    geRating[intLoop] = arrGovernmentExam[intLoop][1];//rating
+                    geDate[intLoop] = arrGovernmentExam[intLoop][2];//taken
+                    
                     governmentExam.push(objGovernmentExam);
                 }
                 console.log(governmentExam);
             }
-            
-            
-            
                 
             $.ajax({
 
@@ -441,7 +449,16 @@ Guard Form
                 },
                 data: {
                     armedService: objArmedService,
-                    governmentExam:governmentExam
+                    governmentExam:governmentExam,
+                    
+                    asID: armedServiceID,
+                    asRank: $('#rank').val(),
+                    asYear: $("#armedServiceYear").val(),
+                    asDischarge: $('input[name = radio]:checked').val(),
+                    asReason: $('#reason').val(),
+                    geID: geID,
+                    geRating: geRating,
+                    geDate: geDate
                     
                 },
                 success: function(data){

@@ -268,8 +268,9 @@ Guard Form
                 }
             },
             success: function(data){
+                
                 if (data){
-                    var provinceID = data.province;
+                    var provinceID = data.province.id;
                     var license = data.license;
                     //text
                     $('#firstName').val(data.firstName);
@@ -296,20 +297,18 @@ Guard Form
                     //dropdown
                     $("#provinceSelect option[id='"+ provinceID +"']").attr("selected", "selected");
                     getCity(provinceID);
-                    $("#citySelect option[id='"+ data.city +"']").attr("selected", "selected");
+                    $("#citySelect option[id='"+ data.city.id +"']").attr("selected", "selected");
                     $('#civilStatus').val(data.civilStatus);
                     $('#gender').val(data.gender);
                     
                     $('select').material_select();
                     
                 }else{
-                    //wala
+                    
                 }
+                
             }
-        }); //
-        
-        
-        
+        }); //get data
         
         $('#nextPersonalData').click(function(){
             sendData();
@@ -348,6 +347,7 @@ Guard Form
         function sendData(){
             var value = {};
             var bodyAttributeID = {}; 
+            var measurement = {}; 
             var province = $('#provinceSelect').children(":selected").attr("id");
             var city = $('#citySelect').children(":selected").attr("id");
             var intCounter = 0;
@@ -355,12 +355,23 @@ Guard Form
                 if (bodyAttribute[intLoop]['boolFlag'] == 1){
                     var specification = 'specification' + bodyAttribute[intLoop]['intBodyAttributeID'];
                     var measurementName = 'measurement' + bodyAttribute[intLoop]['intBodyAttributeID'];
-
+                    
                     bodyAttributeID[intCounter] = bodyAttribute[intLoop]['intBodyAttributeID'];
                     value[intCounter] = $('#'+specification).val();
+                    measurement[intCounter] = $('#'+measurementName).text();
                     intCounter = intCounter + 1;
                 }
             }
+            
+            var objProvince = {
+                "id": province,
+                "name": $('#provinceSelect').val()
+            };
+            
+            var objCity = {
+                "id": city,
+                "name": $('#citySelect').val()
+            };
             
             $.ajax({
 
@@ -386,18 +397,21 @@ Guard Form
                     strGender:$('#gender').val(),
                     value: value,
                     bodyAttributeID: bodyAttributeID,
-                    province: province,
-                    city: city,
+                    measurement: measurement,
+                    province: objProvince,
+                    city: objCity,
+                    provinceID: province,
+                    cityID: city,
                     licenseNumber: $('#licenseNumber').val(),
                     dateIssued: $('#dateIssued').val(),
                     dateExpiration: $('#dateExpiration').val()
                     
                 },
                 success: function(data){
-                    
+
                 },
                 error: function(xhr){
-                    console.log(xhr);
+                    console.log(data);
                 }
             });//ajax
         }//sendData()

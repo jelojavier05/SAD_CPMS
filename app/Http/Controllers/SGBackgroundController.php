@@ -56,6 +56,31 @@ class SGBackgroundController extends Controller
     public function post(Request $request){
         $request->session()->put('armedService', $request->armedService);
         $request->session()->put('governmentExam', $request->governmentExam);
+        
+        $armedservice = new \stdClass();
+        $armedservice->id = $request->asID;
+        $armedservice->rank = $request->asRank;
+        $armedservice->year = $request->asYear;
+        $armedservice->reason = $request->asReason;
+        $armedservice->discharge = $request->asDischarge;
+        
+        $request->session()->put('armedServiceDB', $armedservice);
+        
+        $array = array();
+        $geID = $request->geID;
+        $geRating = $request->geRating;
+        $geDateTaken = $request->geDate;
+
+        for ($intLoop = 0; $intLoop < count($geID); $intLoop ++){
+            $value = new \stdClass();
+            $value->id = $geID[$intLoop];
+            $value->rating = $geRating[$intLoop];
+            $value->dateTaken = $geDateTaken[$intLoop];
+
+            array_push($array,$value);
+        }
+        
+        $request->session()->put('governmentExamDB', $array);
     }
 
 }

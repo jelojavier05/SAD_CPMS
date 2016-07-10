@@ -12,9 +12,9 @@ Guard Form
 			<div class="nav-wrapper blue">
 				<div class="row">	
 					<div class="col s12">
-						<a href="{{URL::route('personalDataBC')}}" class="breadcrumb">Personal Data</a>
-						<a href="{{URL::route('educationalBackgroundBC')}}" class="breadcrumb">Educational Background</a>
-						<a href="{{URL::route('sgBackground')}}" class="breadcrumb">SG Background</a>
+						<a href="{{URL::route('personaldata')}}" class="breadcrumb">Personal Data</a>
+						<a href="{{URL::route('educationalbackground')}}" class="breadcrumb">Educational Background</a>
+						<a href="{{URL::route('sgbackground')}}" class="breadcrumb">SG Background</a>
 						<a href="{{URL::route('requirement')}}" class="breadcrumb">Requirements</a>
 					</div>
 				</div>
@@ -72,8 +72,34 @@ Guard Form
         
         var requirement = [];
         
+        $.ajax({
+
+            type: "GET",
+            url: "{{action('RequirementController@get')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                
+                if (data){
+                    
+                    console.log(data);
+                    
+                    for (intLoop = 0; intLoop < data.length; intLoop ++){
+                        $("#requirements" + data[intLoop]).attr( "checked", true );        
+                    }
+                }else{
+                    //wala
+                }
+            }
+        }); //
+        
         $('#backRequirement').click(function(){
-            window.location.href = '{{ URL::to("/guard/registration/sgBackground") }}';
+            window.location.href = '{{ URL::to("/guard/registration/sgbackground") }}';
         });
         
         $('#nextRequirement').click(function(){
@@ -123,7 +149,7 @@ Guard Form
             $.ajax({
 
                 type: "POST",
-                url: "{{action('GuardRegistrationController@requirementSession')}}",
+                url: "{{action('RequirementController@post')}}",
                 beforeSend: function (xhr) {
                     var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -135,7 +161,7 @@ Guard Form
                     requirement:requirement
                 },
                 success: function(data){
-                    
+
                 },
                 error: function(data){
                     confirm('error send data');

@@ -19,7 +19,7 @@ class EducationalBackgroundController extends Controller
     }
     
     public function get(Request $request){
-        //$request->session()->forget('educationalBackground');
+        
         if ($request->session()->has('educationalBackground')) {
             $educationalBackground = new \stdClass();
             $educationalBackground = $request->session()->get('educationalBackground');

@@ -2,41 +2,37 @@
 
 Route::get('/guard/registration/personaldata', 'PersonalDataController@index')
     ->name('personaldata');
-
 Route::get('/guard/registration/personaldata/get', 'PersonalDataController@get');
-
 Route::post('/guard/registration/personaldata/post', 'PersonalDataController@post');
 
 
 Route::get('/guard/registration/educationalbackground', 'EducationalBackgroundController@index')
     ->name('educationalbackground');
-
 Route::get('/guard/registration/educationalbackground/get', 'EducationalBackgroundController@get');
-
 Route::post('/guard/registration/educationalbackground/post', 'EducationalBackgroundController@post');
 
 
 Route::get('/guard/registration/sgbackground', 'SGBackgroundController@index')
     ->name('sgbackground');
-
 Route::get('/guard/registration/sgbackground/getArmedService', 'SGBackgroundController@getArmedService');
-
 Route::get('/guard/registration/sgbackground/getGovernmentExam', 'SGBackgroundController@getGovernmentExam');
-
 Route::post('/guard/registration/sgbackground/post', 'SGBackgroundController@post');
 
 
-//Route::get('/login', 'LoginController@index')->name('login');
+Route::get('/guard/registration/requirement', 'RequirementController@index')->name('requirement');
+Route::get('/guard/registration/requirement/get', 'RequirementController@get');
+Route::post('/guard/registration/requirement/post', 'RequirementController@post');
 
-Route::get('/guard/registration/requirement', 'GuardRegistrationController@requirementBC')->name('requirement');
 
-Route::get('/guard/registration/sgLicense', 'GuardRegistrationController@licenseBC')->name('sgLicense');
+Route::get('/guard/registration/account', 'AccountController@index')->name('account');
+Route::get('/guard/registration/account/get', 'AccountController@get');
+Route::post('/guard/registration/account/post', 'AccountController@post');
 
-Route::get('/guard/registration/account', 'GuardRegistrationController@accountBC')->name('account');
 
-Route::get('/guard/registration/guardSummary', 'GuardRegistrationController@guardSummaryBC')->name('guardSummary');
+Route::get('/guard/registration/guardSummary', 'GuardRegistrationSummaryController@index')->name('guardSummary');
+Route::post('/guard/registration/guardSummary/insert', 'GuardRegistrationSummaryController@insert');
 
-Route::post('/guard/registration/personalData/session', 'GuardRegistrationController@personalDataSession');
+
 
 Route::post('/guard/registration/educationalBackground/session', 'GuardRegistrationController@educationalBackgroundSession');
 
