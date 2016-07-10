@@ -106,6 +106,8 @@ Route::get('/gunRegistration', 'GunRegistrationController@index');
 Route::get('/deployment/index', 'DeploymentController@index');
 
 
+Route::get('/maintenance/rank', 'ArmedServiceRankController@index');
+
 Route::get('/maintenance/unitOfMeasurement', 'UnitOfMeasurementController@index');
 
 Route::get('/maintenance/unitOfMeasurement/get', 'UnitOfMeasurementController@get');
@@ -119,7 +121,7 @@ Route::post('/maintenance/unitOfMeasurement/delete', 'UnitOfMeasurementControlle
 Route::post('/maintenance/unitOfMeasurement/flag', 'UnitOfMeasurementController@flag');
 
 
-Route::get('/maintenance/dashboardadmin', 'DashboardAdminController@index');
+Route::get('/dashboardadmin', 'DashboardAdminController@index');
 
 Route::get('/maintenance/gun', 'GunController@index');
 

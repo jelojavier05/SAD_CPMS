@@ -6,57 +6,64 @@ Admin
 
 @section('content')
 
-  <div class="row">
+<div class= "row">
+	<div class=" col s6 push-s6" style="margin-top: 100px;">
+		<a class="btn-large orange animated infinite tada" href="/guardView">Guard List</a>
+	</div>
+
+</div> 
+<div class="row">
 
       
       <div class="col l12">
       
           
                 <!--TOTAL REQUESTS--> 
-          <div class="col l3 offset-l3">
-        <div class="card medium grey lighten-5">
-          <div class="row valign-wrapper">
-            <div class="col l2 offset-l2">
-                <i class="material-icons" style="font-size:11rem">contact_phone</i>
-                <!-- notice the "circle" class -->
-            </div>
-           
-          </div>
-            
-            <div class="row">
-            
-                <div class="col l12">
-                
-                <center><label class="ds">TOTAL REQUESTS</label></center>
-                
-                </div>
-            <div class="row">
-                <div class="col l12">
-                
-                <table class="centered">
-        <thead>
-          <tr>
-              <th data-field="id">Client</th>
-              <th data-field="name">Guard<th>
+      <div class="col s3 offset-s3" >
+      	<div class="card white darken-1" style="height: 250px; width:300px;">
+            <div class="card-content">
+				<center><i class="material-icons" style="font-size:5rem">star</i></center>
               
-          </tr>
-        </thead>
+				<center><label class="ds" style="font-size:30px;">Total Ewan</label></center>
+				<table class="centered">
+					<thead>
+					  <tr>
+						  <th data-field="id">Client</th>
+						  <th data-field="name">Guard<th>
 
-        <tbody>
-          <tr>
-            <td>530</td>
-            <td>240</td>
-          </tr>
-        </tbody>
-      </table>
-                
-                
-                </div>
-                </div>    
+					  </tr>
+					</thead>
+
+					<tbody>
+					  <tr>
+						<td>530</td>
+						<td>240</td>
+					  </tr>
+					</tbody>
+				  </table>
             </div>
-        </div>
+		</div>
       </div>
           
+		  
+		  
+<!--------------------------------------------------------------------------------->
+<div class="row">
+        <div class="col s4">
+          <div class="card blue lighten-1">
+            <div class="card-content white-text">
+              <span class="card-title" style="font-size:40px; font-weight:bold;">105</span>
+              <p style="margin-left:10px;">Guards</p>
+			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">star</i>
+            </div>
+            <div class="card-action blue darken-1">
+              <center><a href="#" class="white-text">See All</a><i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i></center>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+<!--------------------------------------------------------------------------------->
           
                 <!--ACTIVE ACC0UNTS--> 
                <div class="col l3">
