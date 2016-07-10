@@ -25,7 +25,7 @@ Client Request of Guard
                              
                                         <div class="col l6">
                                         <div class="row"></div>
-                                            <span class="black-text" style="font-size:20px;font-family:Verdana">BASIC LEAVE
+                                            <span class="black-text" style="font-size:20px;font-family:Verdana">REQUISITION OF GUARDS
                                             </span>
                                 
                                         </div>
@@ -35,19 +35,17 @@ Client Request of Guard
                 <div class="row">
                                 <div class="col l12">
                                     <div class="col l6">
-                                            <label for="test8">TYPES OF LEAVE</label><br>
+                                            <label for="test8">TYPE OF REQUESTS FOR GUARDS</label><br>
                                                 <input type="checkbox" id="test8" disabled="disabled" />
-                                            <label for="test8">Sick</label><br>
+                                            <label for="test8">Additional</label><br>
                                                 <input type="checkbox" id="test8" disabled="disabled" />
-                                            <label for="test8">Maternity</label><br>
+                                            <label for="test8">Replacement</label><br>
                                                 <input type="checkbox" id="test8" disabled="disabled" />
-                                            <label for="test8">Personal Leave of Absence</label>
                                     </div>
                                     <div class="col l6">
-                                            <label for="test8">MAXIMUM LEAVES: 5</label><br>
-                                            <label for="test8">REMAINING LEAVES: 3</label><br>  
+         
                                             <label for="test8">NOTE!</label><br>
-                                                    <span class="black-text"><bold>THE APPLICATION OF LEAVE MUST <br>BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL</bold></span>
+                                                    <span class="black-text"><bold>THE APPLICATION OF REQUISITION MUST <br>BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL</bold></span>
                                         </div>
             
             
@@ -81,8 +79,8 @@ Client Request of Guard
     </div>
     <div class="card-content">
         <div class="row"></div>
-      <span class="card-title activator grey-text text-darken-4">LEAVE APPLICATION FORM
-          <i class="material-icons right" style="font-size:3rem">view_headline</i></span>
+      <span class="card-title activator grey-text text-darken-4">REQUEST APPLICATION FORM
+          <i class="material-icons right" style="font-size:2rem">view_headline</i></span>
     </div>
     <div class="card-reveal">
         
@@ -98,13 +96,12 @@ Client Request of Guard
             </div>
         </div>
                  
-        <center><a class='dropdown-button btn' href='#' data-activates='dropdown1'>LEAVE TYPE</a></center>
+        <center><a class='dropdown-button btn' href='#' data-activates='dropdown1'>TYPE OF REQUESTS</a></center>
 
   <!-- Dropdown Structure -->
   <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">Sick</a></li>
-    <li><a href="#!">Maternity</a></li> 
-    <li><a href="#!">Personal Leave of Absence</a></li>
+    <li><a href="#!">Additional</a></li>
+    <li><a href="#!">Replacement</a></li>
   </ul>
         
         <div class="row"></div>
@@ -117,7 +114,7 @@ Client Request of Guard
                 </div>
                 <div class="col l6">
                 
-                        <label for="icon_prefix">Date Return to Work</label><br>
+                        <label for="icon_prefix">Date Needed</label><br>
                         <input type="date" class="datepicker">
                 
                 </div>
@@ -158,7 +155,7 @@ Client Request of Guard
 <!--END OF lEAVE FORM-->
 
 
-<div class="row"><fieldset style="background-color:grey"></fieldset></div>
+<div class="row"></div>
   <!--MESSAGE-->
 <div class="row">
     <div class="col l12">
@@ -204,29 +201,7 @@ Client Request of Guard
             </div>
         
         
-        <!--ANNOUNCEMENTS/UPDATES-->
-            <div class="col l6">
-                    <div class="card large z-depth-2">
-                
-                        
-                        <div class="row">
-                            <div class="col l12">
-                                <div class="col l3">
-                             <i class="material-icons left" style="font-size:6rem">announcement
-                    </i> 
-                                </div>
-                             
-                                <div class="col l6">
-                                   <div class="row"></div>
-                                <span class="black-text" style="font-size:20px;font-family:Verdana">ANNOUNCEMENT/UPDATES</span>
-                                
-                                </div>
-                        </div>
-                        </div>
-      
-                </div>
-            </div>
-    
+       
     
     
     
