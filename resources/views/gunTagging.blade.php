@@ -145,6 +145,27 @@ Client
 	</div>
 </div>
 
+<!-------------------------------------------------modalRounds---------------------->
+<div id="modalRounds" class="modal modal-fixed-footer" style="overflow:hidden; width:200px !important; height:260px !important; border-radius:15px; margin-top:100px;">
+    <div class="modal-header"><h2 class="center-align">Rounds</h2></div>
+    
+    <div class="modal-content"> 
+        <div class="row">
+            <div class="col s10 push-s1">
+                <div class="input-field">
+                    <input id="addRounds" type="number" class="validate" required="" aria-required="true">
+                    <label for="">Rounds</label> 
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-footer" style="background-color:#01579b !important;">
+        <button class="btn waves-effect waves-light green" name="action" style="margin-right:47px;" id = "">Add
+        </button>
+    </div>
+</div>
+
 @stop
 
 @section('script')

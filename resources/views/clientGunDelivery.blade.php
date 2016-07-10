@@ -23,6 +23,7 @@ Delivery
 											<th>License No</th>
 											<th>Name</th>
 											<th>Type of Gun</th>
+											<th>Rounds</th>
 										</tr>
 									</thead>
 
@@ -35,6 +36,8 @@ Delivery
 												<td>M4A1</td>
 												
 												<td>Rifle</td>
+												
+												<td>90</td>
 
 												
 											</tr>
@@ -47,6 +50,8 @@ Delivery
 												<td>Arctic Warfare Magnum</td>
 
 												<td>Rifle</td>
+												
+												<td>15</td>
 												
 											</tr>
 											
@@ -126,6 +131,7 @@ Delivery
         $("#dataTable").DataTable({
                  "columns": [
                 null,
+				null,
 				null,
 				null
                 ] ,  
