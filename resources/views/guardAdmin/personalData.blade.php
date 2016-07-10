@@ -23,7 +23,11 @@ Guard Form
 <div class="row">
     <div class="col s8 push-s3" style=" margin-left:10px;">
 		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;" id="personaldata">
-		   <legend><h4>Personal Data</h4></legend>
+			<div class="row">	
+				<div class="col s4 push-s4">
+					<h4>Personal Data</h4>
+				</div>
+			</div>
 		   <div class="row" style="margin:5%;">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="input-field col s4">
@@ -95,7 +99,7 @@ Guard Form
 
 				</div>
 
-				<div class="input-field col s4">
+				<div class="input-field col s4 push-s2">
 						<select id = "civilStatus">
 						  <option value="" disabled selected>Choose</option>
 						  <option value="Single">Single</option>
@@ -106,7 +110,7 @@ Guard Form
 
 				</div>
 
-				<div class="input-field col s4">
+				<div class="input-field col s4 push-s2">
 						<select id = "gender">
 							<option value="" disabled selected>Choose</option>
 							<option value="Male">Male</option>
@@ -115,22 +119,8 @@ Guard Form
 					    <label>Gender</label>
 				 </div>
 			   	
-			   	 <div class="col s4">
-                    <div class="input-field">
-                        <input placeholder = " " id="licenseNumber" type="text" class="validate" required="" aria-required="true">
-                        <label for="licenseNumber">License Number</label> 
-                    </div>
-				</div>
                
-               <div class="input-field col s6">
-						<input  id="dateIssued" type="date" class="datepicker">
-						<label class="active" data-error="Incorrect" for="dateIssued">Date Issued</label>
-				</div>
-               
-               <div class="input-field col s6">
-						<input  id="dateExpiration" type="date" class="datepicker">
-						<label class="active" data-error="Incorrect" for="dateExpiration">Date Expiration</label>
-				</div>
+    
 			   
 				<div class="input-field col s10 push-s1">
                     <h5>Body Attributes:</h5>
@@ -180,7 +170,11 @@ Guard Form
 <div class="row">
     <div class="col s8 push-s3" style="margin-left:10px;">
         <div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
-            <legend><h4>License</h4></legend>
+            <div class="row">	
+				<div class="col s4 push-s4">
+					<h4>Guard License</h4>
+				</div>
+			</div>
             <div class="row" style="margin:5%;">
 				<div class="container-fluid grey lighten-3 col s10 push-s1" style="border-radius:5px; border: 1px solid black;">
 					<div class="row" style="margin:2%;">
