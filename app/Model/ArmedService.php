@@ -13,4 +13,7 @@ class ArmedService extends Model
     protected $primaryKey = 'intArmedServiceID';
     public $timestamps = false;
     
+    public function GuardArmedService(){
+        return $this->hasOne('App\Model\ArmedService', 'intArmedServiceID', 'intArmedServiceID');
+    }
 }

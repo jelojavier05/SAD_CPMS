@@ -164,32 +164,103 @@ Guard Form
                 .text(intLoop)
             );
             
-        }
+        } //year
         
-        
-        
+        $.ajax({
+
+            type: "GET",
+            url: "{{action('EducationalBackgroundController@get')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                if (data){
+                    for (intLoop = 0; intLoop < data.length; intLoop ++){
+                        if (data[intLoop].type == "Primary"){
+                            $('#schoolNamePrimary').val(data[intLoop].schoolName);
+                            $("#fromPrimary option[id='"+ data[intLoop].fromYear +"']").attr("selected", "selected");
+                            $("#toPrimary option[id='"+ data[intLoop].toYear +"']").attr("selected", "selected");
+                        }else if (data[intLoop].type == "Secondary"){
+                            $('#schoolNameSecondary').val(data[intLoop].schoolName);
+                            $("#fromSecondary option[id='"+ data[intLoop].fromYear +"']").attr("selected", "selected");
+                            $("#toSecondary option[id='"+ data[intLoop].toYear +"']").attr("selected", "selected");
+                        }else if (data[intLoop].type == "Tertiary"){
+                            $('#schoolNameTertiary').val(data[intLoop].schoolName);
+                            $("#fromTertiary option[id='"+ data[intLoop].fromYear +"']").attr("selected", "selected");
+                            $("#toTertiary option[id='"+ data[intLoop].toYear +"']").attr("selected", "selected");
+                        }
+                    }
+                    
+                    $('select').material_select();
+                }else{
+                    
+                }
+            }
+        }); //get data
+
         $('#backEducation').click(function(){
             window.location.href = '{{ URL::to("/guard/registration/personaldata") }}';
         });
         
         $('#nextEducation').click(function(){
             sendData();
-            //window.location.href = '{{ URL::to("/guard/registration/sgBackground") }}';
+            window.location.href = '{{ URL::to("/guard/registration/sgBackground") }}';
             
         });
         
         function sendData(){
-            var fromPrimary = $('#fromPrimary').children(":selected").attr("id");
-            var toPrimary = $('#toPrimary').children(":selected").attr("id");
-            var fromSecondary = $('#fromSecondary').children(":selected").attr("id");
-            var toSecondary = $('#toSecondary').children(":selected").attr("id");
-            var fromTertiary = $('#fromTertiary').children(":selected").attr("id");
-            var toTertiary = $('#toTertiary').children(":selected").attr("id");
+            var school = [];
+            
+            if ($('#schoolNamePrimary').val().trim() != "" && 
+                $('#fromPrimary').val().trim() != "" && 
+                $('#toPrimary').val().trim() != ""){
+                
+                var objPrimary = {
+                    type: "Primary",
+                    schoolName: $('#schoolNamePrimary').val(),
+                    fromYear: $("#fromPrimary").val(),
+                    toYear: $("#toPrimary").val()
+                };
+                
+                school.push(objPrimary);
+            }
+            
+            if ($('#schoolNameSecondary').val().trim() != "" && 
+                $('#fromSecondary').val().trim() != "" && 
+                $('#toSecondary').val().trim() != ""){
+                
+                var objSecondary = {
+                    type: "Secondary",
+                    schoolName: $('#schoolNameSecondary').val(),
+                    fromYear: $("#fromSecondary").val(),
+                    toYear: $("#toSecondary").val()
+                };
+                
+                school.push(objSecondary);
+            }
+
+            if ($('#schoolNameTertiary').val().trim() != "" && 
+                $('#fromTertiary').val().trim() != "" && 
+                $('#toTertiary').val().trim() != ""){
+                
+                var objTertiary = {
+                    type: "Tertiary",
+                    schoolName: $('#schoolNameTertiary').val(),
+                    fromYear: $("#fromTertiary").val(),
+                    toYear: $("#toTertiary").val()
+                };
+                
+                school.push(objTertiary);
+            }
             
             $.ajax({
 
                 type: "POST",
-                url: "{{action('GuardRegistrationController@educationalBackgroundSession')}}",
+                url: "{{action('EducationalBackgroundController@post')}}",
                 beforeSend: function (xhr) {
                     var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -198,22 +269,13 @@ Guard Form
                     }
                 },
                 data: {
-                    
-                    schoolNamePrimary: $('#schoolNamePrimary').val(),
-                    fromPrimary:fromPrimary,
-                    toPrimary:toPrimary,
-                    schoolNameSecondary:$('#schoolNameSecondary').val(),
-                    fromSecondary:fromSecondary,
-                    toSecondary:toSecondary,                    
-                    schoolNameTertiary:$('#schoolNameTertiary').val(),
-                    fromTertiary:fromTertiary,
-                    toTertiary:toTertiary,
+                    school: school
                 },
                 success: function(data){
-                    
+                    confirm('success');
                 },
                 error: function(data){
-                    
+                    console.log(data);
                 }
             });//ajax
         }

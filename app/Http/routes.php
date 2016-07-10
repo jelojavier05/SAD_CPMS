@@ -10,11 +10,14 @@ Route::post('/guard/registration/personaldata/post', 'PersonalDataController@pos
 Route::get('/guard/registration/educationalbackground', 'EducationalBackgroundController@index')
     ->name('educationalbackground');
 
+Route::get('/guard/registration/educationalbackground/get', 'EducationalBackgroundController@get');
+
+Route::post('/guard/registration/educationalbackground/post', 'EducationalBackgroundController@post');
+
+Route::get('/guard/registration/sgbackground', 'SGBackgroundController@index')
+    ->name('sgbackground');
+
 //Route::get('/login', 'LoginController@index')->name('login');
-
-Route::get('/guard/registration/educationalBackground', 'GuardRegistrationController@educationalBackgroundBC')->name('educationalBackgroundBC');
-
-Route::get('/guard/registration/sgBackground', 'GuardRegistrationController@sgBackgroundBC')->name('sgBackground');
 
 Route::get('/guard/registration/requirement', 'GuardRegistrationController@requirementBC')->name('requirement');
 

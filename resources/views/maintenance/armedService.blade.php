@@ -28,7 +28,6 @@ Armed Service
                                 <th style="width:50px;"></th>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Description</th>
                             </tr>
                         </thead>
                         
@@ -63,7 +62,6 @@ Armed Service
                                     
                                     <td id = "id{{ $armedService->intArmedServiceID }}">{{ $armedService->intArmedServiceID }}</td>
                                     <td id = "name{{ $armedService->intArmedServiceID }}">{{ $armedService->strArmedServiceName }}</td>
-                                    <td id = "description{{ $armedService->intArmedServiceID }}">{{ $armedService->strDescription }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -95,15 +93,6 @@ Armed Service
                 <div class="input-field">
                     <input id="strArmedServiceAdd" type="text" class="validate" name = "armedServiceName" required="" aria-required="true">
                     <label for="strArmedServiceAdd">Armed Service Type</label> 
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col s5">
-                <div class="input-field">
-                    <input id="strArmedServiceDescAdd" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true">
-                    <label for="strArmedServiceDescAdd">Description</label> 
                 </div>
             </div>
         </div>
@@ -141,15 +130,6 @@ Armed Service
                 </div>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col s5">
-                <div class="input-field">
-                    <input id="editdescription" type="text" class="validate"  name = "armedServiceDescription" required="" aria-required="true" value = " ">
-                    <label for="editDescription">Description</label> 
-                </div>
-            </div>
-        </div>
     </div>
     
     <div class="modal-footer" style="background-color:#01579b !important;">
@@ -172,7 +152,6 @@ Armed Service
             { "orderable": false },
             { "orderable": false },
             null,
-            null,
             null
             ] ,  
             "pageLength":5,
@@ -180,7 +159,7 @@ Armed Service
         });
 
         $("#btnAddSave").click(function(){
-          if ($('#strArmedServiceAdd').val().trim() && $('#strArmedServiceDescAdd').val().trim()){
+          if ($('#strArmedServiceAdd').val().trim()){
             $.ajax({
 
                 type: "POST",
@@ -194,7 +173,6 @@ Armed Service
                 },
                 data: {
                     armedServiceName: $('#strArmedServiceAdd').val(),
-                    armedServiceDescription: $('#strArmedServiceDescAdd').val(),
                 },
                 success: function(data){
                     
@@ -209,8 +187,6 @@ Armed Service
                     Materialize.toast(toastContent, 1500,'red', 'edit');
 
                 }
-
-
             });//ajax
 
              }else{
@@ -236,7 +212,6 @@ Armed Service
 				data: {
 					armedServiceID: $('#editID').val(),
                     armedServiceName: $('#editname').val(),
-                    armedServiceDescription: $('#editdescription').val(),
                 },
                 success: function(data){
                     $('#modalarmedserviceEdit').closeModal();
@@ -248,7 +223,6 @@ Armed Service
                     Materialize.toast(toastContent, 1500,'red', 'edit');
                     
 				}
-
 
 			});//ajax
             
@@ -304,11 +278,9 @@ Armed Service
             $('#modalarmedserviceEdit').openModal();
             var itemID = "id" + this.id;
             var itemName = "name" + this.id;
-            var itemDescription = "description" + this.id;
             
             document.getElementById('editID').value = $("#"+itemID).html();
             document.getElementById('editname').value = $("#"+itemName).html();
-            document.getElementById('editdescription').value = $("#"+itemDescription).html();
 
         });
 
@@ -371,8 +343,7 @@ Armed Service
                             '<button class="buttonUpdate btn" name="" id="' +data[index].intArmedServiceID+'" ><i class="material-icons">edit</i></button>',
                             '<button class="buttonDelete btn red" id="'+ data[index].intArmedServiceID +'"><i class="material-icons">delete</i></button>',
                             '<h id = "id' +data[index].intArmedServiceID + '">' + data[index].intArmedServiceID +'</h>',
-                            '<h id = "name' +data[index].intArmedServiceID + '">' + data[index].strArmedServiceName +'</h>',
-                            '<h id = "description' +data[index].intArmedServiceID + '">' + data[index].strDescription +'</h>']).draw();
+                            '<h id = "name' +data[index].intArmedServiceID + '">' + data[index].strArmedServiceName +'</h>']).draw();
                     });//foreach
 
                     refreshTextfield();
@@ -389,7 +360,6 @@ Armed Service
 
         function refreshTextfield(){
             document.getElementById('strArmedServiceAdd').value = "";
-            document.getElementById('strArmedServiceDescAdd').value = "";   
         }
 
     });//document ready

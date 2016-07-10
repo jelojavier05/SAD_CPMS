@@ -12,9 +12,9 @@ Guard Form
             <div class="nav-wrapper blue">
                 <div class="row">	
                     <div class="col s12">
-                        <a href="{{URL::route('personalDataBC')}}" class="breadcrumb">Personal Data</a>
-                        <a href="{{URL::route('educationalBackgroundBC')}}" class="breadcrumb">Educational Background</a>
-                        <a href="{{URL::route('sgBackground')}}" class="breadcrumb">SG Background</a>
+                        <a href="{{URL::route('personaldata')}}" class="breadcrumb">Personal Data</a>
+                        <a href="{{URL::route('educationalbackground')}}" class="breadcrumb">Educational Background</a>
+                        <a href="{{URL::route('sgbackground')}}" class="breadcrumb">SG Background</a>
                     </div>
                 </div>
             </div>
@@ -154,18 +154,6 @@ Guard Form
 			</div>
 		</div>
 </div>
-
-@if (isset($armedService))
-    <input type="hidden" id="session" value="active">
-    <input type="hidden" id="idSession" value="{{$armedService->id}}">
-    <input type="hidden" id="rankSession" value="{{$armedService->rank}}">
-    <input type="hidden" id="yearSession" value="{{$armedService->year}}">
-    <input type="hidden" id="dischargeSession" value="{{$armedService->radio}}">
-    <input type="hidden" id="reasonSession" value="{{$armedService->reason}}">
-@else
-    <input type="hidden" id="session" value="deactive">
-@endif
-
 @stop
     
 @section('script')
@@ -185,15 +173,6 @@ Guard Form
                 .attr("id",intLoop)
                 .text(intLoop)
             );
-        }
-        
-        if ($('#session').val() == 'active'){
-            
-            $("#armedService option[id='option"+ $('#idSession').val() +"']").attr("selected", "selected");
-            $("#armedServiceYear option[id='"+ $('#yearSession').val() +"']").attr("selected", "selected");
-            $('#rank').val($('#rankSession').val());
-            $('#discharged' + $('#dischargeSession').val()).prop('checked',true);
-            $('#reason').val($('#reasonSession').val());
         }
         
         $('#backArmed').click(function(){

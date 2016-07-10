@@ -14,12 +14,22 @@ class EducationalBackgroundController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         return view ('/guardAdmin/educbackGround');
     }
+    
+    public function get(Request $request){
+        //$request->session()->forget('educationalBackground');
+        if ($request->session()->has('educationalBackground')) {
+            $educationalBackground = new \stdClass();
+            $educationalBackground = $request->session()->get('educationalBackground');
+            return response()->json($educationalBackground);
+        }else{
+            return response()->json(false);
+        }
+    }
 
-    public function post(Request $request){
-        
+    public function post(Request $request){        
+        $request->session()->put('educationalBackground', $request->school);
     }
 }

@@ -27,7 +27,6 @@ class ArmedServiceController extends Controller
             $armedService = new ArmedService;
 
             $armedService->strArmedServiceName = $request->armedServiceName;
-            $armedService->strDescription = $request->armedServiceDescription;
             
             $armedService->save();
 
@@ -50,8 +49,7 @@ class ArmedServiceController extends Controller
     public function updateArmedService(Request $request){
         try {
             ArmedService::where('intArmedServiceID', $request->armedServiceID)
-            ->update(['strArmedServiceName'=>$request->armedServiceName, 
-                'strDescription'=>$request->armedServiceDescription]);
+            ->update(['strArmedServiceName'=>$request->armedServiceName]);
         } catch (Exception $e) {
             
         }

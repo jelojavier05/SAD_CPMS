@@ -12,8 +12,7 @@ use App\Http\Controllers\Controller;
 class PersonalDataController extends Controller
 {
     
-    public function index(Request $request)
-    {
+    public function index(Request $request){
         $bodyAttributes = BodyAttribute::
                 where('deleted_at', null)
                     ->where('boolFlag', 1)
