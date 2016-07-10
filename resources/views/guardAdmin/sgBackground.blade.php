@@ -30,7 +30,7 @@ Guard Form
                 <div class="row">
                     <div class = "col s7">    
                         <select id = "armedService" >
-                            <option disabled selected   >Choose armed services if any</option>
+                            <option disabled selected value = "0">Choose armed services if any</option>
                             @foreach($armedservices as $armedservice)
                                 <option id = "option{{$armedservice->intArmedServiceID}}" value = "{{$armedservice->intArmedServiceID}}">{{$armedservice->strArmedServiceName}}</option>
                             @endforeach
@@ -173,15 +173,15 @@ Guard Form
                 .attr("id",intLoop)
                 .text(intLoop)
             );
-        }
+        }//year
         
         $('#backArmed').click(function(){
-            window.location.href = '{{ URL::to("/guard/registration/educationalBackground") }}';
+            window.location.href = '{{ URL::to("/guard/registration/educationalbackground") }}';
         });
         
         $('#nextArmed').click(function(){
             sendData();
-            window.location.href = '{{ URL::to("guard/registration/requirement") }}';
+            //window.location.href = '{{ URL::to("guard/registration/requirement") }}';
         });
         
         $('#btnAdd').click(function(){
@@ -197,6 +197,7 @@ Guard Form
                     '<h id = "date' + governmentExamID + '">' +  $('#addDateTaken').val() + '</h>'
 
                 ]).draw(false);
+                
                 $('#modalgovexamAdd').closeModal();
 
                 arrGovernmentExam[intCounter] = [];
@@ -205,9 +206,7 @@ Guard Form
                 arrGovernmentExam[intCounter][2] = $('#addDateTaken').val(); //date taken
                 arrGovernmentExam[intCounter][3] = intCounter;
                 arrGovernmentExam[intCounter][4] = governmentExam; //name
-                
-                
-                
+
                 intCounter ++;
             }else{
                 var toastContent = $('<span>Error Occur. </span>');
@@ -338,11 +337,17 @@ Guard Form
         
         function sendData(){
             var armedServiceID = $("#armedService option:selected").val();
-            var armedServiceRank = $('#rank').val();
-            var armedServiceYear = $('#armedServiceYear option:selected').text();
-            var armedServiceReason = $('#reason').val();
-            var armedServiceRadio = $('input[name = radio]:checked').val();
-
+            
+            if (armedServiceID != 0){
+                var objArmedService = {
+                    id: armedServiceID,
+                    rank: $('#rank').val(),
+                    year: $("#armedServiceYear").val(),
+                    reason: $('#reason').val(),
+                    radio: $('input[name = radio]:checked').val()
+                };  
+            }
+            
             var governmentExamID = [];
             var governmentExam = [];
             var governmentExamRating = [];
@@ -354,41 +359,40 @@ Guard Form
                 governmentExamDateTaken[intLoop] = arrGovernmentExam[intLoop][2];
                 governmentExam[intLoop] = arrGovernmentExam[intLoop][4];
             }
-            confirm(armedServiceID);
-                
-            $.ajax({
-
-                type: "POST",
-                url: "{{action('GuardRegistrationController@sgBackgroundSession')}}",
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                data: {
-                    armedServiceID: armedServiceID,
-                    armedServiceRank:armedServiceRank,
-                    armedServiceYear:armedServiceYear,
-                    armedServiceReason:armedServiceReason,
-                    armedServiceRadio:armedServiceRadio,
-                    governmentExamID:governmentExamID,
-                    governmentExam:governmentExam,
-                    governmentExamRating:governmentExamRating,
-                    governmentExamDateTaken:governmentExamDateTaken
-                    
-                },
-                success: function(data){
-                    
-                },
-                error: function(data){
-                    confirm('error send data');
-                    console.error();
-                }
-            });//ajax
-        }
             
+                
+//            $.ajax({
+//
+//                type: "POST",
+//                url: "{{action('GuardRegistrationController@sgBackgroundSession')}}",
+//                beforeSend: function (xhr) {
+//                    var token = $('meta[name="csrf_token"]').attr('content');
+//
+//                    if (token) {
+//                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+//                    }
+//                },
+//                data: {
+//                    armedServiceID: armedServiceID,
+//                    armedServiceRank:armedServiceRank,
+//                    armedServiceYear:armedServiceYear,
+//                    armedServiceReason:armedServiceReason,
+//                    armedServiceRadio:armedServiceRadio,
+//                    governmentExamID:governmentExamID,
+//                    governmentExam:governmentExam,
+//                    governmentExamRating:governmentExamRating,
+//                    governmentExamDateTaken:governmentExamDateTaken
+//                    
+//                },
+//                success: function(data){
+//                    
+//                },
+//                error: function(data){
+//                    confirm('error send data');
+//                    console.error();
+//                }
+//            });//ajax
+        }
         
     });
         

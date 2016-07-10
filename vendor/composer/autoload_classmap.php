@@ -26,6 +26,7 @@ return array(
     'CreateTypeOfContractTable' => $baseDir . '/database/migrations/2016_06_06_180120_create_type_of_contract_table.php',
     'CreateTypeOfGunTable' => $baseDir . '/database/migrations/2016_02_29_164748_create_type_of_gun_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
+    'DeleteDescriptionGovernmentexam' => $baseDir . '/database/migrations/2016_07_10_100236_delete_description_governmentexam.php',
     'DeleteStrlicenseColumn' => $baseDir . '/database/migrations/2016_07_08_092932_delete_strlicense_column.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',

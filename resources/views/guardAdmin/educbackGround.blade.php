@@ -208,7 +208,7 @@ Guard Form
         
         $('#nextEducation').click(function(){
             sendData();
-            window.location.href = '{{ URL::to("/guard/registration/sgBackground") }}';
+            window.location.href = '{{ URL::to("/guard/registration/sgbackground") }}';
             
         });
         
@@ -272,7 +272,7 @@ Guard Form
                     school: school
                 },
                 success: function(data){
-                    confirm('success');
+                    
                 },
                 error: function(data){
                     console.log(data);

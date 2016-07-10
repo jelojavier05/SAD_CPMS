@@ -32,7 +32,6 @@ Government Exam
 								<th style="width:50px;"></th>
                                 <th>ID</th>
                                 <th>Name</th>
-								<th>Description</th>
                                 
                             </tr>
                         </thead>
@@ -74,7 +73,6 @@ Government Exam
                                     </td>
                                     <td id = "id{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->intGovernmentExamID }}</td>
                                 	<td id = "name{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->strGovernmentExam }}</td>
-                                	<td id = "description{{ $governmentExam->intGovernmentExamID }}">{{ $governmentExam->strDescription }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -105,14 +103,6 @@ Government Exam
 							<div class="input-field">
 								<input id="strGovernmentExamAdd" type="text" class="validate" name = "governmentExamName" required="" aria-required="true">
 								<label for="strGovernmentExamAdd">Government Exam Type</label> 
-							</div>
-						</div>
-            		</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="strGovernmentExamDescAdd" type="text" class="validate"  name = "governmentExamDescription" required="" aria-required="true">
-								<label for="strGovernmentExamDescAdd">Description</label> 
 							</div>
 						</div>
             		</div>
@@ -149,14 +139,6 @@ Government Exam
 							</div>
 						</div>
             		</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="editdescription" type="text" class="validate"  name = "governmentExamDescription" required="" aria-required="true" value = "test">
-								<label for="editDescription">Description</label> 
-							</div>
-						</div>
-            		</div>
 						
 	<!-- Modal Button Save -->
 				
@@ -171,29 +153,6 @@ Government Exam
     	</div>
 </div>
 <!----------------------------modal delete nature of business ------------------------------>
-
-<div id="modalgovexamDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">
-            <div class="modal-header blue"><h2 class="white-text">Delete</h2></div>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="modal-content">
-
-                <div class="row">
-                    <div class="col s12">
-                        <h3 class="center">Confirm Delete</h3>
-                    </div>
-                </div>
-                <input type="hidden" name="idDelete" id = "deleteID">
-                <div class="row">
-                    <div class="col s3 push-s5">
-                        <button class=" btn waves-effect waves-light red large" name="action" style="margin-left: 20px;" id = "btnDelete">
-                            <i class="material-icons left">delete</i>Delete
-                        </button>
-
-                    </div>	
-                </div>
-
-            </div>
-</div>
 
 @stop
 
@@ -210,14 +169,13 @@ Government Exam
                 { "orderable": false },
                 null,
                 null,
-                null
                 ] ,  
                 "pageLength":5,
 				"lengthMenu": [5,10,15,20]
             });
  
 		$("#btnAddSave").click(function(){
-            if ($('#strGovernmentExamAdd').val().trim() && $('#strGovernmentExamDescAdd').val().trim()){
+            if ($('#strGovernmentExamAdd').val().trim()){
 			$.ajax({
 				
 				type: "POST",
@@ -231,16 +189,11 @@ Government Exam
                 },
 				data: {
 					governmentExamName: $('#strGovernmentExamAdd').val(),
-					governmentExamDescription: $('#strGovernmentExamDescAdd').val(),
 				},
 				success: function(data){
 					$('#modalgovexamAdd').closeModal();
                     swal("Success!", "Record has been Added!", "success");
                     refreshTable();
-                    
-
-
-
 				},
 				error: function(data){
 					var toastContent = $('<span>Error Occured. </span>');
@@ -274,7 +227,6 @@ Government Exam
 				data: {
 					governmentExamID: $('#editID').val(),
                     governmentExamName: $('#editname').val(),
-					governmentExamDescription: $('#editdescription').val(),
 				},
 				success: function(data){
 //					var toastContent = $('<span>Record Updated.</span>');
@@ -298,36 +250,30 @@ Government Exam
             }
 
 		});//button add clicked
-
     
         $('#dataTable').on('click', '.buttonUpdate', function(){
             $('#modalgovexamEdit').openModal();
             var itemID = "id" + this.id;
 			var itemName = "name" + this.id;
-			var itemDescription = "description" + this.id;
 
 			document.getElementById('editID').value = $("#"+itemID).html();
 			document.getElementById('editname').value = $("#"+itemName).html();
-			document.getElementById('editdescription').value = $("#"+itemDescription).html();
 
         });
-            
-
-
 		
-		  $('#dataTable').on('click', '.buttonDelete', function(){
+        $('#dataTable').on('click', '.buttonDelete', function(){
 
-			document.getElementById('deleteID').value =this.id;  
+            document.getElementById('deleteID').value =this.id;  
             swal({   title: "Are you sure?",   
-				  	 text: "Record will be deleted!",   
-				     type: "warning",   
-				     showCancelButton: true,   
-				     confirmButtonColor: "#DD6B55",   
-				     confirmButtonText: "Yes, delete it!",   
-				     closeOnConfirm: false 
-				 }, 
-				 function(){
-					$.ajax({
+                     text: "Record will be deleted!",   
+                     type: "warning",   
+                     showCancelButton: true,   
+                     confirmButtonColor: "#DD6B55",   
+                     confirmButtonText: "Yes, delete it!",   
+                     closeOnConfirm: false 
+                 }, 
+                 function(){
+                    $.ajax({
 
                 type: "POST",
                 url: "{{action('GovernmentExamController@deleteGovernmentExam')}}",
@@ -343,18 +289,18 @@ Government Exam
 
                 },
                 success: function(data) {
-					swal("Deleted!", "Record has been successfully deleted!", "success");
+                    swal("Deleted!", "Record has been successfully deleted!", "success");
 
-					refreshTable();
+                    refreshTable();
 
-				  },
-			  	error: function(data) {
-					swal("Oops", "We couldn't connect to the server!", "error");
-			  	  }
+                  },
+                error: function(data) {
+                    swal("Oops", "We couldn't connect to the server!", "error");
+                  }
 
-            	});//ajax
-			});
-          });
+                });//ajax
+            });
+        });
             
         $('#dataTable').on('click', '.checkboxFlag', function(){
             var $this = $(this);
@@ -416,8 +362,7 @@ Government Exam
                             '<button class="buttonUpdate btn" name="" id="' +data[index].intGovernmentExamID+'" ><i class="material-icons">edit</i></button>',
                             '<button class="buttonDelete btn red" id="'+ data[index].intGovernmentExamID +'"><i class="material-icons">delete</i></button>',
                             '<h id = "id' +data[index].intGovernmentExamID + '">' + data[index].intGovernmentExamID +'</h>',
-                            '<h id = "name' +data[index].intGovernmentExamID + '">' + data[index].strGovernmentExam +'</h>',
-                            '<h id = "description' +data[index].intGovernmentExamID + '">' + data[index].strDescription +'</h>']).draw();
+                            '<h id = "name' +data[index].intGovernmentExamID + '">' + data[index].strGovernmentExam +'</h>']).draw();
                     });//foreach
 
                     refreshTextfield();
@@ -426,7 +371,6 @@ Government Exam
                 error: function(data){
                     var toastContent = $('<span>Error Occur. </span>');
                     Materialize.toast(toastContent, 1500,'red', 'edit');
-                     console.log(data);
                 }
             });
                 
@@ -434,7 +378,6 @@ Government Exam
             
         function refreshTextfield(){
             document.getElementById('strGovernmentExamAdd').value = "";
-            document.getElementById('strGovernmentExamDescAdd').value = "";   
 
         }
         

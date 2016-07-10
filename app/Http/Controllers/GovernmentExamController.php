@@ -28,7 +28,6 @@ class GovernmentExamController extends Controller
             $governmentExam = new GovernmentExam;
 
             $governmentExam->strGovernmentExam = $request->governmentExamName;
-            $governmentExam->strDescription = $request->governmentExamDescription;
             
             $governmentExam->save();
         } catch (Exception $e) {
@@ -51,8 +50,7 @@ class GovernmentExamController extends Controller
     public function updateGovernmentExam(Request $request){
         try {
             GovernmentExam::where('intGovernmentExamID', $request->governmentExamID)
-            ->update(['strGovernmentExam'=>$request->governmentExamName, 
-                'strDescription'=>$request->governmentExamDescription]);
+            ->update(['strGovernmentExam'=>$request->governmentExamName]);
         } catch (Exception $e) {
 
         }
