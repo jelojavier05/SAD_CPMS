@@ -30,8 +30,24 @@ class EducationalBackgroundController extends Controller
     }
 
     public function post(Request $request){        
-        $request->session()->put('educationalBackground', $request->school);
+        $request->session()->put('educationalBackground', $request->objSchool);
         
-        return $request;
+        $array = array();
+        $type = $request->type;
+        $school = $request->school;
+        $yearFrom = $request->yearFrom;
+        $yearTo = $request->yearTo;
+
+        for ($intLoop = 0; $intLoop < count($type); $intLoop ++){
+            $value = new \stdClass();
+            $value->type = $type[$intLoop];
+            $value->school = $school[$intLoop];
+            $value->yearFrom = $yearFrom[$intLoop];
+            $value->yearTo = $yearTo[$intLoop];
+
+            array_push($array,$value);
+        }
+        
+        $request->session()->put('educationalBackgroundDB', $array);
     }
 }

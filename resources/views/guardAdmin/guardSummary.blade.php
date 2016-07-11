@@ -317,11 +317,11 @@ $(document).ready(function(){
                 }
             },
             success: function(data){
-                confirm('success easy!');
+                swal("Success!", "Record has been Added!", "success");
+                window.location.href = '{{ URL::to("/guardView") }}';
             },
             error: function(data){
                 confirm('error send data fvcked up');
-                console.error();
             }
         });//ajax
     });

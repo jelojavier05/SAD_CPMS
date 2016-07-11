@@ -214,6 +214,11 @@ Guard Form
         
         function sendData(){
             var school = [];
+            var arrType = [];
+            var arrSchool = [];
+            var arrFrom = [];
+            var arrTo = [];
+            var intCounter = 0;
             
             if ($('#schoolNamePrimary').val().trim() != "" && 
                 $('#fromPrimary').val().trim() != "" && 
@@ -226,6 +231,12 @@ Guard Form
                     toYear: $("#toPrimary").val()
                 };
                 
+                arrType[intCounter] = "Primary";
+                arrSchool[intCounter] = $('#schoolNamePrimary').val();
+                arrFrom[intCounter] = $("#fromPrimary").val();
+                arrTo[intCounter] = $("#toPrimary").val();
+                
+                intCounter ++;
                 school.push(objPrimary);
             }
             
@@ -240,6 +251,12 @@ Guard Form
                     toYear: $("#toSecondary").val()
                 };
                 
+                arrType[intCounter] = "Secondary";
+                arrSchool[intCounter] = $('#schoolNameSecondary').val();
+                arrFrom[intCounter] = $("#fromSecondary").val();
+                arrTo[intCounter] = $("#toSecondary").val();
+                
+                intCounter ++;
                 school.push(objSecondary);
             }
 
@@ -253,6 +270,13 @@ Guard Form
                     fromYear: $("#fromTertiary").val(),
                     toYear: $("#toTertiary").val()
                 };
+                
+                arrType[intCounter] = "Tertiary";
+                arrSchool[intCounter] = $('#schoolNameTertiary').val();
+                arrFrom[intCounter] = $("#fromTertiary").val();
+                arrTo[intCounter] = $("#toTertiary").val();
+                
+                intCounter ++;
                 
                 school.push(objTertiary);
             }
@@ -269,7 +293,11 @@ Guard Form
                     }
                 },
                 data: {
-                    school: school
+                    objSchool: school,
+                    type: arrType,
+                    school: arrSchool,
+                    yearFrom: arrFrom,
+                    yearTo: arrTo
                 },
                 success: function(data){
 

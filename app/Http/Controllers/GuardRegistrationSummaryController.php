@@ -49,8 +49,20 @@ class GuardRegistrationSummaryController extends Controller
                 'strContactNumberLandline' => $personalData->contactLandline,
                 'strCivilStatus' => $personalData->civilStatus,
                 'strGender' => $personalData->gender,
-                'intAccountID' => $accountID
+                'intAccountID' => $accountID,
+                'intStatusIdentifier' => 0
             ]);
+            
+            $educationalBackground = $request->session()->get('educationalBackgroundDB');
+            foreach ($educationalBackground as $value) {
+                DB::table('tblguardeducation')->insert([
+                    'intGuardID' => $id, 
+                    'strEducationIdentifier' => $value->type,
+                    'strSchoolName' => $value->school,
+                    'intYearFrom' => $value->yearFrom,
+                    'intYearTo' => $value->yearTo,
+                ]);
+            }
 
             $license = $personalData->license;
             DB::table('tblguardlicense')->insert([
@@ -105,7 +117,21 @@ class GuardRegistrationSummaryController extends Controller
                 ]);    
             }
             
+            $request->session()->forget('personalData');
+            $request->session()->forget('educationalBackground');
+            $request->session()->forget('educationalBackgroundDB');
+            $request->session()->forget('armedService');
+            $request->session()->forget('governmentExam');
+            $request->session()->forget('armedServiceDB');
+            $request->session()->forget('governmentExamDB');
+            $request->session()->forget('requirement');
+            $request->session()->forget('requirementDB');
+            $request->session()->forget('account');
+            $request->session()->forget('accountDB');
+            
             DB::commit();
+            
+            
         }catch(Exception $e){
             DB::rollBack();
         }
