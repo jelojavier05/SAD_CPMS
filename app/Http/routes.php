@@ -64,6 +64,7 @@ Route::post('/guard/registration/guard/insert', 'GuardRegistrationController@ins
     Route::get('/clientguardrequest', 'ClientGuardRequestController@index');
     Route::get('/clientgunrequest', 'ClientGunRequestController@index');
     Route::get('/clientguardattendance', 'ClientGuardAttendanceController@index');
+    Route::get('/clientsettings', 'ClientSettingsController@index');
 
 
 
