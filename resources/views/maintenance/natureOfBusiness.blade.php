@@ -172,7 +172,9 @@ Nature of Business
 			
     	</div>
 </div>
+</div>
 
+<input type="hidden" name="idDelete" id = "deleteID">
 @stop
 @section('script')
 <script type="text/javascript">
@@ -276,8 +278,7 @@ Nature of Business
 		});//button add clicked
         
         $('#dataTable').on('click', '.buttonDelete', function(){
-
-			document.getElementById('deleteID').value =this.id;  
+            document.getElementById('deleteID').value =this.id; 
             swal({   title: "Are you sure?",   
 				  	 text: "Record will be deleted!",   
 				     type: "warning",   
@@ -289,27 +290,27 @@ Nature of Business
 				 function(){
 					$.ajax({
 
-                type: "POST",
-                url: "{{action('NatureOfBusinessController@deleteNatureOfBusiness')}}",
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
+                        type: "POST",
+                        url: "{{action('NatureOfBusinessController@deleteNatureOfBusiness')}}",
+                        beforeSend: function (xhr) {
+                            var token = $('meta[name="csrf_token"]').attr('content');
 
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                data: {
-                    natureOfBusinessID: deleteID.value
+                            if (token) {
+                                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                            }
+                        },
+                        data: {
+                            natureOfBusinessID: deleteID.value
 
-                },
-                success: function(data) {
-					swal("Deleted!", "Record has been successfully deleted!", "success");
+                        },
+                        success: function(data) {
+                            swal("Deleted!", "Record has been successfully deleted!", "success");
 
-					refreshTable();
+                            refreshTable();
 
-				  },
-			  	error: function(data) {
-					swal("Oops", "We couldn't connect to the server!", "error");
+                          },
+                        error: function(data) {
+                            swal("Oops", "We couldn't connect to the server!", "error");
 			  	  }
 
             	});//ajax
