@@ -35,15 +35,12 @@ Guard
 
                         <tbody>
                             <tr>
-
-
                                 <td>
-                                    <button class="buttonUpdate btn modal-trigger" name="" id="" href="#modalRequirements">
+                                    <button class="buttonUpdate btn" name="" id="">
                                         <i class="material-icons">edit</i>
                                     </button>
                                     <label for=""></label>
                                 </td>
-
                                 <td>
                                     <button class="buttonDelete btn blue "  id="">
                                         MORE

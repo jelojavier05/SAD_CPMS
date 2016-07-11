@@ -164,6 +164,20 @@ City
 <script type="text/javascript">
 	
     $(document).ready(function(){
+        var arrProvince;
+        $.ajax({ 
+            type: 'GET', 
+            url: '{{ URL::to("/maintenance/province/get") }}', 
+            data: { get_param: 'value' },
+            dataType: 'json',
+            success: function (data) { 
+                arrProvince = data;                
+            },
+            error: function(data){
+
+            }
+        });//ajax       
+        
 
         $("#dataTable").DataTable({
              "columns": [
@@ -378,25 +392,15 @@ City
             });//ajax
 
         }//refresh table
+        
         function getProvince(provinceID){
             var provinceName;
-            $.ajax({ 
-                type: 'GET', 
-                url: '{{ URL::to("/maintenance/province/get") }}', 
-                data: { get_param: 'value' },
-                dataType: 'json',
-                success: function (data) { 
-                    $.each(data, function(index, element) {
-                        if(data[index].intProvinceID == provinceID){
-                            provinceName = data[index].strProvinceName;
-                            return false;
-                        }
-                    });//foreach                    
-                },
-                error: function(data){
-                    
-                },async: false
-            });//ajax       
+            $.each(arrProvince, function(index, element) {
+                if (provinceID == arrProvince[index].intProvinceID){
+                    provinceName = arrProvince[index].strProvinceName;
+                    return false;
+                }
+            });
             return provinceName;
         }
 	});

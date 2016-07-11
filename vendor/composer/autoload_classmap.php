@@ -27,6 +27,7 @@ return array(
     'CreateMeasurementTable' => $baseDir . '/database/migrations/2016_07_06_170018_create_measurement_table.php',
     'CreateNatureOfBusinessTable' => $baseDir . '/database/migrations/2016_06_18_172817_create_nature_of_business_table.php',
     'CreateProvinceTable' => $baseDir . '/database/migrations/2016_06_20_172404_create_province_table.php',
+    'CreateRankTable' => $baseDir . '/database/migrations/2016_07_11_132958_create_rank_table.php',
     'CreateRequirementsTable' => $baseDir . '/database/migrations/2016_06_08_164140_create_requirements_table.php',
     'CreateTypeOfContractTable' => $baseDir . '/database/migrations/2016_06_06_180120_create_type_of_contract_table.php',
     'CreateTypeOfGunTable' => $baseDir . '/database/migrations/2016_02_29_164748_create_type_of_gun_table.php',

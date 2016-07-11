@@ -33,7 +33,6 @@ class ArmedServiceController extends Controller
         } catch (Exception $e) {
             
         }
-
         
     }
 	

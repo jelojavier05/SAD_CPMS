@@ -16,4 +16,8 @@ class ArmedService extends Model
     public function GuardArmedService(){
         return $this->hasOne('App\Model\ArmedService', 'intArmedServiceID', 'intArmedServiceID');
     }
+    
+    public function Rank(){
+        return $this->hasMany('App\Model\Rank', 'intArmedServiceID', 'intArmedServiceID');
+    }
 }
