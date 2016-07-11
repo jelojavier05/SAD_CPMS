@@ -93,7 +93,7 @@ class GuardRegistrationSummaryController extends Controller
             DB::table('tblguardarmedservice')->insert([
                 'intGuardID' => $id, 
                 'intArmedServiceID' => $armedService->id,
-                'strRank' => $armedService->rank,
+                'intRankID' => $armedService->rank,
                 'intYear' => $armedService->year,
                 'strDischarge' => $armedService->discharge,
                 'strReason' => $armedService->reason

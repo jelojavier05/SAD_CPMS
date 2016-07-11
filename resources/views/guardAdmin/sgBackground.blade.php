@@ -171,6 +171,7 @@ Guard Form
         var geID = [];
         var geDate = [];
         var geRating = [];
+        var rank = [];
         
         for(intLoop = (new Date).getFullYear(); intLoop >= 1980; intLoop --){
             $armedServiceYear.append(
@@ -210,6 +211,21 @@ Guard Form
         }); //get govermentExam
         
         $.ajax({
+            type: "GET",
+            url: "{{action('RankController@get')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                rank = data;
+            }
+        }); //rank
+        
+        $.ajax({
 
             type: "GET",
             url: "{{action('SGBackgroundController@getArmedService')}}",
@@ -222,7 +238,12 @@ Guard Form
             },
             success: function(data){
                 if (data){
+                    
                     $("#armedService option[id='option"+ data.id +"']").attr("selected", "selected");
+                    var id = $('#armedService').children(":selected").val();
+                    getRank(id);
+                    
+                    $("#armedServiceRank option[id='"+ data.rank +"']").attr("selected", "selected");
                     $('#rank').val(data.rank);
                     $('#armedServiceYear').val(data.year);
                     $('#reason').val(data.reason);
@@ -234,6 +255,37 @@ Guard Form
                 }
             }
         }); //get armed service
+        
+        
+        
+        $('#armedService').on('change', function(){
+            var id = $(this).children(":selected").val();
+            getRank(id);
+        });
+        
+        function getRank(id){
+            var $selectDropdown = 
+                $("#armedServiceRank")
+                .empty()
+                .html(' ');
+            $selectDropdown.append(
+                        $("<option></option>")
+                        .attr("value",0)
+                        .attr("disabled", 'disabled')
+                        .text('Choose Rank')
+                    );
+            $.each(rank, function(index, subcatObj){
+                if (subcatObj.intArmedServiceID == id){
+                    $selectDropdown.append(
+                        $("<option></option>")
+                        .attr("id",subcatObj.intRankID)
+                        .text(subcatObj.strRank)
+                    );
+                }
+            });
+
+            $("#armedServiceRank").material_select();
+        }
         
         $('#backArmed').click(function(){
             window.location.href = '{{ URL::to("/guard/registration/educationalbackground") }}';
@@ -404,16 +456,19 @@ Guard Form
         
         function sendData(){
             var armedServiceID = $("#armedService option:selected").val();
+            var rankID = $('#armedServiceRank').children(":selected").attr("id");
             var governmentExam = [];
             var geID =[];
             var geRating =[];
             var geDate =[];
             
             if (armedServiceID != 0){
+                
                 var objArmedService = {
                     id: armedServiceID,
                     name: $('#armedService option:selected').text(),
-                    rank: $('#rank').val(),
+                    rank: rankID,
+                    rankname: $('#armedServiceRank option:selected').text(),
                     year: $("#armedServiceYear").val(),
                     reason: $('#reason').val(),
                     radio: $('input[name = radio]:checked').val()
@@ -454,7 +509,7 @@ Guard Form
                     governmentExam:governmentExam,
                     
                     asID: armedServiceID,
-                    asRank: $('#rank').val(),
+                    asRank: rankID,
                     asYear: $("#armedServiceYear").val(),
                     asDischarge: $('input[name = radio]:checked').val(),
                     asReason: $('#reason').val(),

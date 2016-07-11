@@ -59,8 +59,7 @@ class SGBackgroundController extends Controller
         
         $armedservice = new \stdClass();
         $armedservice->id = $request->asID;
-        $armedservice->rank = 'test';
-        //$armedservice->rank = $request->asRank;
+        $armedservice->rank = $request->asRank;
         $armedservice->year = $request->asYear;
         $armedservice->reason = $request->asReason;
         $armedservice->discharge = $request->asDischarge;

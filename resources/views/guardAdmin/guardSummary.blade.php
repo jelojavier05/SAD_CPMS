@@ -271,7 +271,7 @@ $(document).ready(function(){
         success: function(data){
             if (data){
 
-                $('#armedService').text(data.name + " - " + data.rank);
+                $('#armedService').text(data.name + " - " + data.rankname);
             }else{
 
             }
