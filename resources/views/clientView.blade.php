@@ -73,7 +73,7 @@ Client
 												<td id = "">Ted Pylon</td>
 												
 												<td>
-													<button class="btn blue col s12" id="">
+													<button id="detaillist" class="btn blue col s12" onclick="Materialize.showStaggeredList('#collectionActive')" >
 													MORE
 													</button>
 												</td>
@@ -90,28 +90,30 @@ Client
 			
 <!---------------------------------------ActiveMoreCollection------------------------------------------------>
 				<div class="col s4 pull-s1" style="margin-top:25px;">	
-					<ul class="collection with-header" style="overflow:scroll; overflow-x:hidden; height:400px;">
-						<li class="collection-header"><h5 style="font-weight:bold;">Details</h5></li>
-						<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Bank</div>
-						</li>
-						
-						<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09123456789</div>
-						</li>
-						
-						<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Emilio Aguinaldo</div>
-						</li>
-						
-						<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09987654321</div>
-						</li>
-						
-						<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Hello Street Pasig City, Metro Manila</div>
-						</li>
-						
-						<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;1000</div>
-						</li>
-						
-						<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10000</div>
-						</li>
+					<ul class="collection with-header">
+						<div style="visibility:hidden;" id="collectionActive">
+							<li class="collection-header" style="opacity:0;"><h5 style="font-weight:bold;">Details</h5></li>
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Nature of Business:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Bank</div>
+							</li>
+
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Contact Number (Client):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09123456789</div>
+							</li>
+
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Person in Charge:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Emilio Aguinaldo</div>
+							</li>
+
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Contact Number (Person in Charge):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09987654321</div>
+							</li>
+
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Address:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Hello Street Pasig City, Metro Manila</div>
+							</li>
+
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Area Size (approx. in square meters):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;1000</div>
+							</li>
+
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Population (approx.):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10000</div>
+							</li>
+						</div>
 						
 					</ul>
 				</div>
@@ -453,6 +455,15 @@ Client
 				'overflow': 'scroll',
 				'overflow-x': 'hidden',
 				'height': '100%'
+			});
+		});
+		
+		$('#detaillist').click(function() {
+			$('#collectionActive').css({
+				'visibility': 'visible',
+				'overflow': 'scroll',
+				'overflow-x': 'hidden',
+				'height': '400px'
 			});
 		});
 		
