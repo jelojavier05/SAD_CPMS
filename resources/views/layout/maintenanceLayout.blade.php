@@ -14,7 +14,7 @@
   <link rel="stylesheet" type="text/css" media="screen,projection" href="{{!! URL::asset('../css/materialize.min.css') !!}"/>
 <!--	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">-->
 <!--		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
-  <link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
+ 
   <link href="{!! URL::asset('../css/animate.css') !!}" type="text/css" rel="stylesheet"/>
   <link href="{!! URL::asset('../sweetalert.css') !!}" type="text/css" rel="stylesheet"/>
 <!--  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../datatable.css') !!}">-->
@@ -36,6 +36,7 @@
 <!--  <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>-->
 <!--  <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>-->
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
+	 <link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
   
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
 
