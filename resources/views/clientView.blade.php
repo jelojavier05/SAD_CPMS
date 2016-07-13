@@ -45,6 +45,7 @@ Client
 											<th>ID</th>
 											<th>Name</th>
 											<th>Person In Charge</th>
+											<th style="width:50px;"></th>
 
 
 										</tr>
@@ -70,6 +71,12 @@ Client
 												<td id = "">1</td>
 												<td id = "">PUP Mabini Campus</td>
 												<td id = "">Ted Pylon</td>
+												
+												<td>
+													<button class="btn blue col s12" id="">
+													MORE
+													</button>
+												</td>
 
 											</tr>
 
@@ -132,7 +139,7 @@ Client
 												<td id = "">1</td>
 												<td id = "">PUP Mabini Campus</td>
 												<td id = "">School/University</td>
-												<td>5/10</td>
+												<td><a>5/10</a></td>
 												
 												<td>
 													<button class="btn green col s12" id="">
@@ -157,7 +164,7 @@ Client
 </div>
 <!-----------------------------------Modal----------------------------------------------------->
 
-<div id="modalsendNoti" class="modal modal-fixed-footer" style="overflow:hidden; width:700px;">
+<div id="modalsendNoti" class="modal modal-fixed-footer" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
         <div class="modal-header"><h4>Send Notification</h4></div>
         	<div class="modal-content">
 				
@@ -313,7 +320,8 @@ Client
                 { "orderable": false },
                 null,
                 null,
-				null
+				null,
+				{ "orderable": false }
                 ] ,  
                 "pageLength":5,
 				"lengthMenu": [5,10,15,20]

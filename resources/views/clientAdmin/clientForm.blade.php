@@ -77,6 +77,18 @@ Client
 							  <option id = "5">Test5</option>
 					   </select>
 					</div>
+					
+					<div class="input-field col s6">
+						<input placeholder=" " id="areaSize" type="text" class="validate" pattern="[0-9. ]{2,}" required="" aria-required="true">
+						<label data-error="Incorrect" for="areaSize">Area Size (approx. in square meters)</label>
+
+					</div>
+					
+					<div class="input-field col s6">
+						<input placeholder=" " id="population" type="text" class="validate" pattern="[0-9, ]{2,}" required="" aria-required="true">
+						<label data-error="Incorrect" for="population">Population (approx.)</label>
+
+					</div>
 				
 				</div>
 			</div>
