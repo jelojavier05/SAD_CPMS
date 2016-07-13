@@ -7,11 +7,17 @@ Admin
 @section('content')
 
 <div class= "row">
-	<div class=" col s6 push-s6" style="margin-top: 100px;">
-		<a class="btn-large orange animated infinite tada" href="/guardView">Guard List</a>
+	<div class=" col s4 push-s4" style="margin-top: 100px;">
+		<a class="btn-large blue animated infinite tada" href="/guardView">Guard List</a>
+	</div>
+
+
+	<div class=" col s4 push-s2" style="margin-top: 100px;">
+		<a class="btn-large orange animated infinite tada" href="/clientView">Client List</a>
 	</div>
 
 </div> 
+
 <div class="row">
 
       

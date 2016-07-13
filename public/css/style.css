@@ -127,6 +127,13 @@ div.scroll {
 	overflow:scroll;
 }
 
+
+/*
+#dataTablenoti tbody tr 
+{
+min-height: -25px;
+}
+*/
 /*
 .selectheight .selection{
    width:150px;
