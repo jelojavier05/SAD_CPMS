@@ -68,6 +68,9 @@ Route::post('/guard/registration/guardSummary/insert', 'GuardRegistrationSummary
 Route::get('/admin/home', 'AdminHomeController@index');
 
 Route::get('/guardView', 'GuardViewController@index');
+Route::get('/getInformation', 'GuardViewController@getInformationGuard');
+
+
 Route::get('/clientView', 'ClientViewController@index');
 
 

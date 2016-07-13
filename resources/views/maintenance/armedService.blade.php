@@ -173,6 +173,7 @@ Armed Service
                 },
                 data: {
                     armedServiceName: $('#strArmedServiceAdd').val(),
+                    
                 },
                 success: function(data){
                     

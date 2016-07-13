@@ -27,13 +27,13 @@ Guard
                             <tr>
 								<th style="width:50px;"></th>
 								<th style="width:50px;"></th>
-                                <th>ID</th>
+                                <th>License Number</th>
                                 <th>Name</th>
-								<th>Status</th>
                             </tr>
                         </thead>
 
                         <tbody>
+                            @foreach($guards as $value)
                             <tr>
                                 <td>
                                     <button class="buttonUpdate btn" name="" id="">
@@ -42,14 +42,14 @@ Guard
                                     <label for=""></label>
                                 </td>
                                 <td>
-                                    <button class="buttonDelete btn blue "  id="">
+                                    <button class="buttonMore btn blue"  id="{{$value->intGuardID}}">
                                         MORE
                                     </button>
                                 </td>
-                                <td id = "">1</td>
-                                <td id = "">Mang Jose</td>
-                                <td id = "">Male</td>
+                                <td id = "">{{$value->GuardLicense->strLicenseNumber}}</td>
+                                <td id = "">{{$value->strFirstName}} {{$value->strLastName}}</td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -143,7 +143,6 @@ Guard
                                     <div>
                                         <p style="color: #eeeeee; font-size: 20px;"> {{$bodyAttribute->strBodyAttributeName}} </p>
                                         <p style="color:#212121; font-size: 18px;" id = "bodyAttribute{{$bodyAttribute->intBodyAttributeID}}">N/A</p>
-                                        </br>
                                     </div>
                                 @endforeach
                                 <div>
@@ -224,17 +223,67 @@ Guard
 
 <script type="text/javascript">
 	$(document).ready(function(){
+        
+        
         $("#dataTable").DataTable({
-                 "columns": [
-                { "orderable": false },
-                { "orderable": false },
-                null,
-				null,
-				null
-                ] ,  
-                "pageLength":5,
-				"lengthMenu": [5,10,15,20]
-            });
+             "columns": [
+            { "orderable": false },
+            { "orderable": false },
+            null,
+            null
+            ] ,  
+            "pageLength":5,
+            "lengthMenu": [5,10,15,20]
+        });
+        
+        $('#dataTable').on('click', '.buttonMore', function(){
+            $.ajax({
+
+                type: "GET",
+                url: "/getInformation?guardID=" + this.id,
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                success: function(data){
+                    console.log(data);
+                    
+                    var dob = new Date(data.dateBirthday);
+                    var today = new Date();
+                    var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+                    var bodyAttributes = data.bodyAttribute;
+
+                    
+                    $('#firstName').text(data.strFirstName);
+                    $('#middleName').text(data.strMiddleName);
+                    $('#lastName').text(data.strLastName);
+                    $('#licenseNumber').text(data.licenseNumber.strLicenseNumber);
+                    $('#address').text(data.address.strAddress + ' ' + data.address.strCityName + ', ' + data.address.strProvinceName);
+                    $('#age').text(age);
+                    $('#gender').text(data.strGender);
+                    $('#placeOfBirth').text(data.strPlaceBirth);
+                    $('#mobileNumber').text(data.strContactNumberMobile);
+                    $('#landlineNumber').text(data.strContactNumberLandline);
+                    $('#civilStatus').text(data.strCivilStatus);
+                    
+                    
+                    
+                    
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+
+                }
+            });//ajax
+
+        });
 	});
+    
+    
 </script>
 @stop
+
