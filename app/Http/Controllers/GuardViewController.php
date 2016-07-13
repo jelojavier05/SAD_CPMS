@@ -53,11 +53,16 @@ class GuardViewController extends Controller
             ->select('tblguard.intGuardID', 'tblguardaddress.strAddress', 'tblprovince.strProvinceName', 'tblcity.strCityName')->where('tblguard.intGuardID', '=', $guardID)
             ->first();
         
-        $bodyAttributes = DB::table('tblguard')
+        $bodyAttributesGuard = DB::table('tblguard')
             ->join('tblguardbodyattribute', 'tblguard.intGuardID', '=', 'tblguardbodyattribute.intGuardID')
             ->join('tblbodyattribute', 'tblguardbodyattribute.intBodyAttributeID', '=', 'tblbodyattribute.intBodyAttributeID')
             ->join('tblmeasurement', 'tblbodyattribute.intMeasurementID', '=', 'tblmeasurement.intMeasurementID')
-            ->select('tblbodyattribute.strBodyAttributeName', 'tblmeasurement.strMeasurement', 'tblguardbodyattribute.strValue', 'tblbodyattribute.intBodyAttributeID')->where('tblguard.intGuardID', '=', $guardID)
+            ->select('tblmeasurement.strMeasurement', 'tblguardbodyattribute.strValue', 'tblguardbodyattribute.intBodyAttributeID', 'tblbodyattribute.strBodyAttributeName')->where('tblguard.intGuardID', '=', $guardID)
+            ->get();
+        
+        $bodyAttributes = DB::table('tblbodyattribute')
+            ->select('intBodyAttributeID', 'strBodyAttributeName')
+            ->where('boolFlag', '=', 1)
             ->get();
         
         $armedService = DB::table('tblguard')
@@ -67,16 +72,23 @@ class GuardViewController extends Controller
             ->select('tblarmedservice.strArmedServiceName', 'tblrank.strRank')->where('tblguard.intGuardID', '=', $guardID)
             ->first();
         
-        $governmentExam = DB::table('tblguard')
+        $governmentExamGuard = DB::table('tblguard')
             ->join('tblguardgovernmentexam', 'tblguard.intGuardID', '=', 'tblguardgovernmentexam.intGuardID')
             ->join('tblgovernmentexam', 'tblgovernmentexam.intGovernmentExamID', '=', 'tblguardgovernmentexam.intGovernmentExamID')
             ->select('tblguardgovernmentexam.strRating', 'tblgovernmentexam.strGovernmentExam', 'tblgovernmentexam.intGovernmentExamID')->where('tblguard.intGuardID', '=', $guardID)
             ->get();
         
+        $governmentExam = DB::table('tblgovernmentexam')
+            ->select('intGovernmentExamID', 'strGovernmentExam')
+            ->where('boolFlag', '=', 1)
+            ->get();
+        
         $guard->licenseNumber = $licenseNumber;
         $guard->address = $address;
-        $guard->bodyAttribute = $bodyAttributes;
+        $guard->bodyAttributesGuard = $bodyAttributesGuard;
+        $guard->bodyAttributes = $bodyAttributes;
         $guard->armedService = $armedService;
+        $guard->governmentExamGuard = $governmentExamGuard;
         $guard->governmentExam = $governmentExam;
         
         

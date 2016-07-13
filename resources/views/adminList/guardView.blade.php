@@ -141,8 +141,8 @@ Guard
                                 </div>
                                 @foreach($bodyAttributes as $bodyAttribute)
                                     <div>
-                                        <p style="color: #eeeeee; font-size: 20px;"> {{$bodyAttribute->strBodyAttributeName}} </p>
-                                        <p style="color:#212121; font-size: 18px;" id = "bodyAttribute{{$bodyAttribute->intBodyAttributeID}}">N/A</p>
+                                        <p style="color: #eeeeee; font-size: 20px;" id = "bodyAttribute{{$bodyAttribute->intBodyAttributeID}}"> {{$bodyAttribute->strBodyAttributeName}} </p>
+                                        <p style="color:#212121; font-size: 18px;" id = "value{{$bodyAttribute->intBodyAttributeID}}">N/A</p>
                                     </div>
                                 @endforeach
                                 <div>
@@ -254,8 +254,11 @@ Guard
                     var dob = new Date(data.dateBirthday);
                     var today = new Date();
                     var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-                    var bodyAttributes = data.bodyAttribute;
-
+                    var bodyAttributesGuard = data.bodyAttributesGuard;
+                    var bodyAttributes = data.bodyAttributes;
+                    var armedService = data.armedService;
+                    var governmentExamGuard = data.governmentExamGuard;
+                    var governmentExam = data.governmentExam;
                     
                     $('#firstName').text(data.strFirstName);
                     $('#middleName').text(data.strMiddleName);
@@ -268,6 +271,59 @@ Guard
                     $('#mobileNumber').text(data.strContactNumberMobile);
                     $('#landlineNumber').text(data.strContactNumberLandline);
                     $('#civilStatus').text(data.strCivilStatus);
+                    
+                    if (bodyAttributesGuard){
+                        for (intLoop = 0; intLoop < bodyAttributes.length; intLoop ++){
+                            $('#bodyAttribute' + bodyAttributes[intLoop].intBodyAttributeID)
+                                .text(bodyAttributes[intLoop].strBodyAttributeName);
+                            $('#value' + bodyAttributes[intLoop].intBodyAttributeID)
+                                .text('N/A');
+                            for (intLoop2 = 0; intLoop2 < bodyAttributesGuard.length; intLoop2 ++){
+                                if (bodyAttributes[intLoop].intBodyAttributeID == bodyAttributesGuard[intLoop2].intBodyAttributeID){
+                                    $('#value' + bodyAttributesGuard[intLoop2].intBodyAttributeID)
+                                        .text(bodyAttributesGuard[intLoop2].strValue);
+                                    break;
+                                }    
+                            }
+                        } //bodyAttribute
+                    }else{
+                        bodyAttributes.forEach(function(item){
+                            $('#bodyAttribute' + item.intBodyAttributeID)
+                                .text(item.strBodyAttributeName);
+                            $('#value' + item.intBodyAttributeID)
+                                .text('N/A');
+                        });
+                    }//bodyAttribute       
+                    
+                    if (armedService){
+                        $('#armedService').text(armedService.strArmedServiceName + " - " + armedService.strRank);    
+                    }else{
+                        $('#armedService').text('N/A');    
+                    } //armedservice
+                    
+                    if (governmentExamGuard){
+                        for(intLoop = 0; intLoop < governmentExam.length; intLoop ++){
+                            var temp = '•' + governmentExam[intLoop].strGovernmentExam + ' - ';
+                            var checker = true;
+                            for (intLoop2 = 0; intLoop2 < governmentExamGuard.length; intLoop2 ++){
+                                if (governmentExam[intLoop].intGovernmentExamID == governmentExamGuard[intLoop2].intGovernmentExamID){
+                                    temp += governmentExamGuard[intLoop2].strRating;
+                                    checker = false;
+                                    break;
+                                }
+                            }
+                            
+                            if (checker){
+                                temp += 'N/A';
+                            }
+                            
+                            $('#governmentExam' + governmentExam[intLoop].intGovernmentExamID).text(temp);
+                        }
+                    }else{
+                        governmentExam.forEach(function(item){
+                           $('#governmentExam' + item.intGovernmentExamID).text(item.strGovernmentExam + ' - N/A');
+                        });
+                    }
                     
                     
                     
