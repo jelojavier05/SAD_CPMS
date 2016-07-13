@@ -98,22 +98,15 @@
 													<ul id='dropdownsg' class='dropdown-content' style="margin-top:1px;">
 														
 														
-														
-														
-														
-														
-														
-														<li><a class="blue-text" href="/maintenance/leave">Leave</a></li>
-														
 														<li><a class="blue-text" href="/maintenance/armedservice">Armed Service</a></li>
-														
-														<li><a class="blue-text" href="/maintenance/governmentExam">Government Exam</a></li>
 														
 														<li><a class="blue-text" href="/maintenance/bodyAttribute">Body Attributes</a></li>
 														
+														<li><a class="blue-text" href="/maintenance/governmentExam">Government Exam</a></li>
 														
+														<li><a class="blue-text" href="/maintenance/leave">Leave</a></li>
 														
-														
+														<li><a class="blue-text" href="/maintenance/rank">Rank</a></li>
 														
 														
 													</ul>
@@ -124,13 +117,13 @@
 													<ul id='dropdowneq' class='dropdown-content' style="margin-top:1px;">
 														
 														
-														<li><a class="blue-text" href="/maintenance/typeOfGun">Type of Gun</a></li>
-														
 														<li><a class="blue-text" href="/maintenance/province">Province</a></li>
 														
 														<li><a class="blue-text" href="/maintenance/city">City</a></li>
 														
 														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
+														
+														<li><a class="blue-text" href="/maintenance/typeOfGun">Type of Gun</a></li>
 														
 														<li><a class="blue-text" href="/maintenance/unitOfMeasurement">Unit of Measurement</a></li>
 														
