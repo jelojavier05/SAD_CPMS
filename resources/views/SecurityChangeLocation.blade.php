@@ -9,7 +9,7 @@ Security Change Location
 
 <div class="row">
 <div class="col l12">
-    <div class="col l12 z-depth-3 white">
+    <div class="col l8 z-depth-3 white">
     
     
     <table class="responsive-table">
@@ -17,7 +17,7 @@ Security Change Location
           <tr>
               <th data-field="id">Clients</th>
               <th data-field="name">Nature of Business</th>
-              <th data-field="price">Location</th>
+             
               <th data-field="price">Business Address</th>
               <th data-field="price">Status</th>
               <th data-field="price">Others</th>
@@ -30,7 +30,7 @@ Security Change Location
             <tr>
             <td>SWA Company</td>
             <td>Steel Works</td>
-            <td>Manila</td>
+          
             <td>212 Sagigilid St. Sta. Mesa, Manila</td>
             <td>
                 <div class="switch">
@@ -53,7 +53,7 @@ Security Change Location
          <tr>
             <td>San Miguel Corp</td>
             <td>Eklabush</td>
-            <td>Makati</td>
+        
             <td>521 Seses St. Makati City</td>
                             <td><div class="switch">
                                 <label>
@@ -74,7 +74,7 @@ Security Change Location
             <tr>
             <td>Polytechnic University of the Philippines</td>
             <td>University</td>
-            <td>Manila</td>
+         
             <td>Anonas, Maynila, Kalakhang Maynila</td>
             <td>
                             <div class="switch">
@@ -97,7 +97,6 @@ Security Change Location
             <tr>
             <td>Santibanez Company</td>
             <td>Recruitment Agency</td>
-            <td>Pasay</td>
             <td>529 blk.1 Pasay City</td>
             <td><div class="switch">
     <label>
@@ -118,7 +117,6 @@ Security Change Location
             <tr>
             <td>Senyora Dede Pueblo</td>
             <td>Brick and Stones</td>
-            <td>Mandaluyong</td>
             <td>35103 St. Barangka Mandaluyong City</td>
             <td><div class="switch">
     <label>
@@ -144,58 +142,104 @@ Security Change Location
     <!-- SELECT GUARD-->
     
     
-<!--    <div class="col l4">
-   <form action="#">
-       <div class="z-depth-3 white">
-           <div class="row"></div>
-           <label><bold><center><h5>SELECT GUARD</h5></center></bold></label><br>
-
-           <hr>
-           <label>Select one (1) guard to be swapped</label>
+    <div class="col l4">
+       <div class="row">
+            <div class="col l12 white z-depth-1">
+                         <h5><center>List of Guards</center></h5>
+            </div>
            
-                         <form action="#">
-    <p>
-      <input class="with-gap" name="group1" type="radio" id="test1" />
-      <label for="test1">Randy</label>
-    </p>
-    <p>
-      <input class="with-gap" name="group1" type="radio" id="test2" />
+    </div>
+        
+        <div class="card large">
+        <table class="responsive-table">
+            
+            <th><center>Name</center>
+              
+            
+            </th>
+            
+            <th><center>Profile</center>
+           
+            
+            </th>
+            
+            
+            <tr>
+
+                        <td>
+                             <input class="with-gap" name="group1" type="radio" id="test1" />
+                             <label for="test1">Randy</label>      
+                        </td>
+                        <td>
+
+                            <div class="col s12 m8 offset-m2 l6 offset-l3">
+                            <div class="card-panel grey lighten-5 z-depth-1">
+                              <div class="row valign-wrapper">
+                                <div class="col l4">
+                                 <img src="/img/avatar2.png" alt="" class="responsive-img"> <!-- notice the "circle" class -->
+                                </div>
+                               
+                              </div>
+                            </div>
+                          </div>
+                
+                        </td>
+
+            
+            </tr>
+            
+            <tr>
+             <td>
+                  <input class="with-gap" name="group1" type="radio" id="test2" />
       <label for="test2">Michael</label>
-    </p>
-    <p>
-      <input class="with-gap" name="group1" type="radio" id="test3"  />
+                
+                </td>
+                <td>
+
+                            <div class="col s12 m8 offset-m2 l6 offset-l3">
+                            <div class="card-panel grey lighten-5 z-depth-1">
+                              <div class="row valign-wrapper">
+                                <div class="col l4">
+                                 <img src="/img/avatar2.png" alt="" class="responsive-img"> <!-- notice the "circle" class -->
+                                </div>
+                               
+                              </div>
+                            </div>
+                          </div>
+                
+                        </td>
+            </tr>
+     
+                <tr>
+               <td>
+                <input class="with-gap" name="group1" type="radio" id="test3"  />
       <label for="test3">Bernie</label>
-    </p>
-      <p>
-        <input class="with-gap" name="group1" type="radio" id="test4"/>
-        <label for="test4">Anson</label>
-    </p>
-         <p>
-      <input class="with-gap" name="group1" type="radio" id="test5"  />
-      <label for="test5">Eden</label>
-    </p>
-      <p>
-        <input class="with-gap" name="group1" type="radio" id="test6"/>
-        <label for="test6">Carlito</label>
-    </p>
-                                <p>
-        <input class="with-gap" name="group1" type="radio" id="test7"/>
-        <label for="test7">Romnick</label>
-    </p>
-         <p>
-      <input class="with-gap" name="group1" type="radio" id="test7"  />
-      <label for="test8">Green</label>
-    </p>
-      <p>
-        <input class="with-gap" name="group1" type="radio" id="test9"/>
-        <label for="test9">Joe</label>
-    </p>
-  </form>
-       </div>
-       
-  </form>
+                
+                </td>
+                <td>
+
+                            <div class="col s12 m8 offset-m2 l6 offset-l3">
+                            <div class="card-panel grey lighten-5 z-depth-1">
+                              <div class="row valign-wrapper">
+                                <div class="col l4">
+                                 <img src="/img/avatar2.png" alt="" class="responsive-img"> <!-- notice the "circle" class -->
+                                </div>
+                               
+                              </div>
+                            </div>
+                          </div>
+                
+                        </td>
+            </tr>
+            </table>
+        
+        
         
         </div>
+    
+    
+    </div>
+   
       <!--END OF SELECT GUARD-->
     
     
@@ -203,12 +247,13 @@ Security Change Location
     
     <div class="col l12">
         
-        <div class="col l6 z-depth-3">
+        <div class="card medium z-depth-3">
         
           <div class="row"></div>
                        <div class="row"></div>
-                <div class="col l10">
-            <label class="ft1">Approval Form for Location Request Swapping</label>
+                <div class="col l12">
+                    <h4><center>Approval Form for Location Request Swapping</center>
+                              </h4>
         
                 </div>
                 <div class="row"></div>
@@ -221,37 +266,32 @@ Security Change Location
                     <label class="ft" for="EffDate" >Effectivity Date:</label>  
                  </div>
 
-      <div class="row"></div>
-                       <div class="row"></div>
-        </div>
-        
-                  <div class="col l3">
-                        <div class="row"></div>
-                       <div class="row"></div>
-                        <div class="row"></div>
-                       <div class="row"></div>
-                <div class="row"></div>
-                      <div class="col l12">
+      <div class="row">
+            
+       
                 <div class="col l12">
+                    
+                    
                     <div class="row">
-                        <div class="col l12">
-                                
+                        <div class="col l12 offset-l4">
+                                <div class="row"></div>
                       <a href="#!" class="btn blue darken-4 z-depth-3">Send</a>
+                      <a href="#!" class="btn green darken-4 z-depth-3">Save</a>
                      <a href="#!" class="btn red darken-4 z-depth-3">Reset</a>
                 
                     
                     </div>
                         </div>
                    
-                    <center><a href="#!" class="btn green darken-4 z-depth-3">Save</a></center> 
+              
                  </div>
                             <div class="row"></div>
-                       <div class="row"></div>
-                     
-                       
-                  </div>              
-    
+      
+            </div>
+                      
         </div>
+        
+                 
         
 
   

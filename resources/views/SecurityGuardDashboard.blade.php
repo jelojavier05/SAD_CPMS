@@ -148,23 +148,79 @@
             <div class="row"></div>
         
             <div>
-              
+                
+              <!--REQUEST-->
                     <div class="row">
                     <div class="col l12">
-                        
-                        <div class="col l12">
-                        <a class=" white darken-5 waves-effect waves-dark z-depth-1 ">
+                       <div class="card">
+                        <div class="card-content">
+                      
+                        <a class=" white darken-5 waves-effect waves-dark ">
                             <div class="col l5">
-                    <i class="material-icons left" style="font-size:6rem">input
-                    </i> </div>
-                            <div class="col l5 pull-l1">
-                                <div class="row"></div>
-                    <div class="col l3" style="font-size:1.7rem;font-family:Tahoma;color:black">REQUEST</div>
-                    </div>
+                                
+                                <div class="row">
+                                    <div class="col l12">
+                                    <div class="col l2 pull-l4">
+                                        
+                                            <i class="material-icons left" style="font-size:6rem">input
+                                            </i>
+                                        
+                                        </div>
+                                    
+                                        <div class="col l6 push-l12">
+                                            <div class="row"></div>
+                                          <span class="card-title activator grey-text text-darken-4">REQUEST<i class="mdi-hardware-keyboard-arrow-up" style="padding-left:5%"></i></span>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                             
+                                
+                            </div>
+                         
                 </a>
-                        </div>
+                      
                         
-                        <div class="row"></div>
+                        </div>
+                           <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4" style="font-size:12px">Request Type<i class="material-icons right">close</i></span>
+     
+                               
+                               
+                               
+                               <div class="row">
+                               <div class="col l12 push-l2">
+                                   
+                               
+                                    <a href="/securityleaverequest" class="btn blue darken-4" style="font-size:20px;height:40px;width:120px">LEAVE</a>
+                 
+                                  
+                                   
+                             </div>
+                             </div>
+                             <div class="row">
+                              <div class="col l6 push-l1">
+                                  
+                                  
+                                     <a href="/securitychangelocation" class="btn blue darken-4" style="font-size:20px;height:40px;width:152px !important">LOCATION</a>
+                
+                    
+                                   
+                                   </div>
+                                   
+                                </div>
+    </div>
+                        
+                             
+                            </div>
+                        </div>
+                </div>
+            
+                
+                
+                
+                
+                <!--SETTINGS-->
                         <div class="col l12">
                         <a class="white darken-5 waves-effect waves-dark z-depth-1 ">
                             <div class="col l5">
@@ -415,28 +471,29 @@
                         
                         </div>
                         
-                        
-                        </div>
-            </div>
+        </div>
         
-        <div class="row"></div>
-        <div class="row"></div>
-                
-    </div>
-
-
-  
-     </div>
-         
-         <div class="col l9">
-         
+       
+         </div>
+    
+        <div class="col l9">
+            <div class="row"></div>
+            <div class="row"></div>
       @yield('content')
 	@yield('script')
 	   
          
-         </div>
-         </div>
     </div>
+         
+       
+                
+    </div>
+ 
+  
+     </div>
+         
+         
+ 
       <script>
 
        
