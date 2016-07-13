@@ -64,8 +64,7 @@ Admin
     
 <!-----------------ACTIVE ACCOUNTS----------------->
 <div class="row">    
-    <div class="col l12">
-        <div class="col l4 offset-l3">
+     <div class="col l4 offset-l3">
             
           <div class="card blue lighten-1">
             <div class="card-content white-text">
@@ -100,12 +99,12 @@ Admin
         </div>
       </div>
       
-      </div>
+     
 
 
 <!-----------------DEPLOYED RESOURCES----------------->
-<div class="row">
-      <div class="col l4 offset-l3">
+<div class="row">    
+     <div class="col l4 offset-l3">
 
           <div class="card blue lighten-1">
             <div class="card-content white-text">
@@ -131,7 +130,7 @@ Admin
           <div class="card blue lighten-1">
             <div class="card-content white-text">
               <span class="card-title" style="font-size:40px; font-weight:bold;">35</span>
-              <p style="margin-left:10px;">BALANCE PAYMENT FOR CLIENT (Unpaid)</p>
+              <p style="margin-left:10px;">BALANCE PAYMENT FOR CLIENT(Unpaid)</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">receipt</i>
             </div>
             <div class="card-action blue darken-1">
@@ -142,7 +141,7 @@ Admin
             </div>
           </div>
         </div>
-    
+     </div>
 </div>
  
     

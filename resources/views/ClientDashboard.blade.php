@@ -45,14 +45,12 @@
 
 <body id="scrollhider" class="bodyscrollhider grey lighten-3">
     
-    
 
     
 <!---------------------------------------------------------NAV BAR------------------------------------------------------->
     
     <nav class="indigo darken-4" style="height:90px">
         
-    
         
         <div class="container">
 <!--   <div class="parallax"><img class="responsive-img;" style="width: 100%;" src="{!! URL::asset('../Materialize/images/background3.jpg') !!}" alt="Unsplashed background img 1"></div>-->
@@ -171,10 +169,10 @@
                     
 				    <ul id='dropdownrequest' class='dropdown-content' style="margin-top:1px;">
 				        <li>
-                            <a class="blue-text" href="">Guards</a>
+                            <a class="blue-text" href="/clientguardrequest">Guards</a>
                         </li>
 				        <li>
-                            <a class="blue-text" href="">Guns</a>
+                            <a class="blue-text" href="/clientgunrequest">Guns</a>
                         </li>															
 				    </ul>
                 </div>
@@ -188,7 +186,7 @@
                 
         <!-------GUARDS ATTENDANCE-------->
                 <div class="col l12">
-                    <a class="white darken-5 waves-effect waves-dark z-depth-1" href='#'>
+                    <a href="/clientguardattendance" class="white darken-5 waves-effect waves-dark z-depth-1" href='#'>
                         <div class="col l5">
                             <i class="material-icons left" style="font-size:6rem">perm_contact_calendar
                             </i> 
@@ -241,14 +239,8 @@
         </div>
     </div>
     
-         
-         
-
-         
+       
         <div class="col l9">
-            
-            <div class="row"></div>
-            <div class="row"></div>
             
            @yield('content')
 	       @yield('script')
