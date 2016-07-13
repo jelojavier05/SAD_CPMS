@@ -243,6 +243,7 @@ Body Attributes
 				},
 				success: function(data){
                     refreshTable();
+                    $('#addBodyAttribute').val('');
                     $('#modalvitstatsAdd').closeModal();
 					swal("Success!", "Record has been Added!", "success");
 				},
