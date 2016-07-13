@@ -41,202 +41,248 @@
         
     </head>
 
-<!----------------------------------------------------------BODY------------------------------------------------->
+<!----------BODY------------>
 
 <body id="scrollhider" class="bodyscrollhider grey lighten-3">
     
     
+
     
-    
-<!-----------------------------NAV BAR----------------------------->
+<!---------------------------------------------------------NAV BAR------------------------------------------------------->
     
     <nav class="indigo darken-4" style="height:90px">
-    <div class="row"></div>
+        
+    
+        
         <div class="container">
 <!--   <div class="parallax"><img class="responsive-img;" style="width: 100%;" src="{!! URL::asset('../Materialize/images/background3.jpg') !!}" alt="Unsplashed background img 1"></div>-->
             <div class="nav-wrapper">
-               <a href="/clienthomepage" class="brand-logo" style="padding:0%"><img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="8%" height="8%"> </a>
-        
+                
+                <div class="row"></div>
+                
+                <a href="/clienthomepage" class="brand-logo">
+                    <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="9%" height="9%">
+                </a>
+                
 				<div>
                  <div class="homeposition">
                     <div class="row">
                        <div class="col l12">
                            
-                     
-                        <div class="col l7 push-l1">
-                             <a href="/clienthomepage" class="brand-logo">
+                   <div class="col l7 push-l1">
+                        <a href="/clienthomepage" class="brand-logo">
                                    <!--<div class="flow-text">
                                     <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="10%" height="10%">
-                                        </div>-->
-                                <div class="flow-text">
-                                    
-                                    <h5 style="margin-top: 10px;">Client and Personnel Management System</h5>
-                                </div>
-                             </a>
-                        </div>
+                                </div>-->
+                            <div class="flow-text">
+                                <h5 style="margin-top: 20px;">Client and Personnel Management System</h5>
+                            </div>
+                        </a>
+                    </div>
                            
-                           
-                           
-                               <div class="row"></div>
 
-                           <div class="col l5 push-l10  ">
-                               
+                          
+                           
+                           
+        <div class="row"></div>
+
+            <!-------------------------------NAVBAR ICONS ON THE RIGHT SIDE----------------------------->
+
+        
+            <div class="col l5 push-l10  ">
                 <ul id="dropdown3" class="dropdown-content">
                     <li><a href="#!">Profile<i class="material-icons">perm_contact_calendar</i></a></li>
                     <li><a href="#!">Log Out<i class="material-icons">input</i></a></li>
                 </ul>
-                               
-                <!-------------------------------NOTIFICATIONS----------------------------------->
-                               
-                        <div class="row">
-                            <div class="col l12">
-                                <div class="col l10">
-                                   <a class="btn dropdown-button col l2" style="background-color:transparent" href="#!" data-activates="">
-                                       <i class="mdi-action-home center" style="font-size:2rem;margin-top:-50%"></i>
-                                    </a>
-
-                                    <a class="btn dropdown-button col l2 push-l1" style="background-color:transparent" href="#!" data-activates="dropdown2">
-                                        <i class="material-icons" style="font-size:2rem;margin-top:-50% ">language</i>
-                                    </a>
-
-                                    <a class="btn dropdown-button col l2 push-l2" style="background-color:transparent" href="#!" data-activates="dropdown2">
-                                        <i class="material-icons" style="font-size:2rem;margin-top:-50% ">message</i>
-                                    </a>
-
-                                    <a class="btn dropdown-button col l2 push-l3" style="background-color:transparent" href="#!" data-activates="dropdown3">
-                                        <i class="mdi-navigation-arrow-drop-down-circle center" style="font-size:2rem;margin-top:-50%"></i>
-                                    </a>           
-                               </div>
-                            </div>
-                        </div>
-                <!-------------------------------NOTIFICATIONS----------------------------------->
-                        
-                        </div>
+                <div class="row">
+                    <div class="col l12">
+                        <div class="col l10">
+                            
+                            <a class="btn dropdown-button col l2" style="background-color:transparent" href="#!" data-activates="">
+                                   <i class="mdi-action-home center" style="font-size:2rem;margin-top:-50%"></i>
+                            </a>
+        
+                            <a class="btn dropdown-button col l2 push-l1" style="background-color:transparent" href="#!" data-activates="dropdown2">
+                                <i class="material-icons" style="font-size:2rem;margin-top:-50% ">language</i>
+                            </a>
+                                
+                            <a class="btn dropdown-button col l2 push-l2" style="background-color:transparent" href="#!" data-activates="dropdown2">
+                                <i class="material-icons" style="font-size:2rem;margin-top:-50% ">message</i>
+                            </a>
                
-                     
-                     </div>
-              </div>
-            </div>              
+                            <a class="btn dropdown-button col l2 push-l3" style="background-color:transparent" href="#!" data-activates="dropdown3">
+                                <i class="mdi-navigation-arrow-drop-down-circle center" style="font-size:2rem;margin-top:-50%"></i>
+                            </a>
+                                              
+                        </div>
+                    </div>
+                </div>     
+            </div>
+                           
+            <!-------------------------------NAVBAR ICONS ON THE RIGHT SIDE----------------------------->       
+                           
+                            </div>
+                        </div>                
+                    </div>              
                 </div>  
             </div>    
         </div> 
     </nav>
-<!-----------------------------NAV BAR----------------------------->
     
-<div class="row"></div> 
-    <div class="row">  
-        <div class="col l12">
-     
-    <div class="col l3 gray z-depth-5">
-        
-        <div class="row"></div>
-            <div class="col l8 push-l2">
-                <div class="col l12">
-                    <img src="/img/avatar2.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                    <div class="row">
-                        <label>Name:</label><br>
-                        <label>Account Status:</label>
-                    </div>      
-                </div>
+    
+<!---------------------------------------------------END OF NAV BAR-------------------------------------------------------->
+    
+<div class="row"></div>
+    
+ <div class="row">
+     <div class="col l12">
+        <div class="col l3 gray z-depth-5">
+            
+             <div class="row"></div>
+            
+         <div class="col l8 push-l2">
+            <div class="col l12">
+              <img src="/img/avatar2.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                <div class="row">
+                    <label>Name:</label><br>
+                    <label>Account Status:</label>
+                </div>      
             </div>
-        
+        </div>
+            
             <div class="row"></div>
         
             <div>
-                <div class="row">
-                    <div class="col l12">
+                
+        <!-------REQUESTS-------->
+                <div class="col l12">
+                    <a href="#" class="dropdown-button white darken-5 waves-effect waves-dark z-depth-1" data-activates="dropdownrequest" data-gutter="240" data-hover="false">
+                        <div class="col l5">
+                            <i class="material-icons left" style="font-size:6rem">input
+                            </i> 
+                        </div>
+                        <div class="col l5 pull-l1">
+                            
+                            <div class="row"></div>
+                            <div class="col l3" style="font-size:1.7rem;font-family:Tahoma;color:black">REQUESTS</div>
+                            
+                        </div>
+                    </a>
+                    
+				    <ul id='dropdownrequest' class='dropdown-content' style="margin-top:1px;">
+				        <li>
+                            <a class="blue-text" href="">Guards</a>
+                        </li>
+				        <li>
+                            <a class="blue-text" href="">Guns</a>
+                        </li>															
+				    </ul>
+                </div>
+                
+                
+                
+               
+                
                         
-<!---------------------------------------------------------------------------------------REQUESTS-------------------------->
-                        <div class="col l12">
-                            <a class="white darken-5 waves-effect waves-dark z-depth-1 ">
-                                <div class="col l5">
-                                    <i class="material-icons left" style="font-size:6rem">input
-                                    </i>
+        <div class="row"></div>
+                
+        <!-------GUARDS ATTENDANCE-------->
+                <div class="col l12">
+                    <a class="white darken-5 waves-effect waves-dark z-depth-1" href='#'>
+                        <div class="col l5">
+                            <i class="material-icons left" style="font-size:6rem">perm_contact_calendar
+                            </i> 
+                        </div>
+                        <div class="col l5 pull-l1">
+                            <div class="row"></div>
 
-                                </div>
-                                <div class="col l5 pull-l1">
-                                    <div class="row"></div>
-                                    <div class="col l3" style="font-size:1.7rem;font-family:Tahoma;color:black ">REQUEST</div>
-                                </div>
-                            </a>
+                            <div class="col l3" style="font-size:1.5rem;font-family:Tahoma;color:black">GUARDS ATTENDANCE</div>
                         </div>
+                    </a>
+                    
+                </div>
                         
+                
+                
+                
+                
+        <div class="row"></div>
+                
+        <!-------SETTINGS-------->
+                <div class="col l12">
+                    <a class="white darken-5 waves-effect waves-dark z-depth-1 ">
+                        <div class="col l5">
+                            <i class="material-icons left" style="font-size:6rem">settings
+                            </i> 
+                        </div>
+                        <div class="col l5 pull-l1">
+                            
                         <div class="row"></div>
-                     
-<!------------------------------------------------------------------------------------GUARDS ATTENDANCE-------------------->
-                        <div class="col l12">
-                            <a class="white darken-5 waves-effect waves-dark z-depth-1 ">
-                                <div class="col l5">
-                                    <i class="material-icons left" style="font-size:6rem"> assignment_ind </i>
-                                </div>
-                                <div class="col l5 pull-l1">
-                                <div class="row"></div>
-                                    <div class="col l3" style="font-size:1.4rem;font-family:Tahoma;color:black">GUARDS ATTENDANCE</div>
-                                </div>
-                            </a>
+                            
+                        <div class="col l3" style="font-size:1.7rem;font-family:Tahoma;color:black">SETTINGS</div>
                         </div>
+                    </a>
+                </div>
                         
-                        <div class="row"></div>
-<!-----------------------------------------------------------------------------------------SETTINGS------------------------>
                         
+                <div class="col l11">
+                    <div class="row"></div>
+                    <div class="row">
                         <div class="col l12">
-                            <a class="white darken-5 waves-effect waves-dark z-depth-1 ">
-                                <div class="col l5">
-                                    <i class="material-icons left" style="font-size:6rem"> settings </i>
-                                </div>
-                                <div class="col l5 pull-l1">
-                                <div class="row"></div>
-                                    <div class="col l3" style="font-size:1.7rem;font-family:Tahoma;color:black">SETTINGS</div>
-                                </div>
-                            </a>
+                            <div class="col l10 pull-l2">
+                            </div>
                         </div>
-                      
-                        
-                        
                     </div>
                 </div>
-        
-                <div class="row"></div>
-                <div class="row"></div>
+               
                 
-            </div>
-
-
-  
-     </div>
+                
+                
+        </div>
+    </div>
+    
          
-<div class="col l9">
-    @yield('content')
-	@yield('script')
-         </div>
+         
+
+         
+        <div class="col l9">
+            
+            <div class="row"></div>
+            <div class="row"></div>
+            
+           @yield('content')
+	       @yield('script')
+         
+        </div>  
+         
+         
     </div>
 </div>
+         
+         
     
     
-    
-    
+ 
     <script>
-       
             $('.modal-trigger').leanModal({
                 dismissible: true, // Modal can be dismissed by clicking outside of the modal
                 opacity: .5, // Opacity of modal background
                 in_duration: 300, // Transition in duration
                 out_duration: 200, // Transition out duration
             });
-       
 	</script>
 	
     
 	<script>
-	function deleteConfirmation(url) {
-        
-        var alertConfirm = confirm("Are you sure you want to delete?");
-        if (alertConfirm == true) {
-            document.getElementById('okayCancel').value = "okay";
-        } else {
-            document.getElementById('okayCancel').value = "cancel";
+        function deleteConfirmation(url) {
+
+            var alertConfirm = confirm("Are you sure you want to delete?");
+            if (alertConfirm == true) {
+                document.getElementById('okayCancel').value = "okay";
+            } else {
+                document.getElementById('okayCancel').value = "cancel";
+            }
         }
-    }
 	</script>
 	
     
@@ -244,10 +290,9 @@
 		 $(document).ready(function() {
         $('select').material_select();
 		 });
-        
-      
 	</script>
 	
+    
     
     </body>
 </html>
