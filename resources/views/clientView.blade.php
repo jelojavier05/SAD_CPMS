@@ -163,7 +163,7 @@ Client
 				
 				<div class="row">
 					<div class="col s12">
-						<table class="white" style="border-radius:10px; width:100%;" id="dataTablenoti">
+						<table class="striped white" style="border-radius:10px; width:100%;" id="dataTablenoti">
 
 							<thead>
 								<th style="width:10px;"></th>
@@ -174,124 +174,113 @@ Client
 
 							<tbody>
 								<tr>
-									<td>
-										<p>
+									<td style="height:-15px;">
+										
 										  <input type="checkbox"  id="1" />
 										  <label for="1"></label>
-										</p>
+										
 									</td>
-									<td>1</td>
-									<td>Marco</td>
-									<td>Polo</td>
+									<td style="height:-15px;">1</td>
+									<td style="height:-15px;">Marco</td>
+									<td style="height:-15px;">Polo</td>
 								</tr>
 								
 								<tr>
-									<td>
-										<p>
+									<td style="height:-15px;">
+										
 										  <input type="checkbox"  id="1" />
 										  <label for="1"></label>
-										</p>
+										
 									</td>
-									<td>1</td>
-									<td>Marco</td>
-									<td>Polo</td>
+									<td style="height:-15px;">1</td>
+									<td style="height:-15px;">Marco</td>
+									<td style="height:-15px;">Polo</td>
 								</tr>
 								
 								<tr>
-									<td>
-										<p>
+									<td style="height:-15px;">
+										
 										  <input type="checkbox"  id="1" />
 										  <label for="1"></label>
-										</p>
+										
 									</td>
-									<td>1</td>
-									<td>Marco</td>
-									<td>Polo</td>
+									<td style="height:-15px;">1</td>
+									<td style="height:-15px;">Marco</td>
+									<td style="height:-15px;">Polo</td>
 								</tr>
 								
 								<tr>
-									<td>
-										<p>
+									<td style="height:-15px;">
+										
 										  <input type="checkbox"  id="1" />
 										  <label for="1"></label>
-										</p>
+										
 									</td>
-									<td>1</td>
-									<td>Marco</td>
-									<td>Polo</td>
+									<td style="height:-15px;">1</td>
+									<td style="height:-15px;">Marco</td>
+									<td style="height:-15px;">Polo</td>
 								</tr>
 								
 								<tr>
-									<td>
-										<p>
+									<td style="height:-15px;">
+										
 										  <input type="checkbox"  id="1" />
 										  <label for="1"></label>
-										</p>
+										
 									</td>
-									<td>1</td>
-									<td>Marco</td>
-									<td>Polo</td>
+									<td style="height:-15px;">1</td>
+									<td style="height:-15px;">Marco</td>
+									<td style="height:-15px;">Polo</td>
 								</tr>
 								
 								<tr>
-									<td>
-										<p>
+									<td style="height:-15px;">
+										
 										  <input type="checkbox"  id="1" />
 										  <label for="1"></label>
-										</p>
+										
 									</td>
-									<td>1</td>
-									<td>Marco</td>
-									<td>Polo</td>
+									<td style="height:-15px;">1</td>
+									<td style="height:-15px;">Marco</td>
+									<td style="height:-15px;">Polo</td>
 								</tr>
 								
 								<tr>
-									<td>
-										<p>
+									<td style="height:-15px;">
+										
 										  <input type="checkbox"  id="1" />
 										  <label for="1"></label>
-										</p>
+										
 									</td>
-									<td>1</td>
-									<td>Marco</td>
-									<td>Polo</td>
+									<td style="height:-15px;">1</td>
+									<td style="height:-15px;">Marco</td>
+									<td style="height:-15px;">Polo</td>
 								</tr>
 								
 								<tr>
-									<td>
-										<p>
+									<td style="height:-15px;">
+										
 										  <input type="checkbox"  id="1" />
 										  <label for="1"></label>
-										</p>
+										
 									</td>
-									<td>1</td>
-									<td>Marco</td>
-									<td>Polo</td>
+									<td style="height:-15px;">1</td>
+									<td style="height:-15px;">Marco</td>
+									<td style="height:-15px;">Polo</td>
 								</tr>
 								
 								<tr>
-									<td>
-										<p>
+									<td style="height:-15px;">
+										
 										  <input type="checkbox"  id="1" />
 										  <label for="1"></label>
-										</p>
+										
 									</td>
-									<td>1</td>
-									<td>Marco</td>
-									<td>Polo</td>
+									<td style="height:-15px;">1</td>
+									<td style="height:-15px;">Marco</td>
+									<td style="height:-15px;">Polo</td>
 								</tr>
-								
-								<tr>
-									<td>
-										<p>
-										  <input type="checkbox"  id="1" />
-										  <label for="1"></label>
-										</p>
-									</td>
-									<td>1</td>
-									<td>Marco</td>
-									<td>Polo</td>
-								</tr>
+									
 							</tbody>
 
 						</table>

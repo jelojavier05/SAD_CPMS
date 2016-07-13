@@ -130,26 +130,26 @@ Guard Form
 							<table class="striped white">
 								<thead>
 									<tr>
-										<th style="width:260px;">Name</th>
-										<th>Specification</th>
-                                        <th>Measurement</th>
+										<th><center>Name</center></th>
+										<th><center>Specification</center></th>
+                                        <th><center>Measurement</center></th>
 									</tr>
 								</thead>
 
 								<tbody>
                                     @foreach ($bodyAttributes as $bodyAttribute)
-                                    <tr style="height:-10px !important;">
-                                        <td>
-                                            <div class="col s3" id = "name{{ $bodyAttribute->intBodyAttributeID }}">{{ $bodyAttribute->strBodyAttributeName }}</div>
+                                    <tr>
+                                        <td style="height:-10px !important;"><center>
+                                            <div  id = "name{{ $bodyAttribute->intBodyAttributeID }}">{{ $bodyAttribute->strBodyAttributeName }}</div></center>
                                         </td>
-                                        <td>
-                                            <div class="input-field col s7">
-                                                <input  id="specification{{ $bodyAttribute->intBodyAttributeID }}" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" required="" aria-required="true">
-                                                <label data-error="Incorrect" for="specification{{ $bodyAttribute->intBodyAttributeID }}"></label>
-                                            </div>
+                                        <td style="height:-10px !important;"><center>
+                                            
+                                                <input  id="specification{{ $bodyAttribute->intBodyAttributeID }}" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" size="1" required="" aria-required="true">
+                                                </center>
+                                            
                                         </td>
-                                        <td>
-                                            <div class="col s3" id = "measurement{{ $bodyAttribute->intBodyAttributeID }}" value = "{{$bodyAttribute->Measurement->strMeasurement}}">{{$bodyAttribute->Measurement->strMeasurement}}</div>
+                                        <td style="height:-10px !important;"><center>
+                                            <div  id = "measurement{{ $bodyAttribute->intBodyAttributeID }}" value = "{{$bodyAttribute->Measurement->strMeasurement}}">{{$bodyAttribute->Measurement->strMeasurement}}</div></center>
                                         </td>
                                     </tr>
                                     @endforeach
