@@ -2,6 +2,8 @@
 
 Route::get('/dashboardadmin', 'DashboardAdminController@index');
 
+Route::get('/admin/pending', 'AdminPendingController@index');
+
 // ----------------------------------------GUARD REGISTRATION---------------------------------------------//
 Route::get('/guard/registration/personaldata', 'PersonalDataController@index')
     ->name('personaldata');
