@@ -6,50 +6,172 @@ Client Views Guards Attendance
 
 @section('content')
 
-
+<div clas="col s12">
+    
+        <h1 class = "blue darken-3 white-text" style="border: 1px solid black;font-family:Verdana"><center>Guard Attendance</center></h1>
+  
+    </div>
 
 <div class="row">
     <div class="col l12">
-        <div class="col l9">
-            <div class="card large z-depth-2">
+        <div class="col l8 white z-depth-2" style="overflow:scroll;height:613px">
+  
+        
+                
                 <div class="row">
-                    <div class="col l12">
-                        <div class="col l3">
-                            <i class="material-icons left" style="font-size:6rem">email</i> 
+                
+                 <div class="col l5 push-l8">
+                                  <div class="input-field col">
+                                    <input type="text" name="gunreq"/>
+                                    <label for="gunreq">Search</label>
+                                  </div>
+                        
                         </div>
-                             
-                        <div class="col l6">
-                            <div class="row"></div>
-                                <span class="black-text" style="font-size:20px;font-family:Verdana">GUARD ATTENDANCE</span>  
-                        </div>
-                    </div>
+                
                 </div>
-                    <table class="striped" style="background-color:">
+                    <table class="centered">
                         <thead>
                           <tr>
-                              <th data-field="guard">NAME</th>
-                              <th data-field="status">Today Status</th>
+                              <th data-field="guard">Deployed Guard</th>
+                              <th data-field="status">Deployment Start Date </th>
+                              <th data-field="guard">Status</th>
+                              <th data-field="status">View Profile</th>
+                              
                           </tr>
                         </thead>
 
                         <tbody>
                           <tr>
                             <td>Juan Dela Cruz</td>
+                            <td>12/05/2014</td>
                             <td>On Duty</td>
+                            <td> 
+                                <button class="btn waves-effect waves-light green darken-4" type="button" name="action">PROFILE
+                            <i class="material-icons right">send</i>
+                                </button>
+                              
+                            </td>
                           </tr>
-                          <tr>
-                            <td>Mang Tomas</td>
-                            <td>Half Shift</td>
+                         
+                              <tr>
+                            <td>Juan Dela Cruz</td>
+                            <td>12/05/2014</td>
+                            <td>On Duty</td>
+                            <td> 
+                                <button class="btn waves-effect waves-light green darken-4" type="button" name="action">PROFILE
+                            <i class="material-icons right">send</i>
+                                </button>
+                              
+                            </td>
                           </tr>
-                          <tr>
-                            <td>Jose Rizal</td>
-                            <td>Suspended</td>
+                              <tr>
+                            <td>Juan Dela Cruz</td>
+                            <td>12/05/2014</td>
+                            <td>On Duty</td>
+                            <td> 
+                                <button class="btn waves-effect waves-light green darken-4" type="button" name="action">PROFILE
+                            <i class="material-icons right">send</i>
+                                </button>
+                              
+                            </td>
                           </tr>
+                            <tr>
+                            <td>Juan Dela Cruz</td>
+                            <td>12/05/2014</td>
+                            <td>On Duty</td>
+                            <td> 
+                                <button class="btn waves-effect waves-light green darken-4" type="button" name="action">PROFILE
+                            <i class="material-icons right">send</i>
+                                </button>
+                              
+                            </td>
+                          </tr>
+                            <tr>
+                            <td>Juan Dela Cruz</td>
+                            <td>12/05/2014</td>
+                            <td>On Duty</td>
+                            <td> 
+                                <button class="btn waves-effect waves-light green darken-4" type="button" name="action">PROFILE
+                            <i class="material-icons right">send</i>
+                                </button>
+                              
+                            </td>
+                          </tr> 
+                            <tr>
+                            <td>Juan Dela Cruz</td>
+                            <td>12/05/2014</td>
+                            <td>On Duty</td>
+                            <td> 
+                                <button class="btn waves-effect waves-light green darken-4" type="button" name="action">PROFILE
+                            <i class="material-icons right">send</i>
+                                </button>
+                              
+                            </td>
+                          </tr>
+                            <tr>
+                            <td>Juan Dela Cruz</td>
+                            <td>12/05/2014</td>
+                            <td>On Duty</td>
+                            <td> 
+                                <button class="btn waves-effect waves-light green darken-4" type="button" name="action">PROFILE
+                            <i class="material-icons right">send</i>
+                                </button>
+                              
+                            </td>
+                          </tr>
+                                                        <tr>
+                            <td>Juan Dela Cruz</td>
+                            <td>12/05/2014</td>
+                            <td>On Duty</td>
+                            <td> 
+                                <button class="btn waves-effect waves-light green darken-4" type="button" name="action">PROFILE
+                            <i class="material-icons right">send</i>
+                                </button>
+                              
+                            </td>
+                          </tr>
+                                                        <tr>
+                            <td>Juan Dela Cruz</td>
+                            <td>12/05/2014</td>
+                            <td>On Duty</td>
+                            <td> 
+                                <button class="btn waves-effect waves-light green darken-4" type="button" name="action">PROFILE
+                            <i class="material-icons right">send</i>
+                                </button>
+                              
+                            </td>
+                          </tr>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                         </tbody>
                     </table>
       
-                </div>
             </div>
+        
+        <div class="col l4  white" style="overflow:scroll;height:613px">
+            <div class="row"></div>
+          <div class="col l6 push-l3    ">
+              <img src="/img/avatar04.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                <div class="row">
+                    <label>Name:</label><br>
+                    <label>Account Status:</label>
+                </div>      
+            </div>
+        
+        
+        
+        </div>
+        
+    </div>
+</div>
     
     
     

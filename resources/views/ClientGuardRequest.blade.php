@@ -5,10 +5,8 @@ Client Request of Guard
 
 @section('content')
 
-
-
   <div clas="col s12">
-        <h2 class = "blue darken-3 white-text" style="border: 1px solid black;">Request for GUARDS</h2>
+        <h2 class = "blue darken-3 white-text" style="border: 1px solid black;font-family:Verdana"><center>Request for GUARDS</center></h2>
     </div>
 
     <!-------------------------TABS----------------------->
@@ -17,8 +15,7 @@ Client Request of Guard
       <ul class="tabs blue lighten-1" style="border: 1px solid black;">
         <li class="tab col s3"><a href="#test1">Additional</a></li>
         <li class="tab col s3"><a href="#test2">Replacement</a></li>
-        <li class="tab col s3"><a href="#test3">Others</a></li>
-        <li class="tab col s4"><a href="#test4">Messages</a></li>
+       
       </ul>
     </div>
     
@@ -30,12 +27,12 @@ Client Request of Guard
         
         
     <div class="col l12">
-        <div class="col l9">
+        <div class="col l12">
             
           <div class="card white-content" style="border: 1px solid black;">
             <div class="card-content">
                 
-              <span class="card-title">Request for Additional Guards</span>
+              <span class="card-title"><center>Request for <b>Additional Guards</b></center></span>
               <p>Requisition of additional guards for better maintenance of services.</p>
                 
                 <div class="row">  
@@ -68,31 +65,35 @@ Client Request of Guard
                 
                 
               
-                <div class="row">
+               
                   <div class="input-field col s12">
                     <textarea id="gunreq" class="materialize-textarea" length="120"></textarea>
                     <label for="gunreq">Please specify the reasons for requesting</label>
                   </div>
-               
-                    <p style="font-size:14px"><i>Note! <br> THE APPLICATION FOR ALL REQUISITION MUST BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL </i></p>
-                </div>
+             
+                  <p> <b>Note!</b><br><i>THE APPLICATION FOR ALL REQUISITION MUST BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL</i></p>
+             
                 
-                
+            <div class="row">
+                <div class="col l12 push-l2">
             <div class="card-action">
               <button class="btn waves-effect waves-light" type="submit" name="action">Save
                 <i class="material-icons right">system_update_alt</i>
               </button>
             
-              <button class="btn waves-effect waves-light indigo darken-4" type="submit" name="action" style="margin-left:40px;">Submit
+              <button class="btn waves-effect waves-light indigo darken-4" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
               </button>
                 
-              <button class="btn waves-effect waves-light red accent-4" type="submit" name="action" style="margin-left:40px;">Cancel
+              <button class="btn waves-effect waves-light red accent-4" type="submit" name="action">Cancel
                 <i class="material-icons right">clear_all</i>
               </button>
             </div>
+                    </div>
+          </div>
               
-              
+                
+                
           </div>
             
           </div>
@@ -111,12 +112,12 @@ Client Request of Guard
         
         
     <div class="col l12">
-        <div class="col l9">
+        <div class="col l12">
             
           <div class="card white-content" style="border: 1px solid black;">
             <div class="card-content">
                 
-              <span class="card-title">Request for Replacement for Guns</span>
+              <span class="card-title"><center>Request for <b>Replacement for Guards</b></center></span>
               <p>Requisition of replacing guards for better maintenance of services.</p>
                 
                 <div class="row">  
@@ -149,29 +150,37 @@ Client Request of Guard
                 
                 
               
-                <div class="row">
+              
                   <div class="input-field col s12">
                     <textarea id="gunreq" class="materialize-textarea" length="120"></textarea>
                     <label for="gunreq">Please specify the reasons for requesting</label>
                   </div>
+        
                
-                    <p style="font-size:14px"><i>Note! <br> THE APPLICATION FOR ALL REQUISITION MUST BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL </i></p>
-                </div>
                 
+                    <p> <b>Note!</b><br><i>THE APPLICATION FOR ALL REQUISITION MUST BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL</i></p>
                 
-            <div class="card-action">
+                <div class="row">
+                
+                <div class="col l12 push-l2">
+                    
+                    <div class="card-action">
               <button class="btn waves-effect waves-light" type="submit" name="action">Save
                 <i class="material-icons right">system_update_alt</i>
               </button>
             
-              <button class="btn waves-effect waves-light indigo darken-4" type="submit" name="action" style="margin-left:40px;">Submit
+              <button class="btn waves-effect waves-light indigo darken-4" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
               </button>
                 
-              <button class="btn waves-effect waves-light red accent-4" type="submit" name="action" style="margin-left:40px;">Cancel
+              <button class="btn waves-effect waves-light red accent-4" type="submit" name="action" >Cancel
                 <i class="material-icons right">clear_all</i>
               </button>
-            </div>
+            </div>  
+                    
+                    </div>
+                </div>
+            
               
               
           </div>
@@ -186,11 +195,6 @@ Client Request of Guard
 </div>
         <!-----------------END OF TAB 2----------------------------->
     
-    <div id="test3" class="col s12">Test 3</div>
-    <div id="test4" class="col s12">Test 4</div>
-
-
-
 <script>
     $(document).ready(function(){
       $('.slider').slider({full_width: true});

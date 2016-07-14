@@ -182,7 +182,7 @@
                       
                         
                         </div>
-                           <div class="card-reveal">
+                           <div class="card-reveal" style="overflow:hidden">
       <span class="card-title grey-text text-darken-4" style="font-size:12px">Request Type<i class="material-icons right">close</i></span>
      
                                

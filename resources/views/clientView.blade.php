@@ -15,10 +15,10 @@ Client
       </ul>
     </div>
 	
-<!-------------------------------------------------------------------------------------------->
-		<div class="col s10 push-s2" >
+<!-------------------------------------------Active------------------------------------------------->
+		<div class="col s12 push-s1" >
 			<div class="row" id="activeClient">
-				<div class="col s12">
+				<div class="col s8">
 					<div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:25px;">
 			<!--            <div class="row">-->
 							<div class="col s6 push-s1">
@@ -45,6 +45,7 @@ Client
 											<th>ID</th>
 											<th>Name</th>
 											<th>Person In Charge</th>
+											<th style="width:50px;"></th>
 
 
 										</tr>
@@ -70,6 +71,12 @@ Client
 												<td id = "">1</td>
 												<td id = "">PUP Mabini Campus</td>
 												<td id = "">Ted Pylon</td>
+												
+												<td>
+													<button id="detaillist" class="btn blue col s12" onclick="Materialize.showStaggeredList('#collectionActive')" >
+													MORE
+													</button>
+												</td>
 
 											</tr>
 
@@ -80,12 +87,46 @@ Client
 
 					</div>
 				</div>
+			
+<!---------------------------------------ActiveMoreCollection------------------------------------------------>
+				<div class="col s4 pull-s1" style="margin-top:25px;">	
+					<ul class="collection with-header">
+						<div style="visibility:hidden;" id="collectionActive">
+							<li class="collection-header" style="opacity:0;"><h5 style="font-weight:bold;">Details</h5></li>
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Nature of Business:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Bank</div>
+							</li>
+
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Contact Number (Client):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09123456789</div>
+							</li>
+
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Person in Charge:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Emilio Aguinaldo</div>
+							</li>
+
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Contact Number (Person in Charge):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09987654321</div>
+							</li>
+
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Address:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Hello Street Pasig City, Metro Manila</div>
+							</li>
+
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Area Size (approx. in square meters):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;1000</div>
+							</li>
+
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Population (approx.):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10000</div>
+							</li>
+						</div>
+						
+					</ul>
+				</div>
+<!-------------------------------------------------------------------------------------------------->
 			</div>
-		
-<!-------------------------------------------------------------------------------------------->
+
+			
+			
+			
+<!----------------------------------------Pending---------------------------------------------------->
 	
 			<div class="row" id="pendingClient">
-				<div class="col s12">
+				<div class="col s8">
 					<div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:25px;">
 			<!--            <div class="row">-->
 							<div class="col s6 push-s1">
@@ -132,7 +173,11 @@ Client
 												<td id = "">1</td>
 												<td id = "">PUP Mabini Campus</td>
 												<td id = "">School/University</td>
-												<td>5/10</td>
+												<td>
+													
+													<a id="guardlist" class="btn col s12" onclick="Materialize.showStaggeredList('#collectionPending')">5/10</a>
+												
+												</td>
 												
 												<td>
 													<button class="btn green col s12" id="">
@@ -150,6 +195,65 @@ Client
 
 					</div>
 				</div>
+				
+				<!---------------------------------------PendingMoreCollection------------------------------------------------>
+				<div class="col s4 pull-s1" style="margin-top:25px;">	
+					<ul class="collection with-header" id="collectionPending">
+						<li class="collection-header" style="opacity:0;">
+									<ul class="tabs">
+										<li class="tab col s3"><a class="active" href="#guardcontainer">Guards</a></li>
+										<li class="tab col s3"><a href="#pendingDetails">Details</a></li>
+									</ul>
+						</li>
+						
+						<!-------------------------Details------------------>
+						<div style="overflow:scroll; overflow-x:hidden; height:400px;" id="pendingDetails">
+						<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Bank</div>
+						</li>
+						
+						<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09123456789</div>
+						</li>
+						
+						<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Emilio Aguinaldo</div>
+						</li>
+						
+						<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09987654321</div>
+						</li>
+						
+						<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Hello Street Pasig City, Metro Manila</div>
+						</li>
+						
+						<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;1000</div>
+						</li>
+						
+						<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10000</div>
+						</li>
+						</div>
+						
+						<!------------------Guards-------------->
+						
+						<div id="guardcontainer" style="visibility:hidden;">
+						
+						<li class="collection-item" style="opacity:0;">Marco Polo</li>
+					    <li class="collection-item" style="opacity:0;">Ferdinand Magellan</li>
+					    <li class="collection-item" style="opacity:0;">Manuel Roxas</li>
+					    <li class="collection-item" style="opacity:0;">Generoso Cupal</li>
+						<li class="collection-item" style="opacity:0;">Generoso Cupal</li>
+						<li class="collection-item" style="opacity:0;">Generoso Cupal</li>
+						<li class="collection-item" style="opacity:0;">Generoso Cupal</li>
+						<li class="collection-item" style="opacity:0;">Generoso Cupal</li>
+						<li class="collection-item" style="opacity:0;">Generoso Cupal</li>
+						<li class="collection-item" style="opacity:0;">Generoso Cupal</li>
+						<li class="collection-item" style="opacity:0;">Generoso Cupal</li>
+						<li class="collection-item" style="opacity:0;">Generoso Cupal</li>
+						<li class="collection-item" style="opacity:0;">Generoso Cupal</li>
+						</div>
+						
+					</ul>
+				</div>
+<!-------------------------------------------------------------------------------------------------->
+				
+				
 			</div>
 		</div>
 	
@@ -157,7 +261,7 @@ Client
 </div>
 <!-----------------------------------Modal----------------------------------------------------->
 
-<div id="modalsendNoti" class="modal modal-fixed-footer" style="overflow:hidden; width:700px;">
+<div id="modalsendNoti" class="modal modal-fixed-footer" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
         <div class="modal-header"><h4>Send Notification</h4></div>
         	<div class="modal-content">
 				
@@ -313,7 +417,8 @@ Client
                 { "orderable": false },
                 null,
                 null,
-				null
+				null,
+				{ "orderable": false }
                 ] ,  
                 "pageLength":5,
 				"lengthMenu": [5,10,15,20]
@@ -343,9 +448,30 @@ Client
                 "pageLength":5,
 				"lengthMenu": [5,10,15,20]
             });
+		$('#guardlist').click(function() {
+			$('#guardcontainer').css({
+				'visibility': 'visible',
+				'max-height': '400px',
+				'overflow': 'scroll',
+				'overflow-x': 'hidden',
+				'height': '100%'
+			});
+		});
+		
+		$('#detaillist').click(function() {
+			$('#collectionActive').css({
+				'visibility': 'visible',
+				'overflow': 'scroll',
+				'overflow-x': 'hidden',
+				'height': '400px'
+			});
+		});
 		
 		
-	});
+});
+		
+		
+
 </script>
 
 <script>
