@@ -8,12 +8,7 @@ Client
 
 <div class="row">
 	
-	<div class="col s10 push-s2">
-      <ul class="tabs">
-        <li class="tab col s3"><a href="#activeClient">Active</a></li>
-		<li class="tab col s3"><a href="#pendingClient">Pending</a></li>
-      </ul>
-    </div>
+	
 	
 <!-------------------------------------------Active------------------------------------------------->
 		<div class="col s12 push-s1" >
@@ -90,9 +85,10 @@ Client
 			
 <!---------------------------------------ActiveMoreCollection------------------------------------------------>
 				<div class="col s4 pull-s1" style="margin-top:25px;">	
-					<ul class="collection with-header">
-						<div style="visibility:hidden;" id="collectionActive">
+					<ul class="collection with-header" id="collectionActive">
 							<li class="collection-header" style="opacity:0;"><h5 style="font-weight:bold;">Details</h5></li>
+						<div style="visibility:hidden;" id="detailcontainer">
+							
 							<li class="collection-item" style="font-weight:bold; opacity:0;">Nature of Business:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Bank</div>
 							</li>
 
@@ -459,7 +455,7 @@ Client
 		});
 		
 		$('#detaillist').click(function() {
-			$('#collectionActive').css({
+			$('#detailcontainer').css({
 				'visibility': 'visible',
 				'overflow': 'scroll',
 				'overflow-x': 'hidden',
