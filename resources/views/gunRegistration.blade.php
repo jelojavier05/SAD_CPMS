@@ -57,15 +57,26 @@ Gun Registration
 						</div>
 					</div>
 					
-					<div class="col s4 push-s2">
+					
+				</div>
+			
+				
+			
+				<div class ="row">
+				<div>
+					<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px;">
+						<div class="col s4 push-s4">
+							<legend class><center><h4>License</h4></center></legend>
+						</div>
+							<div class="row">
+					
+					<div class="col s8 offset-s4 pull-s2">
 						<div class="input-field">
 							<input placeholder=" " id="strGunLicense" type="text" class="validate" name = "gunLicense" required="" aria-required="true">
 							<label for="strGunLicense">License No</label> 
 						</div>
 					</div>
-				</div>
-			
-				<div class="row">
+					
 					<div class="input-field col s4 push-s2">
 						<input  id="startDate" type="date" class="datepicker"  required="" aria-required="true">
 						<label class="active" data-error="Incorrect" for="startDate">Date Issued</label>
@@ -76,6 +87,10 @@ Gun Registration
 						<label class="active" data-error="Incorrect" for="endDate">Date Expired</label>
 					</div>
 				</div>
+						
+					</div>
+				</div>
+			</div>
 			
 			</div>
 			<div class = "center-align">
