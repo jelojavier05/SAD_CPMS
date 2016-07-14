@@ -7,210 +7,187 @@ Client Request of Guard
 
 
 
-<!--BASIC LEAVE-->
-<div class="row">
-    <div class="col l12">
-        
-        <div class="col l6">
-            
-    <form class="card medium z-depth-1">
-     
-        <div class="row"></div>
-                                <div class="row">
-                                    <div class="col l12 push-l1">
-                                        <div class="col l3">
-                                            <i class="material-icons left" style="font-size:6rem">play_for_work
-                                            </i> 
-                                        </div>
-                             
-                                        <div class="col l6">
-                                        <div class="row"></div>
-                                            <span class="black-text" style="font-size:20px;font-family:Verdana">REQUISITION OF GUARDS
-                                            </span>
-                                
-                                        </div>
-                                    </div>
-                                </div>
-                <div class="row"></div>
-                <div class="row">
-                                <div class="col l12">
-                                    <div class="col l6">
-                                            <label for="test8">TYPE OF REQUESTS FOR GUARDS</label><br>
-                                                <input type="checkbox" id="test8" disabled="disabled" />
-                                            <label for="test8">Additional</label><br>
-                                                <input type="checkbox" id="test8" disabled="disabled" />
-                                            <label for="test8">Replacement</label><br>
-                                                <input type="checkbox" id="test8" disabled="disabled" />
-                                    </div>
-                                    <div class="col l6">
-         
-                                            <label for="test8">NOTE!</label><br>
-                                                    <span class="black-text"><bold>THE APPLICATION OF REQUISITION MUST <br>BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL</bold></span>
-                                        </div>
-            
-            
-                            </div>
-                </div>
-    </form>  
+  <div clas="col s12">
+        <h2 class = "blue darken-3 white-text" style="border: 1px solid black;">Request for GUARDS</h2>
     </div>
-        
-         <!-- END OF BASIC LEAVE -->
-        
-        
-        
-        
-        <!-- LEAVE FORM -->
-        <div class="col l6">
-            
-    <form class="card medium z-depth-1">
-     
-        <div class="row"></div>
-                       
-    <div class="col l12">
-        
-        <div class="col l6 push-l2">
-        <i class="material-icons" style="font-size:16rem">web</i>
-            </div>
-        <div class="col l6 pull-l1">
-            <div class="row"></div>
-            <div class="row"></div>
-        
-        </div>
-    </div>
-    <div class="card-content">
-        <div class="row"></div>
-      <span class="card-title activator grey-text text-darken-4">REQUEST APPLICATION FORM
-          <i class="material-icons right" style="font-size:2rem">view_headline</i></span>
-    </div>
-    <div class="card-reveal">
-        
-      <span class="card-title grey-text text-darken-4">Fill Up the Following<i class="material-icons right">close</i></span>
-     
-        <div class="row">
-    <form class="col s12">
-      <div class="row">
-          <div class="col l5 push-l4">
-          <i class="material-icons prefix" style="font-size:6rem">account_circle</i>
-          <label for="icon_prefix">ACCOUNT NAME</label>
-              
-            </div>
-        </div>
-                 
-        <center><a class='dropdown-button btn' href='#' data-activates='dropdown1'>TYPE OF REQUESTS</a></center>
 
-  <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">Additional</a></li>
-    <li><a href="#!">Replacement</a></li>
-  </ul>
+    <!-------------------------TABS----------------------->
+    
+    <div class="col s12">
+      <ul class="tabs blue lighten-1" style="border: 1px solid black;">
+        <li class="tab col s3"><a href="#test1">Additional</a></li>
+        <li class="tab col s3"><a href="#test2">Replacement</a></li>
+        <li class="tab col s3"><a href="#test3">Others</a></li>
+        <li class="tab col s4"><a href="#test4">Messages</a></li>
+      </ul>
+    </div>
+    
+    
+    <!------------------------TAB 1----------------------->
+
+<div id="test1" class="col s12">
+    <div class="row">
         
-        <div class="row"></div>
-        <div class="row">
-            <div class="col l12">
-                <div class="col l6">
-                        <label for="icon_prefix">Application Date:</label><br>
+        
+    <div class="col l12">
+        <div class="col l9">
+            
+          <div class="card white-content" style="border: 1px solid black;">
+            <div class="card-content">
+                
+              <span class="card-title">Request for Additional Guards</span>
+              <p>Requisition of additional guards for better maintenance of services.</p>
+                
+                <div class="row">  
+                    <div class="input-field col s6">
+                      <label for="icon_prefix">Application Date:</label><br>
                         <input type="date" class="datepicker"><br>
-
-                </div>
-                <div class="col l6">
-                
-                        <label for="icon_prefix">Date Needed</label><br>
-                        <input type="date" class="datepicker">
-                
-                </div>
-                
-                <!--textarea-->
-                <div class="row">
-                          <form class="col s12">
-                            <div class="row">
-                              <div class="input-field col s12">
-                                <input id="input_text" type="text" length="10">
-                                <label for="input_text">REASON</label>
-                              </div>
-                            </div>
-                          </form>
-                    
-                     <div class="col l12 push-l2">
-                                
-                      <a href="#!" class="btn green darken-4 z-depth-3">Send</a>
-                     <a href="#!" class="btn red darken-4 z-depth-3">Cancel</a>
-                
-                    
                     </div>
-            </div>
+                    <div class="input-field col s6">
+                      <label for="icon_prefix">Date Needed:</label><br>
+                        <input type="date" class="datepicker"><br>
+                    </div>
                 </div>
+
+
+                
+                    <div class="input-field col s6">
+                      <i class="material-icons prefix">toc</i>
+                      <input id="icon_prefix" type="text" class="validate">
+                      <label for="icon_prefix">Quantity Guards Needed</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select multiple>
+                          <option value="" disabled selected>Choose your option</option>
+                          <option value="1">Juan Dela Cruz</option>
+                          <option value="2">Adrian Paulite</option>
+                          <option value="3">Adrian Flores</option>
+                        </select>
+                        <label>Select Guard/s</label>
+                    </div>
+                
+                
+              
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="gunreq" class="materialize-textarea" length="120"></textarea>
+                    <label for="gunreq">Please specify the reasons for requesting</label>
+                  </div>
+               
+                    <p style="font-size:14px"><i>Note! <br> THE APPLICATION FOR ALL REQUISITION MUST BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL </i></p>
+                </div>
+                
+                
+            <div class="card-action">
+              <button class="btn waves-effect waves-light" type="submit" name="action">Save
+                <i class="material-icons right">system_update_alt</i>
+              </button>
+            
+              <button class="btn waves-effect waves-light indigo darken-4" type="submit" name="action" style="margin-left:40px;">Submit
+                <i class="material-icons right">send</i>
+              </button>
+                
+              <button class="btn waves-effect waves-light red accent-4" type="submit" name="action" style="margin-left:40px;">Cancel
+                <i class="material-icons right">clear_all</i>
+              </button>
             </div>
-    </form>
-  </div>
+              
+              
+          </div>
+            
+          </div>
+        </div>
     </div>
 
-    </form>  
     </div>
-       
-     
-    </div>
-
 </div>
-
-<!--END OF lEAVE FORM-->
-
-
-<div class="row"></div>
-  <!--MESSAGE-->
-<div class="row">
+        <!-----------------END OF TAB 1----------------------------->
+    
+        <!------------------------TAB 2----------------------->
+<div id="test2" class="col s12">
+    
+    
+    <div class="row">
+        
+        
     <div class="col l12">
-        <div class="col l6">
-            <div class="card large z-depth-2">
-                <div class="row">
-                    <div class="col l12">
-                        <div class="col l3">
-                            <i class="material-icons left" style="font-size:6rem">email</i> 
-                        </div>
-                             
-                        <div class="col l6">
-                            <div class="row"></div>
-                                <span class="black-text" style="font-size:20px;font-family:Verdana">INBOX MESSAGE</span>  
-                        </div>
+        <div class="col l9">
+            
+          <div class="card white-content" style="border: 1px solid black;">
+            <div class="card-content">
+                
+              <span class="card-title">Request for Replacement for Guns</span>
+              <p>Requisition of replacing guards for better maintenance of services.</p>
+                
+                <div class="row">  
+                    <div class="input-field col s6">
+                      <label for="icon_prefix">Application Date:</label><br>
+                        <input type="date" class="datepicker"><br>
+                    </div>
+                    <div class="input-field col s6">
+                      <label for="icon_prefix">Date Needed:</label><br>
+                        <input type="date" class="datepicker"><br>
                     </div>
                 </div>
-                    <table class="striped" style="background-color:">
-                        <thead>
-                          <tr>
-                              <th data-field="id">DATE</th>
-                              <th data-field="name">MESSAGES</th>
-                          </tr>
-                        </thead>
 
-                        <tbody>
-                          <tr>
-                            <td>JUN 4, 2016</td>
-                            <td>Deployment of Guards</td>
-                          </tr>
-                          <tr>
-                            <td>JUL 5, 2016</td>
-                            <td>Addtional Deployment of Guards</td>
-                          </tr>
-                          <tr>
-                            <td>JUL 10, 2016</td>
-                            <td>Request have been approved</td>
-                          </tr>
-                        </tbody>
-                    </table>
-      
+
+                
+                    <div class="input-field col s6">
+                      <i class="material-icons prefix">toc</i>
+                      <input id="icon_prefix" type="text" class="validate">
+                      <label for="icon_prefix">Quantity Guards Needed</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select multiple>
+                          <option value="" disabled selected>Choose your option</option>
+                          <option value="1">Juan Dela Cruz</option>
+                          <option value="2">Adrian Paulite</option>
+                          <option value="3">Adrian Flores</option>
+                        </select>
+                        <label>Select Gun/s</label>
+                    </div>
+                
+                
+              
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="gunreq" class="materialize-textarea" length="120"></textarea>
+                    <label for="gunreq">Please specify the reasons for requesting</label>
+                  </div>
+               
+                    <p style="font-size:14px"><i>Note! <br> THE APPLICATION FOR ALL REQUISITION MUST BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL </i></p>
                 </div>
+                
+                
+            <div class="card-action">
+              <button class="btn waves-effect waves-light" type="submit" name="action">Save
+                <i class="material-icons right">system_update_alt</i>
+              </button>
+            
+              <button class="btn waves-effect waves-light indigo darken-4" type="submit" name="action" style="margin-left:40px;">Submit
+                <i class="material-icons right">send</i>
+              </button>
+                
+              <button class="btn waves-effect waves-light red accent-4" type="submit" name="action" style="margin-left:40px;">Cancel
+                <i class="material-icons right">clear_all</i>
+              </button>
             </div>
-        
-        
-       
-    
-    
-    
+              
+              
+          </div>
+            
+          </div>
+        </div>
     </div>
 
-
-
-
+    </div>
+    
+    
 </div>
+        <!-----------------END OF TAB 2----------------------------->
+    
+    <div id="test3" class="col s12">Test 3</div>
+    <div id="test4" class="col s12">Test 4</div>
 
 
 
