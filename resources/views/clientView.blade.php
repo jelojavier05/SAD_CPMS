@@ -292,7 +292,7 @@ Client
     		</div>
 			
 			<div class="modal-footer" style="background-color:#01579b !important;">
-				<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
+				<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Send
 					<i class="material-icons right">send</i>
 				</button>
 			</div>
