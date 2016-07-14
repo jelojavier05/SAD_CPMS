@@ -262,8 +262,8 @@ Government Exam
         });
 		
         $('#dataTable').on('click', '.buttonDelete', function(){
-
-            document.getElementById('deleteID').value =this.id;  
+            
+            var deleteID =this.id;  
             swal({   title: "Are you sure?",   
                      text: "Record will be deleted!",   
                      type: "warning",   
@@ -285,7 +285,7 @@ Government Exam
                     }
                 },
                 data: {
-                    governmentExamID: deleteID.value
+                    governmentExamID: deleteID
 
                 },
                 success: function(data) {
