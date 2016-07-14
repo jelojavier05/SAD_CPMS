@@ -92,7 +92,7 @@ Client
 				<div>
 					<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px;">
 						<legend><h4>Shift</h4></legend>
-						<button style="margin-top:-15%; margin-left:380px;" class="z-depth-1 btn green modal-trigger" href="#">
+						<button style="margin-top:-15%; margin-left:380px;" class="z-depth-1 btn green">
 						<i class="material-icons left">add</i>ADD
 						</button>
 							<div class="col s10 push-s1">
@@ -100,7 +100,7 @@ Client
 									<thead>
 										<tr>
 
-											<th style="width:20px;"><center>ID</center></th>
+											<th style="width:20px;"><center>Shift No.</center></th>
 											<th style="width:10px;"><center>From</center></th>
 											<th style="width:10px;"><center>To</center></th>
 										</tr>
