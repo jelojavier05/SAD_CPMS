@@ -11,7 +11,7 @@ Client
 <div class="row">
 	<div class="col s6 push-s4" style=" margin-left:10px; margin-top: 1%;">
 		<div class="container-fluid grey lighten-4 z-depth-2" style="border: 1px solid black; border-radius:5px;" id="personaldata">
-			<h2 class = "blue white-text" style="margin-top:0px;">Client</h2>
+			<h4 class = "blue white-text" style="margin-top:0px;">Client</h4>
 			<div class = "row">
 				<div class='col s10 push-s1'>
 					
@@ -90,6 +90,224 @@ Client
 
 					</div>
 				
+				</div>
+			</div>
+			
+			<div class ="row">
+				<div>
+					<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px;">
+						<legend><h4>Shift</h4></legend>
+						<button style="margin-top:-15%; margin-left:380px;" class="z-depth-1 btn green modal-trigger" href="#">
+						<i class="material-icons left">add</i>ADD
+						</button>
+							<div class="col s10 push-s1">
+								<table class="bordered grey lighten-1" id = "dataTable" style="margin-bottom:15px;">
+									<thead>
+										<tr>
+
+											<th style="width:20px;"><center>ID</center></th>
+											<th style="width:10px;"><center>From</center></th>
+											<th style="width:10px;"><center>To</center></th>
+										</tr>
+									</thead>
+									<tbody> 
+											<tr>
+												<td><center>1</center></td>
+												<td>
+													<select class="browser-default col s8 offset-s2">
+													  <option value="" disabled selected>---</option>
+													  <option value="1">1</option>
+													  <option value="2">2</option>
+													  <option value="3">3</option>
+													  <option value="1">4</option>
+													  <option value="2">5</option>
+													  <option value="3">6</option>
+													  <option value="1">7</option>
+													  <option value="2">8</option>
+													  <option value="3">9</option>
+													  <option value="1">10</option>
+													  <option value="2">11</option>
+													  <option value="3">12</option>
+												      <option value="1">13</option>
+													  <option value="2">14</option>
+													  <option value="3">15</option>
+													  <option value="1">16</option>
+													  <option value="2">17</option>
+													  <option value="3">18</option>
+												      <option value="1">19</option>
+													  <option value="2">20</option>
+													  <option value="3">21</option>
+												      <option value="1">22</option>
+													  <option value="2">23</option>
+													  <option value="3">24</option>
+													  
+													</select>
+												</td>
+												<td>
+													<select class="browser-default col s8 offset-s2">
+													  <option value="" disabled selected>---</option>
+													  <option value="1">1</option>
+													  <option value="2">2</option>
+													  <option value="3">3</option>
+													  <option value="1">4</option>
+													  <option value="2">5</option>
+													  <option value="3">6</option>
+													  <option value="1">7</option>
+													  <option value="2">8</option>
+													  <option value="3">9</option>
+													  <option value="1">10</option>
+													  <option value="2">11</option>
+													  <option value="3">12</option>
+												      <option value="1">13</option>
+													  <option value="2">14</option>
+													  <option value="3">15</option>
+													  <option value="1">16</option>
+													  <option value="2">17</option>
+													  <option value="3">18</option>
+												      <option value="1">19</option>
+													  <option value="2">20</option>
+													  <option value="3">21</option>
+												      <option value="1">22</option>
+													  <option value="2">23</option>
+													  <option value="3">24</option>
+													  
+													</select>
+												</td>
+											</tr>
+										
+											<tr>
+												<td><center>2</center></td>
+												<td>
+													<select class="browser-default col s8 offset-s2">
+													  <option value="" disabled selected>---</option>
+													  <option value="1">1</option>
+													  <option value="2">2</option>
+													  <option value="3">3</option>
+													  <option value="1">4</option>
+													  <option value="2">5</option>
+													  <option value="3">6</option>
+													  <option value="1">7</option>
+													  <option value="2">8</option>
+													  <option value="3">9</option>
+													  <option value="1">10</option>
+													  <option value="2">11</option>
+													  <option value="3">12</option>
+												      <option value="1">13</option>
+													  <option value="2">14</option>
+													  <option value="3">15</option>
+													  <option value="1">16</option>
+													  <option value="2">17</option>
+													  <option value="3">18</option>
+												      <option value="1">19</option>
+													  <option value="2">20</option>
+													  <option value="3">21</option>
+												      <option value="1">22</option>
+													  <option value="2">23</option>
+													  <option value="3">24</option>
+													  
+													</select>
+												</td>
+												<td>
+													<select class="browser-default col s8 offset-s2">
+													  <option value="" disabled selected>---</option>
+													  <option value="1">1</option>
+													  <option value="2">2</option>
+													  <option value="3">3</option>
+													  <option value="1">4</option>
+													  <option value="2">5</option>
+													  <option value="3">6</option>
+													  <option value="1">7</option>
+													  <option value="2">8</option>
+													  <option value="3">9</option>
+													  <option value="1">10</option>
+													  <option value="2">11</option>
+													  <option value="3">12</option>
+												      <option value="1">13</option>
+													  <option value="2">14</option>
+													  <option value="3">15</option>
+													  <option value="1">16</option>
+													  <option value="2">17</option>
+													  <option value="3">18</option>
+												      <option value="1">19</option>
+													  <option value="2">20</option>
+													  <option value="3">21</option>
+												      <option value="1">22</option>
+													  <option value="2">23</option>
+													  <option value="3">24</option>
+													  
+													</select>
+												</td>
+											</tr>
+										
+											<tr>
+												<td><center>3</center></td>
+												<td>
+													<select class="browser-default col s8 offset-s2">
+													  <option value="" disabled selected>---</option>
+													  <option value="1">1</option>
+													  <option value="2">2</option>
+													  <option value="3">3</option>
+													  <option value="1">4</option>
+													  <option value="2">5</option>
+													  <option value="3">6</option>
+													  <option value="1">7</option>
+													  <option value="2">8</option>
+													  <option value="3">9</option>
+													  <option value="1">10</option>
+													  <option value="2">11</option>
+													  <option value="3">12</option>
+												      <option value="1">13</option>
+													  <option value="2">14</option>
+													  <option value="3">15</option>
+													  <option value="1">16</option>
+													  <option value="2">17</option>
+													  <option value="3">18</option>
+												      <option value="1">19</option>
+													  <option value="2">20</option>
+													  <option value="3">21</option>
+												      <option value="1">22</option>
+													  <option value="2">23</option>
+													  <option value="3">24</option>
+													  
+													</select>
+												</td>
+												<td>
+													<select class="browser-default col s8 offset-s2">
+													  <option value="" disabled selected>---</option>
+													  <option value="1">1</option>
+													  <option value="2">2</option>
+													  <option value="3">3</option>
+													  <option value="1">4</option>
+													  <option value="2">5</option>
+													  <option value="3">6</option>
+													  <option value="1">7</option>
+													  <option value="2">8</option>
+													  <option value="3">9</option>
+													  <option value="1">10</option>
+													  <option value="2">11</option>
+													  <option value="3">12</option>
+												      <option value="1">13</option>
+													  <option value="2">14</option>
+													  <option value="3">15</option>
+													  <option value="1">16</option>
+													  <option value="2">17</option>
+													  <option value="3">18</option>
+												      <option value="1">19</option>
+													  <option value="2">20</option>
+													  <option value="3">21</option>
+												      <option value="1">22</option>
+													  <option value="2">23</option>
+													  <option value="3">24</option>
+													  
+													</select>
+												</td>
+											</tr>
+										
+											
+									</tbody>
+								</table>
+							</div>
+					</div>
 				</div>
 			</div>
 		
