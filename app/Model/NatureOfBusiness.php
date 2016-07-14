@@ -13,4 +13,8 @@ class NatureOfBusiness extends Model
     protected $primaryKey = 'intNatureOfBusinessID';
     public $timestamps = false;
     
+    public function Client(){
+        return $this->belongsTo('App\Model\Client', 'intNatureOfBusinesID', 'intNatureOfBusinesID');
+    }
+    
 }

@@ -16,11 +16,13 @@ Client
 				<div class='col s10 push-s1'>
 					
 					<div class="input-field col s6 offset-s6 pull-s6">
-						<select>
+						<select id = "natureSelect">
 						  <option value="" disabled selected>Choose</option>
-						  <option value="1">test1</option>
-						  <option value="2">test2</option>
-						  <option value="3">test3</option>
+                            @foreach($natureOfBusinesses as $value)
+                            <option id = "nob{{$value->intNatureOfBusinessID}}" value = "{{$value->intNatureOfBusinessID}}">{{$value->strNatureOfBusiness}}</option>
+                            
+                            @endforeach
+                            
 						</select>
     					<label>Nature of Business</label>
 
@@ -57,24 +59,17 @@ Client
 					</div>
 					
 					<div class = "input-field col s6">    
-					   <select  id = "" name = "" >
+					   <select  id = "provinceSelect">
 						   <option disabled selected>Choose Province</option>
-							  <option id = "1" >Test1</option>
-							  <option id = "2">Test2</option>
-							  <option id = "3">Test3</option>
-							  <option id = "4">Test4</option>
-							  <option id = "5">Test5</option>
+				            @foreach($provinces as $value)
+                            <option id = "province{{$value->intProvinceID}}" value = "{{$value->intProvinceID}}">{{$value->strProvinceName}}</option>
+                            @endforeach
 					   </select>
 					</div>
 					
 					<div class = "input-field col s6">    
-					   <select  id = "" name = "" >
+					   <select  id = "citySelect" name = "" >
 						   <option disabled selected>Choose City</option>
-							  <option id = "1" >Test1</option>
-							  <option id = "2">Test2</option>
-							  <option id = "3">Test3</option>
-							  <option id = "4">Test4</option>
-							  <option id = "5">Test5</option>
 					   </select>
 					</div>
 					
@@ -312,7 +307,7 @@ Client
 			</div>
 		
 		</div>
-		<center><a style="margin-top:20px;" class=" z-depth-2 btn-large green" href="/dashboardadmin" id = "">Save</a></center>
+		<center><a style="margin-top:20px;" class=" z-depth-2 btn-large green" id = "btnSave">Save</a></center>
 	</div>
 	
 </div>
@@ -323,9 +318,85 @@ Client
 <script>
     
     $(document).ready(function() {
+        var city;
+        
         $('select').material_select();
         
+        $.ajax({
+            type: "GET",
+            url: "{{action('CityController@get')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                city = data;
+            }
+        }); //city
         
+        $('#provinceSelect').on('change',function(){
+            var id = $('#provinceSelect').val();
+            getCity(id);
+        });
+        
+        function getCity(provinceID){
+            var $selectDropdown = 
+                $("#citySelect")
+                .empty()
+                .html(' ');
+            $selectDropdown.append(
+                        $("<option></option>")
+                        .attr("value",0)
+                        .attr("disabled", 'disabled')
+                        .text('Choose City')
+                    );
+            $.each(city, function(index, subcatObj){
+                if (subcatObj.intProvinceID == provinceID){
+                    $selectDropdown.append(
+                        $("<option></option>")
+                        .attr("id",subcatObj.intCityID)
+                        .text(subcatObj.strCityName)
+                    );
+                }
+            });
+
+            $("#citySelect").material_select();
+        }
+        
+        $('#btnSave').click(function(){
+            $.ajax({
+
+                type: "POST",
+                url: "{{action('ClientRegistrationController@insert')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    natureOfBusiness: $('#natureSelect').val() ,
+                    clientName: $('#clientName').val() ,
+                    clientContactNumber: $('#clientcontactLandline').val() ,
+                    personInCharge: $('#personInCharge').val() ,
+                    personContactNumber: $('#piccontactCp').val() ,
+                    address: $('#address').val(),
+                    province: $('#provinceSelect').val() , 
+                    city: $('#citySelect').val()
+                    
+                },
+                success: function(data){
+
+                },
+                error: function(xhr){
+                    console.log(data);
+                }
+            });//ajax
+        });
         
     });
         

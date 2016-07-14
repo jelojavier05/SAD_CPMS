@@ -77,14 +77,8 @@ Route::get('/clientView', 'ClientViewController@index');
 
 
 
-Route::get('/client/registration/basicInfo', 'ClientFormController@basicInfoBC')->name('basicInfoBC');
-
-Route::get('/client/registration/contractInfo', 'ClientFormController@contractInfoBC')->name('contractInfoBC');
-
-Route::get('/client/registration/guardDeployment', 'ClientFormController@guardDeploymentBC')->name('guardDeploymentBC');
-
-Route::get('/client/registration/gunTagging', 'ClientFormController@gunTaggingBC')->name('gunTaggingBC');
-
+Route::get('/client/registration/basicInfo', 'ClientRegistrationController@index')->name('basicInfoBC');
+Route::post('/client/registration/basicInfo/insert', 'ClientRegistrationController@insert');
 
 
 Route::get('/guard/deployment', 'GuardDeploymentController@index');
@@ -157,7 +151,7 @@ Route::post('/maintenance/requirements/flag', 'RequirementsController@flagRequir
 Route::get('/maintenance/typeOfGun', 'TypeOfGunController@index');
 Route::get('/maintenance/typeOfGun/get', 'TypeOfGunController@getTypeOfGun');
 Route::post('/maintenance/typeOfGun/add', 'TypeOfGunController@addTypeOfGun');
-Route::post('/maintenance/typeOfGun/update', 'TypeOfGunController@updateTypefGun');
+Route::post('/maintenance/typeOfGun/update', 'TypeOfGunController@updateTypeOfGun');
 Route::post('/maintenance/typeOfGun/flag', 'TypeOfGunController@flagTypeOfGun');
 Route::post('/maintenance/typeOfGun/delete', 'TypeOfGunController@deleteTypeOfGun');
 
