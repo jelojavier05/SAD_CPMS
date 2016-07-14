@@ -15,6 +15,10 @@ Admin
 	<div class=" col s4 push-s2" style="margin-top: 100px;">
 		<a class="btn-large orange animated infinite tada" href="/clientView">Client List</a>
 	</div>
+	
+	<div class=" col s4" style="margin-top: 100px;">
+		<a class="btn-large red animated infinite tada" href="/admin/pending">Pending</a>
+	</div>
 </div>
 
 

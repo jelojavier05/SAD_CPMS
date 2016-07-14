@@ -12,12 +12,7 @@ Gun Registration
 			<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
 				<center><legend><h4>Gun Registration</h4></legend></center></br>
 				<div class="row">
-					<div class="col s4 push-s2">
-						<div class="input-field">
-							<input id="strGunName" type="text" class="validate" name = "gunName" required="" aria-required="true">
-							<label for="strGunName">Name</label> 
-						</div>
-					</div>
+					
 					
 					<div class="input-field col s4 push-s2">
 							<select>
@@ -34,9 +29,37 @@ Gun Registration
 				
 			
 				<div class="row">
-					<div class="col s8 push-s2">
+					
+					<div class="col s4 push-s2">
 						<div class="input-field">
-							<input id="strGunLicense" type="text" class="validate" name = "gunLicense" required="" aria-required="true">
+							<input placeholder=" " id="strGunName" type="text" class="validate" name = "gunName" required="" aria-required="true">
+							<label for="strGunName">Name</label> 
+						</div>
+					</div>
+					
+					<div class="col s4 push-s2">
+						<div class="input-field">
+							<input placeholder=" " id="strGunManufacturer" type="text" class="validate" name = "gunManufacturer" required="" aria-required="true">
+							<label for="strGunManufacturer">Manufacturer</label> 
+						</div>
+					</div>
+					
+					
+				</div>
+			
+			
+				<div class="row">
+					
+					<div class="col s4 push-s2">
+						<div class="input-field">
+							<input placeholder=" " id="strGunSerial" type="text" class="validate" name = "gunSerial" required="" aria-required="true">
+							<label for="strGunSerial">Serial No</label> 
+						</div>
+					</div>
+					
+					<div class="col s4 push-s2">
+						<div class="input-field">
+							<input placeholder=" " id="strGunLicense" type="text" class="validate" name = "gunLicense" required="" aria-required="true">
 							<label for="strGunLicense">License No</label> 
 						</div>
 					</div>
