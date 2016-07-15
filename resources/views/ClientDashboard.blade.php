@@ -153,30 +153,71 @@
             <div>
                 
         <!-------REQUESTS-------->
-                <div class="col l12">
-                    <a href="#" class="dropdown-button white darken-5 waves-effect waves-dark z-depth-1" data-activates="dropdownrequest" data-gutter="240" data-hover="false">
-                        <div class="col l5">
-                            <i class="material-icons left" style="font-size:6rem">input
-                            </i> 
+                        <div class="row">
+                    <div class="col l12">
+                       <div class="card">
+                        <div class="card-content">
+                      
+                        <a class=" white darken-5 waves-effect waves-dark ">
+                            <div class="col l5">
+                                
+                                <div class="row">
+                                    <div class="col l12">
+                                    <div class="col l2 pull-l4">
+                                        
+                                            <i class="material-icons left" style="font-size:6rem">input
+                                            </i>
+                                        
+                                        </div>
+                                    
+                                        <div class="col l6 push-l12">
+                                            <div class="row"></div>
+                                          <span class="card-title activator grey-text text-darken-4">REQUEST<i class="mdi-hardware-keyboard-arrow-up" style="padding-left:5%"></i></span>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                             
+                                
+                            </div>
+                         
+                </a>
+                      
+                        
                         </div>
-                        <div class="col l5 pull-l1">
-                            
-                            <div class="row"></div>
-                            <div class="col l3" style="font-size:1.7rem;font-family:Tahoma;color:black">REQUESTS</div>
-                            
-                        </div>
-                    </a>
-                    
-				    <ul id='dropdownrequest' class='dropdown-content' style="margin-top:1px;">
-				        <li>
-                            <a class="blue-text" href="/clientguardrequest">Guards</a>
-                        </li>
-				        <li>
-                            <a class="blue-text" href="/clientgunrequest">Guns</a>
-                        </li>															
-				    </ul>
-                </div>
+                           <div class="card-reveal" style="overflow:hidden">
+      <span class="card-title grey-text text-darken-4" style="font-size:12px">Request Type<i class="material-icons right">close</i></span>
+     
+                               
+                               
+                               
+                               <div class="row">
+                               <div class="col l12 push-l2">
+                                   
+                               
+                                    <a href="/clientguardrequest" class="btn blue darken-4" style="font-size:20px;height:40px;width:120px">GUARD</a>
+                 
+                                  
+                                   
+                             </div>
+                             </div>
+                             <div class="row">
+                              <div class="col l6 push-l1">
+                                  
+                                  
+                                     <a href="/clientgunrequest" class="btn blue darken-4" style="font-size:20px;height:40px;width:152px !important">GUN</a>
                 
+                    
+                                   
+                                   </div>
+                                   
+                                </div>
+    </div>
+                        
+                             
+                            </div>
+                        </div>
+                </div>
                 
                 
                
