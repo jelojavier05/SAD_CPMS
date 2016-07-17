@@ -6,6 +6,10 @@ Route::get('/admin/pending', 'AdminPendingController@index');
 
 Route::get('/client/registration/contractInfo', 'ClientContractController@index');
 
+Route::get('/client/tempaccount', 'TempClientAccountController@index');
+
+Route::get('/client/tempaccountdetails', 'TempClientDetailsController@index');
+
 // ----------------------------------------GUARD REGISTRATION---------------------------------------------//
 Route::get('/guard/registration/personaldata', 'PersonalDataController@index')
     ->name('personaldata');
