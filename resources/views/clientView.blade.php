@@ -136,7 +136,7 @@ Client
 					<div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:25px;">
 			<!--            <div class="row">-->
 							<div class="col s6 push-s1">
-								<h4 class="blue-text">Pending</h4>
+								<h4 class="blue-text">Client (Pending)</h4>
 							</div>
 
 						<div class="row">
