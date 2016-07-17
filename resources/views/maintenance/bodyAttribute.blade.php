@@ -11,7 +11,7 @@ Body Attributes
         <div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:40px;">
 <!--            <div class="row">-->
                 <div class="col s6 push-s1" style="margin-top:-15px;">
-                    <h2 class="blue-text">Body Attributes</h2>
+                    <h4 class="blue-text">Body Attributes</h4>
                 </div>
 
                 <div class="col s3 offset-s3">
@@ -57,14 +57,14 @@ Body Attributes
                                 	</td>
 									
 									<td>
-                                        <button class="buttonUpdate btn"  name="" id="{{ $bodyAttribute->intBodyAttributeID }}" href="#modalvitstatsEdit" >
+                                        <button class="buttonUpdate btn col s12"  name="" id="{{ $bodyAttribute->intBodyAttributeID }}" href="#modalvitstatsEdit" >
                                             <i class="material-icons">edit</i>
                                         </button>
                                     <label for="{{ $bodyAttribute->intBodyAttributeID }}"></label>
                                     </td>
 									
                                     <td>
-                                        <button class="buttonDelete btn red" id="{{ $bodyAttribute->intBodyAttributeID }}" href="#modalvitstatsDelete">
+                                        <button class="buttonDelete btn red col s12" id="{{ $bodyAttribute->intBodyAttributeID }}" href="#modalvitstatsDelete">
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>

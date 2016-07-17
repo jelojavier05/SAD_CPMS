@@ -84,6 +84,12 @@ Client
 						<label data-error="Incorrect" for="population">Population (approx.)</label>
 
 					</div>
+					
+					<div class="input-field col s4 push-s4">
+						<input placeholder=" " id="guardNo" type="number" class="validate" pattern="[0-9,]{1,}" required="" aria-required="true">
+						<label data-error="Incorrect" for="population">Number of Guards</label>
+
+					</div>
 				
 				</div>
 			</div>

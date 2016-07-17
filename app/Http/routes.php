@@ -4,6 +4,8 @@ Route::get('/dashboardadmin', 'DashboardAdminController@index');
 
 Route::get('/admin/pending', 'AdminPendingController@index');
 
+Route::get('/client/registration/contractInfo', 'ClientContractController@index');
+
 // ----------------------------------------GUARD REGISTRATION---------------------------------------------//
 Route::get('/guard/registration/personaldata', 'PersonalDataController@index')
     ->name('personaldata');
