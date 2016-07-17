@@ -324,10 +324,6 @@ Guard
                            $('#governmentExam' + item.intGovernmentExamID).text(item.strGovernmentExam + ' - N/A');
                         });
                     }
-                    
-                    
-                    
-                    
                 },
                 error: function(data){
                     var toastContent = $('<span>Error Occured. </span>');

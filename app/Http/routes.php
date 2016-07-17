@@ -95,7 +95,8 @@ Route::get('/gunDelivery', 'GunDeliveryController@index');
 
 
 
-Route::get('/gunRegistration', 'GunRegistrationController@index');
+Route::get('/gun/registration', 'GunRegistrationController@index');
+Route::post('/gun/registration', 'GunRegistrationController@insert');
 
 Route::get('/deployment/index', 'DeploymentController@index');
 

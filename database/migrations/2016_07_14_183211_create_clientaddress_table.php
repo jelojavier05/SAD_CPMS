@@ -10,7 +10,8 @@ class CreateClientaddressTable extends Migration
      *
      * @return void
      */
-    public function up(){
+    public function up()
+    {
         Schema::create('tblclientaddress', function (Blueprint $table) {
             $table->increments('intClientAddressID');
             $table->integer('intClientID')->unsigned();
@@ -26,11 +27,6 @@ class CreateClientaddressTable extends Migration
 
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::drop('tblclientaddress');

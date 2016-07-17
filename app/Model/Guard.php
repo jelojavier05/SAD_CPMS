@@ -21,7 +21,7 @@ class Guard extends Model
     }
     
     public function GuardGovernmentExam(){
-        return $this->hasOne('App\Model\GuardGovernmentExam', 'intGuardID', 'intGuardID');
+        return $this->hasMany('App\Model\GuardGovernmentExam', 'intGuardID', 'intGuardID');
     }
     
     public function GuardLicense(){
@@ -30,9 +30,5 @@ class Guard extends Model
     
     public function Account(){
         return $this->hasOne('App\Model\Account', 'intGuardID', 'intGuardID');
-    }
-    
-    public function License(){
-        return $this->hasOne('App\Model\GuardLicense', 'intGuardID', 'intGuardID');
     }
 }

@@ -12,5 +12,9 @@ class TypeOfGun extends Model
     protected $table = 'tbltypeofgun';
     protected $primaryKey = 'intTypeOfGunID';
     public $timestamps = false;
+    
+    public function Gun(){
+        return $this->hasMany('App\Model\Gun', 'intTypeOfGunID', 'intTypeOfGunID');
+    }
 }
 	

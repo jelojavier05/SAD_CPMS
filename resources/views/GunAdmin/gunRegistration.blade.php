@@ -15,14 +15,13 @@ Gun Registration
 					
 					
 					<div class="input-field col s4 push-s2">
-							<select>
-							  <option value="" disabled selected>Choose</option>
-							  <option value="1">Test1</option>
-							  <option value="2">Test2</option>
-							  <option value="3">test3</option>
+							<select id = "typeOfGunSelect">
+							  <option value="0" disabled selected>Choose</option>
+                                @foreach($typeOfGuns as $value)
+                                    <option value = "{{$value->intTypeOfGunID}}"> {{$value->strTypeOfGun}} </option>
+                                @endforeach
 							</select>
 							<label>Type of Gun</label>
-
 					</div>
 					
 				</div>
@@ -79,12 +78,63 @@ Gun Registration
 			
 			</div>
 			<div class = "center-align">
-			<button style="margin-top:20px;" class=" z-depth-2 btn-large green " id="">Add</button>
+			<button style="margin-top:20px;" class=" z-depth-2 btn-large green " id="btnSave">Add</button>
 			</div>
 		</div>
 	</div>
 </div>
 @stop
 
+@section('script')
+
+<script>
+    $(document).ready(function(){
+        $('#btnSave').click(function(){
+            
+            if ($('#typeOfGunSelect').val() && $('#strGunName').val().trim() && $('#strGunManufacturer').val().trim() && 
+               $('#strGunSerial').val().trim() && $('#strGunLicense').val().trim() && 
+                $('#startDate').val() && $('#endDate').val() ){
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{action('GunRegistrationController@insert')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        typeOfGun: $('#typeOfGunSelect').val(), 
+                        name: $('#strGunName').val() ,
+                        manufacturer: $('#strGunManufacturer').val() ,
+                        serialNumber: $('#strGunSerial').val() ,
+                        licenseNumber: $('#strGunLicense').val() ,
+                        dateIssued: $('#startDate').val() ,
+                        dateExpired: $('#endDate').val()
+
+                    },
+                    success: function(data){
+                        swal("Success!", "Record has been Added!", "success");
+
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occured. </span>');
+                        Materialize.toast(toastContent, 1500,'red', 'edit');
+
+                    }
+                });//ajax
+
+             }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+        });
+    });
+</script>
+
+
+@stop
 
 

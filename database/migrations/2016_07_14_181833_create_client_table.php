@@ -16,18 +16,17 @@ class CreateClientTable extends Migration
             $table->increments('intClientID');
             $table->integer('intNatureOfBusinessID')->unsigned();
             
-            $table->string('strClientName', 100);
-            $table->string('strClientContactNumber', 20);
-            $table->string('strPersonInCharge', 100);
-            $table->string('strPersonContactNumber', 20);
-            $table->decimal('deciSize', 10,2);
-            $table->decimal('deciPopulation', 10,2);
-            $table->integer('intStatusIdentifier')->default(0);
+            $table->string('strClientName', 120);
+            $table->string('strContactNumber', 20);
+            $table->string('strPersonInCharge', 120);
+            $table->string('strPOICContactNumber', 20);
+            $table->decimal('deciAreaSize', 10,2);
+            $table->bigInteger('intPopulation');
             
+            $table->boolean('intStatusIdentifier')->default(1);
             $table->timestamps();
-            $table->softDeletes();
             
-            $table->foreign('intNatureOfBusinessID')->references('intNatureOfBusinessID')->on('tblnatureofbusiness');
+            $table->softDeletes();
         });
 
     }
