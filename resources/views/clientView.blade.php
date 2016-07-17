@@ -109,6 +109,9 @@ Client
 
 							<li class="collection-item" style="font-weight:bold; opacity:0;">Population (approx.):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10000</div>
 							</li>
+							
+							<li class="collection-item" style="font-weight:bold; opacity:0;">Number of Guards:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10</div>
+							</li>
 						</div>
 						
 					</ul>

@@ -12,7 +12,7 @@ Client
 			<div class="nav-wrapper blue">
 				<div class="row">	
 					<div class="col s12">
-						<a href="{{URL::route('contractInfoBC')}}" class="breadcrumb">Contract Information</a>
+						<a href="" class="breadcrumb">Contract Information</a>
 					</div>
 				</div>
 			</div>
@@ -75,7 +75,6 @@ Client
 					
 				</div>
 			</div>
-			<button class="btn-large blue waves-effect z-depth-2 left" id="backclientContract" style="margin-top:20px;">Back</button>	
 			<button class="btn-large blue waves-effect z-depth-2 right" id="nextclientContract" style="margin-top:20px;">Next</button>	
 		</div>
 	</div>
