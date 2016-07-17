@@ -164,17 +164,9 @@
 					
 							
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">send</i>Deployment<i class="mdi-navigation-arrow-drop-down right"></i></a>
+								<a class="collapsible-header waves-effect waves-blue" href="/gun/tagging"><i class="material-icons">content_paste</i>Gun Tagging</a>
                             <div class="collapsible-body grey lighten-2">
-                                <ul>
-                                            
-                                  	<a href="/guard/deployment" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Guard</a>
-									
-									<a href="/gun/tagging" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Gun</a>
-									
-									
-                                           
-                                </ul>
+                                
                             </div>
 					</li>	
 							

@@ -9,11 +9,11 @@ Client
 <div class="row">
 	<div class="col s10 push-s2" style=" margin-left:10px; margin-top: 0.5%;">
 		<div class="container-fluid grey lighten-4 z-depth-2" style="border: 1px solid black; border-radius:5px;" id="">
-			<h2 class = "blue darken-3 white-text" style="margin-top:0px; padding-bottom:10px;">Tagging</h2>
+			<h3 class = "blue darken-3 white-text" style="margin-top:0px; padding-bottom:10px;">Tagging</h3>
 			<div class = "row">
 				<div class='col s6' style="margin-top:-3%;">
 					<div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:5px; padding-bottom:1%;">
-					<h3 class="blue darken-1 white-text">Guns</h3>
+					<h4 class="blue darken-1 white-text">Guns</h4>
 						<div class = "input-field col s5">    
 							<select  id = "" name = "" >
 								<option disabled selected>Choose an option</option>
@@ -85,7 +85,7 @@ Client
 				
 				<div class="col s6" style="margin-top:-3%;">
 					<div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:5px;">
-						<h3 class="blue darken-1 white-text">Selected</h3>
+						<h4 class="blue darken-1 white-text">Selected</h4>
 							<div class="input-field col s5">
 								<input placeholder=" " id="clientName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" readonly>
 								<label for="clientName"  data-error="Incorrect">Client Name</label>
