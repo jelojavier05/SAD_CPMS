@@ -15,8 +15,9 @@ class CreateClientshiftTable extends Migration
         Schema::create('tblclientshift', function (Blueprint $table) {
             $table->increments('intClientShiftID');
             $table->integer('intClientID')->unsigned();
-            $table->time('timeFrom');
-            $table->time('timeTo');
+            $table->string('strShiftNumber');
+            $table->integer('timeFrom');
+            $table->integer('timeTo');
             
             
             $table->foreign('intClientID')->references('intClientID')->on('tblclient');

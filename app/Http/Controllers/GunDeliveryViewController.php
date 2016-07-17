@@ -13,7 +13,7 @@ class GunDeliveryViewController extends Controller
 {
     
     public function index(){
-        return view('/gunDeliveryView');
+        return view('GunAdmin.gunDeliveryView');
  
     }
 }

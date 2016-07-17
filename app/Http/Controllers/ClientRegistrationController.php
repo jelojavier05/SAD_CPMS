@@ -9,6 +9,7 @@ use App\Model\Client;
 use App\Model\Province;
 use App\Http\Controllers\Controller;
 use Validator;
+use DB;
 
 
 class ClientRegistrationController extends Controller
@@ -29,21 +30,52 @@ class ClientRegistrationController extends Controller
     
     public function insert(Request $request){
         try {
-
-            $client = new Client;
-
-            $client->strClientName = $request->clientName;
-            $client->strClientContactNumber = $request->clientContactNumber;
-            $client->strPersonInCharge = $request->personInCharge;
-            $client->strPersonContactNumber = $request->personContactNumber;
-            $client->strSize = $request->personContactNumber;
-            $client->intPopulation = $request->personContactNumber;
-            $client->intNatureOfBusinessID = $request->natureOfBusiness;
+            DB::beginTransaction();
+            $accountID = DB::table('tblaccount')->insertGetId([
+                'strUsername' => $request->username,
+                'strPassword' => $request->password,
+                'intAccountType' => 1
+            ]);
             
-            $client->save();
+            $id = DB::table('tblclient')->insertGetId([
+                'intAccountID' => $accountID,
+                'intNatureOfBusinessID' => $request->natureOfBusiness,
+                'strClientName' => $request->clientName,
+                'strContactNumber' => $request->clientContactNumber,
+                'strPersonInCharge' => $request->personInCharge,
+                'strPOICContactNumber' => $request->personContactNumber,
+                'deciAreaSize' => $request->areaSize,
+                'intPopulation' => $request->population,
+                'intNumberOfGuard' => $request->guardNo
+            ]);
+            
+            DB::table('tblclientaddress')->insert([
+                'intClientID' => $id,
+                'strAddress' => $request->strAddress,
+                'intProvinceID' => $request->province,
+                'intCityID' => $request->city
+            ]);
+            
+            
+            $array = array();
+            $shiftNumber = $request->shiftNumber;
+            $shiftFrom = $request->shiftFrom;
+            $shiftTo = $request->shiftTo;
+
+            for ($intLoop = 0; $intLoop < count($shiftNumber); $intLoop ++){
+                DB::table('tblclientshift')->insert([
+                    'intClientID' => $id,
+                    'strShiftNumber' => $shiftNumber[$intLoop],
+                    'timeFrom' => $shiftFrom[$intLoop],
+                    'timeTo' => $shiftTo[$intLoop]
+                ]);
+            }
+            
+            
+            DB::commit();
 
         } catch (Exception $e) {
-            
+            DB::rollBack();
         }
     }
 }

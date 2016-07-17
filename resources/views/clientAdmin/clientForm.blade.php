@@ -98,8 +98,12 @@ Client
 				<div>
 					<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px;">
 						<legend><h4>Shift</h4></legend>
-						<button style="margin-top:-15%; margin-left:380px;" class="z-depth-1 btn green">
+						<button style="margin-top:-15%; margin-left:380px;" class="z-depth-1 btn green" id = "btnAddShift">
 						<i class="material-icons left">add</i>ADD
+						</button>
+                        
+                        <button style="margin-top:-24%; margin-left:180px;" class="z-depth-1 btn red" id = "btnRefreshShift">
+						<i class="material-icons left">edit</i>Refresh
 						</button>
 							<div class="col s10 push-s1">
 								<table class="bordered grey lighten-1" id = "dataTable" style="margin-bottom:15px;">
@@ -115,199 +119,98 @@ Client
 											<tr>
 												<td><center>1</center></td>
 												<td>
-													<select class="browser-default col s8 offset-s2">
+													<select id = "shiftSelectFrom1" class="browser-default col s8 offset-s2">
 													  <option value="" disabled selected>---</option>
-													  <option value="1">1</option>
-													  <option value="2">2</option>
-													  <option value="3">3</option>
-													  <option value="1">4</option>
-													  <option value="2">5</option>
-													  <option value="3">6</option>
-													  <option value="1">7</option>
-													  <option value="2">8</option>
-													  <option value="3">9</option>
-													  <option value="1">10</option>
-													  <option value="2">11</option>
-													  <option value="3">12</option>
-												      <option value="1">13</option>
-													  <option value="2">14</option>
-													  <option value="3">15</option>
-													  <option value="1">16</option>
-													  <option value="2">17</option>
-													  <option value="3">18</option>
-												      <option value="1">19</option>
-													  <option value="2">20</option>
-													  <option value="3">21</option>
-												      <option value="1">22</option>
-													  <option value="2">23</option>
-													  <option value="3">24</option>
-													  
+												        <option id = "0" value="0">12 AM</option>
+                                                        <option id = "1" value="1">1 AM</option>
+                                                        <option id = "2" value="2">2 AM</option>
+                                                        <option id = "3" value="3">3 AM</option>
+                                                        <option id = "4" value="4">4 AM</option>
+                                                        <option id = "5" value="5">5 AM</option>
+                                                        <option id = "6" value="6">6 AM</option>
+                                                        <option id = "7" value="7">7 AM</option>
+                                                        <option id = "8" value="8">8 AM</option>
+                                                        <option id = "9" value="9">9 AM</option>
+                                                        <option id = "10" value="10">10 AM</option>
+                                                        <option id = "11" value="11">11 AM</option>
+                                                        <option id = "12" value="12">12 PM</option>
+                                                        <option id = "13" value="13">1 PM</option>
+                                                        <option id = "14" value="14">2 PM</option>
+                                                        <option id = "15" value="15">3 PM</option>
+                                                        <option id = "16" value="16">4 PM</option>
+                                                        <option id = "17" value="17">5 PM</option>
+                                                        <option id = "18" value="18">6 PM</option>
+                                                        <option id = "19" value="19">7 PM</option>
+                                                        <option id = "20" value="20">8 PM</option>
+                                                        <option id = "21" value="21">9 PM</option>
+                                                        <option id = "22" value="22">10 PM</option>
+                                                        <option id = "23" value="23">11 PM</option>
 													</select>
 												</td>
 												<td>
-													<select class="browser-default col s8 offset-s2">
+													<select id = "shiftSelectTo1" class="browser-default col s8 offset-s2">
 													  <option value="" disabled selected>---</option>
-													  <option value="1">1</option>
-													  <option value="2">2</option>
-													  <option value="3">3</option>
-													  <option value="1">4</option>
-													  <option value="2">5</option>
-													  <option value="3">6</option>
-													  <option value="1">7</option>
-													  <option value="2">8</option>
-													  <option value="3">9</option>
-													  <option value="1">10</option>
-													  <option value="2">11</option>
-													  <option value="3">12</option>
-												      <option value="1">13</option>
-													  <option value="2">14</option>
-													  <option value="3">15</option>
-													  <option value="1">16</option>
-													  <option value="2">17</option>
-													  <option value="3">18</option>
-												      <option value="1">19</option>
-													  <option value="2">20</option>
-													  <option value="3">21</option>
-												      <option value="1">22</option>
-													  <option value="2">23</option>
-													  <option value="3">24</option>
-													  
+													  <option id = "0" value="0">12 AM</option>
+                                                        <option id = "1" value="1">1 AM</option>
+                                                        <option id = "2" value="2">2 AM</option>
+                                                        <option id = "3" value="3">3 AM</option>
+                                                        <option id = "4" value="4">4 AM</option>
+                                                        <option id = "5" value="5">5 AM</option>
+                                                        <option id = "6" value="6">6 AM</option>
+                                                        <option id = "7" value="7">7 AM</option>
+                                                        <option id = "8" value="8">8 AM</option>
+                                                        <option id = "9" value="9">9 AM</option>
+                                                        <option id = "10" value="10">10 AM</option>
+                                                        <option id = "11" value="11">11 AM</option>
+                                                        <option id = "12" value="12">12 PM</option>
+                                                        <option id = "13" value="13">1 PM</option>
+                                                        <option id = "14" value="14">2 PM</option>
+                                                        <option id = "15" value="15">3 PM</option>
+                                                        <option id = "16" value="16">4 PM</option>
+                                                        <option id = "17" value="17">5 PM</option>
+                                                        <option id = "18" value="18">6 PM</option>
+                                                        <option id = "19" value="19">7 PM</option>
+                                                        <option id = "20" value="20">8 PM</option>
+                                                        <option id = "21" value="21">9 PM</option>
+                                                        <option id = "22" value="22">10 PM</option>
+                                                        <option id = "23" value="23">11 PM</option>
 													</select>
 												</td>
 											</tr>
-										
-											<tr>
-												<td><center>2</center></td>
-												<td>
-													<select class="browser-default col s8 offset-s2">
-													  <option value="" disabled selected>---</option>
-													  <option value="1">1</option>
-													  <option value="2">2</option>
-													  <option value="3">3</option>
-													  <option value="1">4</option>
-													  <option value="2">5</option>
-													  <option value="3">6</option>
-													  <option value="1">7</option>
-													  <option value="2">8</option>
-													  <option value="3">9</option>
-													  <option value="1">10</option>
-													  <option value="2">11</option>
-													  <option value="3">12</option>
-												      <option value="1">13</option>
-													  <option value="2">14</option>
-													  <option value="3">15</option>
-													  <option value="1">16</option>
-													  <option value="2">17</option>
-													  <option value="3">18</option>
-												      <option value="1">19</option>
-													  <option value="2">20</option>
-													  <option value="3">21</option>
-												      <option value="1">22</option>
-													  <option value="2">23</option>
-													  <option value="3">24</option>
-													  
-													</select>
-												</td>
-												<td>
-													<select class="browser-default col s8 offset-s2">
-													  <option value="" disabled selected>---</option>
-													  <option value="1">1</option>
-													  <option value="2">2</option>
-													  <option value="3">3</option>
-													  <option value="1">4</option>
-													  <option value="2">5</option>
-													  <option value="3">6</option>
-													  <option value="1">7</option>
-													  <option value="2">8</option>
-													  <option value="3">9</option>
-													  <option value="1">10</option>
-													  <option value="2">11</option>
-													  <option value="3">12</option>
-												      <option value="1">13</option>
-													  <option value="2">14</option>
-													  <option value="3">15</option>
-													  <option value="1">16</option>
-													  <option value="2">17</option>
-													  <option value="3">18</option>
-												      <option value="1">19</option>
-													  <option value="2">20</option>
-													  <option value="3">21</option>
-												      <option value="1">22</option>
-													  <option value="2">23</option>
-													  <option value="3">24</option>
-													  
-													</select>
-												</td>
-											</tr>
-										
-											<tr>
-												<td><center>3</center></td>
-												<td>
-													<select class="browser-default col s8 offset-s2">
-													  <option value="" disabled selected>---</option>
-													  <option value="1">1</option>
-													  <option value="2">2</option>
-													  <option value="3">3</option>
-													  <option value="1">4</option>
-													  <option value="2">5</option>
-													  <option value="3">6</option>
-													  <option value="1">7</option>
-													  <option value="2">8</option>
-													  <option value="3">9</option>
-													  <option value="1">10</option>
-													  <option value="2">11</option>
-													  <option value="3">12</option>
-												      <option value="1">13</option>
-													  <option value="2">14</option>
-													  <option value="3">15</option>
-													  <option value="1">16</option>
-													  <option value="2">17</option>
-													  <option value="3">18</option>
-												      <option value="1">19</option>
-													  <option value="2">20</option>
-													  <option value="3">21</option>
-												      <option value="1">22</option>
-													  <option value="2">23</option>
-													  <option value="3">24</option>
-													  
-													</select>
-												</td>
-												<td>
-													<select class="browser-default col s8 offset-s2">
-													  <option value="" disabled selected>---</option>
-													  <option value="1">1</option>
-													  <option value="2">2</option>
-													  <option value="3">3</option>
-													  <option value="1">4</option>
-													  <option value="2">5</option>
-													  <option value="3">6</option>
-													  <option value="1">7</option>
-													  <option value="2">8</option>
-													  <option value="3">9</option>
-													  <option value="1">10</option>
-													  <option value="2">11</option>
-													  <option value="3">12</option>
-												      <option value="1">13</option>
-													  <option value="2">14</option>
-													  <option value="3">15</option>
-													  <option value="1">16</option>
-													  <option value="2">17</option>
-													  <option value="3">18</option>
-												      <option value="1">19</option>
-													  <option value="2">20</option>
-													  <option value="3">21</option>
-												      <option value="1">22</option>
-													  <option value="2">23</option>
-													  <option value="3">24</option>
-													  
-													</select>
-												</td>
-											</tr>
-										
-											
 									</tbody>
 								</table>
 							</div>
+					</div>
+				</div>
+			</div>
+            
+            <div class ="row">
+				<div>
+					<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px;">
+						<legend><h4>Account</h4></legend>
+						<button style="margin-top:-15%; margin-left:380px;" class="z-depth-1 btn green" id = "btnGenerateAccount">
+						<i class="material-icons left">edit</i>Generate
+						</button>
+                        
+                        <div class="col s10 push-s1">
+                            <div class="row">
+                                <div class="col s8 push-s2">
+                                    <div class="input-field">
+                                        <input placeholder=" " id="username" type="text" class="validate" name = "userName" required="" aria-required="true">
+                                        <label for="strUserName">Username</label> 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s8 push-s2">
+                                    <div class="input-field">
+                                        <input placeholder=" " id="password" type="text" class="validate" name = "passWord" required="" aria-required="true">
+                                        <label for="password">Password</label> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 					</div>
 				</div>
 			</div>
@@ -325,6 +228,12 @@ Client
     
     $(document).ready(function() {
         var city;
+        var shiftCounter = 1;
+        var shiftNumber = {};
+        var shiftTo = {};
+        var shiftFrom = {};
+        var table = $('#dataTable').DataTable();
+        
         
         $('select').material_select();
         
@@ -363,6 +272,7 @@ Client
                 if (subcatObj.intProvinceID == provinceID){
                     $selectDropdown.append(
                         $("<option></option>")
+                        .attr("value",subcatObj.intCityID)
                         .attr("id",subcatObj.intCityID)
                         .text(subcatObj.strCityName)
                     );
@@ -373,37 +283,287 @@ Client
         }
         
         $('#btnSave').click(function(){
-            $.ajax({
-
-                type: "POST",
-                url: "{{action('ClientRegistrationController@insert')}}",
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                data: {
-                    natureOfBusiness: $('#natureSelect').val() ,
-                    clientName: $('#clientName').val() ,
-                    clientContactNumber: $('#clientcontactLandline').val() ,
-                    personInCharge: $('#personInCharge').val() ,
-                    personContactNumber: $('#piccontactCp').val() ,
-                    address: $('#address').val(),
-                    province: $('#provinceSelect').val() , 
-                    city: $('#citySelect').val()
-                    
-                },
-                success: function(data){
-
-                },
-                error: function(xhr){
-                    console.log(data);
+            if (checkInputShift() && checkInput()){
+                for (intLoop = 1; intLoop <= shiftCounter; intLoop ++){
+                    shiftNumber[intLoop - 1] = intLoop;
+                    shiftFrom[intLoop - 1] = $('#shiftSelectFrom' + intLoop).val();
+                    shiftTo[intLoop - 1] = $('#shiftSelectTo' + intLoop).val();
                 }
-            });//ajax
+                
+                $.ajax({
+
+                    type: "POST",
+                    url: "{{action('ClientRegistrationController@insert')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        natureOfBusiness: $('#natureSelect').val() ,
+                        clientName: $('#clientName').val() ,
+                        clientContactNumber: $('#clientcontactLandline').val() ,
+                        personInCharge: $('#personInCharge').val() ,
+                        personContactNumber: $('#piccontactCp').val() ,
+                        strAddress: $('#address').val(),
+                        province: $('#provinceSelect').val(), 
+                        city: $('#citySelect').val(),
+                        areaSize: $('#areaSize').val() ,
+                        population: $('#population').val(),
+                        guardNo: $('#guardNo').val(),
+                        shiftNumber: shiftNumber,
+                        shiftFrom: shiftFrom,
+                        shiftTo: shiftTo,
+                        username: $('#username').val(),
+                        password: $('#password').val()
+
+                    },
+                    success: function(data){
+                        swal("Success!", "Record has been Added!", "success");
+                    },
+                    error: function(data){
+                        console.log(data);
+                    }
+                });//ajax
+                
+            }else{
+                var toastContent = $('<span>Check Input.</span>');
+                Materialize.toast(toastContent, 2000,'red', 'edit');
+            }
+            
+            
         });
         
+        $('#btnAddShift').click(function(){
+            
+            
+            if (shiftCounter < 3){
+                var from = $('#shiftSelectFrom' + shiftCounter).val();
+                var to = $('#shiftSelectTo' + shiftCounter).val();
+                var checker = true;
+                
+                if (from && to && (to - from) <= 12 && (to - from)>=8){
+                    shiftCounter ++;
+                    table.row.add([
+                        '<h><center>' + shiftCounter +'</center></h>',
+                        '<select id = "shiftSelectFrom' + shiftCounter+'" class="browser-default col s8 offset-s2">' + 
+                        '<option value="" disabled selected>---</option>' + 
+                        '<option id = "24" value="24">12 AM</option>' + 
+                        '<option id = "1" value="1">1 AM</option>' +
+                        '<option id = "2" value="2">2 AM</option>' +
+                        '<option id = "3" value="3">3 AM</option>' + 
+                        '<option id = "4" value="4">4 AM</option>' +
+                        '<option id = "5" value="5">5 AM</option>' +
+                        '<option id = "6" value="6">6 AM</option>' +
+                        '<option id = "7" value="7">7 AM</option>' +
+                        '<option id = "8" value="8">8 AM</option>' +
+                        '<option id = "9" value="9">9 AM</option>' +
+                        '<option id = "10" value="10">10 AM</option>' +
+                        '<option id = "11" value="11">11 AM</option>' +
+                        '<option id = "12" value="12">12 PM</option>' +
+                        '<option id = "13" value="13">1 PM</option>' +
+                        '<option id = "14" value="14">2 PM</option>' +
+                        '<option id = "15" value="15">3 PM</option>' +
+                        '<option id = "16" value="16">4 PM</option>' +
+                        '<option id = "17" value="17">5 PM</option>' +
+                        '<option id = "18" value="18">6 PM</option>' +
+                        '<option id = "19" value="19">7 PM</option>' +
+                        '<option id = "20" value="20">8 PM</option>' +
+                        '<option id = "21" value="21">9 PM</option>' +
+                        '<option id = "22" value="22">10 PM</option>' +
+                        '<option id = "23" value="23">11 PM</option>' +
+                        '</select>',
+                        '<select id = "shiftSelectTo' + shiftCounter+'" class="browser-default col s8 offset-s2">' + 
+                        '<option value="" disabled selected>---</option>' + 
+                        '<option id = "24" value="24">12 AM</option>' + 
+                        '<option id = "1" value="1">1 AM</option>' +
+                        '<option id = "2" value="2">2 AM</option>' +
+                        '<option id = "3" value="3">3 AM</option>' + 
+                        '<option id = "4" value="4">4 AM</option>' +
+                        '<option id = "5" value="5">5 AM</option>' +
+                        '<option id = "6" value="6">6 AM</option>' +
+                        '<option id = "7" value="7">7 AM</option>' +
+                        '<option id = "8" value="8">8 AM</option>' +
+                        '<option id = "9" value="9">9 AM</option>' +
+                        '<option id = "10" value="10">10 AM</option>' +
+                        '<option id = "11" value="11">11 AM</option>' +
+                        '<option id = "12" value="12">12 PM</option>' +
+                        '<option id = "13" value="13">1 PM</option>' +
+                        '<option id = "14" value="14">2 PM</option>' +
+                        '<option id = "15" value="15">3 PM</option>' +
+                        '<option id = "16" value="16">4 PM</option>' +
+                        '<option id = "17" value="17">5 PM</option>' +
+                        '<option id = "18" value="18">6 PM</option>' +
+                        '<option id = "19" value="19">7 PM</option>' +
+                        '<option id = "20" value="20">8 PM</option>' +
+                        '<option id = "21" value="21">9 PM</option>' +
+                        '<option id = "22" value="22">10 PM</option>' +
+                        '<option id = "23" value="23">11 PM</option>' +
+                        '</select>'
+
+                    ]).draw(false);
+                    $("#shiftSelectFrom" + shiftCounter + " option[id='" + $('#shiftSelectTo' + --shiftCounter).val() + "']").attr("selected", "selected");
+
+                    shiftCounter++;    
+                }else{
+                    var toastContent = $('<span>The shift must not less than 8 and not larger than 12 hours</span>');
+                    Materialize.toast(toastContent, 2000,'red', 'edit');
+                }
+                
+            }else{
+                var toastContent = $('<span>You can only add three (3) shifts.</span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+                
+            
+        });
+        
+        $('#btnRefreshShift').click(function(){
+            
+            var dataTable = $('#dataTable').DataTable();
+            dataTable.clear().draw(); 
+            shiftCounter = 1;
+            dataTable.row.add([
+                        '<h><center>' + shiftCounter +'</center></h>',
+                        '<select id = "shiftSelectFrom' + shiftCounter+'" class="browser-default col s8 offset-s2">' + 
+                        '<option value="" disabled selected>---</option>' + 
+                        '<option id = "0" value="0">12 AM</option>' + 
+                        '<option id = "1" value="1">1 AM</option>' +
+                        '<option id = "2" value="2">2 AM</option>' +
+                        '<option id = "3" value="3">3 AM</option>' + 
+                        '<option id = "4" value="4">4 AM</option>' +
+                        '<option id = "5" value="5">5 AM</option>' +
+                        '<option id = "6" value="6">6 AM</option>' +
+                        '<option id = "7" value="7">7 AM</option>' +
+                        '<option id = "8" value="8">8 AM</option>' +
+                        '<option id = "9" value="9">9 AM</option>' +
+                        '<option id = "10" value="10">10 AM</option>' +
+                        '<option id = "11" value="11">11 AM</option>' +
+                        '<option id = "12" value="12">12 PM</option>' +
+                        '<option id = "13" value="13">1 PM</option>' +
+                        '<option id = "14" value="14">2 PM</option>' +
+                        '<option id = "15" value="15">3 PM</option>' +
+                        '<option id = "16" value="16">4 PM</option>' +
+                        '<option id = "17" value="17">5 PM</option>' +
+                        '<option id = "18" value="18">6 PM</option>' +
+                        '<option id = "19" value="19">7 PM</option>' +
+                        '<option id = "20" value="20">8 PM</option>' +
+                        '<option id = "21" value="21">9 PM</option>' +
+                        '<option id = "22" value="22">10 PM</option>' +
+                        '<option id = "23" value="23">11 PM</option>' +
+                        '</select>',
+                        '<select id = "shiftSelectTo' + shiftCounter+'" class="browser-default col s8 offset-s2">' + 
+                        '<option value="" disabled selected>---</option>' + 
+                        '<option id = "0" value="0">12 AM</option>' + 
+                        '<option id = "1" value="1">1 AM</option>' +
+                        '<option id = "2" value="2">2 AM</option>' +
+                        '<option id = "3" value="3">3 AM</option>' + 
+                        '<option id = "4" value="4">4 AM</option>' +
+                        '<option id = "5" value="5">5 AM</option>' +
+                        '<option id = "6" value="6">6 AM</option>' +
+                        '<option id = "7" value="7">7 AM</option>' +
+                        '<option id = "8" value="8">8 AM</option>' +
+                        '<option id = "9" value="9">9 AM</option>' +
+                        '<option id = "10" value="10">10 AM</option>' +
+                        '<option id = "11" value="11">11 AM</option>' +
+                        '<option id = "12" value="12">12 PM</option>' +
+                        '<option id = "13" value="13">1 PM</option>' +
+                        '<option id = "14" value="14">2 PM</option>' +
+                        '<option id = "15" value="15">3 PM</option>' +
+                        '<option id = "16" value="16">4 PM</option>' +
+                        '<option id = "17" value="17">5 PM</option>' +
+                        '<option id = "18" value="18">6 PM</option>' +
+                        '<option id = "19" value="19">7 PM</option>' +
+                        '<option id = "20" value="20">8 PM</option>' +
+                        '<option id = "21" value="21">9 PM</option>' +
+                        '<option id = "22" value="22">10 PM</option>' +
+                        '<option id = "23" value="23">11 PM</option>' +
+                        '</select>'
+
+                    ]).draw(false);
+            
+        });
+        
+        $('#btnGenerateAccount').click(function(){
+            
+            if ($('#natureSelect').val() != null){
+                $('#username').val( $('#natureSelect').val() + getRandomNumber());
+                $('#password').val(getRandomPassword());
+            }else{
+                var toastContent = $('<span>Check Input First.</span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+                
+        });
+        
+        function checkInputShift(){
+            
+            for (intLoop = 1; intLoop <= shiftCounter; intLoop ++){
+                var from = $('#shiftSelectFrom' + intLoop).val();
+                var to = $('#shiftSelectTo' + intLoop).val();
+
+                if (from == null || to == null){
+                    return false;
+                }else{
+                    var difference = to - from;
+
+                    if (difference < 8 || difference > 12){
+                        var toastContent = $('<span>The shift must not less than 8 and not larger than 12 hours</span>');
+                        Materialize.toast(toastContent, 2000,'red', 'edit');
+                        return false;
+                        break;
+                    }
+                }// if from or to is null
+            }//for loop
+                
+            
+            return true;
+        }
+        
+        function checkInput(){
+            var clientName = $('#clientName').val().trim();
+            var clientcontactLandline = $('#clientcontactLandline').val().trim();
+            var personInCharge = $('#personInCharge').val().trim();
+            var piccontactCp = $('#piccontactCp').val().trim();
+            var address = $('#address').val().trim();
+            var areaSize = $('#areaSize').val().trim();
+            var population = $('#population').val().trim();
+            var guardNo = $('#guardNo').val().trim();
+            
+            if ($('#natureSelect').val() == null || clientName == '' || clientcontactLandline == '' ||
+               personInCharge == '' || piccontactCp == '' || address == '' || $('#provinceSelect').val() == null ||
+               $('#citySelect').val() == null || areaSize == '' || population == '' || guardNo == '' || 
+                population < 0 || areaSize < 0  || guardNo < 1 || $('#username').val() == '' || $('#password').val() == ''){
+                var toastContent = $('<span>Check Input</span>');
+                Materialize.toast(toastContent, 2000,'red', 'edit');  
+                return false;
+            }else{
+                
+                return true;
+            }
+        }
+        
+        function getRandomPassword(){
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for( var i=0; i < 8; i++ ){
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            return text;
+        }
+        
+        function getRandomNumber(){
+            var text = "";
+            var possible = "0123456789";
+
+            for( var i=0; i < 4; i++ ){
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            return text;
+        }
     });
         
 </script>

@@ -13,7 +13,6 @@ class GunTaggingController extends Controller
 {
     
     public function index(){
-        return view('/gunTagging');
- 
+        return view('GunAdmin.gunTagging');
     }
 }

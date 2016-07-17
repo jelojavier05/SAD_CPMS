@@ -15,6 +15,7 @@ class CreateClientTable extends Migration
         Schema::create('tblclient', function (Blueprint $table) {
             $table->increments('intClientID');
             $table->integer('intNatureOfBusinessID')->unsigned();
+            $table->integer('intAccountID')->unsigned();
             
             $table->string('strClientName', 120);
             $table->string('strContactNumber', 20);
@@ -22,11 +23,15 @@ class CreateClientTable extends Migration
             $table->string('strPOICContactNumber', 20);
             $table->decimal('deciAreaSize', 10,2);
             $table->bigInteger('intPopulation');
+            $table->integer('intNumberOfGuard');
             
-            $table->boolean('intStatusIdentifier')->default(1);
+            $table->integer('intStatusIdentifier')->default(1);
             $table->timestamps();
             
             $table->softDeletes();
+            
+            $table->foreign('intNatureOfBusinessID')->references('intNatureOfBusinessID')->on('tblnatureofbusiness');
+            $table->foreign('intAccountID')->references('intAccountID')->on('tblaccount');
         });
 
     }
