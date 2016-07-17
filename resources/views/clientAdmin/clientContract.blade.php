@@ -54,28 +54,14 @@ Client
 							<input  id="contractEnd" type="date" class="datepicker"  required="" aria-required="true">
 							<label class="active" data-error="Incorrect" for="contractEnd">End Date</label>
 						</div>
-						
-						<div class="col s2">
-							<p class="range-field">
-							  <input type="range" id="test5" value="1" min="1" max="50" name="sgrange" oninput="this.form.sgnum.value=this.value"/>
-							</p>
-						</div>
-						
-						<div class="col s4">
-							<input type="number" min="1" max="50"  name="sgnum" value="1" oninput="this.form.sgrange.value=this.value" />
-							<label>Number of Guards</label>
-						</div>
-						
-						<div class="input-field col s6">
-						<input placeholder=" " id="ratePerHour" type="text" class="validate" pattern="[0-9.,][^/?*]{2,}" required="" aria-required="true">
-						<label for="ratePerHour" data-error="Incorrect">Rate Per Hour</label>
-					</div>
 					
 					</form>
 					
 				</div>
 			</div>
-			<button class="btn-large blue waves-effect z-depth-2 right" id="nextclientContract" style="margin-top:20px;">Next</button>	
+			<div class="col s4 push-s5">
+				<button class="btn-large blue waves-effect z-depth-2" id="nextclientContract" style="margin-top:20px;">Next</button>
+			</div>
 		</div>
 	</div>
 </div>
