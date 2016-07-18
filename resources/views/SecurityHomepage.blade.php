@@ -50,8 +50,8 @@ Security Homepage
   <!--MESSAGE-->
 <div class="row">
     <div class="col l12">
-            <div class="col l6">
-                    <div class="card large z-depth-2">
+            <div class="col l6" >
+                    <div class="card large z-depth-2 " style="overflow:scroll">
                    <div class="row">
                             <div class="col l12">
                                 <div class="col l3">
@@ -59,38 +59,54 @@ Security Homepage
                     </i> 
                                 </div>
                              
-                                <div class="col l6">
+                                <div class="col l9">
                                    <div class="row"></div>
                                 <span class="black-text" style="font-size:20px;font-family:Verdana">INBOX MESSAGE</span>
                                 
                                 </div>
                         </div>
                         </div>
-                 <table class="striped" style="background-color:">
+                 <table class="centered" style="background-color:">
         <thead>
           <tr>
-              <th data-field="id">Name</th>
-              <th data-field="name">Item Name</th>
-              <th data-field="price">Item Price</th>
+              <th data-field="sender">Sender</th>
+              <th data-field="id">Message Status</th>
+              <th data-field="name">Action</th>
           </tr>
         </thead>
 
         <tbody>
           <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
+            <td>Admin</td>
+            <td>Unread</td>
+            <td>  <a href="#!" class="btn blue darken-4 z-depth-3">View Details</a></td>
           </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
+            <tr>
+            <td>Admin</td>
+            <td>Unread</td>
+            <td>  <a href="#!" class="btn blue darken-4 z-depth-3">View Details</a></td>
           </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
+            <tr>
+            <td>Admin</td>
+            <td>Unread</td>
+            <td>  <a href="#!" class="btn blue darken-4 z-depth-3">View Details</a></td>
           </tr>
+            <tr>
+            <td>Admin</td>
+            <td>Unread</td>
+            <td>  <a href="#!" class="btn blue darken-4 z-depth-3">View Details</a></td>
+          </tr>
+            <tr>
+            <td>Admin</td>
+            <td>Unread</td>
+            <td>  <a href="#!" class="btn blue darken-4 z-depth-3">View Details</a></td>
+          </tr>
+            <tr>
+            <td>Admin</td>
+            <td>Unread</td>
+            <td>  <a href="#!" class="btn blue darken-4 z-depth-3">View Details</a></td>
+          </tr>
+        
         </tbody>
       </table>
       
@@ -101,25 +117,105 @@ Security Homepage
         
         <!--ANNOUNCEMENTS/UPDATES-->
             <div class="col l6">
-                    <div class="card large z-depth-2">
+                    <div class="card large z-depth-2" style="overflow:scroll">
                 
                         
                         <div class="row">
                             <div class="col l12">
                                 <div class="col l3">
-                             <i class="material-icons left" style="font-size:6rem">announcement
+                             <i class="material-icons left" style="font-size:6rem">account_circle
                     </i> 
                                 </div>
                              
-                                <div class="col l6">
+                                <div class="col l9">
                                    <div class="row"></div>
-                                <span class="black-text" style="font-size:20px;font-family:Verdana">ANNOUNCEMENT/UPDATES</span>
+                                <span class="black-text" style="font-size:20px;font-family:Verdana">CLIENT INFORMATION</span>
                                 
                                 </div>
                         </div>
                         </div>
+                        
+                        
+                        <div class="row">
+                   
+        <div class="input-field col s12">
+          <input value="Adrian Flores"  id="swa" type="text" class="validate ci">
+          <label for="swa" style="font-size:13px;font-style:Myriad Pro">Client Name</label>
+        </div>
+      </div>
+                        <div class="row">
+                   
+        <div class="input-field col s12">
+          <input value="3383 V. Mapa 2nd St. Sta. Mesa, Manila"  id="swa" type="text" class="validate ci">
+          <label for="swa" style="font-size:13px;font-style:Myriad Pro">Client Address</label>
+        </div>
+      </div>
+                        <div class="row">
+                   
+        <div class="input-field col s12">
+          <input value="School Campus"  id="swa" type="text" class="validate ci">
+          <label for="swa" style="font-size:13px;font-style:Myriad Pro">Nature of Business</label>
+        </div>
+      </div>
+                   
+                        <div class="row">
+        <div class="input-field col l12">
+            
+            <div class="col l6">
+                
+                <input value="1200"  id="swa" type="text" class="validate ci">
+          <label for="swa" style="font-size:13px;font-style:Myriad Pro">Population</label>
+        </div>
+    
+             
+          <div class="col l6">
+              
+                 <input value="235 square/m"  id="swa" type="text" class="validate ci">
+          <label for="swa" style="font-size:13px;font-style:Myriad Pro;margin-left:50%">Area</label>
+        </div>
+                        </div>
+             
+      </div>
+                         <div class="row">
+                             
+                                      <table class="centered" style="font-family:Myriad Pro">
+        <thead>
+          <tr>
+              <th data-field="st">Shift</th>
+              <th data-field="fr">From</th>
+              <th data-field="to">To</th>
+          </tr>
+           
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Opener</td>
+            <td>8:00 am</td>
+            <td>4:00 pm</td>
+          </tr>
+        
+        </tbody>
+      </table>
       
+          
                 </div>
+                        
+                <div class="row">
+                        <div class="col l12 push-l2">
+                    
+                      <a href="#!" class="btn green darken-4 z-depth-3">Accept</a>
+                            <a href="#!" class="btn red darken-4 z-depth-3">Reject</a>
+                    
+                    
+                    </div>
+                      
+                        
+                        
+                        </div>
+                        </div>
+         
+                          
             </div>
     
     

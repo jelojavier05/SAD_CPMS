@@ -47,13 +47,9 @@ Route::get('/guard/registration/guardSummary', 'GuardRegistrationSummaryControll
 Route::post('/guard/registration/guardSummary/insert', 'GuardRegistrationSummaryController@insert');
 
 
-//SECURITY GUARD INTERFACE ----------------------------------------------------
+//USER LOGIN//
 
-    Route::get('/login', 'CPMSLoginController@index');
-    Route::get('/homepage', 'HomePageSecurityController@index');
-    Route::get('/changeloc', 'ChangeLocSecurityController@index');
-    Route::get('/attendance', 'AttendanceSecurityController@index');
-
+ Route::get('/userlogin', 'CPMSUserLoginController@index');
 //LATEST SECURITY GUARD INTERFACE ----------------------------------------------------
 
     Route::get('/securityguard', 'SecurityGuardDashboardController@index');
