@@ -369,7 +369,7 @@
                          <div class="col l1 z-depth-1 push-l4">
                 
             
-                <a  data-position="bottom" data-delay="50" data-tooltip="RESOURCES EXPIRATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-action-history" style="font-size:4rem;color:white"></i></a>
+                <a  data-position="bottom" data-delay="50" data-tooltip="RESOURCES EXPIRATION" href="/dashboardadmin" class=" tooltipped"><i class="mdi-action-history" style="font-size:4rem;color:white"></i></a>
             </div>
             
             <div class="col l3 push-l5 white">
