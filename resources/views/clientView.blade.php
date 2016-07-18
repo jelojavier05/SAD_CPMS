@@ -345,6 +345,46 @@ Client
             },async:false
         });//ajax
         
+        $.ajax({
+
+            type: "GET",
+            url: "{{action('ClientViewController@getClientPending')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: { 
+
+            },
+            success: function(data){
+                var table = $('#dataTablenoti').DataTable();
+                table.clear().draw();
+                
+                for(intLoop = 0; intLoop < data.length; intLoop ++){
+
+                    table.row.add([
+                        '<button class="buttonNotification btn blue col s12 " id="{{$value->intClientPendingID}}" href="#modalsendNoti"><i class="material-icons">send</i></button><input type = "hidden" id = "clientID{{$value->intClientPendingID}}" value = "{{$value->intClientID}}">',
+
+                        '<h style="height:-15px;">' + guardWaiting[intLoop].intGuardID + '</h>',
+                        '<h style="height:-15px;">' + guardWaiting[intLoop].strFirstName + '</h>',
+                        '<h style="height:-15px;">' + guardWaiting[intLoop].strLastName + '</h>',
+                        '<h style="height:-15px;">' + guardWaiting[intLoop].strProvinceName + '</h>',
+                        '<h style="height:-15px;">' + guardWaiting[intLoop].strCityName + '</h>',
+                    ]).draw(false);
+                    
+                }
+            },
+
+            error: function(data){
+                confirm('mali');
+            },async:false
+        });//ajax
+        
+        
+        
         $('#dataTable2').on('click', '.buttonNotification', function(){
             clientID = 'clientID' + this.id;
             clientPendingID = this.id;

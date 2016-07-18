@@ -25,6 +25,16 @@ class ClientViewController extends Controller
             ->with('clientPending', $clientPending);
     }
     
+    public function getClientPending(){
+        $clientPending = DB::table('tblclientpendingnotification')
+            ->join('tblclient', 'tblclientpendingnotification.intClientID', '=', 'tblclient.intClientID')
+            ->select('tblclientpendingnotification.intClientPendingID', 'tblclient.strClientName','tblclient.intClientID',  'tblclientpendingnotification.intNumberOfGuard')
+            ->where('tblclientpendingnotification.intStatusIdentifier', '=', '1')
+            ->get();
+        
+        return respone()->json($clientPending);
+    }
+    
     public function getGuardWaiting(){
         $guardWaiting = DB::table('tblguard')
             ->join('tblguardaddress', 'tblguard.intGuardID', '=', 'tblguardaddress.intGuardID')
