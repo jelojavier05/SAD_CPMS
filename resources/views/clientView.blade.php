@@ -145,41 +145,30 @@ Client
 
 									<thead>
 										<tr>
-											
-											<th style="width:10px;"></th>
 											<th style="width:10px;"></th>
 											<th>ID</th>
 											<th>Name</th>
 											<th>Guard Count</th>
 											<th style="width:10px;"></th>
-											
-
 
 										</tr>
 									</thead>
 
 									<tbody>
-
+                                        @foreach($clientPending as $value)
 											<tr>
-
-
-												
-
 												<td>
-													<button class="buttonDelete btn red col s12" id="">
-														<i class="material-icons">delete</i>
-													</button>
-												</td>
-												<td>
-													<button class="modal-trigger btn blue col s12" id="" href="#modalsendNoti">
+													<button class="buttonNotification btn blue col s12 " id="{{$value->intClientPendingID}}" href="#modalsendNoti">
 														<i class="material-icons">send</i>
 													</button>
+                                                    
+                                                    <input type = "hidden" id = "clientID{{$value->intClientPendingID}}" value = "{{$value->intClientID}}">
 												</td>
-												<td id = "">1</td>
-												<td id = "">PUP Mabini Campus</td>
+												<td id = "">{{ $value->intClientPendingID }}</td>
+												<td id = "">{{ $value->strClientName }}</td>
 												<td>
 													
-													<a id="guardlist" class="btn col s12" onclick="Materialize.showStaggeredList('#collectionPending')">5/10</a>
+													<a id="guardlist" class="btn col s12" onclick="Materialize.showStaggeredList('#collectionPending')">5/{{$value->intNumberOfGuard}}</a>
 												
 												</td>
 												
@@ -191,7 +180,7 @@ Client
 												
 
 											</tr>
-
+                                        @endforeach
 									</tbody>
 								</table>
 							</div>
@@ -270,122 +259,33 @@ Client
 				
 				<div class="row">
 					<div class="col s12">
-						<table class="striped white" style="border-radius:10px; width:100%;" id="dataTablenoti">
-
+						<button class="btn blue col s12" style="width:20%;" id="btnSuggested">
+                            Suggested
+                        </button>
+                        <table class="striped white" style="border-radius:10px; width:100%;" id="dataTablenoti">
+                            
 							<thead>
 								<th style="width:10px;"></th>
 								<th>ID</th>
 								<th>First Name</th>
 								<th>Last Name</th>
+                                <th>Province</th>
+                                <th>City</th>
 							</thead>
 
 							<tbody>
-								<tr>
+                                <tr>
 									<td style="height:-15px;">
 										
-										  <input type="checkbox"  id="1" />
-										  <label for="1"></label>
+										  <input type="checkbox" id="" value = "">
+										  <label for=""></label>
 										
 									</td>
-									<td style="height:-15px;">1</td>
-									<td style="height:-15px;">Marco</td>
-									<td style="height:-15px;">Polo</td>
-								</tr>
-								
-								<tr>
-									<td style="height:-15px;">
-										
-										  <input type="checkbox"  id="1" />
-										  <label for="1"></label>
-										
-									</td>
-									<td style="height:-15px;">1</td>
-									<td style="height:-15px;">Marco</td>
-									<td style="height:-15px;">Polo</td>
-								</tr>
-								
-								<tr>
-									<td style="height:-15px;">
-										
-										  <input type="checkbox"  id="1" />
-										  <label for="1"></label>
-										
-									</td>
-									<td style="height:-15px;">1</td>
-									<td style="height:-15px;">Marco</td>
-									<td style="height:-15px;">Polo</td>
-								</tr>
-								
-								<tr>
-									<td style="height:-15px;">
-										
-										  <input type="checkbox"  id="1" />
-										  <label for="1"></label>
-										
-									</td>
-									<td style="height:-15px;">1</td>
-									<td style="height:-15px;">Marco</td>
-									<td style="height:-15px;">Polo</td>
-								</tr>
-								
-								<tr>
-									<td style="height:-15px;">
-										
-										  <input type="checkbox"  id="1" />
-										  <label for="1"></label>
-										
-									</td>
-									<td style="height:-15px;">1</td>
-									<td style="height:-15px;">Marco</td>
-									<td style="height:-15px;">Polo</td>
-								</tr>
-								
-								<tr>
-									<td style="height:-15px;">
-										
-										  <input type="checkbox"  id="1" />
-										  <label for="1"></label>
-										
-									</td>
-									<td style="height:-15px;">1</td>
-									<td style="height:-15px;">Marco</td>
-									<td style="height:-15px;">Polo</td>
-								</tr>
-								
-								<tr>
-									<td style="height:-15px;">
-										
-										  <input type="checkbox"  id="1" />
-										  <label for="1"></label>
-										
-									</td>
-									<td style="height:-15px;">1</td>
-									<td style="height:-15px;">Marco</td>
-									<td style="height:-15px;">Polo</td>
-								</tr>
-								
-								<tr>
-									<td style="height:-15px;">
-										
-										  <input type="checkbox"  id="1" />
-										  <label for="1"></label>
-										
-									</td>
-									<td style="height:-15px;">1</td>
-									<td style="height:-15px;">Marco</td>
-									<td style="height:-15px;">Polo</td>
-								</tr>
-								
-								<tr>
-									<td style="height:-15px;">
-										
-										  <input type="checkbox"  id="1" />
-										  <label for="1"></label>
-										
-									</td>
-									<td style="height:-15px;">1</td>
-									<td style="height:-15px;">Marco</td>
-									<td style="height:-15px;">Polo</td>
+									<td style="height:-15px;"></td>
+									<td style="height:-15px;"></td>
+									<td style="height:-15px;"></td>
+                                    <td style="height:-15px;"></td>
+                                    <td style="height:-15px;"></td>
 								</tr>
 									
 							</tbody>
@@ -399,7 +299,7 @@ Client
     		</div>
 			
 			<div class="modal-footer" style="background-color:#01579b !important;">
-				<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Send
+				<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnSendNotification">Send
 					<i class="material-icons right">send</i>
 				</button>
 			</div>
@@ -416,6 +316,52 @@ Client
 
 <script type="text/javascript">
 	$(document).ready(function(){
+        var clientID;
+        var clientPendingID;
+        var guardWaiting;
+        var guardChecked;
+        var guardHasNotification;
+        
+        $.ajax({
+
+            type: "GET",
+            url: "{{action('ClientViewController@getGuardWaiting')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: { 
+
+            },
+            success: function(data){
+                guardWaiting = data;
+            },
+
+            error: function(data){
+                confirm('mali');
+            },async:false
+        });//ajax
+        
+        $('#dataTable2').on('click', '.buttonNotification', function(){
+            clientID = 'clientID' + this.id;
+            clientPendingID = this.id;
+            $('#modalsendNoti').openModal();
+            populateTable(clientPendingID);
+        });
+        
+        $('#btnSendNotification').click(function(){
+            getCheckedGuard();
+            if (guardChecked.length > 0){
+                
+                sendData();
+            }else{
+                confirm ('magcheck ka bes! para tumuloy');
+            }
+        });
+        
         $("#dataTable").DataTable({
                  "columns": [
                 { "orderable": false },
@@ -431,7 +377,6 @@ Client
 		
 		$("#dataTable2").DataTable({
                  "columns": [
-                { "orderable": false },
 				{ "orderable": false },
                 null,
                 null,
@@ -447,12 +392,15 @@ Client
                 { "orderable": false },
                 null,
                 null,
-				null
+				null,
+                null,
+                null
                 ] ,  
                 "pageLength":5,
 				"lengthMenu": [5,10,15,20]
             });
-		$('#guardlist').click(function() {
+		
+        $('#guardlist').click(function() {
 			$('#guardcontainer').css({
 				'visibility': 'visible',
 				'max-height': '400px',
@@ -470,9 +418,100 @@ Client
 				'height': '400px'
 			});
 		});
-		
-		
-});
+        
+        function sendData(){
+
+            $.ajax({
+
+                type: "POST",
+                url: "{{action('ClientViewController@sendGuardPendingNotification')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    guardWaiting: guardChecked,
+                    clientPendingID: clientPendingID
+                },
+                success: function(data){
+                    swal("Success!", "Record has been Added!", "success");
+                    $('#modalsendNoti').closeModal();
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+
+                }
+            });//ajax
+        }//send data
+        
+        function populateTable(notificationID){
+            var table = $('#dataTablenoti').DataTable();
+            table.clear().draw();
+            $.ajax({
+
+                type: "GET",
+                url: "/clientView/get/clientPendingNotification?notificationID=" + notificationID,
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                success: function(data){
+                    guardHasNotification = data;
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+
+                },async:false
+                
+            });//ajax
+            
+            for(intLoop = 0; intLoop < guardWaiting.length; intLoop ++){
+                var boolchecker = true;
+                for (intLoop2 = 0; intLoop2 < guardHasNotification.length; intLoop2 ++){
+                    if (guardWaiting[intLoop].intGuardID == guardHasNotification[intLoop2].intGuardID){
+                        boolchecker = false;
+                        break;
+                    }
+                }
+                
+                if (boolchecker){
+                    table.row.add([
+                        '<input type="checkbox" id="checkBox' +guardWaiting[intLoop].intGuardID  + '" value = "'+ guardWaiting[intLoop].intGuardID +'"><label for="checkBox' + guardWaiting[intLoop].intGuardID + '"></label>',
+                        
+                        '<h style="height:-15px;">' + guardWaiting[intLoop].intGuardID + '</h>',
+                        '<h style="height:-15px;">' + guardWaiting[intLoop].strFirstName + '</h>',
+                        '<h style="height:-15px;">' + guardWaiting[intLoop].strLastName + '</h>',
+                        '<h style="height:-15px;">' + guardWaiting[intLoop].strProvinceName + '</h>',
+                        '<h style="height:-15px;">' + guardWaiting[intLoop].strCityName + '</h>',
+                    ]).draw(false);
+                }
+            }
+            
+            
+            
+//            console.log(guardHasNotification[0].intGuardID);
+        }
+        
+        function getCheckedGuard(){
+            var intCounter = 0;
+            guardChecked = [];
+            for(intLoop = 0; intLoop < guardWaiting.length; intLoop ++){
+                var guardID = 'checkBox' + guardWaiting[intLoop]['intGuardID'];
+                if ($('#' + guardID).is(':checked')){
+                    guardChecked[intCounter] = guardWaiting[intLoop]['intGuardID'];
+                    intCounter++;
+                }
+            }
+        }
+    });
 		
 		
 
