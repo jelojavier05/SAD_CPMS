@@ -69,9 +69,12 @@ Security Homepage
                  <table class="centered" style="background-color:">
         <thead>
           <tr>
-              <th data-field="sender">Sender</th>
-              <th data-field="id">Message Status</th>
-              <th data-field="name">Action</th>
+              
+			  <th></th>
+			  <th data-field="">Date</th>
+              <th data-field="">Title</th>
+              <th data-field=""></th>
+			  
           </tr>
         </thead>
 
@@ -81,31 +84,12 @@ Security Homepage
             <td>Unread</td>
             <td>  <a href="#!" class="btn blue darken-4 z-depth-3">View Details</a></td>
           </tr>
-            <tr>
+          <tr>
             <td>Admin</td>
             <td>Unread</td>
             <td>  <a href="#!" class="btn blue darken-4 z-depth-3">View Details</a></td>
           </tr>
-            <tr>
-            <td>Admin</td>
-            <td>Unread</td>
-            <td>  <a href="#!" class="btn blue darken-4 z-depth-3">View Details</a></td>
-          </tr>
-            <tr>
-            <td>Admin</td>
-            <td>Unread</td>
-            <td>  <a href="#!" class="btn blue darken-4 z-depth-3">View Details</a></td>
-          </tr>
-            <tr>
-            <td>Admin</td>
-            <td>Unread</td>
-            <td>  <a href="#!" class="btn blue darken-4 z-depth-3">View Details</a></td>
-          </tr>
-            <tr>
-            <td>Admin</td>
-            <td>Unread</td>
-            <td>  <a href="#!" class="btn blue darken-4 z-depth-3">View Details</a></td>
-          </tr>
+            
         
         </tbody>
       </table>

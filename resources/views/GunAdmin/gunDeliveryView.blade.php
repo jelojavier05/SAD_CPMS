@@ -61,12 +61,12 @@ Delivery
         </div>
     </div>
 	
-<div class ="col s4" style="overflow:scroll; overflow-x:hidden; height:500px; margin-top:40px;">
+<div class ="col s4" style=" margin-top:40px;">
     <div class="col s12">
         <div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:15px;">
-            <div class="blue darken-1 white-text" style="position:fixed; z-index:100; width:395px; height: 38px; font-size:30px;">Details</div>
+            <div class="blue darken-1 white-text" style="position:static; z-index:100; width:405px; height: 38px; font-size:30px;">Details</div>
 				<div class="row">
-				    <div class="col s12" style="margin-top:5px;">
+				    <div class="col s12" style="margin-top:5px; overflow:scroll; overflow-x:hidden; height:500px;">
 							  <div class="card grey darken-1">
 									<div class="card-content">
 								<!--------------------Released By:--------------->		

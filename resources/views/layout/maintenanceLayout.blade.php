@@ -53,7 +53,7 @@
                 
                 <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
                     
-					<ul class="side-nav fixed white " id="mobile-nav" >
+					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >
                     <div class="iconposition">
 						<div class="card-panel blue darken-4" style="height:200px;">
 
@@ -75,10 +75,12 @@
                             
                             
                             </div>
+<!--
 								<div class=" white-text">
 								  <span class="card-title" style="font-size:20px; position:absolute">John Cena</span>
 								  <span  style=" font-size: 14px; position:absolute; margin-left:-40px;">Administrator</span>
 								</div>
+-->
 							
 						</div>
 					</div>	
@@ -352,22 +354,22 @@
                <hr>
             <div class="col l1 push-l4 z-depth-1">
         
-                <a  data-position="bottom" data-delay="50" data-tooltip="PEOPLE"href="/dashboardadmin" class=" tooltipped"><i class="mdi-social-people" style="font-size:5.3rem;color:white"></i></a>
+                <a  data-position="bottom" data-delay="50" data-tooltip="PEOPLE"href="/dashboardadmin" class=" tooltipped"><i class="mdi-social-people" style="font-size:4rem;color:white"></i></a>
             </div>
             <div class="col l1 push-l4 z-depth-1">
         
-                <a  data-position="bottom" data-delay="50" data-tooltip="MESSAGES"href="/dashboardadmin" class=" tooltipped"><i class="mdi-content-inbox" style="font-size:5.3rem;color:white"></i></a>
+                <a  data-position="bottom" data-delay="50" data-tooltip="MESSAGES"href="/dashboardadmin" class=" tooltipped"><i class="mdi-content-inbox" style="font-size:4rem;color:white"></i></a>
             </div>
             
              <div class="col l1 z-depth-1 push-l4">
                 
             
-                <a  data-position="bottom" data-delay="50" data-tooltip="REQUEST NOTIFICATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-communication-call" style="font-size:5.3rem;color:white"></i></a>
+                <a  data-position="bottom" data-delay="50" data-tooltip="REQUEST NOTIFICATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-communication-call" style="font-size:4rem;color:white"></i></a>
             </div>
                          <div class="col l1 z-depth-1 push-l4">
                 
             
-                <a  data-position="bottom" data-delay="50" data-tooltip="RESOURCES EXPIRATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-action-history" style="font-size:5.3rem;color:white"></i></a>
+                <a  data-position="bottom" data-delay="50" data-tooltip="RESOURCES EXPIRATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-action-history" style="font-size:4rem;color:white"></i></a>
             </div>
             
             <div class="col l3 push-l5 white">
