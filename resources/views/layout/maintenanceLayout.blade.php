@@ -47,7 +47,7 @@
     
     <nav class="indigo darken-4">
         
-        <div class="container">
+        
 
             <div class="nav-wrapper">
                
@@ -297,7 +297,7 @@
                     
                     <a href="#" class="brand-logo">
 						<div class="flow-text">
-							<h5 style="margin-top: 20px;">Client and Personnel Management System</h5>
+							<h5 style="margin-top: 20px; margin-left: 200px;">Client and Personnel Management System</h5>
 						</div>
 					</a>
                 </div>
@@ -310,7 +310,7 @@
 							</ul>
         
 			</div>
-		</div>
+		
     
     </nav>
 <!--
