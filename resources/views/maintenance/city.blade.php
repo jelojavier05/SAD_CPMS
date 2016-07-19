@@ -200,7 +200,8 @@ City
 			null
             ] ,  
 			"pageLength":5,
-			"lengthMenu": [5,10,15,20]
+			"lengthMenu": [5,10,15,20],
+			
 		});
         
         $('#btnAddSave').click(function(){

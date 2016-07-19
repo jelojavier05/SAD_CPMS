@@ -11,7 +11,7 @@ Client
 <div class="row">
 	<div class="col s6 push-s4" style=" margin-left:10px; margin-top: 1%;">
 		<div class="container-fluid grey lighten-4 z-depth-2" style="border: 1px solid black; border-radius:5px;" id="personaldata">
-			<h4 class = "blue darken-2 white-text">Client</h4>
+			<h4 class = "blue darken-2 white-text" style="margin-top:0px;">Client</h4>
 			<div class = "row">
 				<div class='col s10 push-s1'>
 					
@@ -103,7 +103,7 @@ Client
 						</button>
                         
                         <button style="margin-top:-24%; margin-left:180px;" class="z-depth-1 btn red" id = "btnRefreshShift">
-						<i class="material-icons left">edit</i>Refresh
+						<i class="material-icons left">replay</i>Refresh
 						</button>
 							<div class="col s10 push-s1">
 								<table class="bordered grey lighten-1" id = "dataTable" style="margin-bottom:15px;">
@@ -189,7 +189,7 @@ Client
 					<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px;">
 						<legend><h4>Account</h4></legend>
 						<button style="margin-top:-15%; margin-left:380px;" class="z-depth-1 btn green" id = "btnGenerateAccount">
-						<i class="material-icons left">edit</i>Generate
+						Generate
 						</button>
                         
                         <div class="col s10 push-s1">
