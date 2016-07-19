@@ -24,6 +24,7 @@ Guard Form
 	</div>
 </div>
 
+<!--
 					<div class="row">
 							 <div class="col s8" style="margin-left:25.6%;margin-top:-1%">
 									  <ul class="tabs white" style="border: 1px solid black;overflow:hidden">
@@ -33,13 +34,14 @@ Guard Form
 									  </ul>
 								</div>
 					</div>
+-->
     
 <div id="pd" class="row">
     <div class="col s8 push-s3" style=" margin-left:10px;">
 		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;" id="personaldata">
 			<div class="row">	
-				<div class="col s12 push-s5">
-					<p class="ci" style="font-size:25px;">Personal Data</p>
+				<div class="col s4 push-s4">
+					<h4>Personal Data</h4>
 				</div>
 			</div>
 		   <div class="row" style="margin:1%;">

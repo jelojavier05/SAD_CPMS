@@ -35,12 +35,9 @@ Guard Form
 					</div>
 			</div>
 			
-            <div class="row">
-                <div class="ro	w">
-					<div class="col l12">
-					
-					
-                    <div class = "input-field col s4">    
+            <div class="row">		
+				<div class="col s10 push-s1">
+                    <div class = "input-field col s4 offset-s8 pull-s8">    
                         <select id = "armedService" >
                             <option disabled selected value = "0">Choose armed services if any</option>
                             @foreach($armedservices as $armedservice)
@@ -49,19 +46,19 @@ Guard Form
                         </select>
 						<label data-error="Incorrect" for="armedService">Armed Service</label>
                     </div>
-                     <div class="input-field col s5">
+                     <div class="input-field col s6">
                         <select id = "armedServiceRank">
                             <option value="" disabled selected>Choose Rank</option>  
                         </select>
                         <label data-error="Incorrect" for="armedServiceRank">Rank</label>
                     </div>
-						<div class="input-field col s3">
+					<div class="input-field col s6">
                         <select id = "armedServiceYear">
                             <option value="" disabled selected>----</option>  
                         </select>
                         <label data-error="Incorrect" for="armedServiceYear">Year</label>
                     </div>
-						</div>
+						
                     
                     <div class="input-field col s6">
                         <input class="with-gap" name="radio" type="radio" id="dischargedHonorably" value = "Honorably"/>
@@ -73,7 +70,7 @@ Guard Form
                         <input placeholder = " " id="reason" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
                         <label data-error="Incorrect" for="reason">Reason</label>
                     </div>
-                </div>
+				</div>
             </div>
         </div>
     </div>

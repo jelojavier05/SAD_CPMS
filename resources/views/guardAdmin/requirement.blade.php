@@ -36,16 +36,14 @@ Guard Form
 			<div class="row">
 				
 				<div class="col s6">
-					<div class="col s11 push-s9">	
-						<img class="materialboxed circle hoverable" width="150px;" height="150px;" src="{!! URL::asset('../Materialize/images/avatar5.png') !!}"/>
-					</div>
-					<div class="col s12 push-s8">
+					
+					<div class="col s12">
 						<div class="file-field input-field">
 						  <div class="btn blue green darken-2">
-							<span>File</span>
+							<span>Photo</span>
 							<input type="file">
 						  </div>
-						  <div class="file-path-wrapper col s5">
+						  <div class="file-path-wrapper col s7">
 							<input class="file-path validate" type="text">
 						  </div>
 						</div>

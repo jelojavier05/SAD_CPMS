@@ -16,7 +16,7 @@ Gun Registration
 		<div class="col s8 push-s3" style="margin-left:10px;">
 			<div class="container-fluid grey lighten-4 z-depth-1 ci" style="border: 1px solid black; border-radius:5px;">
 			<div class="row">
-					<div class="col l12 ci">
+					<div class="col l12">
 						<div class="col l6 push-l1">
 						
 						
@@ -24,7 +24,7 @@ Gun Registration
 							<div class="row">
 					
 					
-										<div class="input-field col s4 push-s1">
+										<div class="input-field col s5">
 												<select id = "typeOfGunSelect">
 												  <option value="0" disabled selected>Choose</option>
 													@foreach($typeOfGuns as $value)
@@ -39,14 +39,14 @@ Gun Registration
 							
 						<div class="row">
 					
-										<div class="col s7 push-s1">
+										<div class="col s7">
 											<div class="input-field">
 												<input placeholder=" " id="strGunName" type="text" class="validate" name = "gunName" required="" aria-required="true">
 												<label for="strGunName">Name</label> 
 											</div>
 										</div>
 
-										<div class="col s7 push-s1">
+										<div class="col s7">
 											<div class="input-field">
 												<input placeholder=" " id="strGunManufacturer" type="text" class="validate" name = "gunManufacturer" required="" aria-required="true">
 												<label for="strGunManufacturer">Manufacturer</label> 
@@ -59,7 +59,7 @@ Gun Registration
 			
 						<div class="row">
 					
-									<div class="col s4 push-s1">
+									<div class="col s7">
 										<div class="input-field">
 											<input placeholder=" " id="strGunSerial" type="text" class="validate" name = "gunSerial" required="" aria-required="true">
 											<label for="strGunSerial">Serial No</label> 
@@ -79,7 +79,7 @@ Gun Registration
 				<div class ="col l6" style="margin-top:7%">
 				<div>
 					<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px;">
-						<div class="col s4 push-s4">
+						<div class="col s5 push-s3">
 							<legend class><center><h4>License</h4></center></legend>
 						</div>
 							<div class="row">
