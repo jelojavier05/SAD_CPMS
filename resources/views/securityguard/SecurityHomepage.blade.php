@@ -49,83 +49,66 @@ Security Homepage
 <!-----------------------------------Modal----------------------------------------------------->
 
 <div id="modalreadMsg" class="modal modal-fixed-footer" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
-        <div class="modal-header"><h4>Message</h4></div>
-        	<div class="modal-content">
-				
-				<div class="row">
-					<div class="col s12">
-						<ul class="collection with-header" id="collectionActive">
-								<li class="collection-header" ><h4 style="font-weight:bold;">Details</h4></li>
-							<div>
-
-								<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Bank</div>
-								</li>
-
-								<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09123456789</div>
-								</li>
-
-								<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Emilio Aguinaldo</div>
-								</li>
-
-								<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09987654321</div>
-								</li>
-
-								<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Hello Street Pasig City, Metro Manila</div>
-								</li>
-
-								<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;1000</div>
-								</li>
-
-								<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10000</div>
-								</li>
-
-								<li class="collection-item" style="font-weight:bold;">Number of Guards:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10</div>
-								</li>
-								
-								<li class="collection-item" style="font-weight:bold;">Shift/s:
-									<div style="font-weight:normal;">
-										<table class="centered" style="font-family:Myriad Pro">
-											<thead>
-											  <tr>
-												  <th data-field="st">Shift</th>
-												  <th data-field="fr">From</th>
-												  <th data-field="to">To</th>
-											  </tr>
-
-											</thead>
-
-											<tbody>
-											  <tr>
-												<td>Opener</td>
-												<td>8:00 am</td>
-												<td>4:00 pm</td>
-											  </tr>
-
-											</tbody>
-										</table>
-									</div>
-								</li>
-								
-							</div>
-
-					</ul>
-					</div>
-				</div>
-	<!-- Modal Button Save -->
-				
-		
-    		</div>
-			
-			<div class="modal-footer" style="background-color:#01579b !important;">
-				
-				<div>	
-					<button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnSendNotification">Accept
-					</button>
-					<button class="btn red waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnSendNotification">Decline
-					</button>
-				</div>
-				
-			</div>
+    <div class="modal-header"><h4>Message</h4></div>
+    
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12">
+                <ul class="collection with-header" id="collectionActive">
+                <li class="collection-header" ><h4 style="font-weight:bold;">Details</h4></li>
+                <div>
+                    <li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Bank</div>
+                    </li>
+                    <li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09123456789</div>
+                    </li>
+                    <li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Emilio Aguinaldo</div>
+                    </li>
+                    <li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09987654321</div>
+                    </li>
+                    <li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Hello Street Pasig City, Metro Manila</div>
+                    </li>
+                    <li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;1000</div>
+                    </li>
+                    <li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10000</div>
+                    </li>
+                    <li class="collection-item" style="font-weight:bold;">Number of Guards:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10</div>
+                    </li>
+                    <li class="collection-item" style="font-weight:bold;">Shift/s:
+                        <div style="font-weight:normal;">
+                            <table class="centered" style="font-family:Myriad Pro">
+                                <thead>
+                                <tr>
+                                    <th data-field="st">Shift</th>
+                                    <th data-field="fr">From</th>
+                                    <th data-field="to">To</th>
+                                </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    <tr>
+                                        <td>Opener</td>
+                                        <td>8:00 am</td>
+                                        <td>4:00 pm</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-footer" style="background-color:#01579b !important;">
+        <div>	
+            <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnSendNotification">Accept
+            </button>
+            
+            <button class="btn red waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnSendNotification">Decline
+            </button>
+        </div>
+    </div>
 </div>
 
 <script>
