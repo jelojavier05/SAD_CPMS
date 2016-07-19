@@ -474,7 +474,8 @@ Client
                 },
                 data: {
                     guardWaiting: guardChecked,
-                    clientPendingID: clientPendingID
+                    clientPendingID: clientPendingID,
+                    currentDate: 
                 },
                 success: function(data){
                     swal("Success!", "Record has been Added!", "success");

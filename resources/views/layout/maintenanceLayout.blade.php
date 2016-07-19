@@ -7,8 +7,6 @@
 <meta charset="utf-8">
     <meta name="csrf_token" content="{{ csrf_token() }}" />
   <!-- ================================CSS===========================================  -->
-  
-   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
   <link href="{!! URL::asset('../css/materialize.css') !!}" type="text/css" rel="stylesheet"/>
   <link rel="stylesheet" type="text/css" media="screen,projection" href="{{!! URL::asset('../css/materialize.min.css') !!}"/>

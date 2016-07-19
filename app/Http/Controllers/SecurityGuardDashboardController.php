@@ -16,7 +16,7 @@ class SecurityGuardDashboardController extends Controller
      */
     public function index()
     {
-        return view('/SecurityGuardDashboard');
+        return view('securityguard.SecurityGuardDashboard');
     }
 
     /**

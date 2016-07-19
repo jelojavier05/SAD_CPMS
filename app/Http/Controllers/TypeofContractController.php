@@ -14,8 +14,7 @@ class TypeOfContractController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $typeOfContracts = TypeOfContract::where('deleted_at', null)->get();
 
         return view('/maintenance/typeOfContract', ['typeOfContracts'=>$typeOfContracts]);

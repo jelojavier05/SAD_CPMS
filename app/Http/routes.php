@@ -49,7 +49,8 @@ Route::post('/guard/registration/guardSummary/insert', 'GuardRegistrationSummary
 
 //USER LOGIN//
 
- Route::get('/userlogin', 'CPMSUserLoginController@index');
+Route::get('/userlogin', 'CPMSUserLoginController@index');
+Route::get('/userlogin/getaccount', 'CPMSUserLoginController@getAccount');
 //LATEST SECURITY GUARD INTERFACE ----------------------------------------------------
 
     Route::get('/securityguard', 'SecurityGuardDashboardController@index');
@@ -204,5 +205,6 @@ Route::post('/maintenance/typeOfContract/flag', 'TypeOfContractController@flagTy
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 

@@ -44,3 +44,13 @@ Type of Contract
 <!-------------------------------------------------------------------------------------------------->
 
 @stop
+
+@section('script')
+<script>
+$(document).ready(function(){
+    confirm();
+    
+});
+
+</script>
+@stop

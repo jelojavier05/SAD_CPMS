@@ -34,7 +34,7 @@ class ClientRegistrationController extends Controller
             $accountID = DB::table('tblaccount')->insertGetId([
                 'strUsername' => $request->username,
                 'strPassword' => $request->password,
-                'intAccountType' => 1
+                'intAccountType' => 0
             ]);
             
             $id = DB::table('tblclient')->insertGetId([

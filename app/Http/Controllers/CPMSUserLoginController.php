@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Input;
+use DB;
 
 class CPMSUserLoginController extends Controller
 {
@@ -14,74 +16,45 @@ class CPMSUserLoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         return view('/CPMSUserLogin');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function getAccount(Request $request){
+        $username = Input::get('username');
+        $password = Input::get('password');
+        
+        $account = DB::table('tblaccount')
+            ->select('intAccountID', 'strUsername', 'strPassword', 'intAccountType')
+            ->where('strUsername', '=', $username)
+            ->where('strPassword', '=', $password)
+            ->first();
+        
+        if (is_null($account)){
+            return response()->json(false);
+        }else{
+            
+            if ($account->intAccountType == 0){
+                
+                $clientID = DB::table('tblclient')
+                    ->select('intClientID')
+                    ->where('intAccountID', '=', $account->intAccountID)
+                    ->first();
+                
+                $request->session()->put('id', $clientID->intClientID);
+            }else if ($account->intAccountType == 2){
+                
+                $guardID = DB::table('tblguard')
+                    ->select('intGuardID')
+                    ->where('intAccountID', '=', $account->intAccountID)
+                    ->first();
+                
+                $request->session()->put('id', $guardID->intGuardID);
+            }
+            $request->session()->put('accountType', $account->intAccountType);
+            return response()->json($account);
+        }
+        
+        
     }
 }

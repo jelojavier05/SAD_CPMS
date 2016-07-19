@@ -11,6 +11,7 @@ class CreateGuardpendingnotificationTable extends Migration
             $table->increments('intGuardPendingID');
             $table->integer('intClientPendingID')->unsigned();
             $table->integer('intGuardID')->unsigned();
+            $table->date('dateSend');
             
             $table->integer('intStatusIdentifier')->default(1);
             

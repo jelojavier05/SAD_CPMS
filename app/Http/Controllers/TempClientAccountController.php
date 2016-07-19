@@ -14,6 +14,6 @@ class TempClientAccountController extends Controller
     
     public function index(){
         return view('/tempClientAccount');
- 
     }
+    
 }

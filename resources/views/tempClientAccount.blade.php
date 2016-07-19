@@ -162,19 +162,19 @@ Type of Contract
 @section('script')
 
 <script type="text/javascript">
-	$(document).ready(function(){
-        
-        
-        $("#dataTable").DataTable({
-             "columns": [
-            { "orderable": false },
-            null,
-            null
-            ] ,  
-            "pageLength":5,
-            "bLengthChange": false
-        });
-	});
+$(document).ready(function(){
+    $("#dataTable").DataTable({
+         "columns": [
+        { "orderable": false },
+        null,
+        null
+        ] ,  
+        "pageLength":5,
+        "bLengthChange": false
+    });
+
+    
+});
 </script>
 
 @stop

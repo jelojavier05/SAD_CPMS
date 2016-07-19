@@ -16,7 +16,7 @@ class SecurityHomepageController extends Controller
      */
     public function index()
     {
-       return view('/SecurityHomepage');
+       return view('securityguard.SecurityHomepage');
     }
 
     /**
