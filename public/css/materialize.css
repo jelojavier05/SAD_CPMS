@@ -4,6 +4,16 @@
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
 
+.ci
+{
+    font-family: Myriad Pro;
+    font-size:15px;
+    color:black
+}
+.swa
+{
+    font-family: Myriad Pro;
+}
 .ds
 {
     font-family: Hobo Std;
@@ -4580,7 +4590,7 @@ nav ul a span.badge {
   content: "\e6ee";
 }
 
-.mdi-communication-messenger:before {
+. :before {
   content: "\e6ef";
 }
 

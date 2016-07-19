@@ -42,50 +42,64 @@
 
 </head>
 
+    
+    
 <body id="scrollhider" class="bodyscrollhider grey lighten-3">
-    
-    
-    <nav class="indigo darken-4">
+   
+    <nav class="blue darken-4">
         
-        
-
-            <div class="nav-wrapper">
+         <div class="nav-wrapper">
                
                 
                 <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
-                	
-					
-							
-						
-					
                     
-					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >
+					<ul class="side-nav fixed white " id="mobile-nav" >
                     <div class="iconposition">
-						<div class="card-panel blue darken-4" style="height:210px;">
+						<div class="card-panel blue darken-4" style="height:200px;">
 
-							<div class="dashiconpos center">
-								<img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="50%" height="50%">
-								<div class="card-content white-text">
-								  <span class="card-title" style="font-size:20px; position:absolute; margin-top:-30px; margin-left:-45px;">John Cena</span>
+							<div class="row">
+                                <div class="col l12">
+                                  <div class="col l6">
+                                    
+                                    <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="200%">
+                                    
+                                    </div>
+                                    
+                                  
+                                </div>
+				            </div>
+                            
+                            <div class="row">
+                            
+                            
+                            
+                            
+                            </div>
+								<div class=" white-text">
+								  <span class="card-title" style="font-size:20px; position:absolute">John Cena</span>
 								  <span  style=" font-size: 14px; position:absolute; margin-left:-40px;">Administrator</span>
 								</div>
-							</div>
+							
 						</div>
 					</div>	
+                        
+                        
+                      
                         <ul class="collapsible collapsible-accordion">
-                    <li class="bold" style="width:280px;">
-						<a class="collapsible-header waves-effect waves-blue" href="#">
-							<i class="material-icons">settings</i>Maintenance<i class="mdi-navigation-arrow-drop-down right"></i>
+                          
+                    <li class="bold" style="width:280px">
+						<a class="collapsible-header waves-effect waves-blue swa" href="#">
+							<i class="material-icons">settings</i><strong>Maintenance</strong><i class="mdi-navigation-arrow-drop-down right"></i>
 						</a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul >
                                             <li>
-                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownclient" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Client</button>
+                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text swa" data-activates="dropdownclient" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Client</button>
 													
 													<ul id='dropdownclient' class='dropdown-content' style="margin-top:1px;">
-														<li><a class="blue-text" href="/maintenance/NatureOfBusiness">Nature of Business</a></li>
+														<li><a class="blue-text swa" href="/maintenance/NatureOfBusiness">Nature of Business</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/typeOfContract">Type of Contract</a></li>
+														<li><a class="blue-text swa" href="/maintenance/typeOfContract">Type of Contract</a></li>
 														
 														
 														
@@ -93,39 +107,39 @@
 													</ul>
                                             </li>
                                             <li>
-                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdownsg" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Security Guard</button>
+                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text swa" data-activates="dropdownsg" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Security Guard</button>
 													
 													<ul id='dropdownsg' class='dropdown-content' style="margin-top:1px;">
 														
 														
-														<li><a class="blue-text" href="/maintenance/armedservice">Armed Service</a></li>
+														<li><a class="blue-text swa" href="/maintenance/armedservice">Armed Service</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/bodyAttribute">Body Attributes</a></li>
+														<li><a class="blue-text swa" href="/maintenance/bodyAttribute">Body Attributes</a></li>
 														
 														<li><a class="blue-text" href="/maintenance/governmentExam">Government Exam</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/leave">Leave</a></li>
+														<li><a class="blue-text swa" href="/maintenance/leave">Leave</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/rank">Rank</a></li>
+														<li><a class="blue-text swa" href="/maintenance/rank">Rank</a></li>
 														
 														
 													</ul>
 														
                                             </li>
                                             <li>
-                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text" data-activates="dropdowneq" data-gutter="241" data-hover="false" style="width:240px; border:none;" id="buttonhover">Others</button>
+                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text swa" data-activates="dropdowneq" data-gutter="241" data-hover="false" style="width:240px; border:none;" id="buttonhover">Others</button>
 													<ul id='dropdowneq' class='dropdown-content' style="margin-top:1px;">
 														
 														
-														<li><a class="blue-text" href="/maintenance/province">Province</a></li>
+														<li><a class="blue-text swa" href="/maintenance/province">Province</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/city">City</a></li>
+														<li><a class="blue-text swa" href="/maintenance/city">City</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/requirements">Requirements</a></li>
+														<li><a class="blue-text swa" href="/maintenance/requirements">Requirements</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/typeOfGun">Type of Gun</a></li>
+														<li><a class="blue-text swa" href="/maintenance/typeOfGun">Type of Gun</a></li>
 														
-														<li><a class="blue-text" href="/maintenance/unitOfMeasurement">Unit of Measurement</a></li>
+														<li><a class="blue-text swa" href="/maintenance/unitOfMeasurement">Unit of Measurement</a></li>
 														
 <!--
 														<li><a class="blue-text" href="/maintenance/gun">Add Gun</a></li>
@@ -143,18 +157,18 @@
                             </div>
 							
 					</li>
-					
+                          
 					
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">assignment</i>Registration<i class="mdi-navigation-arrow-drop-down right"></i></a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="#"><i class="material-icons">assignment</i><strong>Registration</strong><i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             
-                                  <a href="/guard/registration/personaldata" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Guard</a>
+                                  <a href="/guard/registration/personaldata" class="center waves-effect grey lighten-2 black-text swa" style="width:240px; border:none;" id="buttonhover">Guard</a>
 														
-								  <a href="/gun/registration" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Gun</a>
+								  <a href="/gun/registration" class="center waves-effect grey lighten-2 black-text swa" style="width:240px; border:none;" id="buttonhover">Gun</a>
 									
-								  <a href="/client/registration/basicInfo" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Client</a>
+								  <a href="/client/registration/basicInfo" class="center waves-effect grey lighten-2 black-text swa" style="width:240px; border:none;" id="buttonhover">Client</a>
                                            
                                 </ul>
                             </div>
@@ -164,14 +178,14 @@
 					
 							
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue" href="/gun/tagging"><i class="material-icons">content_paste</i>Gun Tagging</a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="/gun/tagging"><i class="material-icons">content_paste</i><strong>Gun Tagging</strong></a>
                             <div class="collapsible-body grey lighten-2">
                                 
                             </div>
 					</li>	
 							
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue" href="/gunDeliveryView"><i class="material-icons">local_shipping</i>Delivery</a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView"><i class="material-icons">local_shipping</i><strong>Delivery</strong></a>
                             <div class="collapsible-body grey lighten-2">
 <!--
                                 <ul>
@@ -186,7 +200,7 @@
 					</li>
 							
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue" href="/gunDeliveryView"><i class="material-icons">notifications</i>Request</a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView"><i class="material-icons">notifications</i><strong>Request</strong></a>
                             <div class="collapsible-body grey lighten-2">
 <!--
                                 <ul>
@@ -201,7 +215,7 @@
 					</li>
 							
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue" href="/gunDeliveryView"><i class="material-icons">event</i>Attendance</a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView"><i class="material-icons">event</i><strong>Attendance</strong></a>
                             <div class="collapsible-body grey lighten-2">
 <!--
                                 <ul>
@@ -216,7 +230,7 @@
 					</li>
 							
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue" href="/gunDeliveryView"><i class="material-icons">settings_input_component</i>Settings</a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView"><i class="material-icons">settings_input_component</i><strong>Settings</strong></a>
                             <div class="collapsible-body grey lighten-2">
 <!--
                                 <ul>
@@ -229,7 +243,7 @@
 -->
                             </div>
 					</li>
-							
+					
 							
 <!--
 					<li class="bold" style="width:280px;">
@@ -285,34 +299,87 @@
                             
                             
                 </ul>
-				
-                    
-                    
-                     
-				
+               
                 </ul>
-			
+
+           
 				<div>
-                 <div class="homeposition">
+                                     <a href="#" class="brand-logo">
+
+                    <div class="row">
+                        <div class="col l12">
+                            <div class="col l6 push-l3">
+                            
+                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:3.2rem">Client and Personnel Management System</p>
+					
+                            
+                            
+                            </div>
+							
+                        
+                        
+                        </div>
+                    
+                    
+                    </div>
+                    	</a>
+                    
+                  <!--  <div class="homeposition">
                     
                     <a href="#" class="brand-logo">
 						<div class="flow-text">
-							<h5 style="margin-top: 20px; margin-left: 200px;">Client and Personnel Management System</h5>
+							<p style="margin-top: 20px; margin-left: 200px;font-family:Myriad Pro;font-size:6rem">Client and Personnel Management System</p>
 						</div>
-					</a>
-                </div>
+				
+                </div>-->
                 
             </div>
 				
+             
 							<ul class="right hide-on-med-and-down">
-							  <li><a href="/dashboardadmin" class="blue darken-3">Home</a></li>
-							  <li><a href="#" class="red darken-3">Log Out</a></li>
+                                 <li><a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">store</i></a></li>
+                                <li><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT"href="#" class=" tooltipped"><i class="material-icons">input</i></a></li>
 							</ul>
         
-			</div>
 		
-    
+        </div>
+   
     </nav>
+  
+    <div class="row">
+       
+        <div class="col l12 blue darken-4">
+               <hr>
+            <div class="col l1 push-l4 z-depth-1">
+        
+                <a  data-position="bottom" data-delay="50" data-tooltip="PEOPLE"href="/dashboardadmin" class=" tooltipped"><i class="mdi-social-people" style="font-size:5.3rem;color:white"></i></a>
+            </div>
+            <div class="col l1 push-l4 z-depth-1">
+        
+                <a  data-position="bottom" data-delay="50" data-tooltip="MESSAGES"href="/dashboardadmin" class=" tooltipped"><i class="mdi-content-inbox" style="font-size:5.3rem;color:white"></i></a>
+            </div>
+            
+             <div class="col l1 z-depth-1 push-l4">
+                
+            
+                <a  data-position="bottom" data-delay="50" data-tooltip="REQUEST NOTIFICATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-communication-call" style="font-size:5.3rem;color:white"></i></a>
+            </div>
+                         <div class="col l1 z-depth-1 push-l4">
+                
+            
+                <a  data-position="bottom" data-delay="50" data-tooltip="RESOURCES EXPIRATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-action-history" style="font-size:5.3rem;color:white"></i></a>
+            </div>
+            
+            <div class="col l3 push-l5 white">
+            
+            DITO YUNG ORASAN 
+            
+            </div>
+       
+        </div>
+    
+    </div>
+			
 <!--
 	 Tab 
 
@@ -336,9 +403,9 @@
   <a class='dropdown-button btn' href='#' data-activates='dropdownsg' style="display:none;">Drop Me!</a>
   <a class='dropdown-button btn' href='#' data-activates='dropdowneq' style="display:none;">Drop Me!</a>
   <a class='dropdown-button btn' href='#' data-activates='dropdownothers' style="display:none;">Drop Me!</a>
-
-    
-     @yield('content')
+ 
+   
+       @yield('content')
 	@yield('script')
 	<script>
 
