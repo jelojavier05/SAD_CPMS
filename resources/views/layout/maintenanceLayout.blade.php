@@ -53,7 +53,8 @@
                 
                 <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
                     
-					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >
+<!--					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >-->
+					<ul class="side-nav fixed white" id="mobile-nav" >
                     <div class="iconposition">
 						<div class="card-panel blue darken-4" style="height:140px;">
 
