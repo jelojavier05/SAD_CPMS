@@ -7,9 +7,11 @@ Admin
 @section('content')
 
 
+<!--
 <div class="row"></div>
 <div class="row"></div>
 <div class="row"></div>
+-->
 
 <div class= "row">
 	<div class=" col s4 push-s4" style="margin-top: 100px;">
