@@ -34,7 +34,7 @@ class CPMSUserLoginController extends Controller
             return response()->json(false);
         }else{
             
-            if ($account->intAccountType == 0){
+            if ($account->intAccountType == 0){//temporary account
                 
                 $clientID = DB::table('tblclient')
                     ->select('intClientID')
@@ -42,7 +42,9 @@ class CPMSUserLoginController extends Controller
                     ->first();
                 
                 $request->session()->put('id', $clientID->intClientID);
-            }else if ($account->intAccountType == 2){
+            }
+            
+            else if ($account->intAccountType == 2){//guard account
                 
                 $guardID = DB::table('tblguard')
                     ->select('intGuardID')
