@@ -55,24 +55,24 @@
                     
 					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >
                     <div class="iconposition">
-						<div class="card-panel blue darken-4" style="height:200px;">
+						<div class="card-panel blue darken-4" style="height:140px;">
 
 							<div class="row">
                                 <div class="col l12">
-                                  <div class="col l6">
-                                    
-                                    <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="200%">
-                                    
-                                    </div>
+									  <div class="col l6 push-l3" style="margin-top:-6%">
+
+										<img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="90%">
+
+										</div>
                                     
                                   
                                 </div>
 				            </div>
                             
                             <div class="row">
-                            
-                            
-                            
+                           		
+                            <span class="card-title ci" style="font-size:20px;color:white;margin-top:-23%;margin-left:22%; position:absolute">John Cena</span>
+								  <span  style=" font-size: 14px; margin-top:-14%;margin-left:22%;position:absolute;color:red margin-left:-40px;">Administrator</span>
                             
                             </div>
 <!--
@@ -310,9 +310,9 @@
 
                     <div class="row">
                         <div class="col l12">
-                            <div class="col l6 push-l3">
+                            <div class="col l6 push-l4">
                             
-                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:3.2rem">Client and Personnel Management System</p>
+                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.5rem">Client and Personnel Management System</p>
 					
                             
                             
@@ -325,6 +325,8 @@
                     
                     </div>
                     	</a>
+					
+					
                     
                   <!--  <div class="homeposition">
                     
@@ -339,48 +341,19 @@
 				
              
 							<ul class="right hide-on-med-and-down">
+								 <li><a  data-position="bottom" data-delay="50" data-tooltip="PEOPLE"href="/dashboardadmin" class=" tooltipped"><i class="mdi-social-people" style="font-size:2.1rem;color:white"></i></a></li>
+								<li><a  data-position="bottom" data-delay="50" data-tooltip="MESSAGES"href="/dashboardadmin" class=" tooltipped"><i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i></a></li>
+								 <li><a  data-position="bottom" data-delay="50" data-tooltip="REQUEST NOTIFICATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-communication-call" style="font-size:2.1rem;color:white"></i></a></li>
+								<li><a  data-position="bottom" data-delay="50" data-tooltip="RESOURCES EXPIRATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-action-history" style="font-size:2.1rem;color:white"></i></a></li>
+								
                                  <li><a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">store</i></a></li>
                                 <li><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT"href="#" class=" tooltipped"><i class="material-icons">input</i></a></li>
 							</ul>
         
 		
         </div>
-   
+		
     </nav>
-  
-    <div class="row">
-       
-        <div class="col l12 blue darken-4">
-               <hr>
-            <div class="col l1 push-l4 z-depth-1">
-        
-                <a  data-position="bottom" data-delay="50" data-tooltip="PEOPLE"href="/dashboardadmin" class=" tooltipped"><i class="mdi-social-people" style="font-size:4rem;color:white"></i></a>
-            </div>
-            <div class="col l1 push-l4 z-depth-1">
-        
-                <a  data-position="bottom" data-delay="50" data-tooltip="MESSAGES"href="/dashboardadmin" class=" tooltipped"><i class="mdi-content-inbox" style="font-size:4rem;color:white"></i></a>
-            </div>
-            
-             <div class="col l1 z-depth-1 push-l4">
-                
-            
-                <a  data-position="bottom" data-delay="50" data-tooltip="REQUEST NOTIFICATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-communication-call" style="font-size:4rem;color:white"></i></a>
-            </div>
-                         <div class="col l1 z-depth-1 push-l4">
-                
-            
-                <a  data-position="bottom" data-delay="50" data-tooltip="RESOURCES EXPIRATION" href="/dashboardadmin" class=" tooltipped"><i class="mdi-action-history" style="font-size:4rem;color:white"></i></a>
-            </div>
-            
-            <div class="col l3 push-l5 white">
-            
-            DITO YUNG ORASAN 
-            
-            </div>
-       
-        </div>
-    
-    </div>
 			
 <!--
 	 Tab 

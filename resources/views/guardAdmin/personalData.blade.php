@@ -7,12 +7,16 @@ Guard Form
 @section('content')
 
 <div class="row">
-	<div class="col s10 push-s2" style="margin-left:10px;">
+	<div class="col s12 push-s2">
 		<nav>
-			<div class="nav-wrapper blue">
+			<div class="nav-wrapper blue darken-3">
 				<div class="row">	
-					<div class="col s12">
-						<a href="{{URL::route('personaldata')}}" class="breadcrumb">Personal Data</a>
+					<div class="col s12 offset-s1">
+						
+						
+							<a href="{{URL::route('personaldata')}}" class="breadcrumb ci">Personal Data</a>
+				
+					
 					</div>
 				</div>
 			</div>
@@ -20,34 +24,44 @@ Guard Form
 	</div>
 </div>
 
-<div class="row">
+					<div class="row">
+							 <div class="col s8" style="margin-left:25.6%;margin-top:-1%">
+									  <ul class="tabs white" style="border: 1px solid black;overflow:hidden">
+											<li class="tab col s3 ci"><a href="#pd">Personal Data</a></li>
+											<li class="tab col s3 ci"><a href="#gl">Guard License</a></li>
+
+									  </ul>
+								</div>
+					</div>
+    
+<div id="pd" class="row">
     <div class="col s8 push-s3" style=" margin-left:10px;">
 		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;" id="personaldata">
 			<div class="row">	
-				<div class="col s4 push-s4">
-					<h4>Personal Data</h4>
+				<div class="col s12 push-s5">
+					<p class="ci" style="font-size:25px;">Personal Data</p>
 				</div>
 			</div>
-		   <div class="row" style="margin:5%;">
+		   <div class="row" style="margin:1%;">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="input-field col s4">
 					   <i class="material-icons prefix">account_circle</i>
 					   <input placeholder = " " id="firstName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
-					   <label data-error="Incorrect" for="firstName">First Name</label>
+					   <label class="ci" data-error="Incorrect" for="firstName">First Name</label>
 
 				</div>
 
 				<div class="input-field col s4">
 						<i class="material-icons prefix">account_circle</i>
 					    <input placeholder = " " id="middleName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
-						<label data-error="Incorrect" for="middleName">Middle Name</label>
+						<label class="ci" data-error="Incorrect" for="middleName">Middle Name</label>
 
 				</div>
 
 				<div class="input-field col s4">
 						<i class="material-icons prefix">account_circle</i>
 						<input placeholder = " " id="lastName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
-						<label data-error="Incorrect" for="lastName">Last Name</label>
+						<label class="ci" data-error="Incorrect" for="lastName">Last Name</label>
 
 				</div>
 
@@ -55,11 +69,11 @@ Guard Form
 					    <i class="material-icons prefix">home</i>
 						<input placeholder = " " id="address" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
 
-						<label data-error="Incorrect" for="address">Address</label>
+						<label class="ci" data-error="Incorrect" for="address">Address</label>
 
 				</div>
 
-				<div class = "input-field col s4">    
+				<div class = "input-field col s4 ci">    
                     <select  id = "provinceSelect">
                         <option disabled selected>Choose Province</option>
                         @foreach($provinces as $province)
@@ -68,38 +82,38 @@ Guard Form
                     </select>
 				</div>
 			   
-			   	<div class = "input-field col s4">    
+			   	<div class = "input-field col s4 ci">    
                     <select  id = "citySelect">
                         <option disabled selected>Choose City</option>
                     </select>
 				</div>
 
-				<div class="input-field col s6">
-						<input  id="dateOfbirth" type="date" class="datepicker">
-						<label class="active" data-error="Incorrect" for="dateOfbirth">Date of Birth</label>
+				<div class="input-field col s6 ci">
+						<input  id="dateOfbirth" type="date" class="datepicker ci">
+						<label class="active ci" data-error="Incorrect" for="dateOfbirth">Date of Birth</label>
 				</div>
 
 				<div class="input-field col s6">
-						<input placeholder = " " id="placeofbirth" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
-						<label data-error="Incorrect" for="placeofbirth">Place of Birth</label>
+						<input placeholder = " " id="placeofbirth" type="text" class="validate ci" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
+						<label class="ci" data-error="Incorrect" for="placeofbirth">Place of Birth</label>
 
 				</div>
 
 				<div class="input-field col s6">
 						<i class="material-icons prefix">smartphone</i>
-						<input placeholder = " " id="contactCp" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
-						<label data-error="Incorrect" for="contactCp">Contact Number (Mobile)</label>
+						<input placeholder = " " id="contactCp" maxlength="13" type="text" class="validate ci" pattern="[0-9+]{11,}" required="" aria-required="true">
+						<label class="ci" data-error="Incorrect" for="contactCp">Contact Number (Mobile)</label>
 
 				</div>
 				
 			    <div class="input-field col s6">
 						<i class="material-icons prefix">phone</i>
-						<input placeholder = " " id="contactLandline" maxlength="10" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
-						<label data-error="Incorrect" for="contactLandline">Contact Number (Landline)</label>
+						<input placeholder = " " id="contactLandline" maxlength="10" type="text" class="validate ci" pattern="[0-9+]{7,}" required="" aria-required="true">
+						<label class="ci" data-error="Incorrect" for="contactLandline">Contact Number (Landline)</label>
 
 				</div>
 
-				<div class="input-field col s4 push-s2">
+				<div class="input-field col s4 push-s2 ci">
 						<select id = "civilStatus">
 						  <option value="" disabled selected>Choose</option>
 						  <option value="Single">Single</option>
@@ -110,7 +124,7 @@ Guard Form
 
 				</div>
 
-				<div class="input-field col s4 push-s2">
+				<div class="input-field col s4 push-s2 ci">
 						<select id = "gender">
 							<option value="" disabled selected>Choose</option>
 							<option value="Male">Male</option>
@@ -122,12 +136,12 @@ Guard Form
                
     
 			   
-				<div class="input-field col s10 push-s1">
+				<div class="input-field col s10 push-s1 ci">
                     <h5>Body Attributes:</h5>
 					<div class="row">
 						<div class="col s12">
 					
-							<table class="striped white">
+							<table class="striped white ci">
 								<thead>
 									<tr>
 										<th><center>Name</center></th>
@@ -167,34 +181,34 @@ Guard Form
 
 
 
-<div class="row">
+<div id="gl" class="row">
     <div class="col s8 push-s3" style="margin-left:10px;">
         <div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
             <div class="row">	
-				<div class="col s4 push-s4">
+				<div class="col s4 push-s4 ci">
 					<h4>Guard License</h4>
 				</div>
 			</div>
-            <div class="row" style="margin:5%;">
+            <div class="row" style="margin:2%;">
 				<div class="container-fluid grey lighten-3 col s10 push-s1" style="border-radius:5px; border: 1px solid black;">
-					<div class="row" style="margin:2%;">
-						<div class="col s8 push-s2">
-							<div class="input-field">
+					<div class="row" style="margin-top:2%">
+					
+							<div class="input-field col s8 push-s2 ci">
 								<input placeholder=" " id="licenseNumber" type="text" class="validate" name = "licenseNo" required="" aria-required="true">
 								<label for="strLicenseNo">License Number</label> 
 							</div>
-						</div>
+					
 					</div>
 
 					<div class="row">
-						<div class="input-field col s8 push-s2">
+						<div class="input-field col s8 push-s2 ci">
 							<input  id="dateIssued" type="date" class="datepicker"  required="" aria-required="true">
 							<label class="active" data-error="Incorrect" for="startDate">Date Issued</label>
 						</div>
 					</div>
 
 					<div class = "row">
-						<div class="input-field col s8 push-s2">
+						<div class="input-field col s8 push-s2 ci">
 							<input  id="dateExpiration" type="date" class="datepicker" required="" aria-required="true">
 							<label class="active" data-error="Incorrect" for="endDate">Date Expired</label>
 						</div>

@@ -7,16 +7,16 @@ Guard Form
 @section('content')
 
 <div class="row">
-	<div class="col s10 push-s2" style="margin-left:10px;">
+	<div class="col s12 push-s2">
 		<nav>
-			<div class="nav-wrapper blue">
+			<div class="nav-wrapper blue darken-3">
 				<div class="row">	
-					<div class="col s12">
-						<a href="{{URL::route('personaldata')}}" class="breadcrumb">Personal Data</a>
-						<a href="{{URL::route('educationalbackground')}}" class="breadcrumb">Educational Background</a>
-						<a href="{{URL::route('sgbackground')}}" class="breadcrumb">SG Background</a>
-						<a href="{{URL::route('requirement')}}" class="breadcrumb">Requirements</a>
-						<a href="{{URL::route('account')}}" class="breadcrumb">Account</a>
+					<div class="col s12 offset-s1">
+						<a href="{{URL::route('personaldata')}}" class="breadcrumb ci">Personal Data</a>
+						<a href="{{URL::route('educationalbackground')}}" class="breadcrumb ci">Educational Background</a>
+						<a href="{{URL::route('sgbackground')}}" class="breadcrumb ci">SG Background</a>
+						<a href="{{URL::route('requirement')}}" class="breadcrumb ci">Requirements</a>
+						<a href="{{URL::route('account')}}" class="breadcrumb ci">Account</a>
 						
 					</div>
 				</div>
@@ -30,8 +30,14 @@ Guard Form
 
 <div class="row">
 	<div class="col s5 push-s4" style="margin-left:10px;">
-		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
-			<center><legend><h4>Account</h4></legend></center></br>
+		<div class="container-fluid grey lighten-4 z-depth-1 ci" style="border: 1px solid black; border-radius:5px;">
+			<div class="row">
+					<div class="col l12 offset-l4">
+						
+						 <legend><h4>Account</h4></legend>
+				
+					</div>
+			</div>
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="row">
 				<div class="col s8 push-s2">

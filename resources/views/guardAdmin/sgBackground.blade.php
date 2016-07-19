@@ -3,51 +3,66 @@
 @section('title')
 Guard Form
 @endsection
-
+ 
 @section('content')
 
 <div class="row">
-    <div class="col s10 push-s2" style="margin-left:10px;">
+    <div class="col s12 push-s2">
         <nav>
-            <div class="nav-wrapper blue">
-                <div class="row">	
-                    <div class="col s12">
-                        <a href="{{URL::route('personaldata')}}" class="breadcrumb">Personal Data</a>
-                        <a href="{{URL::route('educationalbackground')}}" class="breadcrumb">Educational Background</a>
-                        <a href="{{URL::route('sgbackground')}}" class="breadcrumb">SG Background</a>
-                    </div>
-                </div>
-            </div>
+          <div class="nav-wrapper blue darken-3">
+				<div class="row">	
+					<div class="col s12 offset-s1">
+						
+							<a href="{{URL::route('personaldata')}}" class="breadcrumb ci">Personal Data</a>
+							<a href="{{URL::route('educationalbackground')}}" class="breadcrumb ci">Educational Background</a>
+	 					    <a href="{{URL::route('sgbackground')}}" class="breadcrumb ci">SG Background</a>
+				
+					</div>
+				</div>
+			</div>
         </nav>
     </div>
 </div>
 
 <div class="row">
     <div class="col s8 push-s3" style="margin-left:10px;">
-        <div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
-            <legend><h4>Armed Services</h4></legend>
-            <div class="row" style="margin:5%;">
-                <div class="row">
-                    <div class = "col s7">    
+        <div class="container-fluid grey lighten-4 z-depth-1 ci" style="border: 1px solid black; border-radius:5px;">
+           <div class="row">
+					<div class="col l12 offset-l4">
+						
+						 <legend><h4>Armed Services</h4></legend>
+				
+					</div>
+			</div>
+			
+            <div class="row">
+                <div class="ro	w">
+					<div class="col l12">
+					
+					
+                    <div class = "input-field col s4">    
                         <select id = "armedService" >
                             <option disabled selected value = "0">Choose armed services if any</option>
                             @foreach($armedservices as $armedservice)
                                 <option id = "option{{$armedservice->intArmedServiceID}}" value = "{{$armedservice->intArmedServiceID}}">{{$armedservice->strArmedServiceName}}</option>
                             @endforeach
                         </select>
+						<label data-error="Incorrect" for="armedService">Armed Service</label>
                     </div>
-                     <div class="input-field col s6">
+                     <div class="input-field col s5">
                         <select id = "armedServiceRank">
                             <option value="" disabled selected>Choose Rank</option>  
                         </select>
                         <label data-error="Incorrect" for="armedServiceRank">Rank</label>
                     </div>
-                    <div class="input-field col s6">
+						<div class="input-field col s3">
                         <select id = "armedServiceYear">
                             <option value="" disabled selected>----</option>  
                         </select>
                         <label data-error="Incorrect" for="armedServiceYear">Year</label>
                     </div>
+						</div>
+                    
                     <div class="input-field col s6">
                         <input class="with-gap" name="radio" type="radio" id="dischargedHonorably" value = "Honorably"/>
                         <label for="dischargedHonorably">Discharged Honorably</label>
@@ -66,9 +81,16 @@ Guard Form
 
 <div class ="row">
     <div class = "col s8 push-s3" style="margin-left:10px;">
-        <div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
-            <legend><h4>Government Exam</h4></legend>
-			<button style="margin-top:-10%; margin-left:650px;" class="z-depth-1 btn green modal-trigger" href="#modalgovexamAdd">
+        <div class="container-fluid grey lighten-4 z-depth-1 ci" style="border: 1px solid black; border-radius:5px;">
+              <div class="row">
+					<div class="col l12 offset-l4">
+						
+						 <legend><h4>Government Exam</h4></legend>
+				
+					</div>
+			</div>
+			
+			<button style="margin-top:-10%; margin-left:700px;" class="z-depth-1 btn green modal-trigger" href="#modalgovexamAdd">
             <i class="material-icons left">add</i> ADD
             </button>
             <table class="striped white" id = "dataTable">
@@ -93,10 +115,19 @@ Guard Form
 
 <!------------------------------------Modal govexamAdd--------------------------->
 <div id="modalgovexamAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:420px !important;">
-	<div class="modal-header"><h3>Government Exam</h3></div>
+	<div class="modal-header ci">
+		<div class="row">
+					<div class="col l12 push-l1">
+						
+						 <legend><h4>Government Examination</h4></legend>
+				
+					</div>
+			</div>
+	
+	</div>
 		<div class="modal-content">
 			<div class="row">
-				<div class = "col s10 push-s1">    
+				<div class = "col s7 push-s2">    
 				   <select class="browser-default" id = "addGovernmentExam">
                        <option disabled selected>Choose Government Exam</option>
                        @foreach ($governmentExams as $governmentExam)
@@ -293,7 +324,7 @@ Guard Form
         
         $('#nextArmed').click(function(){
             sendData();
-            window.location.href = '{{ URL::to("guard/registration/requirement") }}';
+            window.location.href = '{{ URL::to("/guard/registration/requirement") }}';
         });
         
         $('#btnAdd').click(function(){

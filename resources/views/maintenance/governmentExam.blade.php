@@ -8,16 +8,12 @@ Government Exam
 
 <div class="row">
     <div class="row">
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>  
         <div class="row"></div>  
     <div class="row">
  
      <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h2 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Nature of Business</h2>
+                   <h2 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Government Exam</h2>
                 </div>
     
     </div>
