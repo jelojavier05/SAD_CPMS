@@ -139,8 +139,7 @@ Guard Form
                 
                 error: function(data){
                     
-                },
-                async:false
+                }
                 
             });//ajax
         }

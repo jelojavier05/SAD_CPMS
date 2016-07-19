@@ -22,8 +22,7 @@ class CreateClientTable extends Migration
             $table->string('strPersonInCharge', 120);
             $table->string('strPOICContactNumber', 20);
             $table->decimal('deciAreaSize', 10,2);
-            $table->bigInteger('intPopulation');
-            $table->integer('intNumberOfGuard');
+            $table->bigInteger('intPopulation');    
             
             $table->integer('intStatusIdentifier')->default(1);
             $table->timestamps();
