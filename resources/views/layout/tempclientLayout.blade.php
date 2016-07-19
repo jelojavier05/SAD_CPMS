@@ -70,7 +70,7 @@
 				
 							<ul class="right hide-on-med-and-down">
 							  <li><a href="/client/tempaccount" class="blue darken-1">Guards</a></li>
-							  <li><a href="/client/tempaccountdetails" class="blue darken-3">Details</a></li>
+							  <li><a href="/client/tempaccountdetails" class="blue darken-3">Polytechnic University of the Philippines Mabini Campus</a></li>
 							  <li><a href="/client/tempaccount" class="red darken-3">Log Out</a></li>
 							</ul>
         

@@ -10,7 +10,7 @@ Guard
     <div class="col s8 push-s1">
         <div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:50px;">
             <div class="col s6">
-                <h3 class="blue-text">Security Guard</h3>
+                <h4 class="blue-text">Security Guard</h4>
             </div>
 
             <div class="col s3 offset-s3">
@@ -59,12 +59,12 @@ Guard
     
     
 <!------------------------containerMoreDetails----------------------------------->
-    <div class ="col s4" style="overflow:scroll; overflow-x:hidden; height:500px; margin-top:30px;">
+    <div class ="col s4" style=" margin-top:30px;">
         <div class="col s12">
             <div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:15px;">
-                <div class="blue darken-1 white-text" style="position:fixed; z-index:100; width:395px; height: 38px; font-size:30px;">Details</div>
+                <div class="blue darken-1 white-text" style="position:relative; z-index:100; width:405px; height: 38px; font-size:30px;">Details</div>
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s12" style="overflow:scroll; overflow-x:hidden; height:500px;">
                         <div class="card grey darken-1">
                             <div class="card-content">
                                 <div>

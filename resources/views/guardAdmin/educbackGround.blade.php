@@ -7,13 +7,13 @@ Guard Form
 @section('content')
 
 <div class="row">
-	<div class="col s10 push-s2" style="margin-left:10px;">
+	<div class="col s12 push-s2">
 		<nav>
-			<div class="nav-wrapper blue">
+			<div class="nav-wrapper blue darken-3">
 				<div class="row">	
-					<div class="col s12">
-						<a href="{{URL::route('personaldata')}}" class="breadcrumb">Personal Data</a>
-						<a href="{{URL::route('educationalbackground')}}" class="breadcrumb">Educational Background</a>
+					<div class="col s12 offset-s1">
+						<a href="{{URL::route('personaldata')}}" class="breadcrumb ci">Personal Data</a>
+						<a href="{{URL::route('educationalbackground')}}" class="breadcrumb ci">Educational Background</a>
 					</div>
 				</div>
 			</div>
@@ -23,9 +23,15 @@ Guard Form
 
 <div class="row">
     <div class="col s8 push-s3" style="margin-left:10px;">
-        <div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
-            <legend><h4>Educational Background</h4></legend>
-            <table class="highlight white" height="100%" width="100%" style="border:1 px solid black; ">
+        <div class="container-fluid grey lighten-4 z-depth-1 ci" style="border: 1px solid black; border-radius:5px;">
+			<div class="row">
+					<div class="col l12 offset-l3">
+						
+						 <legend><h4>Educational Background</h4></legend>
+				
+					</div>
+			</div>
+            <table class="centered" height="100%" width="100%" style="border:1 px solid black; ">
                 <thead>
                     <tr>
                         <th>Level</th>
@@ -40,20 +46,39 @@ Guard Form
                             <p>Primary</p>
                         </td>
                         <td> 
+							<div class="col l12 push-l1">
                             <input  id="schoolNamePrimary" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
                             <label data-error="Incorrect" for="schoolevel"></label>
+								</div>
                         </td>
 
                         <td>
-                            <label>From</label>
-                            <select id="fromPrimary">
-                                <option value="" disabled selected>----</option>
-                            </select>   
+                           
+							<div class="row">
+							
+								<div class="col l12 push-l2">
+										<div class="col l4 ">
+											 <label>From</label>
+												 <select id="fromPrimary">
+													<option value="" disabled selected>----</option>
+												</select>   
 
-                            <select id="toPrimary">
-                                <option value="" disabled selected>----</option>  
-                                
-                            </select>
+										</div>
+										<div class="col l4">
+											 <label>To</label>
+												<select id="toPrimary">
+													<option value="" disabled selected>----</option>  
+
+												</select>
+											
+									
+										</div>
+									
+								</div>
+							
+							</div>
+                           
+                           
                         </td>
                         
                     </tr>
@@ -63,21 +88,39 @@ Guard Form
                             <p>Secondary</p>
                         </td>   
                         <td> 
-                            <input  id="schoolNameSecondary" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
-                            <label data-error="Incorrect" for="schoolevel"></label>
+							<div class="col l12 push-l1">
+                           		 <input  id="schoolNameSecondary" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
+                           		 <label data-error="Incorrect" for="schoolevel"></label>
+							</div>
                         </td>
 
                         <td>
-                            <label>From</label>
-                            <select id="fromSecondary">
-                                <option value="" disabled selected>----</option>
-                                
-                            </select>
-                            <label></label>
-                            <select id = "toSecondary">
-                                <option value="" disabled selected>----</option>  
-                                
-                            </select>
+                           
+							<div class="row">
+							
+								<div class="col l12 push-l2">
+										<div class="col l4 ">
+											 <label>From</label>
+												 <select id="fromSecondary">
+													<option value="" disabled selected>----</option>
+												</select>   
+
+										</div>
+										<div class="col l4">
+											 <label>To</label>
+												<select id="toSecondary">
+													<option value="" disabled selected>----</option>  
+
+												</select>
+											
+									
+										</div>
+									
+								</div>
+							
+							</div>
+                           
+                           
                         </td>
                     </tr>
                     
@@ -88,24 +131,40 @@ Guard Form
                     </td>
 
                     <td> 
+						<div class="col l12 push-l1">
                         <input  id="schoolNameTertiary" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
                         <label data-error="Incorrect" for="schoolevel"></label>
-                    </td>
+							</div>
+							</td>
 
-                    <td>
-                        <label>From</label>
-                        <select id = "fromTertiary">
-                            <option value="" disabled selected>----</option>
+                     <td>
                            
-                        </select>
+							<div class="row">
+							
+								<div class="col l12 push-l2">
+										<div class="col l4 ">
+											 <label>From</label>
+												 <select id="fromTertiary">
+													<option value="" disabled selected>----</option>
+												</select>   
 
-                        <label></label>
+										</div>
+										<div class="col l4">
+											 <label>To</label>
+												<select id="toTertiary">
+													<option value="" disabled selected>----</option>  
 
-                        <select id = "toTertiary">
-                            <option value="" disabled selected>----</option>  
-                            
-                        </select>
-                    </td>
+												</select>
+											
+									
+										</div>
+									
+								</div>
+							
+							</div>
+                           
+                           
+                        </td>
                 </tr>
             </tbody>
             </table>

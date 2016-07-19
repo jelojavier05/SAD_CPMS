@@ -7,11 +7,7 @@ City
 @section('content')
 
 <div class="row">
-  <div class="row">
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>  
+  <div class="row"> 
         <div class="row"></div>  
     <div class="row">
  
@@ -204,7 +200,8 @@ City
 			null
             ] ,  
 			"pageLength":5,
-			"lengthMenu": [5,10,15,20]
+			"lengthMenu": [5,10,15,20],
+			
 		});
         
         $('#btnAddSave').click(function(){

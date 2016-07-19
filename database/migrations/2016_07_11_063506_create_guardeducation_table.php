@@ -14,6 +14,7 @@ class CreateGuardeducationTable extends Migration
     {
          Schema::create('tblguardeducation', function (Blueprint $table) {
             $table->increments('intGuardEducationID');
+			$table->integer('intGuardID')->unsigned();
             $table->string('strEducationIdentifier',15);
             $table->string('strSchoolName');
             $table->integer('intYearFrom');
@@ -35,3 +36,4 @@ class CreateGuardeducationTable extends Migration
         Schema::drop('tblguardeducation');
     }
 }
+
