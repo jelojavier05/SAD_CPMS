@@ -53,10 +53,11 @@ Route::get('/userlogin', 'CPMSUserLoginController@index');
 Route::get('/userlogin/getaccount', 'CPMSUserLoginController@getAccount');
 //LATEST SECURITY GUARD INTERFACE ----------------------------------------------------
 
-    Route::get('/securityguard', 'SecurityGuardDashboardController@index');
-    Route::get('/securityhomepage', 'SecurityHomepageController@index');
-    Route::get('/securityleaverequest', 'SecurityLeaveRequestController@index');
-    Route::get('/securitychangelocation', 'SecurityChangeLocationController@index');
+Route::get('/securityguard', 'SecurityGuardDashboardController@index');
+Route::get('/securityhomepage', 'SecurityHomepageController@index');
+Route::get('/securityhomepage/get/guard', 'SecurityHomepageController@getGuardInformation');
+Route::get('/securityleaverequest', 'SecurityLeaveRequestController@index');
+Route::get('/securitychangelocation', 'SecurityChangeLocationController@index');
 
 //CLIENT INTERFACE ----------------------------------------------------
 

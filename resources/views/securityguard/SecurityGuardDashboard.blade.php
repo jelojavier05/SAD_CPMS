@@ -44,12 +44,6 @@
 <!----------BODY------------>
 
 <body id="scrollhider" class="bodyscrollhider grey lighten-3">
-    
-    
-    
-    
-<!-----------------------------NAV BAR----------------------------->
-    
     <nav class="indigo darken-4" style="height:90px">
     <div class="row"></div>
         <div class="container">
@@ -107,17 +101,6 @@
                      
                      </div>
               </div>
-                    <!-- 
-                     <div class="row">
-                     <div class="col l12">
-                            <div class="col l5 offset-l9 ">
-                        <ul id="card1" class="card small">
-                                <li><a href="#!">@@@@@@@@@@@@@@<i class="material-icons"></i></a></li>
-                         </ul>                                 
-                            </div>
-                            </div>
-                        </div>
-                -->
             </div>              
                 </div>  
             </div>    
@@ -139,8 +122,8 @@
             <div class="col l12">
               <img src="/img/avatar2.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
             <div class="row">
-                <label>Name:</label><br>
-                <label>Account Status:</label>
+                <h id = 'strProfileName'></h><br>
+                <h id = 'strProfileLicenseNumber'></h>
                 </div>      
            
           </div>
@@ -495,39 +478,44 @@
          
  
       <script>
-
        
-            $('.modal-trigger').leanModal({
-                dismissible: true, // Modal can be dismissed by clicking outside of the modal
-                opacity: .5, // Opacity of modal background
-                in_duration: 300, // Transition in duration
-                out_duration: 200, // Transition out duration
-            });
-       
-    
+        $('.modal-trigger').leanModal({
+            dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            opacity: .5, // Opacity of modal background
+            in_duration: 300, // Transition in duration
+            out_duration: 200, // Transition out duration
+        });
 	</script>
 	
 	<script>
-	function deleteConfirmation(url) {
-        
-        var alertConfirm = confirm("Are you sure you want to delete?");
-        if (alertConfirm == true) {
-            document.getElementById('okayCancel').value = "okay";
-        } else {
-            document.getElementById('okayCancel').value = "cancel";
-        }
-    }
-	</script>
-	
-	<script>
-		 $(document).ready(function() {
+    $(document).ready(function() {
         $('select').material_select();
-		 });
         
-      
+        $.ajax({
+            
+            type: "GET",
+            url: "{{action('SecurityHomepageController@getGuardInformation')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                $('#strProfileName').text(data.strFirstName + ' ' + data.strLastName);
+                $('#strProfileLicenseNumber').text(data.strLicenseNumber);
+            },
+            error: function(data){
+                var toastContent = $('<span>Error Occured. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+
+            }
+        });//ajax
+    });      
 	</script>
 	
     </body>
-    
+
 </html>
 

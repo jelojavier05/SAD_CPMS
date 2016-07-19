@@ -45,9 +45,7 @@ Security Homepage
         </div>
     </div>
 </div>
-
 <!-----------------------------------Modal----------------------------------------------------->
-
 <div id="modalreadMsg" class="modal modal-fixed-footer" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
     <div class="modal-header"><h4>Message</h4></div>
     
@@ -112,11 +110,9 @@ Security Homepage
 </div>
 
 <script>
-
-
-    $(document).ready(function(){
-      $('.slider').slider({full_width: true});
-    });
+$(document).ready(function(){
+    
+});
 </script>
 
 @stop
