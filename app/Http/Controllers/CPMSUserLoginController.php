@@ -59,4 +59,9 @@ class CPMSUserLoginController extends Controller
         
         
     }
+    
+    public function logoutAccount(Request $request){
+        $request->session()->flush();
+        return response()->json(false);
+    }
 }

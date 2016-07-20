@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -11,7 +10,7 @@ class CreateGuardpendingnotificationTable extends Migration
             $table->increments('intGuardPendingID');
             $table->integer('intClientPendingID')->unsigned();
             $table->integer('intGuardID')->unsigned();
-            $table->date('dateSend');
+            $table->timestamp('dateSend')->useCurrent = true;
             
             $table->integer('intStatusIdentifier')->default(1);
             

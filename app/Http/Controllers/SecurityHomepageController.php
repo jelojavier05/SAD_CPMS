@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use Input;
 
 class SecurityHomepageController extends Controller
 {
@@ -15,11 +16,24 @@ class SecurityHomepageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-       return view('securityguard.SecurityHomepage');
+    public function index(Request $request){
+        
+        
+        if ($request->session()->has('id')){
+            $accountType = $request->session()->get('accountType');
+            
+            if ($accountType == 2){
+                return view('securityguard.SecurityHomepage');
+            }else{
+                return redirect('/userlogin');
+            }
+        }else{
+            return redirect('/userlogin');
+        }
     }
     
     public function getGuardInformation(Request $request){
+        
         if ($request->session()->has('id')){
             $id = $request->session()->get('id');
             
@@ -31,7 +45,52 @@ class SecurityHomepageController extends Controller
             
             return response()->json($guard);
         }else{
-            return false;
+            return response()->json(false);;
         }
     }//getGuardInformation
+    
+    public function getNewClientRequest(Request $request){
+        if ($request->session()->has('id')){
+            $id = $request->session()->get('id');
+            
+            $newClientRequest = DB::table('tblguardpendingnotification')
+                ->join('tblclientpendingnotification', 'tblclientpendingnotification.intClientPendingID', '=', 'tblguardpendingnotification.intClientPendingID')
+                ->select('tblguardpendingnotification.*', 'tblclientpendingnotification.intClientID')
+                ->where('intGuardID', '=', $id)
+                ->get();
+            
+            return response()->json($newClientRequest);
+        }else{
+            return response()->json(false);
+        }
+    }
+    
+    public function getClientInformation(Request $request){
+        $id = Input::get('clientID');
+        
+        $clientInformation = DB::table('tblclient')
+            ->join('tblnatureofbusiness', 'tblnatureofbusiness.intNatureOfBusinessID', '=', 'tblclient.intNatureOfbusinessID')
+            ->join('tblclientaddress', 'tblclientaddress.intClientID', '=', 'tblclient.intClientID')
+            ->join('tblprovince', 'tblprovince.intProvinceID','=', 'tblclientaddress.intProvinceID')
+            ->join('tblcity', 'tblcity.intCityID','=', 'tblclientaddress.intCityID')
+            ->join('tblclientpendingnotification', 'tblclientpendingnotification.intClientID','=', 'tblclient.intClientID')
+            ->select('tblclient.*', 'tblnatureofbusiness.strNatureOfBusiness', 'tblclientaddress.strAddress', 'tblprovince.strProvinceName', 'tblcity.strCityName', 'tblclientpendingnotification.intNumberOfGuard')
+            ->where('tblclient.intClientID', '=', $id)
+            ->first();
+        
+        $shift = DB::table('tblclientshift')
+            ->select('*')
+            ->where('intClientID', '=', $id)
+            ->get();
+        
+        $clientInformation->shift = $shift;
+        
+        return response()->json($clientInformation);
+    }
+    
+    public function readNewClient(Request $request){
+        DB::table('tblguardpendingnotification')
+            ->where('intGuardPendingID','=', $request->id)
+            ->update(['intStatusIdentifier' => 2]);
+    }
 }

@@ -77,7 +77,7 @@
                                
                 <ul id="dropdown3" class="dropdown-content">
                     <li><a href="#!">Profile<i class="material-icons">perm_contact_calendar</i></a></li>
-                    <li><a href="#!">Log Out<i class="material-icons">input</i></a></li>
+                    <li><a id = "btnLogout">Log Out<i class="material-icons">input</i></a></li>
                 </ul>
                                <div class="row">
                                    <div class="col l12">
@@ -503,8 +503,10 @@
                 }
             },
             success: function(data){
-                $('#strProfileName').text(data.strFirstName + ' ' + data.strLastName);
-                $('#strProfileLicenseNumber').text(data.strLicenseNumber);
+                if (data){
+                    $('#strProfileName').text(data.strFirstName + ' ' + data.strLastName);
+                    $('#strProfileLicenseNumber').text(data.strLicenseNumber);    
+                }
             },
             error: function(data){
                 var toastContent = $('<span>Error Occured. </span>');
@@ -512,6 +514,31 @@
 
             }
         });//ajax
+        
+        $('#btnLogout').click(function(){
+            $.ajax({
+				
+				type: "GET",
+				url: "{{action('CPMSUserLoginController@logoutAccount')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                success: function(data){
+                    if (!data){
+                        window.location.href = '{{ URL::to("/userlogin") }}';
+                    }
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');   
+				}
+
+			});//ajax
+        });
     });      
 	</script>
 	

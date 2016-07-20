@@ -73,7 +73,6 @@ class ClientRegistrationController extends Controller
             DB::table('tblclientpendingnotification')->insert([
                 'intClientID' => $id,
                 'intNumberOfGuard' => $request->guardNo,
-                'dateCreated' => (new \DateTime())->format('Y-m-d H:i:s')
             ]);
             
             DB::commit();
