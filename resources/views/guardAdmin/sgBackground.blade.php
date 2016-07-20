@@ -112,7 +112,7 @@ Guard Form
 
 <!------------------------------------Modal govexamAdd--------------------------->
 <div id="modalgovexamAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:420px !important;">
-	<div class="modal-header blue ">
+	<div class="modal-header" style="background-color:#01579b !important;">
 		
 						
 						 <legend><h4>Government Examination</h4></legend>
