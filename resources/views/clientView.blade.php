@@ -104,13 +104,13 @@ Client
                     
                     <div class="row">
                         <div class="col s12" style="margin-top:-20px;">
-                            <table class="highlight white" style="border-radius:10px;" id="dataTable2">
+                            <table class="highlight white" style="border-radius:10px;" id="dataTablePending">
                                 <thead>
                                     <tr>
                                         <th style="width:10px;"></th>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Guard Count</th>
+                                        <th></th>
                                         <th style="width:10px;"></th>
                                     </tr>
                                 </thead>
@@ -128,7 +128,7 @@ Client
                                         <td id = "">{{ $value->intClientPendingID }}</td>
                                         <td id = "">{{ $value->strClientName }}</td>
                                         <td>
-                                            <a id="guardlist" class="btn col s12" onclick="Materialize.showStaggeredList('#collectionPending')">{{$value->intNumberOfGuard}}</a>
+                                            <a id = '{{ $value->intClientPendingID }}' class="btn col s12 buttonMore" onclick="Materialize.showStaggeredList('#collectionPending')" value = '{{$value->intClientPendingID}}'>More</a>
                                         </td>
                                         
                                         <td>
@@ -171,10 +171,7 @@ Client
                     </div>
                     
                     <div id="guardcontainer" style="visibility:hidden;">
-                        <li class="collection-item" style="opacity:0;">Marco Polo</li>
-                        <li class="collection-item" style="opacity:0;">Ferdinand Magellan</li>
-                        <li class="collection-item" style="opacity:0;">Manuel Roxas</li>
-                        <li class="collection-item" style="opacity:0;">Generoso Cupal</li>
+                        
                     </div>
                 </ul>
             </div>
@@ -249,34 +246,42 @@ Client
             },async:false
         });//get guard waiting
         
-        $.ajax({
-
-            type: "GET",
-            url: "{{action('ClientViewController@getGuardWaiting')}}",
-            beforeSend: function (xhr) {
-                var token = $('meta[name="csrf_token"]').attr('content');
-
-                if (token) {
-                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                }
-            },
-            data: { 
-
-            },
-            success: function(data){
-                guardWaiting = data;
-            },
-
-            error: function(data){
-                confirm ('guard pending');
-            },async:false
-        });//get guard waiting
-        
-        $('#dataTable2').on('click', '.buttonNotification', function(){
+        $('#dataTablePending').on('click', '.buttonNotification', function(){
             clientID = 'clientID' + this.id;
             clientPendingID = this.id;
             $('#modalsendNoti').openModal();
             populateTable(clientPendingID);
+        });
+        
+        $('#dataTablePending').on('click', '.buttonMore', function(){
+            
+            $.ajax({    
+                type: "GET",
+                url: "/clientView/get/guardaccept?notificationID=" + this.id,
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: { 
+
+                },
+                success: function(data){
+                    var items = [];
+
+                    $.each(data, function(i, item) {
+                        $("#guardcontainer").append('<li class="collection-item" style="opacity:100;">' + item.strFirstName + ' ' + item.strLastName + '</li>');
+                    });
+                    
+                    //$('#guardcontainer').append(items.join(''));
+                },
+
+                error: function(data){
+                    console.log(data);
+                }
+            });//get guard waiting
         });
         
         $('#btnSendNotification').click(function(){
@@ -302,7 +307,7 @@ Client
 				"lengthMenu": [5,10,15,20]
             });
 		
-		$("#dataTable2").DataTable({
+		$("#dataTablePending").DataTable({
                  "columns": [
 				{ "orderable": false },
                 null,
@@ -327,7 +332,7 @@ Client
 				"lengthMenu": [5,10,15,20]
             });
 		
-        $('#guardlist').click(function() {
+        $('.buttonMore').click(function() {
 			$('#guardcontainer').css({
 				'visibility': 'visible',
 				'max-height': '400px',

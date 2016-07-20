@@ -17,7 +17,7 @@ class ClientViewController extends Controller
         
         $clientPending = DB::table('tblclientpendingnotification')
             ->join('tblclient', 'tblclientpendingnotification.intClientID', '=', 'tblclient.intClientID')
-            ->select('tblclientpendingnotification.intClientPendingID', 'tblclient.strClientName','tblclient.intClientID',  'tblclientpendingnotification.intNumberOfGuard')
+            ->select('tblclientpendingnotification.intClientPendingID', 'tblclient.strClientName','tblclient.intClientID','tblclientpendingnotification.intNumberOfGuard')
             ->where('tblclientpendingnotification.intStatusIdentifier', '=', '1')
             ->get();
         
@@ -87,6 +87,18 @@ class ClientViewController extends Controller
     
     public function getGuardAccept(Request $request){
         $clientPendingID = Input::get('notificationID');
+        
+        $guards = DB::table('tblclientpendingnotification')
+            ->join('tblguardpendingnotification', 'tblclientpendingnotification.intClientPendingID', '=', 'tblguardpendingnotification.intClientPendingID')
+            ->join('tblguard', 'tblguardpendingnotification.intGuardID', '=', 'tblguard.intGuardID')
+            ->select('tblguard.strFirstName', 'tblguard.strLastName')
+            ->where('tblclientpendingnotification.intClientPendingID', '=', $clientPendingID)
+            ->where('tblguardpendingnotification.intStatusIdentifier', '=', 3)
+            ->get();
+        
+        return response()->json($guards);
     }
+    
+    
     
 }
