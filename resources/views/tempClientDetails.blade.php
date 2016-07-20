@@ -1,7 +1,7 @@
 @extends('layout.tempclientLayout')
 
 @section('title')
-Type of Contract
+Client Details
 @endsection
 
 @section('content')	
@@ -53,7 +53,7 @@ Type of Contract
 <!-----------------------------------Modal----------------------------------------------------->
 
 <div id="modaleditClientdetails" class="modal modal-fixed-footer" style="overflow:hidden; width:700px;max-height:100%; height:400px; margin-top:30px;">
-        <div class="modal-header"><h4>Edit Details</h4></div>
+        <div class="modal-header" style="background-color:#01579b !important;"><h4>Edit Details</h4></div>
         	<div class="modal-content">
 				
 				<div class="row">
