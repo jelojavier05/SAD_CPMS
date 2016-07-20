@@ -103,7 +103,7 @@ Leave
 
 <!-- Modal Leave ADD -->
 
-<div id="modalleaveAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:750px; !important; margin-top:100px !important;  max-height:100% !important; height:350px !important;">
+<div id="modalleaveAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:750px; !important; margin-top:100px !important;  max-height:100% !important; height:350px !important; border-radius:10px;">
         <div class="modal-header">
                 <div class="h">
                     <h3><center>Leave</center></h3>  
@@ -185,7 +185,7 @@ Leave
                 </div>
 		</div>
 <!-- MODAL LEAVE EDIT -->
-<div id="modalleaveEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:750px; !important; margin-top:100px !important;  max-height:100% !important; height:400px !important;">
+<div id="modalleaveEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:750px; !important; margin-top:100px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
 	<div class="modal-header">
                 <div class="h">
                     <h3><center>Leave</center></h3>  

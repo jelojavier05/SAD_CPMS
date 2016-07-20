@@ -5,20 +5,22 @@ Unit of Measurement
 @endsection
 
 @section('content')	
-<div class="row">
-     <div class="row"> 
-        <div class="row"></div>  
+<div class="row" style="margin-top:-30px;">
+
+
+<div class="row"> 
+        
     <div class="row">
  
-    <div class="col s5 push-s3" style="margin-left:-2%">
+     <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h2 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Unit of Measurement</h2>
+                   <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Unit of Measurement</h3>
                 </div>
     
     </div>
    
     </div>
-    <div class="col s12 push-s1" style="margin-top:-5%">
+    <div class="col s12 push-s1" style="margin-top:-4%">
         <div class="container white lighten-2 z-depth-2">
 <!--            <div class="row">-->
                
@@ -60,14 +62,14 @@ Unit of Measurement
                                     </td>
                                     
                                     <td>
-                                        <button class="buttonUpdate btn" id="{{ $measurement->intMeasurementID }}" >
+                                        <button class="buttonUpdate btn col s12" id="{{ $measurement->intMeasurementID }}" >
                                             <i class="material-icons">edit</i>
                                         </button>
                                         <label for="{{ $measurement->intMeasurementID }}"></label>
                                     </td>
                                     
                                     <td>
-                                        <button class="buttonDelete btn red" id="{{ $measurement->intMeasurementID }}">
+                                        <button class="buttonDelete btn red col s12" id="{{ $measurement->intMeasurementID }}">
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
@@ -86,40 +88,40 @@ Unit of Measurement
 </div>
 
 <!-----------------------------------------------------------modal start-------------------------->
-<div id="modaluomAdd" class="modal modal-fixed-footer" style="overflow:hidden;width:40% !important; height:400px !important; margin-top:7.5% !important">
-    <div class="row">
+<div id="modaluomAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:250px !important; border-radius:10px;">
         
-            <div class="modal-header">
-                <div class="col l12 h">
-                    <div class="row"></div>
-                    <h2><center>Type of Gun</center></h2>  
-                </div>
+        <div class="modal-header">
+                <div class="h">
+                    <h3><center>Unit of Measurement</center></h3>  
+				</div>
 
-            </div>
-         
         </div>
+         
     
     <div class="modal-content">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-     
-        
-        <div class="row">
-            <div class="col s12">
-                                 <div class="col s2 offset-s1">
-                                        <i class="mdi-action-tab" style="font-size:5rem"></i>
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                                </div>
-                                <div class="col s8">
-                                    <div class="row"></div>
-                                    <div class="row"></div>
-                                    <div class="input-field">
-                                        <input id="addMeasurement" type="text" class="validate" required="" aria-required="true">
-                                        <label for="">Unit of Measurement</label> 
-                                    </div>
-                                </div>
-            </div>
+
+                    <div class="row">
+                                               
+                                  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+                            				<input id="addMeasurement" type="text" class="validate" required="" aria-required="true">
+                                        	<label for="">Unit of Measurement</label> 
+
+                                        </div>
+                                  </div>
+                            
+                        </div>
+	
+    		 
+                					
+	<!-- Modal Button Save -->
+ 
         </div>
-    </div>
     
     <div class="modal-footer" style="background-color: #00293C;">
             
@@ -129,42 +131,52 @@ Unit of Measurement
     </div>
 </div>
 <!-----------------------------------------------------------modal start-------------------------->
-<div id="modaluomEdit" class="modal modal-fixed-footer" style="overflow:hidden; width: 400px !important; height:350px !important; margin-top:100px; border-radius:10px;">
-    <div class="modal-header">
-        <h4>Unit of Measurement</h4>
-    </div>
+<div id="modaluomEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important; border-radius:10px;">
+        
+        <div class="modal-header">
+                <div class="h">
+                    <h3><center>Armed Service</center></h3>  
+				</div>
+
+        </div>
+         
     
     <div class="modal-content">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        
-        <div class="row">
-            <div class="col s12">
-                                 <div class="col s2 offset-s1">
-                                        <i class="mdi-action-tab" style="font-size:5rem"></i>
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                                </div>
-                                <div class="col s8">
-                                    <div class="row"></div>
-                                    <div class="row"></div>
-                                    <div class="input-field">
-                                        <input  id="editID" type="text" class="validate blue-text" name = "cityID" readonly required="" aria-required="true" value = "1">
-                                        <label for="editID">ID</label>
-                                    </div>
-                                </div>
-            </div>
-		</div>
-		
-        <div class="row">
-            <div class="col s10 push-s1">
-                <div class="input-field">
-                    <input id="editname" type="text" class="validate" name = "city" required="" aria-required="true" value = "Height">
-                    <label for="editname">Unit Of Measurement</label> 
-                </div>
-            </div>
+
+                    <div class="row">
+                                               
+                                <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s5">
+											<input  id="editID" type="text" class="validate blue-text center" name = "cityID" readonly required="" aria-required="true" value = "1">
+                                        	<label for="editID">ID</label> 
+
+                                        </div>
+                                  </div>  
+						
+								<div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+                            				<input id="editname" type="text" class="validate" name = "city" required="" aria-required="true" value = "Height">
+											<label for="editname">Unit Of Measurement</label> 
+
+                                        </div>
+                                  </div>
+                            
+                        </div>
+	
+    		 
+                					
+	<!-- Modal Button Save -->
+ 
         </div>
-    </div>
     
-    <div class="modal-footer" style="background-color:#01579b !important;">
+    <div class="modal-footer" style="background-color:#00293C !important;">
         <button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
             <i class="material-icons right">send</i>
         </button>

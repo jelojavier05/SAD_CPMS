@@ -98,7 +98,7 @@ Nature of Business
 
 <!-- Modal nob ADD -->
 
-<div id="modalnobAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important;">
+<div id="modalnobAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
         
         
             <div class="modal-header">
@@ -153,7 +153,7 @@ Nature of Business
 </div>
     
 <!-- MODAL nob EDIT -->
-<div id="modalnobEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important;">
+<div id="modalnobEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
 			<div class="modal-header">
                 <div class="h">
                     <h3><center>Nature of Business</center></h3>  

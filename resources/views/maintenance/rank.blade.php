@@ -94,43 +94,50 @@ Rank
 
 <!-- Modal rank ADD -->
 
-<div id="modalrankAdd" class="modal modal-fixed-footer" style="overflow:hidden; width: 500px !important; height:400px !important; margin-top:50px;  border-radius:10px;">
-        <div class="modal-header"><h4>Rank</h4></div>
-        	<div class="modal-content">
-				
+<div id="modalrankAdd" class="modal modal-fixed-footer" style="overflow:hidden; width: 500px !important; height:350px !important; margin-top:50px;  border-radius:10px;">
+        <div class="modal-header">
+                <div class="h">
+                    <h3><center>Rank</center></h3>  
+				</div>
 
-					<div class="row">
-						<div class="col s8">
-							<div class="input-field">
-								<input  id="intRankID" type="text" class="validate" name = "" disabled>
-								<label for="intRankID">Rank ID</label>
-							</div>
-						</div>
-            		</div>
-					
-					<div class="row">
-						<div class = "col 9">    
-							<select  class="browser-default" id = "addArmedService">
-								<option disabled selected value = "0">Armed Service</option>
-                                @foreach($armedServices as $armedService)
-                                    <option id = "{{ $armedService->intArmedServiceID}}" value = "{{ $armedService->intArmedServiceID}}">{{$armedService->strArmedServiceName}}</option>
-                                @endforeach
-							</select>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="addRank" type="text" class="validate" name = "" required="" aria-required="true">
-								<label for="addRank">Rank</label> 
-							</div>
-						</div>
-            		</div>
-						
-	<!-- Modal Button Save -->
-    		</div>
-			<div class="modal-footer" style="background-color:#01579b !important;">
+        	</div>
+        	<div class="modal-content">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
+                    <div class="row">
+                                               
+                                  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+											<select  class="browser-default" id = "addArmedService">
+												<option disabled selected value = "0">Armed Service</option>
+												@foreach($armedServices as $armedService)
+													<option id = "{{ $armedService->intArmedServiceID}}" value = "{{ $armedService->intArmedServiceID}}">{{$armedService->strArmedServiceName}}</option>
+												@endforeach
+											</select> 
+
+                                        </div>
+                                  </div>
+                            	
+								  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>
+									  	<div class="row"></div>
+                                        <div class="input-field col s12">
+											<i class="material-icons prefix" style="font-size:35px;">star</i>
+                            				<input id="addRank" type="text" class="validate" name = "" required="" aria-required="true">
+											<label for="addRank">Rank</label> 
+
+                                        </div>
+                                  </div>
+                        </div>
+	
+    		 
+ 
+        </div>
+			<div class="modal-footer" style="background-color:#00293C; !important;">
 			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
     			<i class="material-icons right">send</i>
   			</button>
@@ -138,44 +145,59 @@ Rank
 		</div>
 <!-- MODAL rank EDIT -->
 <div id="modalrankEdit" class="modal modal-fixed-footer" style="overflow:hidden; width: 500px !important; height:400px !important; margin-top:50px;  border-radius:10px;">
-	<div class="modal-header"><h4>Rank</h4></div>
+	<div class="modal-header">
+                <div class="h">
+                    <h3><center>Rank</center></h3>  
+				</div>
+
+        	</div>
         	<div class="modal-content">
-				
-					
-					<div class="row">
-						<div class="col s8">
-							<div class="input-field">
-								<input  id="editID" type="text" class="validate" name = "" readonly required="" aria-required="true" value = " ">
-								<label for="editID">Rank ID</label>
-							</div>
-						</div>
-            		</div>
-				
-					<div class="row">
-						<div class = "col 9">    
-							<select  class="browser-default" id = "editAS">
-								<option disabled selected value = "0">Armed Service</option>
-								@foreach($armedServices as $armedService)
-                                    <option id = "{{ $armedService->intArmedServiceID}}" value = "{{ $armedService->intArmedServiceID}}">{{$armedService->strArmedServiceName}}</option>
-                                @endforeach
-							</select>
-						</div>
-					</div>
-				
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "" required="" aria-required="true" value = " ">
-								<label for="editname">Rank</label> 
-							</div>
-						</div>
-            		</div>
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
+                    <div class="row">
+                                               
+                                <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+											<input  id="editID" type="text" class="validate" name = "" readonly required="" aria-required="true" value = " ">
+											<label for="editID">Rank ID</label> 
+
+                                        </div>
+                                  </div>  
 						
-	<!-- Modal Button Save -->
-				
-		
-    		</div>
-		<div class="modal-footer" style="background-color:#01579b !important;">
+								<div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+											<select  class="browser-default" id = "editAS">
+												<option disabled selected value = "0">Armed Service</option>
+												@foreach($armedServices as $armedService)
+													<option id = "{{ $armedService->intArmedServiceID}}" value = "{{ $armedService->intArmedServiceID}}">{{$armedService->strArmedServiceName}}</option>
+												@endforeach
+											</select> 
+
+                                        </div>
+                                  </div>
+                            	
+								  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>
+									  	<div class="row"></div>
+                                        <div class="input-field col s12">
+											<i class="material-icons prefix" style="font-size:35px;">star</i>
+                            				<input id="editname" type="text" class="validate" name = "" required="" aria-required="true" value = " ">
+											<label for="editname">Rank</label> 
+
+                                        </div>
+                                  </div>
+                        </div>
+	
+    		 
+ 
+        </div>
+		<div class="modal-footer" style="background-color:#00293C; !important;">
 			
 			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>

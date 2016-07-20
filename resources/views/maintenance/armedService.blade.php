@@ -83,7 +83,7 @@ Armed Service
     </div>
 </div>
 
-<div id="modalarmedserviceAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:250px !important;">
+<div id="modalarmedserviceAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:250px !important; border-radius:10px;">
         
         <div class="modal-header">
                 <div class="h">
@@ -130,7 +130,7 @@ Armed Service
 
 <!-- MODAL armedservice EDIT -->
 
-<div id="modalarmedserviceEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important;">
+<div id="modalarmedserviceEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important; border-radius:10px;">
     
     <div class="modal-header">
       <div class="h">

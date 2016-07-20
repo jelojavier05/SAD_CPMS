@@ -5,20 +5,22 @@ Type of Gun
 @endsection
 
 @section('content')
-<div class="row">
-    <div class="row"> 
-        <div class="row"></div>  
+<div class="row" style="margin-top:-30px;">
+
+
+<div class="row"> 
+        
     <div class="row">
  
-    <div class="col s5 push-s3" style="margin-left:-2%">
+     <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h2 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Gun Type</h2>
+                   <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Gun Type</h3>
                 </div>
     
     </div>
    
     </div>
-    <div class="col s12 push-s1" style="margin-top:-5%">
+    <div class="col s12 push-s1" style="margin-top:-4%">
         <div class="container white lighten-2 z-depth-2">
 <!--            <div class="row">-->
                
@@ -96,75 +98,50 @@ Type of Gun
 
 <!-- Modal guntype ADD -->
 
-<div id="modaltypeofgunAdd" class="modal modal-fixed-footer ci" style="overflow:hidden;width:40% !important; margin-top:7.5% !important">
-        <div class="row">
+<div id="modaltypeofgunAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">
+        
         
             <div class="modal-header">
-                <div class="col l12 h">
-                    <div class="row"></div>
-                    <h2><center>Type of Gun</center></h2>  
-                </div>
+                <div class="h">
+                    <h3><center>Government Exam</center></h3>  
+				</div>
 
-            </div>
+        	</div>
          
-        </div>
+        
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-					<div class="row">
-						 <div class="col s12">
-                                 <div class="col s2 offset-s1">
-                                        <i class="mdi-action-tab" style="font-size:5rem"></i>
 
-                                </div>
-                                <div class="col s8">
-                                    <div class="row"></div>
-                                    <div class="row"></div>
-                                    <div class="input-field">
-                                        <input  id="intTypeOfGunID" type="text" class="validate" name = "typeOfGunID" disabled>
-                                        <label for="">Type of Gun ID</label>
-                                    </div>
-                                </div>
-						</div>
-        			</div>
-					<div class="row">
-						<div class="col s12">
-                                 <div class="col s2 offset-s1">
-                                        <i class="mdi-action-tab" style="font-size:5rem"></i>
+                    <div class="row">
+                                               
+                                  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+                            				<input id="strTypeOfGun" type="text" class="validate" name = "typeOfGun" required="" aria-required="true">
+                                        	<label for="">Type of Gun</label> 
 
-                                </div>
-                                <div class="col s8">
-                                        <div class="row"></div>
-                                        <div class="row"></div>
-							         <div class="input-field">
-                                        <input id="strTypeOfGun" type="text" class="validate" name = "typeOfGun" required="" aria-required="true">
-                                        <label for="">Type of Gun</label> 
-                                    </div>
-                                </div>
-						</div>
-        			</div>
-					<div class="row">
-						<div class="col s12">
-                                 <div class="col s2 offset-s1">
-                                        <i class="mdi-action-tab" style="font-size:5rem"></i>
-
-                                </div>
-                                <div class="col s8">
-                                        <div class="row"></div>
-                                        <div class="row"></div>
-                                        <div class="input-field">
-                                            <input id="strTypeOfGunDescription" type="text" class="validate"  name = "typeOfGunDescription" required="" aria-required="true">
-                                            <label for="strTypeOfGunDescription">Description</label> 
                                         </div>
-                                </div>
-						</div>
-        			</div>
-    
+                                  </div>
 						
-	<!-- Modal Button Save -->
-				
-		
-    		</div>
+								  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>
+									  	<div class="row"></div>
+                                        <div class="input-field col s12">
+											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+                            				<input id="strTypeOfGunDescription" type="text" class="validate"  name = "typeOfGunDescription" required="" aria-required="true">
+                                            <label for="strTypeOfGunDescription">Description</label> 
+
+                                        </div>
+                                  </div>
+                            
+                     </div>
+	
+ 
+        </div>
 			<div class="modal-footer" style="background-color: #00293C;">
             
                      <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;font-size:1.5rem" id = "btnAddSave">Save
@@ -173,41 +150,61 @@ Type of Gun
         </div>
 </div>
 <!-- MODAL guntype EDIT -->
-<div id="modalguntypeEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
-	<div class="modal-header"><h2>Type of Gun</h2></div>
+<div id="modalguntypeEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
+        
+        
+            <div class="modal-header">
+                <div class="h">
+                    <h3><center>Government Exam</center></h3>  
+				</div>
+
+        	</div>
+         
+        
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					
-					<div class="row">
-						<div class="col s8">
-							<div class="input-field">
-								<input  id="editID" type="text" class="validate" name = "typeOfGunID" readonly required="" aria-required="true" value = "test">
-								<label for="editID">Type of Gun ID</label>
-							</div>
-						</div>
-        			</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "typeOfGun" required="" aria-required="true" value = "test">
-								<label for="editname">Type of Gun</label> 
-							</div>
-						</div>
-        			</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="editdescription" type="text" class="validate"  name = "typeOfGunDescription" required="" aria-required="true" value = "test">
-								<label for="strTypeOfGunDescription">Description</label> 
-							</div>
-						</div>
-        			</div>
+
+
+                    <div class="row">
+                                               
+                                <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s5">
+											<input  id="editID" type="text" class="validate" name = "typeOfGunID" readonly required="" aria-required="true" value = "test">
+											<label for="editID">Type of Gun ID</label> 
+
+                                        </div>
+                                  </div>  
 						
-	<!-- Modal Button Save -->
-				
-		
-    		</div>
-			<div class="modal-footer" style="background-color:#01579b !important;">
+								<div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+                            				<input id="editname" type="text" class="validate" name = "typeOfGun" required="" aria-required="true" value = "test">
+											<label for="editname">Type of Gun</label> 
+
+                                        </div>
+                                  </div>
+						
+								  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>
+									  	<div class="row"></div>
+                                        <div class="input-field col s12">
+											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+                            				<input id="editdescription" type="text" class="validate"  name = "typeOfGunDescription" required="" aria-required="true" value = "test">
+											<label for="strTypeOfGunDescription">Description</label> 
+
+                                        </div>
+                                  </div>
+                            
+                     </div>
+	
+ 
+        </div>
+			<div class="modal-footer" style="background-color: #00293C;">
 			
 			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
