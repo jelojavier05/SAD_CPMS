@@ -6,20 +6,20 @@ Body Attributes
 
 @section('content')
 	
-<div class="row">
+<div class="row" style="margin-top:-30px;">
   <div class="row"> 
-        <div class="row"></div>  
+        
     <div class="row">
  
      <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h2 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Body Attributes</h2>
+                   <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Body Attributes</h3>
                 </div>
     
     </div>
    
     </div>
-    <div class="col s12 push-s1" style="margin-top:-5%">
+    <div class="col s12 push-s1" style="margin-top:-4%">
         <div class="container white lighten-2 z-depth-2">
 <!--            <div class="row">-->
                
@@ -96,73 +96,48 @@ Body Attributes
 
 <!-- Modal BA ADD -->
 
-<div id="modalvitstatsAdd" class="modal modal-fixed-footer ci" style="overflow:hidden;width:40% !important; height:70% !important; margin-top:7.5% !important">
-        <div class="row">
+<div id="modalvitstatsAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important;">
         
-            <div class="modal-header">
-                <div class="col l12 h">
-                    <div class="row"></div>
-                    <h2><center>Body Attributes</center></h2>  
-                </div>
+       	<div class="modal-header">
+                <div class="h">
+                    <h3><center>Body Attributes</center></h3>  
+				</div>
 
-            </div>
-         
         </div>
+         
+        
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 					<div class="row">
-                        <div class="col s12">
-                                 <div class="col s2 offset-s1">
-                                        <i class="mdi-action-accessibility" style="font-size:5rem"></i>
-
-                                </div>
-                                <div class="col s7">
-                                    <div class="row"></div>
-                                    <div class="row"></div>
-                                    <div class="input-field">
-                                        <input  id="intVitalStatisticsID" type="text" class="validate" name = "vitalStatisticsID" disabled>
-                                        <label for="intVitalStatisticsID">Body Attribute ID</label>
-                                    </div>
-                                </div>
-                        </div>
-            		</div>
-					
-					<div class="row">
-                        <div class="col s12">
-                                        <div class="col s2 offset-s1">
-                                                <i class="mdi-content-filter-list" style="font-size:5rem"></i>
-
-                                        </div>
-                                        <div class = "col 9">  
-                                            <div class="row"></div>
-                                            <div class="row"></div>
-                                            <select  class="browser-default" id = "addMeasurement">
+                                               
+                                  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+                            				<select  class="browser-default" id = "addMeasurement">
                                                 <option disabled selected value = "0">Unit of Measurement</option>
                                                 @foreach ($measurements as $measurement)
                                                     <option id = "{{$measurement->intMeasurementID}}" value = "{{$measurement->intMeasurementID}}">{{$measurement->strMeasurement}}</option>
                                                 @endforeach
-                                            </select>
-                                        </div>
-                        </div>
-					</div>
-					
-					<div class="row">
-                            <div class="col s12">
-                                         <div class="col s2 offset-s1">
-                                                <i class="mdi-maps-local-library" style="font-size:5rem"></i>
+                                            </select> 
 
                                         </div>
-                                <div class="col s7">
-                                    <div class="row"></div>
-                                    <div class="row"></div>
-                                    <div class="input-field">
-                                        <input id="addBodyAttribute" type="text" class="validate" name = "vitalStatistics" required="" aria-required="true">
-                                        <label for="strArmedServiceDesc">Body Attribute Type</label> 
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
+                                  </div>
+						
+								  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>
+									  	<div class="row"></div>
+                                        <div class="input-field col s12">
+											<i class="mdi-maps-local-library prefix" style="font-size:35px;"></i>
+                            				<input id="addBodyAttribute" type="text" class="validate" name = "vitalStatistics" required="" aria-required="true">
+                                        	<label for="strArmedServiceDesc">Body Attribute Type</label>
+
+                                        </div>
+                                  </div>
+                            
+                        </div>
 						
     		</div>
     
@@ -170,51 +145,67 @@ Body Attributes
     	<!-- Modal Button Save -->
 			<div class="modal-footer" style="background-color: #00293C;">
             
-                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;font-size:1.5rem" id = "btnAddSave">Save
+                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
                        <i class="material-icons right">send</i>
                      </button>
             </div>
 </div>
 <!-- MODAL BA EDIT -->
-<div id="modalvitstatsEdit" class="modal modal-fixed-footer" style="overflow:hidden; width: 500px !important; height:400px !important; margin-top:50px;  border-radius:10px;">
-	<div class="modal-header"><h2>Body Attributes</h2></div>
+<div id="modalvitstatsEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important;">
+	<div class="modal-header">
+                <div class="h">
+                    <h3><center>Body Attributes</center></h3>  
+				</div>
+
+    </div>
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
 					<div class="row">
-						<div class="col s8">
-							<div class="input-field">
-								<input  id="editID" type="text" class="validate" name = "vitalStatisticsID" readonly required="" aria-required="true" value = " ">
-								<label for="editID">Body Attribute ID</label>
-							</div>
-						</div>
-            		</div>
-				
-					<div class="row">
-						<div class = "col 9">    
-							<select  class="browser-default" id = "editMeasurement">
-								<option disabled selected value = "0">Unit of Measurement</option>
-								@foreach ($measurements as $measurement)
-                                    <option id = "measurement{{$measurement->intMeasurementID}}"    value = "{{$measurement->intMeasurementID}}">{{$measurement->strMeasurement}}</option>
-                                @endforeach
-							</select>
-						</div>
-					</div>
-				
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "vitalStatistics" required="" aria-required="true" value = " ">
-								<label for="editname">Body Attribute Type</label> 
-							</div>
-						</div>
-            		</div>
+                                               
+                                <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+                            				<input  id="editID" type="text" class="validate" name = "vitalStatisticsID" readonly required="" aria-required="true" value = " ">
+											<label for="editID">Body Attribute ID</label>
+
+                                        </div>
+                                  </div>  
+								  
+								<div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+                            				<select  class="browser-default" id = "editMeasurement">
+												<option disabled selected value = "0">Unit of Measurement</option>
+													@foreach ($measurements as $measurement)
+                                    			<option id = "measurement{{$measurement->intMeasurementID}}"    value = "{{$measurement->intMeasurementID}}">{{$measurement->strMeasurement}}</option>
+                                					@endforeach
+											</select> 
+
+                                        </div>
+                                  </div>
+						
+								  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>
+									  	<div class="row"></div>
+                                        <div class="input-field col s12">
+											<i class="mdi-maps-local-library prefix" style="font-size:35px;"></i>
+                            				<input id="editname" type="text" class="validate" name = "vitalStatistics" required="" aria-required="true" value = " ">
+								<label for="editname">Body Attribute Type</label>
+
+                                        </div>
+                                  </div>
+                            
+                        </div>
 						
 	<!-- Modal Button Save -->
 				
 		
     		</div>
-		<div class="modal-footer" style="background-color:#01579b !important;">
+		<div class="modal-footer" style="background-color:#00293C; !important;">
 			
 			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>

@@ -164,8 +164,8 @@ Type of Contract
 
 					<div class="col s10 push-s1" style="margin-top:-30px;">    
 							<div class="row"></div>
-							<div class="input-field col s12">
-								<input  id="editID" type="text" class="validate" name = "contractTypeID" readonly required="" aria-required="true" value = " ">
+							<div class="input-field col s5">
+								<input  id="editID" type="text" class="validate center" name = "contractTypeID" readonly required="" aria-required="true" value = " ">
                                 <label for="editID">Type of Contract ID</label> 
 							</div>
 					</div>

@@ -6,33 +6,48 @@ Rank
 
 @section('content')
 
-<div class="row">
-    <div class="col s12 push-s1">
-        <div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:25px;">
-            <div class="col s7 push-s1">
-                <h3 class="blue-text">Rank</h3>
-            </div>
-            
-            <div class="col s3 offset-s2">
-                <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalrankAdd">
-                    <i class="material-icons left">add</i> ADD
-                </button>
-            </div>
-            
+<div class="row" style="margin-top:-30px;">
+
+
+<div class="row"> 
+        
+    <div class="row">
+ 
+     <div class="col s5 push-s3" style="margin-left:-2%">
+    
+                   <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Rank</h3>
+                </div>
+    
+    </div>
+   
+    </div>
+    <div class="col s12 push-s1" style="margin-top:-4%">
+        <div class="container white lighten-2 z-depth-2">
+<!--            <div class="row">-->
+               
+
+                <div class="col s3 offset-s9">
+                    <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalrankAdd">
+                        <i class="material-icons left">add</i> ADD
+                    </button>
+                </div>
+<!--            </div>-->
+        
             <div class="row">
                 <div class="col s12" style="margin-top:-20px;">
                     <table class="highlight white" style="border-radius:10px;" id="dataTable">
+
                         <thead>
                             <tr>
                                 <th style="width:50px;"></th>
                                 <th style="width:50px;"></th>
-                                <th style="width:50px;"></th>
+								<th style="width:50px;"></th>
                                 <th>ID</th>
                                 <th>Armed Service</th>
                                 <th>Rank</th>
                             </tr>
                         </thead>
-                        
+
                         <tbody>
                             @foreach($ranks as $rank)
                                 <tr>
@@ -74,9 +89,10 @@ Rank
             </div>
         </div>
     </div>
+
 </div>
 
-<!-- Modal BA ADD -->
+<!-- Modal rank ADD -->
 
 <div id="modalrankAdd" class="modal modal-fixed-footer" style="overflow:hidden; width: 500px !important; height:400px !important; margin-top:50px;  border-radius:10px;">
         <div class="modal-header"><h4>Rank</h4></div>
@@ -120,7 +136,7 @@ Rank
   			</button>
     		</div>
 		</div>
-<!-- MODAL BA EDIT -->
+<!-- MODAL rank EDIT -->
 <div id="modalrankEdit" class="modal modal-fixed-footer" style="overflow:hidden; width: 500px !important; height:400px !important; margin-top:50px;  border-radius:10px;">
 	<div class="modal-header"><h4>Rank</h4></div>
         	<div class="modal-content">

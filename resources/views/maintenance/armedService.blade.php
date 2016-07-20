@@ -5,21 +5,22 @@ Armed Service
 @endsection
 
 @section('content')	
-<div class="row">
-    
-    <div class="row">
-        <div class="row"></div>  
+<div class="row" style="margin-top:-30px;">
+
+
+<div class="row"> 
+        
     <div class="row">
  
      <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h2 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Armed Service</h2>
+                   <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Armed Service</h3>
                 </div>
     
     </div>
    
     </div>
-    <div class="col s12 push-s1" style="margin-top:-5%">
+    <div class="col s12 push-s1" style="margin-top:-4%">
         <div class="container white lighten-2 z-depth-2">
            
             <div class="col s3 offset-s9">
@@ -58,14 +59,14 @@ Armed Service
                                     </td>
                                     
                                     <td>
-                                        <button class="buttonUpdate btn" id="{{ $armedService->intArmedServiceID }}" >
+                                        <button class="buttonUpdate btn col s12" id="{{ $armedService->intArmedServiceID }}" >
                                             <i class="material-icons">edit</i>
                                         </button>
                                         <label for="{{ $armedService->intArmedServiceID }}"></label>
                                     </td>
                                     
                                     <td>
-                                        <button class="buttonDelete btn red" id="{{ $armedService->intArmedServiceID }}">
+                                        <button class="buttonDelete btn red col s12" id="{{ $armedService->intArmedServiceID }}">
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
@@ -82,62 +83,46 @@ Armed Service
     </div>
 </div>
 
-<div id="modalarmedserviceAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; height:60% !important; margin-top:7.5% !important">
-     <div class="row">
+<div id="modalarmedserviceAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:250px !important;">
         
         <div class="modal-header">
-            <div class="col l12 h">
-                <div class="row"></div>
-                <h2><center>Armed Service</center></h2>  
-            </div>
-        
+                <div class="h">
+                    <h3><center>Armed Service</center></h3>  
+				</div>
+
         </div>
          
-        </div>
     
     <div class="modal-content">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <div class="row"></div>
-        <div class="row">
-            <div class="col s12">
-                    <div class="col s2 offset-s1">
-                            <i class="mdi-action-dns" style="font-size:5rem"></i>
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    </div>
-                    <div class="col s7">
-                            <div class="row"></div>
-                            <div class="row"></div>
-                            <div class="input-field">
-                                <input  id="intArmedServiceID" type="text" class="validate" name = "armedServiceID" disabled>
-                                <label for="intArmedServiceID">Armed Service ID</label>
-                            </div>
-                    </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col s12">
-                    <div class="col s2 offset-s1">
-                            <i class="mdi-action-subject" style="font-size:5rem"></i>
 
-                    </div>
-                <div class="col s7">
-                            <div class="row"></div>
-                            <div class="row"></div>
-                        <div class="input-field">
-                            <input id="strArmedServiceAdd" type="text" class="validate" name = "armedServiceName" required="" aria-required="true">
-                            <label for="strArmedServiceAdd">Armed Service Type</label> 
+                    <div class="row">
+                                               
+                                  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+											<i class="mdi-action-subject prefix" style="font-size:35px;"></i>
+                            				<input id="strArmedServiceAdd" type="text" class="validate" name = "armedServiceName" required="" aria-required="true">
+                            				<label for="strArmedServiceAdd">Armed Service Type</label> 
+
+                                        </div>
+                                  </div>
+                            
                         </div>
-                </div>
-            </div>
+	
+    		 
+                					
+	<!-- Modal Button Save -->
+ 
         </div>
-    </div>
     
     <!--MODAL-FOOTER-->
     
     <div class="modal-footer" style="background-color: #00293C;">
             
-                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;font-size:1.5rem" id = "btnAddSave">Save
+                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
                        <i class="material-icons right">send</i>
                      </button>
     </div>
@@ -145,34 +130,53 @@ Armed Service
 
 <!-- MODAL armedservice EDIT -->
 
-<div id="modalarmedserviceEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
+<div id="modalarmedserviceEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important;">
     
     <div class="modal-header">
-        <h2>Armed Service</h2>
+      <div class="h">
+        <h3><center>Armed Service</center></h3>  
+	  </div>
+
     </div>
     
     <div class="modal-content">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <div class="row">
-            <div class="col s8">
-                <div class="input-field">
-                    <input  id="editID" type="text" class="validate" name = "armedServiceID" readonly required="" aria-required="true" value = " ">
-                    <label for="editID">Armed Service ID</label>
-                </div>
-            </div>
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
+                    <div class="row">
+                                               
+                                  
+						<div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                            <div class="row"></div>  
+                            <div class="input-field col s5">
+                            	<input  id="editID" type="text" class="validate center" name = "armedServiceID" readonly required="" aria-required="true" value = " ">
+                    			<label for="editID">Armed Service ID</label> 
+
+                            </div>
+                        </div>
+						
+						
+						<div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                             <div class="row"></div>  
+                             <div class="input-field col s12">
+								<i class="mdi-action-subject prefix" style="font-size:35px;"></i>
+                            	<input id="editname" type="text" class="validate" name = "armedServiceName" required="" aria-required="true" value = " ">
+                    			<label for="editname">Armed Service Type</label> 
+
+                             </div>
+                        </div>
+                            
+                        </div>
+	
+    		 
+                					
+	<!-- Modal Button Save -->
+ 
         </div>
-        
-        <div class="row">
-            <div class="col s5">
-                <div class="input-field">
-                    <input id="editname" type="text" class="validate" name = "armedServiceName" required="" aria-required="true" value = " ">
-                    <label for="editname">Armed Service Type</label> 
-                </div>
-            </div>
-        </div>
-    </div>
     
-    <div class="modal-footer" style="background-color:#01579b !important;">
+    <div class="modal-footer" style="background-color: #00293C;">
         <button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
             <i class="material-icons right">send</i>
         </button>

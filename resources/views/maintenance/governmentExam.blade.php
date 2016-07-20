@@ -6,20 +6,22 @@ Government Exam
 
 @section('content')
 
-<div class="row">
-    <div class="row">
-        <div class="row"></div>  
+<div class="row" style="margin-top:-30px;">
+
+
+<div class="row"> 
+        
     <div class="row">
  
      <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h2 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Government Exam</h2>
+                   <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Government Exam</h3>
                 </div>
     
     </div>
    
     </div>
-    <div class="col s12 push-s1" style="margin-top:-5%">
+    <div class="col s12 push-s1" style="margin-top:-4%">
         <div class="container white lighten-2 z-depth-2">
 <!--            <div class="row">-->
                
@@ -71,14 +73,14 @@ Government Exam
 									
 									
 									<td>
-                                        <button class="buttonUpdate btn"  name="" id="{{ $governmentExam->intGovernmentExamID }}" >
+                                        <button class="buttonUpdate btn col s12"  name="" id="{{ $governmentExam->intGovernmentExamID }}" >
                                             <i class="material-icons">edit</i>
                                         </button>
                                     <label for="{{ $governmentExam->intGovernmentExamID }}"></label>
                                     </td>
 
                                     <td>
-                                        <button class="buttonDelete btn red" id="{{ $governmentExam->intGovernmentExamID }}">
+                                        <button class="buttonDelete btn red col s12" id="{{ $governmentExam->intGovernmentExamID }}">
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
@@ -96,84 +98,82 @@ Government Exam
 
 <!-- Modal govexam ADD -->
 
-<div id="modalgovexamAdd" class="modal modal-fixed-footer ci" style="overflow:hidden;width:40% !important; height:500px !important; margin-top:7.5% !important">
-        <div class="row">
+<div id="modalgovexamAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:250px !important;">
+        
         
             <div class="modal-header">
-                <div class="col l12 h">
-                    <div class="row"></div>
-                    <h2><center>Government Exam</center></h2>  
-                </div>
+                <div class="h">
+                    <h3><center>Government Exam</center></h3>  
+				</div>
 
-            </div>
+        	</div>
          
-        </div>
+        
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-					<div class="row">
-                         <div class="col s12">
-                                 <div class="col s2 offset-s1">
-                                        <i class="mdi-action-tab" style="font-size:5rem"></i>
 
-                                </div>
-                                <div class="col s7">
-                                    <div class="row"></div>
-                                    <div class="row"></div>
-                                    <div class="input-field">
-                                        <input  id="intGovernmentExamID" type="text" class="validate" name = "governmentExamID" disabled>
-                                        <label for="intGovernmentExamID">Government Exam ID</label>
-                                    </div>
-                                </div>
-                        </div>
-            		</div>
-					<div class="row">
-                         <div class="col s12">
-                                 <div class="col s2 offset-s1">
-                                        <i class="mdi-action-assessment" style="font-size:5rem"></i>
+                    <div class="row">
+                                               
+                                  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+											<i class="mdi-action-assessment prefix" style="font-size:35px;"></i>
+                            				<input id="strGovernmentExamAdd" type="text" class="validate" name = "governmentExamName" required="" aria-required="true">
+											<label for="strGovernmentExamAdd">Government Exam Type</label> 
 
-                                </div>
-						<div class="col s7">
-                                <div class="row"></div>
-                                <div class="row"></div>
-							<div class="input-field">
-								<input id="strGovernmentExamAdd" type="text" class="validate" name = "governmentExamName" required="" aria-required="true">
-								<label for="strGovernmentExamAdd">Government Exam Type</label> 
-							</div>
-						</div>
-                        </div>
-            		</div>
-    		</div>
+                                        </div>
+                                  </div>
+                            
+                     </div>
+	
+ 
+        </div>
     <!-- Modal Button Save -->
 		<div class="modal-footer" style="background-color: #00293C;">
             
-                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;font-size:1.5rem" id = "btnAddSave">Save
+                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
                        <i class="material-icons right">send</i>
                      </button>
         </div>
 		</div>
 <!-- MODAL govexam EDIT -->
-<div id="modalgovexamEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
-	<div class="modal-header"><h2>Government Exam</h2></div>
+<div id="modalgovexamEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important;">
+	<div class="modal-header">
+                <div class="h">
+                    <h3><center>Government Exam</center></h3>  
+				</div>
+
+    </div>
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
 					<div class="row">
-						<div class="col s8">
-							<div class="input-field">
-								<input  id="editID" type="text" class="validate"  name = "governmentExamID" readonly required="" aria-required="true" value = "test">
-								<label for="editID">Government Exam ID</label>
-							</div>
-						</div>
-            		</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="editname" type="text" class="validate" name = "governmentExam" required="" aria-required="true" value = "test">
-								<label for="editname">Government Exam Type</label> 
-							</div>
-						</div>
-            		</div>
+                                               
+                                 <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+											<input  id="editID" type="text" class="validate"  name = "governmentExamID" readonly required="" aria-required="true" value = "test">
+											<label for="editID">Government Exam ID</label> 
+
+                                        </div>
+                                  </div> 
+						
+						
+								 <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+											<i class="mdi-action-assessment prefix" style="font-size:35px;"></i>
+                            				<input id="editname" type="text" class="validate" name = "governmentExam" required="" aria-required="true" value = "test">
+											<label for="editname">Government Exam Type</label> 
+
+                                        </div>
+                                  </div>
+                            
+                     </div>
 						
 
 				
@@ -182,7 +182,7 @@ Government Exam
     	<!-- Modal Button Save -->
 		<div class="modal-footer" style="background-color: #00293C;">
             
-                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;font-size:1.5rem" id = "btnAddSave">Save
+                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnUpdate">Update
                        <i class="material-icons right">send</i>
                      </button>
         </div>

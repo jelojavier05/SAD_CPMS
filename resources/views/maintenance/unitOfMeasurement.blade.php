@@ -86,7 +86,7 @@ Unit of Measurement
 </div>
 
 <!-----------------------------------------------------------modal start-------------------------->
-<div id="modaluomAdd" class="modal modal-fixed-footer" style="overflow:hidden;width:40% !important; height:40% !important; margin-top:7.5% !important">
+<div id="modaluomAdd" class="modal modal-fixed-footer" style="overflow:hidden;width:40% !important; height:400px !important; margin-top:7.5% !important">
     <div class="row">
         
             <div class="modal-header">

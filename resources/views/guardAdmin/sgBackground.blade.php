@@ -112,14 +112,13 @@ Guard Form
 
 <!------------------------------------Modal govexamAdd--------------------------->
 <div id="modalgovexamAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:420px !important;">
-	<div class="modal-header ci">
-		<div class="row">
-					<div class="col l12 push-l1">
+	<div class="modal-header blue ">
+		
 						
 						 <legend><h4>Government Examination</h4></legend>
 				
-					</div>
-			</div>
+					
+			
 	
 	</div>
 		<div class="modal-content">
