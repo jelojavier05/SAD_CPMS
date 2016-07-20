@@ -45,18 +45,11 @@ Type of Contract
 </div>
 <!-------------------------------------------------------------------------------------------------->
 
-<<<<<<< HEAD
-@stop
 
-@section('script')
-<script>
-$(document).ready(function(){
-    confirm();
-    
-});
 
-</script>
-=======
+
+
+
 <!-----------------------------------Modal----------------------------------------------------->
 
 <div id="modaleditClientdetails" class="modal modal-fixed-footer" style="overflow:hidden; width:700px;max-height:100%; height:400px; margin-top:30px;">
@@ -107,5 +100,15 @@ $(document).ready(function(){
 			</div>
 </div>
 
->>>>>>> a843531e5932f33209a1df36ac31bf1d061a751c
+
+@stop
+
+@section('script')
+<script>
+$(document).ready(function(){
+    confirm();
+    
+});
+
+</script>
 @stop
