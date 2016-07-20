@@ -6,20 +6,20 @@ City
 
 @section('content')
 
-<div class="row">
+<div class="row" style="margin-top:-30px;">
   <div class="row"> 
-        <div class="row"></div>  
+        
     <div class="row">
  
-    <div class="col s5 push-s3" style="margin-left:-2%">
+     <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h2 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">City</h2>
+                   <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">City</h3>
                 </div>
     
     </div>
    
     </div>
-    <div class="col s12 push-s1" style="margin-top:-5%">
+    <div class="col s12 push-s1" style="margin-top:-4%">
         <div class="container white lighten-2 z-depth-2">
 <!--            <div class="row">-->
                
@@ -61,14 +61,14 @@ City
                                     </td>
 
                                     <td>
-                                        <button class="buttonUpdate btn"name="" id="{{$city->intCityID}}">
+                                        <button class="buttonUpdate btn col s12" name="" id="{{$city->intCityID}}">
                                             <i class="material-icons">edit</i>
                                         </button>
                                         <label for=""></label>
                                     </td>
 
                                     <td>
-                                        <button class="buttonDelete btn red" id="{{$city->intCityID}}" >
+                                        <button class="buttonDelete btn red col s12" id="{{$city->intCityID}}" >
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
@@ -86,107 +86,115 @@ City
     </div>
 </div>
 
-<div id="modalcityAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; height:53% !important; margin-top:7.5% !important">
-    <div class="row">
+<div id="modalcityAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important; border-radius:10px;">
         
-            <div class="modal-header">
-                <div class="col l12 h">
-                    <div class="row"></div>
-                    <h2><center>City</center></h2>  
-                </div>
+       	<div class="modal-header">
+                <div class="h">
+                    <h3><center>City</center></h3>  
+				</div>
 
-            </div>
-         
-    </div>
-    
-    <div class="modal-content">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-     
-		<div class="row">
-             <div class="col s12">
-                        <div class="col s2">
-                         <i class="mdi-social-domain" style="font-size:5rem"></i>
-
-                        </div>
-                        <div class="col s8 offset-s1">
-                                     <div class="row"></div>
-                                     <div class="row"></div>   
-                            <select  class="browser-default" id = "addSelectProvince">
-                                <option disabled selected value = "0">Choose Province</option>
-                                @foreach($provinces as $province)
-                                    <option id = "{{$province->intProvinceID}}" value = "{{$province->intProvinceID}}">{{$province->strProvinceName}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-            </div>
-		</div>
-        
-        <div class="row">
-            <div class="col s12">
-                        <div class="col s2">
-                         <i class="mdi-social-location-city" style="font-size:5rem"></i>
-
-                        </div>
-                        <div class="col s8 offset-s1">
-                                 <div class="row"></div>
-                                 <div class="row"></div>
-                                <div class="input-field">
-                                    <input id="addCityName" type="text" class="validate" required="" aria-required="true">
-                                    <label for="">City</label> 
-                                </div>
-                        </div>
-            </div>
         </div>
-    </div>
+         
+        
+        	<div class="modal-content">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+					<div class="row">
+                                               
+                                  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+                            				<select  class="browser-default" id = "addSelectProvince">
+												<option disabled selected value = "0">Choose Province</option>
+												@foreach($provinces as $province)
+													<option id = "{{$province->intProvinceID}}" value = "{{$province->intProvinceID}}">{{$province->strProvinceName}}</option>
+												@endforeach
+											</select> 
+
+                                        </div>
+                                  </div>
+						
+								  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>
+									  	<div class="row"></div>
+                                        <div class="input-field col s12">
+											<i class="mdi-social-domain prefix" style="font-size:35px;"></i>
+                            				<input id="addCityName" type="text" class="validate" required="" aria-required="true">
+                                    		<label for="">City</label>
+
+                                        </div>
+                                  </div>
+                            
+                        </div>
+						
+    		</div>
     
    <div class="modal-footer" style="background-color: #00293C;">
             
-                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;font-size:1.5rem" id = "btnAddSave">Save
+                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
                        <i class="material-icons right">send</i>
                      </button>
         </div>
 </div>
 
-<div id="modalcityEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:420px !important;">
-    <div class="modal-header">
-        <h2>City</h2>
-    </div>
-    
-    <div class="modal-content">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+<div id="modalcityEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:360px !important; border-radius:10px;">
         
-        <div class="row">
-            <div class="col s3 push-s1">
-                <div class="input-field">
-                    <input  id="editID" type="text" class="validate blue-text center-align" name = "cityID" readonly required="" aria-required="true" value = "1">
-                    <label for="editID">City ID</label>
-                </div>
-            </div>
-		</div>
-        
-		<div class="row">
-			<div class = "col s5 push-s1">    
-				<select  class="browser-default" id = "editProvince" >
-					<option disabled>Choose Province</option>
-					@foreach($provinces as $province)
-						<option id = "{{$province->intProvinceID}}" value = "{{$province->intProvinceID}}">{{$province->strProvinceName}}</option>
-					@endforeach
-				</select>
-			</div>
-		</div>
-		
-        
-        <div class="row">
-            <div class="col s10 push-s1">
-                <div class="input-field">
-                    <input id="editname" type="text" class="validate" name = "city" required="" aria-required="true" value = "Manila City">
-                    <label for="editname">City</label> 
-                </div>
-            </div>
+       	<div class="modal-header">
+                <div class="h">
+                    <h3><center>City</center></h3>  
+				</div>
+
         </div>
-    </div>
+         
+        
+        	<div class="modal-content">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+					<div class="row">
+                                               
+                                <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s5">
+                            				<input  id="editID" type="text" class="validate blue-text center-align" name = "cityID" readonly required="" aria-required="true" value = "1">
+											<label for="editID">City ID</label>
+
+                                        </div>
+                                  </div>  
+						
+								<div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>  
+                                        <div class="input-field col s12">
+                            				<select  class="browser-default" id = "editProvince" >
+												<option disabled>Choose Province</option>
+												@foreach($provinces as $province)
+													<option id = "{{$province->intProvinceID}}" value = "{{$province->intProvinceID}}">{{$province->strProvinceName}}</option>
+												@endforeach
+											</select> 
+
+                                        </div>
+                                  </div>
+						
+								  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>
+									  	<div class="row"></div>
+                                        <div class="input-field col s12">
+											<i class="mdi-social-domain prefix" style="font-size:35px;"></i>
+                            				<input id="editname" type="text" class="validate" name = "city" required="" aria-required="true" value = "Manila City">
+                    <label for="editname">City</label>
+
+                                        </div>
+                                  </div>
+                            
+                        </div>
+						
+    		</div>
     
-    <div class="modal-footer" style="background-color:#01579b !important;">
+   <div class="modal-footer" style="background-color: #00293C;">
         <button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
             <i class="material-icons right">send</i>
         </button>

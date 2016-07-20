@@ -97,7 +97,7 @@ Type of Contract
 
 <!-- Modal contracttype ADD -->
 
-<div id="modalcontracttypeAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:10px !important;  max-height:100% !important; height:450px !important;">
+<div id="modalcontracttypeAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:10px !important;  max-height:100% !important; height:450px !important; border-radius:10px;">
     
         	<div class="modal-header">
                 <div class="h">
@@ -149,7 +149,7 @@ Type of Contract
         </div>
 </div>
 <!-- MODAL contracttype EDIT -->
-<div id="modalcontracttypeEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:10px !important;  max-height:100% !important; height:500px !important;">
+<div id="modalcontracttypeEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:10px !important;  max-height:100% !important; height:500px !important; border-radius:10px;">
 	<div class="modal-header">
                 <div class="h">
                     <h3><center>Type of Contract</center></h3>  

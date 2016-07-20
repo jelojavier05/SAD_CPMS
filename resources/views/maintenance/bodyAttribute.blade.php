@@ -96,7 +96,7 @@ Body Attributes
 
 <!-- Modal BA ADD -->
 
-<div id="modalvitstatsAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important;">
+<div id="modalvitstatsAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important; border-radius:10px;">
         
        	<div class="modal-header">
                 <div class="h">
@@ -151,7 +151,7 @@ Body Attributes
             </div>
 </div>
 <!-- MODAL BA EDIT -->
-<div id="modalvitstatsEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important;">
+<div id="modalvitstatsEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
 	<div class="modal-header">
                 <div class="h">
                     <h3><center>Body Attributes</center></h3>  

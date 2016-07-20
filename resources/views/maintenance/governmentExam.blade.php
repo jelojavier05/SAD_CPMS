@@ -98,7 +98,7 @@ Government Exam
 
 <!-- Modal govexam ADD -->
 
-<div id="modalgovexamAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:250px !important;">
+<div id="modalgovexamAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:250px !important; border-radius:10px;">
         
         
             <div class="modal-header">
@@ -139,7 +139,7 @@ Government Exam
         </div>
 		</div>
 <!-- MODAL govexam EDIT -->
-<div id="modalgovexamEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important;">
+<div id="modalgovexamEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important; border-radius:10px;">
 	<div class="modal-header">
                 <div class="h">
                     <h3><center>Government Exam</center></h3>  
