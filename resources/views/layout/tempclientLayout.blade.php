@@ -70,7 +70,7 @@
 				
 							<ul class="right hide-on-med-and-down">
 							  <li><a href="/client/tempaccount" class="blue darken-1">Guards</a></li>
-							  <li><a href="/client/tempaccountdetails" class="blue darken-3">Polytechnic University of the Philippines Mabini Campus</a></li>
+							  <li><a href="/client/tempaccountdetails" class="blue darken-3" id = 'clientName'></a></li>
 							  <li><a href="/client/tempaccount" class="red darken-3">Log Out</a></li>
 							</ul>
         
@@ -127,7 +127,52 @@
 		 });
 	</script>
 	
-	
+<script>
+$(document).ready(function() {
+    $.ajax({
+            
+        type: "GET",
+        url: "{{action('TempClientAccountController@getClient')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data){
+            
+            var area = commaSeparateNumber(data.deciAreaSize);
+            var population = commaSeparateNumber(data.intPopulation);
+            
+            $('#clientName').text(data.strClientName);
+            $('#natureOfBusiness').text(data.strNatureOfBusiness);
+            $('#name').text(data.strClientName);
+            $('#clientNumber').text(data.strContactNumber);
+            $('#personInCharge').text(data.strPersonInCharge);
+            $('#personNumber').text(data.strPOICContactNumber);
+            $('#address').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+            $('#areaSize').text(area);
+            $('#population').text(population);
+            $('#numberOfGuard').text(data.intNumberOfGuard);
+        },
+        error: function(data){
+            var toastContent = $('<span>Error Occured. </span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+
+        }
+    });//guards information
+    
+    function commaSeparateNumber(val){
+        while (/(\d+)(\d{3})/.test(val.toString())){
+            val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+        }
+        return val;
+    }
+    
+    
+});
+</script>
     
      
     </body>

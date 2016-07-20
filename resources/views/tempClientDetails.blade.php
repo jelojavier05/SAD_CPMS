@@ -11,32 +11,35 @@ Client Details
 	<div class="col s6 push-s3" style="margin-top:25px;">	
 		<ul class="collection with-header" id="collectionActive">
 			<li class="collection-header" ><h4 style="font-weight:bold;">Details
-				<a class="btn blue right modal-trigger" href="#modaleditClientdetails"><i class="material-icons">mode_edit</i></a></h4>
+				<a class="btn blue right" id = 'btnEdit'><i class="material-icons">mode_edit</i></a></h4>
 			</li>
 				<div >
 							
-					<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Bank</div>
+					<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusiness'>&nbsp;&nbsp;&nbsp;</div>
+					</li>
+                    
+                    <li class="collection-item" style="font-weight:bold;">Name:<div style="font-weight:normal;" id = 'name'>&nbsp;&nbsp;&nbsp;</div>
 					</li>
 
-					<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09123456789</div>
+					<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;" id = 'clientNumber'>&nbsp;&nbsp;&nbsp;</div>
 					</li>
 
-					<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Emilio Aguinaldo</div>
+					<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;" id = 'personInCharge'>&nbsp;&nbsp;&nbsp;</div>
 					</li>
 
-					<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09987654321</div>
+					<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'personNumber'>&nbsp;&nbsp;&nbsp;</div>
 					</li>
 
-					<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Hello Street Pasig City, Metro Manila</div>
+					<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;</div>
 					</li>
 
-					<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;1000</div>
+					<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSize'>&nbsp;&nbsp;&nbsp;</div>
 					</li>
 
-					<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10000</div>
+					<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;</div>
 					</li>
 							
-					<li class="collection-item" style="font-weight:bold;">Number of Guards:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10</div>
+					<li class="collection-item" style="font-weight:bold;">Number of Guards:<div style="font-weight:normal;" id = 'numberOfGuard'>&nbsp;&nbsp;&nbsp;</div>
 					</li>
 				</div>
 						
@@ -44,11 +47,6 @@ Client Details
 	</div>
 </div>
 <!-------------------------------------------------------------------------------------------------->
-
-
-
-
-
 
 <!-----------------------------------Modal----------------------------------------------------->
 
@@ -88,13 +86,10 @@ Client Details
 						</div>
 					</div>
 				</div>
-	<!-- Modal Button Save -->
-				
-		
     		</div>
 			
 			<div class="modal-footer" style="background-color:#01579b !important;">
-				<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnSendNotification">Save
+				<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnEdit">Save
 					
 				</button>
 			</div>
@@ -106,8 +101,9 @@ Client Details
 @section('script')
 <script>
 $(document).ready(function(){
-    confirm();
-    
+    $('#btnEdit').click(function(){
+        $('#modaleditClientdetails').openModal();
+    });
 });
 
 </script>

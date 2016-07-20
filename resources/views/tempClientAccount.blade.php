@@ -30,24 +30,13 @@ Temporary Client
                         </thead>
 
                         <tbody>
-                           
-                            <tr>
-                                <td>
-                                    <button class="buttonMore btn blue col s12" id="">
-                                        MORE
-                                    </button>
-                                </td>
-                                <td id = "">test1</td>
-                                <td id = "">test2</td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-    
-    
 <!------------------------containerMoreDetails----------------------------------->
     <div class ="col s4 pull-s1" style=" margin-top:30px;">
         <div class="col s12">
@@ -88,7 +77,7 @@ Temporary Client
                                     <p style="color: #eeeeee; font-size: 20px;">Address:</p>
                                 </div>
                                 <div>
-                                    <p style="color:#212121; font-size: 18px;" id= "address"></p>
+                                    <p style="color:#212121; font-size: 18px;" id= "addressGuard"></p>
                                 </div>
                                 <div>
                                     <p style="color: #eeeeee; font-size: 20px;">Age:</p>
@@ -129,12 +118,12 @@ Temporary Client
                                 <div>
                                     <span class = "card-title black-text" style="font-weight:bold;">Body Attributes:</span>
                                 </div>
-                                
+                                @foreach($bodyAttributes as $bodyAttribute)
                                     <div>
-                                        <p style="color: #eeeeee; font-size: 20px;" id = "">  </p>
-                                        <p style="color:#212121; font-size: 18px;" id = "">N/A</p>
+                                        <p style="color: #eeeeee; font-size: 20px;" id = "bodyAttribute{{$bodyAttribute->intBodyAttributeID}}"> {{$bodyAttribute->strBodyAttributeName}} </p>
+                                        <p style="color:#212121; font-size: 18px;" id = "value{{$bodyAttribute->intBodyAttributeID}}">N/A</p>
                                     </div>
-                                
+                                @endforeach
                                 <div>
                                     <span class = "card-title black-text" style="font-weight:bold;">Armed Services:</span>
                                 </div>
@@ -145,9 +134,9 @@ Temporary Client
                                     <span class = "card-title black-text" style="font-weight:bold;">Government Exams:</span>
                                 </div>
                                 <div>
-                                    
-                                        <p style="color:#eeeeee; font-size: 18px;" id = "">• Test</p>
-                                    
+                                    @foreach($governmentExams as $value)
+                                        <p style="color:#eeeeee; font-size: 18px;" id = "governmentExam{{$value->intGovernmentExamID}}">• {{ $value->strGovernmentExam }} - N/A</p>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -174,6 +163,134 @@ $(document).ready(function(){
         ] ,  
         "pageLength":5,
         "bLengthChange": false
+    });
+    
+    $.ajax({
+            
+        type: "GET",
+        url: "{{action('TempClientAccountController@getGuards')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data){
+            var table = $('#dataTable').DataTable();
+            table.clear().draw();
+            
+            $.each(data, function( index, value ) {
+                table.row.add([
+                    '<button class="buttonMore btn blue col s12" id="' + value.intGuardID + '">MORE</button>',
+                    '<h>' + value.strLicenseNumber + '</h>',
+                    '<h>' + value.strFirstName + ' ' + value.strLastName + '</h>'
+                ]).draw(false);
+            });
+            
+                
+        },
+        error: function(data){
+            var toastContent = $('<span>Error Occured. </span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+
+        }
+    });//guards information
+    
+    $('#dataTable').on('click','.buttonMore', function(){
+        $.ajax({
+            type: "GET",
+            url: "/getInformation?guardID=" + this.id,
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                console.log(data);
+
+                var dob = new Date(data.dateBirthday);
+                var today = new Date();
+                var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+                var bodyAttributesGuard = data.bodyAttributesGuard;
+                var bodyAttributes = data.bodyAttributes;
+                var armedService = data.armedService;
+                var governmentExamGuard = data.governmentExamGuard;
+                var governmentExam = data.governmentExam;
+
+                $('#firstName').text(data.strFirstName);
+                $('#middleName').text(data.strMiddleName);
+                $('#lastName').text(data.strLastName);
+                $('#licenseNumber').text(data.licenseNumber.strLicenseNumber);
+                $('#addressGuard').text(data.address.strAddress + ' ' + data.address.strCityName + ', ' + data.address.strProvinceName);
+                $('#age').text(age);
+                $('#gender').text(data.strGender);
+                $('#placeOfBirth').text(data.strPlaceBirth);
+                $('#mobileNumber').text(data.strContactNumberMobile);
+                $('#landlineNumber').text(data.strContactNumberLandline);
+                $('#civilStatus').text(data.strCivilStatus);
+
+                if (bodyAttributesGuard){
+                    for (intLoop = 0; intLoop < bodyAttributes.length; intLoop ++){
+                        $('#bodyAttribute' + bodyAttributes[intLoop].intBodyAttributeID)
+                            .text(bodyAttributes[intLoop].strBodyAttributeName);
+                        $('#value' + bodyAttributes[intLoop].intBodyAttributeID)
+                            .text('N/A');
+                        for (intLoop2 = 0; intLoop2 < bodyAttributesGuard.length; intLoop2 ++){
+                            if (bodyAttributes[intLoop].intBodyAttributeID == bodyAttributesGuard[intLoop2].intBodyAttributeID){
+                                $('#value' + bodyAttributesGuard[intLoop2].intBodyAttributeID)
+                                    .text(bodyAttributesGuard[intLoop2].strValue);
+                                break;
+                            }    
+                        }
+                    } //bodyAttribute
+                }else{
+                    bodyAttributes.forEach(function(item){
+                        $('#bodyAttribute' + item.intBodyAttributeID)
+                            .text(item.strBodyAttributeName);
+                        $('#value' + item.intBodyAttributeID)
+                            .text('N/A');
+                    });
+                }//bodyAttribute       
+
+                if (armedService){
+                    $('#armedService').text(armedService.strArmedServiceName + " - " + armedService.strRank);    
+                }else{
+                    $('#armedService').text('N/A');    
+                } //armedservice
+
+                if (governmentExamGuard){
+                    for(intLoop = 0; intLoop < governmentExam.length; intLoop ++){
+                        var temp = '•' + governmentExam[intLoop].strGovernmentExam + ' - ';
+                        var checker = true;
+                        for (intLoop2 = 0; intLoop2 < governmentExamGuard.length; intLoop2 ++){
+                            if (governmentExam[intLoop].intGovernmentExamID == governmentExamGuard[intLoop2].intGovernmentExamID){
+                                temp += governmentExamGuard[intLoop2].strRating;
+                                checker = false;
+                                break;
+                            }
+                        }
+
+                        if (checker){
+                            temp += 'N/A';
+                        }
+
+                        $('#governmentExam' + governmentExam[intLoop].intGovernmentExamID).text(temp);
+                    }
+                }else{
+                    governmentExam.forEach(function(item){
+                       $('#governmentExam' + item.intGovernmentExamID).text(item.strGovernmentExam + ' - N/A');
+                    });
+                }
+            },
+            error: function(data){
+                var toastContent = $('<span>Error Occured. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+
+            }
+        });//ajax
     });
 });
 </script>

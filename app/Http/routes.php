@@ -7,6 +7,8 @@ Route::get('/admin/pending', 'AdminPendingController@index');
 Route::get('/client/registration/contractInfo', 'ClientContractController@index');
 
 Route::get('/client/tempaccount', 'TempClientAccountController@index');
+Route::get('/client/tempaccount/get/guards', 'TempClientAccountController@getGuards');
+Route::get('/client/tempaccount/get/client', 'TempClientAccountController@getClient');
 Route::get('/client/tempaccountdetails', 'TempClientDetailsController@index');
 
 // ----------------------------------------GUARD REGISTRATION---------------------------------------------//
