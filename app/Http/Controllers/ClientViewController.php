@@ -84,4 +84,9 @@ class ClientViewController extends Controller
         
         return response()->json($guardHasNotification);
     }
+    
+    public function getGuardAccept(Request $request){
+        $clientPendingID = Input::get('notificationID');
+    }
+    
 }

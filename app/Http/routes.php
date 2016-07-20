@@ -87,6 +87,7 @@ Route::get('/clientView', 'ClientViewController@index');
 Route::get('/clientView/get/clientpending', 'ClientViewController@getClientPending');
 Route::get('/clientView/get/guardwaiting', 'ClientViewController@getGuardWaiting');
 Route::get('/clientView/get/clientPendingNotification', 'ClientViewController@getPendingNotification');
+Route::get('/clientView/get/clientpending', 'ClientViewController@getClientPending');
 Route::post('/clientView/send/notification', 'ClientViewController@sendGuardPendingNotification');
 
 
