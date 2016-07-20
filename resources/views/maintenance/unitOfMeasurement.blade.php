@@ -86,29 +86,46 @@ Unit of Measurement
 </div>
 
 <!-----------------------------------------------------------modal start-------------------------->
-<div id="modaluomAdd" class="modal modal-fixed-footer" style="overflow:hidden; width: 400px !important; height:250px !important; margin-top:100px; border-radius:10px;">
-    <div class="modal-header">
-        <h4>Unit of Measurement</h4>
-    </div>
+<div id="modaluomAdd" class="modal modal-fixed-footer" style="overflow:hidden;width:40% !important; height:40% !important; margin-top:7.5% !important">
+    <div class="row">
+        
+            <div class="modal-header">
+                <div class="col l12 h">
+                    <div class="row"></div>
+                    <h2><center>Type of Gun</center></h2>  
+                </div>
+
+            </div>
+         
+        </div>
     
     <div class="modal-content">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
      
         
         <div class="row">
-            <div class="col s10 push-s1">
-                <div class="input-field">
-                    <input id="addMeasurement" type="text" class="validate" required="" aria-required="true">
-                    <label for="">Unit of Measurement</label> 
-                </div>
+            <div class="col s12">
+                                 <div class="col s2 offset-s1">
+                                        <i class="mdi-action-tab" style="font-size:5rem"></i>
+
+                                </div>
+                                <div class="col s8">
+                                    <div class="row"></div>
+                                    <div class="row"></div>
+                                    <div class="input-field">
+                                        <input id="addMeasurement" type="text" class="validate" required="" aria-required="true">
+                                        <label for="">Unit of Measurement</label> 
+                                    </div>
+                                </div>
             </div>
         </div>
     </div>
     
-    <div class="modal-footer" style="background-color:#01579b !important;">
-        <button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
-            <i class="material-icons right">send</i>
-        </button>
+    <div class="modal-footer" style="background-color: #00293C;">
+            
+                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;font-size:1.5rem" id = "btnAddSave">Save
+                       <i class="material-icons right">send</i>
+                     </button>
     </div>
 </div>
 <!-----------------------------------------------------------modal start-------------------------->
@@ -121,11 +138,19 @@ Unit of Measurement
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         
         <div class="row">
-            <div class="col s3 push-s1">
-                <div class="input-field">
-                    <input  id="editID" type="text" class="validate blue-text" name = "cityID" readonly required="" aria-required="true" value = "1">
-                    <label for="editID">ID</label>
-                </div>
+            <div class="col s12">
+                                 <div class="col s2 offset-s1">
+                                        <i class="mdi-action-tab" style="font-size:5rem"></i>
+
+                                </div>
+                                <div class="col s8">
+                                    <div class="row"></div>
+                                    <div class="row"></div>
+                                    <div class="input-field">
+                                        <input  id="editID" type="text" class="validate blue-text" name = "cityID" readonly required="" aria-required="true" value = "1">
+                                        <label for="editID">ID</label>
+                                    </div>
+                                </div>
             </div>
 		</div>
 		

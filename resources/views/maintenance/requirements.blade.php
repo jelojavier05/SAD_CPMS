@@ -105,23 +105,45 @@ Requirements
 
 <!-- Modal requirements ADD -->
 
-<div id="modalrequirementsAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
-        <div class="modal-header"><h2>Requirements</h2></div>
+<div id="modalrequirementsAdd" class="modal modal-fixed-footer ci" style="overflow:hidden;width:40% !important; height:100% !important; margin-top:7.5% !important">
+         <div class="row">
+        
+            <div class="modal-header">
+                <div class="col l12 h">
+                    <div class="row"></div>
+                    <h2><center>Requirements</center></h2>  
+                </div>
+
+            </div>
+         
+        </div>
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-				<div class = "row">
-					<div class="col s6">
 							<div class="row">
 								<div class="col s12">
-									<div class="input-field">
-										<input  id="" type="text" class="validate" name = "requirementsID" disabled>
-										<label for="">Requirements ID</label>
-									</div>
-								</div>
+                                        <div class="col s2">
+                                         <i class="mdi-social-domain" style="font-size:5rem"></i>
+
+                                        </div>
+                                        <div class="col s8 offset-s1">
+                                            <div class="row"></div>
+                                            <div class="row"></div>
+                                            <div class="input-field">
+                                                     <input  id="" type="text" class="validate" name = "requirementsID" disabled>
+                                                     <label for="">Requirements ID</label>
+                                                </div>
+                                        </div>
+                                </div>
 							</div>
 							<div class="row">
-								<div class="col s12">
+                                <div class="col s12">
+                                        <div class="col s2">
+                                         <i class="mdi-social-domain" style="font-size:5rem"></i>
+
+                                        </div>
+                                        <div class="col s8 offset-s1">
+                                            <div class="row"></div>
+                                            <div class="row"></div>
 									<div class="input-field">
 										<input id="addRequirementName" type="text" class="validate" name = "requirements" required="" aria-required="true">
 										<label for="">Requirements Name</label> 
@@ -129,18 +151,26 @@ Requirements
 								</div>
 							</div>
 					</div>
-					<div class ="col s6">
+					
 							<div class="row">
 								<div class="col s12">
-									<div class="input-field">
-										<input id="addDescription" type="text" class="validate"  name = "requirementsDescription" required="" aria-required="true">
-										<label for="">Description</label> 
-									</div>
-								</div>
+                                        <div class="col s2">
+                                         <i class="mdi-social-domain" style="font-size:5rem"></i>
+
+                                        </div>
+                                        <div class="col s8 offset-s1">
+                                                <div class="row"></div>
+                                                <div class="row"></div>
+                                            <div class="input-field">
+                                                <input id="addDescription" type="text" class="validate"  name = "requirementsDescription" required="" aria-required="true">
+                                                <label for="">Description</label> 
+                                            </div>
+								        </div>
 							</div>
+                        </div>
 							
 							<div class="row">	
-								<div class="col s4">
+								<div class="col s4 offset-s2">
 									<p>
 									  <input type="checkbox" id="clientcboxadd" />
 									  <label for="clientcboxadd">Client</label>
@@ -155,19 +185,19 @@ Requirements
 								</div>
 							</div>
 					
-					</div>
-				</div>
+				
 						
 	<!-- Modal Button Save -->
 				
 		
     		</div>
-				<div class="modal-footer" style="background-color:#01579b !important;">
-					<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
-						<i class="material-icons right">send</i>
-					</button>
-				</div>
-		</div>
+				<div class="modal-footer" style="background-color: #00293C;">
+            
+                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;font-size:1.5rem" id = "btnAddSave">Save
+                       <i class="material-icons right">send</i>
+                     </button>
+        </div>
+</div>
 <!-- MODAL requirements EDIT -->
 <div id="modalrequirementsEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Requirement</h2></div>
