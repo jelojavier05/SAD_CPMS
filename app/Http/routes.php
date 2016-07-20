@@ -10,6 +10,7 @@ Route::get('/client/tempaccount', 'TempClientAccountController@index');
 Route::get('/client/tempaccount/get/guards', 'TempClientAccountController@getGuards');
 Route::get('/client/tempaccount/get/client', 'TempClientAccountController@getClient');
 Route::get('/client/tempaccountdetails', 'TempClientDetailsController@index');
+Route::post('/client/tempaccountdetails/update', 'TempClientDetailsController@update');
 
 // ----------------------------------------GUARD REGISTRATION---------------------------------------------//
 Route::get('/guard/registration/personaldata', 'PersonalDataController@index')

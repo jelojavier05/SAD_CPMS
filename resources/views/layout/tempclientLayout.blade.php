@@ -71,7 +71,7 @@
 							<ul class="right hide-on-med-and-down">
 							  <li><a href="/client/tempaccount" class="blue darken-1">Guards</a></li>
 							  <li><a href="/client/tempaccountdetails" class="blue darken-3" id = 'clientName'></a></li>
-							  <li><a href="/client/tempaccount" class="red darken-3">Log Out</a></li>
+							  <li><a class="red darken-3" id = 'btnLogout'>Log Out</a></li>
 							</ul>
         
 			</div>
@@ -170,7 +170,30 @@ $(document).ready(function() {
         return val;
     }
     
-    
+    $('#btnLogout').click(function(){
+       $.ajax({
+				
+            type: "GET",
+            url: "{{action('CPMSUserLoginController@logoutAccount')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                if (!data){
+                    window.location.href = '{{ URL::to("/userlogin") }}';
+                }
+            },
+            error: function(data){
+                var toastContent = $('<span>Error Occured. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');   
+            }
+
+        });//ajax 
+    });
 });
 </script>
     

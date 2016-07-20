@@ -57,31 +57,31 @@ Client Details
 				<div class="row">
 					<div class="col s12">
 						<div class="input-field col s6">
-							<input placeholder=" " id="clientcontactLandline" maxlength="10" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
-							<label data-error="Incorrect" for="clientcontactLandline">Contact Number (Client)</label>
+							<input placeholder=" " id="clientNumberEdit" maxlength="10" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
+							<label data-error="Incorrect" for="clientNumberEdit">Contact Number (Client)</label>
 
 						</div>
 					
 						<div class="input-field col s6">
-							<input placeholder=" " id="personInCharge" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
-							<label for="personInCharge" data-error="Incorrect">Person in Charge</label>
+							<input placeholder=" " id="personInChargeEdit" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+							<label for="personInChargeEdit" data-error="Incorrect">Person in Charge</label>
 						</div>
 
 						<div class="input-field col s6">
-							<input placeholder=" " id="piccontactCp" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
-							<label data-error="Incorrect" for="clientcontactCp">Contact Number (Person In Charge)</label>
+							<input placeholder=" " id="personNumberEdit" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
+							<label data-error="Incorrect" for="personNumberEdit">Contact Number (Person In Charge)</label>
 
 						</div>
 						
 						<div class="input-field col s6">
-							<input placeholder=" " id="areaSize" type="text" class="validate" pattern="[0-9. ]{2,}" required="" aria-required="true">
-							<label data-error="Incorrect" for="areaSize">Area Size (approx. in square meters)</label>
+							<input placeholder=" " id="areaSizeEdit" type="text" class="validate" pattern="[0-9. ]{2,}" required="" aria-required="true">
+							<label data-error="Incorrect" for="areaSizeEdit">Area Size (approx. in square meters)</label>
 
 						</div>
 					
 						<div class="input-field col s6">
-							<input placeholder=" " id="population" type="text" class="validate" pattern="[0-9, ]{2,}" required="" aria-required="true">
-							<label data-error="Incorrect" for="population">Population (approx.)</label>
+							<input placeholder=" " id="populationEdit" type="text" class="validate" pattern="[0-9, ]{2,}" required="" aria-required="true">
+							<label data-error="Incorrect" for="populationEdit">Population (approx.)</label>
 
 						</div>
 					</div>
@@ -89,7 +89,7 @@ Client Details
     		</div>
 			
 			<div class="modal-footer" style="background-color:#01579b !important;">
-				<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnEdit">Save
+				<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnSave">Save
 					
 				</button>
 			</div>
@@ -103,6 +103,58 @@ Client Details
 $(document).ready(function(){
     $('#btnEdit').click(function(){
         $('#modaleditClientdetails').openModal();
+        $('#clientNumberEdit').val($('#clientNumber').text());
+        $('#personInChargeEdit').val($('#personInCharge').text());
+        $('#personNumberEdit').val($('#personNumber').text());
+        $('#areaSizeEdit').val($('#areaSize').text());
+        $('#populationEdit').val($('#population').text());
+    });
+    
+    $('#btnSave').click(function(){
+        var clientNumber = $('#clientNumberEdit').val().trim();
+        var personInCharge = $('#personInChargeEdit').val().trim();
+        var personNumber = $('#personNumberEdit').val().trim();
+        var areaSize = $('#areaSizeEdit').val().trim();
+        var population = $('#populationEdit').val().trim();
+        
+        if (clientNumber && personInCharge && personNumber && areaSize && population && 
+            $.isNumeric(parseFloat(areaSize)) && $.isNumeric(parseInt(population)) && 
+            parseFloat(areaSize) > 0 && parseInt(population) >= 0){
+            
+            $.ajax({
+
+                type: "POST",
+                url: "{{action('TempClientDetailsController@update')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    clientNumber: clientNumber,
+                    personInCharge: personInCharge,
+                    personNumber: personNumber,
+                    areaSize: areaSize,
+                    population: population
+                },
+                success: function(data){
+                    swal("Success!", "Record has been Updated!", "success");
+                    $('#modaleditClientdetails').closeModal();
+                    window.location.href = '{{ URL::to("/client/tempaccountdetails") }}';
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+
+                }
+            });//ajax
+        }else{
+            var toastContent = $('<span>Check your inputs.</span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+        
     });
 });
 
