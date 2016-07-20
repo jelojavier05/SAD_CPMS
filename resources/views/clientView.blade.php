@@ -154,19 +154,21 @@ Client
                     </ul>
                     </li>
                     <div style="overflow:scroll; overflow-x:hidden; height:400px;" id="pendingDetails">
-                        <li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Bank</div>
+                        <li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusiness'>&nbsp;&nbsp;&nbsp;Bank</div>
                         </li>
-                        <li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09123456789</div>
+                        <li class="collection-item" style="font-weight:bold;">Name:<div style="font-weight:normal;" id = 'clientName'>&nbsp;&nbsp;&nbsp;09123456789</div>
                         </li>
-                        <li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Emilio Aguinaldo</div>
+                        <li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;" id = 'clientNumber'>&nbsp;&nbsp;&nbsp;09123456789</div>
                         </li>
-                        <li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09987654321</div>
+                        <li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;" id = 'personInCharge'>&nbsp;&nbsp;&nbsp;Emilio Aguinaldo</div>
                         </li>
-                        <li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Hello Street Pasig City, Metro Manila</div>
+                        <li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'personNumber'>&nbsp;&nbsp;&nbsp;09987654321</div>
                         </li>
-                        <li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;1000</div>
+                        <li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;Hello Street Pasig City, Metro Manila</div>
                         </li>
-                        <li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10000</div>
+                        <li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSize'>&nbsp;&nbsp;&nbsp;1000</div>
+                        </li>
+                        <li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;10000</div>
                         </li>
                     </div>
                     
@@ -254,7 +256,6 @@ Client
         });
         
         $('#dataTablePending').on('click', '.buttonMore', function(){
-            
             $.ajax({    
                 type: "GET",
                 url: "/clientView/get/guardaccept?notificationID=" + this.id,
@@ -270,7 +271,7 @@ Client
                 },
                 success: function(data){
                     var items = [];
-
+                    console.log(data);
                     $.each(data, function(i, item) {
                         $("#guardcontainer").append('<li class="collection-item" style="opacity:100;">' + item.strFirstName + ' ' + item.strLastName + '</li>');
                     });
@@ -279,9 +280,42 @@ Client
                 },
 
                 error: function(data){
-                    console.log(data);
                 }
             });//get guard waiting
+            
+            $.ajax({    
+                type: "GET",
+                url: "/clientView/get/selectedclientpending?notificationID=" + this.id,
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: { 
+
+                },
+                success: function(data){
+                    var area = commaSeparateNumber(data.deciAreaSize);
+                    var population = commaSeparateNumber(data.intPopulation);
+                    
+                    $('#natureOfBusiness').text(data.strNatureOfBusiness);
+                    $('#clientName').text(data.strClientName);
+                    $('#clientNumber').text(data.strContactNumber);
+                    $('#personInCharge').text(data.strPersonInCharge);
+                    $('#personNumber').text(data.strPOICContactNumber);
+                    $('#address').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+                    $('#areaSize').text(area);
+                    $('#population').text(population);
+                    
+                },
+
+                error: function(data){
+                    
+                }
+            });//get selected client pending
+
         });
         
         $('#btnSendNotification').click(function(){
@@ -295,17 +329,17 @@ Client
         });
         
         $("#dataTable").DataTable({
-                 "columns": [
-                { "orderable": false },
-                { "orderable": false },
-                null,
-                null,
-				null,
-				{ "orderable": false }
-                ] ,  
-                "pageLength":5,
-				"lengthMenu": [5,10,15,20]
-            });
+             "columns": [
+            { "orderable": false },
+            { "orderable": false },
+            null,
+            null,
+			null,
+			{ "orderable": false }
+            ] ,  
+            "pageLength":5,
+			"lengthMenu": [5,10,15,20]
+        });
 		
 		$("#dataTablePending").DataTable({
                  "columns": [
@@ -333,7 +367,8 @@ Client
             });
 		
         $('.buttonMore').click(function() {
-			$('#guardcontainer').css({
+			
+            $('#guardcontainer').css({
 				'visibility': 'visible',
 				'max-height': '400px',
 				'overflow': 'scroll',
@@ -439,10 +474,14 @@ Client
                 }
             }
         }
+        
+        function commaSeparateNumber(val){
+            while (/(\d+)(\d{3})/.test(val.toString())){
+                val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+            }
+            return val;
+        }
     });
-		
-		
-
 </script>
 
 <script>

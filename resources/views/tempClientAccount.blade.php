@@ -1,7 +1,7 @@
 @extends('layout.tempclientLayout')
 
 @section('title')
-Type of Contract
+Temporary Client
 @endsection
 
 @section('content')	
@@ -18,13 +18,9 @@ Type of Contract
                     1/10
                 </a>
             </div>
-			
 			<div class="row">
-				
                 <div class="col s12" style="margin-top:-40px;">
                     <table class="highlight white" style="border-radius:10px;" id="dataTable">
-						
-
                         <thead>
                             <tr>
 								<th style="width:50px;"></th>
@@ -44,7 +40,6 @@ Type of Contract
                                 <td id = "">test1</td>
                                 <td id = "">test2</td>
                             </tr>
-                          
                         </tbody>
                     </table>
                 </div>
@@ -180,8 +175,6 @@ $(document).ready(function(){
         "pageLength":5,
         "bLengthChange": false
     });
-
-    
 });
 </script>
 
