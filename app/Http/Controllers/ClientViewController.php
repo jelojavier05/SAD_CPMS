@@ -99,6 +99,22 @@ class ClientViewController extends Controller
         return response()->json($guards);
     }
     
+    public function getSelectedClientPending(Request $request){
+        $clientPendingID = Input::get('notificationID');
+        
+        $client = DB::table('tblclientpendingnotification')
+            ->join('tblclient', 'tblclientpendingnotification.intClientID', '=', 'tblclient.intClientID')
+            ->join('tblnatureofbusiness', 'tblnatureofbusiness.intNatureOfBusinessID', '=', 'tblclient.intNatureOfBusinessID')
+            ->join('tblclientaddress', 'tblclientaddress.intClientID', '=', 'tblclient.intClientID')
+            ->join('tblprovince', 'tblclientaddress.intProvinceID', '=', 'tblprovince.intProvinceID')
+            ->join('tblcity', 'tblclientaddress.intCityID', '=', 'tblcity.intCityID')
+            ->select('tblclient.*', 'tblnatureofbusiness.strNatureOfBusiness', 'tblclientaddress.strAddress', 'tblprovince.strProvinceName', 'tblcity.strCityName', 'tblclientpendingnotification.intNumberOfGuard')
+            ->where('tblclientpendingnotification.intClientPendingID', '=', $clientPendingID)
+            ->first();
+        
+        return response()->json($client);
+    }
+    
     
     
 }
