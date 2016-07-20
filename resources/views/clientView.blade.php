@@ -494,10 +494,6 @@ Client
                     ]).draw(false);
                 }
             }
-            
-            
-            
-//            console.log(guardHasNotification[0].intGuardID);
         }
         
         function getCheckedGuard(){

@@ -93,4 +93,49 @@ class SecurityHomepageController extends Controller
             ->where('intGuardPendingID','=', $request->id)
             ->update(['intStatusIdentifier' => 2]);
     }
+    
+    public function acceptNewClient(Request $request){
+        $guardID = $request->session()->get('id');
+        try{
+            DB::beginTransaction();
+            
+            DB::table('tblguardpendingnotification')
+                ->where('intGuardPendingID','=', $request->clientPendingID)
+                ->update(['intStatusIdentifier' => 3]);
+
+            DB::table('tblguard')
+                ->where('intGuardID','=', $request->session()->get('id'))
+                ->update(['intStatusIdentifier' => 1]);
+            
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+    }
+    
+    public function declineNewClient(Request $request){
+        $guardID = $request->session()->get('id');
+        try{
+            DB::beginTransaction();
+            
+            DB::table('tblguardpendingnotification')
+                ->where('intGuardPendingID','=', $request->clientPendingID)
+                ->update(['intStatusIdentifier' => 0]);
+            
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+    }
+    
+    public function getStatusIdentifierGuardPendingRequest(Request $request){
+        $id = Input::get('id');
+        
+        $status = DB::table('tblguardpendingnotification')
+            ->select('intStatusIdentifier')
+            ->where('intGuardPendingID', $id)
+            ->first();
+        
+        return response()->json($status);
+    }
 }

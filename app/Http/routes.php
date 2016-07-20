@@ -58,7 +58,10 @@ Route::get('/securityhomepage', 'SecurityHomepageController@index');
 Route::get('/securityhomepage/get/guard', 'SecurityHomepageController@getGuardInformation');
 Route::get('/securityhomepage/get/getNewClientRequest', 'SecurityHomepageController@getNewClientRequest');
 Route::get('/securityhomepage/get/clientinformation', 'SecurityHomepageController@getClientInformation');
+Route::get('/securityhomepage/get/statusguardpending', 'SecurityHomepageController@getStatusIdentifierGuardPendingRequest');
 Route::post('/securityhomepage/get/guard', 'SecurityHomepageController@readNewClient');
+Route::post('/securityhomepage/accept/guard', 'SecurityHomepageController@acceptNewClient');
+Route::post('/securityhomepage/decline/guard', 'SecurityHomepageController@declineNewClient');
 Route::get('/securityleaverequest', 'SecurityLeaveRequestController@index');
 Route::get('/securitychangelocation', 'SecurityChangeLocationController@index');
 

@@ -92,18 +92,34 @@ Security Homepage
     </div>
     
     <div class="modal-footer" style="background-color:#01579b !important;">
-        <div>	
+        <div id = "buttons" style="display: none;">	
             <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnAccept">Accept
             </button>
-            
+
             <button class="btn red waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnDecline">Decline
             </button>
+        </div>
+        
+        <div id = "accepted" style="display: none;">
+            <p>Accepted bitch</p>
+        </div>
+        
+        <div id = "rejected" style="display: none;">
+            <p>rejected bitch</p>
+        </div>
+        
+        <div id = "notAvailable" style="display: none;">
+            <p>Not available anymore bitch</p>
         </div>
     </div>
 </div>
 
 <script>
 $(document).ready(function(){
+    
+    var tableRowCounter = 0;
+    var table = $('#inboxTable').DataTable();
+    var globalClientPendingID;
     
     $.ajax({
             
@@ -141,8 +157,9 @@ $(document).ready(function(){
             }
         },
         success: function(data){
-            var table = $('#inboxTable').DataTable();
+            
             table.clear().draw();
+            console.log(data);
             if (data){
                 for (intLoop = 0; intLoop < data.length; intLoop ++){
                     var mydate = new Date(data[intLoop].dateSend);
@@ -151,17 +168,23 @@ $(document).ready(function(){
                     var str = month + ' ' + mydate.getDate() + ', ' + mydate.getFullYear();
                     
                     table.row.add([
-                        '<input name="' + data[intLoop].intGuardPendingID + '" type="radio" id="radio' + data[intLoop].intGuardPendingID +'" /> <label for="radio' + data[intLoop].intGuardPendingID + '"></label><input type = "hidden" value = "' + data[intLoop].intGuardPendingID + '" id = "guardpending' + data[intLoop].intGuardPendingID + '">',
+                        '<input name="' + tableRowCounter + '" type="radio" id="radio' + tableRowCounter +'" /> <label for="radio' + tableRowCounter + '"></label>',
                         '<h>' + str + '</h>',
-                        '<h>New Client</h>',
-                        '<a class="btn blue darken-4 col s10 buttonRead" id = "' +data[intLoop].intGuardPendingID + '"><i class="material-icons">keyboard_arrow_right</i></a><input type = "hidden" value = "' + data[intLoop].intClientID + '" id = "clientID' + data[intLoop].intGuardPendingID + '">'
+                        '<h id = "title' + tableRowCounter + '">New Client</h>',
+                        '<a class="btn blue darken-4 col s10 buttonRead" id = "' +tableRowCounter + '"><i class="material-icons">keyboard_arrow_right</i></a>' + 
+                        '<input type = "hidden" value = "' + data[intLoop].intGuardPendingID +'" id ="idOfMessage'+ tableRowCounter + '">' + 
+                        '<input type = "hidden" value = "' + data[intLoop].intClientID +'" id ="clientID'+ tableRowCounter + '">' + 
+                        '<input type = "hidden" value = "' + data[intLoop].intStatusIdentifier +'" id ="statusIdentifier'+ tableRowCounter + '">'
+                        
                     ]).draw(false);
                     
-                   if (data[intLoop].intStatusIdentifier == 1){
-                       $('#radio' + data[intLoop].intGuardPendingID).attr( "checked", true );
-                   }else if (data[intLoop].intStatusIdentifier == 2){
-                       $('#radio' + data[intLoop].intGuardPendingID).attr( "checked", false );
-                   } 
+                    
+                    if (data[intLoop].intStatusIdentifier == 1){
+                       $('#radio' + tableRowCounter).attr( "checked", true );
+                    }else{
+                       $('#radio' + tableRowCounter).attr( "checked", false );
+                    }
+                    tableRowCounter ++;
                 }  
             }
         },
@@ -173,10 +196,19 @@ $(document).ready(function(){
     });//new client pending
     
     $('#inboxTable').on('click', '.buttonRead', function(){
+        
+        if ($('#title' + this.id).text() == 'New Client'){
+            newClient($('#idOfMessage' + this.id).val(), $('#clientID' + this.id).val());
+            globalClientPendingID = $('#idOfMessage' + this.id).val();
+        }
+        
+        $('#radio' + this.id).attr('checked', false); // all read mark as unread
+    });
+    
+    $('#btnAccept').click(function(){
         $.ajax({
-
             type: "POST",
-            url: "{{action('SecurityHomepageController@readNewClient')}}",
+            url: "{{action('SecurityHomepageController@acceptNewClient')}}",
             beforeSend: function (xhr) {
                 var token = $('meta[name="csrf_token"]').attr('content');
                 if (token) {
@@ -184,57 +216,36 @@ $(document).ready(function(){
                 }
             },
             data: {
-                id:this.id
-            }
-        });//unread - read
-        
-        $.ajax({
-            type: "GET",
-            url: "/securityhomepage/get/clientinformation?clientID=" + $('#clientID' + this.id).val() ,
-            beforeSend: function (xhr) {
-                var token = $('meta[name="csrf_token"]').attr('content');
-
-                if (token) {
-                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                }
+                clientPendingID: globalClientPendingID
             },
             success: function(data){
-                console.log(data);
-                var areaSize = commaSeparateNumber(data.deciAreaSize);
-                var population = commaSeparateNumber(data.intPopulation);
-                var arrayShift = data.shift;
+                $('#modalreadMsg').closeModal();
+                swal("Accepted", "You accepted the offer. Wait for announcement", "success");
                 
-                $('#modalreadMsg').openModal();
-                $('#natureOfBusiness').text(data.strNatureOfBusiness);
-                $('#clientName').text(data.strClientName);
-                $('#contactNumberClient').text(data.strContactNumber);
-                $('#personInCharge').text(data.strPersonInCharge);
-                $('#contactNumberPIC').text(data.strPOICContactNumber);
-                $('#address').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
-                $('#areaSize').text(areaSize);
-                $('#population').text(population);
-                $('#guardCounter').text(data.intNumberOfGuard);
-                
-                $.each(arrayShift, function (index, value) {
-                    
-                    $('#shiftTable tr:last').after(
-                        '<tr>'+
-                            '<td>' + value.strShiftNumber +'</td>' +
-                            '<td>' + getHour(value.timeFrom) + '</td>' +
-                            '<td>' + getHour(value.timeTo) + '</td>' +
-                        '</tr>'
-                    );
-                    
-                });
-                    
-            },
-            error: function(data){
-                var toastContent = $('<span>Error Occured. </span>');
-                Materialize.toast(toastContent, 1500,'red', 'edit');
             }
-        });//ajax get client information
-        
-        $('#radio' + this.id).attr('checked', false);
+            
+        });//accept
+    });
+    
+    $('#btnDecline').click(function(){
+        $.ajax({
+            type: "POST",
+            url: "{{action('SecurityHomepageController@declineNewClient')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+                if (token) {
+                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                clientPendingID: globalClientPendingID
+            },
+            success: function(data){
+                $('#modalreadMsg').closeModal();
+                swal("Declined", "You declined to the offer.", "success");
+            }
+            
+        });//decline
     });
     
     function commaSeparateNumber(val){
@@ -297,6 +308,110 @@ $(document).ready(function(){
         }
         
         return hour12;
+    }
+    
+    function newClient(clientPendingID, clientID){
+        var statusIdentifier = getStatus(clientPendingID);
+        if (statusIdentifier == 1){
+            $.ajax({
+
+                type: "POST",
+                url: "{{action('SecurityHomepageController@readNewClient')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+                    if (token) {
+                        return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    id:clientPendingID
+                }
+            });//unread - read
+        }
+        
+        $.ajax({
+            type: "GET",
+            url: "/securityhomepage/get/clientinformation?clientID=" + clientID ,
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                console.log(data);
+                var areaSize = commaSeparateNumber(data.deciAreaSize);
+                var population = commaSeparateNumber(data.intPopulation);
+                var arrayShift = data.shift;
+                
+                $('#modalreadMsg').openModal();
+                $('#natureOfBusiness').text(data.strNatureOfBusiness);
+                $('#clientName').text(data.strClientName);
+                $('#contactNumberClient').text(data.strContactNumber);
+                $('#personInCharge').text(data.strPersonInCharge);
+                $('#contactNumberPIC').text(data.strPOICContactNumber);
+                $('#address').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+                $('#areaSize').text(areaSize);
+                $('#population').text(population);
+                $('#guardCounter').text(data.intNumberOfGuard);
+                
+                $('#shiftTable tr').not(function(){ return !!$(this).has('th').length; }).remove(); 
+                $.each(arrayShift, function (index, value) {
+                    
+                    $('#shiftTable tr:last').after(
+                        '<tr>'+
+                            '<td>' + value.strShiftNumber +'</td>' +
+                            '<td>' + getHour(value.timeFrom) + '</td>' +
+                            '<td>' + getHour(value.timeTo) + '</td>' +
+                        '</tr>'
+                    );
+                    
+                });
+                    
+            },
+            error: function(data){
+                var toastContent = $('<span>Error Occured. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+        });//ajax get client information
+        
+        if (statusIdentifier == 1 || statusIdentifier == 2){
+            $('#buttons').show();
+        }else if (statusIdentifier == 3){
+            $('#buttons').hide();
+            $('#accepted').show();
+        }else if (statusIdentifier == 0){
+            $('#buttons').hide();
+            $('#rejected').show();
+        }else if (statusIdentifier == 4){
+            $('#buttons').hide();
+            $('#notAvailable').show();
+        }
+    }
+    
+    function getStatus(id){
+        var status;
+        $.ajax({
+            type: "GET",
+            url: "/securityhomepage/get/statusguardpending?id=" + id ,
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                status = data.intStatusIdentifier;
+            },
+            error: function(data){
+                var toastContent = $('<span>Error Occured. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            },
+            async:false
+        });//ajax get client information
+        return status;
     }
 });
 </script>
