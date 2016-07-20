@@ -41,7 +41,7 @@ Type of Contract
                                 <th>ID</th>
                                 <th>Type of Contract</th>
 								<th>Description</th>
-								<th>Duration</th>
+								<th>Duration (Months)</th>
                                 
                             </tr>
                         </thead>
@@ -68,14 +68,14 @@ Type of Contract
 									
 									
 									<td>
-                                        <button class="buttonUpdate btn"  name="" id="{{ $typeOfContract->intTypeOfContractID }}">
+                                        <button class="buttonUpdate btn col s12"  name="" id="{{ $typeOfContract->intTypeOfContractID }}">
                                             <i class="material-icons">edit</i>
                                         </button>
                                     <label for="{{ $typeOfContract->intTypeOfContractID }}"></label>
                                     </td>
 
                                     <td>
-                                        <button class="buttonDelete btn red" id="{{ $typeOfContract->intTypeOfContractID }}">
+                                        <button class="buttonDelete btn red col s12" id="{{ $typeOfContract->intTypeOfContractID }}">
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
@@ -97,11 +97,11 @@ Type of Contract
 
 <!-- Modal contracttype ADD -->
 
-<div id="modalcontracttypeAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:-30px !important;  max-height:100% !important; height:450px !important;">
+<div id="modalcontracttypeAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:10px !important;  max-height:100% !important; height:450px !important;">
     
         	<div class="modal-header">
                 <div class="h">
-                    <h3><center>Nature of Business</center></h3>  
+                    <h3><center>Type of Contract</center></h3>  
 				</div>
 
             </div>
@@ -109,32 +109,33 @@ Type of Contract
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="row">
 				  
-				 <div class="col s10 push-s1">		
-					<div class="row"></div>
-                       <div class="input-field col s12">
-							<i class="mdi-action-schedule prefix" style="font-size:35px;"></i>
-                               <input id="intDurationAdd" type="text" class="validate" pattern="[0-9]{0,}" name = "" required="" aria-required="true">
-                               <label for="">Duration</label> 
-                       </div>
-				  </div>
-                                      
-				<div class="col s10 push-s1">    
-					    <div class="row"></div>
-                        <div class="input-field col s12">
-							<i class="mdi-action-picture-in-picture prefix" style="font-size:35px;"></i>
-                         	<input id="strContractTypeAdd" type="text" class="validate" name = "contractTypeName" required="" aria-required="true">
-                            <label for="strContractTypeAdd">Type of Contract</label> 
-                        </div>
+
+					<div class="col s10 push-s1" style="margin-top:-30px;">    
+							<div class="row"></div>
+							<div class="input-field col s12">
+								<i class="mdi-action-picture-in-picture prefix" style="font-size:35px;"></i>
+								<input id="strContractTypeAdd" type="text" class="validate" name = "contractTypeName" required="" aria-required="true">
+								<label for="strContractTypeAdd">Type of Contract</label> 
+							</div>
 					</div>
-                         
-				<div class="col s10 push-s1">	
+
+					<div class="col s10 push-s1">	
+							<div class="row"></div>
+							<div class="input-field col s12">  
+								<i class="mdi-action-description prefix" style="font-size:35px;"></i>
+								<input id="strContractTypeDescAdd" type="text" class="validate"  name = "contractTypeDescription" required="" aria-required="true"/>
+								<label for="strContractTypeDescAdd">Description</label> 
+							</div>
+					</div>  
+					
+					<div class="col s10 push-s1">		
 						<div class="row"></div>
-                        <div class="input-field col s12">  
-							<i class="mdi-action-description prefix" style="font-size:35px;"></i>
-                            <input id="strContractTypeDescAdd" type="text" class="validate"  name = "contractTypeDescription" required="" aria-required="true"/>
-                            <label for="strContractTypeDescAdd">Description</label> 
-                        </div>
-				</div>       
+						   <div class="input-field col s12">
+								<i class="mdi-action-schedule prefix" style="font-size:35px;"></i>
+								<input id="intDurationAdd" type="text" class="validate" pattern="[0-9]{0,}" name = "" required="" aria-required="true">
+								<label for="">Duration (Months)</label> 
+						   </div>
+					  </div>
 				</div>
 	<!-- Modal Button Save -->
 				
@@ -148,61 +149,60 @@ Type of Contract
         </div>
 </div>
 <!-- MODAL contracttype EDIT -->
-<div id="modalcontracttypeEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
-	<div class="modal-header"><h2>Type of Contract</h2></div>
+<div id="modalcontracttypeEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:10px !important;  max-height:100% !important; height:500px !important;">
+	<div class="modal-header">
+                <div class="h">
+                    <h3><center>Type of Contract</center></h3>  
+				</div>
+
+    </div>
         	<div class="modal-content">
-<!--				<input type="hidden" name="_token" value="{{ csrf_token() }}">-->
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
 				<div class="row">
-					<div class="col s6">
-				
-							<div class="row">
-                                <div class="col l12">
-                               
-                                    <div class="col s8">
-                                            <div class="input-field">
-                                                <input  id="editID" type="text" class="validate" name = "contractTypeID" readonly required="" aria-required="true" value = " ">
-                                                    <label for="editID">Type of Contract ID</label>
-                                            </div>
-                                    </div>
-                                </div>
-								
-							</div>
-							<div class="row">
-                                
-								<div class="col s12">
-									<div class="input-field">
-										<input id="editname" type="text" class="validate" name = "contractTypeName" required="" aria-required="true" value = " ">
-											<label for="editname">Type of Contract</label> 
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col s12">
-									<div class="input-field">
-										<input id="editdescription" type="text" class="validate"  name = "contractTypeDescription" required="" aria-required="true" value = " ">
-										<label for="editDescription">Description</label> 
-									</div>
-								</div>
+				  
+
+					<div class="col s10 push-s1" style="margin-top:-30px;">    
+							<div class="row"></div>
+							<div class="input-field col s12">
+								<input  id="editID" type="text" class="validate" name = "contractTypeID" readonly required="" aria-required="true" value = " ">
+                                <label for="editID">Type of Contract ID</label> 
 							</div>
 					</div>
-					<div class="col s6">
-							<div class="row">
-								<div class="col s8">
-									<div class="input-field">
-										<input id="editDuration" type="text" class="validate" pattern="[0-9]{0,}" name = "" required="" aria-required="true" value = "test">
-										<label for="">Duration</label> 
-									</div>
-								</div>
+					
+					<div class="col s10 push-s1" style="margin-top:-30px;">    
+							<div class="row"></div>
+							<div class="input-field col s12">
+								<i class="mdi-action-picture-in-picture prefix" style="font-size:35px;"></i>
+								<input id="editname" type="text" class="validate" name = "contractTypeName" required="" aria-required="true" value = " ">
+								<label for="editname">Type of Contract</label> 
 							</div>
 					</div>
+
+					<div class="col s10 push-s1">	
+							<div class="row"></div>
+							<div class="input-field col s12">  
+								<i class="mdi-action-description prefix" style="font-size:35px;"></i>
+								<input id="editdescription" type="text" class="validate"  name = "contractTypeDescription" required="" aria-required="true" value = " ">
+								<label for="editDescription">Description</label> 
+							</div>
+					</div>  
+					
+					<div class="col s10 push-s1">		
+						<div class="row"></div>
+						   <div class="input-field col s12">
+								<i class="mdi-action-schedule prefix" style="font-size:35px;"></i>
+								<input id="editDuration" type="text" class="validate" pattern="[0-9]{0,}" name = "" required="" aria-required="true" value = "test">
+								<label for="">Duration (Months)</label> 
+						   </div>
+					  </div>
 				</div>
 						
 	<!-- Modal Button Save -->
 				
 		
     		</div>
-		<div class="modal-footer">
+		<div class="modal-footer" style="background-color: #00293C;">
 			
 			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
