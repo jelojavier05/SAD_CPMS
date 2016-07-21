@@ -115,6 +115,24 @@ class ClientViewController extends Controller
         return response()->json($client);
     }
     
-    
+    public function getGuardAccepted(Request $request){
+        $clientPendingID = Input::get('notificationID');
+        
+        $countNeedGuard = DB::table('tblclientpendingnotification')
+            ->select('intNumberOfGuard')
+            ->where('intClientPendingID', $clientPendingID)
+            ->first();
+        
+        $countAccepted = DB::table('tblguardpendingnotification')
+            ->where('intClientPendingID', $clientPendingID)
+            ->where('intStatusIdentifier', 3)
+            ->count();
+        
+        $count = new \stdClass();
+        $count->countNeedGuard = $countNeedGuard;
+        $count->countAccepted = $countAccepted;
+        
+        return response()->json($count);
+    }
     
 }

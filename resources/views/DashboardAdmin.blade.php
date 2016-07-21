@@ -10,12 +10,6 @@ Admin
 
 <div class="row"></div>
 <div class="row"></div>
-
-
-
-
-
-
 <!-----------------CLIENTS----------------->
 
 <div class="row">
@@ -24,7 +18,7 @@ Admin
       <div class="col s4 offset-s3" >
       	 <div class="card blue lighten-1">
             <div class="card-content white-text">
-              <span class="card-title" style="font-size:40px; font-weight:bold;">99</span>
+              <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'></span>
               <p style="margin-left:10px;">Clients</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">perm_identity</i>
             </div>
@@ -44,7 +38,7 @@ Admin
             
           <div class="card blue lighten-1">
             <div class="card-content white-text">
-              <span class="card-title" style="font-size:40px; font-weight:bold;">105</span>
+              <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'guardNumber'></span>
               <p style="margin-left:10px;">Guards</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">assignment_ind</i>
             </div>
@@ -64,7 +58,7 @@ Admin
             
           <div class="card blue lighten-1">
             <div class="card-content white-text">
-              <span class="card-title" style="font-size:40px; font-weight:bold;">105</span>
+              <span class="card-title" style="font-size:40px; font-weight:bold;"></span>
               <p style="margin-left:10px;">ACTIVE ACCOUNTS</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">supervisor_account</i>
             </div>
@@ -140,7 +134,57 @@ Admin
      </div>
 </div>
  
-    
-
-
 @stop                           
+    
+@section('script')
+<script type="text/javascript">
+$(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "{{action('DashboardAdminController@getCountClient')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data){
+            $('#clientNumber').text(data);    
+        }
+    });//client count
+    
+    $.ajax({
+        type: "GET",
+        url: "{{action('DashboardAdminController@getCountGuard')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data){
+            $('#guardNumber').text(data);
+        }
+    });//guard count
+    
+    $.ajax({
+        type: "GET",
+        url: "{{action('DashboardAdminController@getCountGuard')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data){
+            $('#guardNumber').text(data);
+        }
+    });//guard count
+    
+    
+});//document.ready 
+</script>
+@stop

@@ -1,6 +1,8 @@
 <?php
 
 Route::get('/dashboardadmin', 'DashboardAdminController@index');
+Route::get('/dashboardadmin/get/clientcount', 'DashboardAdminController@getCountClient');
+Route::get('/dashboardadmin/get/guardcount', 'DashboardAdminController@getCountGuard');
 
 Route::get('/admin/pending', 'AdminPendingController@index');
 
@@ -94,8 +96,8 @@ Route::get('/clientView/get/clientPendingNotification', 'ClientViewController@ge
 Route::get('/clientView/get/clientpending', 'ClientViewController@getClientPending');
 Route::get('/clientView/get/guardaccept', 'ClientViewController@getGuardAccept');
 Route::get('/clientView/get/selectedclientpending', 'ClientViewController@getSelectedClientPending');
+Route::get('/clientView/get/guardcount', 'ClientViewController@getGuardAccepted');
 Route::post('/clientView/send/notification', 'ClientViewController@sendGuardPendingNotification');
-
 
 
 Route::get('/client/registration/basicInfo', 'ClientRegistrationController@index')->name('basicInfoBC');

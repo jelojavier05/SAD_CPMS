@@ -149,7 +149,7 @@ Client
                 <ul class="collection with-header" id="collectionPending">
                     <li class="collection-header" style="opacity:0;">
                     <ul class="tabs" style="overflow:hidden;">
-                        <li class="tab col s3"><a class="active" href="#guardcontainer">Guards</a></li>
+                        <li class="tab col s3"><a class="active" href="#guardcontainer" id = 'guardCount'></a></li>
                         <li class="tab col s3"><a href="#pendingDetails">Details</a></li>
                     </ul>
                     </li>
@@ -173,8 +173,7 @@ Client
                     </div>
                     
                     <div id="guardcontainer" style="visibility:hidden;">
-                        <li class="collection-item" style="font-weight:bold;">Guard Count:<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;1/1</div>
-                        </li>
+                        
                     </div>
                 </ul>
             </div>
@@ -249,6 +248,8 @@ Client
             },async:false
         });//get guard waiting
         
+            
+        
         $('#dataTablePending').on('click', '.buttonNotification', function(){
             clientID = 'clientID' + this.id;
             clientPendingID = this.id;
@@ -272,15 +273,10 @@ Client
                 },
                 success: function(data){
                     var items = [];
-                    console.log(data);
+                    $('#guardcontainer').empty();
                     $.each(data, function(i, item) {
                         $("#guardcontainer").append('<li class="collection-item" style="opacity:100;">' + item.strFirstName + ' ' + item.strLastName + '</li>');
                     });
-                    
-                    //$('#guardcontainer').append(items.join(''));
-                },
-
-                error: function(data){
                 }
             });//get guard waiting
             
@@ -310,12 +306,27 @@ Client
                     $('#areaSize').text(area);
                     $('#population').text(population);
                     
-                },
-
-                error: function(data){
-                    
                 }
             });//get selected client pending
+            
+            $.ajax({
+
+                type: "GET",
+                url: "/clientView/get/guardcount?notificationID=" + this.id,
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                success: function(data){
+                    $('#guardCount').text('Guards - ' + data.countAccepted + '/' + data.countNeedGuard.intNumberOfGuard);
+                },
+                error: function(data){
+                    confirm ('guard pending');
+                }
+            });//get guard count accepted
 
         });
         
@@ -482,12 +493,13 @@ Client
             }
             return val;
         }
+        
     });
 </script>
 
 <script>
-	$(document).ready(function(){
-			$('ul.tabs').tabs();
-		  });
+    $(document).ready(function(){
+        $('ul.tabs').tabs();
+    });
 </script>
 @stop
