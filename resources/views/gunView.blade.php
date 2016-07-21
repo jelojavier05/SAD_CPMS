@@ -111,8 +111,6 @@ Gun
 	$('#detaillist').click(function() {
 			$('#detailcontainer').css({
 				'visibility': 'visible',
-				'overflow': 'scroll',
-				'overflow-x': 'hidden',
 				'height': '400px'
 			});
 		});

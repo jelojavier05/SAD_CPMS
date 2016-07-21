@@ -65,6 +65,22 @@ Client
 										<td><center>8AM</center></td>
 										
 									</tr>
+									
+									<tr>
+										
+										<td><center>2</center></td>
+										<td><center>8AM</center></td>
+										<td><center>4PM</center></td>
+										
+									</tr>
+									
+									<tr>
+										
+										<td><center>3</center></td>
+										<td><center>4PM</center></td>
+										<td><center>12AM</center></td>
+										
+									</tr>
 								</tbody>
 								
 							</table>
@@ -93,7 +109,7 @@ Client
 							<div>
 								<li class="collection-item sidenavhover" style="height:300px;">
 									<div style="font-weight:normal;">
-										<table class="centered" style="font-family:Myriad Pro">
+										<table class="" style="font-family:Myriad Pro">
 											<thead>
 											  <tr>
 												  <th data-field="">Date</th>
@@ -123,26 +139,16 @@ Client
 				<div class="col s6">
 					<ul class="collection with-header" id="collectionActive" style="border:1px solid black;">
 								<li class="collection-header" ><h5 style="font-weight:bold;">Guards</h5></li>
-							<div>
-								<li class="collection-item sidenavhover"  style=" height:300px;">
+							<div class="sidenavhover" style=" height:300px;">
+								<li class="collection-item">
 									<div style="font-weight:normal;">
-										<table class="centered" style="font-family:Myriad Pro">
-											<thead>
-											  <tr>
-												  <th data-field="">Date</th>
-												  <th data-field="">Amount</th>
-											  </tr>
-
-											</thead>
-
-											<tbody>
-											  <tr>
-												<td>12/25/2015</td>
-												<td>10000</td>
-											  </tr>
-												
-											</tbody>
-										</table>
+										&nbsp;&nbsp;&nbsp;Generoso Cupal
+									</div>
+								</li>
+								
+								<li class="collection-item">
+									<div style="font-weight:normal;">
+										&nbsp;&nbsp;&nbsp;Generoso Cupal
 									</div>
 								</li>
 								
@@ -157,19 +163,19 @@ Client
 							<div>
 								<li class="collection-item sidenavhover" style=" height:300px;">
 									<div style="font-weight:normal;">
-										<table class="centered" style="font-family:Myriad Pro">
+										<table class="" style="font-family:Myriad Pro">
 											<thead>
 											  <tr>
-												  <th data-field="">Date</th>
-												  <th data-field="">Amount</th>
+												  <th data-field="">Name</th>
+												  <th data-field="">Serial No.</th>
 											  </tr>
 
 											</thead>
 
 											<tbody>
 											  <tr>
-												<td>12/25/2015</td>
-												<td>10000</td>
+												<td>Arctic Warfare Magnum</td>
+												<td>2013-01234-SJ-0</td>
 											  </tr>
 												
 												
