@@ -42,7 +42,7 @@ Security Homepage
 </div>
 <!-----------------------------------Modal----------------------------------------------------->
 <div id="modalreadMsg" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
-    <div class="modal-header"><h4>Message</h4></div>
+    <div class="modal-header" style="background-color:#01579b !important;"><h4>Message</h4></div>
     
     <div class="modal-content">
         <div class="row">
@@ -70,7 +70,7 @@ Security Homepage
                     </li>
                     <li class="collection-item" style="font-weight:bold;">Shift/s:
                         <div style="font-weight:normal;">
-                            <table class="centered" style="font-family:Myriad Pro" id = 'shiftTable'>
+                            <table class="" style="font-family:Myriad Pro" id = 'shiftTable'>
                                 <thead>
                                 <tr>
                                     <th data-field="st">Shift</th>
@@ -101,15 +101,18 @@ Security Homepage
         </div>
         
         <div id = "accepted" style="display: none;">
-            <p>Accepted bitch</p>
+            <button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted
+            </button>
         </div>
         
         <div id = "rejected" style="display: none;">
-            <p>rejected bitch</p>
+            <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined
+            </button>
         </div>
         
         <div id = "notAvailable" style="display: none;">
-            <p>Not available anymore bitch</p>
+            <button class="btn grey" name="" style="margin-right: 30px; cursor:default;" id = "">Unavailable
+            </button>
         </div>
     </div>
 </div>
