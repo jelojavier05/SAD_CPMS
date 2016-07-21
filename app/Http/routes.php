@@ -7,7 +7,6 @@ Route::get('/admin/pending', 'AdminPendingController@index');
 Route::get('/client/registration/contractInfo', 'ClientContractController@index');
 
 Route::get('/client/tempaccount', 'TempClientAccountController@index');
-
 Route::get('/client/tempaccountdetails', 'TempClientDetailsController@index');
 
 // ----------------------------------------GUARD REGISTRATION---------------------------------------------//
@@ -51,11 +50,18 @@ Route::post('/guard/registration/guardSummary/insert', 'GuardRegistrationSummary
 
 Route::get('/userlogin', 'CPMSUserLoginController@index');
 Route::get('/userlogin/getaccount', 'CPMSUserLoginController@getAccount');
+Route::get('/userlogin/logout', 'CPMSUserLoginController@logoutAccount');
 //LATEST SECURITY GUARD INTERFACE ----------------------------------------------------
 
 Route::get('/securityguard', 'SecurityGuardDashboardController@index');
 Route::get('/securityhomepage', 'SecurityHomepageController@index');
 Route::get('/securityhomepage/get/guard', 'SecurityHomepageController@getGuardInformation');
+Route::get('/securityhomepage/get/getNewClientRequest', 'SecurityHomepageController@getNewClientRequest');
+Route::get('/securityhomepage/get/clientinformation', 'SecurityHomepageController@getClientInformation');
+Route::get('/securityhomepage/get/statusguardpending', 'SecurityHomepageController@getStatusIdentifierGuardPendingRequest');
+Route::post('/securityhomepage/get/guard', 'SecurityHomepageController@readNewClient');
+Route::post('/securityhomepage/accept/guard', 'SecurityHomepageController@acceptNewClient');
+Route::post('/securityhomepage/decline/guard', 'SecurityHomepageController@declineNewClient');
 Route::get('/securityleaverequest', 'SecurityLeaveRequestController@index');
 Route::get('/securitychangelocation', 'SecurityChangeLocationController@index');
 
@@ -78,6 +84,7 @@ Route::get('/getInformation', 'GuardViewController@getInformationGuard');
 
 
 Route::get('/clientView', 'ClientViewController@index');
+Route::get('/clientView/get/clientpending', 'ClientViewController@getClientPending');
 Route::get('/clientView/get/guardwaiting', 'ClientViewController@getGuardWaiting');
 Route::get('/clientView/get/clientPendingNotification', 'ClientViewController@getPendingNotification');
 Route::post('/clientView/send/notification', 'ClientViewController@sendGuardPendingNotification');

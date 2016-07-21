@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddAccountIdFkColumn' => $baseDir . '/database/migrations/2016_07_10_230402_add_account_id_fk_column.php',
+    'Carbon\\CreateGuardpendingnotificationTable' => $baseDir . '/database/migrations/2016_07_18_043121_create_guardpendingnotification_table.php',
     'CreateAccountTable' => $baseDir . '/database/migrations/2016_07_10_225221_create_account_table.php',
     'CreateArmedServiceTable' => $baseDir . '/database/migrations/2016_02_28_080305_create_armed_service_table.php',
     'CreateBodyAttribute' => $baseDir . '/database/migrations/2016_07_06_170814_create_body_attribute.php',
@@ -24,7 +25,7 @@ return array(
     'CreateGuardaddressTable' => $baseDir . '/database/migrations/2016_07_10_211240_create_guardaddress_table.php',
     'CreateGuardeducationTable' => $baseDir . '/database/migrations/2016_07_11_063506_create_guardeducation_table.php',
     'CreateGuardlicenseTable' => $baseDir . '/database/migrations/2016_07_08_092013_create_guardlicense_table.php',
-    'CreateGuardpendingnotificationTable' => $baseDir . '/database/migrations/2016_07_18_043119_create_guardpendingnotification_table.php',
+    'CreateGuardpendingnotificationTable' => $baseDir . '/database/migrations/2016_07_20_042342_create_guardpendingnotification_table.php',
     'CreateGunLicenseNumberTable' => $baseDir . '/database/migrations/2016_03_11_182629_create_gun_license_number_table.php',
     'CreateGunTable' => $baseDir . '/database/migrations/2016_03_11_181358_create_gun_table.php',
     'CreateGunlicenseTable' => $baseDir . '/database/migrations/2016_07_16_044935_create_gunlicense_table.php',

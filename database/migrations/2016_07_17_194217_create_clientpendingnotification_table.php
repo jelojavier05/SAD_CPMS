@@ -16,7 +16,7 @@ class CreateClientpendingnotificationTable extends Migration
             $table->increments('intClientPendingID');
             $table->integer('intClientID')->unsigned();
             
-            $table->date('dateCreated');
+            $table->timestamp('dateSend')->useCurrent = true;
             $table->integer('intNumberOfGuard');
             $table->integer('intStatusIdentifier')->default(1);
             
