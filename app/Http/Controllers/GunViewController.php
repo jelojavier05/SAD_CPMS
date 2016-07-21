@@ -9,11 +9,11 @@ use App\Http\Controllers\Controller;
 use Validator;
 
 
-class AdminHomeController extends Controller
+class GunViewController extends Controller
 {
     
     public function index(){
-        return view('/clientAdmin/clientGunTagging');
+        return view('/gunView');
  
     }
 }
