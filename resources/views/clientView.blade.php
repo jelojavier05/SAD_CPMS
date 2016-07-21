@@ -272,6 +272,7 @@ Client
                 success: function(data){
                     var items = [];
                     console.log(data);
+                    $('#guardcontainer').empty();
                     $.each(data, function(i, item) {
                         $("#guardcontainer").append('<li class="collection-item" style="opacity:100;">' + item.strFirstName + ' ' + item.strLastName + '</li>');
                     });
