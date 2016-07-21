@@ -115,7 +115,7 @@
                                     if (accountType == 0){
                                         window.location.href = '{{ URL::to("/client/tempaccount") }}';
                                     }else if (accountType == 1){
-                                        window.location.href = '{{ URL::to("/clienthomepage") }}';
+                                        
                                     }else if (accountType == 2){
                                         window.location.href = '{{ URL::to("/securityhomepage") }}';
                                     }else if (accountType == 3){

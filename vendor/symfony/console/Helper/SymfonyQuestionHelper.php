@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\Console\Helper;
 
-use Symfony\Component\Console\Exception\LogicException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
@@ -39,7 +38,7 @@ class SymfonyQuestionHelper extends QuestionHelper
 
             // make required
             if (!is_array($value) && !is_bool($value) && 0 === strlen($value)) {
-                throw new LogicException('A value is required.');
+                throw new \Exception('A value is required.');
             }
 
             return $value;
@@ -64,18 +63,6 @@ class SymfonyQuestionHelper extends QuestionHelper
 
             case $question instanceof ConfirmationQuestion:
                 $text = sprintf(' <info>%s (yes/no)</info> [<comment>%s</comment>]:', $text, $default ? 'yes' : 'no');
-
-                break;
-
-            case $question instanceof ChoiceQuestion && $question->isMultiSelect():
-                $choices = $question->getChoices();
-                $default = explode(',', $default);
-
-                foreach ($default as $key => $value) {
-                    $default[$key] = $choices[trim($value)];
-                }
-
-                $text = sprintf(' <info>%s</info> [<comment>%s</comment>]:', $text, implode(', ', $default));
 
                 break;
 

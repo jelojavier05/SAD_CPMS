@@ -17,13 +17,18 @@ class DashboardAdminController extends Controller
     public function index(Request $request)
     {
         $accountType = $request->session()->get('accountType');
-        return view('/DashboardAdmin');
-//        if ($accountType == 3){
-//             return view('/DashboardAdmin');
+
+        if ($accountType == 3){
+             return view('/DashboardAdmin');
+        }else{
+            return redirect('/userlogin');
+        }
+        
+//        if ($request->session()->has('id')){
+//        
 //        }else{
 //            return redirect('/userlogin');
 //        }
-
        
     }
 

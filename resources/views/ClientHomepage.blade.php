@@ -118,12 +118,21 @@ Client Homepage
     
     
     </div>
+
+
+
+
 </div>
 
+
+
+
+
+
 <script>
-$(document).ready(function(){
-    $('.slider').slider({full_width: true});
-});
+    $(document).ready(function(){
+      $('.slider').slider({full_width: true});
+    });
 </script>
 
 @stop
