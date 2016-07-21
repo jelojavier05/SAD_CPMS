@@ -87,14 +87,106 @@ Client
 		
 		<div class="col s6">
 			<div class="row">
-				<div class="col s12">
-					<div class="container-fluid grey lighten-4 z-depth-2" style="border: 1px solid black; border-radius:5px;" id="">
-						<h4 class = "blue white-text" style="margin-top:0px;">Billing Dates</h4>
+				<div class="col s8 push-s2">
+					<ul class="collection with-header" id="collectionActive" style="border:1px solid black;">
+								<li class="collection-header" ><h5 style="font-weight:bold;">Billing Dates</h5></li>
+							<div>
+								<li class="collection-item sidenavhover" style="height:300px;">
+									<div style="font-weight:normal;">
+										<table class="centered" style="font-family:Myriad Pro">
+											<thead>
+											  <tr>
+												  <th data-field="">Date</th>
+												  <th data-field="">Amount</th>
+											  </tr>
 
+											</thead>
 
-					</div>
+											<tbody>
+											  <tr>
+												<td>12/25/2015</td>
+												<td>10000</td>
+											  </tr>
+												
+												
+
+											</tbody>
+										</table>
+									</div>
+								</li>
+								
+							</div>
+
+					</ul>
+				</div>
+				
+				<div class="col s6">
+					<ul class="collection with-header" id="collectionActive" style="border:1px solid black;">
+								<li class="collection-header" ><h5 style="font-weight:bold;">Guards</h5></li>
+							<div>
+								<li class="collection-item sidenavhover"  style=" height:300px;">
+									<div style="font-weight:normal;">
+										<table class="centered" style="font-family:Myriad Pro">
+											<thead>
+											  <tr>
+												  <th data-field="">Date</th>
+												  <th data-field="">Amount</th>
+											  </tr>
+
+											</thead>
+
+											<tbody>
+											  <tr>
+												<td>12/25/2015</td>
+												<td>10000</td>
+											  </tr>
+												
+											</tbody>
+										</table>
+									</div>
+								</li>
+								
+							</div>
+
+					</ul>
+				</div>
+				
+				<div class="col s6">
+					<ul class="collection with-header" id="collectionActive" style="border:1px solid black;">
+								<li class="collection-header" ><h5 style="font-weight:bold;">Guns</h5></li>
+							<div>
+								<li class="collection-item sidenavhover" style=" height:300px;">
+									<div style="font-weight:normal;">
+										<table class="centered" style="font-family:Myriad Pro">
+											<thead>
+											  <tr>
+												  <th data-field="">Date</th>
+												  <th data-field="">Amount</th>
+											  </tr>
+
+											</thead>
+
+											<tbody>
+											  <tr>
+												<td>12/25/2015</td>
+												<td>10000</td>
+											  </tr>
+												
+												
+
+											</tbody>
+										</table>
+									</div>
+								</li>
+								
+							</div>
+
+					</ul>
 				</div>
 			</div>
+			
+			
+			
 		</div>
 		
 		
@@ -111,13 +203,7 @@ Client
         $('select').material_select();
         
         
-        $('#nextclientContract').click(function(){
-             window.location.href = '{{ URL::to("/client/registration/guardDeployment") }}';
-        });
-		
-		$('#backclientContract').click(function(){
-             window.location.href = '{{ URL::to("/client/registration/basicInfo") }}';
-        });
+        
         
     });
         

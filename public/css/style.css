@@ -123,6 +123,7 @@ div.scroll {
 .sidenavhover:hover
 {
 	overflow:scroll;
+	overflow-x:hidden;
 }
 
 
