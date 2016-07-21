@@ -98,49 +98,107 @@ Nature of Business
 
 <!-- Modal nob ADD -->
 
-<div id="modalnobAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
-        <div class="modal-header"><h2>Nature of Business</h2></div>
+<div id="modalnobAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:7.5% !important">
+        <div class="row">
+        
+            <div class="modal-header">
+                <div class="col l12 h">
+                    <div class="row"></div>
+                    <h2><center>Nature of Business</center></h2>  
+                </div>
+
+            </div>
+         
+        </div>
+        <div class="row">
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 					<div class="row">
-						<div class="col s8">
-							<div class="input-field">
-								<input  id="" type="text" class="validate" name = "natureOfBusinessID" disabled>
-									<label for="">Nature of Business ID</label>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col s5">
-							<div class="input-field">
-								<input id="strNatureOfBusiness" type="text" class="validate" name = "natureOfBusiness" required="" aria-required="true">
-									<label for="">Nature of Business</label> 
-							</div>
-						</div>
-					</div>
-				
-					<div class = "row">
-						<div class="input-field col s5">
-							<input  id="deciRate" maxlength="6" type="text" class="validate" pattern="[0-9.]{3,}" required="" aria-required="true">
-							<label data-error="Incorrect" for="deciRate">Rate</label>
+                        <div class="col s12">
+                                  <div class="col s2 offset-s1">
+                                      <i class="mdi-action-account-balance" style="font-size:5rem"></i>
 
-						</div>
+                                  </div>
+						          <div class="col s7">
+                                        <div class="row"></div>
+                                        <div class="row"></div>   
+                                            <div class="input-field">
+
+                                                <input  id="" type="text" class="validate" name = "natureOfBusinessID" disabled>
+                                                    <label for="">Nature of Business ID</label>
+                                            </div>
+						          </div>
+                        </div>
 					</div>
-						
-	<!-- Modal Button Save -->
+                    <div class="row">
+					
+                        <div class="col s12">
+                                    <div class="col s2 offset-s1">
+                                      <i class="mdi-communication-business" style="font-size:5rem"></i>
+
+                                    </div>
+                                    <div class="col s7">
+                                            <div class="row"></div>
+                                            <div class="row"></div>   
+                                                <div class="input-field">
+
+                                                        <input id="strNatureOfBusiness" type="text" class="validate" name = "natureOfBusiness" required="" aria-required="true">
+                                                            <label for="">Nature of Business</label> 
+                                                </div>
+                                    </div>
+					   </div>
+                       </div>   
 				
-		
-    		</div>
-		<div class="modal-footer" style="background-color:#01579b !important;">
-			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
-    			<i class="material-icons right">send</i>
-  			</button>
-    	</div>
-		</div>
+                        <div class = "row">
+                            <div class="col s12">
+                                  <div class="col s2 offset-s1">
+                                      <i class="mdi-action-trending-up" style="font-size:5rem"></i>
+
+                                    </div>
+                                  <div class="col s7">      
+                                            <div class="row"></div>
+                                            <div class="row"></div>  
+                                        <div class="input-field col s7">
+                                            <input  id="deciRate" maxlength="6" type="text" class="validate" pattern="[0-9.]{3,}" required="" aria-required="true">
+                                            <label data-error="Incorrect" for="deciRate">Rate</label>
+
+                                        </div>
+                                  </div>
+                            </div>
+                        </div>
+	
+    		 
+                					
+	<!-- Modal Button Save -->
+ 
+        </div>
+    </div>
+      
+  
+    <div class="modal-footer" style="background-color: #00293C;">
+            
+                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;font-size:1.5rem" id = "btnAddSave">Save
+                       <i class="material-icons right">send</i>
+                     </button>
+    </div>
+</div>
+    
 <!-- MODAL nob EDIT -->
 <div id="modalnobEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
-	<div class="modal-header"><h2>Nature of Business</h2></div>
+	<div class="modal-header">
+        <div class="row">
+					<div class="col l12 offset-l3">
+						
+						 <legend> <h2>Nature of Business</h2></legend>
+				
+					</div>
+			</div>
+       
+    
+    
+    </div>
+    
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
@@ -174,7 +232,7 @@ Nature of Business
 				
 		
     		</div>
-		<div class="modal-footer" style="background-color:#01579b !important;">
+		<div class="modal-footer" style="color:#00293C">
 			
 			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>

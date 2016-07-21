@@ -97,60 +97,99 @@ Type of Contract
 
 <!-- Modal contracttype ADD -->
 
-<div id="modalcontracttypeAdd" class="modal modal-fixed-footer" style="overflow:hidden;">
-        <div class="modal-header"><h2>Type of Contract</h2></div>
+<div id="modalcontracttypeAdd" class="modal modal-fixed-footer ci" style="overflow:hidden;width:50% !important;margin-top:7.5% !important">
+    
+        <div class="row">
+        
+            <div class="modal-header">
+                <div class="col l12 h">
+                    <div class="row"></div>
+                    <h2><center>Type of Contract</center></h2>  
+                </div>
+
+            </div>
+         
+        </div>
         	<div class="modal-content">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="row">
-					<div class="col s6">
+					<div class="col s12">
 				
 							<div class="row">
-								<div class="col s10">
-									<div class="input-field">
-										<input  id="intContractTypeID" type="text" class="validate" name = "contractTypeID" disabled>
-											<label for="intContractTypeID">Type of Contract ID</label>
-									</div>
-								</div>
+                                <div class="col s12">
+                                         <div class="col s2">
+                                                <i class="mdi-action-assignment" style="font-size:5rem"></i>
+
+                                        </div>
+                                         <div class="col s4">
+                                                <div class="row"></div>
+                                                <div class="row"></div>
+                                                    <div class="input-field">
+                                                            <input  id="intContractTypeID" type="text" class="validate" name = "contractTypeID" disabled>
+                                                            <label for="intContractTypeID">Type of Contract ID</label>
+                                                    </div>
+                                         </div>
+                                        <div class="col s1">
+                                                <i class="mdi-action-schedule" style="font-size:5rem"></i>
+
+                                        </div>
+                                        <div class="col s4 offset-s1">
+                                                <div class="row"></div>
+                                                <div class="row"></div>
+                                                    <div class="input-field">
+                                                        <input id="intDurationAdd" type="text" class="validate" pattern="[0-9]{0,}" name = "" required="" aria-required="true">
+                                                        <label for="">Duration</label> 
+                                                    </div>
+                                        </div>
+                                      
+                                </div>
 							</div>
 							<div class="row">
 								<div class="col s12">
-									<div class="input-field">
-										<input id="strContractTypeAdd" type="text" class="validate" name = "contractTypeName" required="" aria-required="true">
-											<label for="strContractTypeAdd">Type of Contract</label> 
-									</div>
+                                         <div class="col s2">
+                                                <i class="mdi-action-picture-in-picture" style="font-size:5rem"></i>
+
+                                        </div>
+                                        <div class="col s7">
+                                                <div class="row"></div>
+                                                <div class="row"></div>
+                                                <div class="input-field">
+                                                    <input id="strContractTypeAdd" type="text" class="validate" name = "contractTypeName" required="" aria-required="true">
+                                                        <label for="strContractTypeAdd">Type of Contract</label> 
+                                                </div>
+                                        </div>
 								</div>
-							</div>
+                        </div>
 							<div class="row">
 								<div class="col s12">
-									<div class="input-field">
-										<input id="strContractTypeDescAdd" type="text" class="validate"  name = "contractTypeDescription" required="" aria-required="true">
-										<label for="strContractTypeDescAdd">Description</label> 
-									</div>
+                                        <div class="col s2">
+                                                <i class="mdi-action-description" style="font-size:5rem"></i>
+
+                                        </div>
+                                        <div class="col s7">
+                                                        <div class="row"></div>
+                                                        <div class="row"></div>
+                                               <div class="input-field">            
+                                                        <input id="strContractTypeDescAdd" type="text" class="validate"  name = "contractTypeDescription" required="" aria-required="true"/>
+                                                        <label for="strContractTypeDescAdd">Description</label> 
+                                               </div>
+                                        </div>
 								</div>
 							</div>
-					</div>
-					<div class="col s6">
-							<div class="row">
-								<div class="col s8">
-									<div class="input-field">
-										<input id="intDurationAdd" type="text" class="validate" pattern="[0-9]{0,}" name = "" required="" aria-required="true">
-										<label for="">Duration</label> 
-									</div>
-								</div>
-							</div>
-					</div>
+                    </div>
 				</div>
 						
 	<!-- Modal Button Save -->
 				
 		
     		</div>
-		<div class="modal-footer" style="background-color:#01579b !important;">
-			<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
-    			<i class="material-icons right">send</i>
-  			</button>
-    	</div>
-		</div>
+		 <div class="modal-footer" style="background-color: #00293C;">
+            
+                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;font-size:1.5rem" id = "btnAddSave">Save
+                       <i class="material-icons right">send</i>
+                     </button>
+        </div>
+</div>
 <!-- MODAL contracttype EDIT -->
 <div id="modalcontracttypeEdit" class="modal modal-fixed-footer" style="overflow:hidden;">
 	<div class="modal-header"><h2>Type of Contract</h2></div>
@@ -161,14 +200,19 @@ Type of Contract
 					<div class="col s6">
 				
 							<div class="row">
-								<div class="col s8">
-									<div class="input-field">
-										<input  id="editID" type="text" class="validate" name = "contractTypeID" readonly required="" aria-required="true" value = " ">
-											<label for="editID">Type of Contract ID</label>
-									</div>
-								</div>
+                                <div class="col l12">
+                               
+                                    <div class="col s8">
+                                            <div class="input-field">
+                                                <input  id="editID" type="text" class="validate" name = "contractTypeID" readonly required="" aria-required="true" value = " ">
+                                                    <label for="editID">Type of Contract ID</label>
+                                            </div>
+                                    </div>
+                                </div>
+								
 							</div>
 							<div class="row">
+                                
 								<div class="col s12">
 									<div class="input-field">
 										<input id="editname" type="text" class="validate" name = "contractTypeName" required="" aria-required="true" value = " ">
@@ -201,7 +245,7 @@ Type of Contract
 				
 		
     		</div>
-		<div class="modal-footer" style="background-color:#01579b !important;">
+		<div class="modal-footer">
 			
 			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
