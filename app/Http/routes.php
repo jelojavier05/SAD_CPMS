@@ -1,5 +1,7 @@
 <?php
 
+Route::get('/gunView', 'GunViewController@index');
+
 Route::get('/dashboardadmin', 'DashboardAdminController@index');
 
 Route::get('/client/gunTagging', 'GunTaggingController@index');
@@ -7,6 +9,8 @@ Route::get('/client/gunTagging', 'GunTaggingController@index');
 Route::get('/admin/pending', 'AdminPendingController@index');
 
 Route::get('/client/registration/contractInfo', 'ClientContractController@index');
+
+
 
 Route::get('/client/tempaccount', 'TempClientAccountController@index');
 Route::get('/client/tempaccount/get/guards', 'TempClientAccountController@getGuards');

@@ -61,8 +61,26 @@ Admin
 <!-----------------ACTIVE ACCOUNTS----------------->
 <div class="row">    
      <div class="col l4 offset-l3">
-            
-          <div class="card blue lighten-1">
+           <div class="card blue lighten-1">
+            <div class="card-content white-text">
+              <span class="card-title" style="font-size:40px; font-weight:bold;">105</span>
+              <p style="margin-left:10px;">Guns</p>
+			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">list</i>
+            </div>
+            <div class="card-action blue darken-1">
+              <center>
+                  <a href="#" class="white-text">See All</a>
+                  <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
+              </center>
+            </div>
+          </div> 
+          
+        </div>
+          
+<!-----------------EQUIPMENT AND SUPPLIES----------------->
+          
+<div class="col l4">
+            <div class="card blue lighten-1">
             <div class="card-content white-text">
               <span class="card-title" style="font-size:40px; font-weight:bold;">105</span>
               <p style="margin-left:10px;">ACTIVE ACCOUNTS</p>
@@ -73,25 +91,7 @@ Admin
               
             </div>
           </div>
-        </div>
           
-<!-----------------EQUIPMENT AND SUPPLIES----------------->
-          
-<div class="col l4">
-            
-          <div class="card blue lighten-1">
-            <div class="card-content white-text">
-              <span class="card-title" style="font-size:40px; font-weight:bold;">105</span>
-              <p style="margin-left:10px;">EQUIPMENT AND SUPPLIES</p>
-			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">list</i>
-            </div>
-            <div class="card-action blue darken-1">
-              <center>
-                  <a href="#" class="white-text">See All</a>
-                  <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
-              </center>
-            </div>
-          </div>
         </div>
       </div>
       

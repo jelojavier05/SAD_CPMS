@@ -179,7 +179,7 @@
 					
 							
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="/gun/tagging"><i class="material-icons">content_paste</i><strong>Gun Tagging</strong></a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="#!"><i class="material-icons">content_paste</i><strong>Gun Tagging</strong></a>
                             <div class="collapsible-body grey lighten-2">
                                 
                             </div>
