@@ -173,7 +173,8 @@ Client
                     </div>
                     
                     <div id="guardcontainer" style="visibility:hidden;">
-                        
+                        <li class="collection-item" style="font-weight:bold;">Guard Count:<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;1/1</div>
+                        </li>
                     </div>
                 </ul>
             </div>

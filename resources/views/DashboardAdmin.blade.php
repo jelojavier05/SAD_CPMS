@@ -7,26 +7,11 @@ Admin
 @section('content')
 
 
-<!--
+
 <div class="row"></div>
 <div class="row"></div>
-<div class="row"></div>
--->
-
-<div class= "row">
-	<div class=" col s4 push-s4" style="margin-top: 100px;">
-		<a class="btn-large blue animated infinite tada" href="/guardView">Guard List</a>
-	</div>
 
 
-	<div class=" col s4 push-s2" style="margin-top: 100px;">
-		<a class="btn-large orange animated infinite tada" href="/clientView">Client List</a>
-	</div>
-	
-	<div class=" col s4" style="margin-top: 100px;">
-		<a class="btn-large red animated infinite tada" href="/admin/pending">Pending</a>
-	</div>
-</div>
 
 
 
@@ -45,7 +30,7 @@ Admin
             </div>
             <div class="card-action blue darken-1">
               <center>
-                  <a href="#" class="white-text">See All</a>
+                  <a href="/clientView" class="white-text">See All</a>
                   <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
               </center>
             </div>
@@ -65,7 +50,7 @@ Admin
             </div>
             <div class="card-action blue darken-1">
               <center>
-                  <a href="#" class="white-text">See All</a>
+                  <a href="/guardView" class="white-text">See All</a>
                   <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
               </center>
             </div>
