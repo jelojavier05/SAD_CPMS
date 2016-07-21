@@ -2,6 +2,8 @@
 
 Route::get('/dashboardadmin', 'DashboardAdminController@index');
 
+Route::get('/client/gunTagging', 'GunTaggingController@index');
+
 Route::get('/admin/pending', 'AdminPendingController@index');
 
 Route::get('/client/registration/contractInfo', 'ClientContractController@index');

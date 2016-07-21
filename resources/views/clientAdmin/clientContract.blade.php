@@ -6,19 +6,7 @@ Client
 
 @section('content')
 
-<div class="row">
-	<div class="col s10 push-s2" style="margin-left:10px;">
-		<nav>
-			<div class="nav-wrapper blue">
-				<div class="row">	
-					<div class="col s12">
-						<a href="" class="breadcrumb">Contract Information</a>
-					</div>
-				</div>
-			</div>
-		</nav>
-	</div>
-</div>
+
 
 <div class="row">
 	<div class="col s6 push-s4" style=" margin-left:10px; margin-top: 1%;">
