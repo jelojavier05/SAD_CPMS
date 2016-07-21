@@ -148,7 +148,7 @@ Client
 								
 								<li class="collection-item">
 									<div style="font-weight:normal;">
-										&nbsp;&nbsp;&nbsp;Generoso Cupal
+										&nbsp;&nbsp;&nbsp;Juan Dela Tomas
 									</div>
 								</li>
 								
