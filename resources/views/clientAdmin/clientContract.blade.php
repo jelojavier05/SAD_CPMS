@@ -105,7 +105,7 @@ Client
 			<div class="row">
 				<div class="col s8 push-s2">
 					<ul class="collection with-header" id="collectionActive" style="border:1px solid black;">
-								<li class="collection-header" ><h5 style="font-weight:bold;">Billing Dates</h5></li>
+								<li class="collection-header blue white-text" ><h5 style="font-weight:bold;">Billing Dates</h5></li>
 							<div>
 								<li class="collection-item sidenavhover" style="height:300px;">
 									<div style="font-weight:normal;">
@@ -138,7 +138,7 @@ Client
 				
 				<div class="col s6">
 					<ul class="collection with-header" id="collectionActive" style="border:1px solid black;">
-								<li class="collection-header" ><h5 style="font-weight:bold;">Guards</h5></li>
+								<li class="collection-header blue white-text" ><h5 style="font-weight:bold;">Guards</h5></li>
 							<div class="sidenavhover" style=" height:300px;">
 								<li class="collection-item">
 									<div style="font-weight:normal;">
@@ -159,7 +159,7 @@ Client
 				
 				<div class="col s6">
 					<ul class="collection with-header" id="collectionActive" style="border:1px solid black;">
-								<li class="collection-header" ><h5 style="font-weight:bold;">Guns</h5></li>
+								<li class="collection-header blue white-text" ><h5 style="font-weight:bold;">Guns</h5></li>
 							<div>
 								<li class="collection-item sidenavhover" style=" height:300px;">
 									<div style="font-weight:normal;">
