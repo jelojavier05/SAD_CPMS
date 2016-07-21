@@ -7,7 +7,7 @@ Security Homepage
 @section('content')
   <!--MESSAGE-->
 <div class="row">
-    <div class="col l12">
+    <div class="col l12 ci">
         <div class="col l6" >
             <div class="card large z-depth-2 " style="overflow:scroll; overflow-x:hidden;">
                 <div class="row">
@@ -41,7 +41,7 @@ Security Homepage
     </div>
 </div>
 <!-----------------------------------Modal----------------------------------------------------->
-<div id="modalreadMsg" class="modal modal-fixed-footer" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
+<div id="modalreadMsg" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
     <div class="modal-header"><h4>Message</h4></div>
     
     <div class="modal-content">
@@ -91,7 +91,7 @@ Security Homepage
         </div>
     </div>
     
-    <div class="modal-footer" style="background-color:#01579b !important;">
+    <div class="modal-footer ci" style="background-color:#01579b !important;">
         <div id = "buttons" style="display: none;">	
             <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnAccept">Accept
             </button>

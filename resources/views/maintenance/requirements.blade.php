@@ -105,7 +105,7 @@ Requirements
 
 <!-- Modal requirements ADD -->
 
-<div id="modalrequirementsAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:90px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
+<div id="modalrequirementsAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:90px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
         
        	<div class="modal-header">
                 <div class="h">
@@ -124,7 +124,7 @@ Requirements
                                             
                                         <div class="row"></div>  
                                         <div class="input-field col s12">
-                            				<i class="mdi-social-domain prefix" style="font-size:35px;"></i>
+                            				<i class="mdi-editor-format-list-numbered prefix" style="font-size:35px;"></i>
                             				<input id="addRequirementName" type="text" class="validate" name = "requirements" required="" aria-required="true">
 										<label for="">Requirements Name</label> 
 
@@ -135,7 +135,7 @@ Requirements
                                             
 									  	<div class="row"></div>
                                         <div class="input-field col s12">
-											<i class="mdi-social-domain prefix" style="font-size:35px;"></i>
+											<i class="mdi-editor-format-align-left prefix" style="font-size:35px;"></i>
                             				<input id="addDescription" type="text" class="validate"  name = "requirementsDescription" required="" aria-required="true">
                                             <label for="">Description</label>
 
@@ -172,7 +172,7 @@ Requirements
         </div>
 </div>
 <!-- MODAL requirements EDIT -->
-<div id="modalrequirementsEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:90px !important;  max-height:100% !important; height:450px !important; border-radius:10px;">
+<div id="modalrequirementsEdit" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:90px !important;  max-height:100% !important; height:450px !important; border-radius:10px;">
         
        	<div class="modal-header">
                 <div class="h">
@@ -253,7 +253,7 @@ Requirements
     	</div>
 </div>
 <!----------------------------modal delete requirements ------------------------------>
-<div id="modalrequirementsDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">
+<div id="modalrequirementsDelete" class="modal bottom-sheet ci" style="height: 250px !important; overflow:hidden;">
             <div class="modal-header blue"><h2 class="white-text">Delete</h2></div>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="modal-content">

@@ -42,7 +42,7 @@
 
     
     
-<body id="scrollhider" class="bodyscrollhider grey lighten-3">
+<body id="scrollhider" class="bodyscrollhider grey lighten-3 ci">
    
     <nav class="blue darken-4">
         

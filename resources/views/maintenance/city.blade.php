@@ -86,7 +86,7 @@ City
     </div>
 </div>
 
-<div id="modalcityAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important; border-radius:10px;">
+<div id="modalcityAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important; border-radius:10px;">
         
        	<div class="modal-header">
                 <div class="h">
@@ -139,7 +139,7 @@ City
         </div>
 </div>
 
-<div id="modalcityEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:360px !important; border-radius:10px;">
+<div id="modalcityEdit" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:360px !important; border-radius:10px;">
         
        	<div class="modal-header">
                 <div class="h">

@@ -88,7 +88,7 @@ Province
     </div>
 </div>
 
-<div id="modalprovinceAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:250px !important; border-radius:10px;">
+<div id="modalprovinceAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:250px !important; border-radius:10px;">
     
     
    <div class="modal-header">
@@ -108,7 +108,7 @@ Province
                                             
                                         <div class="row"></div>  
                                         <div class="input-field col s12">
-											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+											<i class="mdi-social-domain prefix" style="font-size:35px;"></i>
                             				<input id="addProvinceName" type="text" class="validate" required="" aria-required="true">
                                     		<label for="">Province</label> 
 
@@ -135,7 +135,7 @@ Province
 
 <!--edit province-->
 
-<div id="modalprovinceEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important; border-radius:10px;">
+<div id="modalprovinceEdit" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important; border-radius:10px;">
     <div class="modal-header">
                 <div class="h">
                     <h3><center>Province</center></h3>  

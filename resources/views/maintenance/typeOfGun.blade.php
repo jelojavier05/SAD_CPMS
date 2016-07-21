@@ -98,7 +98,7 @@ Type of Gun
 
 <!-- Modal guntype ADD -->
 
-<div id="modaltypeofgunAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">
+<div id="modaltypeofgunAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">
         
         
             <div class="modal-header">
@@ -119,7 +119,7 @@ Type of Gun
                                             
                                         <div class="row"></div>  
                                         <div class="input-field col s12">
-											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+											<i class="mdi-action-settings-input-svideo prefix" style="font-size:35px;"></i>
                             				<input id="strTypeOfGun" type="text" class="validate" name = "typeOfGun" required="" aria-required="true">
                                         	<label for="">Type of Gun</label> 
 
@@ -131,7 +131,7 @@ Type of Gun
                                         <div class="row"></div>
 									  	<div class="row"></div>
                                         <div class="input-field col s12">
-											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+											<i class="mdi-action-toc prefix" style="font-size:35px;"></i>
                             				<input id="strTypeOfGunDescription" type="text" class="validate"  name = "typeOfGunDescription" required="" aria-required="true">
                                             <label for="strTypeOfGunDescription">Description</label> 
 
@@ -150,7 +150,7 @@ Type of Gun
         </div>
 </div>
 <!-- MODAL guntype EDIT -->
-<div id="modalguntypeEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
+<div id="modalguntypeEdit" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
         
         
             <div class="modal-header">
