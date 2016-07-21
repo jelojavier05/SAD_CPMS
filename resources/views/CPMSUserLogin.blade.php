@@ -119,7 +119,7 @@
                                     }else if (accountType == 2){
                                         window.location.href = '{{ URL::to("/securityhomepage") }}';
                                     }else if (accountType == 3){
-                                        
+                                        window.location.href = '{{ URL::to("/dashboardadmin") }}';
                                     }
                                 }else{
                                     var toastContent = $('<span>Login failed.</span>');

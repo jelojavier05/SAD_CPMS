@@ -346,7 +346,7 @@
 								<li><a  data-position="bottom" data-delay="50" data-tooltip="RESOURCES EXPIRATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-action-history" style="font-size:2.1rem;color:white"></i></a></li>
 								
                                  <li><a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">store</i></a></li>
-                                <li><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT"href="#" class=" tooltipped"><i class="material-icons">input</i></a></li>
+                                <li><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>
 							</ul>
         
 		
@@ -406,11 +406,33 @@
     }
 	</script>
 	
-	<script>
-		 $(document).ready(function() {
-        $('select').material_select();
-		 });
-	</script>
+<script>
+$(document).ready(function() {
+    $('select').material_select();
+    $('#btnLogout').click(function(){
+        $.ajax({
+            type: "GET",
+            url: "{{action('CPMSUserLoginController@logoutAccount')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+                if (token) {
+                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                if (!data){
+                    window.location.href = '{{ URL::to("/userlogin") }}';
+                }
+            },
+            error: function(data){
+                var toastContent = $('<span>Error Occured. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');   
+            }
+        });//ajax 
+    });
+});
+</script>
+
 	
 	
     

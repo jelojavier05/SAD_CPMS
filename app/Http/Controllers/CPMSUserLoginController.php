@@ -11,8 +11,24 @@ use DB;
 
 class CPMSUserLoginController extends Controller
 {
-    public function index(){
-        return view('/CPMSUserLogin');
+    public function index(Request $request){
+        
+        if ($request->session()->has('accountType')){
+            $accountType = $request->session()->has('accountType');
+            if ($accountType == 0){
+                return redirect('/client/tempaccount');
+            }else if ($accountType == 1){
+                return redirect('/client/tempaccount');
+            }else if ($accountType == 2){
+                return redirect('/securityhomepage');
+            }else if ($accountType == 3){
+                return redirect('/dashboardadmin');
+            }
+        }else{
+            return view('/CPMSUserLogin');    
+        }
+        
+        
     }
 
     public function getAccount(Request $request){
@@ -47,7 +63,10 @@ class CPMSUserLoginController extends Controller
                     ->first();
                 
                 $request->session()->put('id', $guardID->intGuardID);
+            }else if ($account->intAccountType == 3){//admin account
+                
             }
+            
             $request->session()->put('accountType', $account->intAccountType);
             return response()->json($account);
         }
