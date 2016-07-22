@@ -66,6 +66,76 @@ Gun
     
 </div>
 
+
+<!-----------------------------------Modal----------------------------------------------------->
+
+<div id="modaleditGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:500px; margin-top:30px; border-radius:10px;">
+         <div class="modal-header">
+                <div class="h">
+                    <h3><center>Gun</center></h3>  
+				</div>
+
+            </div>
+        	<div class="modal-content">
+				
+				<div class="row">
+					<div class="col s12">
+						
+						<div class="input-field col s6 ci">
+							<select>
+								<option>Test1</option>
+								<option>Test2</option>
+								<option>Test3</option>
+							</select>
+							<label for="">Type of Gun</label>
+
+						</div>
+						
+						
+						<div class="input-field col s6 ci">
+							<input placeholder=" " id="editGunName"  type="text" class="validate" pattern="" required="" aria-required="true">
+							<label data-error="Incorrect" for="editGunName">Name</label>
+
+						</div>
+					
+						<div class="input-field col s6 ci">
+							<input placeholder=" " id="editGunManufacturer" type="text" class="validate" pattern="" required="" aria-required="true">
+							<label for="editGunManufacturer" data-error="Incorrect">Manufacturer</label>
+						</div>
+
+						<div class="input-field col s6 ci">
+							<input placeholder=" " id="editSerialNumber"  type="text" class="validate" pattern="" required="" aria-required="true">
+							<label data-error="Incorrect" for="editSerialNumber">Serial Number</label>
+
+						</div>
+						
+						<div class="input-field col s6 ci">
+							<input placeholder=" " id="editLicenseNumber" type="text" class="validate" pattern="" required="" aria-required="true">
+							<label data-error="Incorrect" for="editLicenseNumber">License Number</label>
+
+						</div>
+					
+						<div class="input-field col s6 ci">
+							<input  id="dateIssued" type="date" class="datepicker ci">
+							<label class="active ci" data-error="Incorrect" for="dateIssued">Date Issued</label>
+						</div>
+						
+						<div class="input-field col s6 ci">
+							<input  id="dateExpired" type="date" class="datepicker ci">
+							<label class="active ci" data-error="Incorrect" for="dateExpired">Date Expired</label>
+						</div>
+						
+					</div>
+				</div>
+    		</div>
+			
+			<div class="modal-footer ci" style="background-color: #00293C;">
+				<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnSave">Update
+					
+				</button>
+			</div>
+</div>
+
 @stop
 	
 @section('script')
@@ -126,6 +196,10 @@ Gun
                 });//foreach
             }
         });//get guard waiting
+		
+		$('#dataTable').on('click', '.btnEdit', function(){
+			$('#modaleditGun').openModal();
+		});
         
         $('#dataTable').on('click', '.buttonMore', function(){
             
