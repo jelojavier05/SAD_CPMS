@@ -114,8 +114,8 @@ $(document).ready(function(){
         var clientNumber = $('#clientNumberEdit').val().trim();
         var personInCharge = $('#personInChargeEdit').val().trim();
         var personNumber = $('#personNumberEdit').val().trim();
-        var areaSize = $('#areaSizeEdit').val().trim();
-        var population = $('#populationEdit').val().trim();
+        var areaSize = $('#areaSizeEdit').val().replace(/[, ]+/g, "").trim();
+        var population = $('#populationEdit').val().replace(/[, ]+/g, "").trim();
         
         if (clientNumber && personInCharge && personNumber && areaSize && population && 
             $.isNumeric(parseFloat(areaSize)) && $.isNumeric(parseInt(population)) && 
