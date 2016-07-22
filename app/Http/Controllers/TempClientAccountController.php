@@ -42,6 +42,7 @@ class TempClientAccountController extends Controller
             ->join('tblguardlicense', 'tblguardlicense.intGuardID', '=', 'tblguard.intGuardID')
             ->select('tblguard.strFirstName', 'tblguard.strLastName', 'tblguardlicense.strLicenseNumber', 'tblguard.intGuardID')
             ->where('tblclient.intClientID', '=', $id)
+            ->where('tblguardpendingnotification.intStatusIdentifier', '=', 3)
             ->get();
         
         if (is_null($guards)){
