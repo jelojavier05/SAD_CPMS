@@ -50,6 +50,7 @@ Client
 											<th>License No</th>
 											<th>Name</th>
 											<th>Type of Gun</th>
+                                            <th>Rounds</th>
 										</tr>
 									</thead>
 
@@ -76,7 +77,7 @@ Client
         <div class="row">
             <div class="col s10 push-s1">
                 <div class="input-field">
-                    <input id="addRounds" type="number" class="validate" required="" aria-required="true">
+                    <input id="intRounds" type="number" class="validate" required="" aria-required="true">
                     <label for="">Rounds</label> 
                 </div>
             </div>
@@ -84,7 +85,7 @@ Client
     </div>
     
     <div class="modal-footer" style="background-color:#01579b !important;">
-        <button class="btn waves-effect waves-light green" name="action" style="margin-right:47px;" id = "">Add
+        <button class="btn waves-effect waves-light green" name="action" style="margin-right:47px;" id = "btnAddRounds">Add
         </button>
     </div>
 </div>
@@ -96,6 +97,8 @@ Client
 	$(document).ready(function(){
         var tableGun = [];
         var tableAdded = [];
+        var gunRounds = [];
+        
         $.ajax({
 
             type: "GET",
@@ -123,10 +126,12 @@ Client
                             '<h id = "name' +value.intGunID + '">' + value.strGunName +'</h>',
                             '<h id = "type' +value.intGunID + '">' + value.strTypeOfGun +'</h>'
                         ]).draw();
+                        
                     }
                     
                         
                 });//foreach   
+                console.log(tableGun);
             },
 
             error: function(data){
@@ -134,27 +139,43 @@ Client
             }
         });//get guard waiting
         
-//        $('#dataTable').on('click', '.buttonAdd', function(){
-            
-//        });
-        
-        $('#dataTable').on('click', '.buttonAdd', function(){
-            var table1 = $('#dataTable').DataTable();
-            var table2 = $('#dataTable2').DataTable();
-            
-            var id = this.id;
-            $.each(tableGun, function(index, value) {
-                
-                if (value.intGunID == id){
-                    tableGun.pop(value);
-                    tableAdded.push(value);
-                    return false;
-                }
-            });//foreach   
-            refreshTable();
-
+        $('#dataTable').on('click', '.buttonAdd', function(){ 
+             
+            $('#modalRounds').openModal();
+            $('#btnAddRounds').val(this.id);
+           
         });
+        
+        //$('#dataTable2')
 		
+        $('#btnAddRounds').click(function(){
+            var roundCount = $('#intRounds').val();
+            
+            if (roundCount > 0 && roundCount < 100){
+                var id = $('#btnAddRounds').val();
+                
+                $.each(tableGun, function(index, value) {
+                    if (value.intGunID == id){
+                        var roundCount = $('#intRounds').val();
+                        tableGun.pop(value);
+                        tableAdded.push(value);
+                        gunRounds.push(roundCount);
+                        console.log(value);
+                        return false;
+                    }
+                });//foreach   
+                console.log(tableGun);
+                refreshTable(); 
+                $('#modalRounds').closeModal();
+                $('#intRounds').val(0);
+            }else{
+                var toastContent = $('<span>Please Check Your Input. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+            
+                
+        });
+        
 		$("#dataTable").DataTable({
              "columns": [
             { "orderable": false },
@@ -171,7 +192,8 @@ Client
             { "orderable": false },
             null,
             null,
-			null
+			null,
+            null
             ] ,  
 			"pageLength":5,
 			"lengthMenu": [5,10,15,20]
@@ -198,10 +220,11 @@ Client
             
             $.each(tableAdded, function(index, value) {
                 table2.row.add([
-                    '<button id="' + value.intGunID+ '" class="btn green buttonRemove"><i class="material-icons">add</i></button>',
+                    '<button id="' + value.intGunID+ '" class="btn red buttonRemove">X</button>',
                     '<h id = "licenseNumber' +value.intGunID + '">' + value.strLicenseNumber +'</h>',
                     '<h id = "name' +value.intGunID + '">' + value.strGunName +'</h>',
-                    '<h id = "type' +value.intGunID + '">' + value.strTypeOfGun +'</h>'
+                    '<h id = "type' +value.intGunID + '">' + value.strTypeOfGun +'</h>',
+                    '<h id = "rounds' +value.intGunID + '">' + gunRounds[index] +'</h>'
                 ]).draw();
             });//foreach  
         }

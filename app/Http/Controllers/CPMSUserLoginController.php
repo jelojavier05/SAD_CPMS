@@ -12,7 +12,7 @@ use DB;
 class CPMSUserLoginController extends Controller
 {
     public function index(Request $request){
-
+//        $request->session()->flush();
         if ($request->session()->has('accountType')){
             $accountType = $request->session()->has('accountType');
             if ($accountType == 0){
