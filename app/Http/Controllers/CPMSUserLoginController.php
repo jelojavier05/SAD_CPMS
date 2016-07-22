@@ -12,13 +12,13 @@ use DB;
 class CPMSUserLoginController extends Controller
 {
     public function index(Request $request){
-//        $request->session()->flush();
+        //$request->session()->flush();
         if ($request->session()->has('accountType')){
             $accountType = $request->session()->has('accountType');
             if ($accountType == 0){
                 return redirect('/client/tempaccount');
             }else if ($accountType == 1){
-                return redirect('/client/tempaccount');
+                return redirect('/client/test');
             }else if ($accountType == 2){
                 return redirect('/securityhomepage');
             }else if ($accountType == 3){

@@ -96,17 +96,45 @@ class SecurityHomepageController extends Controller
     
     public function acceptNewClient(Request $request){
         $guardID = $request->session()->get('id');
+        $clientPendingID = $request->clientPendingID;
         try{
             DB::beginTransaction();
             
             DB::table('tblguardpendingnotification')
-                ->where('intGuardPendingID','=', $request->clientPendingID)
+                ->where('intGuardPendingID','=', $clientPendingID)
                 ->update(['intStatusIdentifier' => 3]);
 
             DB::table('tblguard')
                 ->where('intGuardID','=', $request->session()->get('id'))
                 ->update(['intStatusIdentifier' => 1]);
             
+            $countNeedGuard = DB::table('tblclientpendingnotification')
+                ->select('intNumberOfGuard')
+                ->where('intClientPendingID', $clientPendingID)
+                ->first();
+        
+            $countAccepted = DB::table('tblguardpendingnotification')
+                ->where('intClientPendingID', $clientPendingID)
+                ->where('intStatusIdentifier', 3)
+                ->count();
+            
+            if ($countNeedGuard->intNumberOfGuard == $countAccepted){
+                $countGuardSend = DB::table('tblguardpendingnotification')
+                    ->select('intGuardPendingID')
+                    ->where('intClientPendingID','=', $clientPendingID)
+                    ->get();
+                
+                foreach($countGuardSend as $value){
+                    DB::table('tblguardpendingnotification')
+                        ->where('intGuardPendingID','=', $value->intGuardPendingID)
+                        ->where('intStatusIdentifier', 1)
+                        ->orWhere('intStatusIdentifier', 2)
+                        ->update(['intStatusIdentifier' => 4]);
+                }
+                
+                    
+            }
+
             DB::commit();
         }catch(Exception $e){
             DB::rollback();
@@ -139,3 +167,4 @@ class SecurityHomepageController extends Controller
         return response()->json($status);
     }
 }
+

@@ -132,7 +132,7 @@ Client
                                         </td>
                                         
                                         <td>
-                                            <button class="btn green col s12" id="">
+                                            <button class="btn green col s12 buttonProceed" id="{{$value->intClientPendingID}}">
                                             Proceed
                                             </button>
                                         </td>
@@ -248,8 +248,6 @@ Client
             },async:false
         });//get guard waiting
         
-            
-        
         $('#dataTablePending').on('click', '.buttonNotification', function(){
             clientID = 'clientID' + this.id;
             clientPendingID = this.id;
@@ -328,6 +326,33 @@ Client
                 }
             });//get guard count accepted
 
+        });
+        
+        $('#dataTablePending').on('click', '.buttonProceed', function(){
+             $.ajax({
+
+                type: "GET",
+                url: "/clientView/get/guardcount?notificationID=" + this.id,
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                success: function(data){
+                    var guardNeeded = data.countNeedGuard.intNumberOfGuard - data.countAccepted;
+                    
+                    if (guardNeeded == 0){
+                        confirm ('pwede');
+                    }else{
+                        confirm('hindi pwede');
+                    }
+                },
+                error: function(data){
+                    confirm ('guard pending');
+                }
+            });//get guard count accepted
         });
         
         $('#btnSendNotification').click(function(){

@@ -146,7 +146,7 @@ Client
         });
         
         $('#dataTable2').on('click', '.buttonRemove', function(){
-            var id = this.id
+            var id = this.id;
             $.each(tableAdded, function(index, value) {
                 if (value.intGunID == id){
                     var roundCount = $('#intRounds').val();
