@@ -24,7 +24,7 @@ Client
 						</div>
 						<div class="row">
 							<div class="col s12">
-								<table class="striped grey lighten-1" style="border-radius:10px;" id="dataTable">
+								<table class="striped grey lighten-1" style="border-radius:10px;" id="tableGun">
 
 									<thead>
 										<tr>
@@ -47,33 +47,6 @@ Client
 												
 												<td>Rifle</td>
 
-												
-											</tr>
-											
-											<tr>                                    
-												<td>
-													<button class="btn green modal-trigger" href="#modalRounds"><i class="material-icons">add</i></button>
-												</td>																	
-
-												<td>2014-01231-MN-0</td>
-
-												<td>Arctic Warfare Magnum</td>
-
-												<td>Rifle</td>
-												
-											</tr>
-										
-											<tr>                                    
-												<td>
-													<button class="btn green modal-trigger" href="#modalRounds"><i class="material-icons">add</i></button>
-												</td>																	
-
-												<td>2023-09876-MN-0</td>
-
-												<td>P90</td>
-												
-												<td>SMG</td>
-												
 											</tr>
 											
 									</tbody>
@@ -92,7 +65,7 @@ Client
 							</div>
 						<div class="row">
 							<div class="col s12">
-								<table class="striped grey lighten-1" style="border-radius:10px;" id="dataTable2">
+								<table class="striped grey lighten-1" style="border-radius:10px;" id="tableAdded">
 
 									<thead>
 										<tr>
@@ -172,7 +145,7 @@ Client
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-		$("#dataTable").DataTable({
+		$("#tableGun").DataTable({
              "columns": [
             { "orderable": false },
             null,
@@ -183,7 +156,7 @@ Client
 			"lengthMenu": [5,10,15,20]
          }); 
 		
-		$("#dataTable2").DataTable({
+		$("#tableAdded").DataTable({
              "columns": [
             { "orderable": false },
             null,

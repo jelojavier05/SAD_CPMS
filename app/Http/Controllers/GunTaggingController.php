@@ -11,7 +11,6 @@ use Validator;
 
 class GunTaggingController extends Controller
 {
-    
     public function index(){
         return view('/clientAdmin/clientGunTagging');
  

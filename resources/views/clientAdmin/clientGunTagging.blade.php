@@ -30,46 +30,6 @@ Client
 									</thead>
 
 									<tbody>                        
-											<tr>                                    
-												<td>
-													<button class="btn green modal-trigger" href="#modalRounds"><i class="material-icons">add</i></button>
-												</td>																	
-
-												<td>2013-12345-MN-0</td>
-
-												<td>M4A1</td>
-												
-												<td>Rifle</td>
-
-												
-											</tr>
-											
-											<tr>                                    
-												<td>
-													<button class="btn green modal-trigger" href="#modalRounds"><i class="material-icons">add</i></button>
-												</td>																	
-
-												<td>2014-01231-MN-0</td>
-
-												<td>Arctic Warfare Magnum</td>
-
-												<td>Rifle</td>
-												
-											</tr>
-										
-											<tr>                                    
-												<td>
-													<button class="btn green modal-trigger" href="#modalRounds"><i class="material-icons">add</i></button>
-												</td>																	
-
-												<td>2023-09876-MN-0</td>
-
-												<td>P90</td>
-												
-												<td>SMG</td>
-												
-											</tr>
-											
 									</tbody>
 								</table>
 							</div>
@@ -94,33 +54,7 @@ Client
 									</thead>
 
 									<tbody>                        
-											<tr>                                    
-												<td>
-													<button class="btn red">X</button>
-												</td>																	
-
-												<td>2013-12345-MN-0</td>
-
-												<td>M4A1</td>
-												
-												<td>Rifle</td>
-
-												
-											</tr>
-										
-											<tr>                                    
-												<td>
-													<button class="btn red">X</button>
-												</td>																	
-
-												<td>2014-01231-MN-0</td>
-
-												<td>Arctic Warfare Magnum</td>
-
-												<td>Rifle</td>
-												
-											</tr>
-											
+                                        
 									</tbody>
 								</table>
 							</div>
@@ -160,6 +94,66 @@ Client
 @section('script')
 <script type="text/javascript">
 	$(document).ready(function(){
+        var tableGun = [];
+        var tableAdded = [];
+        $.ajax({
+
+            type: "GET",
+            url: "{{action('GunViewController@getGuns')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: { 
+
+            },
+            success: function(data){
+                var table = $('#dataTable').DataTable();
+                table.clear().draw();
+                $.each(data, function(index, value) {
+                    
+                    if (value.boolFlag == 1){
+                        tableGun.push(value);
+                        table.row.add([
+                            '<button id="' + value.intGunID+ '" class="btn green buttonAdd"><i class="material-icons">add</i></button>',
+                            '<h id = "licenseNumber' +value.intGunID + '">' + value.strLicenseNumber +'</h>',
+                            '<h id = "name' +value.intGunID + '">' + value.strGunName +'</h>',
+                            '<h id = "type' +value.intGunID + '">' + value.strTypeOfGun +'</h>'
+                        ]).draw();
+                    }
+                    
+                        
+                });//foreach   
+            },
+
+            error: function(data){
+                confirm ('guard pending');
+            }
+        });//get guard waiting
+        
+//        $('#dataTable').on('click', '.buttonAdd', function(){
+            
+//        });
+        
+        $('#dataTable').on('click', '.buttonAdd', function(){
+            var table1 = $('#dataTable').DataTable();
+            var table2 = $('#dataTable2').DataTable();
+            
+            var id = this.id;
+            $.each(tableGun, function(index, value) {
+                
+                if (value.intGunID == id){
+                    tableGun.pop(value);
+                    tableAdded.push(value);
+                    return false;
+                }
+            });//foreach   
+            refreshTable();
+
+        });
 		
 		$("#dataTable").DataTable({
              "columns": [
@@ -183,10 +177,34 @@ Client
 			"lengthMenu": [5,10,15,20]
          }); 
 		
-		
 		$('#backgunTagging').click(function(){
              window.location.href = '{{ URL::to("/client/registration/guardDeployment") }}';
         });
+        
+        function refreshTable(){
+            var table = $('#dataTable').DataTable();
+            var table2 = $('#dataTable2').DataTable();
+            table.clear().draw();
+            table2.clear().draw();
+            
+            $.each(tableGun, function(index, value) {
+                table.row.add([
+                    '<button id="' + value.intGunID+ '" class="btn green buttonAdd"><i class="material-icons">add</i></button>',
+                    '<h id = "licenseNumber' +value.intGunID + '">' + value.strLicenseNumber +'</h>',
+                    '<h id = "name' +value.intGunID + '">' + value.strGunName +'</h>',
+                    '<h id = "type' +value.intGunID + '">' + value.strTypeOfGun +'</h>'
+                ]).draw();
+            });//foreach  
+            
+            $.each(tableAdded, function(index, value) {
+                table2.row.add([
+                    '<button id="' + value.intGunID+ '" class="btn green buttonRemove"><i class="material-icons">add</i></button>',
+                    '<h id = "licenseNumber' +value.intGunID + '">' + value.strLicenseNumber +'</h>',
+                    '<h id = "name' +value.intGunID + '">' + value.strGunName +'</h>',
+                    '<h id = "type' +value.intGunID + '">' + value.strTypeOfGun +'</h>'
+                ]).draw();
+            });//foreach  
+        }
 	});
 </script>
 @stop

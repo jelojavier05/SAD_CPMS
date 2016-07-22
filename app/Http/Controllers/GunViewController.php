@@ -19,7 +19,8 @@ class GunViewController extends Controller{
     public function getGuns(){
         $guns = DB::table('tblgun')
             ->join('tbltypeofgun', 'tbltypeofgun.intTypeOfGunID', '=' ,'tblgun.intTypeOfGunID')
-            ->select('tblgun.strGunName', 'tblgun.boolFlag', 'tblgun.intGunID', 'tbltypeofgun.strTypeOfGun')
+            ->join('tblgunlicense', 'tblgunlicense.intGunID', '=', 'tblgun.intGunID')
+            ->select('tblgun.strGunName', 'tblgun.boolFlag', 'tblgun.intGunID', 'tbltypeofgun.strTypeOfGun', 'tblgunlicense.strLicenseNumber', 'tblgunlicense.dateExpiration')
             ->where('tblgun.deleted_at', '=' ,null)
             ->get();
         
