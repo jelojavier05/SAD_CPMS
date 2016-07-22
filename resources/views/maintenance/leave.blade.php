@@ -103,7 +103,7 @@ Leave
 
 <!-- Modal Leave ADD -->
 
-<div id="modalleaveAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:750px; !important; margin-top:100px !important;  max-height:100% !important; height:350px !important; border-radius:10px;">
+<div id="modalleaveAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:750px; !important; margin-top:100px !important;  max-height:100% !important; height:350px !important; border-radius:10px;">
         <div class="modal-header">
                 <div class="h">
                     <h3><center>Leave</center></h3>  
@@ -121,7 +121,7 @@ Leave
                                             
                                         <div class="row"></div>  
                                         <div class="input-field col s12">
-											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+											<i class="mdi-maps-directions-walk prefix" style="font-size:35px;"></i>
                             				<input id="strLeaveType" type="text" class="validate" name = "leaveType" required="" aria-required="true">
                                             <label for="strLeaveType">Leave Type</label> 
 
@@ -133,7 +133,7 @@ Leave
                                         <div class="row"></div>
 									  	<div class="row"></div>
                                         <div class="input-field col s12">
-											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+											<i class="mdi-image-timelapse prefix" style="font-size:35px;"></i>
                             				<input id="intNumberOfDays" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
                                             <label for="intNumberOfDays">Number of Days Allowed</label> 
 
@@ -151,7 +151,7 @@ Leave
                                             
                                         <div class="row"></div>  
                                         <div class="input-field col s12">
-											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+											<i class="mdi-av-hearing prefix" style="font-size:35px;"></i>
                             				<input id="intNumberOfRequest" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
                                             <label for="intNumberOfRequest">Number of Requests Allowed</label> 
 
@@ -163,7 +163,7 @@ Leave
                                         <div class="row"></div>
 									  	<div class="row"></div>
                                         <div class="input-field col s12">
-											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+											<i class="mdi-action-today prefix" style="font-size:35px;"></i>
                             				<input id="intNotificationPeriod" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
                                             <label for="intNotificationPeriod">Notification Period</label> 
 
@@ -185,7 +185,7 @@ Leave
                 </div>
 		</div>
 <!-- MODAL LEAVE EDIT -->
-<div id="modalleaveEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:750px; !important; margin-top:100px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
+<div id="modalleaveEdit" class="modal modal-fixed-footer ci" style="overflow:hidden; width:750px; !important; margin-top:100px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
 	<div class="modal-header">
                 <div class="h">
                     <h3><center>Leave</center></h3>  
@@ -289,7 +289,7 @@ Leave
     	</div>
 </div>
 <!---------- modal delete leave--------------------------------->
-<div id="modalleaveDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">
+<div id="modalleaveDelete" class="modal bottom-sheet ci" style="height: 250px !important; overflow:hidden;">
             <div class="modal-header blue"><h2 class="white-text">Delete</h2></div>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="modal-content">

@@ -88,7 +88,7 @@ Unit of Measurement
 </div>
 
 <!-----------------------------------------------------------modal start-------------------------->
-<div id="modaluomAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:250px !important; border-radius:10px;">
+<div id="modaluomAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:250px !important; border-radius:10px;">
         
         <div class="modal-header">
                 <div class="h">
@@ -108,7 +108,7 @@ Unit of Measurement
                                             
                                         <div class="row"></div>  
                                         <div class="input-field col s12">
-											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
+											<i class="mdi-content-sort prefix" style="font-size:35px;"></i>
                             				<input id="addMeasurement" type="text" class="validate" required="" aria-required="true">
                                         	<label for="">Unit of Measurement</label> 
 
@@ -131,7 +131,7 @@ Unit of Measurement
     </div>
 </div>
 <!-----------------------------------------------------------modal start-------------------------->
-<div id="modaluomEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important; border-radius:10px;">
+<div id="modaluomEdit" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important; border-radius:10px;">
         
         <div class="modal-header">
                 <div class="h">

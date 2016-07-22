@@ -96,7 +96,7 @@ Body Attributes
 
 <!-- Modal BA ADD -->
 
-<div id="modalvitstatsAdd" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important; border-radius:10px;">
+<div id="modalvitstatsAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:300px !important; border-radius:10px;">
         
        	<div class="modal-header">
                 <div class="h">
@@ -151,7 +151,7 @@ Body Attributes
             </div>
 </div>
 <!-- MODAL BA EDIT -->
-<div id="modalvitstatsEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
+<div id="modalvitstatsEdit" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
 	<div class="modal-header">
                 <div class="h">
                     <h3><center>Body Attributes</center></h3>  
@@ -218,7 +218,7 @@ Body Attributes
 </div>
 <!----------------------------modal delete Body Attributes ------------------------------>
 
-<div id="modalvitstatsDelete" class="modal bottom-sheet" style="height: 250px !important; overflow:hidden;">
+<div id="modalvitstatsDelete" class="modal bottom-sheet ci" style="height: 250px !important; overflow:hidden;">
             <div class="modal-header blue"><h2 class="white-text">Delete</h2></div>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="modal-content">

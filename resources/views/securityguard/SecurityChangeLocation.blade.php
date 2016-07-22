@@ -1,4 +1,4 @@
-@extends('SecurityGuardDashboard')
+@extends('securityguard.SecurityGuardDashboard')
 
 @section('title')
 Security Change Location

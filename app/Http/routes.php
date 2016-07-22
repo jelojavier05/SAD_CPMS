@@ -54,6 +54,7 @@ Route::post('/guard/registration/guardSummary/insert', 'GuardRegistrationSummary
 Route::get('/userlogin', 'CPMSUserLoginController@index');
 Route::get('/userlogin/getaccount', 'CPMSUserLoginController@getAccount');
 Route::get('/userlogin/logout', 'CPMSUserLoginController@logoutAccount');
+
 //LATEST SECURITY GUARD INTERFACE ----------------------------------------------------
 
 Route::get('/securityguard', 'SecurityGuardDashboardController@index');

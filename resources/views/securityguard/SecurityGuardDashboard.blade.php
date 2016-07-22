@@ -43,68 +43,63 @@
 
 <!----------BODY------------>
 
-<body id="scrollhider" class="bodyscrollhider grey lighten-3">
+<body id="scrollhider" class="bodyscrollhider grey lighten-3 ci">
     <nav class="indigo darken-4" style="height:90px">
     <div class="row"></div>
         <div class="container">
 <!--   <div class="parallax"><img class="responsive-img;" style="width: 100%;" src="{!! URL::asset('../Materialize/images/background3.jpg') !!}" alt="Unsplashed background img 1"></div>-->
             <div class="nav-wrapper">
-               <a href="#" class="brand-logo"><img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="9%" height="9%"></a>
-        
-				<div>
-                 <div class="homeposition">
-                    <div class="row">
-                       <div class="col l12">
-                           
-                     
-                        <div class="col l7 push-l1">
-                             <a href="#" class="brand-logo">
-                                   <!--<div class="flow-text">
-                                    <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="10%" height="10%">
-                                </div>-->
-                                <div class="flow-text">
-                                    <h5 style="margin-top: 20px;">Client and Personnel Management System</h5>
-                                </div>
-                             </a>
-                        </div>
-                           
-                           
-                           
-                           
-                               <div class="row"></div>
+                
+               
+                                     <a href="#" class="brand-logo">
 
-                           <div class="col l5 push-l10  ">
-                               
-                <ul id="dropdown3" class="dropdown-content">
-                    <li><a href="#!">Profile<i class="material-icons">perm_contact_calendar</i></a></li>
-                    <li><a id = "btnLogout">Log Out<i class="material-icons">input</i></a></li>
-                </ul>
-                               <div class="row">
-                                   <div class="col l12">
-                                       <div class="col l10">
-                                         
-                               <a class="btn dropdown-button col l2" style="background-color:transparent" href="#!" data-activates=""><i class="mdi-action-home center" style="font-size:2rem;margin-top:-50%"></i></a>
-                               
-                                <a class="btn dropdown-button col l2 push-l1" style="background-color:transparent" href="#!" data-activates="dropdown2"><i class="material-icons" style="font-size:2rem;margin-top:-50% ">language</i></a>
+                    <div class="row">
+                        <div class="col l12">
+                            
+                            <div class="col l2 pull-l2">
+                            
+                            <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="60%" style="margin-top:-10%">
+
+                            
+                            </div>
+                            <div class="col l3 pull-l3">
+                            
+                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:3.0rem">Client and Personnel Management System</p>
                                 
-                                <a class="btn dropdown-button col l2 push-l2" style="background-color:transparent" href="#!" data-activates="dropdown2"><i class="material-icons" style="font-size:2rem;margin-top:-50% ">message</i></a>
-               
-                               <a class="btn dropdown-button col l2 push-l3" style="background-color:transparent" href="#!" data-activates="dropdown3"><i class="mdi-navigation-arrow-drop-down-circle center" style="font-size:2rem;margin-top:-50%"></i></a>
-                                              
-                               </div>
-                                       </div>
-                                   </div>
-                 
+                            </div>
+                       
+                            <div class="col l5 push-l9">
+                                    <ul class="right hide-on-med-and-down">
+								
+                                 <li><a  data-position="top" data-delay="50" data-tooltip="HOME"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">store</i></a></li>
+								 <li><a  data-position="top" data-delay="50" data-tooltip="NOTIFICATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-social-public" style="font-size:2.1rem;color:white"></i></a></li>
+								<li><a  data-position="top" data-delay="50" data-tooltip="MESSAGE"href="/dashboardadmin" class=" tooltipped"><i class="mdi-communication-forum" style="font-size:2.1rem;color:white"></i></a></li>
+                                <li><a  data-position="top" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>
+							</ul>   
+                                </div>
                         
-                        </div>
-               
-                     
+                         </div>
                      </div>
-              </div>
-            </div>              
-                </div>  
-            </div>    
-        </div> 
+                                         
+                    	</a>
+					
+					
+                    
+                  <!--  <div class="homeposition">
+                    
+                    <a href="#" class="brand-logo">
+						<div class="flow-text">
+							<p style="margin-top: 20px; margin-left: 200px;font-family:Myriad Pro;font-size:6rem">Client and Personnel Management System</p>
+						</div>
+				
+                </div>-->
+                
+            </div>
+				
+                
+							
+        </div>
+        
     </nav>
 <!-----------------------------NAV BAR----------------------------->
     
