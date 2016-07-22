@@ -63,8 +63,8 @@ Client
 					</div>
 				</div>
 			</div>
-			<button class="btn-large blue waves-effect z-depth-2 left" id="" style="margin-top:20px;">Back</button>
-			<a class="btn-large blue waves-effect z-depth-2 right " id="" href="/client/registration/contractInfo" style="margin-top:20px;">Proceed</a>
+			<button class="btn-large blue waves-effect z-depth-2 left" id="btnBack" style="margin-top:20px;">Back</button>
+			<a class="btn-large blue waves-effect z-depth-2 right " id="btnNext" style="margin-top:20px;">Proceed</a>
 		</div>
 	</div>
 </div>
@@ -209,8 +209,50 @@ Client
 			"lengthMenu": [5,10,15,20]
          }); 
 		
-		$('#backgunTagging').click(function(){
-             window.location.href = '{{ URL::to("/client/registration/guardDeployment") }}';
+		$('#btnBack').click(function(){
+             window.location.href = '{{ URL::to("/clientView") }}';
+        });
+        
+        $('#btnNext').click(function(){
+           if (tableAdded.length != 0){
+               
+               var type = [];
+               var gunID = [];
+               var rounds = [];
+               $.each(tableAdded, function(index, value){
+                   type[index] = value.strTypeOfGun;
+                   gunID[index] = value.intGunID;
+                   rounds[index] = gunRounds[index];
+               });
+               
+               $.ajax({
+                    type: "POST",
+                    url: "{{action('GunTaggingController@post')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        type:type,
+                        gunID:gunID,
+                        rounds:rounds
+                    },
+                    success: function(data){
+                        window.location.href = '{{ URL::to("/client/registration/contractInfo") }}';
+                    },
+                    error: function(data){
+                        var toastContent = $('<span>Error Occured. </span>');
+                        Materialize.toast(toastContent, 1500,'red', 'edit');
+
+                    }
+                });//ajax
+           }else{
+                var toastContent = $('<span>You should add gun first.</span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');   
+           }
         });
         
         function refreshTable(){

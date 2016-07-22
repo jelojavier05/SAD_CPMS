@@ -15,16 +15,19 @@ Client
 					<div class="col s10 push-s1">
 						<form>
 							<div class = "input-field col s6">    
-							   <select  id = "" name = "" >
+							   <select  id = "selectContract" name = "" >
 								   <option disabled selected>Choose an option</option>
-									  <option id = "1" >Test1</option>
-									  <option id = "2" >Test2</option>
+									@foreach($contract as $value)  
+                                    <option id = "{{$value->intTypeOfContractID}}" value = '{{$value->intMonthDuration}}'>{{$value->strTypeOfContractName}}</option>
+                                    @endforeach
+                                    
+									  
 							   </select>
 							   <label>Type of Contract</label>
 							</div>
 
 							<div class="input-field col s6">
-								<input  id="duration" type="number" value="1" min="1" required="" aria-required="true">
+								<input  id="contractDuration" type="number" value="0" min="1" required="" aria-required="true" readonly>
 								<label class="active" for="duration">Duration (Months)</label>
 							</div>
 								
@@ -34,7 +37,7 @@ Client
 							</div>
 
 							<div class="input-field col s6">
-								<input  id="contractEnd" type="date" class="datepicker"  required="" aria-required="true">
+								<input  id="contractEnd" type="date" class="datepicker"  required="" aria-required="true" readonly>
 								<label class="active" data-error="Incorrect" for="contractEnd">End Date</label>
 							</div>
 
@@ -138,20 +141,13 @@ Client
 				
 				<div class="col s6">
 					<ul class="collection with-header" id="collectionActive" style="border:1px solid black;">
-								<li class="collection-header blue white-text" ><h5 style="font-weight:bold;">Guards</h5></li>
-							<div class="sidenavhover" style=" height:300px;">
+								<li class="collection-header blue white-text" ><h5 style="font-weight:bold;" id ='guardHeader'></h5></li>
+							<div class="sidenavhover" style=" height:300px;" id = 'guardContainer'>
 								<li class="collection-item">
 									<div style="font-weight:normal;">
 										&nbsp;&nbsp;&nbsp;Generoso Cupal
 									</div>
-								</li>
-								
-								<li class="collection-item">
-									<div style="font-weight:normal;">
-										&nbsp;&nbsp;&nbsp;Juan Dela Tomas
-									</div>
-								</li>
-								
+								</li>								
 							</div>
 
 					</ul>
@@ -159,27 +155,20 @@ Client
 				
 				<div class="col s6">
 					<ul class="collection with-header" id="collectionActive" style="border:1px solid black;">
-								<li class="collection-header blue white-text" ><h5 style="font-weight:bold;">Guns</h5></li>
+								<li class="collection-header blue white-text" ><h5 style="font-weight:bold;" id = 'gunHeader'></h5></li>
 							<div>
 								<li class="collection-item sidenavhover" style=" height:300px;">
 									<div style="font-weight:normal;">
-										<table class="" style="font-family:Myriad Pro">
+										<table class="" style="font-family:Myriad Pro" id = 'tableGun'>
 											<thead>
 											  <tr>
-												  <th data-field="">Name</th>
-												  <th data-field="">Serial No.</th>
+												  <th data-field="">Type</th>
+												  <th data-field="">Rounds</th>
 											  </tr>
 
 											</thead>
 
 											<tbody>
-											  <tr>
-												<td>Arctic Warfare Magnum</td>
-												<td>2013-01234-SJ-0</td>
-											  </tr>
-												
-												
-
 											</tbody>
 										</table>
 									</div>
@@ -205,13 +194,86 @@ Client
 @section('script')
 <script>
     
-    $(document).ready(function() {
-        $('select').material_select();
-        
-        
-        
-        
+$(document).ready(function() {
+    
+    
+    $.ajax({
+        type: "GET",
+        url: "{{action('ClientContractController@getGuardAccepted')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data){
+            $('#guardContainer').empty();
+            $.each(data, function(index, value){
+                $("#guardContainer").append('<li class="collection-item"><div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;'+ value.strFirstName +' ' + value.strLastName +'</div></li>');
+            });
+            
+            $('#guardHeader').text('Guards - ' + data.length);
+        }
+    });//get guard accepted
+    
+    $.ajax({
+        type: "GET",
+        url: "{{action('ClientContractController@getGunTagged')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data){
+            //var table = $('#tableGun').DataTable();
+            
+            $.each(data, function(index, value){
+                $('#tableGun tr:last').after('<tr><td>' + value.type + '</td><td>' + value.rounds +'<td/></tr>');
+            });
+            
+            $('#gunHeader').text('Guns - ' + data.length);
+        }
+    });//get guard accepted
+    
+    $('#selectContract').on('change',function(){
+        var value = $(this).children(":selected").attr("value");
+        $('#contractDuration').val(value);
+        refreshDateEnd();
     });
+    
+    $('#contractStart').on('change',function(){
+        refreshDateEnd();
+    });
+    
+    function refreshDateEnd() {
+        var dateStart = new Date($('#contractStart').val());
+        var months = parseInt($('#contractDuration').val()) + (dateStart.getMonth() + 1);
+
+        var yearEnd = parseInt(months / 12) + dateStart.getFullYear();
+        var monthEnd = parseInt(months % 12);
+        var dayEnd = dateStart.getDate();
+        var lastDay = new Date(yearEnd, monthEnd, 0).getDate();
+
+        if (dayEnd>lastDay){
+            dayEnd = lastDay;
+        }
+        if (monthEnd < 10){
+            monthEnd = '0' + monthEnd;    
+        }
+
+        if (dayEnd < 10){
+            dayEnd = '0' + dayEnd;
+        }
+        var dateEnd = yearEnd + "-" + monthEnd + "-" + dayEnd;
+        $('#contractEnd').val(dateEnd);
+        
+    }
+    
+	$('select').material_select();	
+});
         
 </script>
 

@@ -132,7 +132,7 @@ Client
                                         </td>
                                         
                                         <td>
-                                            <button class="btn green col s12 buttonProceed" id="{{$value->intClientPendingID}}">
+                                            <button class="btn green col s12 buttonProceed" id="{{$value->intClientPendingID}}" value = '{{ $value->intClientID }}'>
                                             Proceed
                                             </button>
                                         </td>
@@ -254,10 +254,39 @@ Client
         });//get guard waiting
         
         $('#dataTablePending').on('click', '.buttonNotification', function(){
-            clientID = 'clientID' + this.id;
-            clientPendingID = this.id;
-            $('#modalsendNoti').openModal();
-            populateTable(clientPendingID);
+            var id = this.id
+            $.ajax({
+
+                type: "GET",
+                url: "/clientView/get/guardcount?notificationID=" + id,
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: { 
+
+                },
+                success: function(data){
+                    if (data.countAccepted == data.countNeedGuard.intNumberOfGuard){
+                        var toastContent = $('<span>You have enough guards for this client.</span>');
+                        Materialize.toast(toastContent, 1500,'green', 'edit');
+                    }else{
+                        clientID = 'clientID' + id;
+                        clientPendingID = id;
+                        $('#modalsendNoti').openModal();
+                        populateTable(clientPendingID);
+                    }
+                },
+
+                error: function(data){
+                    confirm ('guard pending');
+                }
+            });//get guard waiting
+            
+            
         });
         
         $('#dataTablePending').on('click', '.buttonMore', function(){
@@ -334,10 +363,11 @@ Client
         });
         
         $('#dataTablePending').on('click', '.buttonProceed', function(){
-             $.ajax({
-
+            var id = this.id;
+            var clientID = this.value;
+            $.ajax({
                 type: "GET",
-                url: "/clientView/get/guardcount?notificationID=" + this.id,
+                url: "/clientView/get/guardcount?notificationID=" + id,
                 beforeSend: function (xhr) {
                     var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -349,9 +379,10 @@ Client
                     var guardNeeded = data.countNeedGuard.intNumberOfGuard - data.countAccepted;
                     
                     if (guardNeeded == 0){
-                        confirm ('pwede');
+                        sendClientID(clientID);
                     }else{
-                        confirm('hindi pwede');
+                        var toastContent = $('<span>Not enough guards.</span>');
+                        Materialize.toast(toastContent, 1500,'red', 'edit');
                     }
                 },
                 error: function(data){
@@ -363,7 +394,6 @@ Client
         $('#btnSendNotification').click(function(){
             getCheckedGuard();
             if (guardChecked.length > 0){
-                
                 sendData();
             }else{
                 confirm ('magcheck ka bes! para tumuloy');
@@ -523,6 +553,31 @@ Client
             }
             return val;
         }
+        
+        function sendClientID(id){
+            $.ajax({
+                type: "POST",
+                url: "{{action('ClientViewController@post')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    clientID:id
+                },
+                success: function(data){
+                    window.location.href = '{{ URL::to("/client/gunTagging") }}';
+                },
+                error: function(data){
+                    var toastContent = $('<span>sendingClientPendingID</span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+
+                }
+            });//ajax
+        }// magsesend ng clientID sa session
         
     });
 </script>

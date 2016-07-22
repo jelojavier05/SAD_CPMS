@@ -331,12 +331,12 @@ Type of Contract
                 var itemID = "id" + this.id;
                 var itemName = "name" + this.id;
                 var itemDescription = "description" + this.id;
-                var itemDescription = "monthDuration" + this.id;
+                var itemMonthDuration = "monthDuration" + this.id;
 
                 document.getElementById('editID').value = $("#"+itemID).html();
                 document.getElementById('editname').value = $("#"+itemName).html();
                 document.getElementById('editdescription').value = $("#"+itemDescription).html();
-                document.getElementById('editDuration').value = $("#"+itemDescription).html();
+                document.getElementById('editDuration').value = $("#"+itemMonthDuration).html();
 
             });
 

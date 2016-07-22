@@ -28,7 +28,6 @@ class CPMSUserLoginController extends Controller
             return view('/CPMSUserLogin');    
         }
         
-        
     }
 
     public function getAccount(Request $request){
