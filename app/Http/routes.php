@@ -3,6 +3,8 @@
 Route::get('/crm/home', 'CRMHomeController@index');
 
 Route::get('/gunView', 'GunViewController@index');
+Route::get('/gunView/get/guns', 'GunViewController@getGuns');
+Route::get('/gunView/get/gun', 'GunViewController@getGun');
 
 Route::get('/dashboardadmin', 'DashboardAdminController@index');
 Route::get('/dashboardadmin/get/clientcount', 'DashboardAdminController@getCountClient');

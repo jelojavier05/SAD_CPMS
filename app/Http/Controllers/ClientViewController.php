@@ -32,7 +32,7 @@ class ClientViewController extends Controller
             ->where('tblclientpendingnotification.intStatusIdentifier', '=', '1')
             ->get();
         
-        return respone()->json($clientPending);
+        return response()->json($clientPending);
     }
     
     public function getGuardWaiting(){
