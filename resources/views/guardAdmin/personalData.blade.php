@@ -69,7 +69,7 @@ Guard Form
 
 				<div class="input-field col s4">
 					    <i class="material-icons prefix">home</i>
-						<input placeholder = " " id="address" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
+						<input placeholder = " " id="address" type="text" class="validate" pattern="[A-za-z0-9., ]{2,}" required="" aria-required="true">
 
 						<label class="ci" data-error="Incorrect" for="address">Address</label>
 

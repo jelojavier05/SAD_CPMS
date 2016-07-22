@@ -106,8 +106,8 @@ Client
 		
 		<div class="col s6">
 			<div class="row">
-				<div class="col s8 push-s2">
-					<ul class="collection with-header" id="collectionActive" style="border:1px solid black;">
+				<div class="col s6">
+					<ul class="collection with-header" id="" style="border:1px solid black;">
 								<li class="collection-header blue white-text" ><h5 style="font-weight:bold;">Billing Dates</h5></li>
 							<div>
 								<li class="collection-item sidenavhover" style="height:300px;">
@@ -140,7 +140,44 @@ Client
 				</div>
 				
 				<div class="col s6">
-					<ul class="collection with-header" id="collectionActive" style="border:1px solid black;">
+					<ul class="collection with-header" id="" style="border:1px solid black;">
+						<li class="collection-header blue white-text" ><h5 style="font-weight:bold;">Client Details</h5>
+						</li>
+							<div class="sidenavhover" style=" height:300px;">
+
+								<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusiness'>&nbsp;&nbsp;&nbsp;Bank</div>
+								</li>
+
+								<li class="collection-item" style="font-weight:bold;">Name:<div style="font-weight:normal;" id = 'name'>&nbsp;&nbsp;&nbsp;PUP</div>
+								</li>
+
+								<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;" id = 'clientNumber'>&nbsp;&nbsp;&nbsp;09123456789</div>
+								</li>
+
+								<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;" id = 'personInCharge'>&nbsp;&nbsp;&nbsp;Mang Tomas</div>
+								</li>
+
+								<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'personNumber'>&nbsp;&nbsp;&nbsp;09123456789</div>
+								</li>
+
+								<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;Hello Street</div>
+								</li>
+
+								<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSize'>&nbsp;&nbsp;&nbsp;1000</div>
+								</li>
+
+								<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;10</div>
+								</li>
+
+								<li class="collection-item" style="font-weight:bold;">Number of Guards:<div style="font-weight:normal;" id = 'numberOfGuard'>&nbsp;&nbsp;&nbsp;1</div>
+								</li>
+							</div>
+
+					</ul>
+				</div>
+				
+				<div class="col s6">
+					<ul class="collection with-header" id="" style="border:1px solid black;">
 								<li class="collection-header blue white-text" ><h5 style="font-weight:bold;" id ='guardHeader'></h5></li>
 							<div class="sidenavhover" style=" height:300px;" id = 'guardContainer'>
 								<li class="collection-item">
@@ -154,7 +191,7 @@ Client
 				</div>
 				
 				<div class="col s6">
-					<ul class="collection with-header" id="collectionActive" style="border:1px solid black;">
+					<ul class="collection with-header" id="" style="border:1px solid black;">
 								<li class="collection-header blue white-text" ><h5 style="font-weight:bold;" id = 'gunHeader'></h5></li>
 							<div>
 								<li class="collection-item sidenavhover" style=" height:300px;">
