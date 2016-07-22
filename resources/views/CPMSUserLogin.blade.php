@@ -21,6 +21,7 @@
         <!-- CORE CSS-->
         <link href="{!! URL::asset('../css/materialize1.css') !!}" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="{!! URL::asset('../css/style1.css') !!}" type="text/css" rel="stylesheet"/>
+		<link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
         <!-- Custome CSS-->
         <link href="{!! URL::asset('../css/custom-style.css') !!}" type="text/css" rel="stylesheet" media="screen,projection"/>
         <!-- CSS style Horizontal Nav (Layout 03)-->    

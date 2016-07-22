@@ -42,8 +42,12 @@ Security Homepage
 </div>
 <!-----------------------------------Modal----------------------------------------------------->
 <div id="modalreadMsg" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
-    <div class="modal-header" style="background-color:#01579b !important;"><h4>Message</h4></div>
-    
+    <div class="modal-header">
+                <div class="h">
+                    <h3><center>Messages</center></h3>  
+				</div>
+
+            </div>
     <div class="modal-content">
         <div class="row">
             <div class="col s12">
@@ -91,7 +95,7 @@ Security Homepage
         </div>
     </div>
     
-    <div class="modal-footer ci" style="background-color:#01579b !important;">
+    <div class="modal-footer ci" style="background-color: #00293C;">
         <div id = "buttons" style="display: none;">	
             <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnAccept">Accept
             </button>

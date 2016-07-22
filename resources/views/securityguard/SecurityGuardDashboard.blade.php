@@ -71,7 +71,7 @@
                             <div class="col l5 push-l9">
                                     <ul class="right hide-on-med-and-down">
 								
-                                 <li><a  data-position="top" data-delay="50" data-tooltip="HOME"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">store</i></a></li>
+                                 <li><a  data-position="top" data-delay="50" data-tooltip="HOME"href="/securityhomepage" class=" tooltipped"><i class="material-icons">store</i></a></li>
 								 <li><a  data-position="top" data-delay="50" data-tooltip="NOTIFICATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-social-public" style="font-size:2.1rem;color:white"></i></a></li>
 								<li><a  data-position="top" data-delay="50" data-tooltip="MESSAGE"href="/dashboardadmin" class=" tooltipped"><i class="mdi-communication-forum" style="font-size:2.1rem;color:white"></i></a></li>
                                 <li><a  data-position="top" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>
