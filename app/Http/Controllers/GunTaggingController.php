@@ -13,6 +13,22 @@ class GunTaggingController extends Controller
 {
     public function index(){
         return view('/clientAdmin/clientGunTagging');
- 
+    }
+    
+    public function post(Request $request){
+        $gunTagged = array();
+        $arrType = $request->type;
+        $arrGunID = $request->gunID;
+        $arrRounds = $request->rounds;
+        
+        for ($intLoop = 0; $intLoop < count($arrType); $intLoop ++){
+            $value = new \stdClass();
+            $value->type = $arrType[$intLoop];
+            $value->gunID = $arrGunID[$intLoop];
+            $value->rounds = $arrRounds[$intLoop];
+            array_push($gunTagged, $value);
+        }   
+        
+        $request->session()->put('gunTagged', $gunTagged);
     }
 }

@@ -11,10 +11,13 @@ Route::get('/dashboardadmin/get/clientcount', 'DashboardAdminController@getCount
 Route::get('/dashboardadmin/get/guardcount', 'DashboardAdminController@getCountGuard');
 
 Route::get('/client/gunTagging', 'GunTaggingController@index');
+Route::post('/client/gunTagging/post', 'GunTaggingController@post');
 
 Route::get('/admin/pending', 'AdminPendingController@index');
 
 Route::get('/client/registration/contractInfo', 'ClientContractController@index');
+Route::get('/client/registration/get/guardAccepted', 'ClientContractController@getGuardAccepted');
+Route::get('/client/registration/get/gunTagged', 'ClientContractController@getGunTagged');
 
 
 
@@ -110,6 +113,7 @@ Route::get('/clientView/get/guardaccept', 'ClientViewController@getGuardAccept')
 Route::get('/clientView/get/selectedclientpending', 'ClientViewController@getSelectedClientPending');
 Route::get('/clientView/get/guardcount', 'ClientViewController@getGuardAccepted');
 Route::post('/clientView/send/notification', 'ClientViewController@sendGuardPendingNotification');
+Route::post('/clientView/send/clientPendingID', 'ClientViewController@post');
 
 
 Route::get('/client/registration/basicInfo', 'ClientRegistrationController@index')->name('basicInfoBC');

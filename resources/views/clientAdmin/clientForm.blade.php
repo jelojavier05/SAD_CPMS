@@ -283,7 +283,8 @@ Client
         }
         
         $('#btnSave').click(function(){
-            if (checkInputShift() && checkInput()){
+            
+            if (checkInputShift() && checkInput() && checkGuard()){
                 for (intLoop = 1; intLoop <= shiftCounter; intLoop ++){
                     shiftNumber[intLoop - 1] = intLoop;
                     shiftFrom[intLoop - 1] = $('#shiftSelectFrom' + intLoop).val();
@@ -329,10 +330,10 @@ Client
                 });//ajax
                 
             }else{
-                var toastContent = $('<span>Check Input.</span>');
+                var toastContent = $('<span>Check your input. Maybe your guard is less than the expected.</span>');
                 Materialize.toast(toastContent, 2000,'red', 'edit');
             }
-            
+//            
             
         });
         
@@ -563,6 +564,14 @@ Client
                 text += possible.charAt(Math.floor(Math.random() * possible.length));
             }
             return text;
+        }
+        
+        function checkGuard(){
+            if ((shiftCounter * 2) <= $('#guardNo').val() || shiftCounter <= $('#guardNo').val()){
+                return true;
+            }else{
+                return false;
+            }
         }
     });
         

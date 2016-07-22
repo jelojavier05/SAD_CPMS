@@ -135,4 +135,8 @@ class ClientViewController extends Controller
         return response()->json($count);
     }
     
+    public function post(Request $request){
+        $request->session()->put('contractClientID', $request->clientID);
+    }
+    
 }
