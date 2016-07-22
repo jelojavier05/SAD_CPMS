@@ -35,10 +35,8 @@ Security Change Location
             <td>
                 <div class="switch">
     <label>
-      Off
       <input type="checkbox">
       <span class="lever"></span>
-      On
     </label>
   </div>
                 </td>
@@ -57,10 +55,10 @@ Security Change Location
             <td>521 Seses St. Makati City</td>
                             <td><div class="switch">
                                 <label>
-                                  Off
+                                  
                                   <input type="checkbox">
                                   <span class="lever"></span>
-                                  On
+                                  
                                 </label>
                                 </div></td>
             <td>
@@ -79,10 +77,10 @@ Security Change Location
             <td>
                             <div class="switch">
                             <label>
-                              Off
+                              
                               <input type="checkbox">
                               <span class="lever"></span>
-                              On
+                              
                             </label>
               </div>
                 </td>
@@ -100,10 +98,10 @@ Security Change Location
             <td>529 blk.1 Pasay City</td>
             <td><div class="switch">
     <label>
-      Off
+      
       <input type="checkbox">
       <span class="lever"></span>
-      On
+      
     </label>
   </div></td>
             <td>
@@ -120,10 +118,10 @@ Security Change Location
             <td>35103 St. Barangka Mandaluyong City</td>
             <td><div class="switch">
     <label>
-      Off
+      
       <input type="checkbox">
       <span class="lever"></span>
-      On
+      
     </label>
   </div></td>
             <td>

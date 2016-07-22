@@ -67,6 +67,8 @@ Route::get('/userlogin/logout', 'CPMSUserLoginController@logoutAccount');
 
 //LATEST SECURITY GUARD INTERFACE ----------------------------------------------------
 
+Route::get('/securityleaverequest', 'SecurityGuardDashboardController@index');
+Route::get('/securitychangelocation', 'SecurityGuardDashboardController@index');
 Route::get('/securityguard', 'SecurityGuardDashboardController@index');
 Route::get('/securityhomepage', 'SecurityHomepageController@index');
 Route::get('/securityhomepage/get/guard', 'SecurityHomepageController@getGuardInformation');

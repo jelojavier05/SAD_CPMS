@@ -16,7 +16,7 @@ class SecurityLeaveRequestController extends Controller
      */
     public function index()
     {
-       return view('/SecurityLeaveRequest');
+       return view('/securityguard/SecurityLeaveRequest');
     }
 
     /**

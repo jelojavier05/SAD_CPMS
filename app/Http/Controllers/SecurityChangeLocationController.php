@@ -16,7 +16,7 @@ class SecurityChangeLocationController extends Controller
      */
     public function index()
     {
-        return view('/SecurityChangeLocation');
+        return view('/securityguard/SecurityChangeLocation');
     }
 
     /**

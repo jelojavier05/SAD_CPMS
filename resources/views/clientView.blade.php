@@ -180,8 +180,13 @@ Client
         </div>
     </div>
     
-    <div id="modalsendNoti" class="modal modal-fixed-footer" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
-        <div class="modal-header"><h4>Send Notification</h4></div>
+    <div id="modalsendNoti" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-10px;">
+        	<div class="modal-header">
+                <div class="h">
+                    <h3><center>Send Notifications</center></h3>  
+				</div>
+
+            </div>
         <div class="modal-content">
             <div class="row">
                 <div class="col s12">
@@ -204,7 +209,7 @@ Client
             </div>
         </div>
         
-        <div class="modal-footer" style="background-color:#01579b !important;">
+        <div class="modal-footer ci" style="background-color: #00293C;">
             <button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnSendNotification">Send
             <i class="material-icons right">send</i>
             </button>

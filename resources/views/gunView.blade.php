@@ -33,7 +33,7 @@ Gun
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <button class="buttonUpdate btn col s12"  name="" id="" >
+                                            <button class="buttonUpdate btn col s12 modal-trigger" href="#modaleditGun"  name="" id="" >
                                                 <i class="material-icons">edit</i>
                                             </button>
                                             <label for=""></label>
@@ -87,6 +87,53 @@ Gun
     
     
     
+</div>
+
+<!-----------------------------------Modal----------------------------------------------------->
+
+<div id="modaleditGun" class="modal modal-fixed-footer" style="overflow:hidden; width:700px;max-height:100%; height:400px; margin-top:30px;">
+        <div class="modal-header" style="background-color:#01579b !important;"><h4>Gun</h4></div>
+        	<div class="modal-content">
+				
+				<div class="row">
+					<div class="col s12">
+						<div class="input-field col s6">
+							<input placeholder=" " id="clientNumberEdit" maxlength="10" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
+							<label data-error="Incorrect" for="clientNumberEdit">Contact Number (Client)</label>
+
+						</div>
+					
+						<div class="input-field col s6">
+							<input placeholder=" " id="personInChargeEdit" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+							<label for="personInChargeEdit" data-error="Incorrect">Person in Charge</label>
+						</div>
+
+						<div class="input-field col s6">
+							<input placeholder=" " id="personNumberEdit" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
+							<label data-error="Incorrect" for="personNumberEdit">Contact Number (Person In Charge)</label>
+
+						</div>
+						
+						<div class="input-field col s6">
+							<input placeholder=" " id="areaSizeEdit" type="text" class="validate" pattern="[0-9. ]{2,}" required="" aria-required="true">
+							<label data-error="Incorrect" for="areaSizeEdit">Area Size (approx. in square meters)</label>
+
+						</div>
+					
+						<div class="input-field col s6">
+							<input placeholder=" " id="populationEdit" type="text" class="validate" pattern="[0-9, ]{2,}" required="" aria-required="true">
+							<label data-error="Incorrect" for="populationEdit">Population (approx.)</label>
+
+						</div>
+					</div>
+				</div>
+    		</div>
+			
+			<div class="modal-footer" style="background-color:#01579b !important;">
+				<button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnSave">Update
+					
+				</button>
+			</div>
 </div>
 
 @stop
