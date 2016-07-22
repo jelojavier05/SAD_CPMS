@@ -66,6 +66,18 @@
                             
                             <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="60%" style="margin-top:-10%">
 
+<<<<<<< HEAD
+=======
+        
+            <div class="col l5 push-l10  ">
+                <ul id="dropdown3" class="dropdown-content">
+                    <li><a href="#!">Profile<i class="material-icons">perm_contact_calendar</i></a></li>
+                    <li><a id = 'btnLogout'>Log Out<i class="material-icons">input</i></a></li>
+                </ul>
+                <div class="row">
+                    <div class="col l12">
+                        <div class="col l10">
+>>>>>>> 3e9667d550cc6ba2b06e757b4f708378a2dc8238
                             
                             </div>
                             <div class="col l3 pull-l3">
@@ -297,9 +309,34 @@
 	
     
 	<script>
-		 $(document).ready(function() {
+    $(document).ready(function() {
         $('select').material_select();
-		 });
+        
+        $('#btnLogout').click(function(){
+            $.ajax({
+
+                type: "GET",
+                url: "{{action('CPMSUserLoginController@logoutAccount')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                success: function(data){
+                    if (!data){
+                        window.location.href = '{{ URL::to("/userlogin") }}';
+                    }
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');   
+                }
+
+            });//ajax 
+        });
+    });
 	</script>
 	
     
