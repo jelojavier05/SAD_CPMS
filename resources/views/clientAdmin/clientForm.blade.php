@@ -46,14 +46,14 @@ Client
 					</div>
 					
 					<div class="input-field col s6">
-						<input placeholder=" " id="piccontactCp" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
+						<input placeholder=" " id="piccontactCp" maxlength="13" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
 						<label data-error="Incorrect" for="clientcontactCp">Contact Number (Person In Charge)</label>
 
 					</div>
 				
 					
 					<div class="input-field col s12">
-						<input placeholder=" " id="address" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
+						<input placeholder=" " id="address" type="text" class="validate" pattern="[A-za-z0-9., ]{2,}" required="" aria-required="true">
 						<label data-error="Incorrect" for="address">Address</label>
 
 					</div>

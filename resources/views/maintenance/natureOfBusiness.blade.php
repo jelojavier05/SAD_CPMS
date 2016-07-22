@@ -36,16 +36,16 @@ Nature of Business
         
             <div class="row">
                 <div class="col s12" style="margin-top:-20px;">
-                    <table class="highlight white" style="border-radius:10px;" id="dataTable">
+                    <table class="striped" style="border-radius:10px;" id="dataTable">
 
                         <thead>
                             <tr>
-                                <th style="width:50px;"></th>
-                                <th style="width:50px;"></th>
-								<th style="width:50px;"></th>
-                                <th>ID</th>
-                                <th>Name</th>
-								<th>Rate per Hour</th>
+                                <th style="width:50px;" class="blue darken-3 white-text"></th>
+                                <th style="width:50px;" class="blue darken-3 white-text"></th>
+								<th style="width:50px;" class="blue darken-3 white-text"></th>
+                                <th class="blue darken-3 white-text">ID</th>
+                                <th class="blue darken-3 white-text">Name</th>
+								<th class="blue darken-3 white-text">Rate per Hour</th>
                                 
                             </tr>
                         </thead>
@@ -117,7 +117,7 @@ Nature of Business
                                                 <div class="row"></div>
                                                 <div class="input-field col s12">
 														 <i class="mdi-communication-business prefix" style="font-size:35px;"></i>
-                                                        <input id="strNatureOfBusiness" type="text" class="validate" name = "natureOfBusiness" required="" aria-required="true" pattern="[A-Za-z0-9,. ]{3,}">
+                                                        <input id="strNatureOfBusiness" type="text" class="validate" name = "natureOfBusiness" required="" aria-required="true" pattern="([A-z0-9 '.-]){2,}">
                                                             <label for="">Nature of Business</label> 
                                                 </div>
                                     </div>
@@ -222,9 +222,9 @@ Nature of Business
 		
 		$("#dataTable").DataTable({
              "columns": [
-            {"searchable": false},
-			{"searchable": false},
-			{"searchable": false},
+            {"orderable": false},
+			{"orderable": false},
+			{"orderable": false},
             null,
             null,
 			null

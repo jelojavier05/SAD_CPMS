@@ -37,18 +37,18 @@ Leave
         
             <div class="row">
                 <div class="col s12" style="margin-top:-20px;">
-                    <table class="highlight white" style="border-radius:10px;" id="dataTable">
+                    <table class="striped white" style="border-radius:10px;" id="dataTable">
 
                         <thead>
                             <tr>
-                                <th style="width:50px;"></th>
-                                <th style="width:50px;"></th>
-								<th style="width:50px;"></th>
-                                <th>ID</th>
-                                <th>Leave Type</th>
-                                <th>Number Of Days</th>
-                                <th>Number Of Request</th>
-                                <th>Notification Period</th>
+                                <th style="width:50px;" class="blue darken-3 white-text"></th>
+                                <th style="width:50px;" class="blue darken-3 white-text"></th>
+								<th style="width:50px;" class="blue darken-3 white-text"></th>
+                                <th class="blue darken-3 white-text">ID</th>
+                                <th class="blue darken-3 white-text">Leave Type</th>
+                                <th class="blue darken-3 white-text">Number Of Days</th>
+                                <th class="blue darken-3 white-text">Number Of Request</th>
+                                <th class="blue darken-3 white-text">Notification Period</th>
                             </tr>
                         </thead>
 

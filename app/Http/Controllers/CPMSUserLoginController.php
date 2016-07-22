@@ -14,7 +14,7 @@ class CPMSUserLoginController extends Controller
     public function index(Request $request){
         //$request->session()->flush();
         if ($request->session()->has('accountType')){
-            $accountType = $request->session()->has('accountType');
+            $accountType = $request->session()->get('accountType');
             if ($accountType == 0){
                 return redirect('/client/tempaccount');
             }else if ($accountType == 1){
