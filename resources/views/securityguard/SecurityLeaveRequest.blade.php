@@ -49,7 +49,7 @@ Security Leave Request
                                             <label for="test8">MAXIMUM LEAVES: 5</label><br>
                                             <label for="test8">REMAINING LEAVES: 3</label><br>  
                                             <label for="test8">NOTE!</label><br>
-                                                    <span class="black-text"><bold>THE APPLICATION OF LEAVE MUST <br>BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL</bold></span>
+                                                    <span class="black-text"><bold>THE APPLICATION OF LEAVE MUST <br>BE <div class="blue-text">2 DAYS</div>PRIOR TO THE GIVEN DATE OF APPROVAL</bold></span>
                                         </div>
             
             
@@ -86,7 +86,7 @@ Security Leave Request
       <span class="card-title activator grey-text text-darken-4">LEAVE APPLICATION FORM
           <i class="material-icons right" style="font-size:3rem">view_headline</i></span>
     </div>
-    <div class="card-reveal">
+    <div class="card-reveal sidenavhover">
         
       <span class="card-title grey-text text-darken-4">Fill Up the Following<i class="material-icons right">close</i></span>
      
@@ -112,11 +112,7 @@ Security Leave Request
         <div class="row"></div>
         <div class="row">
             <div class="col l12">
-                <div class="col l6">
-                        <label for="icon_prefix">Application Date:</label><br>
-                        <input type="date" class="datepicker"><br>
-
-                </div>
+                
                 <div class="col l6">
                 
                         <label for="icon_prefix">Date Return to Work</label><br>
@@ -135,10 +131,10 @@ Security Leave Request
                             </div>
                           </form>
                     
-                     <div class="col l12 push-l2">
+                     <div class="col l12">
                                 
-                      <a href="#!" class="btn green darken-4 z-depth-3">Send</a>
-                     <a href="#!" class="btn red darken-4 z-depth-3">Cancel</a>
+                      <a href="#!" class="btn green darken-4 z-depth-3 right">Send</a>
+                    
                 
                     
                     </div>

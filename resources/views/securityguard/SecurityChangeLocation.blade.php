@@ -18,8 +18,7 @@ Security Change Location
               <th data-field="id">Clients</th>
               <th data-field="name">Nature of Business</th>
              
-              <th data-field="price">Business Address</th>
-              <th data-field="price">Status</th>
+              <th data-field="price">Business Address</th>      
               <th data-field="price">Others</th>
               
           </tr>
@@ -32,14 +31,7 @@ Security Change Location
             <td>Steel Works</td>
           
             <td>212 Sagigilid St. Sta. Mesa, Manila</td>
-            <td>
-                <div class="switch">
-    <label>
-      <input type="checkbox">
-      <span class="lever"></span>
-    </label>
-  </div>
-                </td>
+            
             <td>
                 <div class="col l2">
                 
@@ -50,17 +42,10 @@ Security Change Location
             
          <tr>
             <td>San Miguel Corp</td>
-            <td>Eklabush</td>
+            <td>Factory</td>
         
             <td>521 Seses St. Makati City</td>
-                            <td><div class="switch">
-                                <label>
-                                  
-                                  <input type="checkbox">
-                                  <span class="lever"></span>
-                                  
-                                </label>
-                                </div></td>
+                            
             <td>
                 <div class="col l2">
                 
@@ -74,16 +59,7 @@ Security Change Location
             <td>University</td>
          
             <td>Anonas, Maynila, Kalakhang Maynila</td>
-            <td>
-                            <div class="switch">
-                            <label>
-                              
-                              <input type="checkbox">
-                              <span class="lever"></span>
-                              
-                            </label>
-              </div>
-                </td>
+            
             <td>
                 <div class="col l2">
                 
@@ -96,14 +72,7 @@ Security Change Location
             <td>Santibanez Company</td>
             <td>Recruitment Agency</td>
             <td>529 blk.1 Pasay City</td>
-            <td><div class="switch">
-    <label>
-      
-      <input type="checkbox">
-      <span class="lever"></span>
-      
-    </label>
-  </div></td>
+            
             <td>
                 <div class="col l2">
                 
@@ -116,14 +85,7 @@ Security Change Location
             <td>Senyora Dede Pueblo</td>
             <td>Brick and Stones</td>
             <td>35103 St. Barangka Mandaluyong City</td>
-            <td><div class="switch">
-    <label>
-      
-      <input type="checkbox">
-      <span class="lever"></span>
-      
-    </label>
-  </div></td>
+            
             <td>
                 <div class="col l2">
                 
@@ -262,7 +224,20 @@ Security Change Location
                     <label class="ft" for="GuardSwap">Guard to Swap:</label><br>
                     <label class="ft" for="RequestApprovedDate">Request Approved Date:</label><br> 
                     <label class="ft" for="EffDate" >Effectivity Date:</label>  
-                 </div>
+			</div></br>
+			
+			
+                          <form class="col s10 push-s1">
+                            <div class="row">
+                              <div class="input-field col s12">
+                                <input id="input_text" type="text" length="120">
+                                <label for="input_text">REASON</label>
+                              </div>
+                            </div>
+                          </form>
+                    
+                     
+            
 
       <div class="row">
             
@@ -273,9 +248,10 @@ Security Change Location
                     <div class="row">
                         <div class="col l12 offset-l4">
                                 <div class="row"></div>
-                      <a href="#!" class="btn blue darken-4 z-depth-3">Send</a>
-                      <a href="#!" class="btn green darken-4 z-depth-3">Save</a>
+                     
+                      
                      <a href="#!" class="btn red darken-4 z-depth-3">Reset</a>
+					 <a href="#!" class="btn blue darken-4 z-depth-3">Send</a>
                 
                     
                     </div>
