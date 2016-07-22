@@ -131,7 +131,6 @@ Client
                     
                         
                 });//foreach   
-                console.log(tableGun);
             },
 
             error: function(data){
@@ -146,7 +145,19 @@ Client
            
         });
         
-        //$('#dataTable2')
+        $('#dataTable2').on('click', '.buttonRemove', function(){
+            var id = this.id
+            $.each(tableAdded, function(index, value) {
+                if (value.intGunID == id){
+                    var roundCount = $('#intRounds').val();
+                    tableAdded.splice(index,1);
+                    tableGun.push(value);
+                    gunRounds.splice(index,1);
+                    return false;
+                }
+            });//foreach   
+            refreshTable();
+        });
 		
         $('#btnAddRounds').click(function(){
             var roundCount = $('#intRounds').val();
@@ -157,14 +168,12 @@ Client
                 $.each(tableGun, function(index, value) {
                     if (value.intGunID == id){
                         var roundCount = $('#intRounds').val();
-                        tableGun.pop(value);
+                        tableGun.splice(index,1);
                         tableAdded.push(value);
                         gunRounds.push(roundCount);
-                        console.log(value);
                         return false;
                     }
                 });//foreach   
-                console.log(tableGun);
                 refreshTable(); 
                 $('#modalRounds').closeModal();
                 $('#intRounds').val(0);
@@ -172,6 +181,7 @@ Client
                 var toastContent = $('<span>Please Check Your Input. </span>');
                 Materialize.toast(toastContent, 1500,'red', 'edit');
             }
+            
             
                 
         });
