@@ -58,67 +58,39 @@ Client Request of Gun
               <span class="card-title"><center>Request for <b>Additional Guns</b></center></span>
               <p>Requisition of additional guns for better maintenance of services.</p>
                 
-                <div class="row">  
-                    <div class="input-field col s6">
-                      <label for="icon_prefix">Application Date:</label><br>
-                        <input type="date" class="datepicker"><br>
-                    </div>
-                    <div class="input-field col s6">
-                      <label for="icon_prefix">Date Needed:</label><br>
-                        <input type="date" class="datepicker"><br>
-                    </div>
-                </div>
-
-
-                
-                    <div class="input-field col s6">
+<!--
+                <div class="input-field col s3 offset-s10 pull-s10">
                       <i class="material-icons prefix">toc</i>
-                      <input id="icon_prefix" type="text" class="validate">
-                      <label for="icon_prefix">Quantity Needed per Type</label>
+                      <input id="icon_prefix" type="number" class="validate" value="1">
+                      <label for="icon_prefix">Guards Needed</label>
                     </div>
-                    <div class="input-field col s6">
-                        <select multiple>
-                          <option value="" disabled selected>Choose your option</option>
-                          <option value="1">Austrian Glock</option>
-                          <option value="2">Arctic Warfare Magnum</option>
-                          <option value="3">Colt 1911</option>
-                        </select>
-                        <label>Select Gun/s</label>
-                    </div>
-       
-                  <div class="input-field col l12">
+-->
+                    
+                
+                
+              
+               
+                  <div class="input-field col s12">
                     <textarea id="gunreq" class="materialize-textarea" length="120"></textarea>
                     <label for="gunreq">Please specify the reasons for requesting</label>
                   </div>
-               
-                    <p> <b>Note!</b><br><i>THE APPLICATION FOR ALL REQUISITION MUST BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL</i></p>
-              
-              
-              
+             
+                  <p> <b>Note!</b><br><i>THE APPLICATION FOR ALL REQUISITION MUST BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL</i></p>
+             
                 
+            <div class="row">
+                <div class="col l12">
+            <div class="card-action">
               
-              
-              
-                  <div class="row">
-                
-                <div class="col l12 push-l2">
-                    
-                    <div class="card-action">
-              <button class="btn waves-effect waves-light" type="submit" name="action">Save
-                <i class="material-icons right">system_update_alt</i>
-              </button>
             
-              <button class="btn waves-effect waves-light indigo darken-4" type="submit" name="action">Submit
+              <button class="btn waves-effect waves-light indigo darken-4 right" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
               </button>
                 
-              <button class="btn waves-effect waves-light red accent-4" type="submit" name="action" >Cancel
-                <i class="material-icons right">clear_all</i>
-              </button>
-            </div>  
-                    
+              
+            </div>
                     </div>
-                </div>
+          </div>
       </div>  
           </div>
         </div>
@@ -144,66 +116,39 @@ Client Request of Gun
               <span class="card-title"><center>Request for <b>Replacement for Guns</b></center></span>
               <p>Requisition of replacing guns for better maintenance of services.</p>
                 
-                <div class="row">  
-                    <div class="input-field col s6">
-                      <label for="icon_prefix">Application Date:</label><br>
-                        <input type="date" class="datepicker"><br>
-                    </div>
-                    <div class="input-field col s6">
-                      <label for="icon_prefix">Date Needed:</label><br>
-                        <input type="date" class="datepicker"><br>
-                    </div>
-                </div>
-
-
-                
-                    <div class="input-field col s6">
+<!--
+                <div class="input-field col s3 offset-s10 pull-s10">
                       <i class="material-icons prefix">toc</i>
-                      <input id="icon_prefix" type="text" class="validate">
-                      <label for="icon_prefix">Quantity Needed per Type</label>
+                      <input id="icon_prefix" type="number" class="validate" value="1">
+                      <label for="icon_prefix">Guards Needed</label>
                     </div>
-                    <div class="input-field col s6">
-                        <select multiple>
-                          <option value="" disabled selected>Choose your option</option>
-                          <option value="1">Austrian Glock</option>
-                          <option value="2">Ruger P</option>
-                          <option value="3">Colt 1911</option>
-                        </select>
-                        <label>Select Gun/s</label>
-                    </div>
+-->
+                    
                 
                 
               
-          
+               
                   <div class="input-field col s12">
                     <textarea id="gunreq" class="materialize-textarea" length="120"></textarea>
                     <label for="gunreq">Please specify the reasons for requesting</label>
                   </div>
-               
-                     <p> <b>Note!</b><br><i>THE APPLICATION FOR ALL REQUISITION MUST BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL</i></p>
+             
+                  <p> <b>Note!</b><br><i>THE APPLICATION FOR ALL REQUISITION MUST BE 2 WEEKS PRIOR TO THE GIVEN DATE OF APPROVAL</i></p>
+             
+                
+            <div class="row">
+                <div class="col l12">
+            <div class="card-action">
               
-                
-                
-                  <div class="row">
-                
-                <div class="col l12 push-l2">
-                    
-                    <div class="card-action">
-              <button class="btn waves-effect waves-light" type="submit" name="action">Save
-                <i class="material-icons right">system_update_alt</i>
-              </button>
             
-              <button class="btn waves-effect waves-light indigo darken-4" type="submit" name="action">Submit
+              <button class="btn waves-effect waves-light indigo darken-4 right" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
               </button>
                 
-              <button class="btn waves-effect waves-light red accent-4" type="submit" name="action" >Cancel
-                <i class="material-icons right">clear_all</i>
-              </button>
-            </div>  
-                    
+              
+            </div>
                     </div>
-                </div>
+          </div>
               
           </div>
             
