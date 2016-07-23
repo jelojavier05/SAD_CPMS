@@ -24,6 +24,31 @@ class ClientContractController extends Controller
             ->with('contract', $contract); 
     }
     
+    public function getClientDetail(Request $request){
+        if ($request->session()->has('contractClientID')){
+            $id = $request->session()->get('contractClientID');
+            
+            $client = DB::table('tblclient')
+                ->join('tblnatureofbusiness', 'tblnatureofbusiness.intNatureOfBusinessID', '=', 'tblclient.intNatureOfBusinessID')
+                ->join('tblclientaddress', 'tblclientaddress.intClientID','=', 'tblclient.intClientID')
+                ->join('tblprovince', 'tblprovince.intProvinceID', '=', 'tblclientaddress.intProvinceID')
+                ->join('tblcity', 'tblcity.intCityID', '=', 'tblclientaddress.intCityID')
+                ->select('tblnatureofbusiness.strNatureOfBusiness', 'tblclient.*', 'tblclientaddress.strAddress', 'tblprovince.strProvinceName', 'tblcity.strCityName', 'tblnatureofbusiness.deciRate')
+                ->where('tblclient.intClientID', $id)
+                ->first();
+            
+            $shifts = DB::table('tblclientshift')
+                ->join('tblclient', 'tblclient.intClientID', '=', 'tblclientshift.intClientID')
+                ->select('tblclientshift.*')
+                ->where('tblclient.intClientID', $id)
+                ->get();
+            
+            $client->shifts = $shifts;
+            
+            return response()->json($client);    
+        }
+    }
+    
     public function getGuardAccepted(Request $request){
         if ($request->session()->has('contractClientID')){
             $id = $request->session()->get('contractClientID');
@@ -35,14 +60,8 @@ class ClientContractController extends Controller
                 ->where('tblclient.intClientID', '=', $id)
                 ->where('tblguardpendingnotification.intStatusIdentifier', '=', 3)
                 ->get();
-           
 
-            if (is_null($guards)){
-                return response()->json(false);
-            }else{
-                return response()->json($guards);    
-            }
-//            return response()->json($id);
+            return response()->json($guards);    
         }
     }
     

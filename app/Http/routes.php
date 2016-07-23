@@ -18,6 +18,7 @@ Route::get('/admin/pending', 'AdminPendingController@index');
 Route::get('/client/registration/contractInfo', 'ClientContractController@index');
 Route::get('/client/registration/get/guardAccepted', 'ClientContractController@getGuardAccepted');
 Route::get('/client/registration/get/gunTagged', 'ClientContractController@getGunTagged');
+Route::get('/client/registration/get/client', 'ClientContractController@getClientDetail');
 
 
 

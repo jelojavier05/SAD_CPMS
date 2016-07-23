@@ -44,60 +44,44 @@ Client
 						</form>
 
 					</div>
+                    
+                    <div class="input-field col s5 push-s1">
+						<input  id="operatingTime" type="text" required="" aria-required="true" readonly placeholder=" ">
+						<label class="active" for="operatingTime">Operating Time (Hours)</label>
+					</div>
+					
+					<div class="input-field col s5 push-s1">
+						<input  id="rateperHour" type="text" required="" aria-required="true" readonly placeholder=" ">
+						<label class="active" for="rateperHour">Rate Per Hour</label>
+					</div>
 				</div>
+                
+                    
 				<div class='row'>
 					<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px; margin-bottom:10px;">
 						<legend><h4>Shift</h4></legend>
 						<div class="col s10 push-s1">
-							<table class="bordered grey lighten-1" id = "dataTable" style="margin-bottom:15px;">
+							<table class="bordered grey lighten-1" id = "tableShift" style="margin-bottom:15px;">
 								
 								<thead>
 									<tr>
 
-										<th style="width:20px;"><center>Shift No.</center></th>
-										<th style="width:10px;"><center>From</center></th>
-										<th style="width:10px;"><center>To</center></th>
+										<th data-field="" style="width:20px;"><center>Shift No.</center></th>
+										<th data-field="" style="width:10px;"><center>From</center></th>
+										<th data-field="" style="width:10px;"><center>To</center></th>
 									</tr>
 								</thead>
-								
+								    
 								<tbody>
 									<tr>
-										
-										<td><center>1</center></td>
-										<td><center>12AM</center></td>
-										<td><center>8AM</center></td>
-										
-									</tr>
-									
-									<tr>
-										
-										<td><center>2</center></td>
-										<td><center>8AM</center></td>
-										<td><center>4PM</center></td>
-										
-									</tr>
-									
-									<tr>
-										
-										<td><center>3</center></td>
-										<td><center>4PM</center></td>
-										<td><center>12AM</center></td>
-										
-									</tr>
+                                    
+                                    </tr>
 								</tbody>
 								
 							</table>
 						</div>
 					</div>
-					<div class="input-field col s5 push-s1">
-						<input  id="operatingTime" type="text" required="" aria-required="true" readonly>
-						<label class="active" for="operatingTime">Operating Time (Hours)</label>
-					</div>
 					
-					<div class="input-field col s5 push-s1">
-						<input  id="rateperHour" type="text" required="" aria-required="true" readonly>
-						<label class="active" for="rateperHour">Rate Per Hour</label>
-					</div>
 				</div>
 
 			</div>
@@ -112,7 +96,7 @@ Client
 							<div>
 								<li class="collection-item sidenavhover" style="height:300px;">
 									<div style="font-weight:normal;">
-										<table class="" style="font-family:Myriad Pro">
+										<table class="" style="font-family:Myriad Pro" id = 'tableBilling'>
 											<thead>
 											  <tr>
 												  <th data-field="">Date</th>
@@ -123,8 +107,7 @@ Client
 
 											<tbody>
 											  <tr>
-												<td>12/25/2015</td>
-												<td>10000</td>
+												
 											  </tr>
 												
 												
@@ -145,31 +128,28 @@ Client
 						</li>
 							<div class="sidenavhover" style=" height:300px;">
 
-								<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusiness'>&nbsp;&nbsp;&nbsp;Bank</div>
+								<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusiness'>&nbsp;&nbsp;&nbsp;</div>
 								</li>
 
-								<li class="collection-item" style="font-weight:bold;">Name:<div style="font-weight:normal;" id = 'name'>&nbsp;&nbsp;&nbsp;PUP</div>
+								<li class="collection-item" style="font-weight:bold;">Name:<div style="font-weight:normal;" id = 'name'>&nbsp;&nbsp;&nbsp;</div>
 								</li>
 
-								<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;" id = 'clientNumber'>&nbsp;&nbsp;&nbsp;09123456789</div>
+								<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;" id = 'clientNumber'>&nbsp;&nbsp;&nbsp;</div>
 								</li>
 
-								<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;" id = 'personInCharge'>&nbsp;&nbsp;&nbsp;Mang Tomas</div>
+								<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;" id = 'personInCharge'>&nbsp;&nbsp;&nbsp;</div>
 								</li>
 
-								<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'personNumber'>&nbsp;&nbsp;&nbsp;09123456789</div>
+								<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'personNumber'>&nbsp;&nbsp;&nbsp;</div>
 								</li>
 
-								<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;Hello Street</div>
+								<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;</div>
 								</li>
 
-								<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSize'>&nbsp;&nbsp;&nbsp;1000</div>
+								<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSize'>&nbsp;&nbsp;&nbsp;</div>
 								</li>
 
-								<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;10</div>
-								</li>
-
-								<li class="collection-item" style="font-weight:bold;">Number of Guards:<div style="font-weight:normal;" id = 'numberOfGuard'>&nbsp;&nbsp;&nbsp;1</div>
+								<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;</div>
 								</li>
 							</div>
 
@@ -233,6 +213,7 @@ Client
     
 $(document).ready(function() {
     
+    var countGuard = [];
     
     $.ajax({
         type: "GET",
@@ -251,6 +232,7 @@ $(document).ready(function() {
             });
             
             $('#guardHeader').text('Guards - ' + data.length);
+            countGuard.push(data.length);
         }
     });//get guard accepted
     
@@ -273,40 +255,214 @@ $(document).ready(function() {
             
             $('#gunHeader').text('Guns - ' + data.length);
         }
+    });//get gun tagged
+    
+    $.ajax({
+        type: "GET",
+        url: "{{action('ClientContractController@getClientDetail')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data){
+            var area = commaSeparateNumber(data.deciAreaSize);
+            var population = commaSeparateNumber(data.intPopulation);
+            var operationTime = data.shifts[data.shifts.length - 1].timeTo - data.shifts[0].timeFrom;
+            $('#natureOfBusiness').text(data.strNatureOfBusiness);
+            $('#name').text(data.strClientName);
+            $('#clientNumber').text(data.strContactNumber);
+            $('#personInCharge').text(data.strPersonInCharge);
+            $('#personNumber').text(data.strPOICContactNumber);
+            $('#address').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+            $('#areaSize').text(area);
+            $('#population').text(population);
+            
+            $.each(data.shifts, function(index, value){
+                
+                var from = getHour(value.timeFrom);
+                var to = getHour(value.timeTo);
+                $('#tableShift tr:last').after('<tr><td><center>' + value.strShiftNumber + '</center></td>'+
+                     '<td><center>' + from +'</center></td>'+
+                     '<td><center>' + to +'</center></td>'+
+                     '</tr>');
+            });
+            
+            $('#operatingTime').val(operationTime);
+            $('#rateperHour').val(data.deciRate);
+        }
     });//get guard accepted
     
     $('#selectContract').on('change',function(){
         var value = $(this).children(":selected").attr("value");
         $('#contractDuration').val(value);
         refreshDateEnd();
+        billingDates();
     });
     
     $('#contractStart').on('change',function(){
         refreshDateEnd();
+        billingDates();
     });
     
     function refreshDateEnd() {
-        var dateStart = new Date($('#contractStart').val());
-        var months = parseInt($('#contractDuration').val()) + (dateStart.getMonth() + 1);
+        if ($('#contractStart').val() != '' && $('#contractDuration').val() != 0){
+            var dateStart = new Date($('#contractStart').val());
+            var months = parseInt($('#contractDuration').val()) + (dateStart.getMonth() + 1);
 
-        var yearEnd = parseInt(months / 12) + dateStart.getFullYear();
-        var monthEnd = parseInt(months % 12);
-        var dayEnd = dateStart.getDate();
-        var lastDay = new Date(yearEnd, monthEnd, 0).getDate();
+            var yearEnd = parseInt(months / 12) + dateStart.getFullYear();
+            var monthEnd = parseInt(months % 12);
+            var dayEnd = dateStart.getDate();
+            var lastDay = new Date(yearEnd, monthEnd, 0).getDate();
 
-        if (dayEnd>lastDay){
-            dayEnd = lastDay;
-        }
-        if (monthEnd < 10){
-            monthEnd = '0' + monthEnd;    
-        }
+            if (dayEnd>lastDay){
+                dayEnd = lastDay;
+            }
+            if (monthEnd < 10){
+                monthEnd = '0' + monthEnd;    
+            }
 
-        if (dayEnd < 10){
-            dayEnd = '0' + dayEnd;
+            if (dayEnd < 10){
+                dayEnd = '0' + dayEnd;
+            }
+            var dateEnd = yearEnd + "-" + monthEnd + "-" + dayEnd;
+            $('#contractEnd').val(dateEnd);
         }
-        var dateEnd = yearEnd + "-" + monthEnd + "-" + dayEnd;
-        $('#contractEnd').val(dateEnd);
         
+            
+        
+    }
+    
+    function billingDates(){
+        if ($('#contractStart').val() != '' && $('#contractDuration').val() != 0){
+            var dateStart = new Date($('#contractStart').val());
+            var monthDuration = $('#contractDuration').val();
+            var counter = 0;
+            var currentMonth = dateStart.getMonth() + 1;
+            var tempPastMonth = dateStart;
+            var tempCurrentMonth = new Date(dateStart.getFullYear(), dateStart.getMonth() + 1, dateStart.getDate());
+            var arr = [];
+            var dayStart = dateStart.getDate();
+            
+            while(counter != monthDuration){
+                
+                var year = tempCurrentMonth.getFullYear();
+                var month = tempCurrentMonth.getMonth() + 1;
+                var day = dayStart;
+                var lastDay = new Date(year, month, 0).getDate();
+                
+                if (lastDay < dayStart){
+                    day = lastDay;
+                }
+                var monthTemp = month - 1;
+                var tempDate = new Date(year,monthTemp, day);
+                arr.push(tempDate);
+                tempCurrentMonth = new Date(year, month, 1);
+                
+                counter ++;
+            }
+            
+            getBillPerMonth(arr);
+            
+            $('#tableBilling tr').not(function(){ return !!$(this).has('th').length; }).remove();
+            var dateStart1 = new Date($('#contractStart').val());
+            $.each(arr, function(index,value){
+                var year = value.getFullYear();
+                var month = value.getMonth() + 1;
+                var day = value.getDate();
+                var date = month + '/' + day + '/' + year;
+                
+                var days = daydiff(dateStart1, value);
+                var hourPerDay = $('#operatingTime').val();
+                var ratePerHour = $('#rateperHour').val();
+                
+                var bill = days * hourPerDay * ratePerHour * countGuard[0];
+
+                dateStart1 = value;
+                
+                $('#tableBilling tr:last').after('<tr><td>' + date + '</td><td>' + commaSeparateNumber(bill) +'<td/></tr>');
+            });
+            
+            
+            
+            console.log(arr);
+        }
+    }
+    
+    function commaSeparateNumber(val){
+        while (/(\d+)(\d{3})/.test(val.toString())){
+            val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+        }
+        return val;
+    }
+    
+    function getHour(hour){
+        var hour12;
+        if (hour == 0 || hour == 24){
+            hour12 = '12 AM';
+        }else if (hour == 1){
+            hour12 = '1 AM';
+        }else if (hour == 2){
+            hour12 = '2 AM';
+        }else if (hour == 3){
+            hour12 = '3 AM';
+        }else if (hour == 4){
+            hour12 = '4 AM';
+        }else if (hour == 5){
+            hour12 = '5 AM';
+        }else if (hour == 6){
+            hour12 = '6 AM';
+        }else if (hour == 7){
+            hour12 = '7 AM';
+        }else if (hour == 8){
+            hour12 = '8 AM';
+        }else if (hour == 9){
+            hour12 = '9 AM';
+        }else if (hour == 10){
+            hour12 = '10 AM';
+        }else if (hour == 11){
+            hour12 = '11 AM';
+        }else if (hour == 12){
+            hour12 = '12 PM';
+        }else if (hour == 13){
+            hour12 = '1 PM';
+        }else if (hour == 14){
+            hour12 = '2 PM';
+        }else if (hour == 15){
+            hour12 = '3 PM';
+        }else if (hour == 16){
+            hour12 = '4 PM';
+        }else if (hour == 17){
+            hour12 = '5 PM';
+        }else if (hour == 18){
+            hour12 = '6 PM';
+        }else if (hour == 19){
+            hour12 = '7 PM';
+        }else if (hour == 20){
+            hour12 = '8 PM';
+        }else if (hour == 21){
+            hour12 = '9 PM';
+        }else if (hour == 22){
+            hour12 = '10 PM';
+        }else if (hour == 23){
+            hour12 = '11 PM';
+        }
+        
+        return hour12;
+    }
+    
+    function getBillPerMonth(arr){
+        var dateStart = new Date($('#contractStart').val());
+        
+        $.each(arr, function (index,value){
+            
+            dateStart = value;
+        });
+    }
+    function daydiff(first, second) {
+        return Math.round((second-first)/(1000*60*60*24));
     }
     
 	$('select').material_select();	
