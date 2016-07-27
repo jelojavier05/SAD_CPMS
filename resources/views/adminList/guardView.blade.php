@@ -68,6 +68,12 @@ Guard
                         <div class="card grey darken-1">
                             <div class="card-content">
                                 <div>
+                                    <span class = "card-title black-text" style="font-weight:bold;">Client:</span>
+                                </div>
+								<div>
+                                    <span class = "card-title black-text" style="font-weight:bold;">Status:</span>
+                                </div>							
+								<div>
                                     <span class = "card-title black-text" style="font-weight:bold;">Personal Data:</span>
                                 </div>
                                 <div>

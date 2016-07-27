@@ -96,7 +96,7 @@ Guard Form
 				</div>
 
 				<div class="input-field col s6">
-						<input placeholder = " " id="placeofbirth" type="text" class="validate ci" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true">
+						<input placeholder = " " id="placeofbirth" type="text" class="validate ci" pattern="[A-za-z0-9.,' ]{2,}" required="" aria-required="true">
 						<label class="ci" data-error="Incorrect" for="placeofbirth">Place of Birth</label>
 
 				</div>

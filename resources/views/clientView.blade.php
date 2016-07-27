@@ -9,8 +9,8 @@ Client
 <div class="row">	
 	<div class="col s10 push-s2">
       <ul class="tabs">
-        <li class="tab col s3"><a href="#Active">Active</a></li>
         <li class="tab col s3"><a href="#Pending">Pending</a></li>
+        <li class="tab col s3"><a href="#Active">Active</a></li>
       </ul>
     </div>
     
@@ -55,7 +55,7 @@ Client
                                         <td id = "">PUP Mabini Campus</td>
                                         <td id = "">Ted Pylon</td>
                                         <td>
-                                            <button id="detaillist" class="btn blue col s12" onclick="Materialize.showStaggeredList('#collectionActive')" >
+                                            <button id="detaillist" class="btn blue" onclick="Materialize.showStaggeredList('#collectionActive')" >
                                             MORE
                                             </button>
                                         </td>
@@ -108,6 +108,7 @@ Client
                                 <thead>
                                     <tr>
                                         <th style="width:10px;"></th>
+										<th style="width:10px;"></th>
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th></th>
@@ -118,7 +119,15 @@ Client
                                 <tbody>
                                     @foreach($clientPending as $value)
                                     <tr>
-                                        <td>
+                                        
+										<td>
+                                            <button class="buttonDelete col s12 btn red"  name="" id="" >
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                            <label for=""></label>
+                                        </td>
+										
+										<td>
                                             <button class="buttonNotification btn blue col s12 " id="{{$value->intClientPendingID}}" href="#modalsendNoti">
                                                 <i class="material-icons">send</i>
                                             </button>
@@ -180,7 +189,7 @@ Client
         </div>
     </div>
     
-    <div id="modalsendNoti" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-10px;">
+    <div id="modalsendNoti" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:610px; margin-top:-20px;">
         	<div class="modal-header">
                 <div class="h">
                     <h3><center>Send Notifications</center></h3>  
@@ -416,6 +425,7 @@ Client
 		$("#dataTablePending").DataTable({
                  "columns": [
 				{ "orderable": false },
+				{ "orderable": false },
                 null,
                 null,
 				{ "orderable": false },
@@ -580,6 +590,20 @@ Client
         }// magsesend ng clientID sa session
         
     });
+	
+	$('#dataTablePending').on('click', '.buttonDelete', function(){
+            
+              
+            swal({   title: "Are you sure?",   
+                     text: "Record will be deleted!",   
+                     type: "warning",   
+                     showCancelButton: true,   
+                     confirmButtonColor: "#DD6B55",   
+                     confirmButtonText: "Yes, delete it!",   
+                     closeOnConfirm: false 
+                 });
+        });
+	
 </script>
 
 <script>
