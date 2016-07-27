@@ -129,7 +129,7 @@ Guard Form
                 },
                 success: function(data){
                     var intCounter = 0;
-                    requirement = [];
+                    
                     for(intLoop = 0; intLoop < data.length; intLoop ++){
                         if (data[intLoop]['boolFlag'] == 1 && data[intLoop]['intIdentifier'] >= 2){
                             var reqID = 'requirements' + data[intLoop]['intRequirementsID'];
@@ -139,16 +139,19 @@ Guard Form
                             }
                         }
                     }  
+                    
+                    console.log(requirement);
                 },
                 
                 error: function(data){
                     
-                }
+                }, async:false 
                 
             });//ajax
         }
         
         function sendData(){
+            
             $.ajax({
 
                 type: "POST",

@@ -9,6 +9,7 @@ Route::get('/gunView/get/gun', 'GunViewController@getGun');
 Route::get('/dashboardadmin', 'DashboardAdminController@index');
 Route::get('/dashboardadmin/get/clientcount', 'DashboardAdminController@getCountClient');
 Route::get('/dashboardadmin/get/guardcount', 'DashboardAdminController@getCountGuard');
+Route::get('/dashboardadmin/get/guncount', 'DashboardAdminController@getCountGun');
 
 Route::get('/client/gunTagging', 'GunTaggingController@index');
 Route::post('/client/gunTagging/post', 'GunTaggingController@post');

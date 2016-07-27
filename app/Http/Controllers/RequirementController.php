@@ -15,6 +15,7 @@ class RequirementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+        
         $requirements = Requirements::
             where('deleted_at', null)
             ->where('boolFlag', 1)
@@ -26,6 +27,7 @@ class RequirementController extends Controller
     }
     
     public function get(Request $request){
+        
         if ($request->session()->has('requirement')) {
             $requirement = new \stdClass();
             $requirement = $request->session()->get('requirement');

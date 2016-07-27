@@ -179,7 +179,9 @@ $(document).ready(function(){
                         '<h>' + str + '</h>',
                         '<h id = "title' + tableRowCounter + '">New Client</h>',
                         '<a class="btn blue darken-4 col s10 buttonRead" id = "' +tableRowCounter + '"><i class="material-icons">keyboard_arrow_right</i></a>' + 
-                        '<input type = "hidden" value = "' + data[intLoop].intGuardPendingID +'" id ="idOfMessage'+ tableRowCounter + '">' + 
+                        '<input type = "hidden" value = "' + data[intLoop].intGuardPendingID +'" id ="idOfMessage'+
+                        tableRowCounter + '">' + 
+                        '<input type = "hidden" value = "' + data[intLoop].intClientPendingID +'" id ="clientPending'+ tableRowCounter + '">' + 
                         '<input type = "hidden" value = "' + data[intLoop].intClientID +'" id ="clientID'+ tableRowCounter + '">' + 
                         '<input type = "hidden" value = "' + data[intLoop].intStatusIdentifier +'" id ="statusIdentifier'+ tableRowCounter + '">'
                         
@@ -206,13 +208,14 @@ $(document).ready(function(){
         
         if ($('#title' + this.id).text() == 'New Client'){
             newClient($('#idOfMessage' + this.id).val(), $('#clientID' + this.id).val());
-            globalClientPendingID = $('#idOfMessage' + this.id).val();
+            globalClientPendingID = $('#clientPending' + this.id).val();
         }
         
         $('#radio' + this.id).attr('checked', false); // all read mark as unread
     });
     
     $('#btnAccept').click(function(){
+        
         $.ajax({
             type: "POST",
             url: "{{action('SecurityHomepageController@acceptNewClient')}}",

@@ -97,15 +97,17 @@ class SecurityHomepageController extends Controller
     public function acceptNewClient(Request $request){
         $guardID = $request->session()->get('id');
         $clientPendingID = $request->clientPendingID;
+//        dd($guardID);
         try{
             DB::beginTransaction();
             
             DB::table('tblguardpendingnotification')
-                ->where('intGuardPendingID','=', $clientPendingID)
+                ->where('intClientPendingID','=', $clientPendingID)
+                ->where('intGuardID','=', $guardID)
                 ->update(['intStatusIdentifier' => 3]);
 
             DB::table('tblguard')
-                ->where('intGuardID','=', $request->session()->get('id'))
+                ->where('intGuardID','=', $guardID)
                 ->update(['intStatusIdentifier' => 1]);
             
             $countNeedGuard = DB::table('tblclientpendingnotification')
@@ -123,7 +125,7 @@ class SecurityHomepageController extends Controller
                     ->select('intGuardPendingID')
                     ->where('intClientPendingID','=', $clientPendingID)
                     ->get();
-                
+                    
                 foreach($countGuardSend as $value){
                     DB::table('tblguardpendingnotification')
                         ->where('intGuardPendingID','=', $value->intGuardPendingID)
@@ -131,8 +133,6 @@ class SecurityHomepageController extends Controller
                         ->orWhere('intStatusIdentifier', 2)
                         ->update(['intStatusIdentifier' => 4]);
                 }
-                
-                    
             }
 
             DB::commit();

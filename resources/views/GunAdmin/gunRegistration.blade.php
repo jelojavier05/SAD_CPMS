@@ -155,6 +155,7 @@ Gun Registration
                     },
                     success: function(data){
                         swal("Success!", "Record has been Added!", "success");
+                        window.location.href = '{{ URL::to("/gunView") }}';
 
                     },
                     error: function(data){

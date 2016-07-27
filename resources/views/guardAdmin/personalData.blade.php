@@ -160,7 +160,7 @@ Guard Form
                                         </td>
                                         <td style="height:-10px !important;"><center>
                                             
-                                                <input  id="specification{{ $bodyAttribute->intBodyAttributeID }}" type="text" class="validate" pattern="[A-za-z0-9 ]{1,}" size="1" required="" aria-required="true">
+                                                <input  id="specification{{ $bodyAttribute->intBodyAttributeID }}" type="text" class="validate" pattern="[A-za-z0-9.,' ]{1,}" size="1" required="" aria-required="true">
                                                 </center>
                                             
                                         </td>

@@ -58,7 +58,7 @@ Admin
            <div class="card blue lighten-1">
             <div class="card-content white-text">
 
-              <span class="card-title" style="font-size:40px; font-weight:bold;">105</span>
+              <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'gunNumber'></span>
               <p style="margin-left:10px;">Guns</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">list</i>
 
@@ -173,7 +173,7 @@ $(document).ready(function(){
     
     $.ajax({
         type: "GET",
-        url: "{{action('DashboardAdminController@getCountGuard')}}",
+        url: "{{action('DashboardAdminController@getCountGun')}}",
         beforeSend: function (xhr) {
             var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -182,7 +182,7 @@ $(document).ready(function(){
             }
         },
         success: function(data){
-            $('#guardNumber').text(data);
+            $('#gunNumber').text(data);
         }
     });//guard count
     

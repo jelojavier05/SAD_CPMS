@@ -15,8 +15,7 @@ class DashboardAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request){
         $accountType = $request->session()->get('accountType');
 
         if ($accountType == 3){
@@ -48,5 +47,13 @@ class DashboardAdminController extends Controller
             ->count();
         
         return response()->json($countGuard);
+    }
+    
+    public function getCountGun(Request $request){
+        $countGun = DB::table('tblgun')
+            ->where('deleted_at', null)
+            ->count();
+        
+        return response()->json($countGun);
     }
 }

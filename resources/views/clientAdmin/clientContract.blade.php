@@ -83,7 +83,12 @@ Client
 					</div>
 					
 				</div>
-
+                    <div class="row">
+                        <div class="col s5 push-s3">
+                            <a class="btn red" href="/client/gunTagging">Back</a>
+                            <a class="btn blue" id="btnSave">OK</a>
+                        </div>
+                    </div>
 			</div>
 		</div>
 		
@@ -378,7 +383,7 @@ $(document).ready(function() {
                 var hourPerDay = $('#operatingTime').val();
                 var ratePerHour = $('#rateperHour').val();
                 
-                var bill = days * hourPerDay * ratePerHour * countGuard[0];
+                var bill = days  * ratePerHour * countGuard[0] * 8;
 
                 dateStart1 = value;
                 
@@ -461,13 +466,21 @@ $(document).ready(function() {
             dateStart = value;
         });
     }
+    
     function daydiff(first, second) {
         return Math.round((second-first)/(1000*60*60*24));
     }
     
 	$('select').material_select();	
 });
-        
+     
+//$("#btnSave").click(function(){
+//                    
+//swal("Success!", "Record has been Added!", "success");
+//window.location.href = '{{ URL::to("/dashboardadmin") }}';
+//
+//
+//});
 </script>
 
 @stop
