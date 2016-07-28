@@ -150,7 +150,8 @@ class ClientContractController extends Controller
                 DB::table('tblclientgun')->insert([
                     'intContractID' => $contractID,
                     'intGunID' => $value->gunID,
-                    'intRound' => $value->rounds
+                    'intRound' => $value->rounds,
+                    'created_at' => $now
                 ]);
                 
                 DB::table('tblgun')
@@ -176,7 +177,6 @@ class ClientContractController extends Controller
                 ->select('tblaccount.intAccountID')
                 ->first();
             
-            dd($clientAccount); 
             DB::commit();
         }catch(Exception $e){
             DB::rollback();

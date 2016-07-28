@@ -18,11 +18,18 @@ class ClientViewController extends Controller
         $clientPending = DB::table('tblclientpendingnotification')
             ->join('tblclient', 'tblclientpendingnotification.intClientID', '=', 'tblclient.intClientID')
             ->select('tblclientpendingnotification.intClientPendingID', 'tblclient.strClientName','tblclient.intClientID','tblclientpendingnotification.intNumberOfGuard')
-            ->where('tblclientpendingnotification.intStatusIdentifier', '=', '1')
+            ->where('tblclientpendingnotification.intStatusIdentifier', '=', 1)
             ->get();
         
+        $clientActive = DB::table('tblclient')
+            ->select('strClientName', 'strPersonInCharge', 'intClientID')
+            ->where('intStatusIdentifier' , '=', 2)
+            ->get();
+            
+        
         return view('/clientView')
-            ->with('clientPending', $clientPending);
+            ->with('clientPending', $clientPending)
+            ->with('clientActive', $clientActive);
     }
     
     public function getClientPending(){

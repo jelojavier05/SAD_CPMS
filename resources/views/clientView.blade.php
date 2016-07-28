@@ -28,7 +28,6 @@ Client
                                 <thead>
                                     <tr>
                                         <th style="width:50px;"></th>
-                                        <th style="width:50px;"></th>
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Person In Charge</th>
@@ -37,6 +36,8 @@ Client
                                 </thead>
                                 
                                 <tbody>
+                                    
+                                    @foreach($clientActive as $value)
                                     <tr>
                                         <td>
                                             <button class="buttonUpdate btn col s12"  name="" id="" >
@@ -45,21 +46,16 @@ Client
                                             <label for=""></label>
                                         </td>
                                         
-                                        <td>
-                                            <button class="buttonDelete btn red col s12" id="">
-                                                <i class="material-icons">delete</i>
-                                            </button>
-                                        </td>
-                                        
-                                        <td id = "">1</td>
-                                        <td id = "">PUP Mabini Campus</td>
-                                        <td id = "">Ted Pylon</td>
+                                        <td id = "">{{$value->intClientID}}</td>
+                                        <td id = "">{{$value->strClientName}}</td>
+                                        <td id = "">{{$value->strPersonInCharge}}</td>
                                         <td>
                                             <button id="detaillist" class="btn blue" onclick="Materialize.showStaggeredList('#collectionActive')" >
                                             MORE
                                             </button>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -410,12 +406,11 @@ Client
         });
         
         $("#dataTable").DataTable({
-             "columns": [
-            { "orderable": false },
+             "columns": [   
             { "orderable": false },
             null,
             null,
-			null,
+            null,
 			{ "orderable": false }
             ] ,  
             "pageLength":5,
