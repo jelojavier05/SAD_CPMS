@@ -10,9 +10,9 @@ use Input;
 use DB;
 
 class CPMSUserLoginController extends Controller
-{
+{     
     public function index(Request $request){
-        //$request->session()->flush();
+       // $request->session()->flush();
         if ($request->session()->has('accountType')){
             $accountType = $request->session()->get('accountType');
             if ($accountType == 0){

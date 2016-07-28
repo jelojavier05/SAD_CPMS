@@ -35,7 +35,7 @@ Client
 					
 				
 					<div class="input-field col s6">
-							<input placeholder=" " id="clientcontactLandline" maxlength="10" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
+							<input placeholder=" " id="clientcontactLandline" maxlength="11" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
 							<label data-error="Incorrect" for="clientcontactLandline">Contact Number (Client)</label>
 
 					</div>

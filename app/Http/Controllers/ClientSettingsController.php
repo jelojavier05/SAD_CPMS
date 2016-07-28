@@ -16,7 +16,7 @@ class ClientSettingsController extends Controller
      */
     public function index()
     {
-        return view('/ClientSettings');
+        return view('/client/ClientSettings');
     }
 
     /**

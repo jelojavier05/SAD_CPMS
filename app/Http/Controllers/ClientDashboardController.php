@@ -16,7 +16,7 @@ class ClientDashboardController extends Controller
      */
     public function index()
     {
-        return view('/ClientDashboard');
+        return view('/client/ClientDashboard');
     }
 
     /**

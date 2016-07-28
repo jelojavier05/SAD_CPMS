@@ -16,7 +16,7 @@ class ClientHomepageController extends Controller
      */
     public function index()
     {
-        return view('/ClientHomepage');
+        return view('/client/ClientHomepage');
     }
 
     /**

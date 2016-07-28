@@ -72,6 +72,16 @@ Route::get('/userlogin', 'CPMSUserLoginController@index');
 Route::get('/userlogin/getaccount', 'CPMSUserLoginController@getAccount');
 Route::get('/userlogin/logout', 'CPMSUserLoginController@logoutAccount');
 
+
+
+//CGR(CLIENT-GUARD RELATIONSHIP) ----------------------------------------------------
+
+
+Route::get('/cgrmain', 'CGRMainController@index');
+Route::get('/cgrguardattendance', 'CGRGuardAttendanceController@index');
+Route::get('/cgrreceivingdelivery', 'CGRReceivingDeliveryController@index');
+Route::get('/cgrreports', 'CGRReportsController@index');
+
 //LATEST SECURITY GUARD INTERFACE ----------------------------------------------------
 
 Route::get('/securityleaverequest', 'SecurityGuardDashboardController@index');

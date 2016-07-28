@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class ClientGuardAttendanceController extends Controller
+class CGRReportsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class ClientGuardAttendanceController extends Controller
      */
     public function index()
     {
-        return view('/client/ClientGuardAttendance');
+        //
     }
 
     /**
