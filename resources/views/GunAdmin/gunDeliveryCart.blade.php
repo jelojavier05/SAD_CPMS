@@ -11,17 +11,48 @@ Delivery
 <!--		<div class="container-fluid grey lighten-4 z-depth-2" style="border: 1px solid black; border-radius:5px;" id="">-->
 <!--			<h3 class = "blue darken-3 white-text" style="margin-top:0px; padding-bottom:10px;">Tagging</h3>-->
 			<div class = "row">
+				
+				
+				<div class="col s6 offset-s6 pull-s6">
+					<div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:5px; padding-bottom:1%;">
+					<h4 class="blue darken-1 white-text">Gun Order</h4>
+						<div class="row">
+							<div class="col s12">
+								<table class ="striped grey lighten-1" style="border-radius:10px;" id="dataTablegunorder">
+									
+									<thead>
+										<tr>
+											<th>ID</th>
+											<th>Client Name</th>
+											<th>Date</th>
+											<th>Time</th>
+											<th></th>
+										</tr>
+									</thead>
+									
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>PUP</td>
+											<td>07/01/16</td>
+											<td>12PM</td>
+											<td><button class="btn blue waves-effect waves-light">MORE</button></td>
+										</tr>
+									</tbody>
+									
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				
 				<div class='col s6' style="margin-top:0px;">
 					<div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:5px; padding-bottom:1%;">
 					<h4 class="blue darken-1 white-text">Tagged Guns</h4>
-						<div class = "input-field col s5">    
-							<select  id = "" name = "" >
-								<option disabled selected>Choose an option</option>
-									<option id = "1" >Test1</option>
-									<option id = "2" >Test2</option>
-							</select>
-							<label>Client</label>
-						</div>
+						
 						<div class="row">
 							<div class="col s12">
 								<table class="striped grey lighten-1" style="border-radius:10px;" id="dataTable">
@@ -90,7 +121,7 @@ Delivery
 					</div>
 				</div>
 				
-				<div class="col s6" style="margin-top:0px;">
+				<div class="col s6" style="margin-top:2px;">
 					<div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:5px;">
 						<h4 class="blue darken-1 white-text">Selected</h4>
 						<div class="row">
@@ -184,7 +215,17 @@ Delivery
 			"lengthMenu": [5,10,15,20]
          }); 
 		
-		
+		$("#dataTablegunorder").DataTable({
+             "columns": [
+            null,
+            null,
+			null,
+			null,
+			{ "orderable": false }
+            ] ,  
+			"pageLength":5,
+			"lengthMenu": [5,10,15,20]
+         });
 		
 	});
 </script>
