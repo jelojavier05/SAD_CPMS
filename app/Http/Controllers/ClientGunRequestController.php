@@ -16,7 +16,7 @@ class ClientGunRequestController extends Controller
      */
     public function index()
     {
-        return view('/ClientGunRequest');
+        return view('/client/ClientGunRequest');
     }
 
     /**

@@ -16,7 +16,7 @@ class ClientGuardRequestController extends Controller
      */
     public function index()
     {
-        return view('/ClientGuardRequest');
+        return view('/client/ClientGuardRequest');
     }
 
     /**

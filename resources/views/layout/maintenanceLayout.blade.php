@@ -342,7 +342,7 @@
 							<ul class="right hide-on-med-and-down">
 								 <li><a  data-position="bottom" data-delay="50" data-tooltip="PEOPLE"href="/dashboardadmin" class=" tooltipped"><i class="mdi-social-people" style="font-size:2.1rem;color:white"></i></a></li>
 								<li><a  data-position="bottom" data-delay="50" data-tooltip="MESSAGES"href="/dashboardadmin" class=" tooltipped"><i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i></a></li>
-								 <li><a  data-position="bottom" data-delay="50" data-tooltip="REQUEST NOTIFICATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-communication-call" style="font-size:2.1rem;color:white"></i></a></li>
+								 <li><a  data-position="bottom" data-delay="50" data-tooltip="REQUEST NOTIFICATION"href="#notif" class=" tooltipped"><i class="mdi-communication-call" style="font-size:2.1rem;color:white"></i></a></li>
 								<li><a  data-position="bottom" data-delay="50" data-tooltip="RESOURCES EXPIRATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-action-history" style="font-size:2.1rem;color:white"></i></a></li>
 								
                                  <li><a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">store</i></a></li>
@@ -351,8 +351,15 @@
         
 		
         </div>
+      
 		
     </nav>
+    
+    
+    
+    
+    
+    </div>
 			
 <!--
 	 Tab 
@@ -380,6 +387,140 @@
  
    
        @yield('content')
+    
+    
+    <!--JELO-->
+      <div id="notif">
+        
+                
+                <div class="row">
+                <div class="card medium" style="overflow:scroll;position:absolute;margin-left:52%;margin-top:-3%;width:450px">
+                    <div class="row">
+                        <table class="col l12 striped"> 
+                             <thead>
+                          <tr>
+                            <p style="margin-left:35%">Request Notifications</p>
+                                      
+                          </tr>
+                        </thead>
+                                <tbody>
+                                      <tr>
+                                            <td>
+
+                                                    <img src="/img/avatar2.png" alt="" class="responsive-img" width="40%" height="40%" style="margin-left:30%">
+
+
+                                            </td>
+                                               <td>Adrian Flores sent a request
+                                          
+                                          
+                                                 <button style="font-size:10px;margin-left:10%"class="btn waves-effect waves-light blue darken-4" type="button" name="action">See_Details
+                                                            </button>
+
+                                          
+                                          </td>
+                                          
+
+                                      </tr> 
+                                    <tr>
+                                            <td>
+
+                                                    <img src="/img/avatar2.png" alt="" class="responsive-img" width="40%" height="40%" style="margin-left:30%">
+
+
+                                            </td>
+                                               <td>Adrian Flores sent a request
+                                          
+                                          
+                                                 <button style="font-size:10px;margin-left:10%"class="btn waves-effect waves-light blue darken-4" type="button" name="action">See_Details
+                                                            </button>
+
+                                          
+                                          </td>
+                                          
+
+                                      </tr> 
+                                    <tr>
+                                            <td>
+
+                                                    <img src="/img/avatar2.png" alt="" class="responsive-img" width="40%" height="40%" style="margin-left:30%">
+
+
+                                            </td>
+                                               <td>Adrian Flores sent a request
+                                          
+                                          
+                                                 <button style="font-size:10px;margin-left:10%"class="btn waves-effect waves-light blue darken-4" type="button" name="action">See_Details
+                                                            </button>
+
+                                          
+                                          </td>
+                                          
+
+                                      </tr> 
+                                    <tr>
+                                            <td>
+
+                                                    <img src="/img/avatar2.png" alt="" class="responsive-img" width="40%" height="40%" style="margin-left:30%">
+
+
+                                            </td>
+                                               <td>Adrian Flores sent a request
+                                          
+                                          
+                                                 <button style="font-size:10px;margin-left:10%"class="btn waves-effect waves-light blue darken-4" type="button" name="action">See_Details
+                                                            </button>
+
+                                          
+                                          </td>
+                                          
+
+                                      </tr> 
+                                    <tr>
+                                            <td>
+
+                                                    <img src="/img/avatar2.png" alt="" class="responsive-img" width="40%" height="40%" style="margin-left:30%">
+
+
+                                            </td>
+                                               <td>Adrian Flores sent a request
+                                          
+                                          
+                                                 <button style="font-size:10px;margin-left:10%"class="btn waves-effect waves-light blue darken-4" type="button" name="action">See_Details
+                                                            </button>
+
+                                          
+                                          </td>
+                                          
+
+                                      </tr> 
+                                    <tr>
+                                            <td>
+
+                                                    <img src="/img/avatar2.png" alt="" class="responsive-img" width="40%" height="40%" style="margin-left:30%">
+
+
+                                            </td>
+                                               <td>Adrian Flores sent a request
+                                          
+                                          
+                                                 <button style="font-size:10px;margin-left:10%"class="btn waves-effect waves-light blue darken-4" type="button" name="action">See_Details
+                                                            </button>
+
+                                          
+                                          </td>
+                                          
+
+                                      </tr> 
+                                    
+
+                                </tbody>
+                        </table>
+                        </div>
+                </div>
+                </div>
+    </div>
+        
 	@yield('script')
 	<script>
 
