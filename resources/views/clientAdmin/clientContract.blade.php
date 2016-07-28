@@ -473,14 +473,6 @@ $(document).ready(function() {
     
 	$('select').material_select();	
 });
-     
-//$("#btnSave").click(function(){
-//                    
-//swal("Success!", "Record has been Added!", "success");
-//window.location.href = '{{ URL::to("/dashboardadmin") }}';
-//
-//
-//});
 </script>
 
 @stop

@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
 use DB;
+use Carbon;
 
 
 class ClientContractController extends Controller
@@ -69,5 +70,53 @@ class ClientContractController extends Controller
         $gunTagged = $request->session()->get('gunTagged');
         
         return response()->json($gunTagged);
+    }
+    
+    public function postContract(Request $request){
+        try{
+            DB::beginTransaction();
+            $now = Carbon::now();
+            
+            $contractID = DB::table('users')->insertGetId([
+                'intTypeOfContractID' => '', 
+                'intClientID' => '',
+                'intMonthsDuration' => '',
+                'deciRate' => '',
+                'dateStart' => '',
+                'dateEnd' => '',
+            ]);
+            
+            foreach($guardID as $value){
+                DB::table('tblclientguard')->insert([
+                    'intContractID' => $contractID,
+                    'intGuardID' => $value->id
+                    'created_at' => $now
+                ]);
+                
+                DB::table('tblguard')
+                    ->where('intGuardID', $value->id)
+                    ->update(['intStatusIdentifierID' => 2]);
+            }
+            
+            foreach($guns as $value){
+                DB::table('tblclientgun')->insert([
+                    'intContractID' => $contractID,
+                    'intGunID' => $value->id,
+                    'intRound' => $value->intRound
+                ]);
+                
+                DB::table('tblgun')
+                    ->where('intGunID', $value->id)
+                    ->update(['intStatusIdentifierID' => 2]);
+            }
+            
+            DB::table('tblclient')
+                ->where('intClientID', '')
+                ->update(['intClientID' => 2]);
+            
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
     }
 }
