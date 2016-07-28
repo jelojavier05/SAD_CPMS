@@ -192,6 +192,7 @@ class SecurityHomepageController extends Controller
     
     public function readNewInbox(Request $request){
         
+
         DB::table('tblinbox')
             ->where('intInboxID','=', $request->id)
             ->update(['boolStatus' => 0]);
