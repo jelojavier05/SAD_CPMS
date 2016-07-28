@@ -20,8 +20,7 @@ Route::get('/client/registration/contractInfo', 'ClientContractController@index'
 Route::get('/client/registration/get/guardAccepted', 'ClientContractController@getGuardAccepted');
 Route::get('/client/registration/get/gunTagged', 'ClientContractController@getGunTagged');
 Route::get('/client/registration/get/client', 'ClientContractController@getClientDetail');
-
-
+Route::post('/client/registration/post/clientcontract', 'ClientContractController@postContract');
 
 Route::get('/client/tempaccount', 'TempClientAccountController@index');
 Route::get('/client/tempaccount/get/guards', 'TempClientAccountController@getGuards');

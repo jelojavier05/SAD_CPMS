@@ -132,6 +132,9 @@ Client
 						<li class="collection-header blue white-text" ><h5 style="font-weight:bold;">Client Details</h5>
 						</li>
 							<div class="sidenavhover" style=" height:300px;">
+                                
+                                <li class="collection-item" style="font-weight:bold;">Client ID:<div style="font-weight:normal;" id = 'clientID'>&nbsp;&nbsp;&nbsp;</div>
+								</li>
 
 								<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusiness'>&nbsp;&nbsp;&nbsp;</div>
 								</li>
@@ -219,6 +222,9 @@ Client
 $(document).ready(function() {
     
     var countGuard = [];
+    var shiftNumber = [];
+    var shiftTo = [];
+    var shiftFrom = [];
     
     $.ajax({
         type: "GET",
@@ -273,9 +279,11 @@ $(document).ready(function() {
             }
         },
         success: function(data){
+            
             var area = commaSeparateNumber(data.deciAreaSize);
             var population = commaSeparateNumber(data.intPopulation);
             var operationTime = data.shifts[data.shifts.length - 1].timeTo - data.shifts[0].timeFrom;
+            $('#clientID').text(data.intClientID);
             $('#natureOfBusiness').text(data.strNatureOfBusiness);
             $('#name').text(data.strClientName);
             $('#clientNumber').text(data.strContactNumber);
@@ -293,12 +301,16 @@ $(document).ready(function() {
                      '<td><center>' + from +'</center></td>'+
                      '<td><center>' + to +'</center></td>'+
                      '</tr>');
+                
+                shiftNumber.push(value.strShiftNumber);
+                shiftFrom.push(from);
+                shiftTo.push(to);
             });
             
             $('#operatingTime').val(operationTime);
             $('#rateperHour').val(data.deciRate);
         }
-    });//get guard accepted
+    });//get client details
     
     $('#selectContract').on('change',function(){
         var value = $(this).children(":selected").attr("value");
@@ -310,6 +322,50 @@ $(document).ready(function() {
     $('#contractStart').on('change',function(){
         refreshDateEnd();
         billingDates();
+    });
+    
+    $('#btnSave').click(function(){
+        
+        var clientID = $('#clientID').text();
+        var clientName = $('#name').text();
+        var address = $('#address').text();
+        var contractID = $('#selectContract').children(":selected").attr("id");
+        var duration = $('#contractDuration').val();
+        var dateStart = $('#contractStart').val();
+        var dateEnd = $('#contractEnd').val();
+        var ratePerHour = $('#rateperHour').val();
+        $.ajax({
+            type: "POST",
+            url: "{{action('ClientContractController@postContract')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                clientID:clientID,
+                contractID:contractID,
+                duration:duration,
+                dateStart:dateStart,
+                dateEnd: dateEnd,
+                rate: ratePerHour,
+                shiftNumber:shiftNumber,
+                shiftFrom:shiftFrom,
+                shiftTo:shiftTo,
+                clientName: clientName,
+                address:address
+                
+            },
+            success: function(data){
+                swal("Success!", "Record has been Added!", "success");
+            },
+            error: function(data){
+                var toastContent = $('<span>Error Occured. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+        });//ajax
     });
     
     function refreshDateEnd() {

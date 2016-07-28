@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
 use DB;
-use Carbon;
+use Carbon\Carbon;
 
 
 class ClientContractController extends Controller
@@ -76,47 +76,111 @@ class ClientContractController extends Controller
         try{
             DB::beginTransaction();
             $now = Carbon::now();
+            $clientID = $request->clientID;
+            $guns = $request->session()->get('gunTagged');
             
-            $contractID = DB::table('users')->insertGetId([
-                'intTypeOfContractID' => '', 
-                'intClientID' => '',
-                'intMonthsDuration' => '',
-                'deciRate' => '',
-                'dateStart' => '',
-                'dateEnd' => '',
+            //shift
+            $shift = array();
+            $shiftNumber = $request->shiftNumber;
+            $shiftFrom = $request->shiftFrom;
+            $shiftTo = $request->shiftTo;
+            
+            for ($intLoop = 0; $intLoop < count($shiftNumber); $intLoop ++){
+                $value = new \stdClass();
+                $value->number = $shiftNumber[$intLoop];
+                $value->from = $shiftFrom[$intLoop];
+                $value->to = $shiftTo[$intLoop];
+
+                array_push($shift,$value);
+            }
+            // end shift
+            $guardID = DB::table('tblclient')
+                ->join('tblclientpendingnotification', 'tblclientpendingnotification.intClientID', '=', 'tblclient.intClientID')
+                ->join('tblguardpendingnotification', 'tblguardpendingnotification.intClientPendingID', '=', 'tblclientpendingnotification.intClientPendingID')
+                ->join('tblguard', 'tblguard.intGuardID', '=', 'tblguardpendingnotification.intGuardID')
+                ->join('tblaccount', 'tblaccount.intAccountID', '=', 'tblguard.intAccountID')
+                ->where('tblclient.intClientID', '=', $clientID)
+                ->where('tblguardpendingnotification.intStatusIdentifier','=', 3)
+                ->select('tblguard.intGuardID', 'tblaccount.intAccountID')
+                ->get();
+            
+            $contractID = DB::table('tblcontract')->insertGetId([
+                'intTypeOfContractID' => $request->contractID, 
+                'intClientID' => $clientID,
+                'intMonthsDuration' => $request->duration,
+                'deciRate' => $request->rate,
+                'dateStart' => $request->dateStart,
+                'dateEnd' => $request->dateEnd
             ]);
             
+            $guardPerShift = count($guardID)/count($shift);
+            $shiftCounter = 0;
+            $counter = 0;
+            
             foreach($guardID as $value){
+                $message = 'You are now assigned to ' . $request->clientName . 
+                    ' at ' . $request->address . '. Your shift starts on '. date('Y-M-d', strtotime($request->dateStart)) .  ' from '. $shift[$shiftCounter]->from . ' to ' . $shift[$shiftCounter]->to . '.';   
+                
                 DB::table('tblclientguard')->insert([
                     'intContractID' => $contractID,
-                    'intGuardID' => $value->id
+                    'intGuardID' => $value->intGuardID,
                     'created_at' => $now
                 ]);
                 
                 DB::table('tblguard')
-                    ->where('intGuardID', $value->id)
-                    ->update(['intStatusIdentifierID' => 2]);
+                    ->where('intGuardID', $value->intGuardID)
+                    ->update(['intStatusIdentifier' => 2]);    
+                
+                DB::table('tblinbox')->insert([
+                    'intAccountID' => $value->intAccountID,
+                    'strMessage' => $message,
+                    'datetimeSend' => $now,
+                    'strSubject' => 'New Client Update'    
+                ]);
+                
+                $counter ++;
+                
+                if ($counter == $guardPerShift){
+                    $counter = 0;
+                    $shiftCounter ++;
+                }   
             }
             
             foreach($guns as $value){
                 DB::table('tblclientgun')->insert([
                     'intContractID' => $contractID,
-                    'intGunID' => $value->id,
-                    'intRound' => $value->intRound
+                    'intGunID' => $value->gunID,
+                    'intRound' => $value->rounds
                 ]);
                 
                 DB::table('tblgun')
-                    ->where('intGunID', $value->id)
-                    ->update(['intStatusIdentifierID' => 2]);
+                    ->where('intGunID', $value->gunID)
+                    ->update(['boolFlag' => 2]);
             }
             
             DB::table('tblclient')
-                ->where('intClientID', '')
-                ->update(['intClientID' => 2]);
+                ->where('intClientID', $clientID)
+                ->update(['intStatusIdentifier' => 2]);
             
+            
+            DB::table('tblclientpendingnotification')
+                ->where('intClientID', '=', $clientID)
+                ->update([
+                   'intStatusIdentifier' => 0 
+                ]);
+            
+            
+            $clientAccount = DB::table('tblaccount')
+                ->join('tblclient', 'tblclient.intAccountID', '=', 'tblaccount.intAccountID')
+                ->where('tblclient.intClientID', '=', $clientID)
+                ->select('tblaccount.intAccountID')
+                ->first();
+            
+            dd($clientAccount); 
             DB::commit();
         }catch(Exception $e){
             DB::rollback();
         }
     }
+    
 }

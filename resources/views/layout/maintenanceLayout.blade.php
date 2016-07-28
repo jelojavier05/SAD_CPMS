@@ -390,6 +390,7 @@
     
     
     <!--JELO-->
+<!--
       <div id="notif">
         
                 
@@ -520,6 +521,7 @@
                 </div>
                 </div>
     </div>
+-->
         
 	@yield('script')
 	<script>
