@@ -21,7 +21,7 @@ Security Homepage
                         </div>
                     </div>
                 </div>
-                
+                <button class="btn red modal-trigger" href="#modalContractNoti">Test</button>
                 <table class="centered" style="background-color:" id = 'inboxTable'>
                     <thead>
                         <tr>
@@ -40,11 +40,11 @@ Security Homepage
         </div>
     </div>
 </div>
-<!-----------------------------------Modal----------------------------------------------------->
+<!----------------------------Modal Client Requesting Guards---------------->
 <div id="modalreadMsg" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
     <div class="modal-header">
                 <div class="h">
-                    <h3><center>Messages</center></h3>  
+                    <h3><center>Message</center></h3>  
 				</div>
 
             </div>
@@ -120,6 +120,39 @@ Security Homepage
         </div>
     </div>
 </div>
+<!----------------------------Modal Client Requesting Guards End---------------->
+
+
+<!----------------------------Modal Client Contract Approved Message---------------->
+
+<div id="modalContractNoti" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
+    <div class="modal-header">
+      	<div class="h">
+			<h3><center>Message</center></h3>  
+		</div>
+    </div>
+	
+	<div class="modal-content">
+		<div class="row">
+			<div class="col s12">
+				<ul class="collection with-header" id="collectionActive">
+					<li class="collection-header" ><div style="font-size:18px;">From:&nbsp; LandBank</div></li>
+					<li class="collection-header"><div style="font-size:18px;">Subject:&nbsp; Contract Created</div></li>
+					<!----------------message---------------------->
+					<li class="collection-item"><p>The practice of writing paragraphs is essential to good writing. Paragraphs help to break up large chunks of text and makes the content easier for readers to digest. They guide the reader through your argument by focusing on one main idea or goal. However, knowing how to write a good, well-structured paragraph can be little tricky. Read the guidelines below and learn how to take your paragraph writing skills from good to great!</p>
+                    </li>
+			</div>
+		</div>
+	</div>
+		
+	<div class="modal-footer ci modal-close" style="background-color: #00293C;">
+		<button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK
+            </button>
+	</div>
+</div>
+
+
+<!----------------------------Modal Client Contract Approved Message End---------------->
 
 <script>
 $(document).ready(function(){
