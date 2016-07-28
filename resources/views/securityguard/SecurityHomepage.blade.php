@@ -21,7 +21,6 @@ Security Homepage
                         </div>
                     </div>
                 </div>
-                <button class="btn red modal-trigger" href="#modalContractNoti">Test</button>
                 <table class="centered" style="background-color:" id = 'inboxTable'>
                     <thead>
                         <tr>
@@ -136,10 +135,9 @@ Security Homepage
 		<div class="row">
 			<div class="col s12">
 				<ul class="collection with-header" id="collectionActive">
-					<li class="collection-header" ><div style="font-size:18px;">From:&nbsp; LandBank</div></li>
-					<li class="collection-header"><div style="font-size:18px;">Subject:&nbsp; Contract Created</div></li>
+					<li class="collection-header"><div style="font-size:18px;" id = "messageSubject">&nbsp;</div></li>
 					<!----------------message---------------------->
-					<li class="collection-item"><p>The practice of writing paragraphs is essential to good writing. Paragraphs help to break up large chunks of text and makes the content easier for readers to digest. They guide the reader through your argument by focusing on one main idea or goal. However, knowing how to write a good, well-structured paragraph can be little tricky. Read the guidelines below and learn how to take your paragraph writing skills from good to great!</p>
+					<li class="collection-item"><p id = 'messageInbox'></p>
                     </li>
 			</div>
 		</div>
@@ -199,17 +197,16 @@ $(document).ready(function(){
         success: function(data){
             
             table.clear().draw();
-            console.log(data);
             if (data){
                 for (intLoop = 0; intLoop < data.length; intLoop ++){
                     var mydate = new Date(data[intLoop].dateSend);
                     var month = ["January", "February", "March", "April", "May", "June",
                     "July", "August", "September", "October", "November", "December"][mydate.getMonth()];
-                    var str = month + ' ' + mydate.getDate() + ', ' + mydate.getFullYear();
+                    var strDate = month + ' ' + mydate.getDate() + ', ' + mydate.getFullYear();
                     
                     table.row.add([
                         '<input name="' + tableRowCounter + '" type="radio" id="radio' + tableRowCounter +'" /> <label for="radio' + tableRowCounter + '"></label>',
-                        '<h>' + str + '</h>',
+                        '<h>' + strDate + '</h>',
                         '<h id = "title' + tableRowCounter + '">New Client</h>',
                         '<a class="btn blue darken-4 col s10 buttonRead" id = "' +tableRowCounter + '"><i class="material-icons">keyboard_arrow_right</i></a>' + 
                         '<input type = "hidden" value = "' + data[intLoop].intGuardPendingID +'" id ="idOfMessage'+
@@ -237,11 +234,65 @@ $(document).ready(function(){
         }
     });//new client pending
     
+    $.ajax({
+            
+        type: "GET",
+        url: "{{action('SecurityHomepageController@getInbox')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data){
+            
+            if (data){
+                for (intLoop = 0; intLoop < data.length; intLoop ++){
+                    var mydate = new Date(data[intLoop].datetimeSend);
+                    var month = ["January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"][mydate.getMonth()];
+                    var strDate = month + ' ' + mydate.getDate() + ', ' + mydate.getFullYear();
+                    
+                    table.row.add([
+                        '<input name="' + tableRowCounter + '" type="radio" id="radio' + tableRowCounter +'" /> <label for="radio' + tableRowCounter + '"></label>',
+                        '<h>' + strDate + '</h>',
+                        '<h id = "title' + tableRowCounter + '">Message</h>',
+                        '<a class="btn blue darken-4 col s10 buttonRead" id = "' +tableRowCounter + '"><i class="material-icons">keyboard_arrow_right</i></a>' + 
+                        '<input type = "hidden" value = "' + data[intLoop].intInboxID +'" id ="idOfMessage'+
+                        tableRowCounter + '">'
+                    ]).draw(false);
+                    
+                    
+                    if (data[intLoop].boolStatus == 1){
+                       $('#radio' + tableRowCounter).attr( "checked", true );
+                    }else{
+                       $('#radio' + tableRowCounter).attr( "checked", false );
+                    }
+                    tableRowCounter ++;
+                }  
+            }
+        },
+        error: function(data){
+            var toastContent = $('<span>Error Occured. </span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+
+        }
+    });//get inbox 
+    
     $('#inboxTable').on('click', '.buttonRead', function(){
+        var messageIdentifier = $('#title' + this.id).text();
+        var idOfMessage = $('#idOfMessage' + this.id).val();
         
-        if ($('#title' + this.id).text() == 'New Client'){
-            newClient($('#idOfMessage' + this.id).val(), $('#clientID' + this.id).val());
+        if (messageIdentifier  == 'New Client'){
+            newClient(idOfMessage, $('#clientID' + this.id).val());
             globalClientPendingID = $('#clientPending' + this.id).val();
+        }else if (messageIdentifier == 'Message'){
+            var message = getMessage(idOfMessage);
+            readMessage(idOfMessage);
+            $('#modalContractNoti').openModal();
+            $('#messageInbox').text(message.strMessage);
+            $('#messageSubject').text('Subject: ' + message.strSubject);
         }
         
         $('#radio' + this.id).attr('checked', false); // all read mark as unread
@@ -383,7 +434,6 @@ $(document).ready(function(){
                 }
             },
             success: function(data){
-                console.log(data);
                 var areaSize = commaSeparateNumber(data.deciAreaSize);
                 var population = commaSeparateNumber(data.intPopulation);
                 var arrayShift = data.shift;
@@ -455,6 +505,54 @@ $(document).ready(function(){
             async:false
         });//ajax get client information
         return status;
+    }
+    
+    function getMessage(id){
+        var message;
+        $.ajax({
+            type: "GET",
+            url: "/securityhomepage/get/message?id=" + id ,
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                message = data;
+            },
+            error: function(data){
+                var toastContent = $('<span>Error Occured. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+            },
+            async:false
+        });//ajax get client information
+        return message;
+    }
+    
+    function readMessage(id){
+        $.ajax({
+            type: "POST",
+            url: "{{action('SecurityHomepageController@readNewInbox')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+                if (token) {
+                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                id: id
+            },
+            success: function(data){
+                
+            },
+            error: function(data){
+                confirm();
+            }
+            
+            
+        });//accept
     }
 });
 </script>

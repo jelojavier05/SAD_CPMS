@@ -166,5 +166,35 @@ class SecurityHomepageController extends Controller
         
         return response()->json($status);
     }
+    
+    public function getInbox(Request $request){
+        $accountID = $request->session()->get('accountID');
+        
+        $inbox = DB::table('tblinbox')
+            ->join('tblaccount' ,'tblaccount.intAccountID','=', 'tblinbox.intAccountID')
+            ->select('tblinbox.strSubject', 'tblinbox.intInboxID', 'tblinbox.datetimeSend', 'tblinbox.boolStatus')
+            ->where('tblinbox.intAccountID', $accountID)
+            ->get();
+            
+        return response()->json($inbox);
+    }
+    
+    public function getInboxMessage(Request $request){
+        $id = Input::get('id');
+        
+        $message = DB::table('tblinbox')
+            ->select('strSubject', 'strMessage')
+            ->where('intInboxID', $id)
+            ->first();
+        
+        return response()->json($message);
+    }
+    
+    public function readNewInbox(Request $request){
+        
+        DB::table('tblinbox')
+            ->where('intInboxID','=', $request->id)
+            ->update(['boolStatus' => 0]);
+    }
 }
 

@@ -156,7 +156,7 @@ class ClientContractController extends Controller
                 
                 DB::table('tblgun')
                     ->where('intGunID', $value->gunID)
-                    ->update(['boolFlag' => 2]);
+                    ->update(['boolFlag' => 3]);
             }
             
             DB::table('tblclient')

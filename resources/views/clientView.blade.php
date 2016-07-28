@@ -40,7 +40,7 @@ Client
                                     @foreach($clientActive as $value)
                                     <tr>
                                         <td>
-                                            <button class="buttonUpdate btn col s12"  name="" id="" >
+                                            <button class="buttonUpdate btn col s12"  name="" id="{{$value->intClientID}}" >
                                                 <i class="material-icons">edit</i>
                                             </button>
                                             <label for=""></label>

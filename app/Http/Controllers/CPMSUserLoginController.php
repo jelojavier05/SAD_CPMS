@@ -43,7 +43,7 @@ class CPMSUserLoginController extends Controller
         if (is_null($account)){
             return response()->json(false);
         }else{
-            
+            $request->session()->put('accountID', $account->intAccountID);
             if ($account->intAccountType == 0){//temporary account
                 
                 $clientID = DB::table('tblclient')
