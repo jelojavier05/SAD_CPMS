@@ -293,6 +293,31 @@
                 document.getElementById('okayCancel').value = "cancel";
             }
         }
+        
+        $('#btnLogout').click(function(){
+            $.ajax({
+				
+				type: "GET",
+				url: "{{action('CPMSUserLoginController@logoutAccount')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                success: function(data){
+                    if (!data){
+                        window.location.href = '{{ URL::to("/userlogin") }}';
+                    }
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');   
+				}
+
+			});//ajax
+        });
 	</script>
 	
     

@@ -146,12 +146,16 @@ class ClientContractController extends Controller
                 }   
             }
             
+            $gunOrderHeaderID = DB::table('tblgunorderheader')->insertGetId([
+                'intClientID' => $clientID,
+                'created_at' => $now
+            ]);
+            
             foreach($guns as $value){
-                DB::table('tblclientgun')->insert([
-                    'intContractID' => $contractID,
+                DB::table('tblgunorderdetail')->insert([
+                    'intGunOrderHeaderID' => $gunOrderHeaderID,
                     'intGunID' => $value->gunID,
-                    'intRound' => $value->rounds,
-                    'created_at' => $now
+                    'intRounds' => $value->rounds,
                 ]);
                 
                 DB::table('tblgun')
@@ -170,12 +174,17 @@ class ClientContractController extends Controller
                    'intStatusIdentifier' => 0 
                 ]);
             
-            
             $clientAccount = DB::table('tblaccount')
                 ->join('tblclient', 'tblclient.intAccountID', '=', 'tblaccount.intAccountID')
                 ->where('tblclient.intClientID', '=', $clientID)
                 ->select('tblaccount.intAccountID')
                 ->first();
+            
+            DB::table('tblaccount')
+                ->where('intAccountID', '=', $clientAccount->intAccountID)
+                ->update([
+                    'intAccountType' => 1
+                ]);
             
             DB::commit();
         }catch(Exception $e){
