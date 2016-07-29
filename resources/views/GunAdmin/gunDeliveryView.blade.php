@@ -23,7 +23,6 @@ Delivery
                     <table class="highlight white" style="border-radius:10px;" id="dataTable">
                         <thead>
                             <tr>
-                                <th style="width:50px;"></th>
                                 <th>ID</th>
                                 <th>Client</th>
 								<th>Date Released</th>
@@ -33,27 +32,21 @@ Delivery
                         </thead>
                         
                         <tbody>
-                           
-                                <tr>
-                                    
-                                    <td>
-                                        <button class="buttonDelete btn red" id="">
-                                            <i class="material-icons">delete</i>
-                                        </button>
-                                    </td>
-                                    
-                                    <td id = "">1</td>
-                                    <td id = "">Test1</td>
-									<td>test1</td>
-									
-									<td>
-                                        <button class=" btn blue" id="">
-                                            MORE
-                                        </button>
-                                    </td>
-                                    
-                                </tr>
-                           
+                            @foreach($delivery as $value)
+                            <tr>
+
+                                <td id = "">{{$value->intGunDeliveryHeaderID}}</td>
+                                <td id = "">{{$value->strClientName}}</td>
+                                <td>{{$value->dateDeliver}}</td>dateDeliver
+
+                                <td>
+                                    <button class=" btn blue btnMore" id="{{$value->intGunDeliveryHeaderID}}">
+                                        MORE
+                                    </button>
+                                </td>
+
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -69,21 +62,13 @@ Delivery
 				    <div class="col s12" style="margin-top:5px; overflow:scroll; overflow-x:hidden; height:500px;">
 							  <div class="card grey darken-1">
 									<div class="card-content">
-								<!--------------------Released By:--------------->		
-										<div>
-											<span class = "card-title white-text">Released By:</span>
-										</div>
-
-										<div>
-											<p>Rodrigo Duterte</p>
-										</div>
 								<!-------------------Delivered By:------------------->		
 										<div>
 											<span class = "card-title white-text">Delivered By:</span>
 										</div>
 
 										<div>
-											<p>Leni Robredo</p>
+											<p id = 'deliveredBy'></p>
 										</div>
 
 								<!------------------Contact Number------------------>
@@ -93,7 +78,7 @@ Delivery
 										</div>
 
 										<div>
-											<p>09123456789</p>
+											<p id = 'contactNumber'></p>
 										</div>
 										
 								<!------------------Items------------------>
@@ -102,10 +87,10 @@ Delivery
 											<span class = "card-title white-text">Items:</span>
 										</div>
 										
-										<table class="bordered">
+										<table class="bordered" id = 'tableItem'>
 											<thead>
 											  <tr>
-												  <th class="white-text">License No</th>
+												  <th class="white-text">Serial Number</th>
 												  <th class="white-text">Name</th>
 												  <th class="white-text">Type of Gun</th>
 												  <th class="white-text">Rounds</th>
@@ -113,24 +98,6 @@ Delivery
 											</thead>
 
 											<tbody>
-											  <tr>
-												<td>2013-12345-MN-0</td>
-
-												<td>M4A1</td>
-												
-												<td>Rifle</td>
-												 
-												<td>90</td>
-											  </tr>
-											  <tr>
-												<td>2014-01231-MN-0</td>
-
-												<td>Arctic Warfare Magnum</td>
-
-												<td>Rifle</td>
-												  
-												<td>15</td>
-											  </tr>
 											  
 											</tbody>
 										</table>
@@ -157,7 +124,6 @@ Delivery
         $("#dataTable").DataTable({
                  "columns": [
                 { "orderable": false },
-                null,
 				null,
 				null,
 				null
@@ -165,6 +131,37 @@ Delivery
                 "pageLength":5,
 				"lengthMenu": [5,10,15,20]
             });
+        
+        $('#dataTable').on('click','.btnMore',function(){
+            var id = this.id;
+            $.ajax({
+
+                type: "GET",
+                url: "/gunDeliveryView/get/deliveryinformation?id=" +id,
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: { 
+
+                },
+                success: function(data){
+                    $('#deliveredBy').text(data.information.strDeliveredBy);
+                    $('#contactNumber').text(data.information.strContactNumber);
+                    
+                    $.each(data.detail, function(index, value){
+                        $('#tableItem tr:last').after('<tr><td>' + value.strSerialNumber + '</td><td>' + value.strGunName +'<td/><td>' + value.strTypeOfGun + '</td><td>' + value.intRounds +'<td/></tr>');
+                    });
+                },
+
+                error: function(data){
+                    confirm ('guard pending');
+                }
+            });
+        });
 	});
 </script>
 @stop

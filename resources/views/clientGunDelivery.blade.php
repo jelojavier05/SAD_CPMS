@@ -20,41 +20,22 @@ Delivery
 									<thead>
 										<tr>
 											
-											<th>License No</th>
+											<th>Serial Number</th>
 											<th>Name</th>
 											<th>Type of Gun</th>
 											<th>Rounds</th>
 										</tr>
 									</thead>
 
-									<tbody>                        
-											<tr>                                    
-																													
-
-												<td>2013-12345-MN-0</td>
-
-												<td>M4A1</td>
-												
-												<td>Rifle</td>
-												
-												<td>90</td>
-
-												
-											</tr>
-										
-											<tr>                                    
-																													
-
-												<td>2014-01231-MN-0</td>
-
-												<td>Arctic Warfare Magnum</td>
-
-												<td>Rifle</td>
-												
-												<td>15</td>
-												
-											</tr>
-											
+									<tbody>   
+                                        @foreach($gunSelected as $value)
+                                        <tr>
+                                            <td>{{$value->serialNumber}}</td>
+                                            <td>{{$value->name}}</td>
+                                            <td>{{$value->type}}</td>
+                                            <td>{{$value->rounds}}</td>
+                                        </tr>
+                                        @endforeach
 									</tbody>
 								</table>
 							</div>
@@ -71,29 +52,25 @@ Delivery
 						<div class="col s10 push-s1">
 							<form>
 
-								<div class="input-field col s3 offset-s9 pull-s9">
-									<input  id="deliveryID" type="text" class="validate blue-text" readonly required="" aria-required="true" value = "1">
-									<label for="deliveryID">Delivery ID</label>
+                                <div class="input-field col s3 offset-s9 pull-s9">
+                                <input  id="orderID" type="text" class="validate blue-text" readonly required="" aria-required="true" value = '{{$orderDetail->intGunOrderHeaderID}}'>
+									<label for="orderID">Order ID</label>
 								</div>
-
-								<div class = "input-field col s6 offset-s6 pull-s6">    
-								   <select  id = "" name = "" >
-									   <option disabled selected>Choose an option</option>
-										  <option id = "1" >Test1</option>
-										  <option id = "2" >Test2</option>
-								   </select>
-								   <label>Client</label>
+                                
+                                <div class="input-field col s3 offset-s9 pull-s9">
+									<input  id="clientName" type="text" class="validate blue-text" readonly required="" aria-required="true" value = '{{$orderDetail->strClientName}}'>
+									<label for="clientName">Client Name</label>
 								</div>
-
-
-								<div class="input-field col s6">
-									<input  id="dateReleased" type="date" class="datepicker"  required="" aria-required="true">
-									<label class="active" data-error="Incorrect" for="dateReleased">Date Released</label>
+                                
+                                
+                                <div class="input-field col s3 offset-s9 pull-s9">
+									<input  id="address" type="text" class="validate blue-text" readonly required="" aria-required="true" value = '{{$orderDetail->strAddress}}  {{$orderDetail->strCityName}}, {{$orderDetail->strProvinceName}}'>
+									<label for="address">Address</label>
 								</div>
-
-								<div class="input-field col s6">
-									<input placeholder=" " id="releasedBy" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
-									<label for="releasedBy"  data-error="Incorrect">Released By</label>
+                                
+                                  <div class="input-field col s3 offset-s9 pull-s9">
+									<input  id="contactNumber" type="text" class="validate blue-text" readonly required="" aria-required="true" value= '{{$orderDetail->strContactNumber}}'>
+									<label for="contactNumber">Contact Number</label>
 								</div>
 
 								<div class="input-field col s6">
@@ -102,7 +79,7 @@ Delivery
 								</div>
 
 								<div class="input-field col s6">
-									<input placeholder=" " id="contactDeliver" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
+									<input placeholder=" " id="contactNumber" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
 									<label data-error="Incorrect" for="contactDeliver">Contact Number (Delivery)</label>
 								</div>
 
@@ -117,7 +94,7 @@ Delivery
 	</div>
 		<div class=" col s5 push-s4">
 				<a class="btn-large blue waves-effect z-depth-2 left" id="" style="margin-top:20px;" href="/gunDeliveryCart">Cancel</a>
-				<a class="btn-large green waves-effect z-depth-2 right" id="" style="margin-top:20px;" href="#">Save</a>
+				<a class="btn-large green waves-effect z-depth-2 right" id="btnDeliver" style="margin-top:20px;" >Deliver</a>
 		</div>
 </div>
 
@@ -128,6 +105,35 @@ Delivery
 
 <script type="text/javascript">
 	$(document).ready(function(){
+        $('#btnDeliver').click(function(){
+            var deliveredBy = $('#deliveredBy').val();
+            var contactNumber = $('#contactNumber').val();
+            $.ajax({
+                type: "POST",
+                url: "{{action('GunDeliveryController@postDelivery')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    deliveredBy: deliveredBy,
+                    contactNumber: contactNumber
+                },
+                success: function(data){
+                    swal("Success!", "Delivery Recorded", "success");
+                    window.location.href = '{{ URL::to("/gunDeliveryView") }}';
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Occured. </span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+
+                }
+            });//ajax
+        });
+        
         $("#dataTable").DataTable({
                  "columns": [
                 null,

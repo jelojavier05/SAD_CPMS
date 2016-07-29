@@ -28,6 +28,8 @@ return array(
     'CreateGuardeducationTable' => $baseDir . '/database/migrations/2016_07_11_063506_create_guardeducation_table.php',
     'CreateGuardlicenseTable' => $baseDir . '/database/migrations/2016_07_08_092013_create_guardlicense_table.php',
     'CreateGuardpendingnotificationTable' => $baseDir . '/database/migrations/2016_07_20_042344_create_guardpendingnotification_table.php',
+    'CreateGunDeliveryDetailTable' => $baseDir . '/database/migrations/2016_07_29_021949_create_gun_delivery_detail_table.php',
+    'CreateGunDeliveryHeaderTable' => $baseDir . '/database/migrations/2016_07_29_021344_create_gun_delivery_header_table.php',
     'CreateGunLicenseNumberTable' => $baseDir . '/database/migrations/2016_03_11_182629_create_gun_license_number_table.php',
     'CreateGunOrderDetailTable' => $baseDir . '/database/migrations/2016_07_28_121947_create_gun_order_detail_table.php',
     'CreateGunOrderHeaderTable' => $baseDir . '/database/migrations/2016_07_28_121622_create_gun_order_header_table.php',

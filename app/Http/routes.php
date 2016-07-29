@@ -142,10 +142,12 @@ Route::get('/gun/tagging', 'GunTaggingController@index');
 
 
 Route::get('/gunDeliveryView', 'GunDeliveryViewController@index');
+Route::get('/gunDeliveryView/get/deliveryinformation', 'GunDeliveryViewController@getDeliveryInformation');
 Route::get('/gunDeliveryCart', 'GunDeliveryCartController@index');
+Route::get('/gunDeliveryCart/get/gunorderdetail', 'GunDeliveryCartController@getGunOrderDetail');
+Route::post('/gunDeliveryCart/post/gunorderdetail', 'GunDeliveryCartController@postSelectedGun');
 Route::get('/gunDelivery', 'GunDeliveryController@index');
-
-
+Route::post('/gunDelivery/post/delivery', 'GunDeliveryController@postDelivery');
 
 
 Route::get('/gun/registration', 'GunRegistrationController@index');
