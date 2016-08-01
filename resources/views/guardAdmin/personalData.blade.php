@@ -29,6 +29,7 @@ Guard Form
 							 <div class="col s8" style="margin-left:25.6%;margin-top:-1%">
 									  <ul class="tabs white" style="border: 1px solid black;overflow:hidden">
 											<li class="tab col s3 ci"><a href="#pd">Personal Data</a></li>
+											<li class="tab col s3 ci"><a href="#pd">Personal Data</a></li>
 											<li class="tab col s3 ci"><a href="#gl">Guard License</a></li>
 
 									  </ul>

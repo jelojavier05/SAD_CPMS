@@ -1,4 +1,4 @@
-@extends('ClientDashboard')
+@extends('client.ClientDashboard')
 @section('title')
 Client Request of Guard
 @endsection
@@ -7,7 +7,7 @@ Client Request of Guard
 
   <div clas="col s12">
         <h2 class = "blue darken-3 white-text" style="border: 1px solid black;font-family:Verdana"><center>Request for GUARDS</center></h2>
-    </div>
+  </div>
 
     <!-------------------------TABS----------------------->
     
@@ -25,7 +25,6 @@ Client Request of Guard
 <div id="test1" class="col s12">
     <div class="row">
         
-        
     <div class="col l12">
         <div class="col l12">
             
@@ -36,9 +35,6 @@ Client Request of Guard
               <p>Requisition of additional guards for better maintenance of services.</p>
                 
                
-
-
-                
                     <div class="input-field col s3 offset-s10 pull-s10">
                       <i class="material-icons prefix">toc</i>
                       <input id="icon_prefix" type="number" class="validate" value="1">
@@ -46,9 +42,6 @@ Client Request of Guard
                     </div>
                     
                 
-                
-              
-               
                   <div class="input-field col s12">
                     <textarea id="gunreq" class="materialize-textarea" length="240"></textarea>
                     <label for="gunreq">Please specify the reasons for requesting</label>

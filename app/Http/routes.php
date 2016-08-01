@@ -81,7 +81,7 @@ Route::get('/cgrguardattendance', 'CGRGuardAttendanceController@index');
 Route::get('/cgrreceivingdelivery', 'CGRReceivingDeliveryController@index');
 Route::get('/cgrreports', 'CGRReportsController@index');
 
-//LATEST SECURITY GUARD INTERFACE ----------------------------------------------------
+//SECURITY GUARD INTERFACE ----------------------------------------------------
 
 Route::get('/securityleaverequest', 'SecurityGuardDashboardController@index');
 Route::get('/securitychangelocation', 'SecurityGuardDashboardController@index');
@@ -99,9 +99,9 @@ Route::post('/securityhomepage/accept/guard', 'SecurityHomepageController@accept
 Route::post('/securityhomepage/decline/guard', 'SecurityHomepageController@declineNewClient');
 Route::get('/securityleaverequest', 'SecurityLeaveRequestController@index');
 Route::get('/securitychangelocation', 'SecurityChangeLocationController@index');
+Route::get('/securitysettings', 'SecuritySettingsController@index');
 
 //CLIENT INTERFACE ----------------------------------------------------
-
 
     Route::get('/client', 'ClientDashboardController@index');
     Route::get('/clienthomepage', 'ClientHomepageController@index');

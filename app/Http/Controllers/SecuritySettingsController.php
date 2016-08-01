@@ -16,7 +16,7 @@ class SecuritySettingsController extends Controller
      */
     public function index()
     {
-        return view('/SecuritySettings');
+        return view('/securityguard/SecuritySettings');
     }
 
     /**

@@ -226,7 +226,7 @@
                 
         <!-------SETTINGS-------->
                 <div class="col l12">
-                    <a class="white darken-5 waves-effect waves-dark z-depth-1 ">
+                    <a href="/clientsettings" class="white darken-5 waves-effect waves-dark z-depth-1 ">
                         <div class="col l5">
                             <i class="material-icons left" style="font-size:6rem">settings
                             </i> 

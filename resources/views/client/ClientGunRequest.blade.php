@@ -1,4 +1,4 @@
-@extends('ClientDashboard')
+@extends('client.ClientDashboard')
 @section('title')
 Client Request of Gun
 @endsection

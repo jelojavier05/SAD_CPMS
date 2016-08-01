@@ -105,116 +105,48 @@
 <!-----------------------------NAV BAR----------------------------->
     
     <div class="row"></div> 
- <div class="row">
-         
-    
-           
-     <div class="col l12">
-     
-    <div class="col l3 gray z-depth-5">
-             <div class="row"></div>
-         <div class="col l8 push-l2">
-     
-            <div class="col l12">
-              <img src="/img/avatar2.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-            <div class="row">
-                <h id = 'strProfileName'></h><br>
-                <h id = 'strProfileLicenseNumber'></h>
-                </div>      
-           
-          </div>
-     </div>
-            <div class="row"></div>
-        
-            <div>
-                
-              <!--REQUEST-->
-                    <div class="row">
-                    <div class="col l12">
-                       <div class="card">
-                        <div class="card-content">
-                      
-                        <a class=" white darken-5 waves-effect waves-dark ">
-                            <div class="col l5">
-                                
-                                <div class="row">
-                                    <div class="col l12">
-                                    <div class="col l2 pull-l4">
-                                        
-                                            <i class="material-icons left" style="font-size:6rem">input
-                                            </i>
-                                        
-                                        </div>
-                                    
-                                        <div class="col l6 push-l12">
-                                            <div class="row"></div>
-                                          <span class="card-title activator grey-text text-darken-4">REQUEST<i class="mdi-hardware-keyboard-arrow-up" style="padding-left:5%"></i></span>
-                                        </div>
-                                    
-                                    </div>
-                                </div>
-                             
-                                
-                            </div>
-                         
-                </a>
-                      
-                        
-                        </div>
-                           <div class="card-reveal" style="overflow:hidden">
-      <span class="card-title grey-text text-darken-4" style="font-size:12px">Request Type<i class="material-icons right">close</i></span>
-     
-                               
-                               
-                               
-                               <div class="row">
-                               <div class="col l12 push-l2">
-                                   
-                               
-                                    <a href="/securityleaverequest" class="btn blue darken-4" style="font-size:20px;height:40px;width:120px">LEAVE</a>
-                 
-                                  
-                                   
-                             </div>
-                             </div>
-                             <div class="row">
-                              <div class="col l6 push-l1">
-                                  
-                                  
-                                     <a href="/securitychangelocation" class="btn blue darken-4" style="font-size:20px;height:40px;width:152px !important">LOCATION</a>
-                
+ <div class="row">   
+    <div class="col l12">
+             <div class="col l3 z-depth-1">
+                        <img src="/img/avatar2.png" alt="" height="150px" width="123px"class="circle responsive-img" style="margin-left:31%"> <!-- notice the "circle" class -->
                     
-                                   
-                                   </div>
-                                   
-                                </div>
-    </div>
-                        
-                             
-                            </div>
-                        </div>
-                </div>
+                     <center>
+                         <h id = 'strProfileName'></h><br>
+                         <h id = 'strProfileLicenseNumber'></h>
+                    </center>
+            </div>
+            <div class="col l2 offset-l1">
+                
             
+                  <a href="/securityleaverequest" class="btn blue darken-4 z-depth-2" style="font-size:23px;height:150px;width:165px !important"><div class="row"></div><i class="material-icons" style="font-size:3rem">face</i>LEAVE REQUEST</a>
+                
+            </div>
+            
+            <div class="col l2">
                 
                 
+                <a href="/securitychangelocation" class="btn blue darken-4 z-depth-2" style="font-size:23px;height:150px;width:165px !important"><div class="row"></div><i class="material-icons" style="font-size:3rem">business</i>CHANGE LOCATION</a>
+              
+            </div>
+            
+            <div class="col l2 ">
+                
+                 <a href="/securitysettings" class="btn blue darken-4 z-depth-2" style="font-size:23px;height:150px;width:165px !important"><div class="row"></div><i class="material-icons" style="font-size:3rem">settings</i>ACCOUNT SETTINGS</a>
                 
                 
-                <!--SETTINGS-->
-                        <div class="col l12">
-                        <a class="white darken-5 waves-effect waves-dark z-depth-1 ">
-                            <div class="col l5">
-                    <i class="material-icons left" style="font-size:6rem">settings
-                    </i> </div>
-                            <div class="col l5 pull-l1">
-                                <div class="row"></div>
-                    <div class="col l3" style="font-size:1.7rem;font-family:Tahoma;color:black">SETTINGS</div>
-                    </div>
-                </a>
-                            </div>
-                        
-                        
-                        <div class="col l11">
-                         	<script type="text/javascript">
+            </div>
+   
+    </div>     
+</div>
+    
+    <hr>
+    <hr>  
+ 
+    <div class="row">
+    <div class="col l12">
+             <div class="col l3 z-depth-1 blue darken-2">
+                    <div class="col l12 push-l1">
+                <script type="text/javascript">
 		
                     var Calendar = function(divId) {
 
@@ -419,12 +351,12 @@
  
    
   
- <div class="row"></div>
+            <div class="row"></div>
               <div class="row">
                  
                   <div class="col l12">
                       <div class="row">
-            <div class="col l12"> 
+            <div class="col l12 pull-l1"> 
                 <div class="col l6">
                 <button  id="btnPrev" class=" btn waves-effect waves-light" type="submit" name="action"> PREV 
                     <i class="material-icons left"> skip_previous </i>
@@ -439,7 +371,7 @@
                       </div>
                       
     
-            <div class="col l10 pull-l2">
+            <div class="col l12 pull-l2">
                   <div id="divCalendar">
                              </div>
                 
@@ -447,32 +379,25 @@
                   </div>
                         </div>
                         
-                        
-                        </div>
-                        
-        </div>
+                   </div>
+            </div>
         
-       
-         </div>
-    
+        
         <div class="col l9">
-            <div class="row"></div>
-            <div class="row"></div>
-      @yield('content')
+        
+        
+             @yield('content')
+        
+        
+        </div>
+        </div>
+   </div>
+  
+    
+     
 	@yield('script')
 	   
-         
-    </div>
-         
-       
-                
-    </div>
- 
   
-     </div>
-         
-         
- 
       <script>
        
         $('.modal-trigger').leanModal({

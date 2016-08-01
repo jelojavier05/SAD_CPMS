@@ -10,7 +10,7 @@ Security Leave Request
 
 
 <!--BASIC LEAVE-->
-<div class="row">
+<div class="row" class="ci">
     <div class="col l12">
         
         <div class="col l6">
@@ -27,7 +27,7 @@ Security Leave Request
                              
                                         <div class="col l6">
                                         <div class="row"></div>
-                                            <span class="black-text" style="font-size:20px;font-family:Verdana">BASIC LEAVE
+                                            <span class="black-text" style="font-size:20px;font-family:Myriad Pro">BASIC LEAVE
                                             </span>
                                 
                                         </div>
@@ -49,7 +49,7 @@ Security Leave Request
                                             <label for="test8">MAXIMUM LEAVES: 5</label><br>
                                             <label for="test8">REMAINING LEAVES: 3</label><br>  
                                             <label for="test8">NOTE!</label><br>
-                                                    <span class="black-text"><bold>THE APPLICATION OF LEAVE MUST <br>BE <div class="blue-text">2 DAYS</div>PRIOR TO THE GIVEN DATE OF APPROVAL</bold></span>
+                                                    <span class="ci"><bold>THE APPLICATION OF LEAVE MUST <br>BE <div class="blue-text">2 DAYS</div>PRIOR TO THE GIVEN DATE OF APPROVAL</bold></span>
                                         </div>
             
             
@@ -158,89 +158,6 @@ Security Leave Request
 
 <div class="row"><fieldset style="background-color:grey"></fieldset></div>
   <!--MESSAGE-->
-<div class="row">
-    <div class="col l12">
-            <div class="col l6">
-                    <div class="card large z-depth-2">
-                   <div class="row">
-                            <div class="col l12">
-                                <div class="col l3">
-                             <i class="material-icons left" style="font-size:6rem">email
-                    </i> 
-                                </div>
-                             
-                                <div class="col l6">
-                                   <div class="row"></div>
-                                <span class="black-text" style="font-size:20px;font-family:Verdana">INBOX MESSAGE</span>
-                                
-                                </div>
-                        </div>
-                        </div>
-                 <table class="striped" style="background-color:">
-        <thead>
-          <tr>
-              <th data-field="id">Name</th>
-              <th data-field="name">Item Name</th>
-              <th data-field="price">Item Price</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-        </tbody>
-      </table>
-      
-                </div>
-            </div>
-            
-        
-        
-        <!--ANNOUNCEMENTS/UPDATES-->
-            <div class="col l6">
-                    <div class="card large z-depth-2">
-                
-                        
-                        <div class="row">
-                            <div class="col l12">
-                                <div class="col l3">
-                             <i class="material-icons left" style="font-size:6rem">announcement
-                    </i> 
-                                </div>
-                             
-                                <div class="col l6">
-                                   <div class="row"></div>
-                                <span class="black-text" style="font-size:20px;font-family:Verdana">ANNOUNCEMENT/UPDATES</span>
-                                
-                                </div>
-                        </div>
-                        </div>
-      
-                </div>
-            </div>
-    
-    
-    
-    
-    </div>
-
-
-
-
-</div>
 
 
 @stop
