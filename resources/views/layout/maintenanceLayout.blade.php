@@ -341,7 +341,7 @@
              
 							<ul class="right hide-on-med-and-down">
 								 <li><a  data-position="bottom" data-delay="50" data-tooltip="PEOPLE"href="/dashboardadmin" class=" tooltipped"><i class="mdi-social-people" style="font-size:2.1rem;color:white"></i></a></li>
-								<li><a  data-position="bottom" data-delay="50" data-tooltip="MESSAGES"href="/dashboardadmin" class=" tooltipped"><i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i></a></li>
+								<li><a  data-position="bottom" data-delay="50" data-tooltip="MESSAGES"href="/adminInbox" class=" tooltipped"><i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i></a></li>
 								 <li><a  data-position="bottom" data-delay="50" data-tooltip="REQUEST NOTIFICATION"href="#notif" class=" tooltipped"><i class="mdi-communication-call" style="font-size:2.1rem;color:white"></i></a></li>
 								<li><a  data-position="bottom" data-delay="50" data-tooltip="RESOURCES EXPIRATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-action-history" style="font-size:2.1rem;color:white"></i></a></li>
 								

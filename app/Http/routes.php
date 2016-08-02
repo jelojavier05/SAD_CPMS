@@ -1,5 +1,8 @@
 <?php
 
+Route::get('/adminInbox', 'AdminInboxController@index');
+
+
 Route::get('/crm/home', 'CRMHomeController@index');
 
 Route::get('/gunView', 'GunViewController@index');
