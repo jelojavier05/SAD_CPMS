@@ -123,7 +123,7 @@ Inbox
 		<div class="row">
 			<div class="col s12">
 				<ul class="collection with-header" id="collectionActive">
-					<li class="collection-header" style="font-weight:bold;">Number of Guards Needed:<div style="font-size:18px;" id = "">&nbsp;10</div><button class="btn blue right" style="margin-top:-40px;" id="btnSuggested">
+					<li class="collection-header" style="font-weight:bold;">Number of Guards Needed:<div style="font-size:18px;" id = "">&nbsp;5</div><button class="btn blue right" style="margin-top:-40px;" id="btnSuggested">
 								Suggested
 								</button></li>
 					<!----------------message---------------------->
