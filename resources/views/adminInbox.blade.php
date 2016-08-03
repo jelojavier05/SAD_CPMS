@@ -12,7 +12,6 @@ Inbox
 		
 		<ul class="tabs" style="">
         	<li style="color:white"class="tab col l3"><a href="#message" class="active">Messages</a></li>
-            <li class="tab col l3"><a  href="#request">Requests</a></li>
         </ul>
 		
 <!-----------------------------------------------message table----------------------------->		
@@ -40,29 +39,7 @@ Inbox
 
 
 						</tr>
-					</tbody>
-
-				</table>
-			</div>
-		</div>
-		
-<!-----------------------------------------------message table end----------------------------->		
-<!-------------------------------------------request table----------------------->		
-		
-		<div id="request">
-			<div class="container-fluid grey lighten-2">	
-				<table class="striped" id="dataTableRequest">
-					<thead>
-						<tr>
-							<th class="grey lighten-1" style="width: 20px;"></th>
-							<th class="grey lighten-1" style="width: 30px;"></th>
-							<th class="grey lighten-1">Date</th>
-							<th class="grey lighten-1">From</th>
-							<th class="grey lighten-1">Subject</th>
-						</tr>
-					</thead>
-
-					<tbody>
+						
 						<tr>
 							<td><input name="" type="radio" id="1" /> <label for="1"></label></td>
 							<td><center><button class="btn blue darken-4 modal-trigger" href="#modalSendNoti"><i class="material-icons">keyboard_arrow_right</i></button></center></td>
@@ -78,7 +55,8 @@ Inbox
 			</div>
 		</div>
 		
-<!-------------------------------------------request table end----------------------->
+<!-----------------------------------------------message table end----------------------------->		
+
 		
 <!----------------------------Modal Message---------------->
 
