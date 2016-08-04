@@ -49,28 +49,28 @@ Guard Form
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="input-field col s4">
 					   <i class="material-icons prefix">account_circle</i>
-					   <input placeholder = " " id="firstName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
+					   <input placeholder = " " id="firstName" type="text" class="validate" pattern="[A-za-z.' ][^0-9]{2,}" required="" aria-required="true" >
 					   <label class="ci" data-error="Incorrect" for="firstName">First Name</label>
 
 				</div>
 
 				<div class="input-field col s4">
 						<i class="material-icons prefix">account_circle</i>
-					    <input placeholder = " " id="middleName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+					    <input placeholder = " " id="middleName" type="text" class="validate" pattern="[A-za-z.' ][^0-9]{2,}" required="" aria-required="true">
 						<label class="ci" data-error="Incorrect" for="middleName">Middle Name</label>
 
 				</div>
 
 				<div class="input-field col s4">
 						<i class="material-icons prefix">account_circle</i>
-						<input placeholder = " " id="lastName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+						<input placeholder = " " id="lastName" type="text" class="validate" pattern="[A-za-z.' ][^0-9]{2,}" required="" aria-required="true">
 						<label class="ci" data-error="Incorrect" for="lastName">Last Name</label>
 
 				</div>
 
 				<div class="input-field col s4">
 					    <i class="material-icons prefix">home</i>
-						<input placeholder = " " id="address" type="text" class="validate" pattern="[A-za-z0-9., ]{2,}" required="" aria-required="true">
+						<input placeholder = " " id="address" type="text" class="validate" pattern="[A-za-z0-9.,' ]{2,}" required="" aria-required="true">
 
 						<label class="ci" data-error="Incorrect" for="address">Address</label>
 
