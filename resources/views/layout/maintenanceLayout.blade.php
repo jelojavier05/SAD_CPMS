@@ -348,14 +348,6 @@
                                     <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/adminInbox" class="tooltipped">
                                         <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
                                         <span id="notification_count">3</span></a>
-                                    
-                                                        <div id="notificationContainer">
-	                                                        <div id="notificationTitle">Notifications</div>
-	                                                        <div id="notificationsBody" class="notifications"></div>
-	                                                        <div id="notificationFooter"><a href="#">See All</a></div>
-                                                        </div>
-                                    
-                                    
                                 </li>
                                     
                                     
