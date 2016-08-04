@@ -57,8 +57,6 @@ Guard
         </div>
     </div>
     
-    
-<!------------------------containerMoreDetails----------------------------------->
     <div class ="col s4" style=" margin-top:30px;">
         <div class="col s12">
             <div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:15px;">
@@ -70,9 +68,15 @@ Guard
                                 <div>
                                     <span class = "card-title black-text" style="font-weight:bold;">Client:</span>
                                 </div>
+                                <div>
+                                    <p style="color:#212121; font-size: 18px;" id = "clientName"></p>
+                                </div>
 								<div>
                                     <span class = "card-title black-text" style="font-weight:bold;">Status:</span>
-                                </div>							
+                                </div>		
+                                <div>
+                                    <p style="color:#212121; font-size: 18px;" id = "guardStatus"></p>
+                                </div>					
 								<div>
                                     <span class = "card-title black-text" style="font-weight:bold;">Personal Data:</span>
                                 </div>
@@ -172,7 +176,7 @@ Guard
             </div>
         </div>	
     </div>
-<!---------------------------------------------------------------------------------------------------------->
+
 <div id="modalRequirements" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:330px !important;">
     <div class="modal-header"><h2>Requirements</h2></div>
     
@@ -266,6 +270,7 @@ Guard
                     var governmentExamGuard = data.governmentExamGuard;
                     var governmentExam = data.governmentExam;
                     
+                    $('#guardStatus').text(getGuardStatus(data.intStatusIdentifier));
                     $('#firstName').text(data.strFirstName);
                     $('#middleName').text(data.strMiddleName);
                     $('#lastName').text(data.strLastName);
@@ -339,6 +344,16 @@ Guard
             });//ajax
 
         });
+
+        function getGuardStatus(status){
+            if (status == 0){
+                return 'Waiting';
+            }else if (status == 1){
+                return 'Pending';
+            }else if (status == 2){
+                return 'Deployed';
+            }
+        }
 	});
     
     

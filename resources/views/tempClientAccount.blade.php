@@ -37,7 +37,6 @@ Temporary Client
             </div>
         </div>
     </div>
-<!------------------------containerMoreDetails----------------------------------->
     <div class ="col s4 pull-s1" style=" margin-top:30px;">
         <div class="col s12">
             <div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:15px;">
@@ -145,7 +144,6 @@ Temporary Client
             </div>
         </div>	
     </div>
-<!---------------------------------------------------------------------------------------------------------->
 
 </div>
 

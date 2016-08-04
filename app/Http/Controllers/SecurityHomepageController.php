@@ -127,14 +127,23 @@ class SecurityHomepageController extends Controller
                     ->where('tblclientpendingnotification.intClientPendingID', $clientPendingID)
                     ->first();
 
-                $messageString = 'The guards are now complete. ' . $clientAccount->strClientName . ' is ready for contract.';
+                $messageStringAdmin = 'The guards are now complete. ' . $clientAccount->strClientName . ' is ready for contract.';
                 DB::table('tblinbox')->insert([
                     'intAccountIDSender' => $clientAccount->intAccountID,
                     'intAccountIDReceiver' => $adminAccountID->intAccountID,
                     'strSubject' => 'New Client Ready',
-                    'strMessage' => $messageString,
+                    'strMessage' => $messageStringAdmin,
                     'tinyintType' => 0
-                ]);
+                ]);//inbox for admin
+
+                $messageStringClient = 'The guards are now complete. You can finalize your contract in the office.';
+                DB::table('tblinbox')->insert([
+                    'intAccountIDSender' => $adminAccountID->intAccountID,
+                    'intAccountIDReceiver' => $clientAccount->intAccountID,
+                    'strSubject' => 'Guard Complete',
+                    'strMessage' => $messageStringClient,
+                    'tinyintType' => 0
+                ]);//inbox for admin
             }//if else
 
             DB::commit();
