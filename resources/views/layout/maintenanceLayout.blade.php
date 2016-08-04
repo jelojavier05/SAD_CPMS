@@ -350,9 +350,9 @@
                                         <span id="notification_count">3</span></a>
                                     
                                                         <div id="notificationContainer">
-                                                        <div id="notificationTitle">Notifications</div>
-                                                        <div id="notificationsBody" class="notifications"></div>
-                                                        <div id="notificationFooter"><a href="#">See All</a></div>
+	                                                        <div id="notificationTitle">Notifications</div>
+	                                                        <div id="notificationsBody" class="notifications"></div>
+	                                                        <div id="notificationFooter"><a href="#">See All</a></div>
                                                         </div>
                                     
                                     
@@ -473,27 +473,44 @@ $(document).ready(function() {
 
     <script type="text/javascript" src="js/jquery.min.1.9.js"></script>
 <script type="text/javascript" >
-$(document).ready(function()
-{
-$("#notificationLink").click(function()
-{
-$("#notificationContainer").fadeToggle(300);
-$("#notification_count").fadeOut("slow");
-return false;
-});
+$(document).ready(function(){
+	
+	$.ajax({
+        type: "GET",
+        url: "{{action('InboxController@getNumberOfUnreadMessages')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
 
-//Document Click hiding the popup 
-$(document).click(function()
-{
-$("#notificationContainer").hide();
-});
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data){
+            if (data > 0){
+            	$('#notification_count').text(data);
+            	$('#notification_count').show();
+            }
+        }
+    });//ajax get client information
 
-//Popup on click
-$("#notificationContainer").click(function()
-{
-return false;
-});
+	$("#notificationLink").click(function(){
+		$("#notificationContainer").fadeToggle(300);
+		$("#notification_count").fadeOut("slow");
+		window.location.href = '{{ URL::to("/adminInbox") }}';
+		return false;
+	});
 
+
+
+	//Document Click hiding the popup 
+	// $(document).click(function(){
+	
+	// });
+
+	// //Popup on click
+	// $("#notificationContainer").click(function(){
+	// 	return false;
+	// });
 });
 </script>
 	

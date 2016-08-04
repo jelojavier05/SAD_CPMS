@@ -2,12 +2,14 @@
 
 Route::get('/inbox/get', 'InboxController@getInbox');
 Route::post('/inbox/post/readinbox', 'InboxController@readInbox');
+Route::get('/inbox/get/numberofunreadmessages', 'InboxController@getNumberOfUnreadMessages');
 
 Route::get('/adminInbox', 'AdminInboxController@index');
 Route::get('/adminInbox/get/numberguard', 'AdminInboxController@getNewClientNumberOfGuard');
 Route::post('/adminInbox/send/notification', 'AdminInboxController@sendGuardPendingNotification');
 Route::get('/adminInbox/get/guardhasnotification', 'AdminInboxController@getGuardHasNotification');
 Route::get('/adminInbox/get/message', 'AdminInboxController@getMessage');
+
 
 
 Route::get('/crm/home', 'CRMHomeController@index');

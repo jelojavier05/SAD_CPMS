@@ -49,4 +49,14 @@ class InboxController extends Controller
             ->where('intInboxID', $request->inboxID)
             ->update(['tinyintStatus' => 0]);
     }
+
+    public function getNumberOfUnreadMessages(Request $request){
+        $accountID = $request->session()->get('accountID');
+
+        $numberOfUnreadMessages = DB::table('tblinbox')
+            ->where('intAccountIDReceiver',$accountID)
+            ->where('tinyintStatus', 1)
+            ->count();
+        return response()->json($numberOfUnreadMessages);
+    }
 }
