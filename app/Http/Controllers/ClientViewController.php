@@ -82,16 +82,6 @@ class ClientViewController extends Controller
             
     }
     
-    public function getPendingNotification(){
-        $notificationID = Input::get('notificationID');
-        $guardHasNotification = DB::table('tblguardpendingnotification')
-            ->select('intGuardID')
-            ->where('intClientPendingID', '=', $notificationID)
-            ->get();
-        
-        return response()->json($guardHasNotification);
-    }
-    
     public function getGuardAccept(Request $request){
         $clientPendingID = Input::get('notificationID');
         

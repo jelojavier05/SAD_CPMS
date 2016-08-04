@@ -15,12 +15,12 @@ class CreateClientpendingnotificationTable extends Migration
         Schema::create('tblclientpendingnotification', function (Blueprint $table) {
             $table->increments('intClientPendingID');
             $table->integer('intClientID')->unsigned();
-            
-            $table->timestamp('dateSend')->useCurrent = true;
+            $table->integer('intInboxID')->unsigned();
             $table->integer('intNumberOfGuard');
             $table->integer('intStatusIdentifier')->default(1);
             
             $table->foreign('intClientID')->references('intClientID')->on('tblclient');
+            $table->foreign('intInboxID')->references('intInboxID')->on('tblinbox');
         });
 
     }

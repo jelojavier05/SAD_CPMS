@@ -24,10 +24,11 @@ Security Homepage
                 <table class="centered" style="background-color:" id = 'inboxTable'>
                     <thead>
                         <tr>
-                            <th></th>
-                            <th data-field="">Date</th>
-                            <th data-field="">Title</th>
-                            <th data-field=""></th>
+                            <th class="grey lighten-1" style="width: 20px;"></th>
+                            <th class="grey lighten-1" style="width: 30px;"></th>
+                            <th class="grey lighten-1">Date</th>
+                            <th class="grey lighten-1">From</th>
+                            <th class="grey lighten-1">Subject</th>
                         </tr>
                     </thead>
                     
@@ -39,8 +40,8 @@ Security Homepage
         </div>
     </div>
 </div>
-<!----------------------------Modal Client Requesting Guards---------------->
-<div id="modalreadMsg" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
+
+<div id="modalNewClientRequest" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
     <div class="modal-header">
                 <div class="h">
                     <h3><center>Message</center></h3>  
@@ -119,10 +120,6 @@ Security Homepage
         </div>
     </div>
 </div>
-<!----------------------------Modal Client Requesting Guards End---------------->
-
-
-<!----------------------------Modal Client Contract Approved Message---------------->
 
 <div id="modalContractNoti" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
     <div class="modal-header">
@@ -136,7 +133,6 @@ Security Homepage
 			<div class="col s12">
 				<ul class="collection with-header" id="collectionActive">
 					<li class="collection-header"><div style="font-size:18px;" id = "messageSubject">&nbsp;</div></li>
-					<!----------------message---------------------->
 					<li class="collection-item"><p id = 'messageInbox'></p>
                     </li>
 			</div>
@@ -149,15 +145,12 @@ Security Homepage
 	</div>
 </div>
 
-
-<!----------------------------Modal Client Contract Approved Message End---------------->
-
 <script>
 $(document).ready(function(){
     
     var tableRowCounter = 0;
     var table = $('#inboxTable').DataTable();
-    var globalClientPendingID;
+    var inboxID;
     
     $.ajax({
             
@@ -175,18 +168,13 @@ $(document).ready(function(){
                 $('#strProfileName').text(data.strFirstName + ' ' + data.strLastName);
                 $('#strProfileLicenseNumber').text(data.strLicenseNumber);    
             }
-        },
-        error: function(data){
-            var toastContent = $('<span>Error Occured. </span>');
-            Materialize.toast(toastContent, 1500,'red', 'edit');
-
         }
     });//guard information
     
     $.ajax({
             
         type: "GET",
-        url: "{{action('SecurityHomepageController@getNewClientRequest')}}",
+        url: "{{action('InboxController@getInbox')}}",
         beforeSend: function (xhr) {
             var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -195,107 +183,40 @@ $(document).ready(function(){
             }
         },
         success: function(data){
-            
-            table.clear().draw();
+            console.log(data);
             if (data){
-                for (intLoop = 0; intLoop < data.length; intLoop ++){
-                    var mydate = new Date(data[intLoop].dateSend);
-                    var month = ["January", "February", "March", "April", "May", "June",
-                    "July", "August", "September", "October", "November", "December"][mydate.getMonth()];
-                    var strDate = month + ' ' + mydate.getDate() + ', ' + mydate.getFullYear();
+
+                $.each(data, function(index,value){
+                    if (value.tinyintStatus == 1){
+                        radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" checked/> <label for="'+value.intInboxID+'"></label>';  
+                    }else{
+                        radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" /> <label for="'+value.intInboxID+'"></label>';
+                    }
+                    button = '<center><button class="btn blue darken-4 buttonRead" id="'+value.intInboxID+'"><i class="material-icons">keyboard_arrow_right</i></button></center>';
                     
                     table.row.add([
-                        '<input name="' + tableRowCounter + '" type="radio" id="radio' + tableRowCounter +'" /> <label for="radio' + tableRowCounter + '"></label>',
-                        '<h>' + strDate + '</h>',
-                        '<h id = "title' + tableRowCounter + '">New Client</h>',
-                        '<a class="btn blue darken-4 col s10 buttonRead" id = "' +tableRowCounter + '"><i class="material-icons">keyboard_arrow_right</i></a>' + 
-                        '<input type = "hidden" value = "' + data[intLoop].intGuardPendingID +'" id ="idOfMessage'+
-                        tableRowCounter + '">' + 
-                        '<input type = "hidden" value = "' + data[intLoop].intClientPendingID +'" id ="clientPending'+ tableRowCounter + '">' + 
-                        '<input type = "hidden" value = "' + data[intLoop].intClientID +'" id ="clientID'+ tableRowCounter + '">' + 
-                        '<input type = "hidden" value = "' + data[intLoop].intStatusIdentifier +'" id ="statusIdentifier'+ tableRowCounter + '">'
-                        
+                        radio,
+                        button,
+                        '<h>' + value.datetimeSend + '</h>',
+                        '<h>' + value.nameSender + '</h>',
+                        '<h>' + value.strSubject + '</h>' + 
+                        '<input type = "hidden" id = "type'+value.intInboxID+'" value="'+value.tinyintType+'">'
                     ]).draw(false);
-                    
-                    
-                    if (data[intLoop].intStatusIdentifier == 1){
-                       $('#radio' + tableRowCounter).attr( "checked", true );
-                    }else{
-                       $('#radio' + tableRowCounter).attr( "checked", false );
-                    }
-                    tableRowCounter ++;
-                }  
-            }
-        },
-        error: function(data){
-            var toastContent = $('<span>Error Occured. </span>');
-            Materialize.toast(toastContent, 1500,'red', 'edit');
-
-        }
-    });//new client pending
-    
-    $.ajax({
-            
-        type: "GET",
-        url: "{{action('SecurityHomepageController@getInbox')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
-        success: function(data){
-            
-            if (data){
-                for (intLoop = 0; intLoop < data.length; intLoop ++){
-                    var mydate = new Date(data[intLoop].datetimeSend);
-                    var month = ["January", "February", "March", "April", "May", "June",
-                    "July", "August", "September", "October", "November", "December"][mydate.getMonth()];
-                    var strDate = month + ' ' + mydate.getDate() + ', ' + mydate.getFullYear();
-                    
-                    table.row.add([
-                        '<input name="' + tableRowCounter + '" type="radio" id="radio' + tableRowCounter +'" /> <label for="radio' + tableRowCounter + '"></label>',
-                        '<h>' + strDate + '</h>',
-                        '<h id = "title' + tableRowCounter + '">Message</h>',
-                        '<a class="btn blue darken-4 col s10 buttonRead" id = "' +tableRowCounter + '"><i class="material-icons">keyboard_arrow_right</i></a>' + 
-                        '<input type = "hidden" value = "' + data[intLoop].intInboxID +'" id ="idOfMessage'+
-                        tableRowCounter + '">'
-                    ]).draw(false);
-                    
-                    
-                    if (data[intLoop].boolStatus == 1){
-                       $('#radio' + tableRowCounter).attr( "checked", true );
-                    }else{
-                       $('#radio' + tableRowCounter).attr( "checked", false );
-                    }
-                    tableRowCounter ++;
-                }  
-            }
-        },
-        error: function(data){
-            var toastContent = $('<span>Error Occured. </span>');
-            Materialize.toast(toastContent, 1500,'red', 'edit');
-
+                });//foreach
+            }//if else
         }
     });//get inbox 
     
     $('#inboxTable').on('click', '.buttonRead', function(){
-        var messageIdentifier = $('#title' + this.id).text();
-        var idOfMessage = $('#idOfMessage' + this.id).val();
-        
-        if (messageIdentifier  == 'New Client'){
-            newClient(idOfMessage, $('#clientID' + this.id).val());
-            globalClientPendingID = $('#clientPending' + this.id).val();
-        }else if (messageIdentifier == 'Message'){
-            var message = getMessage(idOfMessage);
-            readMessage(idOfMessage);
-            $('#modalContractNoti').openModal();
-            $('#messageInbox').text(message.strMessage);
-            $('#messageSubject').text('Subject: ' + message.strSubject);
+        var type = $('#type' + this.id).val();
+        inboxID = this.id;
+        readMessage();
+
+        if (type == 0){
+
+        }else if (type == 2){//new client request
+            newClient();
         }
-        
-        $('#radio' + this.id).attr('checked', false); // all read mark as unread
     });
     
     $('#btnAccept').click(function(){
@@ -310,12 +231,11 @@ $(document).ready(function(){
                 }
             },
             data: {
-                clientPendingID: globalClientPendingID
+                inboxID:inboxID
             },
             success: function(data){
-                $('#modalreadMsg').closeModal();
-                swal("Accepted", "You accepted the offer. Wait for announcement", "success");
-                
+                $('#modalNewClientRequest').closeModal();
+                swal("Accepted", "You accepted the offer. Wait for announcement.", "success");
             }
             
         });//accept
@@ -404,28 +324,10 @@ $(document).ready(function(){
         return hour12;
     }
     
-    function newClient(clientPendingID, clientID){
-        var statusIdentifier = getStatus(clientPendingID);
-        if (statusIdentifier == 1){
-            $.ajax({
-
-                type: "POST",
-                url: "{{action('SecurityHomepageController@readNewClient')}}",
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-                    if (token) {
-                        return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                data: {
-                    id:clientPendingID
-                }
-            });//unread - read
-        }
-        
+    function newClient(){
         $.ajax({
             type: "GET",
-            url: "/securityhomepage/get/clientinformation?clientID=" + clientID ,
+            url: "/securityhomepage/get/clientinformation?inboxID=" + inboxID ,
             beforeSend: function (xhr) {
                 var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -437,8 +339,9 @@ $(document).ready(function(){
                 var areaSize = commaSeparateNumber(data.deciAreaSize);
                 var population = commaSeparateNumber(data.intPopulation);
                 var arrayShift = data.shift;
+                var statusIdentifier = data.intStatusIdentifier;
                 
-                $('#modalreadMsg').openModal();
+                $('#modalNewClientRequest').openModal();
                 $('#natureOfBusiness').text(data.strNatureOfBusiness);
                 $('#clientName').text(data.strClientName);
                 $('#contactNumberClient').text(data.strContactNumber);
@@ -461,7 +364,19 @@ $(document).ready(function(){
                     );
                     
                 });
-                    
+
+                if (statusIdentifier == 1){
+                    $('#buttons').show();
+                }else if (statusIdentifier == 2){
+                    $('#buttons').hide();
+                    $('#accepted').show();
+                }else if (statusIdentifier == 0){
+                    $('#buttons').hide();
+                    $('#rejected').show();
+                }else if (statusIdentifier == 3){
+                    $('#buttons').hide();
+                    $('#notAvailable').show();
+                }
             },
             error: function(data){
                 var toastContent = $('<span>Error Occured. </span>');
@@ -469,42 +384,7 @@ $(document).ready(function(){
             }
         });//ajax get client information
         
-        if (statusIdentifier == 1 || statusIdentifier == 2){
-            $('#buttons').show();
-        }else if (statusIdentifier == 3){
-            $('#buttons').hide();
-            $('#accepted').show();
-        }else if (statusIdentifier == 0){
-            $('#buttons').hide();
-            $('#rejected').show();
-        }else if (statusIdentifier == 4){
-            $('#buttons').hide();
-            $('#notAvailable').show();
-        }
-    }
-    
-    function getStatus(id){
-        var status;
-        $.ajax({
-            type: "GET",
-            url: "/securityhomepage/get/statusguardpending?id=" + id ,
-            beforeSend: function (xhr) {
-                var token = $('meta[name="csrf_token"]').attr('content');
-
-                if (token) {
-                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                }
-            },
-            success: function(data){
-                status = data.intStatusIdentifier;
-            },
-            error: function(data){
-                var toastContent = $('<span>Error Occured. </span>');
-                Materialize.toast(toastContent, 1500,'red', 'edit');
-            },
-            async:false
-        });//ajax get client information
-        return status;
+        
     }
     
     function getMessage(id){
@@ -531,29 +411,25 @@ $(document).ready(function(){
         return message;
     }
     
-    function readMessage(id){
-        $.ajax({
-            type: "POST",
-            url: "{{action('SecurityHomepageController@readNewInbox')}}",
-            beforeSend: function (xhr) {
-                var token = $('meta[name="csrf_token"]').attr('content');
-                if (token) {
-                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+    function readMessage(){
+        if($('#radio' + inboxID).is(':checked')){
+            $('#radio' + inboxID).attr('checked', false); // all read mark as unread        
+            $.ajax({
+                type: "POST",
+                url: "{{action('InboxController@readInbox')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    inboxID: inboxID
                 }
-            },
-            data: {
-                id: id
-            },
-            success: function(data){
-                
-            },
-            error: function(data){
-                confirm();
-            }
-            
-            
-        });//accept
-    }
+            });//ajax
+        }//if else
+    }//function readMessage
 });
 </script>
 

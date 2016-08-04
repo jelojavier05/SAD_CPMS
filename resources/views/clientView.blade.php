@@ -104,7 +104,6 @@ Client
                                 <thead>
                                     <tr>
                                         <th style="width:10px;"></th>
-										<th style="width:10px;"></th>
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th></th>
@@ -121,13 +120,6 @@ Client
                                                 <i class="material-icons">delete</i>
                                             </button>
                                             <label for=""></label>
-                                        </td>
-										
-										<td>
-                                            <button class="buttonNotification btn blue col s12 " id="{{$value->intClientPendingID}}" href="#modalsendNoti">
-                                                <i class="material-icons">send</i>
-                                            </button>
-                                            <input type = "hidden" id = "clientID{{$value->intClientPendingID}}" value = "{{$value->intClientID}}">
                                         </td>
                                         
                                         <td id = "">{{ $value->intClientPendingID }}</td>
@@ -420,7 +412,6 @@ Client
 		$("#dataTablePending").DataTable({
                  "columns": [
 				{ "orderable": false },
-				{ "orderable": false },
                 null,
                 null,
 				{ "orderable": false },
@@ -462,35 +453,6 @@ Client
 				'height': '400px'
 			});
 		});
-        
-        function sendData(){
-
-            $.ajax({
-
-                type: "POST",
-                url: "{{action('ClientViewController@sendGuardPendingNotification')}}",
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                data: {
-                    guardWaiting: guardChecked,
-                    clientPendingID: clientPendingID,
-                },
-                success: function(data){
-                    swal("Success!", "Record has been Added!", "success");
-                    $('#modalsendNoti').closeModal();
-                },
-                error: function(data){
-                    var toastContent = $('<span>Error Occured. </span>');
-                    Materialize.toast(toastContent, 1500,'red', 'edit');
-
-                }
-            });//ajax
-        }//send data
         
         function populateTable(notificationID){
             var table = $('#dataTablenoti').DataTable();

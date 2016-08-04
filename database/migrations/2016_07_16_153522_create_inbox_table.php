@@ -18,12 +18,13 @@ class CreateInboxTable extends Migration
             $table->integer('intAccountIDReceiver')->unsigned();
             $table->string('strMessage');
             $table->string('strSubject',100);
-            $table->timestamp('datetimeSend');
-            $table->tinyInteger('boolStatus')->default(1); //0 = read 1 = unread
+            $table->timestamp('datetimeSend')->useCurrent = true;
+            $table->tinyInteger('tinyintStatus')->default(1); //0 = read 1 = unread
+            $table->tinyInteger('tinyintType');
             
-            $table->foreign('intAccountID')->references('intAccountID')->on('tblaccount');
+            $table->foreign('intAccountIDSender')->references('intAccountID')->on('tblaccount');
+            $table->foreign('intAccountIDReceiver')->references('intAccountID')->on('tblaccount');
         });
-
     }
 
     /**

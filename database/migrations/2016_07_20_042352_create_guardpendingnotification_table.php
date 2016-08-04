@@ -10,11 +10,12 @@ class CreateGuardpendingnotificationTable extends Migration
             $table->increments('intGuardPendingID');
             $table->integer('intClientPendingID')->unsigned();
             $table->integer('intGuardID')->unsigned();
-            $table->timestamp('dateSend')->useCurrent = true;
+            $table->integer('intInboxID')->unsigned();
             
             $table->integer('intStatusIdentifier')->default(1);
             
             $table->foreign('intGuardID')->references('intGuardID')->on('tblguard');
+            $table->foreign('intInboxID')->references('intInboxID')->on('tblinbox');
             $table->foreign('intClientPendingID')->references('intClientPendingID')->on('tblclientpendingnotification');
         });
     }

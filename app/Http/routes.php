@@ -1,6 +1,13 @@
 <?php
 
+Route::get('/inbox/get', 'InboxController@getInbox');
+Route::post('/inbox/post/readinbox', 'InboxController@readInbox');
+
 Route::get('/adminInbox', 'AdminInboxController@index');
+Route::get('/adminInbox/get/numberguard', 'AdminInboxController@getNewClientNumberOfGuard');
+Route::post('/adminInbox/send/notification', 'AdminInboxController@sendGuardPendingNotification');
+Route::get('/adminInbox/get/guardhasnotification', 'AdminInboxController@getGuardHasNotification');
+Route::get('/adminInbox/get/message', 'AdminInboxController@getMessage');
 
 
 Route::get('/crm/home', 'CRMHomeController@index');
@@ -91,12 +98,10 @@ Route::get('/securitychangelocation', 'SecurityGuardDashboardController@index');
 Route::get('/securityguard', 'SecurityGuardDashboardController@index');
 Route::get('/securityhomepage', 'SecurityHomepageController@index');
 Route::get('/securityhomepage/get/guard', 'SecurityHomepageController@getGuardInformation');
-Route::get('/securityhomepage/get/getNewClientRequest', 'SecurityHomepageController@getNewClientRequest');
 Route::get('/securityhomepage/get/inbox', 'SecurityHomepageController@getInbox');
 Route::get('/securityhomepage/get/message', 'SecurityHomepageController@getInboxMessage');
 Route::post('/securityhomepage/post/readmessage', 'SecurityHomepageController@readNewInbox');
 Route::get('/securityhomepage/get/clientinformation', 'SecurityHomepageController@getClientInformation');
-Route::get('/securityhomepage/get/statusguardpending', 'SecurityHomepageController@getStatusIdentifierGuardPendingRequest');
 Route::post('/securityhomepage/get/guard', 'SecurityHomepageController@readNewClient');
 Route::post('/securityhomepage/accept/guard', 'SecurityHomepageController@acceptNewClient');
 Route::post('/securityhomepage/decline/guard', 'SecurityHomepageController@declineNewClient');
@@ -130,12 +135,10 @@ Route::get('/getInformation', 'GuardViewController@getInformationGuard');
 Route::get('/clientView', 'ClientViewController@index');
 Route::get('/clientView/get/clientpending', 'ClientViewController@getClientPending');
 Route::get('/clientView/get/guardwaiting', 'ClientViewController@getGuardWaiting');
-Route::get('/clientView/get/clientPendingNotification', 'ClientViewController@getPendingNotification');
 Route::get('/clientView/get/clientpending', 'ClientViewController@getClientPending');
 Route::get('/clientView/get/guardaccept', 'ClientViewController@getGuardAccept');
 Route::get('/clientView/get/selectedclientpending', 'ClientViewController@getSelectedClientPending');
 Route::get('/clientView/get/guardcount', 'ClientViewController@getGuardAccepted');
-Route::post('/clientView/send/notification', 'ClientViewController@sendGuardPendingNotification');
 Route::post('/clientView/send/clientPendingID', 'ClientViewController@post');
 
 

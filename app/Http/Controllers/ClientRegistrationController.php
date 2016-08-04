@@ -11,7 +11,6 @@ use App\Http\Controllers\Controller;
 use Validator;
 use DB;
 
-
 class ClientRegistrationController extends Controller
 {
     public function index(){
@@ -70,9 +69,18 @@ class ClientRegistrationController extends Controller
                 ]);
             }
             
+            $receiverID = $request->session()->get('accountID');
+            $inboxID = DB::table('tblinbox')->insertGetId([
+                'intAccountIDSender' => $accountID,
+                'intAccountIDReceiver' => $receiverID,
+                'strSubject' => 'New Client',
+                'tinyintType' => 1
+            ]);
+            
             DB::table('tblclientpendingnotification')->insert([
                 'intClientID' => $id,
                 'intNumberOfGuard' => $request->guardNo,
+                'intInboxID' => $inboxID   
             ]);
             
             DB::commit();

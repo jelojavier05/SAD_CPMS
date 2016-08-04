@@ -17,8 +17,6 @@ class SecurityHomepageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request){
-        
-        
         if ($request->session()->has('id')){
             $accountType = $request->session()->get('accountType');
             
@@ -33,7 +31,6 @@ class SecurityHomepageController extends Controller
     }
     
     public function getGuardInformation(Request $request){
-        
         if ($request->session()->has('id')){
             $id = $request->session()->get('id');
             
@@ -49,78 +46,63 @@ class SecurityHomepageController extends Controller
         }
     }//getGuardInformation
     
-    public function getNewClientRequest(Request $request){
-        if ($request->session()->has('id')){
-            $id = $request->session()->get('id');
-            
-            $newClientRequest = DB::table('tblguardpendingnotification')
-                ->join('tblclientpendingnotification', 'tblclientpendingnotification.intClientPendingID', '=', 'tblguardpendingnotification.intClientPendingID')
-                ->select('tblguardpendingnotification.*', 'tblclientpendingnotification.intClientID')
-                ->where('intGuardID', '=', $id)
-                ->get();
-            
-            return response()->json($newClientRequest);
-        }else{
-            return response()->json(false);
-        }
-    }
-    
     public function getClientInformation(Request $request){
-        $id = Input::get('clientID');
-        
-        $clientInformation = DB::table('tblclient')
+        $id = Input::get('inboxID');
+        $clientInformation = DB::table('tblinbox')
+            ->join('tblguardpendingnotification', 'tblguardpendingnotification.intInboxID', '=', 'tblinbox.intInboxID')
+            ->join('tblclientpendingnotification','tblclientpendingnotification.intClientPendingID', '=' 
+                ,'tblguardpendingnotification.intClientPendingID')
+            ->join('tblclient', 'tblclient.intClientID', '=','tblclientpendingnotification.intClientID')
             ->join('tblnatureofbusiness', 'tblnatureofbusiness.intNatureOfBusinessID', '=', 'tblclient.intNatureOfbusinessID')
             ->join('tblclientaddress', 'tblclientaddress.intClientID', '=', 'tblclient.intClientID')
             ->join('tblprovince', 'tblprovince.intProvinceID','=', 'tblclientaddress.intProvinceID')
             ->join('tblcity', 'tblcity.intCityID','=', 'tblclientaddress.intCityID')
-            ->join('tblclientpendingnotification', 'tblclientpendingnotification.intClientID','=', 'tblclient.intClientID')
-            ->select('tblclient.*', 'tblnatureofbusiness.strNatureOfBusiness', 'tblclientaddress.strAddress', 'tblprovince.strProvinceName', 'tblcity.strCityName', 'tblclientpendingnotification.intNumberOfGuard')
-            ->where('tblclient.intClientID', '=', $id)
+            ->select('tblclient.*', 'tblnatureofbusiness.strNatureOfBusiness', 'tblclientaddress.strAddress', 'tblprovince.strProvinceName', 'tblcity.strCityName', 'tblclientpendingnotification.intNumberOfGuard', 'tblguardpendingnotification.intStatusIdentifier')
+            ->where('tblinbox.intInboxID', '=', $id)
             ->first();
         
         $shift = DB::table('tblclientshift')
             ->select('*')
-            ->where('intClientID', '=', $id)
+            ->where('intClientID', '=', $clientInformation->intClientID)
             ->get();
         
         $clientInformation->shift = $shift;
-        
         return response()->json($clientInformation);
-    }
-    
-    public function readNewClient(Request $request){
-        DB::table('tblguardpendingnotification')
-            ->where('intGuardPendingID','=', $request->id)
-            ->update(['intStatusIdentifier' => 2]);
     }
     
     public function acceptNewClient(Request $request){
         $guardID = $request->session()->get('id');
-        $clientPendingID = $request->clientPendingID;
-//        dd($guardID);
+        $inboxID = $request->inboxID;
         try{
             DB::beginTransaction();
             
+            $result = DB::table('tblguardpendingnotification')
+                ->select('intClientPendingID')
+                ->where('intInboxID', $inboxID)
+                ->first();
+            $clientPendingID = $result->intClientPendingID;
+
             DB::table('tblguardpendingnotification')
                 ->where('intClientPendingID','=', $clientPendingID)
                 ->where('intGuardID','=', $guardID)
-                ->update(['intStatusIdentifier' => 3]);
+                ->update(['intStatusIdentifier' => 2]);
 
             DB::table('tblguard')
                 ->where('intGuardID','=', $guardID)
                 ->update(['intStatusIdentifier' => 1]);
             
-            $countNeedGuard = DB::table('tblclientpendingnotification')
+            $result = DB::table('tblclientpendingnotification')
                 ->select('intNumberOfGuard')
                 ->where('intClientPendingID', $clientPendingID)
                 ->first();
+            $countNeedGuard = $result->intNumberOfGuard;
         
             $countAccepted = DB::table('tblguardpendingnotification')
                 ->where('intClientPendingID', $clientPendingID)
-                ->where('intStatusIdentifier', 3)
+                ->where('intStatusIdentifier', 2)
                 ->count();
             
-            if ($countNeedGuard->intNumberOfGuard == $countAccepted){
+            if ($countNeedGuard == $countAccepted){
                 $countGuardSend = DB::table('tblguardpendingnotification')
                     ->select('intGuardPendingID')
                     ->where('intClientPendingID','=', $clientPendingID)
@@ -130,10 +112,30 @@ class SecurityHomepageController extends Controller
                     DB::table('tblguardpendingnotification')
                         ->where('intGuardPendingID','=', $value->intGuardPendingID)
                         ->where('intStatusIdentifier', 1)
-                        ->orWhere('intStatusIdentifier', 2)
-                        ->update(['intStatusIdentifier' => 4]);
+                        ->update(['intStatusIdentifier' => 3]);
                 }
-            }
+
+                $adminAccountID = DB::table('tblaccount')
+                    ->select('intAccountID')
+                    ->where('intAccountType', 3)
+                    ->first();
+
+                $clientAccount = DB::table('tblclientpendingnotification')
+                    ->join('tblclient', 'tblclient.intClientID','=','tblclientpendingnotification.intClientID')
+                    ->join('tblaccount', 'tblaccount.intAccountID','=','tblclient.intAccountID')
+                    ->select('tblaccount.intAccountID','tblclient.strClientName')
+                    ->where('tblclientpendingnotification.intClientPendingID', $clientPendingID)
+                    ->first();
+
+                $messageString = 'The guards are now complete. ' . $clientAccount->strClientName . ' is ready for contract.';
+                DB::table('tblinbox')->insert([
+                    'intAccountIDSender' => $clientAccount->intAccountID,
+                    'intAccountIDReceiver' => $adminAccountID->intAccountID,
+                    'strSubject' => 'New Client Ready',
+                    'strMessage' => $messageString,
+                    'tinyintType' => 0
+                ]);
+            }//if else
 
             DB::commit();
         }catch(Exception $e){
