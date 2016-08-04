@@ -100,7 +100,7 @@ Security Homepage
             <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnAccept">Accept
             </button>
 
-            <button class="btn red waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnDecline">Decline
+            <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "btnDecline">Decline
             </button>
         </div>
         
@@ -252,11 +252,10 @@ $(document).ready(function(){
                 }
             },
             data: {
-                clientPendingID: globalClientPendingID
+                inboxID:inboxID
             },
             success: function(data){
-                $('#modalreadMsg').closeModal();
-                swal("Declined", "You declined to the offer.", "success");
+                swal("Declined", "You declined the offer.", "success");
             }
             
         });//decline

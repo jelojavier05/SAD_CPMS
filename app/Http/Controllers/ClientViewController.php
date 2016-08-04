@@ -90,7 +90,7 @@ class ClientViewController extends Controller
             ->join('tblguard', 'tblguardpendingnotification.intGuardID', '=', 'tblguard.intGuardID')
             ->select('tblguard.strFirstName', 'tblguard.strLastName')
             ->where('tblclientpendingnotification.intClientPendingID', '=', $clientPendingID)
-            ->where('tblguardpendingnotification.intStatusIdentifier', '=', 3)
+            ->where('tblguardpendingnotification.intStatusIdentifier', '=', 2)
             ->get();
         
         return response()->json($guards);
@@ -122,7 +122,7 @@ class ClientViewController extends Controller
         
         $countAccepted = DB::table('tblguardpendingnotification')
             ->where('intClientPendingID', $clientPendingID)
-            ->where('intStatusIdentifier', 3)
+            ->where('intStatusIdentifier', 2)
             ->count();
         
         $count = new \stdClass();

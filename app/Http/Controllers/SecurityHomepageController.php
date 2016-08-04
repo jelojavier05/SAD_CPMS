@@ -154,11 +154,13 @@ class SecurityHomepageController extends Controller
     
     public function declineNewClient(Request $request){
         $guardID = $request->session()->get('id');
+        $inboxID = $request->inboxID;
         try{
             DB::beginTransaction();
             
+
             DB::table('tblguardpendingnotification')
-                ->where('intGuardPendingID','=', $request->clientPendingID)
+                ->where('intInboxID','=', $inboxID)
                 ->update(['intStatusIdentifier' => 0]);
             
             DB::commit();
