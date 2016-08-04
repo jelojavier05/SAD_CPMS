@@ -12,12 +12,6 @@ Temporary Client
             <div class="col s12">
                 <h4 class="blue-text">Security Guard</h4>
 			</div>
-        
-            <div class="col s3 offset-s9">
-                <a style="margin-top: -60px; margin-bottom:50px; cursor:default" id="" class="btn-large blue tooltipped" data-tooltip="Guards">
-                    1/10
-                </a>
-            </div>
 			<div class="row">
                 <div class="col s12" style="margin-top:-40px;">
                     <table class="highlight white" style="border-radius:10px;" id="dataTable">
@@ -154,24 +148,49 @@ Temporary Client
         </ul>	
 		<!-- table message -->
 		<div id="message">
-			<div class="container-fluid grey lighten-2">	
-				<table class="striped" id="inboxTable">
-					<thead>
-						<tr>
-							<th class="grey lighten-1" style="width: 20px;"></th>
-							<th class="grey lighten-1" style="width: 30px;"></th>
-							<th class="grey lighten-1">Date</th>
-							<th class="grey lighten-1">From</th>
-							<th class="grey lighten-1">Subject</th>
-						</tr>
-					</thead>
+            <div class="container-fluid grey lighten-2">    
+                <table class="striped" id="dataTableMsg">
+                    <thead>
+                        <tr>
+                            <th class="grey lighten-1" style="width: 20px;"></th>
+                            <th class="grey lighten-1" style="width: 30px;"></th>
+                            <th class="grey lighten-1">Date</th>
+                            <th class="grey lighten-1">From</th>
+                            <th class="grey lighten-1">Subject</th>
+                        </tr>
+                    </thead>
 
-					<tbody>
-					</tbody>
-				</table>
-			</div>
-		</div>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>  
 	</div>
+</div>
+
+<div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
+    <div class="modal-header">
+        <div class="h">
+            <h3><center>Message</center></h3>  
+        </div>
+    </div>
+    
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12">
+                <ul class="collection with-header" id="collectionActive">
+                    <li class="collection-header" style="font-weight:bold;">Subject:<div style="font-size:18px;" id = "messageSubject">&nbsp;</div></li>
+                    <li class="collection-item"><p id = 'messageMessage'></p>
+                    </li>
+            </div>
+        </div>
+    </div>
+
+    <!-- button -->
+    <div class="modal-footer ci modal-close" style="background-color: #00293C;">
+        <button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK
+        </button>
+    </div>
 </div>
 
 @stop
@@ -180,6 +199,8 @@ Temporary Client
 
 <script type="text/javascript">
 $(document).ready(function(){
+    var inboxID;
+
     $("#dataTable").DataTable({
          "columns": [
         { "orderable": false },
@@ -189,18 +210,24 @@ $(document).ready(function(){
         "pageLength":5,
         "bLengthChange": false
     });
+
+    $('#dataTableMsg').DataTable({
+         "columns": [
+        { "orderable": false },
+        { "orderable": false },
+        null,
+        null,
+        { "orderable": false }
+        ] ,  
+        "pageLength":5,
+        "lengthMenu": [5,10,15,20],
+        "bFilter": false,
+     });
     
     $.ajax({
             
         type: "GET",
         url: "{{action('TempClientAccountController@getGuards')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
         success: function(data){
             var table = $('#dataTable').DataTable();
             table.clear().draw();
@@ -214,25 +241,43 @@ $(document).ready(function(){
             });
             
                 
-        },
-        error: function(data){
-            var toastContent = $('<span>Error Occured. </span>');
-            Materialize.toast(toastContent, 1500,'red', 'edit');
-
         }
     });//guards information
+
+    $.ajax({
+        type: "GET",
+        url: "{{action('InboxController@getInbox')}}",
+        success: function(data){
+            if (data){
+                var table = $('#dataTableMsg').DataTable();
+                var radio;
+                var button;
+                $.each(data, function(index,value){
+                    if (value.tinyintStatus == 1){
+                        radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" checked/> <label for="'+value.intInboxID+'"></label>';  
+                    }else{
+                        radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" /> <label for="'+value.intInboxID+'"></label>';
+                    }
+                    button = '<center><button class="btn blue darken-4 buttonRead" id="'+value.intInboxID+'"><i class="material-icons">keyboard_arrow_right</i></button></center>';
+                    
+                    table.row.add([
+                        radio,
+                        button,
+                        '<h>' + value.datetimeSend + '</h>',
+                        '<h>' + value.nameSender + '</h>',
+                        '<h>' + value.strSubject + '</h>' + 
+                        '<input type = "hidden" id = "type'+value.intInboxID+'" value="'+value.tinyintType+'">'
+                    ]).draw(false);
+                });//foreach
+            }//if else
+        }//success ajax
+    }); //get inbox
     
     
-     $('#inboxTable').on('click', '.buttonRead', function(){
+     $('#dataTableMsg').on('click', '.buttonRead', function(){
         var type = $('#type' + this.id).val();
         inboxID = this.id;
-        readMessage();
-
-        if (type == 0){
-
-        }else if (type == 2){//new client request
-            newClient();
-        }
+        readMessage(); 
     });
     
     $('#dataTable').on('click','.buttonMore', function(){
@@ -330,6 +375,46 @@ $(document).ready(function(){
             }
         });//ajax
     });
+
+    
+    function readMessage(){
+        if($('#radio' + inboxID).is(':checked')){
+            $('#radio' + inboxID).attr('checked', false); // all read mark as unread        
+            $.ajax({
+                type: "POST",
+                url: "{{action('InboxController@readInbox')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    inboxID: inboxID
+                }
+            });//ajax
+        }//if else
+
+        message();
+    }//function readMessage
+
+    function message(){
+        $('#modalMessage').openModal();
+        getMessage();
+    }
+
+    function getMessage(){
+        $.ajax({
+            type: "GET",
+            url: "/adminInbox/get/message?inboxID=" + inboxID,
+            success: function(data){
+                console.log(data);
+                $('#messageSubject').text(data.strSubject);
+                $('#messageMessage').text(data.strMessage);
+            },async:false
+        });//get guard waiting
+    }
 });
 </script>
 

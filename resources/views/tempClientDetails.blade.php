@@ -6,7 +6,7 @@ Client Details
 
 @section('content')	
 
-<!---------------------------------------ActiveMoreCollection------------------------------------------------>
+
 <div class="row">			
 	<div class="col s6 push-s3" style="margin-top:25px;">	
 		<ul class="collection with-header" id="collectionActive">
@@ -46,9 +46,6 @@ Client Details
 		</ul>
 	</div>
 </div>
-<!-------------------------------------------------------------------------------------------------->
-
-<!-----------------------------------Modal----------------------------------------------------->
 
 <div id="modaleditClientdetails" class="modal modal-fixed-footer" style="overflow:hidden; width:700px;max-height:100%; height:400px; margin-top:30px;">
         <div class="modal-header" style="background-color:#01579b !important;"><h4>Edit Details</h4></div>
