@@ -114,6 +114,12 @@ Route::get('/securitysettings', 'SecuritySettingsController@index');
     Route::get('/clientsettings', 'ClientSettingsController@index');
 
 
+//PDF ----------------------------------------------------
+Route::get('/pdfcontract', 'PDFContractController@index');
+
+
+
+
 
 Route::get('/admin/home', 'AdminHomeController@index');
 

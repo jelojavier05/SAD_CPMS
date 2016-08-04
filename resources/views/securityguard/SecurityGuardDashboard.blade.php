@@ -124,7 +124,6 @@
             
             <div class="col l2">
                 
-                
                 <a href="/securitychangelocation" class="btn blue darken-4 z-depth-2" style="font-size:23px;height:150px;width:165px !important"><div class="row"></div><i class="material-icons" style="font-size:3rem">business</i>CHANGE LOCATION</a>
               
             </div>
@@ -133,7 +132,46 @@
                 
                  <a href="/securitysettings" class="btn blue darken-4 z-depth-2" style="font-size:23px;height:150px;width:165px !important"><div class="row"></div><i class="material-icons" style="font-size:3rem">settings</i>ACCOUNT SETTINGS</a>
                 
+            </div>
+        
+             <div class="col l2" style="font-size:23px;text-align:center;height:150px;width:165px !important">
+            
+                <div class="row"></div>
                 
+                <i class="material-icons" style="font-size:3rem">av_timer</i>
+            
+                    <div id="clockDisplay" style="font-size:2rem"> 08 : 08 : 08 PM </div>
+                    <script type="text/javascript">
+                        function renderTime() {
+                            var currentTime = new Date();
+                            var diem = "AM";
+                            var h = currentTime.getHours();
+                            var m = currentTime.getMinutes();
+                            var s = currentTime.getSeconds();
+
+                            if (h == 0) {
+                                h=12;
+                            } else if (h > 12) {
+                                h = h - 12;
+                                diem = "PM";
+                            }
+                            if (h < 10) {
+                                h = "0" + h;
+                            }
+                            if (m < 10) {
+                                m = "0" + m;
+                            }
+                            if (s < 10) {
+                                s = "0" + s;
+                            }
+
+                            var myClock = document.getElementById('clockDisplay');
+                            myClock.textContent = h + ":" + m + ":" + s + " " + diem
+                            myClock.innerText = h + ":" + m + ":" + s + " " + diem;	
+                            setTimeout('renderTime()',1000);
+                        }
+                        renderTime();
+                    </script>
             </div>
    
     </div>     
