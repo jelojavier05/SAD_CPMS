@@ -44,40 +44,62 @@
 
 <body class="grey lighten-3">
     
-    
-    <nav class="indigo darken-4">
-        
-        
-
+     <nav class="indigo darken-4" style="height:90px">
+    <div class="row"></div>
+        <div class="container">
+<!--   <div class="parallax"><img class="responsive-img;" style="width: 100%;" src="{!! URL::asset('../Materialize/images/background3.jpg') !!}" alt="Unsplashed background img 1"></div>-->
             <div class="nav-wrapper">
+                
                
-                
-                
-			
-				<div>
-                 
+                                     <a href="#" class="brand-logo">
+
+                    <div class="row">
+                        <div class="col l12">
+                            
+                            <div class="col l2 pull-l2">
+                            
+                            <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="60%" style="margin-top:-10%">
+
+                            
+                            </div>
+                            <div class="col l3 pull-l3">
+                            
+                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:3.0rem">Client and Personnel Management System</p>
+                                
+                            </div>
+                       
+                            <div class="col l5 push-l9">
+                                    <ul class="right hide-on-med-and-down">
+                                         <li><a  data-position="top" data-delay="50" data-tooltip="GUARDS"href="/client/tempaccount" class=" tooltipped"><i class="material-icons">accessibility</i></a></li>
+                                         <li><a  data-position="top" data-delay="50" data-tooltip="CLIENT DETAILS"href="/client/tempaccountdetails" class=" tooltipped"><i class="material-icons" style="font-size:2.1rem;color:white">nature_people</i></a></li>
+                                        <li><a  data-position="top" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>
+							         </ul>   
+                                </div>
+                        
+                         </div>
+                     </div>
+                                         
+                    	</a>
+					
+					
+                    
+                  <!--  <div class="homeposition">
                     
                     <a href="#" class="brand-logo">
-						
 						<div class="flow-text">
-							<img class="left" src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="7%" height="7%" style="margin-top: -15px; margin-right:10px;">
-							<h5 style="margin-top: 20px;">Client and Personnel Management System</h5>
+							<p style="margin-top: 20px; margin-left: 200px;font-family:Myriad Pro;font-size:6rem">Client and Personnel Management System</p>
 						</div>
-					</a>
-                
+				
+                </div>-->
                 
             </div>
 				
-							<ul class="right hide-on-med-and-down">
-							  <li><a href="/client/tempaccount" class="blue darken-1">Guards</a></li>
-							  <li><a href="/client/tempaccountdetails" class="blue darken-3" id = 'clientName'></a></li>
-							  <li><a class="red darken-3" id = 'btnLogout'>Log Out</a></li>
-							</ul>
+                
+							
+        </div>
         
-			</div>
-		
-    
     </nav>
+   
 <!--
 <nav class="indigo darken-4">
     <div class="nav-wrapper">

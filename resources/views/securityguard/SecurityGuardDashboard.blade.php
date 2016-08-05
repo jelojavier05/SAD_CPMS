@@ -107,7 +107,7 @@
     <div class="row"></div> 
  <div class="row">   
     <div class="col l12">
-             <div class="col l3 z-depth-1">
+             <div class="col l3 z-depth-1 blue darken-1">
                         <img src="/img/avatar2.png" alt="" height="150px" width="123px"class="circle responsive-img" style="margin-left:31%"> <!-- notice the "circle" class -->
                     
                      <center>

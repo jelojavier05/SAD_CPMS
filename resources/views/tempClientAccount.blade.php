@@ -146,6 +146,33 @@ Temporary Client
     </div>
 
 </div>
+<div class="row">
+	<div class="col s6 push-s1" style="margin-top:-15%">
+		
+		<ul class="tabs" style="">
+        	<li style="color:white"class="tab col l3"><a href="#message" class="active">Messages</a></li>
+        </ul>	
+		<!-- table message -->
+		<div id="message">
+			<div class="container-fluid grey lighten-2">	
+				<table class="striped" id="inboxTable">
+					<thead>
+						<tr>
+							<th class="grey lighten-1" style="width: 20px;"></th>
+							<th class="grey lighten-1" style="width: 30px;"></th>
+							<th class="grey lighten-1">Date</th>
+							<th class="grey lighten-1">From</th>
+							<th class="grey lighten-1">Subject</th>
+						</tr>
+					</thead>
+
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
 
 @stop
 
@@ -194,6 +221,19 @@ $(document).ready(function(){
 
         }
     });//guards information
+    
+    
+     $('#inboxTable').on('click', '.buttonRead', function(){
+        var type = $('#type' + this.id).val();
+        inboxID = this.id;
+        readMessage();
+
+        if (type == 0){
+
+        }else if (type == 2){//new client request
+            newClient();
+        }
+    });
     
     $('#dataTable').on('click','.buttonMore', function(){
         $.ajax({
