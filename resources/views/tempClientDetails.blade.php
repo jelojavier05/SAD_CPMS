@@ -8,7 +8,7 @@ Client Details
 
 
 <div class="row">			
-	<div class="col s6 push-s3" style="margin-top:25px;">	
+	<div class="ci col s6 push-s3" style="margin-top:25px;">	
 		<ul class="collection with-header" id="collectionActive">
 			<li class="collection-header" ><h4 style="font-weight:bold;">Client Details
 				<a class="btn blue right" id = 'btnEdit'><i class="material-icons">mode_edit</i></a></h4>

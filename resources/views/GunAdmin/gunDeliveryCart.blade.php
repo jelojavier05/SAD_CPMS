@@ -13,7 +13,7 @@ Delivery
 			<div class = "row">
 				
 				
-				<div class="col s6 offset-s6 pull-s6">
+				<div class="col s6">
 					<div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:5px; padding-bottom:1%;">
 					<h4 class="blue darken-1 white-text">Gun Order</h4>
 						<div class="row">

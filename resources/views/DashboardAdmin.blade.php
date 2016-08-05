@@ -5,23 +5,35 @@ Admin
 @endsection
 
 @section('content')
+<!--<div class="row">
+	<div class="col l12">
+		<div class="col l2 push-l2">
+			<i class="material-icons" style="font-size:3.9rem;margin-top:3%">dashboard</i>
+		</div>
+		<div class="col l3">
+			<div class="row"></div>
+			<p style="margin-left:19%;margin-top:12%">DASHBOARD</p>
+		</div>
+		
+	
+	</div>
+	<hr>
+</div> -->
 
+<div class="row">
+       
+	</div>
 
-
-<div class="row"></div>
-<div class="row"></div>
-<div class="row"></div>
-<div class="row"></div>
 <!-----------------CLIENTS----------------->
 
 <div class="row">
       <div class="col l12">
           
       <div class="col l2 offset-l3" >
-      	 <div class="card"style="background-color:#8D230F" >
+      	 <div class="card " style="background-color:#8D230F" >
             <div class="card-content white-text">
               <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'></span>
-              <p style="margin-left:10px;">Clients</p>
+              <p style="margin-l	eft:10px;">Clients</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
             </div>
             <div class="card-action" style="background-color:#8D230F">
@@ -74,15 +86,15 @@ Admin
 
 <!-----------------DEPLOYED RESOURCES----------------->
    
-     <div class="col l3">
+     <div class="col l2">
 
           <div class="card" style="background-color:#323030">
             <div class="card-content white-text">
               <span class="card-title" style="font-size:40px; font-weight:bold;">114</span>
-              <p style="margin-left:10px;">Deployed Resources</p>
-			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">forward</i>
+              <p style="margin-left:10px;">Deployed<br> Resources</p>
+			  <i class="material-icons right" style="font-size:5rem; margin-top:-60%;">forward</i>
             </div>
-            <div class="card-action" style="background-color:#323030">
+            <div class="card-action" style="background-color:#323030;margin-top:-11%">
               <center>
                   <a href="#" class="white-text">See All</a>
                   <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
@@ -90,104 +102,6 @@ Admin
             </div>
           </div>
     </div>
-      
- 
-    <div class="row">
-        <div class="col l12" style="margin-left:24% !important;height:50%; max-height:100%">
-           <div class="col l6">
-                        <div class="col l8">
-                          <ul class="tabs" style="background-color:#BCBABE;overflow:hidden">
-                            <li style="color:white"class="tab col l3"><a href="#message" class="active">Messages</a></li>
-                            <li class="tab col l3"><a  href="#request">Requests</a></li>
-                          </ul>
-                        </div>
-                
-                <div class="row" style="margin-top:-1.4% !important;" >
-        
-                    <div id="message" class="col l8">
-                        <table class="centered" style="background-color:#BCBABE" id = ''>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th data-field="">Date</th>
-                                    <th data-field="">Title</th>
-                                    <th data-field="">Action</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                     <td></td>
-                                     <td>02/05/2016</td>
-                                     <td>Add Gun</td>
-                                     <td>Open Request Letter</td>
-                                </tr>
-                                <tr>
-                                     <td></td>
-                                     <td>02/05/2016</td>
-                                     <td>Add Gun</td>
-                                     <td>Open Request Letter</td>
-                                </tr>
-                                <tr>
-                                     <td></td>
-                                     <td>02/05/2016</td>
-                                     <td>Add Gun</td>
-                                     <td>Open Request Letter</td>
-                                </tr>
-                               
-
-                            </tbody>
-                        </table>
-    
-                    </div>
-                    
-                    <div id="request" class="col l8">
-                        <table class="centered" style="background-color:#BCBABE" id = ''>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th data-field="">Date</th>
-                                    <th data-field="">Request</th>
-                                    <th data-field="">Action</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                     <td></td>
-                                     <td>02/05/2016</td>
-                                     <td>Add Gun</td>
-                                     <td>Open Request Letter</td>
-                                </tr>
-                                <tr>
-                                     <td></td>
-                                     <td>02/05/2016</td>
-                                     <td>Add Gun</td>
-                                     <td>Open Request Letter</td>
-                                </tr>
-                                <tr>
-                                     <td></td>
-                                     <td>02/05/2016</td>
-                                     <td>Add Gun</td>
-                                     <td>Open Request Letter</td>
-                                </tr>
-                               
-
-                            </tbody>
-                        </table>
-    
-                    </div>
-           </div>
-             </div> 
-            <div class="col l4 pull-l2">
-            
-                
-                             
-                       
-            
-            </div>
-        </div>
-    </div>  
           
           <div class="row">
             <div class="col l12">

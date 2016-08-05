@@ -7,11 +7,41 @@ Temporary Client
 @section('content')	
 
 <div class="row">
-    <div class="col s8">
-        <div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:50px;">
-            <div class="col s12">
-                <h4 class="blue-text">Security Guard</h4>
-			</div>
+	<div class="col s12">
+	<div class="col s4">
+			<div class="row"></div>
+			<div class="row"></div>
+		
+		<!-- table message -->
+		<div id="message">
+            <div class="container-fluid grey lighten-2 z-depth-2">    
+			
+						<h4 style="color:darkblue;font-family:Myriad Pro"><center>MESSAGE</center></h4>
+				
+                <table class="striped" id="dataTableMsg">
+                    <thead>
+                        <tr>
+                            <th class="grey lighten-1" style="width: 20px;"></th>
+                            <th class="grey lighten-1" style="width: 30px;"></th>
+                            <th class="grey lighten-1">Date</th>
+                            <th class="grey lighten-1">From</th>
+                            <th class="grey lighten-1">Subject</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+				</table>
+	</div>
+</div>
+	
+	
+	</div>
+    <div class="col s6">
+		<div class="row"></div>
+		<div class="row"></div>
+        <div class="ci container grey lighten-2 z-depth-2" style="margin-left:-1%">
+            	<h4 style="color:darkblue;font-family:Myriad Pro"><center>SECURITY GUARDS</center></h4>
 			<div class="row">
                 <div class="col s12" style="margin-top:-40px;">
                     <table class="highlight white" style="border-radius:10px;" id="dataTable">
@@ -31,12 +61,12 @@ Temporary Client
             </div>
         </div>
     </div>
-    <div class ="col s4 pull-s1" style=" margin-top:30px;">
+    <div class ="col s1 pull-s2" style=" margin-top:30px;">
         <div class="col s12">
-            <div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:15px;">
-                <div class="blue darken-1 white-text" style="position:relative; z-index:100; width:405px; height: 38px; font-size:30px;">Details</div>
+            <div class="ci container-fluid grey lighten-5 z-depth-1" style="border-radius:15px;margin-left:28%;width:405px">
+                <div class="blue darken-1 white-text" style="position:relative; z-index:100; width:405px; height: 38px; font-size:30px;"><center>SG Details</center></div>
                 <div class="row">
-                    <div class="col s12" style="overflow:scroll; overflow-x:hidden; height:500px;">
+                    <div class="col s12" style="overflow:scroll; overflow-x:hidden;width:400px; height:500px;">
                         <div class="card grey darken-1">
                             <div class="card-content">
                                 <div>
@@ -138,37 +168,11 @@ Temporary Client
             </div>
         </div>	
     </div>
-
 </div>
-<div class="row">
-	<div class="col s6 push-s1" style="margin-top:-15%">
-		
-		<ul class="tabs" style="">
-        	<li style="color:white"class="tab col l3"><a href="#message" class="active">Messages</a></li>
-        </ul>	
-		<!-- table message -->
-		<div id="message">
-            <div class="container-fluid grey lighten-2">    
-                <table class="striped" id="dataTableMsg">
-                    <thead>
-                        <tr>
-                            <th class="grey lighten-1" style="width: 20px;"></th>
-                            <th class="grey lighten-1" style="width: 30px;"></th>
-                            <th class="grey lighten-1">Date</th>
-                            <th class="grey lighten-1">From</th>
-                            <th class="grey lighten-1">Subject</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-        </div>  
-	</div>
 </div>
 
-<div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
+
+<div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:25px;">
     <div class="modal-header">
         <div class="h">
             <h3><center>Message</center></h3>  

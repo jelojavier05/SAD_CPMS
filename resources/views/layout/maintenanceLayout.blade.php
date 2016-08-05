@@ -55,7 +55,7 @@
 <!--					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >-->
 					<ul class="side-nav fixed white" id="mobile-nav" >
                     <div class="iconposition">
-						<div class="card-panel blue darken-4" style="height:140px;">
+						<div class="card-panel blue darken-4" style="height:138px;">
 
 							<div class="row">
                                 <div class="col l12">
@@ -396,6 +396,7 @@
 													
 <!-- Dropdown Trigger -->
 	
+	
   <a class='dropdown-button btn' href='#' data-activates='dropdownclient' style="display:none;">Drop Me!</a>
   <a class='dropdown-button btn' href='#' data-activates='dropdownsg' style="display:none;">Drop Me!</a>
   <a class='dropdown-button btn' href='#' data-activates='dropdowneq' style="display:none;">Drop Me!</a>
@@ -403,8 +404,45 @@
  
   
 </li>
+	<div class="row">
+    <div class="col l5 push-l10 ">
+            
+                <div class="row"></div> 
+                    <div id="clockDisplay" style="font-size:2rem"> 08 : 08 : 08 PM </div>
+                    <script type="text/javascript">
+                        function renderTime() {
+                            var currentTime = new Date();
+                            var diem = "AM";
+                            var h = currentTime.getHours();
+                            var m = currentTime.getMinutes();
+                            var s = currentTime.getSeconds();
 
- 
+                            if (h == 0) {
+                                h=12;
+                            } else if (h > 12) {
+                                h = h - 12;
+                                diem = "PM";
+                            }
+                            if (h < 10) {
+                                h = "0" + h;
+                            }
+                            if (m < 10) {
+                                m = "0" + m;
+                            }
+                            if (s < 10) {
+                                s = "0" + s;
+                            }
+
+                            var myClock = document.getElementById('clockDisplay');
+                            myClock.textContent = h + ":" + m + ":" + s + " " + diem
+                            myClock.innerText = h + ":" + m + ":" + s + " " + diem;	
+                            setTimeout('renderTime()',1000);
+                        }
+                        renderTime();
+                    </script>
+            </div>
+     </div>
+
 
 
    @yield('content')
@@ -506,9 +544,7 @@ $(document).ready(function(){
 });
 </script>
 	
-	
-    
-     
+
     </body>
 	
     
