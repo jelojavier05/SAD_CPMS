@@ -15,9 +15,8 @@ class CreateLeaveTable extends Migration
         Schema::create('tblleave', function (Blueprint $table) {
             $table->increments('intLeaveID');
             $table->string('strLeaveType', 100)->unique();
-            $table->integer('intDaysDuration');
-            $table->integer('intCountLeave');
-            $table->integer('intDaysBeforeLeave');
+            $table->integer('intLeaveCount');
+            $table->integer('intNotificationPeriod');
             $table->softDeletes();
             $table->boolean('boolFlag')->default(true);
         });

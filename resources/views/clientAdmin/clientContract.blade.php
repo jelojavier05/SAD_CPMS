@@ -237,6 +237,7 @@ $(document).ready(function() {
             }
         },
         success: function(data){
+            
             $('#guardContainer').empty();
             $.each(data, function(index, value){
                 $("#guardContainer").append('<li class="collection-item"><div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;'+ value.strFirstName +' ' + value.strLastName +'</div></li>');
@@ -244,6 +245,9 @@ $(document).ready(function() {
             
             $('#guardHeader').text('Guards - ' + data.length);
             countGuard.push(data.length);
+        },
+        error: function(){
+
         }
     });//get guard accepted
     
@@ -518,7 +522,6 @@ $(document).ready(function() {
         var dateStart = new Date($('#contractStart').val());
         
         $.each(arr, function (index,value){
-            
             dateStart = value;
         });
     }

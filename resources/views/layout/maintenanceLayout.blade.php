@@ -501,47 +501,33 @@ $(document).ready(function() {
 });
 </script>
 
-    <script type="text/javascript" src="js/jquery.min.1.9.js"></script>
-<script type="text/javascript" >
-$(document).ready(function(){
-	
-	$.ajax({
-        type: "GET",
-        url: "{{action('InboxController@getNumberOfUnreadMessages')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
+<script>
+	$(document).ready(function(){
+		$.ajax({
+	        type: "GET",
+	        url: "{{action('InboxController@getNumberOfUnreadMessages')}}",
+	        beforeSend: function (xhr) {
+	            var token = $('meta[name="csrf_token"]').attr('content');
 
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
-        success: function(data){
-            if (data > 0){
-            	$('#notification_count').text(data);
-            	$('#notification_count').show();
-            }
-        }
-    });//ajax get client information
+	            if (token) {
+	                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+	            }
+	        },
+	        success: function(data){
+	            if (data > 0){
+	            	$('#notification_count').text(data);
+	            	$('#notification_count').show();
+	            }
+	        }
+	    });//ajax get client information
 
-	$("#notificationLink").click(function(){
-		$("#notificationContainer").fadeToggle(300);
-		$("#notification_count").fadeOut("slow");
-		window.location.href = '{{ URL::to("/adminInbox") }}';
-		return false;
+		$("#notificationLink").click(function(){
+			$("#notificationContainer").fadeToggle(300);
+			$("#notification_count").fadeOut("slow");
+			window.location.href = '{{ URL::to("/adminInbox") }}';
+			return false;
+		});
 	});
-
-
-
-	//Document Click hiding the popup 
-	// $(document).click(function(){
-	
-	// });
-
-	// //Popup on click
-	// $("#notificationContainer").click(function(){
-	// 	return false;
-	// });
-});
 </script>
 	
 

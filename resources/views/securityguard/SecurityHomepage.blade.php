@@ -114,7 +114,7 @@ Security Homepage
     </div>
 </div>
 
-<div id="modalContractNoti" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
+<div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
     <div class="modal-header">
       	<div class="h">
 			<h3><center>Message</center></h3>  
@@ -206,7 +206,7 @@ $(document).ready(function(){
         readMessage();
 
         if (type == 0){
-
+            message();
         }else if (type == 2){//new client request
             newClient();
         }
@@ -375,8 +375,6 @@ $(document).ready(function(){
                 Materialize.toast(toastContent, 1500,'red', 'edit');
             }
         });//ajax get client information
-        
-        
     }
     
     function getMessage(id){
@@ -422,6 +420,23 @@ $(document).ready(function(){
             });//ajax
         }//if else
     }//function readMessage
+
+    function message(){
+        $('#modalMessage').openModal();
+        getMessage();
+    }
+
+    function getMessage(){
+        $.ajax({
+            type: "GET",
+            url: "/adminInbox/get/message?inboxID=" + inboxID,
+            success: function(data){
+                console.log(data);
+                $('#messageSubject').text(data.strSubject);
+                $('#messageInbox').text(data.strMessage);
+            },async:false
+        });//get guard waiting
+    }
 });
 </script>
 

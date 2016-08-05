@@ -51,17 +51,19 @@ class ClientContractController extends Controller
     }
     
     public function getGuardAccepted(Request $request){
+        
         if ($request->session()->has('contractClientID')){
             $id = $request->session()->get('contractClientID');
+            
             $guards = DB::table('tblclient')
                 ->join('tblclientpendingnotification', 'tblclientpendingnotification.intClientID', '=', 'tblclient.intClientID')
                 ->join('tblguardpendingnotification', 'tblguardpendingnotification.intClientPendingID', '=', 'tblclientpendingnotification.intClientPendingID')
                 ->join('tblguard', 'tblguard.intGuardID', '=', 'tblguardpendingnotification.intGuardID')
                 ->select('tblguard.strFirstName', 'tblguard.strLastName')
                 ->where('tblclient.intClientID', '=', $id)
-                ->where('tblguardpendingnotification.intStatusIdentifier', '=', 3)
+                ->where('tblguardpendingnotification.intStatusIdentifier', '=', 2)
                 ->get();
-
+            
             return response()->json($guards);    
         }
     }
@@ -100,7 +102,7 @@ class ClientContractController extends Controller
                 ->join('tblguard', 'tblguard.intGuardID', '=', 'tblguardpendingnotification.intGuardID')
                 ->join('tblaccount', 'tblaccount.intAccountID', '=', 'tblguard.intAccountID')
                 ->where('tblclient.intClientID', '=', $clientID)
-                ->where('tblguardpendingnotification.intStatusIdentifier','=', 3)
+                ->where('tblguardpendingnotification.intStatusIdentifier','=', 2)
                 ->select('tblguard.intGuardID', 'tblaccount.intAccountID')
                 ->get();
             
@@ -117,6 +119,7 @@ class ClientContractController extends Controller
             $shiftCounter = 0;
             $counter = 0;
             
+            $accountClientID = $request->session()->get('accountID');
             foreach($guardID as $value){
                 $message = 'You are now assigned to ' . $request->clientName . 
                     ' at ' . $request->address . '. Your shift starts on '. date('Y-M-d', strtotime($request->dateStart)) .  ' from '. $shift[$shiftCounter]->from . ' to ' . $shift[$shiftCounter]->to . '.';   
@@ -132,10 +135,11 @@ class ClientContractController extends Controller
                     ->update(['intStatusIdentifier' => 2]);    
                 
                 DB::table('tblinbox')->insert([
-                    'intAccountID' => $value->intAccountID,
+                    'intAccountIDReceiver' => $value->intAccountID,
+                    'intAccountIDSender' => $accountClientID,
                     'strMessage' => $message,
-                    'datetimeSend' => $now,
-                    'strSubject' => 'New Client Update'    
+                    'strSubject' => 'New Client Update',
+                    'tinyintType' => 0
                 ]);
                 
                 $counter ++;
@@ -161,18 +165,16 @@ class ClientContractController extends Controller
                 DB::table('tblgun')
                     ->where('intGunID', $value->gunID)
                     ->update(['boolFlag' => 3]);
-            }
+            }//gun
             
             DB::table('tblclient')
                 ->where('intClientID', $clientID)
-                ->update(['intStatusIdentifier' => 2]);
+                ->update(['intStatusIdentifier' => 2]);//client update
             
             
             DB::table('tblclientpendingnotification')
                 ->where('intClientID', '=', $clientID)
-                ->update([
-                   'intStatusIdentifier' => 0 
-                ]);
+                ->update(['intStatusIdentifier' => 0]);//
             
             $clientAccount = DB::table('tblaccount')
                 ->join('tblclient', 'tblclient.intAccountID', '=', 'tblaccount.intAccountID')
@@ -182,14 +184,11 @@ class ClientContractController extends Controller
             
             DB::table('tblaccount')
                 ->where('intAccountID', '=', $clientAccount->intAccountID)
-                ->update([
-                    'intAccountType' => 1
-                ]);
+                ->update(['intAccountType' => 1]);
             
             DB::commit();
         }catch(Exception $e){
             DB::rollback();
         }
     }
-    
 }
