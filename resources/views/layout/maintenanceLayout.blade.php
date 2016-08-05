@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>@yield('title')</title>
@@ -28,6 +29,7 @@
 <!--  <script src="{!! URL::asset('../jquery/jquery-1.12.0.min.js')!!}"></script> -->
   <script src="{!! URL::asset('../js/init.js') !!}"></script>
   <script src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
+     <script src="{!! URL::asset('../js/jquery.min.1.9.js') !!}"></script>
   <script src="{!! URL::asset('../sweetalert.min.js') !!}"></script>
 <!--  <script src="{!! URL::asset('../datatable.js') !!}"></script>-->
 <!--  <script src="{!! URL::asset('../dataTables.material.min.js') !!}"></script>-->
@@ -40,10 +42,9 @@
 
 </head>
 
-    
+ 
     
 <body id="scrollhider" class="bodyscrollhider ci">
-   
     <nav class="blue darken-4">
         
          <div class="nav-wrapper">
@@ -341,7 +342,30 @@
              
 							<ul class="right hide-on-med-and-down">
 								 <li><a  data-position="bottom" data-delay="50" data-tooltip="PEOPLE"href="/dashboardadmin" class=" tooltipped"><i class="mdi-social-people" style="font-size:2.1rem;color:white"></i></a></li>
-								<li><a  data-position="bottom" data-delay="50" data-tooltip="MESSAGES"href="/adminInbox" class=" tooltipped"><i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i></a></li>
+                                
+                                
+                                <li  id="notification_li">
+                                    <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/adminInbox" class="tooltipped">
+                                        <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
+                                        <span id="notification_count">3</span></a>
+                                    
+                                                        <div id="notificationContainer">
+                                                        <div id="notificationTitle">Notifications</div>
+                                                        <div id="notificationsBody" class="notifications"></div>
+                                                        <div id="notificationFooter"><a href="#">See All</a></div>
+                                                        </div>
+                                    
+                                    
+                                </li>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                
+                                
+                                
+                                
 								 <li><a  data-position="bottom" data-delay="50" data-tooltip="REQUEST NOTIFICATION"href="#notif" class=" tooltipped"><i class="mdi-communication-call" style="font-size:2.1rem;color:white"></i></a></li>
 								<li><a  data-position="bottom" data-delay="50" data-tooltip="RESOURCES EXPIRATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-action-history" style="font-size:2.1rem;color:white"></i></a></li>
 								
@@ -352,7 +376,7 @@
 		
         </div>
       
-		
+	
     </nav>
     
     
@@ -376,7 +400,7 @@
 			</ul>
 		</div>	
 	</div>
--->
+-->	 
 													
 <!-- Dropdown Trigger -->
 	
@@ -385,145 +409,16 @@
   <a class='dropdown-button btn' href='#' data-activates='dropdowneq' style="display:none;">Drop Me!</a>
   <a class='dropdown-button btn' href='#' data-activates='dropdownothers' style="display:none;">Drop Me!</a>
  
-   
-       @yield('content')
-    
-    
-    <!--JELO-->
-<!--
-      <div id="notif">
-        
-                
-                <div class="row">
-                <div class="card medium" style="overflow:scroll;position:absolute;margin-left:52%;margin-top:-3%;width:450px">
-                    <div class="row">
-                        <table class="col l12 striped"> 
-                             <thead>
-                          <tr>
-                            <p style="margin-left:35%">Request Notifications</p>
-                                      
-                          </tr>
-                        </thead>
-                                <tbody>
-                                      <tr>
-                                            <td>
+  
+</li>
 
-                                                    <img src="/img/avatar2.png" alt="" class="responsive-img" width="40%" height="40%" style="margin-left:30%">
+ 
 
 
-                                            </td>
-                                               <td>Adrian Flores sent a request
-                                          
-                                          
-                                                 <button style="font-size:10px;margin-left:10%"class="btn waves-effect waves-light blue darken-4" type="button" name="action">See_Details
-                                                            </button>
-
-                                          
-                                          </td>
-                                          
-
-                                      </tr> 
-                                    <tr>
-                                            <td>
-
-                                                    <img src="/img/avatar2.png" alt="" class="responsive-img" width="40%" height="40%" style="margin-left:30%">
-
-
-                                            </td>
-                                               <td>Adrian Flores sent a request
-                                          
-                                          
-                                                 <button style="font-size:10px;margin-left:10%"class="btn waves-effect waves-light blue darken-4" type="button" name="action">See_Details
-                                                            </button>
-
-                                          
-                                          </td>
-                                          
-
-                                      </tr> 
-                                    <tr>
-                                            <td>
-
-                                                    <img src="/img/avatar2.png" alt="" class="responsive-img" width="40%" height="40%" style="margin-left:30%">
-
-
-                                            </td>
-                                               <td>Adrian Flores sent a request
-                                          
-                                          
-                                                 <button style="font-size:10px;margin-left:10%"class="btn waves-effect waves-light blue darken-4" type="button" name="action">See_Details
-                                                            </button>
-
-                                          
-                                          </td>
-                                          
-
-                                      </tr> 
-                                    <tr>
-                                            <td>
-
-                                                    <img src="/img/avatar2.png" alt="" class="responsive-img" width="40%" height="40%" style="margin-left:30%">
-
-
-                                            </td>
-                                               <td>Adrian Flores sent a request
-                                          
-                                          
-                                                 <button style="font-size:10px;margin-left:10%"class="btn waves-effect waves-light blue darken-4" type="button" name="action">See_Details
-                                                            </button>
-
-                                          
-                                          </td>
-                                          
-
-                                      </tr> 
-                                    <tr>
-                                            <td>
-
-                                                    <img src="/img/avatar2.png" alt="" class="responsive-img" width="40%" height="40%" style="margin-left:30%">
-
-
-                                            </td>
-                                               <td>Adrian Flores sent a request
-                                          
-                                          
-                                                 <button style="font-size:10px;margin-left:10%"class="btn waves-effect waves-light blue darken-4" type="button" name="action">See_Details
-                                                            </button>
-
-                                          
-                                          </td>
-                                          
-
-                                      </tr> 
-                                    <tr>
-                                            <td>
-
-                                                    <img src="/img/avatar2.png" alt="" class="responsive-img" width="40%" height="40%" style="margin-left:30%">
-
-
-                                            </td>
-                                               <td>Adrian Flores sent a request
-                                          
-                                          
-                                                 <button style="font-size:10px;margin-left:10%"class="btn waves-effect waves-light blue darken-4" type="button" name="action">See_Details
-                                                            </button>
-
-                                          
-                                          </td>
-                                          
-
-                                      </tr> 
-                                    
-
-                                </tbody>
-                        </table>
-                        </div>
-                </div>
-                </div>
-    </div>
--->
-        
+   @yield('content')
 	@yield('script')
+   
+   
 	<script>
 
        
@@ -576,6 +471,31 @@ $(document).ready(function() {
 });
 </script>
 
+    <script type="text/javascript" src="js/jquery.min.1.9.js"></script>
+<script type="text/javascript" >
+$(document).ready(function()
+{
+$("#notificationLink").click(function()
+{
+$("#notificationContainer").fadeToggle(300);
+$("#notification_count").fadeOut("slow");
+return false;
+});
+
+//Document Click hiding the popup 
+$(document).click(function()
+{
+$("#notificationContainer").hide();
+});
+
+//Popup on click
+$("#notificationContainer").click(function()
+{
+return false;
+});
+
+});
+</script>
 	
 	
     
