@@ -28,10 +28,9 @@ class LeaveController extends Controller
         try {
             $leave = new Leave;
 
-            $leave->strLeaveType = $request->leaveType;
-            $leave->intDaysDuration = $request->daysDuration;
-            $leave->intCountLeave = $request->countLeave;
-            $leave->intDaysBeforeLeave = $request->daysBeforeLeave;
+            $leave->strLeaveType = $request->strLeaveType;
+            $leave->intLeaveCount = $request->intLeaveCount;
+            $leave->intNotificationPeriod = $request->intNotificationPeriod;
             $leave->save();
             
         } catch (Exception $e) {
@@ -42,11 +41,10 @@ class LeaveController extends Controller
     public function updateLeave(Request $request){
         
         try {
-            Leave::where('intLeaveID', $request->editLeaveID)
+            Leave::where('intLeaveID', $request->editID)
             ->update(['strLeaveType'=>$request->editname, 
-                'intDaysDuration'=>$request->editDaysDuration,
-                'intCountLeave'=>$request->editNumberOfRequest,
-                'intDaysBeforeLeave'=>$request->editNotificationPeriod]);
+                'intLeaveCount'=>$request->editLeaveCount,
+                'intNotificationPeriod'=>$request->editNotificationPeriod]);
         } catch (Exception $e) {
             
         }

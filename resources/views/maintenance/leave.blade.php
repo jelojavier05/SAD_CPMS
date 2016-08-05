@@ -70,8 +70,6 @@ Leave
 									  </div>
 									</td>
 									
-									
-									
 									<td>
                                         <button class="buttonUpdate btn col s12"  name="" id="{{$leave->intLeaveID}}"  >
                                             <i class="material-icons">edit</i>
@@ -86,8 +84,8 @@ Leave
                                     </td>
                                     <td id = "id{{ $leave->intLeaveID }}">{{ $leave->intLeaveID }}</td>
 									<td id = "name{{ $leave->intLeaveID }}">{{ $leave->strLeaveType }}</td>
-									<td id = "daysDuration{{ $leave->intLeaveID }}">{{ $leave->intDaysDuration }}</td>                       
-                                    <td id = "daysBeforeLeave{{ $leave->intLeaveID }}">{{ $leave->intDaysBeforeLeave }}</td>
+									<td id = "daysDuration{{ $leave->intLeaveID }}">{{ $leave->intLeaveCount }}</td>                       
+                                    <td id = "daysBeforeLeave{{ $leave->intLeaveID }}">{{ $leave->intNotificationPeriod }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -102,60 +100,53 @@ Leave
 <!-- Modal Leave ADD -->
 
 <div id="modalleaveAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40%; !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
-        <div class="modal-header">
-                <div class="h">
-                    <h3><center>Leave</center></h3>  
-				</div>
-
-        	</div>
-        	<div class="modal-content">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					<div class="row">
-						<div class="col s10 push-s1" style="margin-top:-30px;">             
-                            <div class="row"></div>              
-							<div class="input-field col s12">
-								<i class="mdi-maps-directions-walk prefix" style="font-size:35px;"></i>
-                            	<input id="strLeaveType" type="text" class="validate" name = "leaveType" required="" aria-required="true">
-								<label for="strLeaveType">Leave Type</label>
-							</div>
-                         </div>
-								
-								  
-						<div class="col s10 push-s1" style="margin-top:-30px;"> 
-							<div class="row"></div>							
-							<div class="row"></div>                            
-							<div class="input-field col s12">							
-								<i class="mdi-image-timelapse prefix" style="font-size:35px;"></i>                            	
-								<input id="intNumberOfDays" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">                                
-								<label for="intNumberOfDays">Number of Days Allowed</label>                                 
-							</div>                            
-						</div>
-                            
-								
-								  
-						<div class="col s10 push-s1" style="margin-top:-30px;">          
-							<div class="row"></div>							
-							<div class="row"></div>                            
-							<div class="input-field col s12">							
-								<i class="mdi-action-today prefix" style="font-size:35px;"></i>                            	
-								<input id="intNotificationPeriod" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">                                
-								<label for="intNotificationPeriod">Notification Period</label> 								    
-							</div>                            
-						</div>
-                            
-                     		
-				</div>
-	<!-- Modal Button Save -->
-				
-		
-    		</div>
-				<div class="modal-footer" style="background-color: #00293C;">
-            
-                     <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
-                       <i class="material-icons right">send</i>
-                     </button>
-                </div>
+    <div class="modal-header">
+        <div class="h">
+            <h3><center>Leave</center></h3>  
 		</div>
+
+	</div>
+	<div class="modal-content">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		<div class="row">
+			<div class="col s10 push-s1" style="margin-top:-30px;">             
+                <div class="row"></div>              
+				<div class="input-field col s12">
+					<i class="mdi-maps-directions-walk prefix" style="font-size:35px;"></i>
+                	<input id="strLeaveType" type="text" class="validate" name = "leaveType" required="" aria-required="true">
+					<label for="strLeaveType">Leave Type</label>
+				</div>
+             </div>
+					
+					  
+			<div class="col s10 push-s1" style="margin-top:-30px;"> 
+				<div class="row"></div>							
+				<div class="row"></div>                            
+				<div class="input-field col s12">							
+					<i class="mdi-image-timelapse prefix" style="font-size:35px;"></i>                            	
+					<input id="intLeaveCount" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">                                
+					<label for="intLeaveCount">Number of Days Allowed</label>                                 
+				</div>                            
+			</div>
+                
+			<div class="col s10 push-s1" style="margin-top:-30px;">          
+				<div class="row"></div>							
+				<div class="row"></div>                            
+				<div class="input-field col s12">							
+					<i class="mdi-action-today prefix" style="font-size:35px;"></i>                            	
+					<input id="intNotificationPeriod" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">                                
+					<label for="intNotificationPeriod">Notification Period</label> 								    
+				</div>                            
+            </div>
+	     </div>
+	</div>
+	<div class="modal-footer" style="background-color: #00293C;">
+
+         <button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAddSave">Save
+           <i class="material-icons right">send</i>
+         </button>
+    </div>
+</div>
 <!-- MODAL LEAVE EDIT -->
 <div id="modalleaveEdit" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40%; !important; margin-top:30px !important;  max-height:100% !important; height:480px !important; border-radius:10px;">
 	<div class="modal-header">
@@ -173,7 +164,7 @@ Leave
 							<div class="row"></div>                              
 							<div class="input-field col s12">							
 								<input  id="editID" type="text" class="validate" name = "editLeaveID" readonly required="" aria-required="true" value = "test">								
-								<label for="intLeaveID">Leave ID</label> 								                                
+								<label for="editID">Leave ID</label> 								                                
 							</div>                            
 						</div>
 														
@@ -183,7 +174,7 @@ Leave
 							<div class="input-field col s12">							
 								<i class="mdi-action-tab prefix" style="font-size:35px;"></i>                            	
 								<input id="editname" type="text" class="validate" name = "editLeaveType" required="" aria-required="true" value = "test">								
-								<label for="strLeaveType">Leave Type</label>                                 
+								<label for="editname">Leave Type</label>                                 
 							</div>                            
 						</div>
 														
@@ -192,8 +183,8 @@ Leave
 							<div class="row"></div>                            
 							<div class="input-field col s12">							
 								<i class="mdi-action-tab prefix" style="font-size:35px;"></i>                            	
-								<input id="editDaysDuration" type="text" class="validate" pattern="[0-9]{0,}" name = "editDefaultLeave" required="" aria-required="true" value = "test">								
-								<label for="intDefaultLeave">Number of Days Allowed</label>                                 
+								<input id="editLeaveCount" type="text" class="validate" pattern="[0-9]{0,}" name = "editDefaultLeave" required="" aria-required="true" value = "test">								
+								<label for="editLeaveCount">Number of Days Allowed</label>                                 
 							</div>                            
 						</div>
                            
@@ -222,28 +213,25 @@ Leave
 			
     	</div>
 </div>
-<!---------- modal delete leave--------------------------------->
+
 <div id="modalleaveDelete" class="modal bottom-sheet ci" style="height: 250px !important; overflow:hidden;">
-            <div class="modal-header blue"><h2 class="white-text">Delete</h2></div>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="modal-content">
-
-                <div class="row">
-                    <div class="col s12">
-                        <h3 class="center">Confirm Delete</h3>
-                    </div>
-                </div>
-                <input type="hidden" name="idDelete" id = "deleteID">
-                <div class="row">
-                    <div class="col s3 push-s5">
-                        <button class=" btn waves-effect waves-light red large" name="action" style="margin-left: 20px;" id = "btnDelete">
-                            <i class="material-icons left">delete</i>Delete
-                        </button>
-
-                    </div>	
-                </div>
-
+    <div class="modal-header blue"><h2 class="white-text">Delete</h2></div>
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12">
+                <h3 class="center">Confirm Delete</h3>
             </div>
+        </div>
+        <input type="hidden" name="idDelete" id = "deleteID">
+        <div class="row">
+            <div class="col s3 push-s5">
+                <button class=" btn waves-effect waves-light red large" name="action" style="margin-left: 20px;" id = "btnDelete">
+                    <i class="material-icons left">delete</i>Delete
+                </button>
+            </div>	
+        </div>
+    </div>
 </div>
 
 @stop
@@ -267,7 +255,7 @@ Leave
          });   
  
 		$("#btnAddSave").click(function(){
-            if ($('#strLeaveType').val().trim() && $('#intNumberOfDays').val().trim() > 0 && $('#intNumberOfRequest').val().trim() > 0 && $('#intNotificationPeriod').val().trim() > 0){
+            if ($('#strLeaveType').val().trim() && $('#intLeaveCount').val().trim() > 0 && $('#intNotificationPeriod').val().trim() > 0){
                 $.ajax({
 
                     type: "POST",
@@ -280,40 +268,29 @@ Leave
                         }
                     },
                     data: {
-                        leaveType: $('#strLeaveType').val(),
-                        daysDuration: $('#intNumberOfDays').val(),
-                        countLeave: $('#intNumberOfRequest').val(),
-                        daysBeforeLeave: $('#intNotificationPeriod').val()
+                        strLeaveType: $('#strLeaveType').val(),
+                        intLeaveCount: $('#intLeaveCount').val(),
+                        intNotificationPeriod: $('#intNotificationPeriod').val()
                     },
                     success: function(data){
- 						
 						$('#modalleaveAdd').closeModal();
 						swal("Success!", "Record has been Added!", "success");
 						refreshTable();
 						refreshTextfield();
-						
-						
-                        
-                        
                     },
                     error: function(data){
                         var toastContent = $('<span>Error Occured. </span>');
                         Materialize.toast(toastContent, 1500,'red', 'edit');
-
                     }
-
-
                 });//ajax
             }else{
                 var toastContent = $('<span>Please Check Your Input. </span>');
                 Materialize.toast(toastContent, 1500,'red', 'edit');
             }
-			
-
 		});//button add clicked
         
         $("#btnUpdate").click(function(){
-            if ($('#editname').val().trim() && $('#editDaysDuration').val().trim() > 0 && $('#editNumberOfRequest').val().trim() > 0 && $('#editNotificationPeriod').val().trim() > 0){
+            if ($('#editname').val().trim() && $('#editLeaveCount').val().trim() > 0 && $('#editNotificationPeriod').val().trim() > 0){
 			$.ajax({
 				
 				type: "POST",
@@ -326,10 +303,9 @@ Leave
                     }
                 },
 				data: {
-					editLeaveID: $('#editID').val(),
+					editID: $('#editID').val(),
                     editname: $('#editname').val(),
-                    editDaysDuration: $('#editDaysDuration').val(),
-                    editNumberOfRequest: $('#editNumberOfRequest').val(),
+                    editLeaveCount: $('#editLeaveCount').val(),
                     editNotificationPeriod: $('#editNotificationPeriod').val(),
 					
 				},
@@ -402,14 +378,11 @@ Leave
             var itemID = "id" + this.id;
             var itemName = "name" + this.id;
             var daysDuration = "daysDuration" + this.id;
-            var countLeave = "countLeave" + this.id;
             var daysBeforeLeave = "daysBeforeLeave" + this.id;
-                
 
             document.getElementById('editID').value = $("#"+itemID).html();
             document.getElementById('editname').value = $("#"+itemName).html();
-            document.getElementById('editDaysDuration').value = $("#"+daysDuration).html();
-            document.getElementById('editNumberOfRequest').value = $("#"+countLeave).html();
+            document.getElementById('editLeaveCount').value = $("#"+daysDuration).html();
             document.getElementById('editNotificationPeriod').value = $("#"+daysBeforeLeave).html();
 
         });
@@ -481,13 +454,9 @@ Leave
                             '<button class="buttonDelete btn red" id="'+ data[index].intLeaveID +'"><i class="material-icons">delete</i></button>',
                             '<h id = "id' +data[index].intLeaveID + '">' + data[index].intLeaveID +'</h>',
                             '<h id = "name' +data[index].intLeaveID + '">' + data[index].strLeaveType +'</h>',
-                            '<h id = "daysDuration' +data[index].intLeaveID + '">' + data[index].intDaysDuration +'</h>',
-                            '<h id = "countLeave' +data[index].intLeaveID + '">' + data[index].intCountLeave +'</h>',
-                            '<h id = "daysBeforeLeave' +data[index].intLeaveID + '">' + data[index].intDaysBeforeLeave +'</h>'
+                            '<h id = "daysDuration' +data[index].intLeaveID + '">' + data[index].intLeaveCount +'</h>',
+                            '<h id = "daysBeforeLeave' +data[index].intLeaveID + '">' + data[index].intNotificationPeriod +'</h>'
                         ]).draw();
-                        
-                        
-
                     });//foreach
 
                 },
