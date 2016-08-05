@@ -1,4 +1,4 @@
-<script type="text/javascript" >
+
 $(document).ready(function()
 {
 $("#notificationLink").click(function()
@@ -21,4 +21,3 @@ return false;
 });
 
 });
-</script>
