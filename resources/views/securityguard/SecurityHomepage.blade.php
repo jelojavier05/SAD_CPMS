@@ -7,38 +7,31 @@ Security Homepage
 @section('content')
   <!--MESSAGE-->
 <div class="row">
-    <div class="col l12 ci">
-        <div class="col l6" >
-            <div class="card large z-depth-2 " style="overflow:scroll; overflow-x:hidden;">
-                <div class="row">
-                    <div class="col l12">
-                        <div class="col l3">
-                            <i class="material-icons left" style="font-size:6rem">email</i> 
-                        </div>
-                        <div class="col l9">
-                            <div class="row"></div>
-                            <span class="black-text" style="font-size:20px;font-family:Verdana">INBOX MESSAGE</span>
-                        </div>
-                    </div>
-                </div>
-                <table class="centered" style="background-color:" id = 'inboxTable'>
-                    <thead>
-                        <tr>
-                            <th class="grey lighten-1" style="width: 20px;"></th>
-                            <th class="grey lighten-1" style="width: 30px;"></th>
-                            <th class="grey lighten-1">Date</th>
-                            <th class="grey lighten-1">From</th>
-                            <th class="grey lighten-1">Subject</th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody>
-                        
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+	<div class="col s8 push-s2">
+		
+		<ul class="tabs" style="">
+        	<li style="color:white"class="tab col l3"><a href="#message" class="active">Messages</a></li>
+        </ul>	
+		<!-- table message -->
+		<div id="message">
+			<div class="container-fluid grey lighten-2">	
+				<table class="striped" id="inboxTable">
+					<thead>
+						<tr>
+							<th class="grey lighten-1" style="width: 20px;"></th>
+							<th class="grey lighten-1" style="width: 30px;"></th>
+							<th class="grey lighten-1">Date</th>
+							<th class="grey lighten-1">From</th>
+							<th class="grey lighten-1">Subject</th>
+						</tr>
+					</thead>
+
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div id="modalNewClientRequest" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
@@ -100,7 +93,7 @@ Security Homepage
             <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnAccept">Accept
             </button>
 
-            <button class="btn red waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnDecline">Decline
+            <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "btnDecline">Decline
             </button>
         </div>
         
@@ -252,11 +245,10 @@ $(document).ready(function(){
                 }
             },
             data: {
-                clientPendingID: globalClientPendingID
+                inboxID:inboxID
             },
             success: function(data){
-                $('#modalreadMsg').closeModal();
-                swal("Declined", "You declined to the offer.", "success");
+                swal("Declined", "You declined the offer.", "success");
             }
             
         });//decline
