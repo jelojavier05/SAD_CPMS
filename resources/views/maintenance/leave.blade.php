@@ -17,12 +17,12 @@ Leave
  
      <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Leave</h3>
-                </div>
+        <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Leave</h3>
+      </div>
     
     </div>
    
-    </div>
+</div>
     <div class="col s12 push-s1" style="margin-top:-4%">
         <div class="container white lighten-2 z-depth-2">
 <!--            <div class="row">-->
@@ -46,8 +46,7 @@ Leave
 								<th style="width:50px;" class="blue darken-3 white-text"></th>
                                 <th class="blue darken-3 white-text">ID</th>
                                 <th class="blue darken-3 white-text">Leave Type</th>
-                                <th class="blue darken-3 white-text">Number Of Days</th>
-                                <th class="blue darken-3 white-text">Number Of Request</th>
+                                <th class="blue darken-3 white-text">Number Of Days</th>                             
                                 <th class="blue darken-3 white-text">Notification Period</th>
                             </tr>
                         </thead>
@@ -87,8 +86,7 @@ Leave
                                     </td>
                                     <td id = "id{{ $leave->intLeaveID }}">{{ $leave->intLeaveID }}</td>
 									<td id = "name{{ $leave->intLeaveID }}">{{ $leave->strLeaveType }}</td>
-									<td id = "daysDuration{{ $leave->intLeaveID }}">{{ $leave->intDaysDuration }}</td>
-                                    <td id = "countLeave{{ $leave->intLeaveID }}">{{ $leave->intCountLeave }}</td>
+									<td id = "daysDuration{{ $leave->intLeaveID }}">{{ $leave->intDaysDuration }}</td>                       
                                     <td id = "daysBeforeLeave{{ $leave->intLeaveID }}">{{ $leave->intDaysBeforeLeave }}</td>
                                 </tr>
                             @endforeach
@@ -103,7 +101,7 @@ Leave
 
 <!-- Modal Leave ADD -->
 
-<div id="modalleaveAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:750px; !important; margin-top:100px !important;  max-height:100% !important; height:350px !important; border-radius:10px;">
+<div id="modalleaveAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40%; !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
         <div class="modal-header">
                 <div class="h">
                     <h3><center>Leave</center></h3>  
@@ -113,65 +111,39 @@ Leave
         	<div class="modal-content">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<div class="row">
-						<div class="col s6">
-							
-							<div class="row">
-                                               
-                                  <div class="col s10 push-s1" style="margin-top:-30px;">      
-                                            
-                                        <div class="row"></div>  
-                                        <div class="input-field col s12">
-											<i class="mdi-maps-directions-walk prefix" style="font-size:35px;"></i>
-                            				<input id="strLeaveType" type="text" class="validate" name = "leaveType" required="" aria-required="true">
-                                            <label for="strLeaveType">Leave Type</label> 
-
-                                        </div>
-                                  </div>
+						<div class="col s10 push-s1" style="margin-top:-30px;">             
+                            <div class="row"></div>              
+							<div class="input-field col s12">
+								<i class="mdi-maps-directions-walk prefix" style="font-size:35px;"></i>
+                            	<input id="strLeaveType" type="text" class="validate" name = "leaveType" required="" aria-required="true">
+								<label for="strLeaveType">Leave Type</label>
+							</div>
+                         </div>
 								
-								  <div class="col s10 push-s1" style="margin-top:-30px;">      
-                                            
-                                        <div class="row"></div>
-									  	<div class="row"></div>
-                                        <div class="input-field col s12">
-											<i class="mdi-image-timelapse prefix" style="font-size:35px;"></i>
-                            				<input id="intNumberOfDays" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
-                                            <label for="intNumberOfDays">Number of Days Allowed</label> 
-
-                                        </div>
-                                  </div>
-                            
-                     		</div>
+								  
+						<div class="col s10 push-s1" style="margin-top:-30px;"> 
+							<div class="row"></div>							
+							<div class="row"></div>                            
+							<div class="input-field col s12">							
+								<i class="mdi-image-timelapse prefix" style="font-size:35px;"></i>                            	
+								<input id="intNumberOfDays" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">                                
+								<label for="intNumberOfDays">Number of Days Allowed</label>                                 
+							</div>                            
 						</div>
-						
-						<div class ="col s6">
-							
-							<div class="row">
-                                               
-                                  <div class="col s10 push-s1" style="margin-top:-30px;">      
-                                            
-                                        <div class="row"></div>  
-                                        <div class="input-field col s12">
-											<i class="mdi-av-hearing prefix" style="font-size:35px;"></i>
-                            				<input id="intNumberOfRequest" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
-                                            <label for="intNumberOfRequest">Number of Requests Allowed</label> 
-
-                                        </div>
-                                  </div>
+                            
 								
-								  <div class="col s10 push-s1" style="margin-top:-30px;">      
-                                            
-                                        <div class="row"></div>
-									  	<div class="row"></div>
-                                        <div class="input-field col s12">
-											<i class="mdi-action-today prefix" style="font-size:35px;"></i>
-                            				<input id="intNotificationPeriod" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">
-                                            <label for="intNotificationPeriod">Notification Period</label> 
-
-                                        </div>
-                                  </div>
-                            
-                     		</div>
+								  
+						<div class="col s10 push-s1" style="margin-top:-30px;">          
+							<div class="row"></div>							
+							<div class="row"></div>                            
+							<div class="input-field col s12">							
+								<i class="mdi-action-today prefix" style="font-size:35px;"></i>                            	
+								<input id="intNotificationPeriod" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true">                                
+								<label for="intNotificationPeriod">Notification Period</label> 								    
+							</div>                            
 						</div>
+                            
+                     		
 				</div>
 	<!-- Modal Button Save -->
 				
@@ -185,7 +157,7 @@ Leave
                 </div>
 		</div>
 <!-- MODAL LEAVE EDIT -->
-<div id="modalleaveEdit" class="modal modal-fixed-footer ci" style="overflow:hidden; width:750px; !important; margin-top:100px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
+<div id="modalleaveEdit" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40%; !important; margin-top:30px !important;  max-height:100% !important; height:480px !important; border-radius:10px;">
 	<div class="modal-header">
                 <div class="h">
                     <h3><center>Leave</center></h3>  
@@ -196,85 +168,47 @@ Leave
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					
 					<div class="row">
-						<div class="col s6">
-							<div class="row">
-                                               
-                                  <div class="col s10 push-s1" style="margin-top:-30px;">      
-                                            
-                                        <div class="row"></div>  
-                                        <div class="input-field col s12">
-											<input  id="editID" type="text" class="validate" name = "editLeaveID" readonly required="" aria-required="true" value = "test">
-											<label for="intLeaveID">Leave ID</label> 
-
-                                        </div>
-                                  </div>
-								
-								  <div class="col s10 push-s1" style="margin-top:-30px;">      
-                                            
-                                        <div class="row"></div>
-									  	<div class="row"></div>
-                                        <div class="input-field col s12">
-											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
-                            				<input id="editname" type="text" class="validate" name = "editLeaveType" required="" aria-required="true" value = "test">
-											<label for="strLeaveType">Leave Type</label> 
-
-                                        </div>
-                                  </div>
-								
-								  <div class="col s10 push-s1" style="margin-top:-30px;">      
-                                            
-                                        <div class="row"></div>
-									  	<div class="row"></div>
-                                        <div class="input-field col s12">
-											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
-                            				<input id="editDaysDuration" type="text" class="validate" pattern="[0-9]{0,}" name = "editDefaultLeave" required="" aria-required="true" value = "test">
-											<label for="intDefaultLeave">Number of Days Allowed</label> 
-
-                                        </div>
-                                  </div>
-                            
-                     		</div>
+						                                                                                 
+						<div class="col s10 push-s1" style="margin-top:-30px;">                                                              
+							<div class="row"></div>                              
+							<div class="input-field col s12">							
+								<input  id="editID" type="text" class="validate" name = "editLeaveID" readonly required="" aria-required="true" value = "test">								
+								<label for="intLeaveID">Leave ID</label> 								                                
+							</div>                            
 						</div>
-						
-						<div class ="col s6">
-							<div class="row">
-                                               
-                                  <div class="col s10 push-s1" style="margin-top:-30px; visibility:hidden">      
-                                            
-                                        <div class="row"></div>  
-                                        <div class="input-field col s12">
-											<input  id="editID" type="text" class="validate" name = "editLeaveID" readonly required="" aria-required="true" value = "test">
-											<label for="intLeaveID">Leave ID</label> 
-
-                                        </div>
-                                  </div>
-								
-								  <div class="col s10 push-s1" style="margin-top:-30px;">      
-                                            
-                                        <div class="row"></div>
-									  	<div class="row"></div>
-                                        <div class="input-field col s12">
-											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
-                            				<input id="editNumberOfRequest" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true" value = "test">
-											<label for="editNumberOfRequest">Number of Requests Allowed</label> 
-
-                                        </div>
-                                  </div>
-								
-								  <div class="col s10 push-s1" style="margin-top:-30px;">      
-                                            
-                                        <div class="row"></div>
-									  	<div class="row"></div>
-                                        <div class="input-field col s12">
-											<i class="mdi-action-tab prefix" style="font-size:35px;"></i>
-                            				<input id="editNotificationPeriod" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true" value = "test">
-											<label for="editNotificationPeriod">Notification Period</label> 
-
-                                        </div>
-                                  </div>
-                            
-                     		</div>
+														
+						<div class="col s10 push-s1" style="margin-top:-30px;">                              					
+							<div class="row"></div>							
+							<div class="row"></div>                            
+							<div class="input-field col s12">							
+								<i class="mdi-action-tab prefix" style="font-size:35px;"></i>                            	
+								<input id="editname" type="text" class="validate" name = "editLeaveType" required="" aria-required="true" value = "test">								
+								<label for="strLeaveType">Leave Type</label>                                 
+							</div>                            
 						</div>
+														
+						<div class="col s10 push-s1" style="margin-top:-30px;">                                           
+							<div class="row"></div>							
+							<div class="row"></div>                            
+							<div class="input-field col s12">							
+								<i class="mdi-action-tab prefix" style="font-size:35px;"></i>                            	
+								<input id="editDaysDuration" type="text" class="validate" pattern="[0-9]{0,}" name = "editDefaultLeave" required="" aria-required="true" value = "test">								
+								<label for="intDefaultLeave">Number of Days Allowed</label>                                 
+							</div>                            
+						</div>
+                           
+														
+						<div class="col s10 push-s1" style="margin-top:-30px;">                                                      
+							<div class="row"></div>							
+							<div class="row"></div>                            
+							<div class="input-field col s12">							
+								<i class="mdi-action-tab prefix" style="font-size:35px;"></i>                            	
+								<input id="editNotificationPeriod" type="text" class="validate" pattern="[0-9]{0,}" name = "defaultLeave" required="" aria-required="true" value = "test">								
+								<label for="editNotificationPeriod">Notification Period</label>                                 
+							</div>                            
+						</div>
+                            
+                     		
 				</div>
 	<!-- Modal Button Save -->
 				
@@ -323,7 +257,6 @@ Leave
             { "orderable": false },
             { "orderable": false },
             { "orderable": false },
-            null,
             null,
             null,
             null,
