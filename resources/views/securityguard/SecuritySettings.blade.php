@@ -93,7 +93,7 @@ Security Settings
                                         <div class="input-field col s12">
 											<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
                             				<input id="" type="password" class="validate" name = "" required="" aria-required="true">
-											<label for="">Old Password</label> 
+											<label for="">Current Password</label> 
 
                                         </div>
                                   </div>
@@ -149,7 +149,7 @@ Security Settings
         	</div>
          
         
-        	<div class="modal-content" style="overflow:scroll; overflow-x:hidden;">
+        	<div class="modal-content sidenavhover " id="" style="overflow-x:hidden;" >
                     <div class="row">
                                                
                                   <div class="col s4" >      
@@ -305,6 +305,7 @@ Security Settings
 	
  
         </div>
+		
     <!-- Modal Button Save -->
 		<div class="modal-footer" style="background-color: #00293C;">
             
