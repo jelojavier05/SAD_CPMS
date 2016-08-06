@@ -179,12 +179,7 @@
 							
 					
 							
-					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="#!"><i class="material-icons">content_paste</i><strong>Gun Tagging</strong></a>
-                            <div class="collapsible-body grey lighten-2">
-                                
-                            </div>
-					</li>	
+					
 							
 					<li class="bold" style="width:280px;">
 								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView"><i class="material-icons">local_shipping</i><strong>Delivery</strong></a>
@@ -201,35 +196,8 @@
                             </div>
 					</li>
 							
-					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView"><i class="material-icons">notifications</i><strong>Request</strong></a>
-                            <div class="collapsible-body grey lighten-2">
-<!--
-                                <ul>
-                                            
-                                  
-									
-									
-                                           
-                                </ul>
--->
-                            </div>
-					</li>
 							
-					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView"><i class="material-icons">event</i><strong>Attendance</strong></a>
-                            <div class="collapsible-body grey lighten-2">
-<!--
-                                <ul>
-                                            
-                                  
-									
-									
-                                           
-                                </ul>
--->
-                            </div>
-					</li>
+					
 							
 					<li class="bold" style="width:280px;">
 								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView"><i class="material-icons">settings_input_component</i><strong>Settings</strong></a>
@@ -341,25 +309,14 @@
 				
              
 							<ul class="right hide-on-med-and-down">
-								 <li><a  data-position="bottom" data-delay="50" data-tooltip="PEOPLE"href="/dashboardadmin" class=" tooltipped"><i class="mdi-social-people" style="font-size:2.1rem;color:white"></i></a></li>
+								 
                                 
                                 
                                 <li  id="notification_li">
                                     <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/adminInbox" class="tooltipped">
                                         <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
                                         <span id="notification_count">3</span></a>
-                                </li>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-                                
-                                
-                                
-								 <li><a  data-position="bottom" data-delay="50" data-tooltip="REQUEST NOTIFICATION"href="#notif" class=" tooltipped"><i class="mdi-communication-call" style="font-size:2.1rem;color:white"></i></a></li>
-								<li><a  data-position="bottom" data-delay="50" data-tooltip="RESOURCES EXPIRATION"href="/dashboardadmin" class=" tooltipped"><i class="mdi-action-history" style="font-size:2.1rem;color:white"></i></a></li>
+                                </li>                                                                                                                                                                                                             
 								
                                  <li><a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">store</i></a></li>
                                 <li><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>

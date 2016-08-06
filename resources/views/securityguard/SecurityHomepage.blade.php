@@ -98,11 +98,14 @@ Security Homepage
         </div>
         
         <div id = "accepted" style="display: none;">
-            <button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted
+            <button class="btn blue left" style="margin-right: 10px" id="">I've changed my mind</button>
+			
+			<button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted
             </button>
         </div>
         
         <div id = "rejected" style="display: none;">
+			<button class="btn blue left" style="margin-right: 10px" id="">I've changed my mind</button>
             <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined
             </button>
         </div>

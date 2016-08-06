@@ -12,7 +12,7 @@ Security Settings
 		<ul class="collection with-header" id="collectionActive">
 			<li class="collection-header" ><h4 style="font-weight:bold;">Details
 					<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue right tooltipped" id = 'btnEdit'><i class="material-icons">mode_edit</i></a></h4>
-					<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnPassword' style="margin-top:-84px; margin-left:550px;"><i class="material-icons">vpn_key</i></a></h4>
+					<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnPassword' style="margin-top:-84px; margin-left:580px;"><i class="material-icons">vpn_key</i></a></h4>
 			</li>
 				<div >
 							
@@ -72,7 +72,7 @@ Security Settings
 </div>
 
 <!---------------Modal Change Pass--------------------->
-<div id="modalchangePassword" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:100px !important;  max-height:100% !important; height:350px !important; border-radius:10px;">
+<div id="modalchangePassword" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
         
         
             <div class="modal-header">
@@ -86,9 +86,22 @@ Security Settings
         	<div class="modal-content">
                     <div class="row">
                                                
-                                  <div class="col s10 push-s1" style="margin-top:-30px;">      
+                                  
+								<div class="col s10 push-s1" style="margin-top:-30px;">      
                                             
                                         <div class="row"></div>  
+                                        <div class="input-field col s12">
+											<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+                            				<input id="" type="password" class="validate" name = "" required="" aria-required="true">
+											<label for="">Old Password</label> 
+
+                                        </div>
+                                  </div>
+						
+								<div class="col s10 push-s1" style="margin-top:-30px;">      
+                                            
+                                        <div class="row"></div>
+										<div class="row"></div>  
                                         <div class="input-field col s12">
 											<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
                             				<input id="" type="password" class="validate" name = "" required="" aria-required="true">
@@ -122,10 +135,10 @@ Security Settings
         </div>	
 </div>
 
-<!---------------Modal Change Pass End--------------------->
+<!--Modal Page Change Password End -->
 
 <!---------------Modal Edit Details--------------------->
-<div id="modalchangeDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:900px !important; margin-top:-40px !important;  max-height:100% !important; height:620px !important; border-radius:10px;">
+<div id="modalchangeDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:800px !important; margin-top:10px !important;  max-height:100% !important; height:550px !important; border-radius:10px;">
         
         
             <div class="modal-header">
@@ -136,7 +149,7 @@ Security Settings
         	</div>
          
         
-        	<div class="modal-content">
+        	<div class="modal-content" style="overflow:scroll; overflow-x:hidden;">
                     <div class="row">
                                                
                                   <div class="col s4" >      
@@ -172,7 +185,7 @@ Security Settings
                                         </div>
                                   </div>
 						
-								  <div class="col s4">      
+								  <div class="col s6">      
                                             
                                         
                                         <div class="input-field col s12">
@@ -182,6 +195,111 @@ Security Settings
 
                                         </div>
                                   </div>
+						
+								<div class="col s3">
+									<div class=" input-field col s12">
+											<select>
+												<option selected disabled>Choose Province</option>
+												<option>hello</option>
+											</select>
+									</div>
+								</div>
+						
+								<div class="col s3">
+									<div class=" input-field col s12">
+											<select>
+												<option selected disabled>Choose City</option>
+												<option>hello</option>
+											</select>
+									</div>
+								</div>
+						
+								<div class="col s6">
+									<div class="input-field col s12">
+										<i class="material-icons prefix" style="font-size:35px; color:#64b5f6;">star</i>
+										<input type="date" id="dateOfbirth" class="datepicker"/>
+										<label class="active" for="dateOfbirth">Date of Birth</label>
+									</div>
+									
+								</div>
+						
+								<div class="col s6" >      
+                                            
+                                        
+                                        <div class="input-field col s12">
+											<i class="material-icons prefix" style="font-size:35px;">star</i>
+                            				<input placeholder=" " id="" type="text" class="validate" name = "" required="" aria-required="true">
+											<label for="">Place of Birth</label> 
+
+                                        </div>
+                                  </div>
+						
+								<div class="col s6">
+									<div class="input-field col s12">
+										<i class="material-icons prefix" style="font-size: 35px;">smartphone</i>
+										<input placeholder=" " id="" type="text" class="validate" name="" required="" aria-required="true"/>
+										<label for="">Contact Number (Mobile)</label>
+									</div>
+								</div>
+						
+						
+								<div class="col s6">
+									<div class="input-field col s12">
+										<i class="material-icons prefix" style="font-size: 35px;">phone</i>
+										<input placeholder=" " id="" type="text" class="validate" name="" required="" aria-required="true"/>
+										<label for="">Contact Number (Landline)</label>
+									</div>
+								</div>
+						
+								<div class="col s4 push-s2">
+									<select id="" >
+										<option selected disabled>Civil Status</option>
+										<option>Single</option>
+										<option>Married</option>
+										<option>Widowed</option>									
+									</select>
+								</div>
+								
+								<div class="col s4 push-s2">
+									<select id="" >
+										<option selected disabled>Gender</option>
+										<option>Male</option>
+										<option>Female</option>																			
+									</select>
+								</div>
+						
+								<div class="input-field col s10 push-s1 ci">                    
+									<h5>Body Attributes:</h5>					
+									<div class="row">						
+										<div class="col s12">												
+											<table class="striped white ci">								
+												<thead>									
+													<tr>										
+														<th><center>Name</center></th>										
+														<th><center>Specification</center></th>                                        
+														<th><center>Measurement</center></th>									
+													</tr>								
+												</thead>								
+												<tbody>                                    			                        
+													<tr>                                        
+														<td style="height:-10px !important;"><center>                                            
+															<div  id = "">Wingspan</div></center>                                        
+														</td>                                        
+														<td style="height:-10px !important;"><center>                    
+															<input  id="" type="text" class="validate" pattern="[A-za-z0-9.,' ]{1,}" size="1" required="" aria-required="true" value="1">                                                
+															</center>                                                             
+														</td>                                        
+														<td style="height:-10px !important;"><center>                                            
+															<div  id = "">Inches</div></center>                                        
+														</td>                                    
+													</tr>                                    
+												</tbody>							
+											</table>						
+										</div>					
+									</div>				
+							</div>
+						
+						
                             
                      </div>
 	
