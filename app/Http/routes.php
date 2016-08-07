@@ -95,6 +95,8 @@ Route::get('/cgrreports', 'CGRReportsController@index');
 
 //SECURITY GUARD INTERFACE ----------------------------------------------------
 
+Route::get('/securityHome', 'SecurityHomeController@index');
+
 Route::get('/securityleaverequest', 'SecurityGuardDashboardController@index');
 Route::get('/securitychangelocation', 'SecurityGuardDashboardController@index');
 Route::get('/securityguard', 'SecurityGuardDashboardController@index');
