@@ -6,8 +6,6 @@ Security Settings
 
 
 @section('content')
-
-    <!-------------------------TABS----------------------->
     
     <div class="col s12">
       <ul class="tabs blue lighten-1" style="border: 1px solid black;">
@@ -16,7 +14,6 @@ Security Settings
       </ul>
     </div>
     
-<!------------------------TAB PERSONAL DATA----------------->
 <div class="row"></div>
 <div class="row"></div>
 
@@ -94,9 +91,6 @@ Security Settings
     </div>
     </div>
 </div>
-
-
-<!------------------------TAB ACCOUNT----------------------->
 
 <div class="row"></div>
 <div class="row"></div>
