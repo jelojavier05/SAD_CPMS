@@ -152,13 +152,6 @@ $(document).ready(function(){
             
         type: "GET",
         url: "{{action('SecurityHomepageController@getGuardInformation')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
         success: function(data){
             if (data){
                 $('#strProfileName').text(data.strFirstName + ' ' + data.strLastName);
@@ -216,25 +209,43 @@ $(document).ready(function(){
     });
     
     $('#btnAccept').click(function(){
-        
+        var statusChecker;
         $.ajax({
-            type: "POST",
-            url: "{{action('SecurityHomepageController@acceptNewClient')}}",
-            beforeSend: function (xhr) {
-                var token = $('meta[name="csrf_token"]').attr('content');
-                if (token) {
-                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                }
-            },
-            data: {
-                inboxID:inboxID
-            },
-            success: function(data){
-                $('#modalNewClientRequest').closeModal();
-                swal("Accepted", "You accepted the offer. Wait for announcement.", "success");
-            }
             
-        });//accept
+            type: "GET",
+            url: "{{action('SecurityHomepageController@getGuardInformation')}}",
+            success: function(data){
+                if (data.intStatusIdentifier == 0){
+                    statusChecker = true;
+                }else{
+                    statusChecker = false;
+                }
+            },async:false
+        });//guard information
+
+        if (statusChecker){
+            $.ajax({
+                type: "POST",
+                url: "{{action('SecurityHomepageController@acceptNewClient')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+                    if (token) {
+                        return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    inboxID:inboxID
+                },
+                success: function(data){
+                    $('#modalNewClientRequest').closeModal();
+                    swal("Accepted", "You accepted the offer. Wait for announcement.", "success");
+                }
+                
+            });//accept
+        }else{
+            var toastContent = $('<span>You are now committed to other client.</span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
     });
     
     $('#btnDecline').click(function(){
@@ -357,19 +368,27 @@ $(document).ready(function(){
                             '<td>' + getHour(value.timeTo) + '</td>' +
                         '</tr>'
                     );
-                    
                 });
 
                 if (statusIdentifier == 1){
                     $('#buttons').show();
+                    $('#accepted').hide();
+                    $('#rejected').hide();
+                    $('#notAvailable').hide();
                 }else if (statusIdentifier == 2){
                     $('#buttons').hide();
                     $('#accepted').show();
+                    $('#rejected').hide();
+                    $('#notAvailable').hide();
                 }else if (statusIdentifier == 0){
                     $('#buttons').hide();
+                    $('#accepted').hide();
                     $('#rejected').show();
+                    $('#notAvailable').hide();
                 }else if (statusIdentifier == 3){
                     $('#buttons').hide();
+                    $('#accepted').hide();
+                    $('#rejected').hide();
                     $('#notAvailable').show();
                 }
             },
