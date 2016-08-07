@@ -115,7 +115,14 @@ Security Leave Request
                 
                 <div class="col l6">
                 
-                        <label for="icon_prefix">Date Return to Work</label><br>
+                        <label for="icon_prefix">Date Start</label><br>
+                        <input type="date" class="datepicker">
+                
+                </div>
+				
+				<div class="col l6">
+                
+                        <label for="icon_prefix">Date End</label><br>
                         <input type="date" class="datepicker">
                 
                 </div>
@@ -125,7 +132,7 @@ Security Leave Request
                           <form class="col s12">
                             <div class="row">
                               <div class="input-field col s12">
-                                <input id="input_text" type="text" length="10">
+								  <textarea class="materialize-textarea" id="input_text" type="text" length="120"></textarea>
                                 <label for="input_text">REASON</label>
                               </div>
                             </div>

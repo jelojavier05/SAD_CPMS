@@ -336,6 +336,7 @@ Security Settings
      	swal({   title: "Confirmation",   
 			  	 text: "Please Enter your Password",   
 			  	 type: "input",
+			  	 inputType: "password",
 			     showCancelButton: true,   
 			     closeOnConfirm: false,   
 			     animation: "slide-from-top",   
@@ -349,7 +350,10 @@ Security Settings
 					swal.showInputError("Please Enter Password!");     
 					return false   
 				}  
-    		});
+    		}
+			
+			 
+	 
 	 });
 </script>
 

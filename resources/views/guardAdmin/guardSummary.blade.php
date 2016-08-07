@@ -323,8 +323,14 @@ $(document).ready(function(){
                 }
             },
             success: function(data){
-                swal("Success!", "Record has been Added!", "success");
-                window.location.href = '{{ URL::to("/guardView") }}';
+                swal({
+						title: "Success!",
+						text: "Guard has been registered!",
+						type: "success"
+					},
+					function(){
+					window.location.href = '{{ URL::to("/dashboardadmin") }}';
+				});
             },
             error: function(data){
                 confirm('error send data fvcked up');
