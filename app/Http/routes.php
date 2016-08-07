@@ -113,6 +113,7 @@ Route::get('/securitysettings', 'SecuritySettingsController@index');
 Route::get('/securitysettings/get', 'SecuritySettingsController@getGuardInformation');
 Route::post('/securitysettings/checkpassword', 'SecuritySettingsController@checkPassword');
 Route::post('/securitysettings/updateDetail', 'SecuritySettingsController@updateDetail');
+Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@updatePassword');
 
 //CLIENT INTERFACE ----------------------------------------------------
 

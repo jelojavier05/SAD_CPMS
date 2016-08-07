@@ -11,7 +11,7 @@ Security Settings
 		<ul class="collection with-header" id="collectionActive">
 			<li class="collection-header" ><h4 style="font-weight:bold;">Details
 				<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue right tooltipped" id = 'buttonDetail'><i class="material-icons">mode_edit</i></a></h4>
-				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnPassword' style="margin-top:-84px; margin-left:580px;"><i class="material-icons">vpn_key</i></a></h4>
+				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword' style="margin-top:-84px; margin-left:580px;"><i class="material-icons">vpn_key</i></a></h4>
 			</li>
 			<div>
 						
@@ -79,7 +79,7 @@ Security Settings
 				<div class="row"></div>  
 				<div class="input-field col s12">
 					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
-					<input id="" type="password" class="validate" name = "" required="" aria-required="true">
+					<input id="strCurrent" type="password" class="validate" name = "" required="" aria-required="true">
 					<label for="">Current Password</label> 
 				</div>
 			</div>
@@ -88,7 +88,7 @@ Security Settings
 				<div class="row"></div>  
 				<div class="input-field col s12">
 					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
-					<input id="" type="password" class="validate" name = "" required="" aria-required="true">
+					<input id="strNew" type="password" class="validate" name = "" required="" aria-required="true">
 					<label for="">New Password</label> 
 				</div>
 			</div>
@@ -97,14 +97,14 @@ Security Settings
 				<div class="row"></div>
 				<div class="input-field col s12">
 					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
-					<input id="" type="password" class="validate" name = "" required="" aria-required="true">
+					<input id="strConfirm" type="password" class="validate" name = "" required="" aria-required="true">
 					<label for="">Confirm New Password</label> 
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="modal-footer" style="background-color: #00293C;">
-		<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "">Save
+		<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnChangePasswordSave">Save
 			<i class="material-icons right">send</i>
 		</button>
 	</div>	
@@ -344,7 +344,6 @@ $(document).ready(function(){
 		$('#modalchangeDetails').openModal();
 	});
 
-
 	$('#btnSaveDetails').click(function(){
 	    if (checkInput()){ //checking for input
 			swal({   title: "Confirmation",   
@@ -370,7 +369,6 @@ $(document).ready(function(){
 			var toastContent = $('<span>Check your input.</span>');
 			Materialize.toast(toastContent, 1500,'red', 'edit');
 		}
-
     });
 
 	$('#selectProvince').on('change',function(){
@@ -503,13 +501,61 @@ $(document).ready(function(){
 				},
 				function(){
 					window.location.href = '{{ URL::to("/securitysettings") }}';
-					});
+				});
 	        }
 	    });//ajax
     }
+
+    // Change Password Start
+
+    $('#btnUpdatePassword').click(function(){
+		$('#modalchangePassword').openModal();
+	});
+
+	$('#btnChangePasswordSave').click(function(){
+		var strCurrent = $('#strCurrent').val();
+		var strNew = $('#strNew').val();
+		var strConfirm = $('#strConfirm').val();
+		
+		if (checkPassword(strCurrent)){
+			if (strNew === strConfirm){
+				$.ajax({
+			        type: "POST",
+			        url: "{{action('SecuritySettingsController@updatePassword')}}",
+			        beforeSend: function (xhr) {
+			            var token = $('meta[name="csrf_token"]').attr('content');
+
+			            if (token) {
+			                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+			            }
+			        },
+			        data: {
+			            strNewPassword: strNew
+			        },
+			        success: function(data){
+					    swal({
+							title: "Success!",
+							text: "Password Updated!",
+							type: "success"
+						},
+						function(){
+							window.location.href = '{{ URL::to("/securitysettings") }}';
+						});
+			        }
+			    });//ajax
+			}else{
+				var toastContent = $('<span>Password are not match.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+			}
+		}else{
+			var toastContent = $('<span>Current Password is incorrect.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
+	});
+
+	// Change password end
 });
 </script>
-
 
 <script>
     $(document).ready(function(){

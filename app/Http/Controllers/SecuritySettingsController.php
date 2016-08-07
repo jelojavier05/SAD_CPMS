@@ -122,8 +122,16 @@ class SecuritySettingsController extends Controller
             DB::commit();
         }catch(Exception $e){
             DB::rollback();
-        }
+        }       
+    }
 
-            
+    public function updatePassword(Request $request){
+        $accountID = $request->session()->get('accountID');
+
+        DB::table('tblaccount')
+            ->where('intAccountID', $accountID)
+            ->update([
+                'strPassword' => $request->strNewPassword
+            ]);
     }
 }
