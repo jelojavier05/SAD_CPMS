@@ -549,7 +549,7 @@ $(document).ready(function(){
 				Materialize.toast(toastContent, 1500,'red', 'edit');
 			}
 		}else{
-			var toastContent = $('<span>Current Password is incorrect.</span>');
+			var toastContent = $('<span>Please Check your input!</span>');
 			Materialize.toast(toastContent, 1500,'red', 'edit');
 		}
 	});

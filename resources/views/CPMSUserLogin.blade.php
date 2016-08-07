@@ -118,7 +118,7 @@
                                     }else if (accountType == 1){
                                         window.location.href = '{{ URL::to("/clienthomepage") }}';
                                     }else if (accountType == 2){
-                                        window.location.href = '{{ URL::to("/securityhomepage") }}';
+                                        window.location.href = '{{ URL::to("/securityHome") }}';
                                     }else if (accountType == 3){
                                         window.location.href = '{{ URL::to("/dashboardadmin") }}';
                                     }
