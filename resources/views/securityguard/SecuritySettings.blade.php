@@ -10,83 +10,11 @@ Security Settings
 	<div class="ci col s10 push-s1">	
 		<ul class="collection with-header" id="collectionActive">
 			<li class="collection-header" ><h4 style="font-weight:bold;">Details
-<<<<<<< HEAD
-					<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue right tooltipped" id = 'btnEdit'><i class="material-icons">mode_edit</i></a></h4>
-					<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnPassword' style="margin-top:-84px; margin-left:520px;"><i class="material-icons">vpn_key</i></a></h4>
-			</li>
-				
-                    <div class="col l12">
-                        <div class="col l6">
-                       
-                        <li class="collection-item" style="font-weight:bold;">First Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Juan</div>
-					</li>
-                    
-                    <li class="collection-item" style="font-weight:bold;">Middle Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Hello</div>
-					</li>
 
-					<li class="collection-item" style="font-weight:bold;">Last Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Dela Cruz</div>
-					</li>
-
-					<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 Hello Street Las Pinas, Metro Manila</div>
-					</li>
-
-					<li class="collection-item" style="font-weight:bold;">Date of Birth:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;10/10/1995</div>
-					</li>
-
-                        
-                        
-                        </div>
-                         <div class="col l6">
-                            
-                        <li class="collection-item" style="font-weight:bold;">Place of Birth:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Makati City</div>
-					</li>
-
-					<li class="collection-item" style="font-weight:bold;">Contact Number (Mobile):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
-					</li>
-
-					<li class="collection-item" style="font-weight:bold;">Contact Number (Landline):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;8123456</div>
-					</li>
-							
-					<li class="collection-item" style="font-weight:bold;">Civil Status:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Single</div>
-					</li>
-					
-					<li class="collection-item" style="font-weight:bold;">Gender:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Male</div>
-					</li>
-                        
-                        
-                        </div>
-                    
-                    
-                    </div>
-					
-					
-					
-					<li class="collection-item" style="font-weight:bold;">Body Attributes
-						<div style="font-weight:normal;" id = ''>
-							<table class="" style="font-family:Myriad Pro" id = 'shiftTable'>
-                                <thead>
-                                <tr>
-                                    <th data-field="st">Name</th>
-                                    <th data-field="fr">Specification</th>
-                                    <th data-field="to">Measurement</th>
-                                </tr>
-                                </thead>
-                                
-                                <tbody>
-									<td>Wingspan</td>
-									<td>72</td>
-									<td>inches</td>
-                                </tbody>
-                            </table>
-						</div>
-					</li>
-				</div>
-=======
 				<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue right tooltipped" id = 'buttonDetail'><i class="material-icons">mode_edit</i></a></h4>
 				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword' style="margin-top:-84px; margin-left:580px;"><i class="material-icons">vpn_key</i></a></h4>
 			</li>
 			<div>
->>>>>>> e1a0ba640157b124340d4d12d4f4c82d42033c1d
 						
 				<li class="collection-item" style="font-weight:bold;">First Name:<div style="font-weight:normal;" id = 'firstName'>&nbsp;&nbsp;&nbsp;</div>
 				</li>
