@@ -174,7 +174,6 @@
                                     </div>
                                 
                                 
-<<<<<<< HEAD
                                 </div>
                              
 
@@ -199,7 +198,7 @@
     
 </nav>
     
-<!-----------------------------SIDE NAV BAR----------------------------->
+
     <div class="row">
  <div class="col l12">
      <div class="col l6">
