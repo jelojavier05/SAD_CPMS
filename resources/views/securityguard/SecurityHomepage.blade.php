@@ -322,7 +322,7 @@ $(document).ready(function(){
     function newClient(){
         $.ajax({
             type: "GET",
-            url: "/securityhomepage/get/clientinformation?inboxID=" + inboxID ,
+            url: "/securityInbox/get/clientinformation?inboxID=" + inboxID ,
             beforeSend: function (xhr) {
                 var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -384,7 +384,7 @@ $(document).ready(function(){
         var message;
         $.ajax({
             type: "GET",
-            url: "/securityhomepage/get/message?id=" + id ,
+            url: "/securityInbox/get/message?id=" + id ,
             beforeSend: function (xhr) {
                 var token = $('meta[name="csrf_token"]').attr('content');
 
