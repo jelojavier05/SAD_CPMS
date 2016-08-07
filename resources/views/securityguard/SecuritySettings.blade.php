@@ -297,8 +297,8 @@ $(document).ready(function(){
             $.each(data.provinces, function(index,value){
             	$selectDropdownProvince.append(
                     $("<option></option>")
-                    .attr("id",value.intCityID)
-                    .attr("value",value.intCityID)
+                    .attr("id",value.intProvinceID)
+                    .attr("value",value.intProvinceID)
                     .text(value.strProvinceName)
                 );
             });
@@ -377,7 +377,6 @@ $(document).ready(function(){
         var id = $(this).children(":selected").attr("id");
         getCity(id);
     });
-<<<<<<< HEAD
 
 	function getCity(provinceID){
         var $selectDropdown = 
@@ -458,7 +457,7 @@ $(document).ready(function(){
     	var strContactNumberLandline = $('#strContactNumberLandline').val().trim();
     	var strGender = $('#selectGender').val();
     	var strCivilStatus = $('#selectCivilStatus').val();
-    	var dateBirthday = $('#dateBirthday').val();
+    	var dateBirthday = $('#dateOfbirth').val();
 		var intProvinceID = $('#selectProvince').children(":selected").attr("id"); 	
 		var intCityID = $('#selectCity').children(":selected").attr("id");	
 		var guardBodyAttributeID = [];
@@ -497,8 +496,14 @@ $(document).ready(function(){
 	            guardBodyAttributeValue: guardBodyAttributeValue
 	        },
 	        success: function(data){
-	        	window.location.href = '{{ URL::to("/securitysettings") }}';
-	        	swal("Success!", "You Updated your details!", "success");
+	        	swal({
+					title: "Success!",
+					text: "Profile Updated!",
+					type: "success"
+				},
+				function(){
+					window.location.href = '{{ URL::to("/securitysettings") }}';
+					});
 	        }
 	    });//ajax
     }

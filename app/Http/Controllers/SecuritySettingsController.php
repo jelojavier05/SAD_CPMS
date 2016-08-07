@@ -70,23 +70,60 @@ class SecuritySettingsController extends Controller
     public function updateDetail(Request $request){
         $accountID = $request->session()->get('accountID');
 
-        $guardID = DB::table('tblguard')
-            ->select('intGuardID')
-            ->where('intAccountID', $accountID)
-            ->first();
+        $bodyAttributes = array(); 
+        $arrBodyAttributeID = $request->guardBodyAttributeID;
+        $arrValue = $request->guardBodyAttributeValue;
 
-        DB::table('tblguard')
-            ->where('intGuardID', $guardID->intGuardID)
-            ->update([
-                'strFirstName' => $request->strFirstName,
-                'strMiddleName' => $request->strMiddleName,
-                'strLastName' => $request->strLastName,
-                'dateBirthday' => $request->dateBirthday,
-                'strPlaceBirth' => $request->strPlaceBirth,
-                'strContactNumberMobile' => $request->strContactNumberMobile,
-                'strContactNumberLandline' => $request->strContactNumberLandline,
-                'strCivilStatus' => $request->strCivilStatus,
-                'strGender' => $request->strGender
-            ]);
+        for ($intLoop = 0; $intLoop < count($arrBodyAttributeID); $intLoop ++){
+            $value = new \stdClass();
+            $value->id = $arrBodyAttributeID[$intLoop];
+            $value->value = $arrValue[$intLoop];
+            
+            array_push($bodyAttributes, $value);
+        }   
+
+        try{
+
+            DB::beginTransaction();
+            $guardID = DB::table('tblguard')
+                ->select('intGuardID')
+                ->where('intAccountID', $accountID)
+                ->first();
+
+            DB::table('tblguard')
+                ->where('intGuardID', $guardID->intGuardID)
+                ->update([
+                    'strFirstName' => $request->strFirstName,
+                    'strMiddleName' => $request->strMiddleName,
+                    'strLastName' => $request->strLastName,
+                    'dateBirthday' => $request->dateBirthday,
+                    'strPlaceBirth' => $request->strPlaceBirth,
+                    'strContactNumberMobile' => $request->strContactNumberMobile,
+                    'strContactNumberLandline' => $request->strContactNumberLandline,
+                    'strCivilStatus' => $request->strCivilStatus,
+                    'strGender' => $request->strGender
+                ]);
+
+            DB::table('tblguardaddress')
+                ->where('intGuardID', $guardID->intGuardID)
+                ->update([
+                    'strAddress' => $request->strAddress,
+                    'intProvinceID' => $request->intProvinceID,
+                    'intCityID' => $request->intCityID
+                ]);
+
+            foreach($bodyAttributes as $value){
+                DB::table('tblguardbodyattribute')
+                    ->where('intGuardBodyAttributeID', $value->id)
+                    ->update([
+                        'strValue' => $value->value
+                    ]);
+            }
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+
+            
     }
 }
