@@ -36,7 +36,7 @@ class SecurityHomepageController extends Controller
             
             $guard = DB::table('tblguard')
                 ->join('tblguardlicense', 'tblguardlicense.intGuardID', '=', 'tblguard.intGuardID')
-                ->select('tblguard.intGuardID', 'tblguard.strFirstName', 'tblguard.strLastName', 'tblguardlicense.strLicenseNumber')
+                ->select('tblguard.intGuardID', 'tblguard.strFirstName', 'tblguard.strLastName', 'tblguardlicense.strLicenseNumber', 'tblguard.intStatusIdentifier')
                 ->where('tblguard.intGuardID', '=', $id)
                 ->first();
             
