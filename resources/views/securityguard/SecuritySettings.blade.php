@@ -545,7 +545,7 @@ $(document).ready(function(){
 			        }
 			    });//ajax
 			}else{
-				var toastContent = $('<span>Password are not match.</span>');
+				var toastContent = $('<span>Passwords does not match.</span>');
 				Materialize.toast(toastContent, 1500,'red', 'edit');
 			}
 		}else{
