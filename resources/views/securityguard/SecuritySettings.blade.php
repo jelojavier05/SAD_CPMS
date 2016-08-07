@@ -377,6 +377,7 @@ $(document).ready(function(){
         var id = $(this).children(":selected").attr("id");
         getCity(id);
     });
+<<<<<<< HEAD
 
 	function getCity(provinceID){
         var $selectDropdown = 

@@ -102,13 +102,13 @@
                                 
                                 
                                 <li  id="notification_li">
-                                    <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/adminInbox" class="tooltipped">
+                                    <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/securityhomepage" class="tooltipped">
                                         <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
                                         <span id="notification_count">3</span></a>
                                 </li>                                                                                                                                                                                                             
 								
-                                 <li><a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">store</i></a></li>
-                                <li><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>
+                                 <li id="notification_li"><a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/securityhomepage" class=" tooltipped"><i class="material-icons">store</i></a></li>
+                                <li id="notification_li"><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>
 							</ul>
         
 		
