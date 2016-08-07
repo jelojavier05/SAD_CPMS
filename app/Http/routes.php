@@ -110,6 +110,9 @@ Route::post('/securityhomepage/decline/guard', 'SecurityHomepageController@decli
 Route::get('/securityleaverequest', 'SecurityLeaveRequestController@index');
 Route::get('/securitychangelocation', 'SecurityChangeLocationController@index');
 Route::get('/securitysettings', 'SecuritySettingsController@index');
+Route::get('/securitysettings/get', 'SecuritySettingsController@getGuardInformation');
+Route::post('/securitysettings/checkpassword', 'SecuritySettingsController@checkPassword');
+Route::post('/securitysettings/updateDetail', 'SecuritySettingsController@updateDetail');
 
 //CLIENT INTERFACE ----------------------------------------------------
 

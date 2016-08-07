@@ -62,7 +62,6 @@ Delivery
 				    <div class="col s12" style="margin-top:5px; overflow:scroll; overflow-x:hidden; height:500px;">
 							  <div class="card grey darken-1">
 									<div class="card-content">
-								<!-------------------Delivered By:------------------->		
 										<div>
 											<span class = "card-title white-text">Delivered By:</span>
 										</div>
@@ -71,8 +70,6 @@ Delivery
 											<p id = 'deliveredBy'></p>
 										</div>
 
-								<!------------------Contact Number------------------>
-
 										<div>
 											<span class = "card-title white-text">Contact No.:</span>
 										</div>
@@ -80,8 +77,6 @@ Delivery
 										<div>
 											<p id = 'contactNumber'></p>
 										</div>
-										
-								<!------------------Items------------------>
 
 										<div>
 											<span class = "card-title white-text">Items:</span>

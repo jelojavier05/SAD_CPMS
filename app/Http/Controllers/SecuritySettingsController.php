@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Model\Province;
+use App\Model\City;
 use DB;
 
 class SecuritySettingsController extends Controller
@@ -15,17 +17,76 @@ class SecuritySettingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        $accountID = $request->session()->get('accountID');
+    public function index(Request $request){
 
-        $guard = DB::table('tblguard')
-            ->select('tblguard.strFirstName', 'tblguard.strLastName')
-            ->where('intAccountID', $accountID)
-            ->first();
-        
         return view('/securityguard/SecuritySettings');
     }
 
+    public function getGuardInformation(Request $request){
+        $accountID = $request->session()->get('accountID');
 
+        $guard = DB::table('tblguard')
+            ->join('tblguardaddress','tblguardaddress.intGuardID', '=', 'tblguard.intGuardID')
+            ->join('tblprovince', 'tblprovince.intProvinceID', '=', 'tblguardaddress.intProvinceID')
+            ->join('tblcity','tblcity.intCityID','=','tblguardaddress.intCityID')
+            ->select('tblguard.*','tblguardaddress.strAddress','tblprovince.strProvinceName','tblcity.strCityName', 'tblprovince.intProvinceID', 'tblcity.intCityID')
+            ->where('intAccountID', $accountID)
+            ->first();
+
+        $bodyAttributesGuard = DB::table('tblguard')
+            ->join('tblguardbodyattribute', 'tblguard.intGuardID', '=', 'tblguardbodyattribute.intGuardID')
+            ->join('tblbodyattribute', 'tblguardbodyattribute.intBodyAttributeID', '=', 'tblbodyattribute.intBodyAttributeID')
+            ->join('tblmeasurement', 'tblbodyattribute.intMeasurementID', '=', 'tblmeasurement.intMeasurementID')
+            ->select('tblmeasurement.strMeasurement', 'tblguardbodyattribute.strValue', 'tblguardbodyattribute.intBodyAttributeID', 'tblbodyattribute.strBodyAttributeName', 'tblguardbodyattribute.intGuardBodyAttributeID')
+            ->where('tblguard.intGuardID', '=', $guard->intGuardID)
+            ->get();
+
+        $provinces = Province::
+            where('deleted_at', null)
+                ->where('boolFlag',1)
+                ->get();
+
+        $guard->birthday = date('M d, Y', strtotime($guard->dateBirthday)); 
+        $guard->bodyAttribute = $bodyAttributesGuard;
+        $guard->provinces = $provinces;
+
+        return response()->json($guard);
+    }
+
+    public function checkPassword(Request $request){
+        $accountID = $request->session()->get('accountID');
+        $password = $request->password;
+        $account = DB::table('tblaccount')
+            ->select('strPassword')
+            ->where('intAccountID', $accountID)
+            ->first();
+        if ($account->strPassword == $password){
+            return response()->json(true);
+        }else{
+            return response()->json(false);
+        }
+    }
+
+    public function updateDetail(Request $request){
+        $accountID = $request->session()->get('accountID');
+
+        $guardID = DB::table('tblguard')
+            ->select('intGuardID')
+            ->where('intAccountID', $accountID)
+            ->first();
+
+        DB::table('tblguard')
+            ->where('intGuardID', $guardID->intGuardID)
+            ->update([
+                'strFirstName' => $request->strFirstName,
+                'strMiddleName' => $request->strMiddleName,
+                'strLastName' => $request->strLastName,
+                'dateBirthday' => $request->dateBirthday,
+                'strPlaceBirth' => $request->strPlaceBirth,
+                'strContactNumberMobile' => $request->strContactNumberMobile,
+                'strContactNumberLandline' => $request->strContactNumberLandline,
+                'strCivilStatus' => $request->strCivilStatus,
+                'strGender' => $request->strGender
+            ]);
+    }
 }
