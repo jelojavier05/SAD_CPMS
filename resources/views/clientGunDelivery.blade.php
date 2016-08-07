@@ -57,13 +57,13 @@ Delivery
 									<label for="orderID">Order ID</label>
 								</div>
                                 
-                                <div class="input-field col s3 offset-s9 pull-s9">
+                                <div class="input-field col s8 offset-s2 pull-s2">
 									<input  id="clientName" type="text" class="validate blue-text" readonly required="" aria-required="true" value = '{{$orderDetail->strClientName}}'>
 									<label for="clientName">Client Name</label>
 								</div>
                                 
                                 
-                                <div class="input-field col s3 offset-s9 pull-s9">
+                                <div class="input-field col s8 offset-s2 pull-s2">
 									<input  id="address" type="text" class="validate blue-text" readonly required="" aria-required="true" value = '{{$orderDetail->strAddress}}  {{$orderDetail->strCityName}}, {{$orderDetail->strProvinceName}}'>
 									<label for="address">Address</label>
 								</div>
