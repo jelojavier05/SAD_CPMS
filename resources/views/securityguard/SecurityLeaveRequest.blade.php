@@ -84,11 +84,11 @@ Security Leave Request
     <div class="card-content">
         <div class="row"></div>
       <span class="card-title activator grey-text text-darken-4">LEAVE APPLICATION FORM
-          <i class="material-icons right" style="font-size:3rem">view_headline</i></span>
+          <i class="material-icons right animated infinite flash" style="font-size:3rem">view_headline</i></span>
     </div>
     <div class="card-reveal sidenavhover">
         
-      <span class="card-title grey-text text-darken-4">Fill Up the Following<i class="material-icons right">close</i></span>
+      <span class="card-title grey-text text-darken-4">Fill Up the Following<i class="material-icons right ">close</i></span>
      
         <div class="row">
     <form class="col s12">
