@@ -100,7 +100,12 @@ Security Leave Request
             </div>
         </div>
                  
-        <center><a class='dropdown-button btn' href='#' data-activates='dropdown1'>LEAVE TYPE</a></center>
+        <center><select class="col s6 push-s3">
+					<option disabled selected>Leave Type</option>
+					<option>Sick</option>
+					<option>Maternity</option>
+					<option>Personal Leave of Absence</option>
+				</select></center>
 
   <!-- Dropdown Structure -->
   <ul id='dropdown1' class='dropdown-content'>
