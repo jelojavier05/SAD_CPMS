@@ -15,8 +15,7 @@ class SecurityLeaveRequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request){
         $accountID = $request->session()->get('accountID');
         $arrLeaveID = DB::table('tblleave')->get();
         $guardInformation = DB::table('tblguard')
@@ -45,69 +44,44 @@ class SecurityLeaveRequestController extends Controller
             ->with('guardLeave', $guardLeave);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function postLeaveRequest(Request $request){
+        try{
+            DB::beginTransaction();
+            $accountID = $request->session()->get('accountID');
+            $result = DB::table('tblguard')
+                ->select('intGuardID')
+                ->where('intAccountID',$accountID)
+                ->first();
+            $guardID = $result->intGuardID;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+            $result = DB::table('tblaccount')
+                ->select('intAccountID')
+                ->where('intAccountType', 3)
+                ->first();
+            $adminID = $result->intAccountID;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+            $inboxID = DB::table('tblinbox')
+                ->insertGetId([
+                    'intAccountIDSender' => $accountID,
+                    'intAccountIDReceiver' => $adminID,
+                    'strSubject' => 'Leave Request',
+                    'tinyintType' => 3
+                ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+            DB::table('tblguardleaverequest')
+                ->insert([
+                    'intGuardID' => $guardID,
+                    'intLeaveID' => $request->intLeaveID,
+                    'intInboxID' => $inboxID,
+                    'strReason' => $request->strReason,
+                    'dateStart' => $request->dateStart,
+                    'dateEnd' => $request->dateEnd,
+                    'boolStatus' => 1
+                ]);
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+            
     }
 }

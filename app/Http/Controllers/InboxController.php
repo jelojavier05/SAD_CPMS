@@ -33,7 +33,11 @@ class InboxController extends Controller
                     ->first();
                 $nameSender = $client->strClientName;
             }else if ($accountType == 2){
-                
+                $guard = DB::table('tblguard')
+                    ->select('strFirstName', 'strLastName')
+                    ->where('intAccountID', $value->intAccountIDSender)
+                    ->first();
+                $nameSender = $guard->strFirstName . ' ' . $guard->strLastName;
             }else if ($accountType == 3){
                 $nameSender = 'Admin';
             }

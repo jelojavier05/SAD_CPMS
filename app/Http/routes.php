@@ -109,8 +109,11 @@ Route::get('/securityInbox/get/clientinformation', 'SecurityHomepageController@g
 Route::post('/securityInbox/get/guard', 'SecurityHomepageController@readNewClient');
 Route::post('/securityInbox/accept/guard', 'SecurityHomepageController@acceptNewClient');
 Route::post('/securityInbox/decline/guard', 'SecurityHomepageController@declineNewClient');
+
 Route::get('/securityleaverequest', 'SecurityLeaveRequestController@index');
+Route::post('/securityleaverequest/post/leaverequest', 'SecurityLeaveRequestController@postLeaveRequest');
 Route::get('/securitychangelocation', 'SecurityChangeLocationController@index');
+
 Route::get('/securitysettings', 'SecuritySettingsController@index');
 Route::get('/securitysettings/get', 'SecuritySettingsController@getGuardInformation');
 Route::post('/securitysettings/checkpassword', 'SecuritySettingsController@checkPassword');

@@ -119,6 +119,7 @@ Inbox
 
 <script>
 $(document).ready(function(){
+    
     var guardWaiting= [];
     var guardChecked; //sesendan ng notification
     var guardHasNotification = []; //guards who have notification

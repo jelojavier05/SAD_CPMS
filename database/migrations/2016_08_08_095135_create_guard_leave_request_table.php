@@ -17,10 +17,10 @@ class CreateGuardLeaveRequestTable extends Migration
             $table->integer('intGuardID')->unsigned();
             $table->integer('intLeaveID')->unsigned();
             $table->integer('intInboxID')->unsigned();
-            $table->integer('intLeaveCount');
+            $table->string('strReason');
             $table->date('dateStart');
             $table->date('dateEnd');
-            $table->tinyInt('boolStatus'); //0 = rejected; 1 = waiting; 2 = accepted
+            $table->tinyInteger('boolStatus'); //0 = rejected; 1 = waiting; 2 = accepted
             
             $table->foreign('intGuardID')->references('intGuardID')->on('tblguard');
             $table->foreign('intLeaveID')->references('intLeaveID')->on('tblleave');

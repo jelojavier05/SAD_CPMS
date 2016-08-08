@@ -15,38 +15,22 @@ Security Leave Request
         <div class="col l6">
             <form class="card medium z-depth-1">
                 <div class="row"></div>
-                    <div class="row">
-                        <div class="col l12 push-l1">
-                            <div class="col l3">
-                                <i class="material-icons left" style="font-size:6rem">play_for_work
-                                </i> 
-                            </div>
-                            <div class="col l6">
-                                <div class="row"></div>
-                                <span class="black-text" style="font-size:20px;font-family:Myriad Pro">BASIC LEAVE
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row"></div>
                 <div class="row">
-                    <div class="col l12">
-                        <div class="col l6">
-                            <label for="test8">TYPES OF LEAVE</label><br>
-                            <input type="checkbox" id="test8" disabled="disabled" />
-                            <label for="test8">Sick</label><br>
-                            <input type="checkbox" id="test8" disabled="disabled" />
-                            <label for="test8">Maternity</label><br>
-                            <input type="checkbox" id="test8" disabled="disabled" />
-                            <label for="test8">Personal Leave of Absence</label>
+                    <div class="col l12 push-l1">
+                        <div class="col l3">
+                            <i class="material-icons left" style="font-size:6rem">play_for_work
+                            </i> 
                         </div>
                         <div class="col l6">
-                            <label for="test8">MAXIMUM LEAVES: 5</label><br>
-                            <label for="test8">REMAINING LEAVES: 3</label><br>  
-                            <label for="test8">NOTE!</label><br>
-                            <span class="ci"><bold>THE APPLICATION OF LEAVE MUST <br>BE <div class="blue-text">2 DAYS</div>PRIOR TO THE GIVEN DATE OF APPROVAL</bold></span>
+                            <div class="row"></div>
+                            <span class="black-text" style="font-size:20px;font-family:Myriad Pro">BASIC LEAVE
+                            </span>
                         </div>
                     </div>
+                </div>
+                <div class="row"></div>
+                <div class="row">
+                   
                 </div>
             </form>  
         </div>
@@ -147,9 +131,33 @@ Security Leave Request
         });
 
         $('#btnSend').click(function(){
-            var leaveCount = $('#selectLeave').val();
             if (checkInput() && checkDate()){
-                confirm('tama');
+                var dateStart = new Date($('#dateStart').val());
+                var dateEnd = new Date($('#dateEnd').val());
+                var strReason = $('#strReason').val();
+                $.ajax({
+                    type: "POST",
+                    url: "{{action('SecurityLeaveRequestController@postLeaveRequest')}}",
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                        intLeaveID: leaveID,
+                        dateStart: dateStart,
+                        dateEnd: dateEnd,
+                        strReason: $('#strReason').val() ,
+                    },
+                    success: function(data){
+                        confirm('success');
+                    },
+                    error: function(data){
+                        confirm('error');
+                    }
+                });//ajax
             }else{
                 confirm('mali');
             }
@@ -176,7 +184,7 @@ Security Leave Request
         function checkDate(){
             var notificationPeriod = $('#notificationPeriod' + leaveID).val();
             var dateStart = new Date($('#dateStart').val());
-            var notificationDay = new Date(moment().add(notificationPeriod, 'days').calendar('l'));
+            var notificationDay = new Date(moment({}).add(notificationPeriod, 'days').format('l'));
             if (getDaysDifference() > $('#selectLeave').val() || notificationDay > dateStart){
                 return false;
             }else{
