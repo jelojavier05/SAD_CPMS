@@ -274,25 +274,20 @@
 
            
 				<div>
-                                     <a href="#" class="brand-logo">
+                    
+                    
+                <a href="#" class="brand-logo">
 
                     <div class="row">
                         <div class="col l12">
                             <div class="col l6 push-l4">
-                            
-                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.5rem">Client and Personnel Management System</p>
-					
-                            
-                            
+                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.5rem">Client and Personnel Management System</p>     
                             </div>
-							
-                        
-                        
+		
                         </div>
-                    
-                    
+             
                     </div>
-                    	</a>
+                </a>
 					
 					
                     

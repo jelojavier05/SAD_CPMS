@@ -8,15 +8,17 @@ Security Settings
 @section('content')
 
 <div class="row">			
-	<div class="ci col s10 push-s1	" style="margin-top:25px;">	
+	<div class="ci col s10 push-s1">	
 		<ul class="collection with-header" id="collectionActive">
 			<li class="collection-header" ><h4 style="font-weight:bold;">Details
 					<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue right tooltipped" id = 'btnEdit'><i class="material-icons">mode_edit</i></a></h4>
-					<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnPassword' style="margin-top:-84px; margin-left:580px;"><i class="material-icons">vpn_key</i></a></h4>
+					<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnPassword' style="margin-top:-84px; margin-left:520px;"><i class="material-icons">vpn_key</i></a></h4>
 			</li>
-				<div >
-							
-					<li class="collection-item" style="font-weight:bold;">First Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Juan</div>
+				
+                    <div class="col l12">
+                        <div class="col l6">
+                       
+                        <li class="collection-item" style="font-weight:bold;">First Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Juan</div>
 					</li>
                     
                     <li class="collection-item" style="font-weight:bold;">Middle Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Hello</div>
@@ -31,7 +33,12 @@ Security Settings
 					<li class="collection-item" style="font-weight:bold;">Date of Birth:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;10/10/1995</div>
 					</li>
 
-					<li class="collection-item" style="font-weight:bold;">Place of Birth:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Makati City</div>
+                        
+                        
+                        </div>
+                         <div class="col l6">
+                            
+                        <li class="collection-item" style="font-weight:bold;">Place of Birth:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Makati City</div>
 					</li>
 
 					<li class="collection-item" style="font-weight:bold;">Contact Number (Mobile):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
@@ -45,6 +52,14 @@ Security Settings
 					
 					<li class="collection-item" style="font-weight:bold;">Gender:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Male</div>
 					</li>
+                        
+                        
+                        </div>
+                    
+                    
+                    </div>
+					
+					
 					
 					<li class="collection-item" style="font-weight:bold;">Body Attributes
 						<div style="font-weight:normal;" id = ''>
