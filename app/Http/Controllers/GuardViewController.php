@@ -57,7 +57,8 @@ class GuardViewController extends Controller
             ->join('tblguardbodyattribute', 'tblguard.intGuardID', '=', 'tblguardbodyattribute.intGuardID')
             ->join('tblbodyattribute', 'tblguardbodyattribute.intBodyAttributeID', '=', 'tblbodyattribute.intBodyAttributeID')
             ->join('tblmeasurement', 'tblbodyattribute.intMeasurementID', '=', 'tblmeasurement.intMeasurementID')
-            ->select('tblmeasurement.strMeasurement', 'tblguardbodyattribute.strValue', 'tblguardbodyattribute.intBodyAttributeID', 'tblbodyattribute.strBodyAttributeName')->where('tblguard.intGuardID', '=', $guardID)
+            ->select('tblmeasurement.strMeasurement', 'tblguardbodyattribute.strValue', 'tblguardbodyattribute.intBodyAttributeID', 'tblbodyattribute.strBodyAttributeName')
+            ->where('tblguard.intGuardID', '=', $guardID)
             ->get();
         
         $bodyAttributes = DB::table('tblbodyattribute')

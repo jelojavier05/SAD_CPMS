@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Model\Province;
+use App\Model\City;
+use DB;
 
 class SecuritySettingsController extends Controller
 {
@@ -14,74 +17,121 @@ class SecuritySettingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(Request $request){
+
         return view('/securityguard/SecuritySettings');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function getGuardInformation(Request $request){
+        $accountID = $request->session()->get('accountID');
+
+        $guard = DB::table('tblguard')
+            ->join('tblguardaddress','tblguardaddress.intGuardID', '=', 'tblguard.intGuardID')
+            ->join('tblprovince', 'tblprovince.intProvinceID', '=', 'tblguardaddress.intProvinceID')
+            ->join('tblcity','tblcity.intCityID','=','tblguardaddress.intCityID')
+            ->select('tblguard.*','tblguardaddress.strAddress','tblprovince.strProvinceName','tblcity.strCityName', 'tblprovince.intProvinceID', 'tblcity.intCityID')
+            ->where('intAccountID', $accountID)
+            ->first();
+
+        $bodyAttributesGuard = DB::table('tblguard')
+            ->join('tblguardbodyattribute', 'tblguard.intGuardID', '=', 'tblguardbodyattribute.intGuardID')
+            ->join('tblbodyattribute', 'tblguardbodyattribute.intBodyAttributeID', '=', 'tblbodyattribute.intBodyAttributeID')
+            ->join('tblmeasurement', 'tblbodyattribute.intMeasurementID', '=', 'tblmeasurement.intMeasurementID')
+            ->select('tblmeasurement.strMeasurement', 'tblguardbodyattribute.strValue', 'tblguardbodyattribute.intBodyAttributeID', 'tblbodyattribute.strBodyAttributeName', 'tblguardbodyattribute.intGuardBodyAttributeID')
+            ->where('tblguard.intGuardID', '=', $guard->intGuardID)
+            ->get();
+
+        $provinces = Province::
+            where('deleted_at', null)
+                ->where('boolFlag',1)
+                ->get();
+
+        $guard->birthday = date('M d, Y', strtotime($guard->dateBirthday)); 
+        $guard->bodyAttribute = $bodyAttributesGuard;
+        $guard->provinces = $provinces;
+
+        return response()->json($guard);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function checkPassword(Request $request){
+        $accountID = $request->session()->get('accountID');
+        $password = $request->password;
+        $account = DB::table('tblaccount')
+            ->select('strPassword')
+            ->where('intAccountID', $accountID)
+            ->first();
+        if ($account->strPassword == $password){
+            return response()->json(true);
+        }else{
+            return response()->json(false);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function updateDetail(Request $request){
+        $accountID = $request->session()->get('accountID');
+
+        $bodyAttributes = array(); 
+        $arrBodyAttributeID = $request->guardBodyAttributeID;
+        $arrValue = $request->guardBodyAttributeValue;
+
+        for ($intLoop = 0; $intLoop < count($arrBodyAttributeID); $intLoop ++){
+            $value = new \stdClass();
+            $value->id = $arrBodyAttributeID[$intLoop];
+            $value->value = $arrValue[$intLoop];
+            
+            array_push($bodyAttributes, $value);
+        }   
+
+        try{
+
+            DB::beginTransaction();
+            $guardID = DB::table('tblguard')
+                ->select('intGuardID')
+                ->where('intAccountID', $accountID)
+                ->first();
+
+            DB::table('tblguard')
+                ->where('intGuardID', $guardID->intGuardID)
+                ->update([
+                    'strFirstName' => $request->strFirstName,
+                    'strMiddleName' => $request->strMiddleName,
+                    'strLastName' => $request->strLastName,
+                    'dateBirthday' => $request->dateBirthday,
+                    'strPlaceBirth' => $request->strPlaceBirth,
+                    'strContactNumberMobile' => $request->strContactNumberMobile,
+                    'strContactNumberLandline' => $request->strContactNumberLandline,
+                    'strCivilStatus' => $request->strCivilStatus,
+                    'strGender' => $request->strGender
+                ]);
+
+            DB::table('tblguardaddress')
+                ->where('intGuardID', $guardID->intGuardID)
+                ->update([
+                    'strAddress' => $request->strAddress,
+                    'intProvinceID' => $request->intProvinceID,
+                    'intCityID' => $request->intCityID
+                ]);
+
+            foreach($bodyAttributes as $value){
+                DB::table('tblguardbodyattribute')
+                    ->where('intGuardBodyAttributeID', $value->id)
+                    ->update([
+                        'strValue' => $value->value
+                    ]);
+            }
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }       
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    public function updatePassword(Request $request){
+        $accountID = $request->session()->get('accountID');
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        DB::table('tblaccount')
+            ->where('intAccountID', $accountID)
+            ->update([
+                'strPassword' => $request->strNewPassword
+            ]);
     }
 }

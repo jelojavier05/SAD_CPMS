@@ -363,8 +363,15 @@ $(document).ready(function() {
                 
             },
             success: function(data){
-                swal("Success!", "Record has been Added!", "success");
-            },
+                swal({
+						title: "Success!",
+						text: "Contract is Completed!",
+						type: "success"
+					},
+					function(){
+						window.location.href = '{{ URL::to("/dashboaradmin") }}';
+						});
+            	},
             error: function(data){
                 var toastContent = $('<span>Error Occured. </span>');
                 Materialize.toast(toastContent, 1500,'red', 'edit');

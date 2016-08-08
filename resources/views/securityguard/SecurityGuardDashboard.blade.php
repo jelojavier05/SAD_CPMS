@@ -174,6 +174,7 @@
                                     </div>
                                 
                                 
+<<<<<<< HEAD
                                 </div>
                              
 
@@ -193,6 +194,19 @@
                     <li><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>
                
                 </ul>
+=======
+                                <li  id="notification_li">
+                                    <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/securityhomepage" class="tooltipped">
+                                        <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
+                                        <span id="notification_count">3</span></a>
+                                </li>                                                                                                                                                                                                             
+								
+                                 <li id="notification_li"><a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/securityhomepage" class=" tooltipped"><i class="material-icons">store</i></a></li>
+                                <li id="notification_li"><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>
+							</ul>
+        
+		
+>>>>>>> e1a0ba640157b124340d4d12d4f4c82d42033c1d
         </div>
     
 </nav>

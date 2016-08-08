@@ -322,8 +322,15 @@ Client
 
                     },
                     success: function(data){
-                        swal("Success!", "Record has been Added!", "success");
-                        window.location.href = '{{ URL::to("/clientView") }}';
+                        swal({
+								title: "Success!",
+								text: "Contract is Completed!",
+								type: "success"
+							},
+							function(){
+								window.location.href = '{{ URL::to("/clientView") }}';
+							});
+                        
                     },
                     error: function(data){
                         console.log(data);
