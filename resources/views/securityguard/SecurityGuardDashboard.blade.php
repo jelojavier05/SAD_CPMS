@@ -31,6 +31,7 @@
           <script src="{!! URL::asset('../js/init.js') !!}"></script>
           <script src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
           <script src="{!! URL::asset('../sweetalert.min.js') !!}"></script>
+          <script src="{!! URL::asset('../js/moment.min.js') !!}"></script>
      <!--  <script src="{!! URL::asset('../datatable.js') !!}"></script>-->
      <!--  <script src="{!! URL::asset('../dataTables.material.min.js') !!}"></script>-->
      <!--  <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>-->

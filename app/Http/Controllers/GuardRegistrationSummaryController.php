@@ -116,6 +116,21 @@ class GuardRegistrationSummaryController extends Controller
                     'intRequirementsID' => $value->id
                 ]);    
             }
+
+            $leaves = DB::table('tblleave')
+                ->select('*')
+                ->where('boolFlag', 1)
+                ->where('deleted_at', null)
+                ->get();
+
+            foreach($leaves as $value){
+                DB::table('tblguardleave')
+                    ->insert([
+                        'intGuardID' => $id,
+                        'intLeaveID' => $value->intLeaveID,
+                        'intLeaveCount' => $value->intLeaveCount
+                    ]);
+            }
             
             $request->session()->forget('personalData');
             $request->session()->forget('educationalBackground');
