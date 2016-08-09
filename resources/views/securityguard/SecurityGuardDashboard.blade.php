@@ -63,7 +63,7 @@
       <nav class="blue darken-4">
         
          <div class="nav-wrapper">
-                <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
+<!--                <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>-->
                     
 <!--					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >-->
 				<div>
