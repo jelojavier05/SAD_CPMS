@@ -173,8 +173,8 @@ Announcement
 		<div class="row">
 			<div class="col s12">
 				<ul class="collection with-header" id="collectionActive">
-					<li class="collection-header"><div style="font-size:18px;" id = "">&nbsp;TEST SUBJECT</div></li>
-					<li class="collection-item"><p id = ''>The practice of writing paragraphs is essential to good writing. Paragraphs help to break up large chunks of text and makes the content easier for readers to digest. They guide the reader through your argument by focusing on one main idea or goal. However, knowing how to write a good, well-structured paragraph can be little tricky. Read the guidelines below and learn how to take your paragraph writing skills from good to great!</p>
+					<li class="collection-header"><div style="font-size:18px;" id = "strSubjectOpen">&nbsp;</div></li>
+					<li class="collection-item"><p id = 'strMessageOpen'></p>
                     </li>
 				</ul>
 			</div>
@@ -182,7 +182,7 @@ Announcement
 	</div>
 		
 	<div class="modal-footer ci modal-close" style="background-color: #00293C;">
-		<button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK
+		<button class="btn green waves-effect waves-light" style="margin-right: 30px;">OK
             </button>
 	</div>
 </div>
@@ -218,9 +218,10 @@ $(document).ready(function(){
 		                buttonRead,
 		                buttonEdit,
 		                buttonDelete,
-		                '<h>' + value.intAnnouncementID +'</h>',
-		                '<h>' + value.dateFormatedCreated +'</h>',
-		                '<h>' + value.strSubject +'</h>'
+		                '<h id = "id'+value.intAnnouncementID+'">' + value.intAnnouncementID +'</h>',
+		                '<h id = "date'+value.intAnnouncementID+'">' + value.dateFormatedCreated +'</h>',
+		                '<h id = "subject'+value.intAnnouncementID+'">' + value.strSubject +'</h>' + 
+		                '<input type = "hidden" id = "message'+value.intAnnouncementID+'" value = "'+value.strMessage+'">'
 		            ]).draw();
 	            });
 	        },
@@ -275,6 +276,11 @@ $(document).ready(function(){
 	}
 
 	$('#tableAnnouncement').on('click', '.buttonOpen', function(){
+        var strMessageOpen = 'message' + this.id;
+        var strSubjectOpen = 'subject' + this.id;
+
+        $('#strMessageOpen').text($('#' + strMessageOpen).val());
+        $('#strSubjectOpen').text($('#' + strSubjectOpen).text());
         $('#modalopenAnnouncement').openModal();       
     });
 	
