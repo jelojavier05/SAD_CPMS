@@ -136,7 +136,7 @@ Route::get('/adminannouncement', 'AdminAnnouncementViewController@index');
 Route::get('/adminannouncement/get', 'AdminAnnouncementViewController@get');
 Route::post('/adminannouncement/create', 'AdminAnnouncementViewController@create');
 Route::post('/adminannouncement/update', 'AdminAnnouncementViewController@update');
-
+Route::post('/adminannouncement/delete', 'AdminAnnouncementViewController@delete');
 
 Route::get('/admin/home', 'AdminHomeController@index');
 

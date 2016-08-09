@@ -51,4 +51,12 @@ class AdminAnnouncementViewController extends Controller
     			'strMessage' => $request->strMessage
     		]);
     }
+
+    public function delete(Request $request){
+    	$id = Input::get('id');
+
+    	DB::table('tblannouncement')
+    		->where('intAnnouncementID', $id)
+    		->update(['boolStatus' => 0]);
+    }
 }

@@ -211,7 +211,7 @@ $(document).ready(function(){
 	            $.each(data, function(index, value){
 	            	var buttonRead = '<button class="btn blue darken-4 buttonOpen" id ="'+value.intAnnouncementID+'"><i class="material-icons">keyboard_arrow_right</i></button>';
 	            	var buttonEdit = '<button class="btn col s12 buttonEdit" name="" id="'+value.intAnnouncementID+'"><i class="material-icons">edit</i></button>'; 
-	            	var buttonDelete = '<button class="buttonDelete btn red col s12" id="'+value.int
+	            	var buttonDelete = '<button class="buttonDelete btn red col s12" id="'+value.intAnnouncementID
 	            	+'" ><i class="material-icons">delete</i></button>';
 
 	            	table.row.add([
@@ -332,16 +332,40 @@ $(document).ready(function(){
     });
 	
 	$('#tableAnnouncement').on('click', '.buttonDelete', function(){
-            
-	    var deleteID =this.id;  
-	    swal({title: "Are you sure?",   
-             text: "Record will be deleted!",   
-             type: "warning",   
-             showCancelButton: true,   
-             confirmButtonColor: "#DD6B55",   
-             confirmButtonText: "Yes, delete it!",   
-             closeOnConfirm: false 	 
-	    });
+        var deleteID = this.id;
+	    swal({   title: "Are you sure?",   
+				  	 text: "Record will be deleted!",   
+				     type: "warning",   
+				     showCancelButton: true,   
+				     confirmButtonColor: "#DD6B55",   
+				     confirmButtonText: "Yes, delete it!",   
+				     closeOnConfirm: false 
+				 }, 
+				 function(){
+					$.ajax({
+
+                type: "POST",
+                url: "/adminannouncement/delete?id=" + deleteID,
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+
+                },
+                success: function(data) {
+					swal("Deleted!", "Announcement has been successfully deleted!", "success");
+					refreshTable();
+				  },
+			  	error: function(data) {
+					swal("Oops", "We couldn't connect to the server!", "error");
+			  	  }
+
+            	});//ajax
+			});
 	});
 });
 </script>
