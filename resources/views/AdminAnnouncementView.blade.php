@@ -82,7 +82,7 @@ Announcement
 				 <div class="row"></div>  
 				 <div class="input-field col s12">
 					 <i class="material-icons prefix" style="font-size:35px;">announcement</i>
-					 <textarea placeholder=" " class="materialize-textarea" id="strMessageAdd" type="text" length="480"></textarea>
+					 <textarea placeholder=" " class="materialize-textarea" id="strMessageAdd" type="text" length="224"></textarea>
 					 <label for="input_text">Content</label> 
 					 
 				 </div>
