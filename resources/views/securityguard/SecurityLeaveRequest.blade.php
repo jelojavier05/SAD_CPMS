@@ -11,21 +11,40 @@ Security Leave Request
 
 <!--BASIC LEAVE-->
 <div class="row" class="ci">
-    <div class="col l12">
-        <div class="col l6">
+    <div class="col s10 push-s2">
+        <div class="col s6">
             <form class="card medium z-depth-1">
                 <div class="row"></div>
                 <div class="row">
                     <div class="col l12 push-l1">
-                        <div class="col l3">
+                        <div class="col s6">
                             <i class="material-icons left" style="font-size:6rem">play_for_work
                             </i> 
                         </div>
-                        <div class="col l6">
+                        <div class="col s6 pull-s3">
                             <div class="row"></div>
                             <span class="black-text" style="font-size:20px;font-family:Myriad Pro">BASIC LEAVE
                             </span>
                         </div>
+						<div class="col s10">
+							<table>
+								<thead>
+									<tr>
+										<th>Leave Type</th>
+										<th>Leave Count</th>
+										<th>Notification Period</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<tr>
+										<td>Sick</td>
+										<td>7</td>
+										<td>1</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
                     </div>
                 </div>
                 <div class="row"></div>
@@ -36,7 +55,7 @@ Security Leave Request
         </div>
         <!-- END OF BASIC LEAVE -->
         <!-- LEAVE FORM -->
-        <div class="col l6">
+        <div class="col s6">
             <form class="card medium z-depth-1">
                 <div class="row"></div>
                 <div class="col l12">
