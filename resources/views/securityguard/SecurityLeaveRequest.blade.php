@@ -27,12 +27,12 @@ Security Leave Request
                             </span>
                         </div>
 						<div class="col s10">
-							<table>
+							<table class ="striped">
 								<thead>
 									<tr>
-										<th>Leave Type</th>
-										<th>Leave Count</th>
-										<th>Notification Period</th>
+										<th class="grey lighten-1">Leave Type</th>
+										<th class="grey lighten-1">Leave Count</th>
+										<th class="grey lighten-1">Notification Period</th>
 									</tr>
 								</thead>
 								
