@@ -16,7 +16,7 @@ class CreateAnnouncementTable extends Migration
             $table->increments('intAnnouncementID');
             $table->string('strSubject');
             $table->string('strMessage');
-            $table->tinyInteger('boolStatus');
+            $table->tinyInteger('boolStatus')->default(1);
             $table->timestamp('datetimeCreated')->useCurrent = true;
 
         });

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 
 class AdminAnnouncementViewController extends Controller
 {
@@ -20,6 +21,10 @@ class AdminAnnouncementViewController extends Controller
     }
 
     public function create(Request $request){
-    	
+    	DB::table('tblannouncement')
+    		->insert([
+    			'strSubject' => $request->strSubject,
+    			'strMessage' => $request->strMessage
+    		]);
     }
 }

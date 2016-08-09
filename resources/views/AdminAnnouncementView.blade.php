@@ -255,8 +255,11 @@ $(document).ready(function(){
 	            strSubject: strSubject,
 	            strMessage: strMessage
 	        },
-	        success: function(data)
-
+	        success: function(data){
+	        	$('#strSubjectAdd').val('');
+	        	$('#strMessageAdd').val('');
+	        	$('#modalcreateAnnouncement').closeModal();
+                swal("Success!", "Announcement is created", "success");
 	        },
 	        error: function(data){
 	        }
