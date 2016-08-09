@@ -17,6 +17,7 @@ Inbox
 		<div id="message">
 			<div class="container-fluid grey lighten-2">	
 				<table class="striped" id="dataTableMsg">
+					<button class="btn blue buttonTest modal-trigger" href="#modalLeaveRequestApproval">Test</button>
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
@@ -71,12 +72,69 @@ Inbox
         				<ul class="collection with-header" id="collectionActive">
         					<li class="collection-header" style="font-weight:bold;">Number of Guards Needed:<div style="font-size:18px;" id = "guardNumber">&nbsp;</div><button class="btn blue right" style="margin-top:-40px;" id="btnSuggested">
         								Suggested
-        								</button></li>
+        								</button>
+							</li>
         					<li class="collection-item">
         						<div class="row">
         							<div class="col s12">
         								
         								<table class="striped white" style="border-radius:10px; width:100%;" id="dataTableSendNoti">
+        									<thead>
+        										<th class="grey lighten-1" style="width:10px;"></th>
+        										<th class="grey lighten-1">ID</th>
+        										<th class="grey lighten-1">First Name</th>
+        										<th class="grey lighten-1">Last Name</th>
+        										<th class="grey lighten-1">Province</th>
+        										<th class="grey lighten-1">City</th>
+        									</thead>
+        									<tbody>
+        										
+        									</tbody>
+        								</table>
+        							</div>
+        						</div>
+                            </li>
+        			</div>
+        		</div>
+        	</div>
+        	<!-- button -->
+        	<div class="modal-footer ci" style="background-color: #00293C;">
+        		<button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationNewClient" style="margin-right: 30px;">Send<i class="material-icons right">send</i>
+                </button>
+        	</div>
+        </div>
+			
+<!--		modal sg leave request approval-->
+		<div id="modalLeaveRequestApproval" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:630px; margin-top:-50px;">
+            <div class="modal-header">
+              	<div class="h">
+        			<h3><center>Message</center></h3>  
+        		</div>
+            </div>
+        	
+        	<div class="modal-content">
+        		<div class="row">
+        			<div class="col s12">
+        				<ul class="collection with-header" id="collectionActive">
+							<li class="collection-header" style="font-weight:bold;">
+								<div class="row">
+									<div class="col s6">	
+										Guard:<div style="font-size:18px;" id = "">&nbsp;Lebron James</div>
+									</div>
+									<div class="col s6">
+										Client:<div style="font-size:18px;" id = "">&nbsp;Manila Hotel</div>
+									</div>
+								</div>
+					
+							</li>
+							
+							<li class="collection-header" style="font-weight:bold;">Reason:<div style="font-size:18px;" id = "guardNumber">&nbsp;</div>
+							</li>
+        					<li class="collection-item">
+        						<div class="row">
+        							<div class="col s12">
+        								
+        								<table class="striped white" style="border-radius:10px; width:100%;" id="dataTableRequestSendNoti">
         									<thead>
         										<th class="grey lighten-1" style="width:10px;"></th>
         										<th class="grey lighten-1">ID</th>
@@ -109,6 +167,8 @@ Inbox
                 </button>
         	</div>
         </div>
+			
+<!--			modal sg leave request approval end-->
 		
 	</div>
 </div>
@@ -365,6 +425,19 @@ $(document).ready(function(){
      });
 
     $('#dataTableSendNoti').DataTable({
+         "columns": [
+        { "orderable": false },
+        null,
+        null,
+        null,
+        null,
+        null
+        ] ,  
+        "pageLength":5,
+        "lengthMenu": [5,10,15,20]
+     });
+	
+	$('#dataTableRequestSendNoti').DataTable({
          "columns": [
         { "orderable": false },
         null,
