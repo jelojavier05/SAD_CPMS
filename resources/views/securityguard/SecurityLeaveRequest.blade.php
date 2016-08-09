@@ -37,11 +37,13 @@ Security Leave Request
 								</thead>
 								
 								<tbody>
-									<tr>
-										<td>Sick</td>
-										<td>7</td>
-										<td>1</td>
+									@foreach($guardLeave as $value)
+                                    <tr>
+									   <td>{{$value->strLeaveType}}</td>
+                                       <td>{{$value->intLeaveCount}}</td>
+                                       <td>{{$value->intNotificationPeriod}}</td>
 									</tr>
+                                    @endforeach
 								</tbody>
 							</table>
 						</div>
