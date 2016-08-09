@@ -59,7 +59,7 @@ Announcement
                                     </td>
 
                                     <td>
-                                        <button class="btn red col s12" id="" >
+                                        <button class="buttonDelete btn red col s12" id="" >
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </td>
@@ -242,6 +242,19 @@ Announcement
 	$('#dataTable').on('click', '.buttonEdit', function(){
             $('#modaleditAnnouncement').openModal();       
         });
+	
+	$('#dataTable').on('click', '.buttonDelete', function(){
+            
+            var deleteID =this.id;  
+            swal({   title: "Are you sure?",   
+                     text: "Record will be deleted!",   
+                     type: "warning",   
+                     showCancelButton: true,   
+                     confirmButtonColor: "#DD6B55",   
+                     confirmButtonText: "Yes, delete it!",   
+                     closeOnConfirm: false 
+                 })
+	});
 	
 	
 
