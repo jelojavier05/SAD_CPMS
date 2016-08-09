@@ -11,7 +11,6 @@ Route::get('/adminInbox/get/guardhasnotification', 'AdminInboxController@getGuar
 Route::get('/adminInbox/get/message', 'AdminInboxController@getMessage');
 
 
-
 Route::get('/crm/home', 'CRMHomeController@index');
 
 Route::get('/gunView', 'GunViewController@index');
@@ -134,6 +133,7 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
 Route::get('/pdfcontract', 'PDFContractController@index');
 
 Route::get('/adminannouncement', 'AdminAnnouncementViewController@index');
+Route::post('/adminannouncement/create', 'AdminAnnouncementViewController@create');
 
 
 

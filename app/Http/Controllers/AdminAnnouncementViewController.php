@@ -18,4 +18,8 @@ class AdminAnnouncementViewController extends Controller
     {   
         return view('/AdminAnnouncementView');
     }
+
+    public function create(Request $request){
+    	
+    }
 }

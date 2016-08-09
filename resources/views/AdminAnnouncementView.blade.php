@@ -92,7 +92,7 @@ Announcement
 				 <div class="row"></div>  
 				 <div class="input-field col s8">
 					 <i class="material-icons prefix" style="font-size:35px;">announcement</i>
-					 <input placeholder=" " id="" type="text" class="validate" name = "" required="" aria-required="true">
+					 <input placeholder=" " id="strSubjectAdd" type="text" class="validate" name = "" required="" aria-required="true">
 					 <label for="">Subject</label> 
 					 
 				 </div>
@@ -104,19 +104,17 @@ Announcement
 				 <div class="row"></div>  
 				 <div class="input-field col s12">
 					 <i class="material-icons prefix" style="font-size:35px;">announcement</i>
-					 <textarea placeholder=" " class="materialize-textarea" id="" type="text" length="480"></textarea>
+					 <textarea placeholder=" " class="materialize-textarea" id="strMessageAdd" type="text" length="480"></textarea>
 					 <label for="input_text">Content</label> 
 					 
 				 </div>
 			</div>
 			
-			
-			
 		</div>
 	</div>
 		
-	<div class="modal-footer ci modal-close" style="background-color: #00293C;">
-		<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "">Save
+	<div class="modal-footer ci" style="background-color: #00293C;">
+		<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnAdd">Save
 			<i class="material-icons right">send</i>
 		</button>
 	</div>
@@ -218,46 +216,90 @@ Announcement
 @stop
 
 @section('script')
+
 <script>
- $("#dataTable").DataTable({             
-	 "columns": [     
-		 {"orderable": false},
-		 {"orderable": false},
-		 {"orderable": false},
-		 null,
-		 null,
-		 null
-	 ] ,  
-	 "pageLength":5,
-	 "lengthMenu": [5,10,15,20],
-					
-			});
-	
-	
-	
+$(document).ready(function(){
+	$('#btnAdd').click(function(){
+		var strSubject = $('#strSubjectAdd').val().trim();
+		var strMessage = $('#strMessageAdd').val().trim();
+		if (checkInput(strSubject, strMessage)){
+			sendData(strSubject, strMessage);
+		}else{
+			var toastContent = $('<span>Please check your input.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
+	});
+
+	function checkInput(strSubject, strMessage){
+		
+
+		if (strSubject == '' || strMessage == ''){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	function sendData(strSubject, strMessage){
+		$.ajax({
+	        type: "POST",
+	        url: "{{action('AdminAnnouncementViewController@create')}}",
+	        beforeSend: function (xhr) {
+	            var token = $('meta[name="csrf_token"]').attr('content');
+
+	            if (token) {
+	                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+	            }
+	        },
+	        data: {
+	            strSubject: strSubject,
+	            strMessage: strMessage
+	        },
+	        success: function(data)
+
+	        },
+	        error: function(data){
+	        }
+	    });//ajax
+	}
+
 	$('#dataTable').on('click', '.buttonOpen', function(){
-            $('#modalopenAnnouncement').openModal();       
-        });
+        $('#modalopenAnnouncement').openModal();       
+    });
 	
 	$('#dataTable').on('click', '.buttonEdit', function(){
-            $('#modaleditAnnouncement').openModal();       
-        });
+        $('#modaleditAnnouncement').openModal();       
+    });
 	
 	$('#dataTable').on('click', '.buttonDelete', function(){
             
-            var deleteID =this.id;  
-            swal({   title: "Are you sure?",   
-                     text: "Record will be deleted!",   
-                     type: "warning",   
-                     showCancelButton: true,   
-                     confirmButtonColor: "#DD6B55",   
-                     confirmButtonText: "Yes, delete it!",   
-                     closeOnConfirm: false 
-                 })
+	    var deleteID =this.id;  
+	    swal({title: "Are you sure?",   
+             text: "Record will be deleted!",   
+             type: "warning",   
+             showCancelButton: true,   
+             confirmButtonColor: "#DD6B55",   
+             confirmButtonText: "Yes, delete it!",   
+             closeOnConfirm: false 	 
+	    });
 	});
-	
-	
+});
+</script>
 
+
+<script>
+$("#dataTable").DataTable({             
+ "columns": [     
+ {"orderable": false},
+ {"orderable": false},
+ {"orderable": false},
+ null,
+ null,
+ null
+ ] ,  
+ "pageLength":5,
+ "lengthMenu": [5,10,15,20],		
+});
 </script>
 
 <!--zzzz-->

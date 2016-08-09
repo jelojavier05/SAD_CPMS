@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AddAccountIdFkColumn' => $baseDir . '/database/migrations/2016_07_10_230402_add_account_id_fk_column.php',
     'CreateAccountTable' => $baseDir . '/database/migrations/2016_07_10_225221_create_account_table.php',
+    'CreateAnnouncementTable' => $baseDir . '/database/migrations/2016_08_09_032512_create_announcement_table.php',
     'CreateArmedServiceTable' => $baseDir . '/database/migrations/2016_02_28_080305_create_armed_service_table.php',
     'CreateBodyAttribute' => $baseDir . '/database/migrations/2016_07_06_170814_create_body_attribute.php',
     'CreateCityTable' => $baseDir . '/database/migrations/2016_06_20_172410_create_city_table.php',
@@ -22,7 +23,7 @@ return array(
     'CreateGuardArmedserviceTable' => $baseDir . '/database/migrations/2016_07_04_033854_create_guard_armedservice_table.php',
     'CreateGuardBodyattributeTable' => $baseDir . '/database/migrations/2016_07_06_171018_create_guard_bodyattribute_table.php',
     'CreateGuardGovernmentexamTable' => $baseDir . '/database/migrations/2016_07_04_052613_create_guard_governmentexam_table.php',
-    'CreateGuardLeaveRequestTable' => $baseDir . '/database/migrations/2016_08_08_095134_create_guard_leave_request_table.php',
+    'CreateGuardLeaveRequestTable' => $baseDir . '/database/migrations/2016_08_08_095135_create_guard_leave_request_table.php',
     'CreateGuardLeaveTable' => $baseDir . '/database/migrations/2016_08_07_235337_create_guard_leave_table.php',
     'CreateGuardRequirementTable' => $baseDir . '/database/migrations/2016_07_10_134104_create_guard_requirement_table.php',
     'CreateGuardTable' => $baseDir . '/database/migrations/2016_07_03_201700_create_guard_table.php',
