@@ -199,6 +199,24 @@
 							
 							
 					
+					<li class="bold" style="width:280px;">
+								<a class="collapsible-header waves-effect waves-blue swa" href="/adminannouncement"><i class="material-icons">announcement</i><strong>Announcements</strong></a>
+                            <div class="collapsible-body grey lighten-2">
+<!--
+                                <ul>
+                                            
+                                  
+									
+									
+                                           
+                                </ul>
+-->
+                            </div>
+					</li>		
+					
+							
+							
+							
 							
 					<li class="bold" style="width:280px;">
 								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView"><i class="material-icons">settings_input_component</i><strong>Settings</strong></a>
@@ -214,6 +232,8 @@
 -->
                             </div>
 					</li>
+							
+							
 					
 							
 <!--

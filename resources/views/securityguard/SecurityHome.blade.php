@@ -63,6 +63,7 @@ Security Settings
 					<li class="collection-header"><div style="font-size:18px;" id = "">&nbsp;TEST SUBJECT</div></li>
 					<li class="collection-item"><p id = ''>The practice of writing paragraphs is essential to good writing. Paragraphs help to break up large chunks of text and makes the content easier for readers to digest. They guide the reader through your argument by focusing on one main idea or goal. However, knowing how to write a good, well-structured paragraph can be little tricky. Read the guidelines below and learn how to take your paragraph writing skills from good to great!</p>
                     </li>
+				</ul>
 			</div>
 		</div>
 	</div>
