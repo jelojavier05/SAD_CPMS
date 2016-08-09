@@ -116,7 +116,7 @@ Announcement
                                             
 				<div class="row"></div>  
 				<div class="input-field col s2">
-					<input  id="" type="text" class="validate"  name = "" readonly required="" aria-required="true" value = "1">
+					<input  id="strAnnouncementIDEdit" type="text" class="validate"  name = "" readonly required="" aria-required="true" value = "1">
 					<label for="">ID</label> 
 
 				</div>
@@ -128,7 +128,7 @@ Announcement
 				 <div class="row"></div>  
 				 <div class="input-field col s8">
 					 <i class="material-icons prefix" style="font-size:35px;">announcement</i>
-					 <input placeholder=" " id="" type="text" class="validate" name = "" required="" aria-required="true" value="TEST 1">
+					 <input placeholder=" " id="strSubjectEdit" type="text" class="validate" name = "" required="" aria-required="true" value="TEST 1">
 					 <label for="">Subject</label> 
 					 
 				 </div>
@@ -140,7 +140,7 @@ Announcement
 				 <div class="row"></div>  
 				 <div class="input-field col s12">
 					 <i class="material-icons prefix" style="font-size:35px;">announcement</i>
-					 <textarea  class="materialize-textarea" id="" type="text" length="480">The practice of writing paragraphs is essential to good writing. Paragraphs help to break up large chunks of text and makes the content easier for readers to digest. They guide the reader through your argument by focusing on one main idea or goal. However, knowing how to write a good, well-structured paragraph can be little tricky. Read the guidelines below and learn how to take your paragraph writing skills from good to great!</textarea>
+					 <textarea  class="materialize-textarea" id="strMessageEdit" type="text" length="480" placeholder=" "></textarea>
 					 <label for="input_text">Content</label> 
 					 
 				 </div>
@@ -152,7 +152,7 @@ Announcement
 	</div>
 		
 	<div class="modal-footer ci modal-close" style="background-color: #00293C;">
-		<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "">Save
+		<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnEdit">Save
 			<i class="material-icons right">send</i>
 		</button>
 	</div>
@@ -232,7 +232,19 @@ $(document).ready(function(){
 		var strSubject = $('#strSubjectAdd').val().trim();
 		var strMessage = $('#strMessageAdd').val().trim();
 		if (checkInput(strSubject, strMessage)){
-			sendData(strSubject, strMessage);
+			create(strSubject, strMessage);
+		}else{
+			var toastContent = $('<span>Please check your input.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
+	});
+
+	$('#btnEdit').click(function(){
+		var strSubject = $('#strSubjectEdit').val().trim();
+		var strMessage = $('#strMessageEdit').val().trim();
+		var intAnnouncementID = $('#strAnnouncementIDEdit').val().trim();
+		if (checkInput(strSubject, strMessage)){
+			update(strSubject, strMessage, intAnnouncementID);
 		}else{
 			var toastContent = $('<span>Please check your input.</span>');
 			Materialize.toast(toastContent, 1500,'red', 'edit');
@@ -248,7 +260,7 @@ $(document).ready(function(){
 		}
 	}
 
-	function sendData(strSubject, strMessage){
+	function create(strSubject, strMessage){
 		$.ajax({
 	        type: "POST",
 	        url: "{{action('AdminAnnouncementViewController@create')}}",
@@ -275,6 +287,31 @@ $(document).ready(function(){
 	    });//ajax
 	}
 
+	function update(strSubject, strMessage, intAnnouncementID){
+		$.ajax({
+	        type: "POST",
+	        url: "/adminannouncement/update?announcementID=" + intAnnouncementID,
+	        beforeSend: function (xhr) {
+	            var token = $('meta[name="csrf_token"]').attr('content');
+
+	            if (token) {
+	                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+	            }
+	        },
+	        data: {
+	            strSubject: strSubject,
+	            strMessage: strMessage
+	        },
+	        success: function(data){
+	        	$('#modaleditAnnouncement').closeModal();
+                swal("Success!", "Announcement is updated", "success");
+                refreshTable();
+	        },
+	        error: function(data){
+	        }
+	    });//ajax
+	}
+
 	$('#tableAnnouncement').on('click', '.buttonOpen', function(){
         var strMessageOpen = 'message' + this.id;
         var strSubjectOpen = 'subject' + this.id;
@@ -285,6 +322,12 @@ $(document).ready(function(){
     });
 	
 	$('#tableAnnouncement').on('click', '.buttonEdit', function(){
+        var strMessageEdit = 'message' + this.id;
+        var strSubjectEdit = 'subject' + this.id;
+        
+        $('#strAnnouncementIDEdit').val(this.id);
+        $('#strMessageEdit').val($('#' + strMessageEdit).val());
+        $('#strSubjectEdit').val($('#' + strSubjectEdit).text());
         $('#modaleditAnnouncement').openModal();       
     });
 	

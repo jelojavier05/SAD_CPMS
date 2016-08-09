@@ -135,6 +135,7 @@ Route::get('/pdfcontract', 'PDFContractController@index');
 Route::get('/adminannouncement', 'AdminAnnouncementViewController@index');
 Route::get('/adminannouncement/get', 'AdminAnnouncementViewController@get');
 Route::post('/adminannouncement/create', 'AdminAnnouncementViewController@create');
+Route::post('/adminannouncement/update', 'AdminAnnouncementViewController@update');
 
 
 Route::get('/admin/home', 'AdminHomeController@index');

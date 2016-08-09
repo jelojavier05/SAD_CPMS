@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
-
+use Input;
 class AdminAnnouncementViewController extends Controller
 {
     /**
@@ -36,6 +36,17 @@ class AdminAnnouncementViewController extends Controller
     public function create(Request $request){
     	DB::table('tblannouncement')
     		->insert([
+    			'strSubject' => $request->strSubject,
+    			'strMessage' => $request->strMessage
+    		]);
+    }
+
+    public function update(Request $request){
+    	$id = Input::get('announcementID');
+
+    	DB::table('tblannouncement')
+    		->where('intAnnouncementID', $id)
+    		->update([
     			'strSubject' => $request->strSubject,
     			'strMessage' => $request->strMessage
     		]);
