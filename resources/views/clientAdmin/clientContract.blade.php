@@ -369,7 +369,7 @@ $(document).ready(function() {
 						type: "success"
 					},
 					function(){
-						window.location.href = '{{ URL::to("/dashboaradmin") }}';
+						window.location.href = '{{ URL::to("/dashboardadmin") }}';
 						});
             	},
             error: function(data){

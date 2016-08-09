@@ -111,6 +111,7 @@ Route::post('/securityInbox/decline/guard', 'SecurityHomepageController@declineN
 
 Route::get('/securityleaverequest', 'SecurityLeaveRequestController@index');
 Route::post('/securityleaverequest/post/leaverequest', 'SecurityLeaveRequestController@postLeaveRequest');
+Route::get('/securityleaverequest/get/guardStatus', 'SecurityLeaveRequestController@guardStatus');
 Route::get('/securitychangelocation', 'SecurityChangeLocationController@index');
 
 Route::get('/securitysettings', 'SecuritySettingsController@index');

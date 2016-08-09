@@ -255,7 +255,7 @@ Leave
          });   
  
 		$("#btnAddSave").click(function(){
-            if ($('#strLeaveType').val().trim() && $('#intLeaveCount').val().trim() > 0 && $('#intNotificationPeriod').val().trim() > 0){
+            if ($('#strLeaveType').val().trim() && $('#intLeaveCount').val().trim() > 0 && $('#intNotificationPeriod').val().trim() >= 0){
                 $.ajax({
 
                     type: "POST",
@@ -290,7 +290,7 @@ Leave
 		});//button add clicked
         
         $("#btnUpdate").click(function(){
-            if ($('#editname').val().trim() && $('#editLeaveCount').val().trim() > 0 && $('#editNotificationPeriod').val().trim() > 0){
+            if ($('#editname').val().trim() && $('#editLeaveCount').val().trim() > 0 && $('#editNotificationPeriod').val().trim() >= 0){
 			$.ajax({
 				
 				type: "POST",

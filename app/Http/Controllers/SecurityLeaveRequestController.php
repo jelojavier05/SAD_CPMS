@@ -82,6 +82,14 @@ class SecurityLeaveRequestController extends Controller
         }catch(Exception $e){
             DB::rollback();
         }
-            
+    }
+
+    public function guardStatus(Request $request){
+        $accountID = $request->session()->get('accountID');
+        $status = DB::table('tblguard')
+            ->select('intStatusIdentifier')
+            ->where('intAccountID', $accountID)
+            ->first();
+        return response()->json($status);
     }
 }

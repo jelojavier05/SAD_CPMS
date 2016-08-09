@@ -152,37 +152,62 @@ Security Leave Request
         });
 
         $('#btnSend').click(function(){
-            if (checkInput() && checkDate()){
-                var dateStart = new Date($('#dateStart').val());
-                var dateEnd = new Date($('#dateEnd').val());
-                var strReason = $('#strReason').val();
-                $.ajax({
-                    type: "POST",
-                    url: "{{action('SecurityLeaveRequestController@postLeaveRequest')}}",
-                    beforeSend: function (xhr) {
-                        var token = $('meta[name="csrf_token"]').attr('content');
+            if (checkGuardStatus()){
+                if (checkInput() && checkDate()){
+                    var dateStart = new Date($('#dateStart').val());
+                    var dateEnd = new Date($('#dateEnd').val());
+                    var strReason = $('#strReason').val();
+                    $.ajax({
+                        type: "POST",
+                        url: "{{action('SecurityLeaveRequestController@postLeaveRequest')}}",
+                        beforeSend: function (xhr) {
+                            var token = $('meta[name="csrf_token"]').attr('content');
 
-                        if (token) {
-                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                            if (token) {
+                                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                            }
+                        },
+                        data: {
+                            intLeaveID: leaveID,
+                            dateStart: dateStart,
+                            dateEnd: dateEnd,
+                            strReason: $('#strReason').val() ,
+                        },
+                        success: function(data){
+                            confirm('success');
+                        },
+                        error: function(data){
+                            confirm('error');
                         }
-                    },
-                    data: {
-                        intLeaveID: leaveID,
-                        dateStart: dateStart,
-                        dateEnd: dateEnd,
-                        strReason: $('#strReason').val() ,
-                    },
-                    success: function(data){
-                        confirm('success');
-                    },
-                    error: function(data){
-                        confirm('error');
-                    }
-                });//ajax
+                    });//ajax
+                }else{
+                    var toastContent = $('<span>Check your input.</span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                }
             }else{
-                confirm('mali');
+                var toastContent = $('<span>You cannot request for leave.</span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
             }
+                
         });
+
+        function checkGuardStatus(){
+            var checker;
+            $.ajax({
+                type: "GET",
+                url: "{{action('SecurityLeaveRequestController@guardStatus')}}",
+                success: function(data){
+                    console.log(data);
+                    if (data.intStatusIdentifier == 2){
+                        checker = true;
+                    }else{
+                        checker = false;
+                    }
+                },async:false
+            });//ajax
+
+            return checker;
+        }
 
         function getDaysDifference(){
             var dateStart = new Date($('#dateStart').val());
