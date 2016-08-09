@@ -20,6 +20,19 @@ class AdminAnnouncementViewController extends Controller
         return view('/AdminAnnouncementView');
     }
 
+    public function get(Request $request){
+    	$announcement = DB::table('tblannouncement')
+    		->select('*')
+    		->where('boolStatus', 1)
+    		->orderBy('datetimeCreated', 'desc')
+    		->get();
+
+    	foreach($announcement as $value){
+    		$value->dateFormatedCreated = date('M-d-Y h:ia', strtotime($value->datetimeCreated)); 	
+    	}
+    	return response()->json($announcement);
+    }
+
     public function create(Request $request){
     	DB::table('tblannouncement')
     		->insert([

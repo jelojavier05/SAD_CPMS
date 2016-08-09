@@ -32,7 +32,7 @@ Announcement
             
             <div class="row">
                 <div class="col s12" style="margin-top:-5px;">
-                    <table class="striped white" style="border-radius:10px;" id="dataTable">
+                    <table class="striped white" style="border-radius:10px;" id="tableAnnouncement">
                         <thead>
                             <tr>
                                 <th style="width:50px;" class="grey lighten-1 "></th>
@@ -45,28 +45,6 @@ Announcement
                         </thead>
                         
                         <tbody>
-                            
-                                <tr>
-                                    <td> 
-                                        <button class="btn blue darken-4 buttonOpen"><i class="material-icons">keyboard_arrow_right</i></button>
-                                    </td>
-
-                                    <td>
-                                        <button class="btn col s12 buttonEdit" name="" id="">
-                                            <i class="material-icons">edit</i>
-                                        </button>
-                                        <label for=""></label>
-                                    </td>
-
-                                    <td>
-                                        <button class="buttonDelete btn red col s12" id="" >
-                                            <i class="material-icons">delete</i>
-                                        </button>
-                                    </td>
-                                    <td id = "">1</td>
-                                    <td id = "" >01/01/2016</td>                             
-                                    <td id = "">TEST 1</td>
-                                </tr>
                             
                         </tbody>
                     </table>
@@ -219,6 +197,36 @@ Announcement
 
 <script>
 $(document).ready(function(){
+
+	refreshTable();
+
+	function refreshTable(){
+		$.ajax({
+	        type: "GET",
+	        url: "{{action('AdminAnnouncementViewController@get')}}",
+	        success: function(data){
+	        	var table = $('#tableAnnouncement').DataTable();
+            	table.clear().draw(); //clear all the row
+
+	            $.each(data, function(index, value){
+	            	var buttonRead = '<button class="btn blue darken-4 buttonOpen" id ="'+value.intAnnouncementID+'"><i class="material-icons">keyboard_arrow_right</i></button>';
+	            	var buttonEdit = '<button class="btn col s12 buttonEdit" name="" id="'+value.intAnnouncementID+'"><i class="material-icons">edit</i></button>'; 
+	            	var buttonDelete = '<button class="buttonDelete btn red col s12" id="'+value.int
+	            	+'" ><i class="material-icons">delete</i></button>';
+
+	            	table.row.add([
+		                buttonRead,
+		                buttonEdit,
+		                buttonDelete,
+		                '<h>' + value.intAnnouncementID +'</h>',
+		                '<h>' + value.dateFormatedCreated +'</h>',
+		                '<h>' + value.strSubject +'</h>'
+		            ]).draw();
+	            });
+	        },
+	    });//ajax
+	}
+
 	$('#btnAdd').click(function(){
 		var strSubject = $('#strSubjectAdd').val().trim();
 		var strMessage = $('#strMessageAdd').val().trim();
@@ -231,7 +239,6 @@ $(document).ready(function(){
 	});
 
 	function checkInput(strSubject, strMessage){
-		
 
 		if (strSubject == '' || strMessage == ''){
 			return false;
@@ -260,21 +267,22 @@ $(document).ready(function(){
 	        	$('#strMessageAdd').val('');
 	        	$('#modalcreateAnnouncement').closeModal();
                 swal("Success!", "Announcement is created", "success");
+                refreshTable();
 	        },
 	        error: function(data){
 	        }
 	    });//ajax
 	}
 
-	$('#dataTable').on('click', '.buttonOpen', function(){
+	$('#tableAnnouncement').on('click', '.buttonOpen', function(){
         $('#modalopenAnnouncement').openModal();       
     });
 	
-	$('#dataTable').on('click', '.buttonEdit', function(){
+	$('#tableAnnouncement').on('click', '.buttonEdit', function(){
         $('#modaleditAnnouncement').openModal();       
     });
 	
-	$('#dataTable').on('click', '.buttonDelete', function(){
+	$('#tableAnnouncement').on('click', '.buttonDelete', function(){
             
 	    var deleteID =this.id;  
 	    swal({title: "Are you sure?",   
@@ -291,7 +299,7 @@ $(document).ready(function(){
 
 
 <script>
-$("#dataTable").DataTable({             
+$("#tableAnnouncement").DataTable({             
  "columns": [     
  {"orderable": false},
  {"orderable": false},
