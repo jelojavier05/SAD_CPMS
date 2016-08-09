@@ -79,10 +79,14 @@ Security Leave Request
                     <div class="row">
                         <form class="col s12">
                             <div class="row">
-                                <div class="col l5 push-l4">
-                                    <i class="material-icons prefix" style="font-size:6rem">account_circle</i>
-                                    <label for="icon_prefix">{{$guardInformation->strFirstName}} {{$guardInformation->strLastName}}</label>
+                                <div class="col s3 offset-s9 pull-s5">
+                                    <center><i class="material-icons prefix" style="font-size:6rem">account_circle</i></center>
+                                    
                                 </div>
+								
+								<div class="col s3 offset-s9 pull-s5" >
+									<center><label>{{$guardInformation->strFirstName}} {{$guardInformation->strLastName}}</label></center>
+								</div>
                             </div>
                             <center>
                                 <select class="col s6 push-s3" id = "selectLeave">

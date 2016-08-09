@@ -98,7 +98,7 @@ Guard Form
 				
 			    <div class="input-field col s6">
 						<i class="material-icons prefix">phone</i>
-						<input placeholder = " " id="contactLandline" maxlength="10" type="text" class="validate ci" pattern="[0-9+]{7,}" required="" aria-required="true">
+						<input placeholder = " " id="contactLandline" maxlength="10" type="text" class="validate ci" pattern="[0-9+-]{7,}" required="" aria-required="true">
 						<label class="ci" data-error="Incorrect" for="contactLandline">Contact Number (Landline)</label>
 
 				</div>
