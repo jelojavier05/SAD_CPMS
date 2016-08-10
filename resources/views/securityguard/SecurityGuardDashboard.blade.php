@@ -131,38 +131,40 @@
                      <center>
                          <h id = 'strProfileName'></h><br>
                          <h id = 'strProfileLicenseNumber'></h>
+						 <button class="btn blue waves-effect waves-light modal-trigger" href="#modalCurrentClientDetails" style="height:30px;">Landbank</button>
+						 <div class="row"></div>
                     </center>
                 </div>
              </div>
          </div>
           <div class="row">
-                  <div class="col s12 z-depth-1">
+                  <div class="col s12 z-depth-1" style="margin-top:-10px;">
                             <div class="col s6">
-                                 <div class="card blue darken-4" style="height:70px">
+                                 <div class="card blue darken-4" style="height:55px; width:95px;">
                                         <a data-position="top" data-delay="50" data-tooltip="LEAVE REQUEST" href="/securityleaverequest" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">LEAVE    
                                                      
                                      </a> 
-                                     <i class="material-icons" style="font-size:2rem;margin-top:-30%;margin-left:60%;position:absolute;color:white">near_me</i>    
+                                     <i class="material-icons" style="font-size:2rem;margin-top:-50%;margin-left:68%;position:absolute;color:white">near_me</i>    
                                 </div>
                                 
                             </div>
                             <div class="col s6">
-                                 <div class="card blue darken-4" style="height:70px">
+                                 <div class="card blue darken-4" style="height:55px; width:95px;">
                                         <a data-position="top" data-delay="50" data-tooltip="CHANGE LOCATION" href="/securitychangelocation" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">SWAP
                                      </a>
-                                      <i class="material-icons" style="font-size:2rem;margin-top:-30%;margin-left:60%;position:absolute;color:white">local_offer</i>   
+                                      <i class="material-icons" style="font-size:2rem;margin-top:-53%;margin-left:65%;position:absolute;color:white">swap_horiz</i>   
                                 </div>
                             </div>
                  
                          <div class="col s8 push-s2">
-                                 <div class="card blue darken-4" style="height:70px">
+                                 <div class="card blue darken-4" style="height:55px;">
                                         <a data-position="top" data-delay="50" data-tooltip="ACCOUNT SETTINGS" href="/securitysettings" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">SETTINGS
                                         </a>
-                                      <i class="material-icons" style="font-size:2rem;margin-top:-25%;margin-left:70%;position:absolute;color:white">settings</i>   
+                                      <i class="material-icons" style="font-size:2rem;margin-top:-40%;margin-left:75%;position:absolute;color:white">settings</i>   
                                     
                                 </div>
                     
-                  </div>
+                  			</div>
                  </div>
           </div>
          
@@ -193,6 +195,114 @@
         </div>
         </div>
    </div>
+
+
+
+<!--modal current client details-->
+
+<div id="modalCurrentClientDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:600px; margin-top:-50px;">
+    <div class="modal-header">
+      	<div class="h">
+			<h3><center>Current Client</center></h3>  
+		</div>
+    </div>
+	
+	<div class="modal-content">
+		<div class="row">
+			<div class="col s12">
+				<ul class="collection with-header" id="collectionActive">				
+					
+					<li class="collection-header" ><h4 style="font-weight:bold;">Details</h4></li>
+                <div>
+                    <li class="collection-item" style="font-weight:bold;">
+						<div class="row">
+							<div class="col s6">	
+								Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusiness'>&nbsp;&nbsp;&nbsp;Bank</div>
+							</div>
+							<div class="col s6">
+								Client Name:<div style="font-weight:normal;" id = 'clientName'>&nbsp;&nbsp;&nbsp;LandBank</div>
+							</div>
+						</div>
+                    </li>
+					
+					
+					<li class="collection-item" style="font-weight:bold;">
+						<div class="row">
+							<div class="col s6">	
+								Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;123 Hello Street Pasig, Metro Manila</div>
+							</div>
+							<div class="col s6">
+								Contact Number (Client):<div style="font-weight:normal;" id = 'contactNumberClient'>&nbsp;&nbsp;&nbsp;09123456789</div>
+							</div>
+						</div>
+                    </li>
+
+                    <li class="collection-item" style="font-weight:bold;">
+						<div class="row">
+							<div class="col s6">	
+								Person in Charge:<div style="font-weight:normal;" id = 'personInCharge'>&nbsp;&nbsp;&nbsp;Mang Tomas</div>
+							</div>
+							<div class="col s6">
+								Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'contactNumberPIC'>&nbsp;&nbsp;&nbsp;09123456789</div>
+							</div>
+						</div>
+                    </li>
+
+                    
+                    <li class="collection-item" style="font-weight:bold;">
+						<div class="row">
+							<div class="col s4">	
+								Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSize'>&nbsp;&nbsp;&nbsp;1000</div>
+							</div>
+							<div class="col s4">
+								Population (approx.):<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;10</div>
+							</div>
+							<div class="col s4">
+								Number of Guards:<div style="font-weight:normal;" id = 'guardCounter'>&nbsp;&nbsp;&nbsp;1</div>
+							</div>
+						</div>
+                    </li>
+
+                    <li class="collection-item" style="font-weight:bold;">Shift/s:
+                        <div style="font-weight:normal;">
+                            <table class="" style="font-family:Myriad Pro" id = 'shiftTable'>
+                                <thead>
+                                <tr>
+                                    <th data-field="st">Shift</th>
+                                    <th data-field="fr">From</th>
+                                    <th data-field="to">To</th>
+                                </tr>
+                                </thead>
+                                
+                                <tbody>
+									<tr>
+										<td>1</td>
+										<td>12AM</td>
+										<td>8AM</td>
+										
+									</tr>
+
+                                </tbody>
+                            </table>
+							
+                        </div>
+                    </li>
+                </div>
+				</ul>
+				<div class="row"></div>
+			</div>
+		</div>
+	</div>
+		
+	<div class="modal-footer ci modal-close" style="background-color: #00293C;">
+		<div id = "buttons" style="display: none;">	
+            <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "">OK
+            </button>           
+        </div>           
+	</div>
+</div>
+
+<!--modal current client details end-->
   
     
      

@@ -13,7 +13,7 @@ Security Home
 	<div class="col s8 push-s3">
 		
 		<ul class="tabs" style="">
-        	<li style="color:white"class="tab col l3"><a href="#announcement" class="active">Announcement</a></li>
+        	<li style="color:white"class="tab col l3"><a href="#announcement" class="active">Announcements</a></li>
         </ul>	
 		<!-- table message -->
 		<div id="announcement">
