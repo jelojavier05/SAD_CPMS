@@ -1,7 +1,7 @@
 @extends('securityguard.SecurityGuardDashboard')
 
 @section('title')
-Security Settings
+Security Home
 @endsection
 
 
@@ -21,7 +21,6 @@ Security Settings
 				<table class="striped" id="announcementTable">
 					<thead>
 						<tr>
-							<th class="grey lighten-1" style="width: 20px;"></th>
 							<th class="grey lighten-1" style="width: 30px;"></th>
 							<th class="grey lighten-1">Date</th>						
 							<th class="grey lighten-1">Subject</th>
@@ -29,19 +28,6 @@ Security Settings
 					</thead>
 
 					<tbody>
-						<tr>
-							<td><input name="" type="radio" id="test1"/> <label for="test1"></label></td>
-							<td><button class="btn blue darken-4 buttonOpen"><i class="material-icons">keyboard_arrow_right</i></button></td>
-							<td>01/01/2016</td>
-							<td>TEST SUBJECT</td>
-						</tr>
-						
-						<tr>
-							<td><input name="" type="radio" id="test2"/> <label for="test2"></label></td>
-							<td><button class="btn blue darken-4 buttonOpen"><i class="material-icons">keyboard_arrow_right</i></button></td>
-							<td>02/02/2016</td>
-							<td>TEST SUBJECT 2</td>
-						</tr>
 						
 					</tbody>
 				</table>
@@ -61,8 +47,8 @@ Security Settings
 		<div class="row">
 			<div class="col s12">
 				<ul class="collection with-header" id="collectionActive">
-					<li class="collection-header"><div style="font-size:18px;" id = "">&nbsp;TEST SUBJECT</div></li>
-					<li class="collection-item"><p id = ''>The practice of writing paragraphs is essential to good writing. Paragraphs help to break up large chunks of text and makes the content easier for readers to digest. They guide the reader through your argument by focusing on one main idea or goal. However, knowing how to write a good, well-structured paragraph can be little tricky. Read the guidelines below and learn how to take your paragraph writing skills from good to great!</p>
+					<li class="collection-header"><div style="font-size:18px;" id = "strSubject">&nbsp;</div></li>
+					<li class="collection-item"><p id = 'strMessage'></p>
                     </li>
 				</ul>
 			</div>
@@ -79,13 +65,38 @@ Security Settings
 	
 @section('script')
 <script>
-	 $('#announcementTable').on('click', '.buttonOpen', function(){
-            $('#modalContent').openModal();       
-        });
+	
+	$.ajax({
+        type: "get",
+        url: "{{action('AdminAnnouncementViewController@get')}}",
+        success: function(data){
+        	var table = $('#announcementTable').DataTable();
+        	table.clear().draw(); //clear all the row
+
+            $.each(data, function(index, value){
+            	var buttonRead = '<button class="btn blue darken-4 buttonOpen" id ="'+value.intAnnouncementID+'"><i class="material-icons">keyboard_arrow_right</i></button>';
+
+            	table.row.add([
+	                buttonRead,
+	                '<h id = "date'+value.intAnnouncementID+'">' + value.dateFormatedCreated +'</h>',
+	                '<h id = "subject'+value.intAnnouncementID+'">' + value.strSubject +'</h>' + 
+	                '<input type = "hidden" id = "message'+value.intAnnouncementID+'" value = "'+value.strMessage+'">'
+	            ]).draw();
+            });
+        }
+    });//ajax
+
+    $('#announcementTable').on('click', '.buttonOpen', function(){
+        var strMessageOpen = 'message' + this.id;
+        var strSubjectOpen = 'subject' + this.id;
+
+        $('#strMessage').text($('#' + strMessageOpen).val());
+        $('#strSubject').text($('#' + strSubjectOpen).text());
+        $('#modalContent').openModal();       
+    });
 	
 	$("#announcementTable").DataTable({
              "columns": [
-            {"searchable": false},
 			{"searchable": false},
             null,
 			null
