@@ -295,7 +295,7 @@
 	</div>
 		
 	<div class="modal-footer ci modal-close" style="background-color: #00293C;">
-		<div id = "buttons" style="display: none;">	
+		<div id = "buttons">	
             <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "">OK
             </button>           
         </div>           
