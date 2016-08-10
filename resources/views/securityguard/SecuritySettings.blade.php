@@ -7,7 +7,7 @@ Security Settings
 
 @section('content')
 <div class="row">			
-	<div class="ci col s10 push-s1	" style="margin-top:25px;">	
+	<div class="ci col s8 push-s3" style="margin-top:25px;">	
 		<ul class="collection with-header" id="collectionActive">
 			<li class="collection-header" ><h4 style="font-weight:bold;">Details
 				<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue right tooltipped" id = 'buttonDetail'><i class="material-icons">mode_edit</i></a></h4>
@@ -15,35 +15,48 @@ Security Settings
 			</li>
 			<div>
 						
-				<li class="collection-item" style="font-weight:bold;">First Name:<div style="font-weight:normal;" id = 'firstName'>&nbsp;&nbsp;&nbsp;</div>
-				</li>
                 
-                <li class="collection-item" style="font-weight:bold;">Middle Name:<div style="font-weight:normal;" id = 'middleName'>&nbsp;&nbsp;&nbsp;</div>
-				</li>
+                <div class="col s12">
+                    <div class="col s6">
+                    
+                        <li class="collection-item" style="font-weight:bold;">First Name:<div style="font-weight:normal;" id = 'firstName'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
 
-				<li class="collection-item" style="font-weight:bold;">Last Name:<div style="font-weight:normal;" id = 'lastName'>&nbsp;&nbsp;&nbsp;</div>
-				</li>
+                        <li class="collection-item" style="font-weight:bold;">Middle Name:<div style="font-weight:normal;" id = 'middleName'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
 
-				<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;</div>
-				</li>
+                        <li class="collection-item" style="font-weight:bold;">Last Name:<div style="font-weight:normal;" id = 'lastName'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
 
-				<li class="collection-item" style="font-weight:bold;">Date of Birth:<div style="font-weight:normal;" id = 'birthday'>&nbsp;&nbsp;&nbsp;</div>
-				</li>
+                        <li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
 
-				<li class="collection-item" style="font-weight:bold;">Place of Birth:<div style="font-weight:normal;" id = 'placeBirth'>&nbsp;&nbsp;&nbsp;</div>
-				</li>
+                        <li class="collection-item" style="font-weight:bold;">Date of Birth:<div style="font-weight:normal;" id = 'birthday'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
+                    </div>
+                    <div class="col s6">
+                        <li class="collection-item" style="font-weight:bold;">Place of Birth:<div style="font-weight:normal;" id = 'placeBirth'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
 
-				<li class="collection-item" style="font-weight:bold;">Contact Number (Mobile):<div style="font-weight:normal;" id = 'contactMobile'>&nbsp;&nbsp;&nbsp;</div>
-				</li>
+                        <li class="collection-item" style="font-weight:bold;">Contact Number (Mobile):<div style="font-weight:normal;" id = 'contactMobile'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
 
-				<li class="collection-item" style="font-weight:bold;">Contact Number (Landline):<div style="font-weight:normal;" id = 'contactLandline'>&nbsp;&nbsp;&nbsp;</div>
-				</li>
-						
-				<li class="collection-item" style="font-weight:bold;">Civil Status:<div style="font-weight:normal;" id = 'civilStatus'>&nbsp;&nbsp;&nbsp;</div>
-				</li>
+                        <li class="collection-item" style="font-weight:bold;">Contact Number (Landline):<div style="font-weight:normal;" id = 'contactLandline'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
+
+                        <li class="collection-item" style="font-weight:bold;">Civil Status:<div style="font-weight:normal;" id = 'civilStatus'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
+
+                        <li class="collection-item" style="font-weight:bold;">Gender<div style="font-weight:normal;" id = 'gender'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
+
+                    </div>
+                </div>
 				
-				<li class="collection-item" style="font-weight:bold;">Gender<div style="font-weight:normal;" id = 'gender'>&nbsp;&nbsp;&nbsp;</div>
-				</li>
+
+                
+                
+				
 				
 				<li class="collection-item" style="font-weight:bold;">Body Attributes
 					<div style="font-weight:normal;" id = ''>

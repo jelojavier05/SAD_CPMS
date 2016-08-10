@@ -137,58 +137,31 @@
          </div>
           <div class="row">
                   <div class="col s12 z-depth-1">
-                        <div class="col s12">
-                                 <div class="card blue darken-4">
-                                   
-                                    <div class="card-content white-text" style="height:70px;">
-                                          <div class="col s12">
-                                              <div class="col s9">
-                                                 <span style="font-size:18px; font-weight:bold;" id = 'clientNumber'>Leave Request</span>
-                                              </div>
-                                              <div class="col s2">
-                                                 <a data-position="top" data-delay="50" data-tooltip="LEAVE REQUEST" href="/securityleaverequest" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro"><i class="material-icons" style="font-size:3.7rem; margin-top:-10px;margin-left:-30px">directions_walk</i></a>
-                                              </div>
-                                          </div>
-                                    </div> 
-                                     
+                            <div class="col s6">
+                                 <div class="card blue darken-4" style="height:70px">
+                                        <a data-position="top" data-delay="50" data-tooltip="LEAVE REQUEST" href="/securityleaverequest" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">LEAVE    
+                                                     
+                                     </a> 
+                                     <i class="material-icons" style="font-size:2rem;margin-top:-30%;margin-left:60%;position:absolute;color:white">near_me</i>    
                                 </div>
-                      </div>
-                  </div>
-                     <div class="col s12 z-depth-1">
-                        <div class="col s12">
-                                 <div class="card blue darken-4">
-                                   
-                                    <div class="card-content white-text" style="height:70px;">
-                                          <div class="col s12">
-                                              <div class="col s9">
-                                                 <span style="font-size:18px; font-weight:bold;" id = 'clientNumber'>Change Location</span>
-                                              </div>
-                                              <div class="col s2">
-                                                 <a data-position="top" data-delay="50" data-tooltip="LEAVE REQUEST" href="/securitychangelocation" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro"><i class="material-icons" style="font-size:3.7rem; margin-top:-10px;margin-left:-30px">location_city</i></a>
-                                              </div>
-                                          </div>
-                                    </div> 
-                                     
+                                
+                            </div>
+                            <div class="col s6">
+                                 <div class="card blue darken-4" style="height:70px">
+                                        <a data-position="top" data-delay="50" data-tooltip="CHANGE LOCATION" href="/securitychangelocation" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">SWAP
+                                     </a>
+                                      <i class="material-icons" style="font-size:2rem;margin-top:-30%;margin-left:60%;position:absolute;color:white">local_offer</i>   
                                 </div>
-                      </div>
-                  </div>
-                    <div class="col s12 z-depth-1">
-                        <div class="col s12">
-                                 <div class="card blue darken-4">
-                                   
-                                    <div class="card-content white-text" style="height:70px;">
-                                          <div class="col s12">
-                                              <div class="col s9">
-                                                 <span style="font-size:18px; font-weight:bold;" id = 'clientNumber'>Account Settings</span>
-                                              </div>
-                                              <div class="col s2">
-                                                 <a data-position="top" data-delay="50" data-tooltip="LEAVE REQUEST" href="/securitysettings" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro"><i class="material-icons" style="font-size:3.7rem; margin-top:-10px;margin-left:-30px">settings</i></a>
-                                              </div>
-                                          </div>
-                                    </div> 
-                                     
+                            </div>
+                 
+                         <div class="col s8 push-s2">
+                                 <div class="card blue darken-4" style="height:70px">
+                                        <a data-position="top" data-delay="50" data-tooltip="ACCOUNT SETTINGS" href="/securitysettings" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">SETTINGS
+                                        </a>
+                                      <i class="material-icons" style="font-size:2rem;margin-top:-25%;margin-left:70%;position:absolute;color:white">settings</i>   
+                                    
                                 </div>
-                      </div>
+                    
                   </div>
                  </div>
           </div>

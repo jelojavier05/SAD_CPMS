@@ -6,216 +6,70 @@ Security Change Location
 
 
 @section('content')
-
+<div class="row"></div>
+<div class="row"></div>
 <div class="row">
-<div class="col l12">
-    <div class="col l8 z-depth-1 white" style="overflow:scroll !important;max-height:100% !important;height:460px !important">
+    <div class="col l12">
+        <div class="col s10 push-s2" style=";max-height:100% !important;height:550px !important;">
     
-    
-    <table class="responsive-table">
-        <thead><center><bold>List of Clients and Assigned Guards</bold></center>
-          <tr>
-              <th data-field="id">Clients</th>
-              <th data-field="name">Nature of Business</th>
-             
-              <th data-field="price">Business Address</th>      
-              <th data-field="price">Others</th>
-              
-          </tr>
-        </thead>
+                <div class="row" style="margin-top:-8%">
+                        <div class="row"> 
+                                    <div class="col s12 push-s1">
 
-        <tbody>
-         
-            <tr>
-            <td>SWA Company</td>
-            <td>Steel Works</td>
-          
-            <td>212 Sagigilid St. Sta. Mesa, Manila</td>
-            
-            <td>
-                <div class="col l2">
-                
-                 <a href="#" class="btn mdi-hardware-keyboard-arrow-right"></a>
-                </div>
-            </td>
-          </tr>
-            
-         <tr>
-            <td>San Miguel Corp</td>
-            <td>Factory</td>
-        
-            <td>521 Seses St. Makati City</td>
-                            
-            <td>
-                <div class="col l2">
-                
-                 <a href="#!" class="btn mdi-hardware-keyboard-arrow-right"></a>
-                </div>
-            </td>
-          </tr>
-            
-            <tr>
-            <td>Polytechnic University of the Philippines</td>
-            <td>University</td>
-         
-            <td>Anonas, Maynila, Kalakhang Maynila</td>
-            
-            <td>
-                <div class="col l2">
-                
-                 <a href="#!" class="btn mdi-hardware-keyboard-arrow-right"></a>
-                </div>
-            </td>
-          </tr>
-            
-            <tr>
-            <td>Santibanez Company</td>
-            <td>Recruitment Agency</td>
-            <td>529 blk.1 Pasay City</td>
-            
-            <td>
-                <div class="col l2">
-                
-                 <a href="#!" class="btn mdi-hardware-keyboard-arrow-right"></a>
-                </div>
-            </td>
-          </tr>
-            
-            <tr>
-            <td>Senyora Dede Pueblo</td>
-            <td>Brick and Stones</td>
-            <td>35103 St. Barangka Mandaluyong City</td>
-            
-            <td>
-                <div class="col l2">
-                
-                 <a href="#!" class="btn mdi-hardware-keyboard-arrow-right"></a>
-                </div>
-            </td>
-          </tr>
-            
-        </tbody>
-      </table>
-    
-        </div>
+                                       <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Change Location</h3>
+                                    </div>  
+                        </div>
+                        <div class="row">
+                        <div class="col s12" style="margin-top:-4%" >
+                                <div class="container white lighten-2 z-depth-2" style="overflow:scroll;overflow-x:hidden; width:900px">
+                                    <div class="row">
+                                        <div class="col s12" >
+                                            <table class="centered" style="border-radius:10px;" id="dataTable">
 
-    <!-- SELECT GUARD-->
-    
-    
-<div class="col l4">
-       <div class="row">
-        
-            <div class="col l12 white z-depth-1">
-                         <h5><center>List of Guards</center></h5>
-            </div>
-        </div>
-            
-        <div class="row">
-             <div class="col l12 white z-depth-1" style="overflow:scroll !important;height:390px !important;max-height:100% !important">
-                    <table class="responsive-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:50px;" class="blue darken-3 white-text">Client Name</th>
+                                                        <th style="width:50px;" class="blue darken-3 white-text">Company Name</th>
+                                                        <th style="width:50px;" class="blue darken-3 white-text">Nature of Business</th>
+                                                        <th style="width:50px;" class="blue darken-3 white-text">Location</th>
+                                                         <th style="width:50px;" class="blue darken-3 white-text">Action</th>
 
-                        <th>
-                            <center>Name</center>
-                        </th>
 
-                        <th>
-                            <center>Profile</center>
-                        </th>
-                        
-                        <tr>
+                                                    </tr>
+                                                </thead>
 
-                            <td>
-                               <input class="with-gap" name="group1" type="radio" id="test1" />
-                               <label for="test1">Randy</label>      
-                            </td>
-                            <td>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                        Adrian Flores
+                                                        </td>
+                                                        <td>
+                                                        Padi's Point
+                                                        </td>
+                                                         <td>
+                                                        Bar
+                                                        </td>
+                                                         <td>
+                                                        Makati City
+                                                        </td>
+                                                         <td>
+                                                        <button id="detaillist" class="btn blue">
+                                                            Send Request
+                                                        </button>
+                                                        </td>
+                                                    </tr>
 
-                                <div class="col s12 m8 offset-m2 l6 offset-l3">
-                                        <div class="card-panel grey lighten-5 z-depth-1">
-                                          <div class="row valign-wrapper">
-                                            <div class="col l4">
-                                             <img src="/img/avatar2.png" alt="" class="responsive-img"> <!-- notice the "circle" class -->
-                                            </div>
-
-                                          </div>
+                                                </tbody>
+                                            </table>
                                         </div>
+                                    </div>
                                 </div>
-
-                            </td>
-
-
-                        </tr>
-
-                        <tr>
-                         <td>
-                              <input class="with-gap" name="group1" type="radio" id="test2" />
-                  <label for="test2">Michael</label>
-
-                            </td>
-                            <td>
-
-                                        <div class="col s12 m8 offset-m2 l6 offset-l3">
-                                        <div class="card-panel grey lighten-5 z-depth-1">
-                                          <div class="row valign-wrapper">
-                                            <div class="col l4">
-                                             <img src="/img/avatar2.png" alt="" class="responsive-img"> <!-- notice the "circle" class -->
-                                            </div>
-
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                    </td>
-                        </tr>
-
-                            <tr>
-                           <td>
-                            <input class="with-gap" name="group1" type="radio" id="test3"  />
-                  <label for="test3">Bernie</label>
-
-                            </td>
-                            <td>
-
-                                        <div class="col s12 m8 offset-m2 l6 offset-l3">
-                                        <div class="card-panel grey lighten-5 z-depth-1">
-                                          <div class="row valign-wrapper">
-                                            <div class="col l4">
-                                             <img src="/img/avatar2.png" alt="" class="responsive-img"> <!-- notice the "circle" class -->
-                                            </div>
-
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                    </td>
-                        </tr>
-                        </table>
-        
-        
-        
+                        </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-    
-     <!--END OF SELECT GUARD-->
-   
-    <!--BUTTON APPROVAL FORM-->
-    
-    
-
-    </div>
-    
-     <div class="row">
-            <div class="col l12 push-l3">
-         
-                   <a href="#modalapproval" class="modal-trigger btn blue darken-4 z-depth-3">See Approval Form</a>
-                   <a href="#!" class="btn red darken-4 z-depth-3">Reset</a>
-                   <a href="#!" class="btn green darken-4 z-depth-3">Save</a>
-            </div>
-    
-    
-    </div>
-   
     
     
     <!--MODAL APPROVAL-->
@@ -324,9 +178,7 @@ Security Change Location
                      <a href="#!" class="btn blue darken-4 z-depth-3">Send</a>
     </div>
 </div>
-    
-
-</div>
+   
 
 <script>
 

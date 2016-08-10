@@ -8,8 +8,9 @@ Security Settings
 @section('content')
 
 <!--MESSAGE-->
+<div class="row"></div>
 <div class="row">
-	<div class="col s8 push-s2">
+	<div class="col s8 push-s3">
 		
 		<ul class="tabs" style="">
         	<li style="color:white"class="tab col l3"><a href="#announcement" class="active">Announcement</a></li>
