@@ -16,6 +16,7 @@ Security Homepage
 		<div id="message">
 			<div class="container-fluid grey lighten-2">	
 				<table class="striped" id="inboxTable">
+					<button class="btn blue buttonTest modal-trigger" href="#modalLeaveRequestfromSG">Test</button>
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
@@ -34,6 +35,7 @@ Security Homepage
 	</div>
 </div>
 
+<!--modal new client request-->
 <div id="modalNewClientRequest" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
     <div class="modal-header">
                 <div class="h">
@@ -117,6 +119,10 @@ Security Homepage
     </div>
 </div>
 
+<!--modal new client request end-->
+
+<!--modal message approved client/contract-->
+
 <div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
     <div class="modal-header">
       	<div class="h">
@@ -140,6 +146,143 @@ Security Homepage
             </button>
 	</div>
 </div>
+	
+<!--modal message approved client/contract end-->
+	
+<!--modal leave request from other guard////releiver-->
+
+<div id="modalLeaveRequestfromSG" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:600px; margin-top:-50px;">
+    <div class="modal-header">
+      	<div class="h">
+			<h3><center>Message</center></h3>  
+		</div>
+    </div>
+	
+	<div class="modal-content">
+		<div class="row">
+			<div class="col s12">
+				<ul class="collection with-header" id="collectionActive">
+					<li class="collection-header">
+						<div class="row">
+							<div class="col s6">	
+								From:<div style="font-size:18px;" id = "">&nbsp;01/10/2016</div>
+							</div>
+							<div class="col s6">
+								To:<div style="font-size:18px;" id = "">&nbsp;01/12/2016</div>
+							</div>
+						</div>
+					
+					</li>
+					
+					<li class="collection-header" ><h4 style="font-weight:bold;">Details</h4></li>
+                <div>
+                    <li class="collection-item" style="font-weight:bold;">
+						<div class="row">
+							<div class="col s6">	
+								Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusiness'>&nbsp;&nbsp;&nbsp;Bank</div>
+							</div>
+							<div class="col s6">
+								Client Name:<div style="font-weight:normal;" id = 'clientName'>&nbsp;&nbsp;&nbsp;LandBank</div>
+							</div>
+						</div>
+                    </li>
+					
+					
+					<li class="collection-item" style="font-weight:bold;">
+						<div class="row">
+							<div class="col s6">	
+								Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;123 Hello Street Pasig, Metro Manila</div>
+							</div>
+							<div class="col s6">
+								Contact Number (Client):<div style="font-weight:normal;" id = 'contactNumberClient'>&nbsp;&nbsp;&nbsp;09123456789</div>
+							</div>
+						</div>
+                    </li>
+
+                    <li class="collection-item" style="font-weight:bold;">
+						<div class="row">
+							<div class="col s6">	
+								Person in Charge:<div style="font-weight:normal;" id = 'personInCharge'>&nbsp;&nbsp;&nbsp;Mang Tomas</div>
+							</div>
+							<div class="col s6">
+								Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'contactNumberPIC'>&nbsp;&nbsp;&nbsp;09123456789</div>
+							</div>
+						</div>
+                    </li>
+
+                    
+                    <li class="collection-item" style="font-weight:bold;">
+						<div class="row">
+							<div class="col s4">	
+								Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSize'>&nbsp;&nbsp;&nbsp;1000</div>
+							</div>
+							<div class="col s4">
+								Population (approx.):<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;10</div>
+							</div>
+							<div class="col s4">
+								Number of Guards:<div style="font-weight:normal;" id = 'guardCounter'>&nbsp;&nbsp;&nbsp;1</div>
+							</div>
+						</div>
+                    </li>
+
+                    <li class="collection-item" style="font-weight:bold;">Shift/s:
+                        <div style="font-weight:normal;">
+                            <table class="" style="font-family:Myriad Pro" id = 'shiftTable'>
+                                <thead>
+                                <tr>
+                                    <th data-field="st">Shift</th>
+                                    <th data-field="fr">From</th>
+                                    <th data-field="to">To</th>
+                                </tr>
+                                </thead>
+                                
+                                <tbody>
+									<tr>
+										<td>1</td>
+										<td>12AM</td>
+										<td>8AM</td>
+										
+									</tr>
+
+                                </tbody>
+                            </table>
+							
+                        </div>
+                    </li>
+                </div>
+				</ul>
+				<div class="row"></div>
+			</div>
+		</div>
+	</div>
+		
+	<div class="modal-footer ci modal-close" style="background-color: #00293C;">
+		<div id = "buttons" style="display: none;">	
+            <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnAccept">Accept
+            </button>
+
+            <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "btnDecline">Decline
+            </button>
+        </div>
+        
+        <div id = "accepted" style="display: none;">            			
+			<button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted
+            </button>
+        </div>
+        
+        <div id = "rejected" style="display: none;">			
+            <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined
+            </button>
+        </div>
+        
+        <div id = "notAvailable" style="display: none;">
+            <button class="btn grey" name="" style="margin-right: 30px; cursor:default;" id = "">Unavailable
+            </button>
+        </div>
+	</div>
+</div>
+
+<!--modal leave request from other guard////releiver end-->
 
 <script>
 $(document).ready(function(){
@@ -460,6 +603,8 @@ $(document).ready(function(){
         });//get guard waiting
     }
 });
+	
+	
 </script>
 
 @stop

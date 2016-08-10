@@ -1,7 +1,7 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Client
+Clients
 @endsection
 
 @section('content')
