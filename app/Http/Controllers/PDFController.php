@@ -13,7 +13,7 @@ class PDFController extends Controller
 {
     public function getPDF()
     {
-        $pdf=PDF::loadView('pdf.clientcontract',['tblcontract'=> $tblcontract]);
+        $pdf=PDF::loadView('pdf.clientcontract');
             return $pdf->stream('clientcontract.pdf');
     }
 }

@@ -41,187 +41,175 @@
 		
         <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
 		<link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
+           <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+		<link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
+        
+        <!-- CALENDAR CSS-->
+        <link href="{!! URL::asset('../css/kendo-materialize.css') !!}" type="text/css" rel="stylesheet"/>
+        <link href="{!! URL::asset('../css/kendo1-materialize.css') !!}" type="text/css" rel="stylesheet"/>
+        <link href="{!! URL::asset('../css/kendo2-materialize.css') !!}" type="text/css" rel="stylesheet"/>
+        <link href="{!! URL::asset('../css/kendo3-materialize.css') !!}" type="text/css" rel="stylesheet"/>
+        
+        <!-- CALENDAR JS-->
+         <script src="{!! URL::asset('../js/kendojs.js') !!}"></script>
+         <script src="{!! URL::asset('../js/kendojs1.js') !!}"></script>
+
         
     </head>
 
 <!----------BODY------------>
 
 <body id="scrollhider" class="bodyscrollhider grey lighten-3 ci">
-  <nav class="blue darken-4">
+      <nav class="blue darken-4">
         
          <div class="nav-wrapper">
-               
-                
                 <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
                     
 <!--					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >-->
-
-           
 				<div>
-                                     <a href="#" class="brand-logo">
-
-                    <div class="row">
-                        <div class="col l12">
-							 <div class="col l2">
-                            
-                            <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="28%" style="margin-top:1%">
-
-                            
-                            </div>
-                            <div class="col l6 pull-l1">
-                            
-                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.5rem">Client and Personnel Management System</p>
-					
-                            
-                            
-                            </div>
-							
-                        
-                        
-                        </div>
-                    
-                    
-                    </div>
-                    	</a>
-					
-					
-                    
-                  <!--  <div class="homeposition">
-                    
                     <a href="#" class="brand-logo">
-						<div class="flow-text">
-							<p style="margin-top: 20px; margin-left: 200px;font-family:Myriad Pro;font-size:6rem">Client and Personnel Management System</p>
-						</div>
-				
-                </div>-->
+                       <div class="row">
+                        <div class="col l12">
+                            <div class="col l6 push-l4">
+                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.2rem">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>     
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
                 
-            </div>
-				
-             
-							<ul class="right hide-on-med-and-down">
-								 
-                                
-                                
-                                <li  id="notification_li">
-                                    <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/securityInbox" class="tooltipped">
-                                        <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
-                                        <span id="notification_count">3</span></a>
-                                </li>                                                                                                                                                                                                             
-								
-                                 <li id="notification_li"><a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/securityHome" class=" tooltipped"><i class="material-icons">store</i></a></li>
-                                <li id="notification_li"><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>
-							</ul>
-        
-		
+                <ul class="right hide-on-med-and-down">    
+                      <li  id="notification_li">
+                            <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES"     href="/securityInbox" class="tooltipped">
+                                <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
+                                <span id="notification_count">3</span>
+                            </a>
+                      </li>                                                                                                
+                      <li id="notification_li">
+                            <a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/securityHome" class=" tooltipped">
+                          <i class="material-icons">store</i>
+                            </a>
+                       </li>
+                      <li id="notification_li">
+                          <a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped">
+                              <i class="material-icons">input</i>
+                          </a>
+                      </li>
+              </ul>
         </div>
-      
-	
     </nav>
 <!-----------------------------NAV BAR----------------------------->
     
     <div class="row"></div> 
- <div class="row">   
-    <div class="col l12">
-             <div class="col l3 z-depth-1 blue darken-1">
-                        <img src="/img/avatar2.png" alt="" height="150px" width="123px"class="circle responsive-img" style="margin-left:31%"> <!-- notice the "circle" class -->
+     <ul class="side-nav fixed" id="mobile-nav" style="background-color:#90AFC5;overflow:hidden">
+                     <div class="iconposition">
+                        <div class="card-panel blue darken-4" style="height:115px;">
+
+                                <div class="row">
+                                    <div class="col l12">
+                                          <div class="col l6 push-l3" style="margin-top:-6%">
+
+                                            <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="110%">
+
+                                            </div>  
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                        <div class="col l12 push-l2">
+                                         <p class="ci" style="margin-top:-10%;position:absolute;color:white;">GUARD ACCOUNT</p>
+
+                                    </div>
+                            </div>
+                        </div>
+                 </div>
+         <div class="row">
+             <div class="col s12">
+                 <div class="col s12 z-depth-1 ">
+                        <img src="/img/avatar2.png" alt="" width="80" class="circle responsive-img" style="margin-left:31%"> <!-- notice the "circle" class -->
                     
                      <center>
                          <h id = 'strProfileName'></h><br>
                          <h id = 'strProfileLicenseNumber'></h>
                     </center>
-            </div>
-        
-             <div class="col l2" style="font-size:23px;text-align:center;height:150px;width:165px !important">
-                    <div id="clockDisplay" style="font-size:2rem"> 08 : 08 : 08 PM </div>
-                    <script type="text/javascript">
-                        function renderTime() {
-                            var currentTime = new Date();
-                            var diem = "AM";
-                            var h = currentTime.getHours();
-                            var m = currentTime.getMinutes();
-                            var s = currentTime.getSeconds();
-
-                            if (h == 0) {
-                                h=12;
-                            } else if (h > 12) {
-                                h = h - 12;
-                                diem = "PM";
-                            }
-                            if (h < 10) {
-                                h = "0" + h;
-                            }
-                            if (m < 10) {
-                                m = "0" + m;
-                            }
-                            if (s < 10) {
-                                s = "0" + s;
-                            }
-
-                            var myClock = document.getElementById('clockDisplay');
-                            myClock.textContent = h + ":" + m + ":" + s + " " + diem
-                            myClock.innerText = h + ":" + m + ":" + s + " " + diem;	
-                            setTimeout('renderTime()',1000);
-                        }
-                        renderTime();
-                    </script>
-            </div>
-   
-    </div>     
-</div>
-    
-    <hr>
-    <hr>  
- 
-    <div class="row">
-    <div class="col l12">
-		
-             <div class="col l3 z-depth-1">
-				 
-				 
-			<div class="card " style="background-color:darkblue" >
-				<div class="card-content white-text">
-				  <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'></span>
-				   <a href="/securityleaverequest" class="white-text" style="font-size:23px;font-family:Myriad Pro">LEAVE REQUEST</a>
-				  <i class="material-icons right" style="font-size:5rem; margin-top:-22px;">nature_people</i>
-				</div>
-			</div>	 
-			
-			<div class="card " style="background-color:darkblue" >
-				<div class="card-content white-text">
-				  <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'></span>
-				   <a href="/securitychangelocation" class="white-text" style="font-size:23px;font-family:Myriad Pro">CHANGE LOCATION</a>
-				  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
-				</div>
-			</div>
-					
-			<div class="card " style="background-color:darkblue" >
-				<div class="card-content white-text">
-				  <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'></span>
-				   <a href="/securitysettings" class="white-text" style="font-size:23px;font-family:Myriad Pro">ACCOUNT SETTINGS</a>
-				  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">settings</i>
-				</div>
-			</div>
+                </div>
+             </div>
+         </div>
+          <div class="row">
+                  <div class="col s12 z-depth-1">
+                        <div class="col s12">
+                                 <div class="card blue darken-4">
+                                   
+                                    <div class="card-content white-text" style="height:70px;">
+                                          <div class="col s12">
+                                              <div class="col s9">
+                                                 <span style="font-size:18px; font-weight:bold;" id = 'clientNumber'>Leave Request</span>
+                                              </div>
+                                              <div class="col s2">
+                                                 <a data-position="top" data-delay="50" data-tooltip="LEAVE REQUEST" href="/securityleaverequest" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro"><i class="material-icons" style="font-size:3.7rem; margin-top:-10px;margin-left:-30px">directions_walk</i></a>
+                                              </div>
+                                          </div>
+                                    </div> 
+                                     
+                                </div>
+                      </div>
+                  </div>
+                     <div class="col s12 z-depth-1">
+                        <div class="col s12">
+                                 <div class="card blue darken-4">
+                                   
+                                    <div class="card-content white-text" style="height:70px;">
+                                          <div class="col s12">
+                                              <div class="col s9">
+                                                 <span style="font-size:18px; font-weight:bold;" id = 'clientNumber'>Change Location</span>
+                                              </div>
+                                              <div class="col s2">
+                                                 <a data-position="top" data-delay="50" data-tooltip="LEAVE REQUEST" href="/securitychangelocation" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro"><i class="material-icons" style="font-size:3.7rem; margin-top:-10px;margin-left:-30px">location_city</i></a>
+                                              </div>
+                                          </div>
+                                    </div> 
+                                     
+                                </div>
+                      </div>
+                  </div>
+                    <div class="col s12 z-depth-1">
+                        <div class="col s12">
+                                 <div class="card blue darken-4">
+                                   
+                                    <div class="card-content white-text" style="height:70px;">
+                                          <div class="col s12">
+                                              <div class="col s9">
+                                                 <span style="font-size:18px; font-weight:bold;" id = 'clientNumber'>Account Settings</span>
+                                              </div>
+                                              <div class="col s2">
+                                                 <a data-position="top" data-delay="50" data-tooltip="LEAVE REQUEST" href="/securitysettings" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro"><i class="material-icons" style="font-size:3.7rem; margin-top:-10px;margin-left:-30px">settings</i></a>
+                                              </div>
+                                          </div>
+                                    </div> 
+                                     
+                                </div>
+                      </div>
+                  </div>
+                 </div>
+          </div>
          
-			
-                    <div class="col l12 push-l1">
-						
-                
-<!-------------------------------------------------------CSS---------------------------------->
-    
-            
-        <!-----------------BUTTONS-------------->
-        
-        <!-----------------BUTTONS-------------->
+         <div class="row">
+             <div class="col s12 push-s3">
+              <iframe src="http://free.timeanddate.com/clock/i5bfv3ml/n145/szw110/szh110/hoc000/hbw0/hfc09f/cf100/hnc07c/hwc000/facfff/fnu2/fdi76/mqcfff/mqs4/mql18/mqw4/mqd60/mhcfff/mhs4/mhl5/mhw4/mhd62/mmv0/hhcfff/hhs1/hhb10/hmcfff/hms1/hmb10/hscfff/hsw3" frameborder="0" width="110" height="120"></iframe>   
 
-
- 
-   
-  
-         
+                    <div class="row">
+                        <div class="col l12" style="margin-left:-4%">
+                           <iframe src="http://free.timeanddate.com/clock/i5bfv67w/n145/fn14/ftb/bo2/tt0/tw0/tm1/tb4" frameborder="0" width="100px" height="38"></iframe>      
                         
-                   </div>
-            </div>
-        
+                        </div>
+
+
+                   </div> 
+         </div>
+         
+         </div>
+    </ul>
+
         
         <div class="col l9">
         
