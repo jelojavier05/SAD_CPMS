@@ -10,7 +10,7 @@ Type of Contract
          
     <div class="row">
  
-     <div class="col s5 pull-s2" style="margin-left:-2%">
+     <div class="col s5 push-s3" style="margin-left:-2%">
     
                    <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Type of Contract</h3>
                 </div>

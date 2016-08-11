@@ -44,7 +44,6 @@
            <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
 		<link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
         
-        
     </head>
 
 <!----------BODY------------>
@@ -157,7 +156,7 @@
                   			</div>
                  </div>
           </div>
-         
+        
          <div class="row">
              <div class="col s12 push-s3">
               <iframe src="http://free.timeanddate.com/clock/i5bfv3ml/n145/szw110/szh110/hoc000/hbw0/hfc09f/cf100/hnc07c/hwc000/facfff/fnu2/fdi76/mqcfff/mqs4/mql18/mqw4/mqd60/mhcfff/mhs4/mhl5/mhw4/mhd62/mmv0/hhcfff/hhs1/hhb10/hmcfff/hms1/hmb10/hscfff/hsw3" frameborder="0" width="110" height="120"></iframe>   
@@ -174,8 +173,6 @@
          
          </div>
     </ul>
-
-        
         <div class="col l9">
         
         

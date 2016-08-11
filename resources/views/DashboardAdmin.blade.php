@@ -20,9 +20,7 @@ Admin
 	<hr>
 </div> -->
 
-<div class="row">
-       
-	</div>
+
 
 <!-----------------CLIENTS----------------->
 

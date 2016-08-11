@@ -7,146 +7,209 @@ Client Views Guards Attendance
 @section('content')
 
 
-    <div clas="col s12">
-        <h2 class = "blue darken-3 white-text" style="border: 1px solid black;font-family:Verdana"><center>SETTINGS</center></h2>
-    </div>
-
-    <!-------------------------TABS----------------------->
-    
-    <div class="col s12">
-      <ul class="tabs blue lighten-1" style="border: 1px solid black;">
-        <li class="tab col s3"><a href="#clientdata">Personal Data</a></li>
-        <li class="tab col s3"><a href="#acc1">Account</a></li>
-      </ul>
-    </div>
-
-  <!-------------------------TAB CLIENT DATA----------------------->
-<div class="row"></div>
-
-<div id="clientdata" class="col s11">
- 
-        <div class="col l12 push-l1">
-
-            <div class="container-fluid grey lighten-4 z-depth-2" style="border: 1px solid black; border-radius:5px;" id="personaldata">
-			<h4 class = "blue darken-2 white-text" style="margin-top:0px;">Client</h4>
-			<div class = "row">
-				<div class='col s10 push-s1'>
-					
-					<div class="input-field col s6 offset-s6 pull-s6">
-						<select id = "natureSelect">
-						  <option value="" disabled selected>Choose</option>
-                        
-                            
-						</select>
-    					<label>Nature of Business</label>
-
-					</div>
+  <div class="row">			
+	<div class="ci col s8 push-s3" style="margin-top:25px;">	
+		<ul class="collection with-header" id="collectionActive" >
+			<li class="collection-header">
+                <h4 style="font-weight:bold;">Account Information
+				<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue right tooltipped" id = 'buttonDetail'><i class="material-icons">mode_edit</i></a>
+                </h4>
+				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword' style="margin-top:-84px; margin-left:620px;"><i class="material-icons">vpn_key</i></a>
+            </li>
+						
+                
+                      
+                    <div class="col s6">
+                         <li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = 'firstName'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
                     
-                    <div class="input-field col s6">
-						<input placeholder=" " id="clientName" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
-						<label for="clientName"  data-error="Incorrect">Client Name</label>
-					</div>
-					
-				
-					<div class="input-field col s6">
-							<input placeholder=" " id="clientcontactLandline" maxlength="11" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
-							<label data-error="Incorrect" for="clientcontactLandline">Contact Number (Client)</label>
+                        <li class="collection-item" style="font-weight:bold;">Client Name:<div style="font-weight:normal;" id = 'firstName'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
 
-					</div>
-					
-					<div class="input-field col s6">
-						<input placeholder=" " id="personInCharge" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
-						<label for="personInCharge" data-error="Incorrect">Person in Charge</label>
-					</div>
-					
-					<div class="input-field col s6">
-						<input placeholder=" " id="piccontactCp" maxlength="13" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
-						<label data-error="Incorrect" for="clientcontactCp">Contact Number (Person In Charge)</label>
+                        <li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = 'birthday'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
 
-					</div>
-                    
-                    <div class="input-field col s12">
-						<input placeholder=" " id="address" type="text" class="validate" pattern="[A-za-z0-9., ]{2,}" required="" aria-required="true">
-						<label data-error="Incorrect" for="address">Address</label>
-
-					</div>
-					
-					<div class = "input-field col s6">    
-					   <select  id = "provinceSelect">
-						   <option disabled selected>Choose Province</option>
-				      
-					   </select>
-					</div>
-					
-					<div class = "input-field col s6">    
-					   <select  id = "citySelect" name = "" >
-						   <option disabled selected>Choose City</option>
-					   </select>
-					</div>
-					
-					<div class="input-field col s6">
-						<input placeholder=" " id="areaSize" type="text" class="validate" pattern="[0-9. ]{2,}" required="" aria-required="true">
-						<label data-error="Incorrect" for="areaSize">Area Size (approx. in square meters)</label>
-
-					</div>
-					
-					<div class="input-field col s6">
-						<input placeholder=" " id="population" type="text" class="validate" pattern="[0-9, ]{2,}" required="" aria-required="true">
-						<label data-error="Incorrect" for="population">Population (approx.)</label>
-
-					</div>
-					
-					<div class="input-field col s4 push-s4">
-						<input placeholder=" " id="guardNo" type="number" class="validate" pattern="[0-9,]{1,}" required="" aria-required="true">
-						<label data-error="Incorrect" for="population">Number of Guards</label>
-
-					</div>
-        </div>
-    </div>
-</div>
-        
-            
-    </div>
-</div>
-  <!-------------------------TAB CLIENT ACCOUNT----------------------->
-<div class="row"></div>
-<div class="row"></div>
-
-<div id="acc1" class="col s11">
- 
-        <div class="col l12 push-l1">
-    
-					<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px;">
-						<legend><h4>Account</h4></legend>
+                        <li class="collection-item" style="font-weight:bold;">Contact Number(Person in Charge):<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
                         
-                        <div class="col s10 push-s1">
-                            <div class="row">
-                                <div class="col s8 push-s2">
-                                    <div class="input-field">
-                                        <input placeholder=" " id="username" type="text" class="validate" name = "userName" required="" aria-required="true">
-                                        <label for="strUserName">Username</label> 
-                                    </div>
-                                </div>
-                            </div>
+                        <li class="collection-item" style="font-weight:bold;">City<div style="font-weight:normal;" id = 'placeBirth'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
+                      
+                    </div>
+                    <div class="col s6">
+                      
+                        
+                        <li class="collection-item" style="font-weight:bold;">Contact Number:<div style="font-weight:normal;" id = 'middleName'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
 
-                            <div class="row">
-                                <div class="col s8 push-s2">
-                                    <div class="input-field">
-                                        <input placeholder=" " id="password" type="text" class="validate" name = "passWord" required="" aria-required="true">
-                                        <label for="password">Password</label> 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-					</div>
-        </div>
-    
-     <button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#" id = "backAccount">Save</button>
-     <button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" href="#" id = "nextAccount">Cancel</button>
+                        <li class="collection-item" style="font-weight:bold;">Person in Charge<div style="font-weight:normal;" id = 'lastName'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
+                        <li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'contactMobile'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
+
+                        <li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = 'contactLandline'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
+
+                        <li class="collection-item" style="font-weight:bold;">Number of Guards:<div style="font-weight:normal;" id = 'civilStatus'>&nbsp;&nbsp;&nbsp;</div>
+                        </li>
+
+                    </div>
+				<li class="collection-item" style="font-weight:bold;color:transparent">.
+				</li>
+		</ul>
+      </div>
+	</div>
+<!-- Change Password Start-->
+<div id="modalchangePassword" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">      
+	<div class="modal-header">
+		<div class="h">
+			<h3><center>Change Password</center></h3>  
+		</div>
+	</div>
+	<div class="modal-content">
+		<div class="row">
+			<div class="col s10 push-s1" style="margin-top:-30px;">      
+				<div class="row"></div>  
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+					<input id="strCurrent" type="password" class="validate" name = "" required="" aria-required="true">
+					<label for="">Current Password</label> 
+				</div>
+			</div>
+			<div class="col s10 push-s1" style="margin-top:-30px;">      
+				<div class="row"></div>
+				<div class="row"></div>  
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+					<input id="strNew" type="password" class="validate" name = "" required="" aria-required="true">
+					<label for="">New Password</label> 
+				</div>
+			</div>
+			<div class="col s10 push-s1" style="margin-top:-30px;">      
+				<div class="row"></div>
+				<div class="row"></div>
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+					<input id="strConfirm" type="password" class="validate" name = "" required="" aria-required="true">
+					<label for="">Confirm New Password</label> 
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer" style="background-color: #00293C;">
+		<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnChangePasswordSave">Save
+			<i class="material-icons right">send</i>
+		</button>
+	</div>	
 </div>
+<!-- Change Password End -->
 
+<div class="row"></div>
+<div class="row"></div>
 
+<!-- Change Detail Start -->
+<div id="modalchangeDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:800px !important; margin-top:10px !important;  max-height:100% !important; height:550px !important; border-radius:10px;">
+	<div class="modal-header">
+		<div class="h">
+			<h3><center>Edit Details</center></h3>  
+		</div>
+	</div>
+	<div class="modal-content sidenavhover " id="" style="overflow-x:hidden;" >
+		<div class="row">
+			<div class="col s4" >      
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
+					<input placeholder=" " id="strFirstName" type="text" class="validate" name = "" required="" aria-required="true">
+					<label for="">First Name</label> 
+				</div>
+			</div>
+			<div class="col s4" >      
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
+					<input  placeholder=" " id="strMiddleName" type="text" class="validate" name = "" required="" aria-required="true">
+					<label for="">Middle Name</label> 
+				</div>
+			</div>
+			<div class="col s4" >      
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
+					<input  placeholder=" " id="strLastName" type="text" class="validate" name = "" required="" aria-required="true">
+					<label for="">Last Name</label> 
+				</div>
+			</div>
+			<div class="col s6">      
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">store</i>
+					<input placeholder=" " id="strAddress" type="text" class="validate" name = "" required="" aria-required="true">
+					<label for="">Address</label> 
+				</div>
+			</div>
+			<div class="col s3">
+				<div class=" input-field col s12">
+					<select id = 'selectProvince'>
+						
+					</select>
+				</div>
+			</div>
+			<div class="col s3">
+				<div class=" input-field col s12">
+					<select id = 'selectCity'>
 
+					</select>
+				</div>
+			</div>
+			<div class="col s6">
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px; color:#64b5f6;">star</i>
+					<input type="date" id="dateOfbirth" class="datepicker"/>
+					<label class="active" for="dateOfbirth">Date of Birth</label>
+				</div>
+			</div>
+			<div class="col s6" >      
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">star</i>
+					<input placeholder=" " id="strPlaceBirth" type="text" class="validate" name = "" required="" aria-required="true">
+					<label for="">Place of Birth</label> 
+				</div>
+			</div>
+			<div class="col s6">
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size: 35px;">smartphone</i>
+					<input placeholder=" " id="strContactNumberMobile" type="text" class="validate" name="" required="" aria-required="true"/>
+					<label for="">Contact Number (Mobile)</label>
+				</div>
+			</div>
+			<div class="col s6">
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size: 35px;">phone</i>
+					<input placeholder=" " id="strContactNumberLandline" type="text" class="validate" name="" required="" aria-required="true"/>
+					<label for="">Contact Number (Landline)</label>
+				</div>
+			</div>
+			<div class="col s4 push-s2">
+				<select id="selectCivilStatus">
+					<option selected disabled>Civil Status</option>
+					<option>Single</option>
+					<option>Married</option>
+					<option>Widowed</option>									
+				</select>
+			</div>
+			<div class="col s4 push-s2">
+				<select id="selectGender" >
+					<option selected disabled>Gender</option>
+					<option>Male</option>
+					<option>Female</option>																			
+				</select>
+			</div>
+		</div>
+	</div>
+	<!-- Modal Button Save -->
+	<div class="modal-footer" style="background-color: #00293C;">
+		<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnSaveDetails">Save
+			<i class="material-icons right">send</i>
+		</button>
+	</div>	
+</div>
 
 
 <script>
