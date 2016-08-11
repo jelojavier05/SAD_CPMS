@@ -46,7 +46,6 @@ Client Homepage
 </div>
 
 
-      <!----------------------------------------MESSAGE--------------------------------
 <div class="row">
     <div class="col l12">
         <div class="col l6">

@@ -16,8 +16,6 @@ Client Views Guards Attendance
                 </h4>
 				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword' style="margin-top:-84px; margin-left:620px;"><i class="material-icons">vpn_key</i></a>
             </li>
-						
-                
                       
                     <div class="col s6">
                          <li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = 'firstName'>&nbsp;&nbsp;&nbsp;</div>
