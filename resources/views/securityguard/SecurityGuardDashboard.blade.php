@@ -44,16 +44,6 @@
            <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
 		<link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
         
-        <!-- CALENDAR CSS-->
-        <link href="{!! URL::asset('../css/kendo-materialize.css') !!}" type="text/css" rel="stylesheet"/>
-        <link href="{!! URL::asset('../css/kendo1-materialize.css') !!}" type="text/css" rel="stylesheet"/>
-        <link href="{!! URL::asset('../css/kendo2-materialize.css') !!}" type="text/css" rel="stylesheet"/>
-        <link href="{!! URL::asset('../css/kendo3-materialize.css') !!}" type="text/css" rel="stylesheet"/>
-        
-        <!-- CALENDAR JS-->
-         <script src="{!! URL::asset('../js/kendojs.js') !!}"></script>
-         <script src="{!! URL::asset('../js/kendojs1.js') !!}"></script>
-
         
     </head>
 
