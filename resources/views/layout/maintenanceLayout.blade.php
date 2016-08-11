@@ -45,7 +45,7 @@
 
  
     
-<body id="scrollhider" class="bodyscrollhider ci">
+<body id="scrollhider" class="bodyscrollhider ci" style="background-color:#F0EFEA">
     <nav class="blue darken-4">
         
          <div class="nav-wrapper">
@@ -92,7 +92,7 @@
                           
                     <li class="bold" style="width:280px">
 						<a class="collapsible-header waves-effect waves-blue swa" href="#">
-							<i class="material-icons">settings</i><strong>Maintenance</strong><i class="mdi-navigation-arrow-drop-down right"></i>
+							<i class="material-icons">view_quilt</i><strong>Maintenance</strong><i class="mdi-navigation-arrow-drop-down right"></i>
 						</a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul >
@@ -163,7 +163,7 @@
                           
 					
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="#"><i class="material-icons">assignment</i><strong>Registration</strong><i class="mdi-navigation-arrow-drop-down right"></i></a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="#"><i class="material-icons">content_paste</i><strong>Registration</strong><i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             
@@ -383,43 +383,18 @@
   
 </li>
 	<div class="row">
-    <div class="col l5 push-l10 ">
-            
-                <div class="row"></div> 
-                    <div id="clockDisplay" style="font-size:2rem"> 08 : 08 : 08 PM </div>
-                    <script type="text/javascript">
-                        function renderTime() {
-                            var currentTime = new Date();
-                            var diem = "AM";
-                            var h = currentTime.getHours();
-                            var m = currentTime.getMinutes();
-                            var s = currentTime.getSeconds();
+    <div class="col l4 push-l10 " style="margin-left:5%">
+              <iframe src="http://free.timeanddate.com/clock/i5bfv3ml/n145/szw110/szh110/hoc000/hbw0/hfc09f/cf100/hnc07c/hwc000/facfff/fnu2/fdi76/mqcfff/mqs4/mql18/mqw4/mqd60/mhcfff/mhs4/mhl5/mhw4/mhd62/mmv0/hhcfff/hhs1/hhb10/hmcfff/hms1/hmb10/hscfff/hsw3" frameborder="0" width="110" height="120"></iframe>   
 
-                            if (h == 0) {
-                                h=12;
-                            } else if (h > 12) {
-                                h = h - 12;
-                                diem = "PM";
-                            }
-                            if (h < 10) {
-                                h = "0" + h;
-                            }
-                            if (m < 10) {
-                                m = "0" + m;
-                            }
-                            if (s < 10) {
-                                s = "0" + s;
-                            }
-
-                            var myClock = document.getElementById('clockDisplay');
-                            myClock.textContent = h + ":" + m + ":" + s + " " + diem
-                            myClock.innerText = h + ":" + m + ":" + s + " " + diem;	
-                            setTimeout('renderTime()',1000);
-                        }
-                        renderTime();
-                    </script>
-            </div>
+                    <div class="row">
+                        <div class="col l12" style="margin-left:-2%">
+                           <iframe src="http://free.timeanddate.com/clock/i5bfv67w/n145/fn14/ftb/bo2/tt0/tw0/tm1/tb4" frameborder="0" width="100px" height="38"></iframe>      
+                        
+                        </div>
+         
+         </div>
      </div>
+</div>
 
 
 
