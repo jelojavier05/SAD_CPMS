@@ -15,9 +15,9 @@ Guard Attendance
     </div>
 <div class="row">
     <div class="col l12">
-            <div class="col l10 offset-l2" style="overflow:scroll;max-height:690px">
+            <div class="col l10 offset-l2" style=";max-height:690px">
         
-                 <table class="centered">
+                 <table class="centered" id="dataTable">
                         <thead>
                           <tr>
                               
@@ -48,7 +48,7 @@ Guard Attendance
                             </td>
                             <td> 
                                         
-                                            <button class="btn waves-effect waves-light blue darken-4" type="button" name="action">TIME-IN
+                                            <button class="btn waves-effect waves-light blue darken-4 buttonTimeIn" id="" type="button" name="action">TIME-IN
                                  
                                             </button>
                                 
@@ -59,7 +59,7 @@ Guard Attendance
                               
                             </td>
                             <td> 
-                                       
+                                 hello      
                             </td>
                           </tr> 
                             
@@ -81,7 +81,65 @@ Guard Attendance
 
 </div>
  
+<!-- sg login Start-->
+<div id="modalTimeIn" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
+	<div class="modal-header">
+		<div class="h">
+			<h3><center>Login</center></h3>  
+		</div>
+	</div>
+	<div class="modal-content">
+		<div class="row">
+			<div class="col s10 push-s1" style="margin-top:-30px;">      
+				<div class="row"></div>  
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
+					<input id="strCurrent" type="password" class="validate" name = "" required="" aria-required="true">
+					<label for="">Username</label> 
+				</div>
+			</div>
+			<div class="col s10 push-s1" style="margin-top:-30px;">      
+				<div class="row"></div>
+				<div class="row"></div>  
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+					<input id="strNew" type="password" class="validate" name = "" required="" aria-required="true">
+					<label for="">Password</label> 
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="modal-footer" style="background-color: #00293C;">
+		<button class="btn large waves-effect waves-light green" name="action" style="margin-right: 30px;" id = "btnChangePasswordSave">OK
+		</button>
+	</div>	
+</div>
+<!-- sg login End -->
 
 
+@stop
+
+@section('script')
+<script>
+$("#dataTable").DataTable({
+             "columns": [
+            null,
+			{"orderable": false},
+			{"orderable": false},
+			{"orderable": false},
+            null
+            ] ,  
+			"pageLength":5,
+			"lengthMenu": [5,10,15,20],
+			
+		});
+	
+	$('#dataTable').on('click', '.buttonTimeIn', function(){
+            $('#modalTimeIn').openModal();
+            
+
+        });
+</script>
 
 @stop
