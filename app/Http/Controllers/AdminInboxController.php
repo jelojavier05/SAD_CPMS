@@ -118,7 +118,7 @@ class AdminInboxController extends Controller
         $result = DB::table('tblguardleaverequest')
             ->join('tblguard', 'tblguard.intGuardID', '=','tblguardleaverequest.intGuardID')
             ->join('tblleave', 'tblleave.intLeaveID', '=','tblguardleaverequest.intLeaveID')
-            ->select('tblguard.intGuardID', 'tblleave.strLeaveType', 'tblguardleaverequest.strReason')
+            ->select('tblguard.intGuardID', 'tblleave.strLeaveType', 'tblguardleaverequest.strReason', 'tblguardleaverequest.boolStatus')
             ->where('tblguardleaverequest.intInboxID', $inboxID)
             ->first();
 

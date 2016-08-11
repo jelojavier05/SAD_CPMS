@@ -20,7 +20,7 @@ class CPMSUserLoginController extends Controller
             }else if ($accountType == 1){
                 return redirect('/client/test');
             }else if ($accountType == 2){
-                return redirect('/securityhomepage');
+                return redirect('/securityHome');
             }else if ($accountType == 3){
                 return redirect('/dashboardadmin');
             }

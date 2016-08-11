@@ -430,10 +430,10 @@ $(document).ready(function(){
 
     // GUARD LEAVE REQUEST START
     function guardLeaveRequest(){
+
         $('#modalLeaveRequestApproval').openModal();
         getGuardRequestLeaveInformation();// request leave information
-        getGuardWaiting(); //guard waiting
-        populateTableRequestLeave();
+        
     }
 
     function getGuardRequestLeaveInformation(){
@@ -445,6 +445,9 @@ $(document).ready(function(){
                 $('#strLeaveType').text(data.strLeaveType);
                 $('#strClientName').text(data.strClientName);
                 $('#strReason').text(data.strReason);
+
+                getGuardWaiting(); //guard waiting
+                populateTableRequestLeave();
             }
         });//ajax
     }
