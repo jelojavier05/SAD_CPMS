@@ -38,13 +38,19 @@ class ClientContractController extends Controller
                 ->where('tblclient.intClientID', $id)
                 ->first();
             
-            $shifts = DB::table('tblclientshift')
+            $shift = DB::table('tblclientshift')
                 ->join('tblclient', 'tblclient.intClientID', '=', 'tblclientshift.intClientID')
                 ->select('tblclientshift.*')
                 ->where('tblclient.intClientID', $id)
                 ->get();
             
-            $client->shifts = $shifts;
+            foreach($shift as $value){
+                $value->timeFrom = date('h:i A', strtotime($value->timeFrom)); 
+                $value->timeTo = date('h:i A', strtotime($value->timeTo)); 
+            }
+
+            $client->shifts = $shift;
+
             
             return response()->json($client);    
         }

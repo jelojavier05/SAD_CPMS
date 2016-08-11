@@ -17,7 +17,6 @@ Inbox
 		<div id="message">
 			<div class="container-fluid grey lighten-2">	
 				<table class="striped" id="dataTableMsg">
-					<button class="btn blue buttonTest modal-trigger" href="#modalLeaveRequestApproval">Test</button>
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
@@ -118,23 +117,23 @@ Inbox
         				<ul class="collection with-header" id="collectionActive">
 							<li class="collection-header" style="font-weight:bold;">
 								<div class="row">
-									<div class="col s6">	
-										Guard:<div style="font-size:18px;" id = "">&nbsp;Lebron James</div>
-									</div>
 									<div class="col s6">
-										Client:<div style="font-size:18px;" id = "">&nbsp;Manila Hotel</div>
+                                        Leave Type:<div style="font-size:18px;" id = "strLeaveType">&nbsp;</div>
+                                    </div>
+									<div class="col s6">
+										Client:<div style="font-size:18px;" id = "strClientName">&nbsp;</div>
 									</div>
 								</div>
 					
 							</li>
 							
-							<li class="collection-header" style="font-weight:bold;">Reason:<div style="font-size:18px;" id = "guardNumber">&nbsp;</div>
+							<li class="collection-header" style="font-weight:bold;">Reason:<div style="font-size:18px;" id = "strReason">&nbsp;</div>
 							</li>
         					<li class="collection-item">
         						<div class="row">
         							<div class="col s12">
         								
-        								<table class="striped white" style="border-radius:10px; width:100%;" id="dataTableRequestSendNoti">
+        								<table class="striped white" style="border-radius:10px; width:100%;" id="dataTableLeaveRequest">
         									<thead>
         										<th class="grey lighten-1" style="width:10px;"></th>
         										<th class="grey lighten-1">ID</th>
@@ -144,15 +143,7 @@ Inbox
         										<th class="grey lighten-1">City</th>
         									</thead>
         									<tbody>
-        										<tr>
-        											<td><input type="checkbox" id="test1"/>
-              										<label for="test1"></label></td>
-        											<td>1</td>
-        											<td>Kobe</td>
-        											<td>Bryant</td>
-        											<td>Metro Manila</td>
-        											<td>Las Pinas</td>
-        										</tr>
+        										
         									</tbody>
         								</table>
         							</div>
@@ -163,7 +154,7 @@ Inbox
         	</div>
         	<!-- button -->
         	<div class="modal-footer ci" style="background-color: #00293C;">
-        		<button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationNewClient" style="margin-right: 30px;">Send<i class="material-icons right">send</i>
+        		<button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationLeaveRequest" style="margin-right: 30px;">Send<i class="material-icons right">send</i>
                 </button>
         	</div>
         </div>
@@ -182,7 +173,8 @@ $(document).ready(function(){
     
     var guardWaiting= [];
     var guardChecked; //sesendan ng notification
-    var guardHasNotification = []; //guards who have notification
+    var guardHasNotification = []; //guards who have notification (new client)
+    var guardHasNotificationLeaveRequest = [];//guards who have notification (leave request)
     var inboxID;
     $.ajax({
         type: "GET",
@@ -221,6 +213,8 @@ $(document).ready(function(){
             message();
         }else if (type == 1){//new client (client)
             newClientClient();
+        }else if (type == 3){
+            guardLeaveRequest();
         }//if else
     });//button read click
     
@@ -229,9 +223,21 @@ $(document).ready(function(){
         if (guardChecked.length > 0){
             sendNewClientNotificationGuard();
         }else{
-            confirm('magcheck ka bes! para tumuloy');
+            var toastContent = $('<span>Select at least one guard. </span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
         }
     });//button send notification for guard (new client)
+
+    $('#btnSendNotificationLeaveRequest').click(function(){
+        getCheckedGuard();
+        if (guardChecked.length > 0){
+            sendLeaveRequestNotification();
+        }else{
+            var toastContent = $('<span>Select at least one guard. </span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+
+        }
+    });//button send notifiation for guard (leave request)
 
     function readMessage(){
         if($('#radio' + inboxID).is(':checked')){
@@ -273,13 +279,35 @@ $(document).ready(function(){
         }//if else
     }//function readMessage
 
+    // NEW CLIENT START
     function newClientClient(){
-        $('#modalSendNoti').openModal();
-        getGuardWaiting();
-        populateGuardWaitingNotification();
-        setNumberOfGuardNewClient();
+        
+        if (isRequestAvailable()){
+            $('#modalSendNoti').openModal();
+            getGuardWaiting();
+            populateGuardWaitingNotification();
+            setNumberOfGuardNewClient();
+        }else{
+            swal("N/A!", "Not Available Anymore.", 'error');
+        }
     }//1st step
     
+    function isRequestAvailable(){
+        var checker;
+        $.ajax({
+            type: "GET",
+            url: "adminInbox/get/clientpendingnotificationstatus?inboxID=" + inboxID,
+            success: function(data){
+                if (data.intStatusIdentifier == 0){
+                    checker = false;
+                }else{
+                    checker = true;
+                }
+            },async:false
+        });//ajax
+        return checker;
+    }
+
     function getGuardWaiting(){
         if (guardWaiting.length<=0){
             $.ajax({
@@ -377,7 +405,10 @@ $(document).ready(function(){
             }
         });//ajax
     }//notification sent
+    // NEW CLIENT END
 
+
+    // MESSAGE START
     function message(){
         $('#modalMessage').openModal();
         getMessage();
@@ -394,6 +425,96 @@ $(document).ready(function(){
             },async:false
         });//get guard waiting
     }
+    // MESSAGE END
+
+
+    // GUARD LEAVE REQUEST START
+    function guardLeaveRequest(){
+        $('#modalLeaveRequestApproval').openModal();
+        getGuardRequestLeaveInformation();// request leave information
+        getGuardWaiting(); //guard waiting
+        populateTableRequestLeave();
+    }
+
+    function getGuardRequestLeaveInformation(){
+        // 
+        $.ajax({
+            type: "GET",
+            url: "/adminInbox/get/guardrequestleaveinformation?inboxID=" + inboxID,            
+            success: function(data){
+                $('#strLeaveType').text(data.strLeaveType);
+                $('#strClientName').text(data.strClientName);
+                $('#strReason').text(data.strReason);
+            }
+        });//ajax
+    }
+
+    function populateTableRequestLeave(){
+        var table = $('#dataTableLeaveRequest').DataTable();
+        table.clear().draw();
+        getGuardHasNotificationLeaveRequest();
+        for(intLoop = 0; intLoop < guardWaiting.length; intLoop ++){
+           var boolchecker = true;
+           for (intLoop2 = 0; intLoop2 < guardHasNotificationLeaveRequest.length; intLoop2 ++){
+               if (guardWaiting[intLoop].intGuardID == guardHasNotificationLeaveRequest[intLoop2].intGuardID){
+                   boolchecker = false;
+                   break;
+               }
+           }
+
+           if (boolchecker){
+                table.row.add([
+                    '<input type="checkbox" id="checkBox' +guardWaiting[intLoop].intGuardID  + '" value = "'+ guardWaiting[intLoop].intGuardID +'"><label for="checkBox' + guardWaiting[intLoop].intGuardID + '"></label>',
+
+                    '<h style="height:-15px;">' + guardWaiting[intLoop].intGuardID + '</h>',
+                    '<h style="height:-15px;">' + guardWaiting[intLoop].strFirstName + '</h>',
+                    '<h style="height:-15px;">' + guardWaiting[intLoop].strLastName + '</h>',
+                    '<h style="height:-15px;">' + guardWaiting[intLoop].strProvinceName + '</h>',
+                    '<h style="height:-15px;">' + guardWaiting[intLoop].strCityName + '</h>',
+                ]).draw(false);
+           }
+        }
+    }
+
+    function sendLeaveRequestNotification(){
+        $.ajax({
+            type: "POST",
+            url: "{{action('AdminInboxController@sendLeaveRequestNotification')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                guardWaiting: guardChecked,
+                inboxID: inboxID,
+            },
+            success: function(data){
+                swal("Success!", "Request Sent.", "success");
+                $('#modalLeaveRequestApproval').closeModal();
+            },
+            error: function(data){
+                var toastContent = $('<span>Error Occured. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+
+            }
+        });//ajax
+    }
+
+    function getGuardHasNotificationLeaveRequest(){
+        $.ajax({
+            type: "GET",
+            url: "/adminInbox/get/getGuardHasNotificationLeaveRequest?inboxID=" + inboxID,
+            success: function(data){
+                guardHasNotificationLeaveRequest = data;
+            },async:false
+        });//ajax
+    }
+    // GUARD LEAVE REQUEST END
+
+
 }); 
 </script>        
         
@@ -437,7 +558,7 @@ $(document).ready(function(){
         "lengthMenu": [5,10,15,20]
      });
 	
-	$('#dataTableRequestSendNoti').DataTable({
+	$('#dataTableLeaveRequest').DataTable({
          "columns": [
         { "orderable": false },
         null,

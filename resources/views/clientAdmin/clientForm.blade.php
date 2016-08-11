@@ -121,59 +121,59 @@ Client
 												<td>
 													<select id = "shiftSelectFrom1" class="browser-default col s8 offset-s2">
 													  <option value="" disabled selected>---</option>
-												        <option id = "0" value="0">12 AM</option>
-                                                        <option id = "1" value="1">1 AM</option>
-                                                        <option id = "2" value="2">2 AM</option>
-                                                        <option id = "3" value="3">3 AM</option>
-                                                        <option id = "4" value="4">4 AM</option>
-                                                        <option id = "5" value="5">5 AM</option>
-                                                        <option id = "6" value="6">6 AM</option>
-                                                        <option id = "7" value="7">7 AM</option>
-                                                        <option id = "8" value="8">8 AM</option>
-                                                        <option id = "9" value="9">9 AM</option>
-                                                        <option id = "10" value="10">10 AM</option>
-                                                        <option id = "11" value="11">11 AM</option>
-                                                        <option id = "12" value="12">12 PM</option>
-                                                        <option id = "13" value="13">1 PM</option>
-                                                        <option id = "14" value="14">2 PM</option>
-                                                        <option id = "15" value="15">3 PM</option>
-                                                        <option id = "16" value="16">4 PM</option>
-                                                        <option id = "17" value="17">5 PM</option>
-                                                        <option id = "18" value="18">6 PM</option>
-                                                        <option id = "19" value="19">7 PM</option>
-                                                        <option id = "20" value="20">8 PM</option>
-                                                        <option id = "21" value="21">9 PM</option>
-                                                        <option id = "22" value="22">10 PM</option>
-                                                        <option id = "23" value="23">11 PM</option>
+												        <option id = "0" value="00:00:00">12 AM</option>
+                                                        <option id = "1" value="01:00:00">1 AM</option>
+                                                        <option id = "2" value="02:00:00">2 AM</option>
+                                                        <option id = "3" value="03:00:00">3 AM</option>
+                                                        <option id = "4" value="04:00:00">4 AM</option>
+                                                        <option id = "5" value="05:00:00">5 AM</option>
+                                                        <option id = "6" value="06:00:00">6 AM</option>
+                                                        <option id = "7" value="07:00:00">7 AM</option>
+                                                        <option id = "8" value="08:00:00">8 AM</option>
+                                                        <option id = "9" value="09:00:00">9 AM</option>
+                                                        <option id = "10" value="10:00:00">10 AM</option>
+                                                        <option id = "11" value="11:00:00">11 AM</option>
+                                                        <option id = "12" value="12:00:00">12 PM</option>
+                                                        <option id = "13" value="13:00:00">1 PM</option>
+                                                        <option id = "14" value="14:00:00">2 PM</option>
+                                                        <option id = "15" value="15:00:00">3 PM</option>
+                                                        <option id = "16" value="16:00:00">4 PM</option>
+                                                        <option id = "17" value="17:00:00">5 PM</option>
+                                                        <option id = "18" value="18:00:00">6 PM</option>
+                                                        <option id = "19" value="19:00:00">7 PM</option>
+                                                        <option id = "20" value="20:00:00">8 PM</option>
+                                                        <option id = "21" value="21:00:00">9 PM</option>
+                                                        <option id = "22" value="22:00:00">10 PM</option>
+                                                        <option id = "23" value="23:00:00">11 PM</option>
 													</select>
 												</td>
 												<td>
 													<select id = "shiftSelectTo1" class="browser-default col s8 offset-s2">
 													  <option value="" disabled selected>---</option>
-													  <option id = "0" value="0">12 AM</option>
-                                                        <option id = "1" value="1">1 AM</option>
-                                                        <option id = "2" value="2">2 AM</option>
-                                                        <option id = "3" value="3">3 AM</option>
-                                                        <option id = "4" value="4">4 AM</option>
-                                                        <option id = "5" value="5">5 AM</option>
-                                                        <option id = "6" value="6">6 AM</option>
-                                                        <option id = "7" value="7">7 AM</option>
-                                                        <option id = "8" value="8">8 AM</option>
-                                                        <option id = "9" value="9">9 AM</option>
-                                                        <option id = "10" value="10">10 AM</option>
-                                                        <option id = "11" value="11">11 AM</option>
-                                                        <option id = "12" value="12">12 PM</option>
-                                                        <option id = "13" value="13">1 PM</option>
-                                                        <option id = "14" value="14">2 PM</option>
-                                                        <option id = "15" value="15">3 PM</option>
-                                                        <option id = "16" value="16">4 PM</option>
-                                                        <option id = "17" value="17">5 PM</option>
-                                                        <option id = "18" value="18">6 PM</option>
-                                                        <option id = "19" value="19">7 PM</option>
-                                                        <option id = "20" value="20">8 PM</option>
-                                                        <option id = "21" value="21">9 PM</option>
-                                                        <option id = "22" value="22">10 PM</option>
-                                                        <option id = "23" value="23">11 PM</option>
+													  <option id = "0" value="00:00:00">12 AM</option>
+                                                        <option id = "1" value="01:00:00">1 AM</option>
+                                                        <option id = "2" value="02:00:00">2 AM</option>
+                                                        <option id = "3" value="03:00:00">3 AM</option>
+                                                        <option id = "4" value="04:00:00">4 AM</option>
+                                                        <option id = "5" value="05:00:00">5 AM</option>
+                                                        <option id = "6" value="06:00:00">6 AM</option>
+                                                        <option id = "7" value="07:00:00">7 AM</option>
+                                                        <option id = "8" value="08:00:00">8 AM</option>
+                                                        <option id = "9" value="09:00:00">9 AM</option>
+                                                        <option id = "10" value="10:00:00">10 AM</option>
+                                                        <option id = "11" value="11:00:00">11 AM</option>
+                                                        <option id = "12" value="12:00:00">12 PM</option>
+                                                        <option id = "13" value="13:00:00">1 PM</option>
+                                                        <option id = "14" value="14:00:00">2 PM</option>
+                                                        <option id = "15" value="15:00:00">3 PM</option>
+                                                        <option id = "16" value="16:00:00">4 PM</option>
+                                                        <option id = "17" value="17:00:00">5 PM</option>
+                                                        <option id = "18" value="18:00:00">6 PM</option>
+                                                        <option id = "19" value="19:00:00">7 PM</option>
+                                                        <option id = "20" value="20:00:00">8 PM</option>
+                                                        <option id = "21" value="21:00:00">9 PM</option>
+                                                        <option id = "22" value="22:00:00">10 PM</option>
+                                                        <option id = "23" value="23:00:00">11 PM</option>
 													</select>
 												</td>
 											</tr>
@@ -347,80 +347,72 @@ Client
         
         $('#btnAddShift').click(function(){
             
-            
             if (shiftCounter < 3){
                 var from = $('#shiftSelectFrom' + shiftCounter).val();
                 var to = $('#shiftSelectTo' + shiftCounter).val();
                 var checker = true;
-                
-                if (from && to && (to - from) <= 12 && (to - from)>=8){
-                    shiftCounter ++;
-                    table.row.add([
-                        '<h><center>' + shiftCounter +'</center></h>',
-                        '<select id = "shiftSelectFrom' + shiftCounter+'" class="browser-default col s8 offset-s2">' + 
-                        '<option value="" disabled selected>---</option>' + 
-                        '<option id = "24" value="24">12 AM</option>' + 
-                        '<option id = "1" value="1">1 AM</option>' +
-                        '<option id = "2" value="2">2 AM</option>' +
-                        '<option id = "3" value="3">3 AM</option>' + 
-                        '<option id = "4" value="4">4 AM</option>' +
-                        '<option id = "5" value="5">5 AM</option>' +
-                        '<option id = "6" value="6">6 AM</option>' +
-                        '<option id = "7" value="7">7 AM</option>' +
-                        '<option id = "8" value="8">8 AM</option>' +
-                        '<option id = "9" value="9">9 AM</option>' +
-                        '<option id = "10" value="10">10 AM</option>' +
-                        '<option id = "11" value="11">11 AM</option>' +
-                        '<option id = "12" value="12">12 PM</option>' +
-                        '<option id = "13" value="13">1 PM</option>' +
-                        '<option id = "14" value="14">2 PM</option>' +
-                        '<option id = "15" value="15">3 PM</option>' +
-                        '<option id = "16" value="16">4 PM</option>' +
-                        '<option id = "17" value="17">5 PM</option>' +
-                        '<option id = "18" value="18">6 PM</option>' +
-                        '<option id = "19" value="19">7 PM</option>' +
-                        '<option id = "20" value="20">8 PM</option>' +
-                        '<option id = "21" value="21">9 PM</option>' +
-                        '<option id = "22" value="22">10 PM</option>' +
-                        '<option id = "23" value="23">11 PM</option>' +
-                        '</select>',
-                        '<select id = "shiftSelectTo' + shiftCounter+'" class="browser-default col s8 offset-s2">' + 
-                        '<option value="" disabled selected>---</option>' + 
-                        '<option id = "24" value="24">12 AM</option>' + 
-                        '<option id = "1" value="1">1 AM</option>' +
-                        '<option id = "2" value="2">2 AM</option>' +
-                        '<option id = "3" value="3">3 AM</option>' + 
-                        '<option id = "4" value="4">4 AM</option>' +
-                        '<option id = "5" value="5">5 AM</option>' +
-                        '<option id = "6" value="6">6 AM</option>' +
-                        '<option id = "7" value="7">7 AM</option>' +
-                        '<option id = "8" value="8">8 AM</option>' +
-                        '<option id = "9" value="9">9 AM</option>' +
-                        '<option id = "10" value="10">10 AM</option>' +
-                        '<option id = "11" value="11">11 AM</option>' +
-                        '<option id = "12" value="12">12 PM</option>' +
-                        '<option id = "13" value="13">1 PM</option>' +
-                        '<option id = "14" value="14">2 PM</option>' +
-                        '<option id = "15" value="15">3 PM</option>' +
-                        '<option id = "16" value="16">4 PM</option>' +
-                        '<option id = "17" value="17">5 PM</option>' +
-                        '<option id = "18" value="18">6 PM</option>' +
-                        '<option id = "19" value="19">7 PM</option>' +
-                        '<option id = "20" value="20">8 PM</option>' +
-                        '<option id = "21" value="21">9 PM</option>' +
-                        '<option id = "22" value="22">10 PM</option>' +
-                        '<option id = "23" value="23">11 PM</option>' +
-                        '</select>'
+                shiftCounter ++;
+                table.row.add([
+                    '<h><center>' + shiftCounter +'</center></h>',
+                    '<select id = "shiftSelectFrom' + shiftCounter+'" class="browser-default col s8 offset-s2">' + 
+                    '<option value="" disabled selected>---</option>' + 
+                    '<option id = "24" value="00:00:00">12 AM</option>' + 
+                    '<option id = "1" value="01:00:00">1 AM</option>' +
+                    '<option id = "2" value="02:00:00">2 AM</option>' +
+                    '<option id = "3" value="03:00:00">3 AM</option>' + 
+                    '<option id = "4" value="04:00:00">4 AM</option>' +
+                    '<option id = "5" value="05:00:00">5 AM</option>' +
+                    '<option id = "6" value="06:00:00">6 AM</option>' +
+                    '<option id = "7" value="07:00:00">7 AM</option>' +
+                    '<option id = "8" value="08:00:00">8 AM</option>' +
+                    '<option id = "9" value="09:00:00">9 AM</option>' +
+                    '<option id = "10" value="10:00:00">10 AM</option>' +
+                    '<option id = "11" value="11:00:00">11 AM</option>' +
+                    '<option id = "12" value="12:00:00">12 PM</option>' +
+                    '<option id = "13" value="13:00:00">1 PM</option>' +
+                    '<option id = "14" value="14:00:00">2 PM</option>' +
+                    '<option id = "15" value="15:00:00">3 PM</option>' +
+                    '<option id = "16" value="16:00:00">4 PM</option>' +
+                    '<option id = "17" value="17:00:00">5 PM</option>' +
+                    '<option id = "18" value="18:00:00">6 PM</option>' +
+                    '<option id = "19" value="19:00:00">7 PM</option>' +
+                    '<option id = "20" value="20:00:00">8 PM</option>' +
+                    '<option id = "21" value="21:00:00">9 PM</option>' +
+                    '<option id = "22" value="22:00:00">10 PM</option>' +
+                    '<option id = "23" value="23:00:00">11 PM</option>' +
+                    '</select>',
+                    '<select id = "shiftSelectTo' + shiftCounter+'" class="browser-default col s8 offset-s2">' + 
+                    '<option value="" disabled selected>---</option>' + 
+                    '<option id = "24" value="00:00:00">12 AM</option>' + 
+                    '<option id = "1" value="01:00:00">1 AM</option>' +
+                    '<option id = "2" value="02:00:00">2 AM</option>' +
+                    '<option id = "3" value="03:00:00">3 AM</option>' + 
+                    '<option id = "4" value="04:00:00">4 AM</option>' +
+                    '<option id = "5" value="05:00:00">5 AM</option>' +
+                    '<option id = "6" value="06:00:00">6 AM</option>' +
+                    '<option id = "7" value="07:00:00">7 AM</option>' +
+                    '<option id = "8" value="08:00:00">8 AM</option>' +
+                    '<option id = "9" value="09:00:00">9 AM</option>' +
+                    '<option id = "10" value="10:00:00">10 AM</option>' +
+                    '<option id = "11" value="11:00:00">11 AM</option>' +
+                    '<option id = "12" value="12:00:00">12 PM</option>' +
+                    '<option id = "13" value="13:00:00">1 PM</option>' +
+                    '<option id = "14" value="14:00:00">2 PM</option>' +
+                    '<option id = "15" value="15:00:00">3 PM</option>' +
+                    '<option id = "16" value="16:00:00">4 PM</option>' +
+                    '<option id = "17" value="17:00:00">5 PM</option>' +
+                    '<option id = "18" value="18:00:00">6 PM</option>' +
+                    '<option id = "19" value="19:00:00">7 PM</option>' +
+                    '<option id = "20" value="20:00:00">8 PM</option>' +
+                    '<option id = "21" value="21:00:00">9 PM</option>' +
+                    '<option id = "22" value="22:00:00">10 PM</option>' +
+                    '<option id = "23" value="23:00:00">11 PM</option>' +
+                    '</select>'
 
-                    ]).draw(false);
-                    $("#shiftSelectFrom" + shiftCounter + " option[id='" + $('#shiftSelectTo' + --shiftCounter).val() + "']").attr("selected", "selected");
+                ]).draw(false);
+                $("#shiftSelectFrom" + shiftCounter + " option[id='" + $('#shiftSelectTo' + --shiftCounter).val() + "']").attr("selected", "selected");
 
-                    shiftCounter++;    
-                }else{
-                    var toastContent = $('<span>The shift must not less than 8 and not larger than 12 hours</span>');
-                    Materialize.toast(toastContent, 2000,'red', 'edit');
-                }
-                
+                shiftCounter++;    
             }else{
                 var toastContent = $('<span>You can only add three (3) shifts.</span>');
                 Materialize.toast(toastContent, 1500,'red', 'edit');
@@ -430,7 +422,6 @@ Client
         });
         
         $('#btnRefreshShift').click(function(){
-            
             var dataTable = $('#dataTable').DataTable();
             dataTable.clear().draw(); 
             shiftCounter = 1;
@@ -438,57 +429,57 @@ Client
                         '<h><center>' + shiftCounter +'</center></h>',
                         '<select id = "shiftSelectFrom' + shiftCounter+'" class="browser-default col s8 offset-s2">' + 
                         '<option value="" disabled selected>---</option>' + 
-                        '<option id = "0" value="0">12 AM</option>' + 
-                        '<option id = "1" value="1">1 AM</option>' +
-                        '<option id = "2" value="2">2 AM</option>' +
-                        '<option id = "3" value="3">3 AM</option>' + 
-                        '<option id = "4" value="4">4 AM</option>' +
-                        '<option id = "5" value="5">5 AM</option>' +
-                        '<option id = "6" value="6">6 AM</option>' +
-                        '<option id = "7" value="7">7 AM</option>' +
-                        '<option id = "8" value="8">8 AM</option>' +
-                        '<option id = "9" value="9">9 AM</option>' +
-                        '<option id = "10" value="10">10 AM</option>' +
-                        '<option id = "11" value="11">11 AM</option>' +
-                        '<option id = "12" value="12">12 PM</option>' +
-                        '<option id = "13" value="13">1 PM</option>' +
-                        '<option id = "14" value="14">2 PM</option>' +
-                        '<option id = "15" value="15">3 PM</option>' +
-                        '<option id = "16" value="16">4 PM</option>' +
-                        '<option id = "17" value="17">5 PM</option>' +
-                        '<option id = "18" value="18">6 PM</option>' +
-                        '<option id = "19" value="19">7 PM</option>' +
-                        '<option id = "20" value="20">8 PM</option>' +
-                        '<option id = "21" value="21">9 PM</option>' +
-                        '<option id = "22" value="22">10 PM</option>' +
-                        '<option id = "23" value="23">11 PM</option>' +
+                        '<option id = "0" value="00:00:00">12 AM</option>' + 
+                        '<option id = "1" value="01:00:00">1 AM</option>' +
+                        '<option id = "2" value="02:00:00">2 AM</option>' +
+                        '<option id = "3" value="03:00:00">3 AM</option>' + 
+                        '<option id = "4" value="04:00:00">4 AM</option>' +
+                        '<option id = "5" value="05:00:00">5 AM</option>' +
+                        '<option id = "6" value="06:00:00">6 AM</option>' +
+                        '<option id = "7" value="07:00:00">7 AM</option>' +
+                        '<option id = "8" value="08:00:00">8 AM</option>' +
+                        '<option id = "9" value="09:00:00">9 AM</option>' +
+                        '<option id = "10" value="10:00:00">10 AM</option>' +
+                        '<option id = "11" value="11:00:00">11 AM</option>' +
+                        '<option id = "12" value="12:00:00">12 PM</option>' +
+                        '<option id = "13" value="13:00:00">1 PM</option>' +
+                        '<option id = "14" value="14:00:00">2 PM</option>' +
+                        '<option id = "15" value="15:00:00">3 PM</option>' +
+                        '<option id = "16" value="16:00:00">4 PM</option>' +
+                        '<option id = "17" value="17:00:00">5 PM</option>' +
+                        '<option id = "18" value="18:00:00">6 PM</option>' +
+                        '<option id = "19" value="19:00:00">7 PM</option>' +
+                        '<option id = "20" value="20:00:00">8 PM</option>' +
+                        '<option id = "21" value="21:00:00">9 PM</option>' +
+                        '<option id = "22" value="22:00:00">10 PM</option>' +
+                        '<option id = "23" value="23:00:00">11 PM</option>' +
                         '</select>',
                         '<select id = "shiftSelectTo' + shiftCounter+'" class="browser-default col s8 offset-s2">' + 
                         '<option value="" disabled selected>---</option>' + 
-                        '<option id = "0" value="0">12 AM</option>' + 
-                        '<option id = "1" value="1">1 AM</option>' +
-                        '<option id = "2" value="2">2 AM</option>' +
-                        '<option id = "3" value="3">3 AM</option>' + 
-                        '<option id = "4" value="4">4 AM</option>' +
-                        '<option id = "5" value="5">5 AM</option>' +
-                        '<option id = "6" value="6">6 AM</option>' +
-                        '<option id = "7" value="7">7 AM</option>' +
-                        '<option id = "8" value="8">8 AM</option>' +
-                        '<option id = "9" value="9">9 AM</option>' +
-                        '<option id = "10" value="10">10 AM</option>' +
-                        '<option id = "11" value="11">11 AM</option>' +
-                        '<option id = "12" value="12">12 PM</option>' +
-                        '<option id = "13" value="13">1 PM</option>' +
-                        '<option id = "14" value="14">2 PM</option>' +
-                        '<option id = "15" value="15">3 PM</option>' +
-                        '<option id = "16" value="16">4 PM</option>' +
-                        '<option id = "17" value="17">5 PM</option>' +
-                        '<option id = "18" value="18">6 PM</option>' +
-                        '<option id = "19" value="19">7 PM</option>' +
-                        '<option id = "20" value="20">8 PM</option>' +
-                        '<option id = "21" value="21">9 PM</option>' +
-                        '<option id = "22" value="22">10 PM</option>' +
-                        '<option id = "23" value="23">11 PM</option>' +
+                        '<option id = "0" value="00:00:00">12 AM</option>' + 
+                        '<option id = "1" value="01:00:00">1 AM</option>' +
+                        '<option id = "2" value="02:00:00">2 AM</option>' +
+                        '<option id = "3" value="03:00:00">3 AM</option>' + 
+                        '<option id = "4" value="04:00:00">4 AM</option>' +
+                        '<option id = "5" value="05:00:00">5 AM</option>' +
+                        '<option id = "6" value="06:00:00">6 AM</option>' +
+                        '<option id = "7" value="07:00:00">7 AM</option>' +
+                        '<option id = "8" value="08:00:00">8 AM</option>' +
+                        '<option id = "9" value="09:00:00">9 AM</option>' +
+                        '<option id = "10" value="10:00:00">10 AM</option>' +
+                        '<option id = "11" value="11:00:00">11 AM</option>' +
+                        '<option id = "12" value="12:00:00">12 PM</option>' +
+                        '<option id = "13" value="13:00:00">1 PM</option>' +
+                        '<option id = "14" value="14:00:00">2 PM</option>' +
+                        '<option id = "15" value="15:00:00">3 PM</option>' +
+                        '<option id = "16" value="16:00:00">4 PM</option>' +
+                        '<option id = "17" value="17:00:00">5 PM</option>' +
+                        '<option id = "18" value="18:00:00">6 PM</option>' +
+                        '<option id = "19" value="19:00:00">7 PM</option>' +
+                        '<option id = "20" value="20:00:00">8 PM</option>' +
+                        '<option id = "21" value="21:00:00">9 PM</option>' +
+                        '<option id = "22" value="22:00:00">10 PM</option>' +
+                        '<option id = "23" value="23:00:00">11 PM</option>' +
                         '</select>'
 
                     ]).draw(false);

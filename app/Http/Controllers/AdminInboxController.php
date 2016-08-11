@@ -88,7 +88,6 @@ class AdminInboxController extends Controller
 
     public function getGuardHasNotification(){
         $inboxID = Input::get('id');
-        
 
         $clientPendingID = DB::table('tblclientpendingnotification')
             ->select('intClientPendingID')
@@ -101,5 +100,99 @@ class AdminInboxController extends Controller
             ->get();
 
         return response()->json($guardHasNotification);
+    }
+
+    public function getClientPendingNotificationStatus(){
+        $inboxID = Input::get('inboxID');
+
+        $statusIdentifier = DB::table('tblclientpendingnotification')
+            ->select('intStatusIdentifier')
+            ->where('intInboxID', $inboxID)
+            ->first();
+        return response()->json($statusIdentifier);
+    }
+
+    public function getGuardRequestLeaveInformation(){
+        $inboxID = Input::get('inboxID');
+
+        $result = DB::table('tblguardleaverequest')
+            ->join('tblguard', 'tblguard.intGuardID', '=','tblguardleaverequest.intGuardID')
+            ->join('tblleave', 'tblleave.intLeaveID', '=','tblguardleaverequest.intLeaveID')
+            ->select('tblguard.intGuardID', 'tblleave.strLeaveType', 'tblguardleaverequest.strReason')
+            ->where('tblguardleaverequest.intInboxID', $inboxID)
+            ->first();
+
+        $clientName = DB::table('tblclientguard')
+            ->join('tblcontract','tblcontract.intContractID', '=', 'tblclientguard.intContractID')
+            ->join('tblclient', 'tblclient.intClientID','=','tblcontract.intClientID')
+            ->select('tblclient.strClientName')
+            ->where('tblclientguard.intGuardID', $result->intGuardID)
+            ->orderBy('tblclientguard.intClientGuardID', 'desc')
+            ->first();
+        $result->strClientName = $clientName->strClientName;
+        
+        return response()->json($result);
+    }
+
+    public function getGuardHasNotificationLeaveRequest(Request $request){
+        $inboxID = Input::get('inboxID');
+
+        $leaveRequestID = DB::table('tblguardleaverequest')
+            ->select('intGuardLeaveRequestID')
+            ->where('intInboxID',$inboxID)
+            ->first();
+
+        $guardHasNotification = DB::table('tblguardleavenotification')
+            ->select('intGuardID')
+            ->where('intGuardLeaveRequestID', $leaveRequestID->intGuardLeaveRequestID)
+            ->get();
+
+        return response()->json($guardHasNotification);
+    }
+
+    public function sendLeaveRequestNotification(Request $request){
+        $arrayGuardID = $request->guardWaiting; 
+        $inboxID = $request->inboxID;
+        $guardID = array(); 
+        $accountID = $request->session()->get('accountID');
+        
+        for ($intLoop = 0; $intLoop < count($arrayGuardID); $intLoop ++){
+            $value = new \stdClass();
+            $value->intGuardID = $arrayGuardID[$intLoop];
+            $accountGuardID = DB::table('tblguard')
+                ->select('intAccountID')
+                ->where('intGuardID', $arrayGuardID[$intLoop])
+                ->first();
+
+            $value->intAccountID = $accountGuardID->intAccountID;
+            array_push($guardID, $value);
+        }
+        
+        try{
+            DB::beginTransaction();
+            $guardLeaveRequestID = DB::table('tblguardleaverequest')
+                ->select('intGuardLeaveRequestID')
+                ->where('intInboxID', $inboxID)
+                ->first();
+            
+            foreach ($guardID as $value){   
+                $inboxID = DB::table('tblinbox')->insertGetId([
+                    'intAccountIDSender' => $accountID,
+                    'intAccountIDReceiver' =>$value->intAccountID,
+                    'strSubject' => 'Leave Reliever',
+                    'tinyintType' => 3
+                ]);
+                
+                DB::table('tblguardleavenotification')->insert([
+                    'intGuardLeaveRequestID' => $guardLeaveRequestID->intGuardLeaveRequestID,
+                    'intGuardID' => $value->intGuardID,
+                    'intInboxID' => $inboxID
+                ]);
+            }
+            
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollBack();
+        }
     }
 }

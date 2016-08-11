@@ -299,8 +299,8 @@ $(document).ready(function() {
             
             $.each(data.shifts, function(index, value){
                 
-                var from = getHour(value.timeFrom);
-                var to = getHour(value.timeTo);
+                var from = value.timeFrom;
+                var to = value.timeTo;
                 $('#tableShift tr:last').after('<tr><td><center>' + value.strShiftNumber + '</center></td>'+
                      '<td><center>' + from +'</center></td>'+
                      '<td><center>' + to +'</center></td>'+

@@ -17,7 +17,6 @@ Security Homepage
 		<div id="message">
 			<div class="container-fluid grey lighten-2">	
 				<table class="striped" id="inboxTable">
-					<button class="btn blue buttonTest modal-trigger" href="#modalLeaveRequestfromSG">Test</button>
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
@@ -119,11 +118,10 @@ Security Homepage
         </div>
     </div>
 </div>
-
 <!--modal new client request end-->
 
-<!--modal message approved client/contract-->
 
+<!--modal message approved client/contract-->
 <div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
     <div class="modal-header">
       	<div class="h">
@@ -147,12 +145,11 @@ Security Homepage
             </button>
 	</div>
 </div>
-	
 <!--modal message approved client/contract end-->
 	
-<!--modal leave request from other guard////releiver-->
 
-<div id="modalLeaveRequestfromSG" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:600px; margin-top:-50px;">
+<!--modal leave request from other guard////releiver-->
+<div id="modalLeaveRequestNotification" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:600px; margin-top:-50px;">
     <div class="modal-header">
       	<div class="h">
 			<h3><center>Message</center></h3>  
@@ -166,10 +163,10 @@ Security Homepage
 					<li class="collection-header">
 						<div class="row">
 							<div class="col s6">	
-								From:<div style="font-size:18px;" id = "">&nbsp;01/10/2016</div>
+								From:<div style="font-size:18px;" id = "dateStart">&nbsp;</div>
 							</div>
 							<div class="col s6">
-								To:<div style="font-size:18px;" id = "">&nbsp;01/12/2016</div>
+								To:<div style="font-size:18px;" id = "dateEnd">&nbsp;</div>
 							</div>
 						</div>
 					
@@ -180,10 +177,10 @@ Security Homepage
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusiness'>&nbsp;&nbsp;&nbsp;Bank</div>
+								Nature of Business:<div style="font-weight:normal;" id = 'strNatureOfBusiness'>&nbsp;&nbsp;&nbsp;Bank</div>
 							</div>
 							<div class="col s6">
-								Client Name:<div style="font-weight:normal;" id = 'clientName'>&nbsp;&nbsp;&nbsp;LandBank</div>
+								Client Name:<div style="font-weight:normal;" id = 'strClientName'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
                     </li>
@@ -192,10 +189,10 @@ Security Homepage
 					<li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;123 Hello Street Pasig, Metro Manila</div>
+								Address:<div style="font-weight:normal;" id = 'strAddress'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s6">
-								Contact Number (Client):<div style="font-weight:normal;" id = 'contactNumberClient'>&nbsp;&nbsp;&nbsp;09123456789</div>
+								Contact Number (Client):<div style="font-weight:normal;" id = 'strContactNumberClient'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
                     </li>
@@ -203,10 +200,10 @@ Security Homepage
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Person in Charge:<div style="font-weight:normal;" id = 'personInCharge'>&nbsp;&nbsp;&nbsp;Mang Tomas</div>
+								Person in Charge:<div style="font-weight:normal;" id = 'strPersonInCharge'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s6">
-								Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'contactNumberPIC'>&nbsp;&nbsp;&nbsp;09123456789</div>
+								Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'strContactNumberPIC'>&nbsp;&nbsp;&nbsp;09123456789</div>
 							</div>
 						</div>
                     </li>
@@ -215,20 +212,17 @@ Security Homepage
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s4">	
-								Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSize'>&nbsp;&nbsp;&nbsp;1000</div>
+								Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'deciAreaSize'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s4">
-								Population (approx.):<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;10</div>
-							</div>
-							<div class="col s4">
-								Number of Guards:<div style="font-weight:normal;" id = 'guardCounter'>&nbsp;&nbsp;&nbsp;1</div>
+								Population (approx.):<div style="font-weight:normal;" id = 'intPopulation'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
                     </li>
 
                     <li class="collection-item" style="font-weight:bold;">Shift/s:
                         <div style="font-weight:normal;">
-                            <table class="" style="font-family:Myriad Pro" id = 'shiftTable'>
+                            <table class="" style="font-family:Myriad Pro" id = 'shiftTableLeaveRequest'>
                                 <thead>
                                 <tr>
                                     <th data-field="st">Shift</th>
@@ -238,12 +232,6 @@ Security Homepage
                                 </thead>
                                 
                                 <tbody>
-									<tr>
-										<td>1</td>
-										<td>12AM</td>
-										<td>8AM</td>
-										
-									</tr>
 
                                 </tbody>
                             </table>
@@ -258,31 +246,30 @@ Security Homepage
 	</div>
 		
 	<div class="modal-footer ci modal-close" style="background-color: #00293C;">
-		<div id = "buttons" style="display: none;">	
-            <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnAccept">Accept
+		<div id = "buttonsLeaveRequest" style="display: none;">	
+            <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnAcceptLeaveRequest">Accept
             </button>
 
-            <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "btnDecline">Decline
+            <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "btnDeclineLeaveRequest">Decline
             </button>
         </div>
         
-        <div id = "accepted" style="display: none;">            			
+        <div id = "acceptedLeaveRequest" style="display: none;">            			
 			<button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted
             </button>
         </div>
         
-        <div id = "rejected" style="display: none;">			
+        <div id = "rejectedLeaveRequest" style="display: none;">			
             <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined
             </button>
         </div>
         
-        <div id = "notAvailable" style="display: none;">
+        <div id = "notAvailableLeaveRequest" style="display: none;">
             <button class="btn grey" name="" style="margin-right: 30px; cursor:default;" id = "">Unavailable
             </button>
         </div>
 	</div>
 </div>
-
 <!--modal leave request from other guard////releiver end-->
 
 <script>
@@ -349,6 +336,8 @@ $(document).ready(function(){
             message();
         }else if (type == 2){//new client request
             newClient();
+        }else if (type == 3){
+            leaveRequest();
         }
     });
     
@@ -411,67 +400,16 @@ $(document).ready(function(){
             
         });//decline
     });
+
+    $('#btnAcceptLeaveRequest').click(function(){
+        acceptRequestLeave();
+    });
     
     function commaSeparateNumber(val){
         while (/(\d+)(\d{3})/.test(val.toString())){
             val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
         }
         return val;
-    }
-    
-    function getHour(hour){
-        var hour12;
-        if (hour == 0 || hour == 24){
-            hour12 = '12 AM';
-        }else if (hour == 1){
-            hour12 = '1 AM';
-        }else if (hour == 2){
-            hour12 = '2 AM';
-        }else if (hour == 3){
-            hour12 = '3 AM';
-        }else if (hour == 4){
-            hour12 = '4 AM';
-        }else if (hour == 5){
-            hour12 = '5 AM';
-        }else if (hour == 6){
-            hour12 = '6 AM';
-        }else if (hour == 7){
-            hour12 = '7 AM';
-        }else if (hour == 8){
-            hour12 = '8 AM';
-        }else if (hour == 9){
-            hour12 = '9 AM';
-        }else if (hour == 10){
-            hour12 = '10 AM';
-        }else if (hour == 11){
-            hour12 = '11 AM';
-        }else if (hour == 12){
-            hour12 = '12 PM';
-        }else if (hour == 13){
-            hour12 = '1 PM';
-        }else if (hour == 14){
-            hour12 = '2 PM';
-        }else if (hour == 15){
-            hour12 = '3 PM';
-        }else if (hour == 16){
-            hour12 = '4 PM';
-        }else if (hour == 17){
-            hour12 = '5 PM';
-        }else if (hour == 18){
-            hour12 = '6 PM';
-        }else if (hour == 19){
-            hour12 = '7 PM';
-        }else if (hour == 20){
-            hour12 = '8 PM';
-        }else if (hour == 21){
-            hour12 = '9 PM';
-        }else if (hour == 22){
-            hour12 = '10 PM';
-        }else if (hour == 23){
-            hour12 = '11 PM';
-        }
-        
-        return hour12;
     }
     
     function newClient(){
@@ -508,8 +446,8 @@ $(document).ready(function(){
                     $('#shiftTable tr:last').after(
                         '<tr>'+
                             '<td>' + value.strShiftNumber +'</td>' +
-                            '<td>' + getHour(value.timeFrom) + '</td>' +
-                            '<td>' + getHour(value.timeTo) + '</td>' +
+                            '<td>' + value.timeFrom + '</td>' +
+                            '<td>' + value.timeTo + '</td>' +
                         '</tr>'
                     );
                 });
@@ -603,6 +541,70 @@ $(document).ready(function(){
             },async:false
         });//get guard waiting
     }
+
+
+    // Leave Request Reliever Start
+    function leaveRequest(){
+        setData();
+    }
+
+    function setData(){
+        $.ajax({
+            type: "GET",
+            url: "/securityInbox/get/getLeaveRequestInformation?inboxID=" + inboxID,
+            success: function(data){
+                $('#modalLeaveRequestNotification').openModal();
+                $('#dateStart').text(data.dateStart);
+                $('#dateEnd').text(data.dateEnd);
+                $('#strNatureOfBusiness').text(data.strNatureOfBusiness);
+                $('#strClientName').text(data.strClientName);
+                $('#strAddress').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+                $('#strContactNumberClient').text(data.strContactNumber);
+                $('#strPersonInCharge').text(data.strPersonInCharge);
+                $('#strContactNumberPIC').text(data.strPOICContactNumber);
+                $('#deciAreaSize').text(data.deciAreaSize);
+                $('#intPopulation').text(data.intPopulation);
+
+                $('#shiftTableLeaveRequest tr').not(function(){ return !!$(this).has('th').length; }).remove(); 
+                $.each(data.shift, function(index, value){
+                    $('#shiftTableLeaveRequest > tbody:last-child').append(
+                        '<tr>'+
+                        '<td>'+value.strShiftNumber+'</td>'+
+                        '<td>'+value.timeFrom+'</td>'+
+                        '<td>'+value.timeTo+'</td>'+
+                        '</tr>'
+                    );
+                });
+
+                var boolStatus = data.boolStatus;
+                if (boolStatus == 1){
+                    $('#buttonsLeaveRequest').show();
+                }
+
+            }
+        });//ajax
+    }
+
+    function acceptRequestLeave(){
+        $.ajax({
+            type: "POST",
+            url: "{{action('SecurityHomepageController@acceptLeaveRequest')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                intInboxID: inboxID,
+            },
+            success: function(data){
+                
+            }
+        });//ajax
+    }
+    // Leave Request Reliever End
 });
 	
 	

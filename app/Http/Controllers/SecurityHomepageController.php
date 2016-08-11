@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 use Input;
+use Carbon\Carbon;
 
 class SecurityHomepageController extends Controller
 {
@@ -17,17 +18,7 @@ class SecurityHomepageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request){
-        if ($request->session()->has('id')){
-            $accountType = $request->session()->get('accountType');
-            
-            if ($accountType == 2){
-                return view('securityguard.SecurityInbox');
-            }else{
-                return redirect('/userlogin');
-            }
-        }else{
-            return redirect('/userlogin');
-        }
+        return view('/securityguard/SecurityInbox');
     }
     
     public function getGuardInformation(Request $request){
@@ -65,6 +56,11 @@ class SecurityHomepageController extends Controller
             ->select('*')
             ->where('intClientID', '=', $clientInformation->intClientID)
             ->get();
+
+        foreach($shift as $value){
+            $value->timeFrom = date('h:i A', strtotime($value->timeFrom)); 
+            $value->timeTo = date('h:i A', strtotime($value->timeTo)); 
+        }
         
         $clientInformation->shift = $shift;
         return response()->json($clientInformation);
@@ -204,11 +200,154 @@ class SecurityHomepageController extends Controller
     }
     
     public function readNewInbox(Request $request){
-        
-
         DB::table('tblinbox')
             ->where('intInboxID','=', $request->id)
             ->update(['boolStatus' => 0]);
+    }
+
+    public function getLeaveRequestInformation(Request $request){
+        $inboxID = Input::get('inboxID');
+
+        $result = DB::table('tblinbox')
+            ->join('tblguardleavenotification', 'tblguardleavenotification.intInboxID', '=','tblinbox.intInboxID')
+            ->join('tblguardleaverequest', 'tblguardleaverequest.intGuardLeaveRequestID', '=', 'tblguardleavenotification.intGuardLeaveRequestID')
+            ->join('tblclientguard', 'tblclientguard.intGuardID','=','tblguardleaverequest.intGuardID')
+            ->join('tblcontract', 'tblcontract.intContractID', '=', 'tblclientguard.intContractID')
+            ->join('tblclient', 'tblclient.intClientID','=','tblcontract.intClientID')
+            ->join('tblnatureofbusiness', 'tblnatureofbusiness.intNatureOfbusinessID', '=','tblclient.intNatureOfbusinessID')
+            ->join('tblclientaddress', 'tblclientaddress.intClientID','=','tblclient.intClientID')
+            ->join('tblprovince', 'tblprovince.intProvinceID', '=', 'tblclientaddress.intProvinceID')
+            ->join('tblcity', 'tblcity.intCityID', '=','tblclientaddress.intCityID')
+            ->select('tblguardleaverequest.dateStart','tblguardleaverequest.dateEnd','tblclient.*', 'tblclientaddress.strAddress','tblcity.strCityName', 'tblprovince.strProvinceName', 'tblnatureofbusiness.strNatureOfBusiness', 'tblguardleavenotification.boolStatus')
+            ->where('tblinbox.intInboxID', $inboxID)
+            ->first();
+
+
+        $shift = DB::table('tblclientshift')
+            ->join('tblclient', 'tblclient.intClientID', '=', 'tblclientshift.intClientID')
+            ->select('tblclientshift.*')
+            ->where('tblclient.intClientID', $result->intClientID)
+            ->get();
+        
+        foreach($shift as $value){
+            $value->timeFrom = date('h:i A', strtotime($value->timeFrom)); 
+            $value->timeTo = date('h:i A', strtotime($value->timeTo)); 
+        }
+
+        $result->shift = $shift;
+        $result->dateStart = date('M d, Y', strtotime($result->dateStart));
+        $result->dateEnd = date('M d, Y', strtotime($result->dateEnd));
+
+        return response()->json($result);
+    }
+
+    public function acceptLeaveRequest(Request $request){
+        $guardID = $request->session()->get('id');
+        $accountID = $request->session()->get('accountID');
+        $inboxID = $request->intInboxID;
+        $now = Carbon::now();
+        $result = DB::table('tblguardleavenotification')
+            ->join('tblguardleaverequest', 'tblguardleaverequest.intGuardLeaveRequestID','=','tblguardleavenotification.intGuardLeaveRequestID')
+            ->join('tblguard', 'tblguard.intGuardID', '=','tblguardleaverequest.intGuardID')
+            ->select('tblguardleavenotification.intGuardLeaveRequestID', 'tblguardleaverequest.*', 'tblguard.strFirstName','tblguard.strLastName')
+            ->where('tblguardleavenotification.intInboxID', $inboxID)
+            ->first();
+        
+        $intGuardLeaveRequestID = $result->intGuardLeaveRequestID;
+        $guardRequested = $result->intGuardID;
+        $guardRequestedName = $result->strFirstName . ' ' . $result->strLastName;
+        $dateLeaveStart = $result->dateStart;
+        $dateLeaveEnd = $result->dateEnd;
+        $dateReturn = new Carbon($dateLeaveEnd);
+        $dateReturn = $dateReturn->addDays(1);
+
+        $result = DB::table('tblguardleaverequest')
+            ->join('tblguard','tblguard.intGuardID','=','tblguardleaverequest.intGuardID')
+            ->join('tblclientguard', 'tblclientguard.intGuardID', '=', 'tblguard.intGuardID')
+            ->select('tblclientguard.intContractID')
+            ->where('tblguardleaverequest.intGuardLeaveRequestID', $intGuardLeaveRequestID)
+            ->where('tblclientguard.created_at', '<=', $now)
+            ->orderBy('tblclientguard.created_at','desc')
+            ->first();
+        
+        $contractID = $result->intContractID;
+        try{
+            DB::beginTransaction();
+
+            // Updating guard leave notification
+            DB::table('tblguardleavenotification')
+                ->where('intGuardLeaveRequestID',$intGuardLeaveRequestID)
+                ->where('intGuardID',$guardID)
+                ->update([
+                    'boolStatus' => 2,
+                    'updated_at' => $now
+                ]); 
+
+            $intGuardLeaveNotificationIDArray = DB::table('tblguardleavenotification')
+                ->select('intGuardLeaveNotificationID')
+                ->where('intGuardLeaveRequestID', $intGuardLeaveRequestID)
+                ->where('boolStatus', 1)
+                ->get();
+
+            foreach($intGuardLeaveNotificationIDArray as $value){
+                DB::table('tblguardleavenotification')
+                    ->where('intGuardLeaveNotificationID', $value->intGuardLeaveNotificationID)
+                    ->update([
+                        'boolStatus' => 3,
+                        'updated_at' => $now
+                    ]);
+            }
+
+            DB::table('tblguardleaverequest')
+                ->where('intGuardLeaveRequestID', $intGuardLeaveRequestID)
+                ->update([
+                    'boolStatus' => 2
+                ]);
+
+            DB::table('tblclientguard')
+                ->insert([
+                    ['intGuardID' => $guardRequested, 'boolStatus' => 2,'intContractID'=>$contractID ,'created_at' => $dateLeaveStart],
+                    ['intGuardID' => $guardRequested, 'boolStatus' => 1,'intContractID'=>$contractID ,'created_at' => $dateReturn],
+                    ['intGuardID' => $guardID, 'boolStatus' => 3,'intContractID'=>$contractID ,'created_at' =>$dateLeaveStart],
+                    ['intGuardID' => $guardID, 'boolStatus' => 0,'intContractID'=>$contractID ,'created_at' =>$dateReturn]
+                ]);
+
+            DB::table('tblguard')
+                ->where('intGuardID', $guardID)
+                ->update(['intStatusIdentifier' => 2]);
+
+            $result = DB::table('tblaccount')
+                ->select('intAccountID')
+                ->where('intAccountType', 3)
+                ->first();
+            $adminAccountID = $result->intAccountID;
+            $messageForGuardRequested = 'Your leave request is now approved.';
+            $messageForAdmin = 'I accepted the leave request of '. $guardRequestedName . '.'; 
+
+            $accountIDRequested = DB::table('tblguard')
+                ->select('intAccountID')
+                ->where('intGuardID', $guardRequested)
+                ->first();
+
+            DB::table('tblinbox')
+                ->insert([
+                    ['intAccountIDSender' => $adminAccountID,
+                     'intAccountIDReceiver' => $accountIDRequested->intAccountID,
+                     'strMessage' => $messageForGuardRequested,
+                     'strSubject' => 'Leave Request Update',
+                     'tinyintType' => 0],
+
+                    ['intAccountIDSender' => $accountID,
+                     'intAccountIDReceiver' =>$adminAccountID,
+                      'strMessage' => $messageForAdmin,
+                      'strSubject' => 'Leave Request Update',
+                      'tinyintType' => 0]
+                    ]);
+            
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
     }
 }
 

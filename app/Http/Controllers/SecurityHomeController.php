@@ -14,8 +14,20 @@ class SecurityHomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {   
-        return view('/securityguard/SecurityHome');
+
+    	if ($request->session()->has('id')){
+            $accountType = $request->session()->get('accountType');
+            
+            if ($accountType == 2){
+                return view('securityguard.SecurityHome');
+            }else{
+                return redirect('/userlogin');
+            }
+        }else{
+            return redirect('/userlogin');
+        }
+        
     }
 }

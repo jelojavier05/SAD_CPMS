@@ -158,9 +158,10 @@ Security Leave Request
         $('#btnSend').click(function(){
             if (checkGuardStatus()){
                 if (checkInput() && checkDate()){
-                    var dateStart = new Date($('#dateStart').val());
-                    var dateEnd = new Date($('#dateEnd').val());
+                    var dateStart = moment(new Date($('#dateStart').val())).format('YYYY-MM-D');
+                    var dateEnd = moment(new Date($('#dateEnd').val())).format('YYYY-MM-D');
                     var strReason = $('#strReason').val();
+
                     $.ajax({
                         type: "POST",
                         url: "{{action('SecurityLeaveRequestController@postLeaveRequest')}}",
@@ -202,7 +203,7 @@ Security Leave Request
                 url: "{{action('SecurityLeaveRequestController@guardStatus')}}",
                 success: function(data){
                     console.log(data);
-                    if (data.intStatusIdentifier == 2){
+                    if (data.intStatusIdentifier == 2 && data.countActiveLeaveRequest == 0){
                         checker = true;
                     }else{
                         checker = false;

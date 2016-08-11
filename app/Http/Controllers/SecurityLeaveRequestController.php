@@ -90,6 +90,17 @@ class SecurityLeaveRequestController extends Controller
             ->select('intStatusIdentifier')
             ->where('intAccountID', $accountID)
             ->first();
+
+        $guardID = DB::table('tblguard')
+            ->select('intGuardID')
+            ->where('intAccountID', $accountID)
+            ->first();
+
+        $countActiveLeaveRequest = DB::table ('tblguardleaverequest')
+            ->where('intGuardID', $guardID->intGuardID)
+            ->count();// checking if there's still existing leave 
+
+        $status->countActiveLeaveRequest = $countActiveLeaveRequest;
         return response()->json($status);
     }
 }

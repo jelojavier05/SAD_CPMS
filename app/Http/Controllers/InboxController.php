@@ -20,7 +20,7 @@ class InboxController extends Controller
             ->get();
         
         foreach($messages as $value){
-            $value->datetimeSend = date('M-d-Y h:ia', strtotime($value->datetimeSend)); 
+            $value->datetimeSend = date('M-d-Y h:i A', strtotime($value->datetimeSend)); 
             $accountType = DB::table('tblaccount')
                 ->select('intAccountType')
                 ->where('intAccountID',$value->intAccountIDSender)

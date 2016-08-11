@@ -13,7 +13,7 @@ class CreateGuardLeaveRequestTable extends Migration
     public function up()
     {
         Schema::create('tblguardleaverequest', function (Blueprint $table) {
-            $table->increments('intGuardLeaveRequest');
+            $table->increments('intGuardLeaveRequestID');
             $table->integer('intGuardID')->unsigned();
             $table->integer('intLeaveID')->unsigned();
             $table->integer('intInboxID')->unsigned();

@@ -6,9 +6,13 @@ Route::get('/inbox/get/numberofunreadmessages', 'InboxController@getNumberOfUnre
 
 Route::get('/adminInbox', 'AdminInboxController@index');
 Route::get('/adminInbox/get/numberguard', 'AdminInboxController@getNewClientNumberOfGuard');
-Route::post('/adminInbox/send/notification', 'AdminInboxController@sendGuardPendingNotification');
+Route::post('/adminInbox/send/newclientnotification', 'AdminInboxController@sendGuardPendingNotification');
 Route::get('/adminInbox/get/guardhasnotification', 'AdminInboxController@getGuardHasNotification');
 Route::get('/adminInbox/get/message', 'AdminInboxController@getMessage');
+Route::get('/adminInbox/get/clientpendingnotificationstatus', 'AdminInboxController@getClientPendingNotificationStatus');
+Route::get('/adminInbox/get/guardrequestleaveinformation', 'AdminInboxController@getGuardRequestLeaveInformation');
+Route::get('/adminInbox/get/getGuardHasNotificationLeaveRequest', 'AdminInboxController@getGuardHasNotificationLeaveRequest');
+Route::post('/adminInbox/send/leaverequestnotification', 'AdminInboxController@sendLeaveRequestNotification');
 
 
 Route::get('/crm/home', 'CRMHomeController@index');
@@ -105,9 +109,11 @@ Route::get('/securityInbox/get/inbox', 'SecurityHomepageController@getInbox');
 Route::get('/securityInbox/get/message', 'SecurityHomepageController@getInboxMessage');
 Route::post('/securityInbox/post/readmessage', 'SecurityHomepageController@readNewInbox');
 Route::get('/securityInbox/get/clientinformation', 'SecurityHomepageController@getClientInformation');
+Route::get('/securityInbox/get/getLeaveRequestInformation', 'SecurityHomepageController@getLeaveRequestInformation');
 Route::post('/securityInbox/get/guard', 'SecurityHomepageController@readNewClient');
 Route::post('/securityInbox/accept/guard', 'SecurityHomepageController@acceptNewClient');
 Route::post('/securityInbox/decline/guard', 'SecurityHomepageController@declineNewClient');
+Route::post('/securityInbox/accept/guardleaverequest', 'SecurityHomepageController@acceptLeaveRequest');
 
 Route::get('/securityleaverequest', 'SecurityLeaveRequestController@index');
 Route::post('/securityleaverequest/post/leaverequest', 'SecurityLeaveRequestController@postLeaveRequest');

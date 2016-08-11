@@ -16,8 +16,8 @@ class CreateClientshiftTable extends Migration
             $table->increments('intClientShiftID');
             $table->integer('intClientID')->unsigned();
             $table->string('strShiftNumber');
-            $table->integer('timeFrom');
-            $table->integer('timeTo');
+            $table->time('timeFrom');
+            $table->time('timeTo');
             
             
             $table->foreign('intClientID')->references('intClientID')->on('tblclient');
