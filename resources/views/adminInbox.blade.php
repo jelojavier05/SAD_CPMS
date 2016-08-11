@@ -130,7 +130,7 @@ Inbox
 							<li class="collection-header" style="font-weight:bold;">Reason:<div style="font-size:18px;" id = "strReason">&nbsp;</div>
 							</li>
         					<li class="collection-item">
-        						<div class="row">
+        						<div class="row" id = 'divTable'>
         							<div class="col s12">
         								
         								<table class="striped white" style="border-radius:10px; width:100%;" id="dataTableLeaveRequest">
@@ -155,17 +155,17 @@ Inbox
         	<!-- button -->
         	<div class="modal-footer ci" style="background-color: #00293C;">
 				
-				<div class="send" style="display : none;">	
+				<div class="sendLeaveRequest" style="display : none;">	
 					<button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationLeaveRequest" style="margin-right: 30px;">Send<i class="material-icons right">send</i>
 					</button>
 				</div>
 				
-				<div id = "accepted" style="display: none;">								
+				<div id = "acceptedLeaveRequest" style="display: none;">								
 					<button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted
 					</button>
 				</div>
         
-				<div id = "rejected" style="display: none;">					
+				<div id = "rejectedLeaveRequest" style="display: none;">					
 					<button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined
 					</button>
 				</div>
@@ -460,8 +460,24 @@ $(document).ready(function(){
                 $('#strClientName').text(data.strClientName);
                 $('#strReason').text(data.strReason);
 
-                getGuardWaiting(); //guard waiting
-                populateTableRequestLeave();
+                if(data.boolStatus == 1){
+                    getGuardWaiting(); //guard waiting
+                    populateTableRequestLeave();
+                    $('#divTable').show();
+                    $('#sendLeaveRequest').show();
+                    $('#acceptedLeaveRequest').hide();
+                    $('#rejectedLeaveRequest').hide();
+                }else if (data.boolStatus == 2){
+                    $('#divTable').hide();
+                    $('#sendLeaveRequest').hide();
+                    $('#acceptedLeaveRequest').show();
+                    $('#rejectedLeaveRequest').hide();
+                }else if (data.boolStatus == 3){
+                    $('#divTable').hide();
+                    $('#sendLeaveRequest').hide();
+                    $('#acceptedLeaveRequest').hide();
+                    $('#rejectedLeaveRequest').show();
+                }
             }
         });//ajax
     }
