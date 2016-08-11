@@ -174,7 +174,7 @@
                      <center>
                          <h id = 'strProfileName'></h><br>
                          <h id = 'strProfileLicenseNumber'></h>
-						 <button class="btn blue waves-effect waves-light modal-trigger" href="#modalCurrentClientDetails" style="height:30px;">Landbank</button>
+						 
 						 <div class="row"></div>
                     </center>
                 </div>
