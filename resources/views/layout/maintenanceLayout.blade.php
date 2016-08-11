@@ -233,9 +233,12 @@
                             </div>
 					</li>
 							
-							
-					
-							
+					<li>		
+				
+              <iframe src="http://free.timeanddate.com/clock/i5bfv3ml/n145/szw110/szh110/hoc000/hbw0/hfc09f/cf100/hnc07c/hwc000/facfff/fnu2/fdi76/mqcfff/mqs4/mql18/mqw4/mqd60/mhcfff/mhs4/mhl5/mhw4/mhd62/mmv0/hhcfff/hhs1/hhb10/hmcfff/hms1/hmb10/hscfff/hsw3" frameborder="0" width="110" height="110"></iframe>   
+                <iframe src="http://free.timeanddate.com/clock/i5bfv67w/n145/fn14/ftb/bo2/tt0/tw0/tm1/tb4" frameborder="0" width="100px" height="38" style="margin-left:3%"></iframe>          
+       
+			</li>				
 <!--
 					<li class="bold" style="width:280px;">
 								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">people</i>Client<i class="mdi-navigation-arrow-drop-down right"></i></a>
@@ -382,19 +385,7 @@
  
   
 </li>
-	<div class="row">
-    <div class="col l4 push-l10 " style="margin-left:5%">
-              <iframe src="http://free.timeanddate.com/clock/i5bfv3ml/n145/szw110/szh110/hoc000/hbw0/hfc09f/cf100/hnc07c/hwc000/facfff/fnu2/fdi76/mqcfff/mqs4/mql18/mqw4/mqd60/mhcfff/mhs4/mhl5/mhw4/mhd62/mmv0/hhcfff/hhs1/hhb10/hmcfff/hms1/hmb10/hscfff/hsw3" frameborder="0" width="110" height="120"></iframe>   
-
-                    <div class="row">
-                        <div class="col l12" style="margin-left:-2%">
-                           <iframe src="http://free.timeanddate.com/clock/i5bfv67w/n145/fn14/ftb/bo2/tt0/tw0/tm1/tb4" frameborder="0" width="100px" height="38"></iframe>      
-                        
-                        </div>
-         
-         </div>
-     </div>
-</div>
+	
 
 
 
