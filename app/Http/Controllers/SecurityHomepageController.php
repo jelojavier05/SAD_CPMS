@@ -257,10 +257,16 @@ class SecurityHomepageController extends Controller
         $intGuardLeaveRequestID = $result->intGuardLeaveRequestID;
         $guardRequested = $result->intGuardID;
         $guardRequestedName = $result->strFirstName . ' ' . $result->strLastName;
+        $intLeaveID = $result->intLeaveID;
+
         $dateLeaveStart = $result->dateStart;
         $dateLeaveEnd = $result->dateEnd;
         $dateReturn = new Carbon($dateLeaveEnd);
         $dateReturn = $dateReturn->addDays(1);
+
+        $dateLeaveStartCarbon = new Carbon($result->dateStart);
+        $dateLeaveEndCarbon = new Carbon($result->dateEnd);
+        $dateDifference = $dateLeaveEndCarbon->diffInDays($dateLeaveStartCarbon) + 1;
 
         $result = DB::table('tblguardleaverequest')
             ->join('tblguard','tblguard.intGuardID','=','tblguardleaverequest.intGuardID')
@@ -345,6 +351,17 @@ class SecurityHomepageController extends Controller
                       'tinyintType' => 0]
                     ]);
             
+            $result = DB::table('tblguardleave')
+                ->select('intLeaveCount')
+                ->where('intGuardID', $guardRequested)
+                ->where('intLeaveID', $intLeaveID)
+                ->orderBy('dateEffectivity', 'desc')
+                ->first();
+
+            $updatedLeave = $result->intLeaveCount - $dateDifference;
+
+            DB::table('tblguardleave')
+                ->insert(['intGuardID' => $guardRequested, 'intLeaveID' => $intLeaveID, 'intLeaveCount' => $updatedLeave]);
             DB::commit();
         }catch(Exception $e){
             DB::rollback();
