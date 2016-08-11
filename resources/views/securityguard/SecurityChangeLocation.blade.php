@@ -21,7 +21,7 @@ Security Change Location
                         </div>
                         <div class="row">
                         <div class="col s12" style="margin-top:-4%" >
-                                <div class="container white lighten-2 z-depth-2" style="overflow:scroll;overflow-x:hidden; width:900px">
+                                <div class="container white lighten-2 z-depth-2" style=" width:900px">
                                     <div class="row">
                                         <div class="col s12" >
                                             <table class="centered" style="border-radius:10px;" id="dataTable">
@@ -186,6 +186,19 @@ Security Change Location
     $(document).ready(function(){
       $('.slider').slider({full_width: true});
     });
+	
+	$("#dataTable").DataTable({
+             "columns": [          
+            null,
+            null,
+			null,
+			null,
+			{"searchable": false}
+            ] ,  
+//		    "pagingType": "full_numbers",
+			"pageLength":5,
+			"lengthMenu": [5,10,15,20]
+		});
 </script>
 
 
