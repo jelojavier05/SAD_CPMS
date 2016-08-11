@@ -157,6 +157,7 @@ class SecurityHomepageController extends Controller
 
             DB::table('tblguardpendingnotification')
                 ->where('intInboxID','=', $inboxID)
+                ->where('intGuardID','=', $guardID)
                 ->update(['intStatusIdentifier' => 0]);
             
             DB::commit();
@@ -343,6 +344,24 @@ class SecurityHomepageController extends Controller
                       'strSubject' => 'Leave Request Update',
                       'tinyintType' => 0]
                     ]);
+            
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+    }
+
+    public function declineLeaveRequest(Request $request){
+        $guardID = $request->session()->get('id');
+        $inboxID = $request->intInboxID;
+        $now = Carbon::now();
+        try{
+            DB::beginTransaction();
+            
+            DB::table('tblguardleavenotification')
+                ->where('intInboxID','=', $inboxID)
+                ->where('intGuardID', $guardID)
+                ->update(['boolStatus' => 0,'updated_at' => $now]);
             
             DB::commit();
         }catch(Exception $e){

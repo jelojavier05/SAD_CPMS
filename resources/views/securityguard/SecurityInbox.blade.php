@@ -404,6 +404,10 @@ $(document).ready(function(){
     $('#btnAcceptLeaveRequest').click(function(){
         acceptRequestLeave();
     });
+
+    $('#btnDeclineLeaveRequest').click(function(){
+        declineRequestLeave();
+    })
     
     function commaSeparateNumber(val){
         while (/(\d+)(\d{3})/.test(val.toString())){
@@ -579,7 +583,26 @@ $(document).ready(function(){
                 var boolStatus = data.boolStatus;
                 if (boolStatus == 1){
                     $('#buttonsLeaveRequest').show();
+                    $('#acceptedLeaveRequest').hide();
+                    $('#rejectedLeaveRequest').hide();
+                    $('#notAvailableLeaveRequest').hide();
+                }else if (boolStatus == 2){
+                    $('#buttonsLeaveRequest').hide();
+                    $('#acceptedLeaveRequest').show();
+                    $('#rejectedLeaveRequest').hide();
+                    $('#notAvailableLeaveRequest').hide();
+                }else if (boolStatus == 0){
+                    $('#buttonsLeaveRequest').hide();
+                    $('#acceptedLeaveRequest').hide();
+                    $('#rejectedLeaveRequest').show();
+                    $('#notAvailableLeaveRequest').hide();
+                }else if (boolStatus == 3){
+                    $('#buttonsLeaveRequest').hide();
+                    $('#acceptedLeaveRequest').hide();
+                    $('#rejectedLeaveRequest').hide();
+                    $('#notAvailableLeaveRequest').show();
                 }
+
 
             }
         });//ajax
@@ -600,10 +623,32 @@ $(document).ready(function(){
                 intInboxID: inboxID,
             },
             success: function(data){
-                
+                swal("Accepted", "You accepted the request.", "success");
             }
         });//ajax
     }
+
+    function declineRequestLeave(){
+        $.ajax({
+            type: "POST",
+            url: "{{action('SecurityHomepageController@declineLeaveRequest')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                intInboxID: inboxID,
+            },
+            success: function(data){
+                swal("Decline", "You decline the request.", "error");
+            }
+        });//ajax
+    }
+
+
     // Leave Request Reliever End
 });
 	
