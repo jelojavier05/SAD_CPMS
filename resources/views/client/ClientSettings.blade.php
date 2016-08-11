@@ -1,6 +1,6 @@
 @extends('client.ClientDashboard')
 @section('title')
-Client Views Guards Attendance
+Client Settings
 @endsection
 
 
@@ -14,43 +14,41 @@ Client Views Guards Attendance
                 <h4 style="font-weight:bold;">Account Information
 				<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue right tooltipped" id = 'buttonDetail'><i class="material-icons">mode_edit</i></a>
                 </h4>
-				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword' style="margin-top:-84px; margin-left:620px;"><i class="material-icons">vpn_key</i></a>
+				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword' style="margin-top:-84px; margin-left:650px;"><i class="material-icons">vpn_key</i></a>
             </li>
 						
                 
                       
-                    <div class="col s6">
-                         <li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = 'firstName'>&nbsp;&nbsp;&nbsp;</div>
-                        </li>
+                    <div class="col s6">                        
                     
-                        <li class="collection-item" style="font-weight:bold;">Client Name:<div style="font-weight:normal;" id = 'firstName'>&nbsp;&nbsp;&nbsp;</div>
+                        <li class="collection-item" style="font-weight:bold;">Client Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;</div>
                         </li>
 
-                        <li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = 'birthday'>&nbsp;&nbsp;&nbsp;</div>
+                        <li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;</div>
                         </li>
 
-                        <li class="collection-item" style="font-weight:bold;">Contact Number(Person in Charge):<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;</div>
+                        <li class="collection-item" style="font-weight:bold;">Contact Number(Person in Charge):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;</div>
                         </li>
-                        
-                        <li class="collection-item" style="font-weight:bold;">City<div style="font-weight:normal;" id = 'placeBirth'>&nbsp;&nbsp;&nbsp;</div>
+						
+						<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;</div>
                         </li>
+                                               
                       
                     </div>
                     <div class="col s6">
                       
                         
-                        <li class="collection-item" style="font-weight:bold;">Contact Number:<div style="font-weight:normal;" id = 'middleName'>&nbsp;&nbsp;&nbsp;</div>
+                        <li class="collection-item" style="font-weight:bold;">Contact Number:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;</div>
                         </li>
 
-                        <li class="collection-item" style="font-weight:bold;">Person in Charge<div style="font-weight:normal;" id = 'lastName'>&nbsp;&nbsp;&nbsp;</div>
+                        <li class="collection-item" style="font-weight:bold;">Person in Charge<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;</div>
                         </li>
-                        <li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'contactMobile'>&nbsp;&nbsp;&nbsp;</div>
-                        </li>
+                        
 
-                        <li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = 'contactLandline'>&nbsp;&nbsp;&nbsp;</div>
+                        <li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;</div>
                         </li>
-
-                        <li class="collection-item" style="font-weight:bold;">Number of Guards:<div style="font-weight:normal;" id = 'civilStatus'>&nbsp;&nbsp;&nbsp;</div>
+                        
+						<li class="collection-item" style="display:hidden;"><div style="font-weight:normal;" id = 'contactMobile'>&nbsp;&nbsp;&nbsp;</div>
                         </li>
 
                     </div>
