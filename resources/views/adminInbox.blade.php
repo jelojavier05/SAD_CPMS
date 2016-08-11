@@ -154,8 +154,22 @@ Inbox
         	</div>
         	<!-- button -->
         	<div class="modal-footer ci" style="background-color: #00293C;">
-        		<button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationLeaveRequest" style="margin-right: 30px;">Send<i class="material-icons right">send</i>
-                </button>
+				
+				<div class="send" style="display : none;">	
+					<button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationLeaveRequest" style="margin-right: 30px;">Send<i class="material-icons right">send</i>
+					</button>
+				</div>
+				
+				<div id = "accepted" style="display: none;">								
+					<button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted
+					</button>
+				</div>
+        
+				<div id = "rejected" style="display: none;">					
+					<button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined
+					</button>
+				</div>
+				
         	</div>
         </div>
 			
