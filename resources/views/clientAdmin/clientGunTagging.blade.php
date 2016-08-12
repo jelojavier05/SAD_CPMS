@@ -272,7 +272,7 @@ Client
             
             $.each(tableAdded, function(index, value) {
                 table2.row.add([
-                    '<button id="' + value.intGunID+ '" class="btn red buttonRemove">X</button>',
+                    '<button id="' + value.intGunID+ '" class="btn red buttonRemove"><i class="material-icons">close</i></button>',
                     '<h id = "licenseNumber' +value.intGunID + '">' + value.strLicenseNumber +'</h>',
                     '<h id = "name' +value.intGunID + '">' + value.strGunName +'</h>',
                     '<h id = "type' +value.intGunID + '">' + value.strTypeOfGun +'</h>',

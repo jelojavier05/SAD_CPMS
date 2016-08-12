@@ -62,7 +62,7 @@ Client Request of Guard
 
                                     <td>
                                         <button data-position="bottom" data-delay="50" data-tooltip="Guard Removal" class="tooltipped buttonDelete btn red col s12" id="" >
-                                            <i class="material-icons">delete</i>
+                                            <i class="material-icons">close</i>
                                         </button>
                                     </td>
                                     <td id = "">2013-01234-MN-0</td>
