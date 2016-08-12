@@ -25,7 +25,7 @@ Guard Attendance
                               <th data-field="guard">Picture</th>
                               <th data-field="status">View Profile</th>
                               <th data-field="guard">Action</th>
-                              <th data-field="guard">Time in/out</th>
+                              
                               
                           </tr>
                         </thead>
@@ -58,9 +58,7 @@ Guard Attendance
 
                               
                             </td>
-                            <td> 
-                                 hello      
-                            </td>
+                            
                           </tr> 
                             
                             
@@ -127,8 +125,7 @@ $("#dataTable").DataTable({
             null,
 			{"orderable": false},
 			{"orderable": false},
-			{"orderable": false},
-            null
+			{"orderable": false}
             ] ,  
 			"pageLength":5,
 			"lengthMenu": [5,10,15,20],

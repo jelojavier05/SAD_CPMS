@@ -135,6 +135,7 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
     Route::get('/clientgunrequest', 'ClientGunRequestController@index');
     Route::get('/clientguardattendance', 'ClientGuardAttendanceController@index');
     Route::get('/clientsettings', 'ClientSettingsController@index');
+	Route::get('/clientinbox', 'ClientInboxController@index');
 
 
 //PDF ----------------------------------------------------
