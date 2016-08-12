@@ -18,7 +18,7 @@ Client Settings
             </li>
 						
                 
-                      
+                 <div class="col s12">     
                     <div class="col s6">                        
                     
                         <li class="collection-item" style="font-weight:bold;">Client Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;</div>
@@ -53,6 +53,7 @@ Client Settings
 						
 
                     </div>
+			</div>
 				<li class="collection-item" style="font-weight:bold;color:transparent">.
 				</li>
 		</ul>
