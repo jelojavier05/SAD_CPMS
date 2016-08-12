@@ -70,7 +70,7 @@
                             </a>
                       </li>                                                                                                
                       <li id="notification_li">
-                            <a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/clienthomepage" class=" tooltipped">
+                            <a  data-position="bottom" data-delay="50" data-tooltip="HOME" href="/clienthomepage" class=" tooltipped">
                           <i class="material-icons">store</i>
                             </a>
                        </li>
@@ -82,8 +82,7 @@
               </ul>
         </div>
     </nav>
-    
-<!---------------------------------------------------------NAV BAR-----------------------------------------------
+  
     
     <nav class="indigo darken-4" style="height:90px">
         
