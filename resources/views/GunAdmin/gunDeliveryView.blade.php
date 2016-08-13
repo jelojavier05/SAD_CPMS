@@ -37,7 +37,7 @@ Delivery
 
                                 <td id = "">{{$value->intGunDeliveryHeaderID}}</td>
                                 <td id = "">{{$value->strClientName}}</td>
-                                <td>{{$value->dateDeliver}}</td>dateDeliver
+                                <td>{{$value->dateDeliver}}</td>
 
                                 <td>
                                     <button class=" btn blue btnMore" id="{{$value->intGunDeliveryHeaderID}}">

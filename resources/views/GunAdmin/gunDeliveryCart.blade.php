@@ -273,7 +273,7 @@ Delivery
             
             $.each(tableSelected, function(index, value) {
                 dataTableSelectedArr.row.add([
-                    '<button class="btn red btnRemove" id = ' + value.intGunOrderDetailID + '>X</button>',
+                    '<button class="btn red btnRemove" id = ' + value.intGunOrderDetailID + '><i class="material-icons">close</i></button>',
                     '<h id = "serialNumber' +value.intGunOrderDetailID + '">' + value.strSerialNumber +'</h>',
                     '<h id = "name' +value.intGunOrderDetailID + '">' + value.strGunName +'</h>',
                     '<h id = "type' +value.intGunOrderDetailID + '">' + value.strTypeOfGun +'</h>',

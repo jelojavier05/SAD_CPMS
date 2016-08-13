@@ -15,8 +15,9 @@ Client Settings
 				<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue right tooltipped " id = 'buttonDetail' ><i class="material-icons">mode_edit</i></a>
                 </h4>
 				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword' style="margin-top:-84px; margin-left:650px;"><i class="material-icons">vpn_key</i></a>
-            </li>
-                      
+            </li>	
+                
+                 <div class="col s12">     
                     <div class="col s6">                        
                     
                         <li class="collection-item" style="font-weight:bold;">Client Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;</div>
@@ -51,6 +52,7 @@ Client Settings
 						
 
                     </div>
+			</div>
 				<li class="collection-item" style="font-weight:bold;color:transparent">.
 				</li>
 		</ul>
