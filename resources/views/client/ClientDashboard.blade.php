@@ -125,31 +125,44 @@
          </div>
           <div class="row">
                   <div class="col s12 z-depth-1" style="margin-top:-10px;">
-                            <div class="col s6">
-                                 <div class="card blue darken-4" style="height:55px; width:95px;">
-                                        <a data-position="top" data-delay="50" data-tooltip="REQUEST GUARDS" href="/clientguardrequest" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">GUARD        
-                                        </a> 
-                                     <i class="material-icons" style="font-size:1.8rem;margin-top:-50%;margin-left:73%;position:absolute;color:white">accessibility</i>    
-                                </div>
-                                
-                            </div>
-                            <div class="col s6">
-                                 <div class="card blue darken-4" style="height:55px; width:95px;">
-                                        <a data-position="top" data-delay="50" data-tooltip="REQUEST GUNS" href="/clientgunrequest" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">GUN
-                                     </a>
-                                      <i class="material-icons" style="font-size:1.8rem;margin-top:-53%;margin-left:65%;position:absolute;color:white">tonality</i>   
-                                </div>
-                            </div>
-                 
-                         <div class="col s8 push-s2">
-                                 <div class="card blue darken-4" style="height:55px;">
+								
+					  			<div class="col s6">
+									 <div class="card blue darken-4" style="height:55px; width:95px;">
+											<a data-position="top" data-delay="50" data-tooltip="REQUEST GUARDS" href="/clientguardrequest" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">GUARD        
+											</a> 
+										 <i class="material-icons" style="font-size:1.8rem;margin-top:-50%;margin-left:73%;position:absolute;color:white">accessibility</i>    
+									</div>
+
+								</div>
+								<div class="col s6">
+									 <div class="card blue darken-4" style="height:55px; width:95px;">
+											<a data-position="top" data-delay="50" data-tooltip="REQUEST GUNS" href="/clientgunrequest" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">GUN
+										 </a>
+										  <i class="material-icons" style="font-size:1.8rem;margin-top:-53%;margin-left:65%;position:absolute;color:white">tonality</i>   
+									</div>
+								</div>
+					  
+                 		
+                         <div class="col s6">
+                                 <div class="card blue darken-4" style="height:55px;  width:95px;">
                                         <a data-position="top" data-delay="50" data-tooltip="ACCOUNT SETTINGS" href="/clientsettings" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">SETTINGS
                                         </a>
-                                      <i class="material-icons" style="font-size:1.8rem;margin-top:-40%;margin-left:75%;position:absolute;color:white">settings</i>   
+<!--                                      <i class="material-icons" style="font-size:1.8rem;margin-top:-40%;margin-left:75%;position:absolute;color:white">settings</i>   -->
                                     
                                 </div>
                     
                   			</div>
+					  
+					  <div class="col s6">
+                                 <div class="card blue darken-4" style="height:55px;  width:95px;">
+                                        <a data-position="top" data-delay="50" data-tooltip="CGR" href="/clientcgrmodule" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">CGR
+                                        </a>
+                                      <i class="material-icons" style="font-size:1.8rem;margin-top:-50%;margin-left:60%;position:absolute;color:white">people</i>   
+                                    
+                                </div>
+                    
+                  		</div>
+					  
                  </div>
           </div>
         
