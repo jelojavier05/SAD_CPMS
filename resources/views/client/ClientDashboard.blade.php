@@ -68,13 +68,13 @@
                 
                 <ul class="right hide-on-med-and-down">    
                       <li  id="notification_li">
-                            <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES"     href="/securityInbox" class="tooltipped">
+                            <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES"     href="/clientinbox" class="tooltipped">
                                 <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
                                 <span id="notification_count">3</span>
                             </a>
                       </li>                                                                                                
                       <li id="notification_li">
-                            <a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/securityHome" class=" tooltipped">
+                            <a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/clienthomepage" class=" tooltipped">
                           <i class="material-icons">store</i>
                             </a>
                        </li>
