@@ -25,7 +25,6 @@ Guard Form
 	</div>
 </div>
 
-<!----------------------------------------------PAGES-------------------------------------->
 
 <div class="row">
 	<div class="col s5 push-s4" style="margin-left:10px;">
