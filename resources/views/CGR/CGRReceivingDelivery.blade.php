@@ -150,26 +150,33 @@ Receiving Delivery
                     
                     <li class="collection-item" style="font-weight:bold;">
                         <div style="font-weight:normal;">
-                            <table class="" style="font-family:Myriad Pro" id = 'itemsTable'>
-                                <thead>
-                                <tr>
-                                    <th class="grey lighten-1">Serial Number</th>
-                                    <th class="grey lighten-1">Name</th>
-                                    <th class="grey lighten-1">Type of Gun</th>
-									<th class="grey lighten-1">Rounds</th>
-                                </tr>
-                                </thead>
-                                
-                                <tbody>
-									<tr>
-										<td>123</td>
-										<td>M4A1</td>
-										<td>Rifle</td>
-										<td>90</td>
-									</tr>
+							<div class='row'>
+								<div class="col s12">
+									<table class="" style="font-family:Myriad Pro" id = 'itemsTable'>
+										<thead>
+										<tr>
+											<th class="grey lighten-1"></th>
+											<th class="grey lighten-1">Serial Number</th>
+											<th class="grey lighten-1">Name</th>
+											<th class="grey lighten-1">Type of Gun</th>
+											<th class="grey lighten-1">Rounds</th>
+										</tr>
+										</thead>
 
-                                </tbody>
-                            </table>
+										<tbody>
+											<tr>
+												<td><input type="checkbox" id="test1" />
+												<label for="test1"></label></td>
+												<td>123</td>
+												<td>M4A1</td>
+												<td>Rifle</td>
+												<td>90</td>
+											</tr>
+
+										</tbody>
+									</table>
+								</div>
+							</div>
                         </div>
                     </li>
                 </div>
@@ -213,6 +220,7 @@ $("#dataTable").DataTable({
 	
 $("#itemsTable").DataTable({
              "columns": [         					
+			{"orderable": false},
 			null,
 			null,
 			null,
@@ -251,6 +259,11 @@ $('#btnReceive').click(function(){
 				
 		
     });
+
+//$('#btnReceive').click(function(){
+//	sweetAlert("Oops...", "Some Items were not selected!", "error");   
+//			
+//	});
 </script>
 
 @stop

@@ -83,6 +83,23 @@ Client
 					</div>
 					
 				</div>
+				
+				<div class='row'>
+					<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px; margin-bottom:10px;">
+						<legend><h4>CGR Account</h4></legend>
+						<div class="input-field col s10 push-s1">
+							<input placeholder=" " id="strUserName" type="text" class="validate" name = "userName" required="" aria-required="true">
+							<label for="strUserName">Username</label>
+						</div>
+						
+						<div class="input-field col s10 push-s1">
+							<input placeholder=" " id="password" type="text" class="validate" name = "passWord" required="" aria-required="true">
+							<label for="password">Password</label>						
+						</div>
+						<div class="row"></div>
+						
+					</div>				
+				</div>
                     <div class="row">
                         <div class="col s5 push-s3">
                             <a class="btn red" href="/client/gunTagging">Back</a>

@@ -11,11 +11,19 @@ Client Settings
 	<div class="ci col s8 push-s3" style="margin-top:25px;">	
 		<ul class="collection with-header" id="collectionActive" >
 			<li class="collection-header">
-                <h4 style="font-weight:bold;">Account Information
-				<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue right tooltipped " id = 'buttonDetail' ><i class="material-icons">mode_edit</i></a>
-                </h4>
-				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword' style="margin-top:-84px; margin-left:650px;"><i class="material-icons">vpn_key</i></a>
-            </li>	
+                
+				<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue tooltipped " id = 'buttonDetail' style="margin-right: 20px;" ><i class="material-icons">mode_edit</i></a>
+                
+<!--				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword' style="margin-top:-84px; margin-left:650px;"><i class="material-icons">vpn_key</i></a>-->
+				
+				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword' style="margin-right: 20px;" ><i class="material-icons">vpn_key</i></a>
+				
+				<a class="btn green" id = 'btnSaveMachine' >Set this machine to cgr</a>
+            </li>
+			
+			<li class="collection-header">
+				<h4 style="font-weight:bold;">Account Information</h4>
+			</li>
                 
                  <div class="col s12">     
                     <div class="col s6">                        
@@ -179,6 +187,29 @@ Client Settings
     });
 	
 	$('#btnSaveDetails').click(function(){
+	   
+			swal({
+				title: "Confirm Password",
+				text: "Please Enter Password",
+				type: "input",
+				inputType: "password",
+				showCancelButton: true,
+				closeOnConfirm: false,
+				animation: "slide-from-top",
+				inputPlaceholder: "Enter Password"
+			}, 
+				 function(inputValue) {
+				if (inputValue === false) return false;
+				if (inputValue === "") {
+					swal.showInputError("Check Input!");
+					return false
+				}
+ 
+});
+				
+		
+    });
+$('#btnSaveMachine').click(function(){
 	   
 			swal({
 				title: "Confirm Password",
