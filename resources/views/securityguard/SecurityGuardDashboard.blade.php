@@ -46,7 +46,6 @@
         
     </head>
 
-<!----------BODY------------>
 
 <body id="scrollhider" class="bodyscrollhider grey lighten-3 ci">
       <nav class="blue darken-4">
@@ -87,7 +86,6 @@
               </ul>
         </div>
     </nav>
-<!-----------------------------NAV BAR----------------------------->
     
     <div class="row"></div> 
      <ul class="side-nav fixed" id="mobile-nav" style="background-color:#90AFC5;overflow:hidden">
@@ -120,7 +118,7 @@
                      <center>
                          <h id = 'strProfileName'></h><br>
                          <h id = 'strProfileLicenseNumber'></h>
-						 <button class="btn blue waves-effect waves-light modal-trigger" href="#modalCurrentClientDetails" style="height:30px;">Landbank</button>
+						 <button class="btn blue waves-effect waves-light" style="height:30px;" id = 'btnClient'>Client</button>
 						 <div class="row"></div>
                     </center>
                 </div>
@@ -244,37 +242,7 @@
 							<div class="col s4">
 								Population (approx.):<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;10</div>
 							</div>
-							<div class="col s4">
-								Number of Guards:<div style="font-weight:normal;" id = 'guardCounter'>&nbsp;&nbsp;&nbsp;1</div>
-							</div>
-						</div>
-                    </li>
-
-                    <li class="collection-item" style="font-weight:bold;">Shift/s:
-                        <div style="font-weight:normal;">
-                            <table class="" style="font-family:Myriad Pro" id = 'shiftTable'>
-                                <thead>
-                                <tr>
-                                    <th data-field="st">Shift</th>
-                                    <th data-field="fr">From</th>
-                                    <th data-field="to">To</th>
-                                </tr>
-                                </thead>
-                                
-                                <tbody>
-									<tr>
-										<td>1</td>
-										<td>12AM</td>
-										<td>8AM</td>
-										
-									</tr>
-
-                                </tbody>
-                            </table>
-							
-                        </div>
-                    </li>
-                </div>
+						
 				</ul>
 				<div class="row"></div>
 			</div>
@@ -306,62 +274,71 @@
         });
 	</script>
 	
-	<script>
-    $(document).ready(function() {
-        $('select').material_select();
-        
-        $.ajax({
-            
-            type: "GET",
-            url: "{{action('SecurityHomepageController@getGuardInformation')}}",
-            beforeSend: function (xhr) {
-                var token = $('meta[name="csrf_token"]').attr('content');
+<script>
+$(document).ready(function() {
+  $('select').material_select();
+  var statusIdentifier;
 
-                if (token) {
-                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                }
-            },
-            success: function(data){
-                if (data){
-                    $('#strProfileName').text(data.strFirstName + ' ' + data.strLastName);
-                    $('#strProfileLicenseNumber').text(data.strLicenseNumber);    
-                }
-            },
-            error: function(data){
-                var toastContent = $('<span>Error Occured. </span>');
-                Materialize.toast(toastContent, 1500,'red', 'edit');
+  $.ajax({
+    type: "GET",
+    url: "{{action('SecurityHomepageController@getGuardInformation')}}",
+    success: function(data){
+      if (data){
+        $('#strProfileName').text(data.strFirstName + ' ' + data.strLastName);
+        $('#strProfileLicenseNumber').text(data.strLicenseNumber);    
+        statusIdentifier = data.intStatusIdentifier;
+      }
+    }
+  });//ajax
 
-            }
-        });//ajax
-        
-        $('#btnLogout').click(function(){
-            $.ajax({
-				
-				type: "GET",
-				url: "{{action('CPMSUserLoginController@logoutAccount')}}",
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
+  $('#btnClient').click(function(){
+    if (statusIdentifier == 2){
+      $('#modalCurrentClientDetails').openModal();
+      getClientInformation();
+    }
+  });
+  
+  $('#btnLogout').click(function(){
+    $.ajax({
+      type: "GET",
+      url: "{{action('CPMSUserLoginController@logoutAccount')}}",
+      beforeSend: function (xhr) {
+        var token = $('meta[name="csrf_token"]').attr('content');
+        if (token) {
+          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+        }
+      },
+      success: function(data){
+        if (!data){
+          window.location.href = '{{ URL::to("/userlogin") }}';
+        }
+      },
+      error: function(data){
+        var toastContent = $('<span>Error Occured. </span>');
+        Materialize.toast(toastContent, 1500,'red', 'edit');   
+      }
+    });//ajax
+  });
 
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                success: function(data){
-                    if (!data){
-                        window.location.href = '{{ URL::to("/userlogin") }}';
-                    }
-				},
-				error: function(data){
-					var toastContent = $('<span>Error Occured. </span>');
-                    Materialize.toast(toastContent, 1500,'red', 'edit');   
-				}
-
-			});//ajax
-        });
-    });      
-	</script>
+  function getClientInformation(){
+    $.ajax({
+      type: "GET",
+      url: "{{action('SecurityGuardDashboardController@getClientInformation')}}",
+      success: function(data){
+        $('#natureOfBusiness').text(data.strNatureOfBusiness);
+        $('#clientName').text(data.strClientName);
+        $('#address').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+        $('#contactNumberClient').text(data.strContactNumber);
+        $('#personInCharge').text(data.strPersonInCharge);
+        $('#contactNumberPIC').text(data.strPOICContactNumber);
+        $('#areaSize').text(data.deciAreaSize);
+        $('#population').text(data.intPopulation);
+      }
+    });//ajax
+  }
+});      
+</script>
 	
     </body>
-
 </html>
 

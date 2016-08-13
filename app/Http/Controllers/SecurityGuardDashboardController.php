@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Input;
+use DB;
+use Carbon\Carbon;
 
 class SecurityGuardDashboardController extends Controller
 {
@@ -19,69 +22,23 @@ class SecurityGuardDashboardController extends Controller
         return view('securityguard.SecurityGuardDashboard');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function getClientInformation(Request $request){
+        $guardID = $request->session()->get('id');
+        $now = Carbon::now();
+        $clientInformation = DB::table('tblclientguard')
+            ->join('tblcontract', 'tblcontract.intContractID','=','tblclientguard.intContractID')
+            ->join('tblclient','tblclient.intClientID', '=', 'tblcontract.intClientID')
+            ->join('tblnatureofbusiness', 'tblnatureofbusiness.intNatureOfBusinessID','=','tblclient.intNatureOfBusinessID')
+            ->join('tblclientaddress','tblclientaddress.intClientID', '=', 'tblclient.intClientID')
+            ->join('tblprovince','tblprovince.intProvinceID', '=' ,'tblclientaddress.intProvinceID')
+            ->join('tblcity', 'tblcity.intCityID','=','tblclientaddress.intCityID')
+            ->select('tblclient.*', 'tblnatureofbusiness.strNatureOfBusiness', 'tblclientaddress.strAddress','tblprovince.strProvinceName','tblcity.strCityName')
+            ->where('tblclientguard.intGuardID', $guardID)
+            ->where('tblclientguard.created_at', '<', $now)
+            ->orderBy('tblclientguard.created_at', 'desc')
+            ->first();
+        
+        return response()->json($clientInformation);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

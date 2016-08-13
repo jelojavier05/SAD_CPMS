@@ -100,9 +100,7 @@ Route::get('/cgrreports', 'CGRReportsController@index');
 
 Route::get('/securityHome', 'SecurityHomeController@index');
 
-Route::get('/securityleaverequest', 'SecurityGuardDashboardController@index');
-Route::get('/securitychangelocation', 'SecurityGuardDashboardController@index');
-Route::get('/securityguard', 'SecurityGuardDashboardController@index');
+Route::get('/securityguard/getClientInformation', 'SecurityGuardDashboardController@getClientInformation');
 Route::get('/securityInbox', 'SecurityHomepageController@index');
 Route::get('/securityInbox/get/guard', 'SecurityHomepageController@getGuardInformation');
 Route::get('/securityInbox/get/inbox', 'SecurityHomepageController@getInbox');
