@@ -18,7 +18,7 @@ class CPMSUserLoginController extends Controller
             if ($accountType == 0){
                 return redirect('/client/tempaccount');
             }else if ($accountType == 1){
-                return redirect('/client/test');
+                return redirect('/clienthomepage');
             }else if ($accountType == 2){
                 return redirect('/securityHome');
             }else if ($accountType == 3){
