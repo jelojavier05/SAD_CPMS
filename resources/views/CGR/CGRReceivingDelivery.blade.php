@@ -15,16 +15,17 @@ Receiving Delivery
     </div>
 <div class="row">
     <div class="col l12">
-            <div class="col l10 offset-l2" style="overflow:scroll;max-height:690px">
+            <div class="col l10 offset-l2" style="max-height:690px">
         
-                 <table class="centered">
+                 <table class="centered" id="dataTable">
                         <thead>
                           <tr>
                               
-                              <th data-field="status">Delivery ID</th>
-                              <th data-field="guard">Delivery Person/s</th>
+                              <th data-field="status">Delivery ID</th>                              
                               <th data-field="status">Delivery Date</th>
-                              <th data-field="guard">Received By</th>                
+							  <th data-field="guard">Delivery Person/s</th>
+							  <th>Contact Number</th>
+                              <th data-field="guard"></th>                
                           </tr>
                         </thead>
 
@@ -32,10 +33,11 @@ Receiving Delivery
                           <tr>
                             
                             <td>0001</td>
-                            <td>Rustom Cister</td>
-                            <td>02/05/16</td>
-                            <td> 
-                                 <button class="btn waves-effect waves-light blue darken-4 modal-trigger" type="button" name="action" href="#verifybtn">Verify
+							<td>02/05/16</td>
+                            <td>Rustom Cister</td>							
+                            <td>09123456789</td>
+							<td> 
+                                 <button class="btn waves-effect waves-light blue darken-4 buttonVerify" type="button" name="action" href="">Verify
                                  
                                             </button>       
                             </td>
@@ -59,6 +61,7 @@ Receiving Delivery
 
 </div>
 
+<!--
 <div id="verifybtn" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:10% !important;  max-height:100% !important; height:50% !important; border-radius:10px;">
         
         
@@ -117,7 +120,7 @@ Receiving Delivery
 	
     		 
                 					
-	<!-- Modal Button Save -->
+	 Modal Button Save 
  
         </div>
     
@@ -127,7 +130,127 @@ Receiving Delivery
             
     </div>
 </div>
+-->
+
+<!--modal view delivery details-->
+
+<div id="modalDeliveryDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
+    <div class="modal-header">
+                <div class="h">
+                    <h3><center>Delivery</center></h3>  
+				</div>
+
+            </div>
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12">
+                <ul class="collection with-header" id="collectionActive">
+                <li class="collection-header" ><h4 style="font-weight:bold;">Items</h4></li>
+                <div>
+                    
+                    <li class="collection-item" style="font-weight:bold;">
+                        <div style="font-weight:normal;">
+                            <table class="" style="font-family:Myriad Pro" id = 'itemsTable'>
+                                <thead>
+                                <tr>
+                                    <th class="grey lighten-1">Serial Number</th>
+                                    <th class="grey lighten-1">Name</th>
+                                    <th class="grey lighten-1">Type of Gun</th>
+									<th class="grey lighten-1">Rounds</th>
+                                </tr>
+                                </thead>
+                                
+                                <tbody>
+									<tr>
+										<td>123</td>
+										<td>M4A1</td>
+										<td>Rifle</td>
+										<td>90</td>
+									</tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </div>
+                </ul>
+            </div>
+        </div>
+		<div class="row"></div>
+    </div>
+    
+    <div class="modal-footer ci" style="background-color: #00293C;">
+        <div id = "buttons" >	
+            <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnReceive">OK
+            </button>
+
+        </div>
+        
+        
+    </div>
+</div>
+
+<!--modal view delivery details end-->
  
 
+
+@stop
+
+@section('script')
+<script>
+$("#dataTable").DataTable({
+             "columns": [         					
+			null,
+			null,
+			null,
+			null,
+			{"orderable": false}
+            ] ,  
+			"pageLength":5,
+			"lengthMenu": [5,10,15,20],
+			"bFilter" : false
+		});
+	
+$("#itemsTable").DataTable({
+             "columns": [         					
+			null,
+			null,
+			null,
+			null
+            ] ,  
+			"pageLength":5,
+			"lengthMenu": [5,10,15,20],
+			"bFilter" : false
+		});
+	
+$('#dataTable').on('click', '.buttonVerify', function(){
+            $('#modalDeliveryDetails').openModal();            
+
+        });
+	
+$('#btnReceive').click(function(){
+	   
+			swal({
+				title: "Confirm Password",
+				text: "Please Enter Password",
+				type: "input",
+				inputType: "password",
+				showCancelButton: true,
+				closeOnConfirm: false,
+				animation: "slide-from-top",
+				inputPlaceholder: "Enter Password"
+			}, 
+				 function(inputValue) {
+				if (inputValue === false) return false;
+				if (inputValue === "") {
+					swal.showInputError("Check Input!");
+					return false
+				}
+ 
+});
+				
+		
+    });
+</script>
 
 @stop
