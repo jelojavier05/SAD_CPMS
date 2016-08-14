@@ -84,6 +84,7 @@ Route::post('/guard/registration/guardSummary/insert', 'GuardRegistrationSummary
 
 Route::get('/userlogin', 'CPMSUserLoginController@index');
 Route::get('/userlogin/getaccount', 'CPMSUserLoginController@getAccount');
+Route::get('/userlogin/checkmacaddress', 'CPMSUserLoginController@checkMacAddress');
 Route::get('/userlogin/logout', 'CPMSUserLoginController@logoutAccount');
 
 
@@ -128,12 +129,14 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
 //CLIENT INTERFACE ----------------------------------------------------
 
     Route::get('/client', 'ClientDashboardController@index');
+    Route::get('/client/getinformation', 'ClientDashboardController@getClientInformation');
     Route::get('/clienthomepage', 'ClientHomepageController@index');
     Route::get('/clientguardrequest', 'ClientGuardRequestController@index');
     Route::get('/clientgunrequest', 'ClientGunRequestController@index');
     Route::get('/clientguardattendance', 'ClientGuardAttendanceController@index');
     Route::get('/clientsettings', 'ClientSettingsController@index');
     Route::post('/clientsettings/update', 'ClientSettingsController@update');
+    Route::post('/clientsettings/update/macaddress', 'ClientSettingsController@updateMacAddress');
 	Route::get('/clientinbox', 'ClientInboxController@index');
 	Route::get('/clientcgrmodule', 'ClientCGRModuleController@index');
 

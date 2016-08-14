@@ -116,8 +116,7 @@
                         <img src="/img/avatar2.png" alt="" width="80" class="circle responsive-img" style="margin-left:31%"> <!-- notice the "circle" class -->
                     
                      <center>
-                         <h id = 'strProfileName'></h><br>
-                         <h id = 'strProfileLicenseNumber'></h>						 
+                         <h id = 'strProfileName'></h><br>				 
 						 <div class="row"></div>
                     </center>
                 </div>
@@ -294,12 +293,10 @@ $(document).ready(function() {
 
   $.ajax({
     type: "GET",
-    url: "{{action('SecurityHomepageController@getGuardInformation')}}",
+    url: "{{action('ClientDashboardController@getClientInformation')}}",
     success: function(data){
       if (data){
-        $('#strProfileName').text(data.strFirstName + ' ' + data.strLastName);
-        $('#strProfileLicenseNumber').text(data.strLicenseNumber);    
-        statusIdentifier = data.intStatusIdentifier;
+        $('#strProfileName').text(data.strClientName);
       }
     }
   });//ajax

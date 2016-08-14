@@ -295,6 +295,7 @@ $(document).ready(function(){
 	});
 
 	$('#btnSaveMachine').click(function(){
+		
 		swal({
 			title: "Confirm Password",
 			text: "Please Enter Password",
@@ -306,13 +307,30 @@ $(document).ready(function(){
 			inputPlaceholder: "Enter Password"
 		}, 
 		 function(inputValue) {
-			if (inputValue === false) return false;
-			if (inputValue === "") {
+			if (checkPassword(inputValue) == false) {
 				swal.showInputError("Check Input!");
-				return false
-			}
-		});
-	});
+				return false;
+			}else{
+				$.ajax({
+	                type: "POST",
+	                url: "{{action('ClientSettingsController@updateMacAddress')}}",
+	                beforeSend: function (xhr) {
+	                    var token = $('meta[name="csrf_token"]').attr('content');
+
+	                    if (token) {
+	                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+	                    }
+	                },
+	                data: {
+	                    
+	                },
+	                success: function(data){
+						swal("Success!", "This PC is now registered to CGRM. You can access CGRM through only this PC.", "success");
+	                },
+	            });//ajax
+			}// if else checking password
+		});//swal
+	});//button
 
 	function checkInput(){
 		var strClientName = $('#strClientName').val().trim();

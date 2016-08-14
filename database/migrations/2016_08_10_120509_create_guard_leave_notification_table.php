@@ -19,6 +19,10 @@ class CreateGuardLeaveNotificationTable extends Migration
             $table->integer('intGuardID')->unsigned();
             $table->tinyInteger('boolStatus')->default(1);
             $table->timestamp('updated_at');
+
+            $table->foreign('intGuardLeaveRequestID')->references('intGuardLeaveRequestID')->on('tblguardleaverequest');
+            $table->foreign('intGuardID')->references('intGuardID')->on('tblguard');
+            $table->foreign('intInboxID')->references('intInboxID')->on('tblinbox');
         });
  
     }

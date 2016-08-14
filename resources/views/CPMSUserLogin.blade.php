@@ -91,53 +91,77 @@
         <div class="hiddendiv common"></div>
 
         <script>
-            $(document).ready(function(){
+        $(document).ready(function(){
+            
+            $('#btnLogin').click(function(){
+                var username = $('#username').val().trim();
+                var password = $('#password').val().trim();
                 
-                $('#btnLogin').click(function(){
-                    var username = $('#username').val().trim();
-                    var password = $('#password').val().trim();
-                    
-                    if (username != '' && password != ''){
-                        $.ajax({
-                            type: "GET",
-                            url: "/userlogin/getaccount?username=" + username + "&password=" + password,
-                            beforeSend: function (xhr) {
-                                var token = $('meta[name="csrf_token"]').attr('content');
+                if (username != '' && password != ''){
+                    $.ajax({
+                        type: "GET",
+                        url: "/userlogin/getaccount?username=" + username + "&password=" + password,
+                        beforeSend: function (xhr) {
+                            var token = $('meta[name="csrf_token"]').attr('content');
 
-                                if (token) {
-                                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                                }
-                            },
-                            success: function(data){
-                                if (data){
-                                    console.log(data);
-                                    var accountType = data.intAccountType;
-                                    
-                                    if (accountType == 0){
-                                        window.location.href = '{{ URL::to("/client/tempaccount") }}';
-                                    }else if (accountType == 1){
-                                        window.location.href = '{{ URL::to("/clienthomepage") }}';
-                                    }else if (accountType == 2){
-                                        window.location.href = '{{ URL::to("/securityHome") }}';
-                                    }else if (accountType == 3){
-                                        window.location.href = '{{ URL::to("/dashboardadmin") }}';
-                                    }
-                                }else{
-                                    var toastContent = $('<span>Login failed.</span>');
-                                    Materialize.toast(toastContent, 1500,'red', 'edit');    
-                                }
-                            },
-                            error: function(data){
-                                var toastContent = $('<span>Error Occured. </span>');
-                                Materialize.toast(toastContent, 1500,'red', 'edit');
+                            if (token) {
+                                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                             }
-                        });//ajax
-                    }else{
-                        var toastContent = $('<span>All fields are required.</span>');
-                        Materialize.toast(toastContent, 1500,'red', 'edit');
-                    }
-                });
-            });
+                        },
+                        success: function(data){
+                            if (data){
+                                var accountType = data.intAccountType;
+                                if (accountType == 0){
+                                    window.location.href = '{{ URL::to("/client/tempaccount") }}';
+                                }else if (accountType == 1){
+                                    window.location.href = '{{ URL::to("/clienthomepage") }}';
+                                }else if (accountType == 2){
+                                    window.location.href = '{{ URL::to("/securityHome") }}';
+                                }else if (accountType == 3){
+                                    window.location.href = '{{ URL::to("/dashboardadmin") }}';
+                                }else if (accountType == 4){
+                                    var checker = checkMacAddress(data.intAccountID);
+
+                                    if (checker == true){   
+                                        window.location.href = '{{ URL::to("/cgrmain") }}';
+                                    }else{
+                                        var toastContent = $('<span>'+checker+'</span>');
+                                        Materialize.toast(toastContent, 1500,'red', 'edit');
+                                    }
+                                }
+                            }else{
+                                var toastContent = $('<span>Login failed.</span>');
+                                Materialize.toast(toastContent, 1500,'red', 'edit');    
+                            }
+                        },
+                        error: function(data){
+                            var toastContent = $('<span>Error Occured. </span>');
+                            Materialize.toast(toastContent, 1500,'red', 'edit');
+                        }
+                    });//ajax
+                }else{
+                    var toastContent = $('<span>All fields are required.</span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+                }// if else checing input
+            });//button
+
+            function checkMacAddress(intAccountID){
+                var checker;
+                $.ajax({
+                    type: "GET",
+                    url: "/userlogin/checkmacaddress?id=" + intAccountID,
+                    success: function(data){
+                        if (data == true){
+                            checker = true;
+                        }else{
+                            checker = data;
+                        }
+                    },async:false
+                });//ajax
+
+                return checker;
+            }
+        });//document ready function
         </script>
     </body> 
 </html>

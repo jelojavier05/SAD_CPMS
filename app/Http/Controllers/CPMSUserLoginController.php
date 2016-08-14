@@ -23,6 +23,8 @@ class CPMSUserLoginController extends Controller
                 return redirect('/securityHome');
             }else if ($accountType == 3){
                 return redirect('/dashboardadmin');
+            }else if ($accountType == 4){
+                return redirect('/cgrmain');
             }
         }else{
             return view('/CPMSUserLogin');    
@@ -64,13 +66,43 @@ class CPMSUserLoginController extends Controller
                 $request->session()->put('id', $guardID->intGuardID);
             }else if ($account->intAccountType == 3){//admin account
                 
+            }else if ($account->intAccountType == 4){
+
+                $macAddress = DB::table('tblcgrm')
+                    ->select('intCgrmID')
+                    ->where('intAccountID', $account->intAccountID)
+                    ->first();
+                $request->session()->put('id', $macAddress->intCgrmID);
             }
             
             $request->session()->put('accountType', $account->intAccountType);
+
             return response()->json($account);
         }
-        
-        
+    }
+
+    public function checkMacAddress(Request $request){
+        $accountID = Input::get('id');
+
+        $macAddress = DB::table('tblcgrm')
+            ->select('strMacAddress')
+            ->where('intAccountID', $accountID)
+            ->first();
+        ob_start(); // Turn on output buffering
+        system('ipconfig /all'); //Execute external program to display output
+        $mycom=ob_get_contents(); // Capture the output into a variable
+        ob_clean(); // Clean (erase) the output buffer
+
+        $findme ='Physical';
+        $pmac = strpos($mycom, $findme); // Find the position of Physical text
+        $mac=substr($mycom,($pmac+36),17); // Get Physical Address
+
+        if ($mac == $macAddress->strMacAddress){
+            return response()->json(true);
+        }else{
+            $request->session()->flush();
+            return response()->json('This PC is not registered to CGRM.');
+        }
     }
     
     public function logoutAccount(Request $request){
