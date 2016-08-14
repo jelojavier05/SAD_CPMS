@@ -8,16 +8,15 @@ Security Home
 @section('content')
 
 <!--MESSAGE-->
-<div class="row"></div>
 <div class="row">
 	<div class="col s8 push-s3">
 		
-		<ul class="tabs" style="">
-        	<li style="color:white"class="tab col l3"><a href="#announcement" class="active">Announcements</a></li>
-        </ul>	
-		<!-- table message -->
-		<div id="announcement">
-			<div class="container-fluid grey lighten-2">	
+		  <div class="row"> 
+                    <div class="col s12 push-s3">
+                     <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#34675C;font-weight:bold">ANNOUNCEMENTS</h3>
+                    </div>  
+          </div>	
+		    <div class="container-fluid grey lighten-2" style="border: 1px solid grey">	
 				<table class="striped" id="announcementTable">
 					<thead>
 						<tr>
@@ -32,7 +31,6 @@ Security Home
 					</tbody>
 				</table>
 			</div>
-		</div>
 	</div>
 </div>
 <!--Modal announcement content-->

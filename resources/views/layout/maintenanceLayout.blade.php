@@ -235,8 +235,8 @@
 							
 					<li>		
 				
-              <iframe src="http://free.timeanddate.com/clock/i5bfv3ml/n145/szw110/szh110/hoc000/hbw0/hfc09f/cf100/hnc07c/hwc000/facfff/fnu2/fdi76/mqcfff/mqs4/mql18/mqw4/mqd60/mhcfff/mhs4/mhl5/mhw4/mhd62/mmv0/hhcfff/hhs1/hhb10/hmcfff/hms1/hmb10/hscfff/hsw3" frameborder="0" width="110" height="110"></iframe>   
-                <iframe src="http://free.timeanddate.com/clock/i5bfv67w/n145/fn14/ftb/bo2/tt0/tw0/tm1/tb4" frameborder="0" width="100px" height="38" style="margin-left:3%"></iframe>          
+           <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/szw110/szh110/hoc09f/hbw2/hfc09f/cf100/hnc09f/hwc000/hcw2/fan2/facfff/fdi76/mqc9ff/mqs4/mql18/mqw1/mqd50/mhc009/mhs4/mhl5/mhw2/mhd60/mmv0/hhcfff/hhs1/hhb10/hmcfff/hmb10/hscfff/hsw3" frameborder="0" width="110" height="110" style="margin-left:-2%"></iframe>
+                 <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/tlph/fn6/fs15/fc222/tct/pct/ftb/bo2/tt0/tw0/th2/ta1/tb4" frameborder="0" width="143" height="40" allowTransparency="true"></iframe>     
        
 			</li>				
 <!--

@@ -7,32 +7,29 @@ Security Leave Request
 
 @section('content')
 
-
-
 <!--BASIC LEAVE-->
 <div class="row" class="ci">
-    <div class="col s10 push-s2">
-        <div class="col s6">
-            <form class="card medium z-depth-1">
-                <div class="row"></div>
+    
+              <div class="col s12 push-s3">
+                 <h3 class="blue-text" style="font-family:Myriad Pro;margin-left:-2.5%;margin-top:4%">Leave Request</h3>
+              </div>  
+       
+    <div class="col s10 push-s3" style="margin-left:-2%;">
+        <div class="col s6 z-depth-1" style="background-color:#90AFC5;border: .5px solid grey">
                 <div class="row">
                     <div class="col l12 push-l1">
-                        <div class="col s6">
-                            <i class="material-icons left" style="font-size:6rem">play_for_work
-                            </i> 
-                        </div>
-                        <div class="col s6 pull-s3">
+                        <div class="col s6 pull-s1">
                             <div class="row"></div>
                             <span class="black-text" style="font-size:20px;font-family:Myriad Pro">BASIC LEAVE
                             </span>
                         </div>
-						<div class="col s10">
-							<table class ="striped">
+						<div class="col s12 pull-s1">
+							<table class ="centered">
 								<thead>
 									<tr>
-										<th class="grey lighten-1">Leave Type</th>
-										<th class="grey lighten-1">Leave Count</th>
-										<th class="grey lighten-1">Notification Period</th>
+										<th style="width:50px;" class="blue darken-3 white-text">Leave Type</th>
+										<th style="width:50px;" class="blue darken-3 white-text">Leave Count</th>
+										<th style="width:50px;" class="blue darken-3 white-text">Notification Period</th>
 									</tr>
 								</thead>
 								
@@ -49,16 +46,15 @@ Security Leave Request
 						</div>
                     </div>
                 </div>
-                <div class="row"></div>
-                <div class="row">
-                   
-                </div>
-            </form>  
         </div>
+    
         <!-- END OF BASIC LEAVE -->
+        
+        
+        
         <!-- LEAVE FORM -->
-        <div class="col s6">
-            <form class="card medium z-depth-1">
+        <div class="col s5">
+            <form class="card medium z-depth-1" style="height:420px !important;margin-top:-.1%;background-color:#90AFC5;border: .5px solid grey">
                 <div class="row"></div>
                 <div class="col l12">
                     <div class="col l6 push-l2">
@@ -74,22 +70,24 @@ Security Leave Request
                     <span class="card-title activator grey-text text-darken-4">LEAVE APPLICATION FORM
                     <i class="material-icons right animated infinite flash" style="font-size:3rem">view_headline</i></span>
                 </div>
-                <div class="card-reveal sidenavhover">
-                    <span class="card-title grey-text text-darken-4">Fill Up the Following<i class="material-icons right ">close</i></span>
+                <div class="card-reveal sidenavhover" style="overflow:hidden">
+                    <span class="card-title grey-text text-darken-4">FILL UP THE FOLLOWING<i class="material-icons right ">close</i></span>
                     <div class="row">
                         <form class="col s12">
                             <div class="row">
-                                <div class="col s3 offset-s9 pull-s5">
-                                    <center><i class="material-icons prefix" style="font-size:6rem">account_circle</i></center>
-                                    
-                                </div>
-								
-								<div class="col s3 offset-s9 pull-s5" >
-									<center><label>{{$guardInformation->strFirstName}} {{$guardInformation->strLastName}}</label></center>
-								</div>
-                            </div>
-                            <center>
-                                <select class="col s6 push-s3" id = "selectLeave">
+                                <div class="col s12">
+                                    <div class="col s3">
+                                        <center><i class="material-icons prefix" style="font-size:6rem">account_circle</i></center>
+                                    </div>
+
+                                    <div class="col s3" >
+                                        <div class="row"></div>
+                                        <div class="row"></div>
+                                        <center><label>{{$guardInformation->strFirstName}} {{$guardInformation->strLastName}}</label></center>
+                                    </div>
+                                        <center>
+                                              
+                                <select class="col s6" id = "selectLeave">
                                     <option disabled selected>Leave Type</option>
                                     @foreach($guardLeave as $value)
                                         <option id = '{{$value->intLeaveID}}' value ='{{$value->intLeaveCount}}'>{{$value->strLeaveType}}</option>
@@ -106,9 +104,10 @@ Security Leave Request
                                 <li><a href="#!">Maternity</a></li> 
                                 <li><a href="#!">Personal Leave of Absence</a></li>
                             </ul>
-                            <div class="row"></div>
+                                </div>
+                            </div>                  
                             <div class="row">
-                                <div class="col l12">
+                                <div class="col l12" style="margin-top:-5%">
                                     <div class="col l6">
                                         <label for="icon_prefix">Date Start</label><br>
                                         <input type="date" class="datepicker" id = 'dateStart'>
@@ -119,15 +118,13 @@ Security Leave Request
                                     </div>
                                     <!--textarea-->
                                     <div class="row">
-                                        <form class="col s12">
-                                            <div class="row">
+                                        <form class="col s12"  style="margin-top:-2%">
                                                 <div class="input-field col s12">
                                                 <textarea class="materialize-textarea" id="strReason" type="text" length="120"></textarea>
                                                 <label for="input_text">REASON</label>
                                                 </div>
-                                            </div>
                                         </form>
-                                        <div class="col l12">
+                                        <div class="col l12 pull-l4">
                                             <a class="btn green darken-4 z-depth-3 right" id = 'btnSend'>Send</a>
                                         </div>
                                     </div>
@@ -142,7 +139,7 @@ Security Leave Request
 </div>
 
 <!--END OF lEAVE FORM-->
-<div class="row"><fieldset style="background-color:grey"></fieldset></div>
+
   <!--MESSAGE-->
 @stop
 

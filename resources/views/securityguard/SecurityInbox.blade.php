@@ -6,16 +6,23 @@ Security Homepage
 
 @section('content')
   <!--MESSAGE-->
-<div class="row"></div>
 <div class="row">
 	<div class="col s8 push-s3">
 		
-		<ul class="tabs" style="">
+        
+        
+		<!--<ul class="tabs" style="">
         	<li style="color:white"class="tab col l3"><a href="#message" class="active">Messages</a></li>
-        </ul>	
+        </ul>	-->
+        
+          <div class="row"> 
+                    <div class="col s12 push-s4">
+                     <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#34675C;font-weight:bold">MESSAGES</h3>
+                    </div>  
+          </div>	
 		<!-- table message -->
 		<div id="message">
-			<div class="container-fluid grey lighten-2">	
+			<div class="container-fluid grey lighten-2" style="border: 1px solid grey">	
 				<table class="striped" id="inboxTable">
 					<thead>
 						<tr>
