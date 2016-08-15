@@ -94,6 +94,7 @@ Route::get('/userlogin/logout', 'CPMSUserLoginController@logoutAccount');
 
 Route::get('/cgrmain', 'CGRMainController@index');
 Route::get('/cgrguardattendance', 'CGRGuardAttendanceController@index');
+Route::get('/cgrguardattendance/get/activeguard', 'CGRGuardAttendanceController@getActiveGuard');
 Route::get('/cgrreceivingdelivery', 'CGRReceivingDeliveryController@index');
 Route::get('/cgrreports', 'CGRReportsController@index');
 

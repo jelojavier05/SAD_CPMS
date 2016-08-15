@@ -155,7 +155,7 @@ Inbox
         	<!-- button -->
         	<div class="modal-footer ci" style="background-color: #00293C;">
 				
-				<div class="sendLeaveRequest" style="display : none;">	
+				<div id="sendLeaveRequest" style="display: none;">	
 					<button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationLeaveRequest" style="margin-right: 30px;">Send<i class="material-icons right">send</i>
 					</button>
 				</div>
@@ -459,7 +459,6 @@ $(document).ready(function(){
                 $('#strLeaveType').text(data.strLeaveType);
                 $('#strClientName').text(data.strClientName);
                 $('#strReason').text(data.strReason);
-
                 if(data.boolStatus == 1){
                     getGuardWaiting(); //guard waiting
                     populateTableRequestLeave();

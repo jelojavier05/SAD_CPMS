@@ -93,12 +93,15 @@ Guard Attendance
 
 <script>
 $(document).ready(function(){
-
+  $.ajax({
+    type: "GET",
+    url: "{{action('CGRGuardAttendanceController@getActiveGuard')}}",
+    success: function(data){
+      console.log(data);
+    },
+  });//ajax
 });
 </script>
-
-
-
 
 <script>
 $("#dataTable").DataTable({

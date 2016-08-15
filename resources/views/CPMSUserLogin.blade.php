@@ -123,7 +123,7 @@
                                     var checker = checkMacAddress(data.intAccountID);
 
                                     if (checker == true){   
-                                        window.location.href = '{{ URL::to("/cgrmain") }}';
+                                        window.location.href = '{{ URL::to("/cgrguardattendance") }}';
                                     }else{
                                         var toastContent = $('<span>'+checker+'</span>');
                                         Materialize.toast(toastContent, 1500,'red', 'edit');

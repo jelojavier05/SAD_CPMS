@@ -24,7 +24,7 @@ class CPMSUserLoginController extends Controller
             }else if ($accountType == 3){
                 return redirect('/dashboardadmin');
             }else if ($accountType == 4){
-                return redirect('/cgrmain');
+                return redirect('/cgrguardattendance');
             }
         }else{
             return view('/CPMSUserLogin');    
