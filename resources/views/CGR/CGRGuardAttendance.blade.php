@@ -24,6 +24,7 @@ Guard Attendance
             <th data-field="">SG License</th>
             <th data-field="">Name</th>
             <th data-field=""></th>
+			<th>Time In</th>
             
           </tr>
         </thead>
@@ -46,6 +47,8 @@ Guard Attendance
 				</div>
 				
             </td>
+			
+			<td>12:20AM</td>
             
           </tr> 
         </tbody>
@@ -116,7 +119,8 @@ $("#dataTable").DataTable({
   "columns": [
   null,
   null,
-  {"orderable": false}
+  {"orderable": false},
+  null
   ] ,  
   "pageLength":5,
   "lengthMenu": [5,10,15,20],
