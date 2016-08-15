@@ -18,7 +18,7 @@ Guard Attendance
   <div class="col l12">
     <div class="col l10 offset-l2 grey lighten-2" style=";max-height:690px; margin-top:-25px;">
       <table class="centered" id="dataTable">
-		  <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/tlph/fn6/fs15/fc222/tct/pct/ftb/bo2/tt0/tw0/th2/ta1/tb4" frameborder="0" width="143" height="40" allowTransparency="true" style="margin-left:80%; margin-top:10px;"></iframe>
+		  <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/tlph/fn6/fs15/fc222/tct/pct/ftb/bo2/tt0/tw0/th2/ta1/tb4" frameborder="0" width="143" height="40" allowTransparency="true" style="margin-left:80%; margin-top:10px;pointer-events:none;"></iframe>
         <thead>
           <tr>
             <th data-field="">SG License</th>
