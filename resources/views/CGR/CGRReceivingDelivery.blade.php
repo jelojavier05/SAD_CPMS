@@ -236,30 +236,60 @@ $('#dataTable').on('click', '.buttonVerify', function(){
 
         });
 	
+//$('#btnReceive').click(function(){
+//	   
+//			swal({
+//				title: "Confirm Password",
+//				text: "Please Enter Password",
+//				type: "input",
+//				inputType: "password",
+//				showCancelButton: true,
+//				closeOnConfirm: false,
+//				animation: "slide-from-top",
+//				inputPlaceholder: "Enter Password"
+//			}, 
+//				 function(inputValue) {
+//				if (inputValue === false) return false;
+//				if (inputValue === "") {
+//					swal.showInputError("Check Input!");
+//					return false
+//				}
+// 
+//});
+//				
+//		
+//    });
+	
 $('#btnReceive').click(function(){
-	   
-			swal({
-				title: "Confirm Password",
-				text: "Please Enter Password",
-				type: "input",
-				inputType: "password",
-				showCancelButton: true,
-				closeOnConfirm: false,
-				animation: "slide-from-top",
-				inputPlaceholder: "Enter Password"
-			}, 
-				 function(inputValue) {
-				if (inputValue === false) return false;
-				if (inputValue === "") {
-					swal.showInputError("Check Input!");
-					return false
-				}
- 
-});
-				
-		
+	$('#modalDeliveryDetails').closeModal();   
+	swal({
+    title: 'Warning!',
+	text: "Some items were not selected!",
+	closeOnConfirm: false,
+    input: 'textarea',
+    showCancelButton: true,
+	background: '#e0e0e0',
+	inputPlaceholder: "Enter Reason",
+	inputValidator: function(inputValue) {
+    return new Promise(function(resolve, reject) {
+      if (inputValue === '') {
+        	reject('Check Input!');		  
+      } else {
+        resolve();
+      }
     });
+  }
+  }).then(function(result) {
+		swal({
+			type: 'success',
+    		text: 'Succesfully Sent!'			
+  });
+  });
+});
 
+
+	
+	
 //$('#btnReceive').click(function(){
 //	sweetAlert("Oops...", "Some Items were not selected!", "error");   
 //			

@@ -16,32 +16,37 @@ Guard Attendance
 <!-- Guard Table Start-->
 <div class="row">
   <div class="col l12">
-    <div class="col l10 offset-l2" style=";max-height:690px">
+    <div class="col l10 offset-l2 grey lighten-2" style=";max-height:690px; margin-top:-25px;">
       <table class="centered" id="dataTable">
+		  <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/tlph/fn6/fs15/fc222/tct/pct/ftb/bo2/tt0/tw0/th2/ta1/tb4" frameborder="0" width="143" height="40" allowTransparency="true" style="margin-left:80%; margin-top:10px;"></iframe>
         <thead>
           <tr>
-            <th data-field="status">Security Guard </th>
-            <th data-field="guard">Picture</th>
-            <th data-field="status">View Profile</th>
-            <th data-field="guard">Action</th>
+            <th data-field="">SG License</th>
+            <th data-field="">Name</th>
+            <th data-field=""></th>
+            
           </tr>
         </thead>
         
         <tbody>
           <tr>
-            <td>Adrian Flores</td>
+            <td>2013-12345-MN-0</td>
             <td>
-              <img src="/img/avatar2.png" alt="" class="responsive-img" width="50%" height="40%" >
+              Son Goku
             </td>
             <td> 
-              <button class="btn waves-effect waves-light green darken-4" type="button" name="action">PROFILE
-              <i class="material-icons right">send</i>
-              </button>
+				<div id="timeIn" >
+				  <button class="btn waves-effect waves-light blue darken-4 btnTimeIn" type="button" name="">Time In					  
+				  </button>
+				</div>
+				
+				<div id="timeOut" style="display:none;">
+					<button class="btn waves-effect waves-light red darken-4 btnTimeOut" type="button" name="">Time Out						
+					</button>
+				</div>
+				
             </td>
-            <td> 
-              <button class="btn waves-effect waves-light blue darken-4 buttonTimeIn" id="" type="button" name="action">TIME-IN</button>
-              <button class="btn waves-effect waves-light red darken-4" type="button" name="action">TIME-OUT</button>
-            </td>
+            
           </tr> 
         </tbody>
       </table>
@@ -51,7 +56,7 @@ Guard Attendance
 <!-- Guard Table End -->
  
 <!-- sg login Start-->
-<div id="modalTimeIn" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
+<div id="modalTime" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
 	<div class="modal-header">
 		<div class="h">
 			<h3><center>Login</center></h3>  
@@ -63,7 +68,7 @@ Guard Attendance
 				<div class="row"></div>  
 				<div class="input-field col s12">
 					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
-					<input id="strCurrent" type="password" class="validate" name = "" required="" aria-required="true">
+					<input id="strCurrent" type="text" class="validate" name = "" required="" aria-required="true">
 					<label for="">Username</label> 
 				</div>
 			</div>
@@ -101,14 +106,20 @@ $(document).ready(function(){
     },
   });//ajax
 });
+$('#dataTable').on('click', '.btnTimeIn', function(){
+  $('#modalTime').openModal();            
+});
+	
+$('#dataTable').on('click', '.btnTimeOut', function(){
+  $('#modalTime').openModal();            
+});
 </script>
 
 <script>
 $("#dataTable").DataTable({
   "columns": [
   null,
-  {"orderable": false},
-  {"orderable": false},
+  null,
   {"orderable": false}
   ] ,  
   "pageLength":5,

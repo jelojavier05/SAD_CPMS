@@ -88,31 +88,33 @@ Admin
 
           <div class="card" style="background-color:#323030">
             <div class="card-content white-text">
-              <span class="card-title" style="font-size:40px; font-weight:bold;">114</span>
-              <p style="margin-left:10px;">Deployed<br> Resources</p>
+              <span class="card-title" style="font-size:40px; font-weight:bold;">10</span>
+              <p style="margin-left:10px;">Gun<br>Licenses</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-60%;">forward</i>
             </div>
             <div class="card-action" style="background-color:#323030;margin-top:-11%">
               <center>
-                  <a href="#" class="white-text">See All</a>
+                  <a href="/gunLicenses" class="white-text">See All</a>
                   <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
               </center>
             </div>
           </div>
     </div>
+		  
+	
           
           <div class="row">
             <div class="col l12">
-                    <div class="col l4 push-l3">
+                    <div class="col l2 push-l3">
                          <div class="card" style="background-color:#00293C">
                                     <div class="card-content white-text">
                                       <span class="card-title" style="font-size:40px; font-weight:bold;">35</span>
-                                      <p style="margin-left:10px;">BALANCE PAYMENT FOR CLIENT(Unpaid)</p>
+                                      <p style="margin-left:10px;">Unpaid <br> Clients</p>
                                       <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">receipt</i>
                                     </div>
                                     <div class="card-action" style="background-color:#00293C">
                                       <center>
-                                          <a href="#" class="white-text">See All</a>
+                                          <a href="/unpaidclients" class="white-text">See All</a>
                                           <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
                                       </center>
                                     </div>
