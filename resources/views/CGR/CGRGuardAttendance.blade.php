@@ -18,39 +18,17 @@ Guard Attendance
   <div class="col l12">
     <div class="col l10 offset-l2 grey lighten-2" style=";max-height:690px; margin-top:-25px;">
       <table class="centered" id="tableAttendance">
-		  <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/tlph/fn6/fs15/fc222/tct/pct/ftb/bo2/tt0/tw0/th2/ta1/tb4" frameborder="0" width="143" height="40" allowTransparency="true" style="margin-left:80%; margin-top:10px;"></iframe>
+		  <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/tlph/fn6/fs15/fc222/tct/pct/ftb/bo2/tt0/tw0/th2/ta1/tb4" frameborder="0" width="143" height="40" allowTransparency="true" style="margin-left:80%; margin-top:10px;pointer-events:none;"></iframe>
         <thead>
           <tr>
             <th data-field="">SG License</th>
             <th data-field="">Name</th>
             <th data-field="">Action</th>
-			<th>Time In</th>
-            
+            <th>Time In</th>
           </tr>
         </thead>
         
         <tbody>
-          <tr>
-            <td>2013-12345-MN-0</td>
-            <td>
-              Son Goku
-            </td>
-            <td> 
-				<div id="timeIn" >
-				  <button class="btn waves-effect waves-light blue darken-4 btnTimeIn" type="button" name="">Time In					  
-				  </button>
-				</div>
-				
-				<div id="timeOut" style="display:none;">
-					<button class="btn waves-effect waves-light red darken-4 btnTimeOut" type="button" name="">Time Out						
-					</button>
-				</div>
-				
-            </td>
-			
-			<td>12:20AM</td>
-            
-          </tr> 
         </tbody>
       </table>
     </div>
@@ -71,7 +49,7 @@ Guard Attendance
 				<div class="row"></div>  
 				<div class="input-field col s12">
 					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
-					<input id="strCurrent" type="text" class="validate" name = "" required="" aria-required="true">
+					<input id="username" type="text" class="validate" required="" aria-required="true">
 					<label for="">Username</label> 
 				</div>
 			</div>
@@ -80,7 +58,7 @@ Guard Attendance
 				<div class="row"></div>  
 				<div class="input-field col s12">
 					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
-					<input id="strNew" type="password" class="validate" name = "" required="" aria-required="true">
+					<input id="password" type="password" class="validate" name = "" required="" aria-required="true">
 					<label for="">Password</label> 
 				</div>
 			</div>
@@ -88,7 +66,7 @@ Guard Attendance
 		</div>
 	</div>
 	<div class="modal-footer" style="background-color: #00293C;">
-		<button class="btn large waves-effect waves-light green" name="action" style="margin-right: 30px;" id = "btnChangePasswordSave">OK
+		<button class="btn large waves-effect waves-light green" name="action" style="margin-right: 30px;" id = "btnOkay">OK
 		</button>
 	</div>	
 </div>
@@ -101,21 +79,143 @@ Guard Attendance
 
 <script>
 $(document).ready(function(){
+  var btnInOut;
+  var intGuardID;
+  refreshTable();
+});
+
+$('#tableAttendance').on('click', '.btnTimeIn', function(){
+  buttonTimeClick(1, this.id);
+});
+	
+$('#tableAttendance').on('click', '.btnTimeOut', function(){
+  buttonTimeClick(0, this.id);
+});
+
+$('#btnOkay').click(function(){
+  var username = $('#username').val().trim();
+  var password = $('#password').val().trim();
+  
+  if (username != '' && password != ''){
+    $.ajax({
+        type: "POST",
+        url: "{{action('CGRGuardAttendanceController@login')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        data: {
+            username:username,
+            password:password,
+            intGuardID: intGuardID
+        },
+        success: function(data){
+            if (data){
+              if (btnInOut == 1){
+                timeIn();
+              }else if (btnInOut == 0){
+                timeOut();
+              }
+            }else{
+              var toastContent = $('<span>Login failed.</span>');
+              Materialize.toast(toastContent, 1500,'red', 'edit');    
+            }
+        },
+    });//ajax
+  }else{
+    var toastContent = $('<span>All fields are required.</span>');
+    Materialize.toast(toastContent, 1500,'red', 'edit');
+  }// if else checing input
+});//button
+
+function buttonTimeClick(value, id){
+  $('#modalTime').openModal();            
+  btnInOut = value;
+  intGuardID = id;
+  $('#username').val('');
+  $('#password').val('');
+}
+function timeIn(){
+  $.ajax({
+    type: "POST",
+    url: "{{action('CGRGuardAttendanceController@timeIn')}}",
+    beforeSend: function (xhr) {
+        var token = $('meta[name="csrf_token"]').attr('content');
+
+        if (token) {
+              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+        }
+    },
+    data: {
+        intGuardID:intGuardID
+    },
+    success: function(data){
+      refreshTable();
+      swal("Success!", "Time in!", "success");
+      $('#modalTime').closeModal();
+
+    },
+    error: function(data){
+    }
+  });//ajax
+}
+
+function timeOut(){
+  $.ajax({
+    type: "POST",
+    url: "{{action('CGRGuardAttendanceController@timeOut')}}",
+    beforeSend: function (xhr) {
+        var token = $('meta[name="csrf_token"]').attr('content');
+
+        if (token) {
+              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+        }
+    },
+    data: {
+        intGuardID:intGuardID
+    },
+    success: function(data){
+      refreshTable();
+      swal("Success!", "Time out!", "success");
+      $('#modalTime').closeModal();
+
+    },
+    error: function(data){
+    }
+  });//ajax
+}
+
+function refreshTable(){
   $.ajax({
     type: "GET",
     url: "{{action('CGRGuardAttendanceController@getActiveGuard')}}",
     success: function(data){
-      console.log(data);
+      var dataTable = $('#tableAttendance').DataTable();
+      dataTable.clear().draw(); //clear all the row
+      $.each(data, function(index, value) {
+        var strLicense = '<h>'+value.strLicenseNumber+'</h>';
+        var strName = '<h>'+value.strFirstName+' '+value.strLastName+'</h>';
+        var btnAction = '<button class="btn waves-effect waves-light blue darken-4 btnTimeIn" type="button" id = '+value.intGuardID+' >Time In</button>';
+        var strTimeIn = '';
+
+        if (value.timeIn != null){
+          strTimeIn = value.timeIn;
+          btnAction = '<button class="btn waves-effect waves-light red darken-4 btnTimeOut" type="button" id = '+value.intGuardID+'>Time Out</button>'
+        }
+
+        dataTable.row.add([
+          strLicense,
+          strName,
+          btnAction,
+          strTimeIn
+        ]).draw();
+      });//foreach
     },
   });//ajax
-});
-$('#tableAttendance').on('click', '.btnTimeIn', function(){
-  $('#modalTime').openModal();            
-});
-	
-$('#tableAttendance').on('click', '.btnTimeOut', function(){
-  $('#modalTime').openModal();            
-});
+}
 </script>
 
 <script>

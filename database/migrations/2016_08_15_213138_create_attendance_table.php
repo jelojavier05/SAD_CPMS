@@ -12,7 +12,18 @@ class CreateAttendanceTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('tblattendance', function (Blueprint $table) {
+            $table->increments('intAttendanceID');
+            $table->integer('intGuardID')->unsigned();
+            $table->integer('intClientID')->unsigned();
+            $table->timestamp('datetimeIn');
+            $table->timestamp('datetimeOut');
+            $table->decimal('deciTotalHours', 4,2);
+
+            $table->foreign('intGuardID')->references('intGuardID')->on('tblguard');
+            $table->foreign('intClientID')->references('intClientID')->on('tblclient');
+        });
+
     }
 
     /**
@@ -22,6 +33,6 @@ class CreateAttendanceTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('tblattendance');
     }
 }
