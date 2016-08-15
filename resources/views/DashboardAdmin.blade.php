@@ -88,13 +88,13 @@ Admin
 
           <div class="card" style="background-color:#323030">
             <div class="card-content white-text">
-              <span class="card-title" style="font-size:40px; font-weight:bold;">114</span>
-              <p style="margin-left:10px;">Deployed<br> Resources</p>
+              <span class="card-title" style="font-size:40px; font-weight:bold;">10</span>
+              <p style="margin-left:10px;">Gun<br>Licenses</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-60%;">forward</i>
             </div>
             <div class="card-action" style="background-color:#323030;margin-top:-11%">
               <center>
-                  <a href="#" class="white-text">See All</a>
+                  <a href="/gunLicenses" class="white-text">See All</a>
                   <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
               </center>
             </div>

@@ -11,12 +11,12 @@ Security Home
 <div class="row">
 	<div class="col s8 push-s3">
 		
-		  <div class="row"> 
+		  <div class="row" style="margin-top:-40px;"> 
                     <div class="col s12 push-s3">
                      <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#34675C;font-weight:bold">ANNOUNCEMENTS</h3>
                     </div>  
           </div>	
-		    <div class="container-fluid grey lighten-2" style="border: 1px solid grey">	
+		    <div class="container-fluid grey lighten-2" style="border: 1px solid grey; margin-top:-10px;">	
 				<table class="striped" id="announcementTable">
 					<thead>
 						<tr>

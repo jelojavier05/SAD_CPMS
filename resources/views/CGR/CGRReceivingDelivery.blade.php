@@ -236,17 +236,40 @@ $('#dataTable').on('click', '.buttonVerify', function(){
 
         });
 	
+//$('#btnReceive').click(function(){
+//	   
+//			swal({
+//				title: "Confirm Password",
+//				text: "Please Enter Password",
+//				type: "input",
+//				inputType: "password",
+//				showCancelButton: true,
+//				closeOnConfirm: false,
+//				animation: "slide-from-top",
+//				inputPlaceholder: "Enter Password"
+//			}, 
+//				 function(inputValue) {
+//				if (inputValue === false) return false;
+//				if (inputValue === "") {
+//					swal.showInputError("Check Input!");
+//					return false
+//				}
+// 
+//});
+//				
+//		
+//    });
+	
 $('#btnReceive').click(function(){
 	   
 			swal({
-				title: "Confirm Password",
-				text: "Please Enter Password",
-				type: "input",
-				inputType: "password",
+				title: "Warning!",
+				text: "Some items were not selected",
+				type: "input",				
 				showCancelButton: true,
 				closeOnConfirm: false,
 				animation: "slide-from-top",
-				inputPlaceholder: "Enter Password"
+				inputPlaceholder: "Enter Reason here"
 			}, 
 				 function(inputValue) {
 				if (inputValue === false) return false;
@@ -260,6 +283,9 @@ $('#btnReceive').click(function(){
 		
     });
 
+
+	
+	
 //$('#btnReceive').click(function(){
 //	sweetAlert("Oops...", "Some Items were not selected!", "error");   
 //			

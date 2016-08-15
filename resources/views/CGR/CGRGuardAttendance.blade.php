@@ -20,28 +20,32 @@ Guard Attendance
       <table class="centered" id="dataTable">
         <thead>
           <tr>
-            <th data-field="status">Security Guard </th>
-            <th data-field="guard">Picture</th>
-            <th data-field="status">View Profile</th>
-            <th data-field="guard">Action</th>
+            <th data-field="">SG License</th>
+            <th data-field="">Name</th>
+            <th data-field=""></th>
+            
           </tr>
         </thead>
         
         <tbody>
           <tr>
-            <td>Adrian Flores</td>
+            <td>2013-12345-MN-0</td>
             <td>
-              <img src="/img/avatar2.png" alt="" class="responsive-img" width="50%" height="40%" >
+              Son Goku
             </td>
             <td> 
-              <button class="btn waves-effect waves-light green darken-4" type="button" name="action">PROFILE
-              <i class="material-icons right">send</i>
-              </button>
+				<div id="timeIn" >
+				  <button class="btn waves-effect waves-light blue darken-4 btnTimeIn" type="button" name="">Time In					  
+				  </button>
+				</div>
+				
+				<div id="timeOut" style="display:none;">
+					<button class="btn waves-effect waves-light red darken-4 btnTimeOut" type="button" name="">Time Out						
+					</button>
+				</div>
+				
             </td>
-            <td> 
-              <button class="btn waves-effect waves-light blue darken-4 buttonTimeIn" id="" type="button" name="action">TIME-IN</button>
-              <button class="btn waves-effect waves-light red darken-4" type="button" name="action">TIME-OUT</button>
-            </td>
+            
           </tr> 
         </tbody>
       </table>
@@ -51,7 +55,7 @@ Guard Attendance
 <!-- Guard Table End -->
  
 <!-- sg login Start-->
-<div id="modalTimeIn" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
+<div id="modalTime" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
 	<div class="modal-header">
 		<div class="h">
 			<h3><center>Login</center></h3>  
@@ -92,9 +96,15 @@ Guard Attendance
 @section('script')
 
 <script>
-$(document).ready(function(){
+$('#dataTable').on('click', '.btnTimeIn', function(){
+            $('#modalTime').openModal();            
 
-});
+        });
+	
+$('#dataTable').on('click', '.btnTimeOut', function(){
+            $('#modalTime').openModal();            
+
+        });
 </script>
 
 
@@ -104,8 +114,7 @@ $(document).ready(function(){
 $("#dataTable").DataTable({
   "columns": [
   null,
-  {"orderable": false},
-  {"orderable": false},
+  null,
   {"orderable": false}
   ] ,  
   "pageLength":5,
