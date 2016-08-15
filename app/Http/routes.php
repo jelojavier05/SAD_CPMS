@@ -31,6 +31,8 @@ Route::get('/dashboardadmin/get/guncount', 'DashboardAdminController@getCountGun
 Route::get('/client/gunTagging', 'GunTaggingController@index');
 Route::post('/client/gunTagging/post', 'GunTaggingController@post');
 
+Route::get('/unpaidclients', 'UnpaidClientsController@index');
+
 Route::get('/admin/pending', 'AdminPendingController@index');
 
 Route::get('/client/registration/contractInfo', 'ClientContractController@index');

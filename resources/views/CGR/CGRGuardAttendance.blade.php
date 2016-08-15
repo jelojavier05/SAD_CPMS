@@ -67,7 +67,7 @@ Guard Attendance
 				<div class="row"></div>  
 				<div class="input-field col s12">
 					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
-					<input id="strCurrent" type="password" class="validate" name = "" required="" aria-required="true">
+					<input id="strCurrent" type="text" class="validate" name = "" required="" aria-required="true">
 					<label for="">Username</label> 
 				</div>
 			</div>
