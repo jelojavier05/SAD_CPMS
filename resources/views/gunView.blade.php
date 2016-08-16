@@ -89,8 +89,6 @@ Gun
     
 </div>
 
-<!-----------------------------------Modal----------------------------------------------------->
-
 <div id="modaleditGun" class="modal modal-fixed-footer" style="overflow:hidden; width:700px;max-height:100%; height:400px; margin-top:30px;">
         <div class="modal-header" style="background-color:#01579b !important;"><h4>Gun</h4></div>
         	<div class="modal-content">
@@ -140,6 +138,11 @@ Gun
 	
 @section('script')
 
+<script> 
+$(document).ready(function(){
+
+});
+</script>
 
 <script type="text/javascript">
 	$("#dataTable").DataTable({
@@ -165,7 +168,7 @@ Gun
 
 <script>
 	$(document).ready(function(){
-			$('ul.tabs').tabs();
-		  });
+    	$('ul.tabs').tabs();
+      });
 </script>
 @stop
