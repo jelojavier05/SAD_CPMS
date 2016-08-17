@@ -11,9 +11,13 @@ Inbox
 <div class="row">
 	<div class="col s8 push-s3">
 		
-		<ul class="tabs" style="">
-        	<li style="color:white"class="tab col l3"><a href="#message" class="active">Messages</a></li>
-        </ul>	
+	  
+          <div class="row" style="margin-top:-40px;"> 
+                    <div class="col s12 push-s4">
+                     <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#662E1C;font-weight:bold">MESSAGES</h3>
+                    </div>  
+               <hr>
+          </div>	
 		<!-- table message -->
 		<div id="message">
 			<div class="container-fluid grey lighten-2">	

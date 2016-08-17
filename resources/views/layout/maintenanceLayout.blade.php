@@ -54,7 +54,7 @@
                 <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
                     
 <!--					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >-->
-					<ul class="side-nav fixed white" id="mobile-nav" >
+					<ul class="side-nav fixed white" id="mobile-nav">
                     <div class="iconposition">
 						<div class="card-panel blue darken-4" style="height:138px;">
 
@@ -62,7 +62,7 @@
                                 <div class="col l12">
 									  <div class="col l6 push-l3" style="margin-top:-6%">
 
-										<img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="90%">
+										<img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="100%">
 
 										</div>
                                     
@@ -72,8 +72,8 @@
                             
                             <div class="row">
                            		
-                            <span class="card-title ci" style="font-size:20px;color:white;margin-top:-23%;margin-left:22%; position:absolute">John Cena</span>
-								  <span  style=" font-size: 14px; margin-top:-14%;margin-left:22%;position:absolute;color:red margin-left:-40px;">Administrator</span>
+                            <span class="card-title ci" style="font-size:20px;color:white;margin-top:-23%;margin-left:23%; position:absolute">John Cena</span>
+								  <span  style=" font-size: 14px; margin-top:-14%;margin-left:24%;position:absolute;color:red margin-left:-40px;">Administrator</span>
                             
                             </div>
 <!--
@@ -297,66 +297,35 @@
                 </ul>
 
            
-				<div>
-                                     <a href="#" class="brand-logo">
-
+            <div>
+                <a href="#" class="brand-logo">
                     <div class="row">
                         <div class="col l12">
-                            <div class="col l6 push-l4">
-                            
-                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.5rem">Client and Personnel Management System</p>
-					
-                            
-                            
-                            </div>
-							
-                        
-                        
+                            <div class="col l6 push-l3">
+                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.5rem;font-weight:bold;color:#F4F4EF">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>
+                            </div>    
                         </div>
-                    
-                    
                     </div>
-                    	</a>
-					
-					
-                    
-                  <!--  <div class="homeposition">
-                    
-                    <a href="#" class="brand-logo">
-						<div class="flow-text">
-							<p style="margin-top: 20px; margin-left: 200px;font-family:Myriad Pro;font-size:6rem">Client and Personnel Management System</p>
-						</div>
-				
-                </div>-->
-                
+                </a>		 
             </div>
 				
              
 							<ul class="right hide-on-med-and-down">
 								 
-                                
-                                
+                                <li><a  data-position="bottom" data-delay="50" data-tooltip="DASHBOARD"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">apps</i></a></li>
                                 <li  id="notification_li">
                                     <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/adminInbox" class="tooltipped">
                                         <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
                                         <span id="notification_count">3</span></a>
-                                </li>                                                                                                                                                                                                             
-								
-                                 <li><a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">store</i></a></li>
+                                </li>                                                
                                 <li><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>
+                                
 							</ul>
         
 		
         </div>
-      
-	
     </nav>
-    
-    
-    
-    
-    
-    </div>
+</div>
 			
 <!--
 	 Tab 

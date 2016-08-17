@@ -128,9 +128,12 @@ Client Homepage
 <div class="row">
 	<div class="col s8 push-s3">
 		
-		<ul class="tabs" style="">
-        	<li style="color:white"class="tab col l3"><a href="#announcement" class="active">Announcements</a></li>
-        </ul>	
+	 <div class="row" style="margin-top:-40px;"> 
+                    <div class="col s12 push-s3">
+                     <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#662E1C;font-weight:bold">ANNOUNCEMENTS</h3>
+                    </div> 
+            <hr>
+          </div>	
 		<!-- table message -->
 		<div id="announcement">
 			<div class="container-fluid grey lighten-2">	

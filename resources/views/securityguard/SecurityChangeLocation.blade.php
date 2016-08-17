@@ -19,7 +19,7 @@ Security Change Location
                                     </div>  
                         </div>
                         <div class="row">
-                        <div class="col s12" style="margin-top:-4%;">
+                        <div class="col s12" style="margin-top:-2%;">
                                 <div class="container z-depth-2" style="background-color:#F0EFEA;width:900px;border: .5px solid grey">
                                     <div class="row">
                                         <div class="col s12" >
