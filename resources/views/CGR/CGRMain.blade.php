@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="row">
         
-                                                  <a  data-position="right" data-delay="50" data-tooltip="REPORTS"href="#" class=" tooltipped"><i class="material-icons" style="font-size:5rem;color:black;margin-left:30%">content_paste</i></a>
+                                                  <a  data-position="right" data-delay="50" data-tooltip="REPORTS"href="/cgrreports" class=" tooltipped"><i class="material-icons" style="font-size:5rem;color:black;margin-left:30%">content_paste</i></a>
     
                                 </div> 
                                  <div class="row">

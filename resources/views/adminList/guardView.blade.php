@@ -226,6 +226,136 @@ Guard
 </div>
 
 
+<!-- Change Detail Start -->
+<div id="modalchangeDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:800px !important; margin-top:10px !important;  max-height:100% !important; height:550px !important; border-radius:10px;">
+	<div class="modal-header">
+		<div class="h">
+			<h3><center>Edit Details</center></h3>  
+		</div>
+	</div>
+	<div class="modal-content sidenavhover " id="" style="overflow-x:hidden;" >
+		<div class="row">
+			<div class="col s4" >      
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
+					<input placeholder=" " id="strFirstName" type="text" class="validate" name = "" required="" aria-required="true">
+					<label for="">First Name</label> 
+				</div>
+			</div>
+			<div class="col s4" >      
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
+					<input  placeholder=" " id="strMiddleName" type="text" class="validate" name = "" required="" aria-required="true">
+					<label for="">Middle Name</label> 
+				</div>
+			</div>
+			<div class="col s4" >      
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
+					<input  placeholder=" " id="strLastName" type="text" class="validate" name = "" required="" aria-required="true">
+					<label for="">Last Name</label> 
+				</div>
+			</div>
+			<div class="col s6">      
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">store</i>
+					<input placeholder=" " id="strAddress" type="text" class="validate" name = "" required="" aria-required="true">
+					<label for="">Address</label> 
+				</div>
+			</div>
+			<div class="col s3">
+				<div class=" input-field col s12">
+					<select id = 'selectProvince'>
+						
+					</select>
+				</div>
+			</div>
+			<div class="col s3">
+				<div class=" input-field col s12">
+					<select id = 'selectCity'>
+
+					</select>
+				</div>
+			</div>
+			<div class="col s6">
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px; color:#64b5f6;">star</i>
+					<input type="date" id="dateOfbirth" class="datepicker"/>
+					<label class="active" for="dateOfbirth">Date of Birth</label>
+				</div>
+			</div>
+			<div class="col s6" >      
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">star</i>
+					<input placeholder=" " id="strPlaceBirth" type="text" class="validate" name = "" required="" aria-required="true">
+					<label for="">Place of Birth</label> 
+				</div>
+			</div>
+			<div class="col s6">
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size: 35px;">smartphone</i>
+					<input placeholder=" " id="strContactNumberMobile" type="text" class="validate" name="" required="" aria-required="true"/>
+					<label for="">Contact Number (Mobile)</label>
+				</div>
+			</div>
+			<div class="col s6">
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size: 35px;">phone</i>
+					<input placeholder=" " id="strContactNumberLandline" type="text" class="validate" name="" required="" aria-required="true"/>
+					<label for="">Contact Number (Landline)</label>
+				</div>
+			</div>
+			<div class="col s4 push-s2">
+				<select id="selectCivilStatus">
+					<option selected disabled>Civil Status</option>
+					<option>Single</option>
+					<option>Married</option>
+					<option>Widowed</option>									
+				</select>
+			</div>
+			<div class="col s4 push-s2">
+				<select id="selectGender" >
+					<option selected disabled>Gender</option>
+					<option>Male</option>
+					<option>Female</option>																			
+				</select>
+			</div>
+			<div class="input-field col s10 push-s1 ci">                    
+				<h5>Body Attributes:</h5>					
+				<div class="row">						
+					<div class="col s12">												
+						<table class="striped white ci" id = 'tableBodyAttribute'>								
+							<thead>									
+								<tr>										
+									<th><center>Name</center></th>										
+									<th><center>Specification</center></th>                                        
+									<th><center>Measurement</center></th>									
+								</tr>								
+							</thead>								
+							<tbody>         
+								<tr>
+									<td><center>Wingspan</center></td>
+									<td><input  id="" type="text" class="validate" pattern="[A-za-z0-9.,' ]{1,}" size="1" required="" aria-required="true">
+                                                </center></td>
+									<td><center>Inches</center></td>
+								</tr>                       
+							</tbody>							
+						</table>						
+					</div>					
+				</div>				
+			</div> 
+		</div>
+		<div class="row"></div>
+	</div>
+	<!-- Modal Button Save -->
+	<div class="modal-footer" style="background-color: #00293C;">
+		<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnSaveDetails">Save
+			<i class="material-icons right">send</i>
+		</button>
+	</div>	
+</div>
+<!-- Change Detail End -->
+
 @stop
 	
 @section('script')
@@ -244,6 +374,11 @@ Guard
             ] ,  
             "pageLength":5,
             "lengthMenu": [5,10,15,20]
+        });
+		
+		$('#dataTable').on('click', '.buttonUpdate', function(){
+            $('#modalchangeDetails').openModal();            
+
         });
         
         $('#dataTable').on('click', '.buttonMore', function(){

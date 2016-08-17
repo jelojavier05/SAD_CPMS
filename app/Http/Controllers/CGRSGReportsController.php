@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class CGRReportsController extends Controller
+class CGRSGReportsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class CGRReportsController extends Controller
      */
     public function index()
     {
-         return view('/CGR/CGRReports');
+        return view('/CGR/CGRReports');
     }
 
     /**
