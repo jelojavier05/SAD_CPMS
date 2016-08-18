@@ -8126,7 +8126,8 @@ small {
 }
 
 .tabs .tab.disabled a {
-  color: #f9c9cb;
+/*modified*/  
+color: #64b5f6;
   cursor: default;
 }
 
