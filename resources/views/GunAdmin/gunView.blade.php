@@ -88,24 +88,24 @@ Gun
 						</div>
 						
 						<div class="input-field col s6 ci">
-							<input placeholder=" " id="editGunName"  type="text" class="validate" pattern="" required="" aria-required="true">
+							<input placeholder=" " id="editGunName"  type="text" class="validate"  required="" aria-required="true">
 							<label data-error="Incorrect" for="editGunName">Name</label>
 
 						</div>
 					
 						<div class="input-field col s6 ci">
-							<input placeholder=" " id="editGunManufacturer" type="text" class="validate" pattern="" required="" aria-required="true">
+							<input placeholder=" " id="editGunManufacturer" type="text" class="validate"  required="" aria-required="true">
 							<label for="editGunManufacturer" data-error="Incorrect">Manufacturer</label>
 						</div>
 
 						<div class="input-field col s6 ci">
-							<input placeholder=" " id="editSerialNumber"  type="text" class="validate" pattern="" required="" aria-required="true">
+							<input placeholder=" " id="editSerialNumber"  type="text" class="validate"  required="" aria-required="true">
 							<label data-error="Incorrect" for="editSerialNumber">Serial Number</label>
 
 						</div>
 						
 						<div class="input-field col s6 ci">
-							<input placeholder=" " id="editLicenseNumber" type="text" class="validate" pattern="" required="" aria-required="true">
+							<input placeholder=" " id="editLicenseNumber" type="text" class="validate"  required="" aria-required="true">
 							<label data-error="Incorrect" for="editLicenseNumber">License Number</label>
 
 						</div>

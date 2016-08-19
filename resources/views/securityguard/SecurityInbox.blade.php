@@ -19,7 +19,9 @@ Security Homepage
                     <div class="col s12 push-s4">
                      <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#34675C;font-weight:bold">MESSAGES</h3>
                     </div>  
+                <hr>
           </div>	
+        <hr>
 		<!-- table message -->
 		<div id="message">
 			<div class="container-fluid grey lighten-2" style="border: 1px solid grey; margin-top:-10px;">	

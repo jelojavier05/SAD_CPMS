@@ -9,7 +9,7 @@
     <meta name="csrf_token" content="{{ csrf_token() }}" />
   <!-- ================================CSS===========================================  -->
 
-  <link href="{!! URL::asset('../css/materialize.css') !!}" type="text/css" rel="stylesheet"/>
+	
   <link rel="stylesheet" type="text/css" media="screen,projection" href="{!! URL::asset('../css/materialize.min.css') !!}"/>
 <!--	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">-->
 <!--		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
@@ -37,7 +37,8 @@
 <!--  <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>-->
 <!--  <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>-->
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
-	 <link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
+	 <link href="{!! URL::asset('../css/materialize.css') !!}" type="text/css" rel="stylesheet"/>
+	<link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
   
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
 
@@ -54,7 +55,7 @@
                 <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
                     
 <!--					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >-->
-					<ul class="side-nav fixed white" id="mobile-nav" >
+					<ul class="side-nav fixed white" id="mobile-nav">
                     <div class="iconposition">
 						<div class="card-panel blue darken-4" style="height:138px;">
 
@@ -62,7 +63,7 @@
                                 <div class="col l12">
 									  <div class="col l6 push-l3" style="margin-top:-6%">
 
-										<img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="90%">
+										<img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="100%">
 
 										</div>
                                     
@@ -72,8 +73,8 @@
                             
                             <div class="row">
                            		
-                            <span class="card-title ci" style="font-size:20px;color:white;margin-top:-23%;margin-left:22%; position:absolute">John Cena</span>
-								  <span  style=" font-size: 14px; margin-top:-14%;margin-left:22%;position:absolute;color:red margin-left:-40px;">Administrator</span>
+                            <span class="card-title ci" style="font-size:20px;color:white;margin-top:-23%;margin-left:23%; position:absolute">John Cena</span>
+								  <span  style=" font-size: 14px; margin-top:-14%;margin-left:24%;position:absolute;color:red margin-left:-40px;">Administrator</span>
                             
                             </div>
 <!--
@@ -236,7 +237,7 @@
 					<li>		
 				
 <!--           <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/szw110/szh110/hoc09f/hbw2/hfc09f/cf100/hnc09f/hwc000/hcw2/fan2/facfff/fdi76/mqc9ff/mqs4/mql18/mqw1/mqd50/mhc009/mhs4/mhl5/mhw2/mhd60/mmv0/hhcfff/hhs1/hhb10/hmcfff/hmb10/hscfff/hsw3" frameborder="0" width="110" height="110" style="margin-left:25%;"></iframe>-->
-                 <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/tlph/fn6/fs15/fc222/tct/pct/ftb/bo2/tt0/tw0/th2/ta1/tb4" frameborder="0" width="143" height="40" allowTransparency="true" style="margin-top:50px; margin-left:18%;"></iframe>     
+                 <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/tlph/fn6/fs15/fc222/tct/pct/ftb/bo2/tt0/tw0/th2/ta1/tb4" frameborder="0" width="143" height="40" allowTransparency="true" style="margin-top:50px; margin-left:18%; pointer-events:none;"></iframe>     
        
 			</li>				
 <!--
@@ -297,66 +298,35 @@
                 </ul>
 
            
-				<div>
-                                     <a href="#" class="brand-logo">
-
+            <div>
+                <a href="#" class="brand-logo">
                     <div class="row">
                         <div class="col l12">
-                            <div class="col l6 push-l4">
-                            
-                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.5rem">Client and Personnel Management System</p>
-					
-                            
-                            
-                            </div>
-							
-                        
-                        
+                            <div class="col l6 push-l3">
+                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.5rem;font-weight:bold;color:#F4F4EF">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>
+                            </div>    
                         </div>
-                    
-                    
                     </div>
-                    	</a>
-					
-					
-                    
-                  <!--  <div class="homeposition">
-                    
-                    <a href="#" class="brand-logo">
-						<div class="flow-text">
-							<p style="margin-top: 20px; margin-left: 200px;font-family:Myriad Pro;font-size:6rem">Client and Personnel Management System</p>
-						</div>
-				
-                </div>-->
-                
+                </a>		 
             </div>
 				
              
 							<ul class="right hide-on-med-and-down">
 								 
-                                
-                                
+                                <li><a  data-position="bottom" data-delay="50" data-tooltip="DASHBOARD"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">apps</i></a></li>
                                 <li  id="notification_li">
                                     <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/adminInbox" class="tooltipped">
                                         <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
                                         <span id="notification_count">3</span></a>
-                                </li>                                                                                                                                                                                                             
-								
-                                 <li><a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">store</i></a></li>
+                                </li>                                                
                                 <li><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>
+                                
 							</ul>
         
 		
         </div>
-      
-	
     </nav>
-    
-    
-    
-    
-    
-    </div>
+</div>
 			
 <!--
 	 Tab 

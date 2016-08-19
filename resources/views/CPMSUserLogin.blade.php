@@ -78,14 +78,7 @@
                         <button class="btn waves-effect waves-light col s12" id = "btnLogin">Login</button>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s6 m6 l6">
-                        <p class="margin medium-small"><a href="#">Sign up</a></p>
-                    </div>
-                    <div class="input-field col s6 m6 l6">
-                        <p class="margin right-align medium-small"><a href="#">Forgot password</a></p>
-                    </div>          
-                </div>
+                <div class="row"></div>
             </div>
         </div>
         <div class="hiddendiv common"></div>

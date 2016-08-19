@@ -7,7 +7,7 @@ Delivery
 @section('content')	
 <div class="row">
     <div class="col s8 push-s1">
-        <div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:40px;">
+        <div class="container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:40px;margin-left:16%">
             <div class="col s6" style="margin-top:-15px;">
                 <h3 class="blue-text">Delivery</h3>
             </div>
@@ -56,7 +56,7 @@ Delivery
 	
 <div class ="col s4" style=" margin-top:40px;">
     <div class="col s12">
-        <div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:15px;">
+        <div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:15px;margin-left:-6%">
             <div class="blue darken-1 white-text" style="position:static; z-index:100; width:405px; height: 38px; font-size:30px;">Details</div>
 				<div class="row">
 				    <div class="col s12" style="margin-top:5px; overflow:scroll; overflow-x:hidden; height:500px;">
