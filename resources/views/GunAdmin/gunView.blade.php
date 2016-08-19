@@ -79,13 +79,12 @@ Gun
 					<div class="col s12">
 						
 						<div class="input-field col s6 ci">
-							<select>
-								<option>Test1</option>
-								<option>Test2</option>
-								<option>Test3</option>
+							<select id = 'selectGunType'>
+                                @foreach($gunType as $value)
+                                <option value = '{{$value->intTypeOfGunID}}'>{{$value->strTypeOfGun}}</option>
+                                @endforeach
 							</select>
-							<label for="">Type of Gun</label>
-
+							<label for="selectGunType">Type of Gun</label>
 						</div>
 						
 						<div class="input-field col s6 ci">
@@ -131,50 +130,12 @@ Gun
 $(document).ready(function(){
     $('ul.tabs').tabs();
     
-    $.ajax({
-
-        type: "GET",
-        url: "{{action('GunViewController@getGuns')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
-        success: function(data){
-            var table = $('#dataTable').DataTable();
-            table.clear().draw();
-            $.each(data, function(index, value) {
-                var onclick = "Materialize.showStaggeredList('#collectionActive')";
-                var btnMore = '<button class="btn blue col s12 buttonMore" id = "' + value.intGunID + '" onclick="' + onclick + '" >MORE</button>';
-                console.log(data);
-                var status;
-                if (value.boolFlag == 0){
-                    status = 'Defective';
-                }else if (value.boolFlag == 1){
-                    status = 'Inventory';
-                }else if (value.boolFlag == 2){
-                    status = 'Deployed';
-                }else if (value.boolFlag == 3){
-                    status = 'Pending in Delivery';
-                }
-                
-                table.row.add([
-                    '<button class="btnEdit btn col s12" id="' + value.intGunID+'" ><i class="material-icons">edit</i></button><label for="' +value.intGunID+'"></label>',
-                    '<h id = "id' +value.intGunID + '">' + value.intGunID +'</h>',
-                    '<h id = "name' +value.intGunID + '">' + value.strGunName +'</h>',
-                    '<h id = "type' +value.intGunID + '">' + value.strTypeOfGun +'</h>',
-                    '<h id = "status' +value.intGunID + '">' + status +'</h>',
-                    btnMore
-                ]).draw();
-            });//foreach
-        }
-    });//get guard waiting
-	
+    refreshTable();
+	var gunID;
 	$('#dataTable').on('click', '.btnEdit', function(){
 		$('#modaleditGun').openModal();
-
+        setDataToModal(this.id);
+        gunID = this.id;
 	});
     
     $('#dataTable').on('click', '.buttonMore', function(){
@@ -200,10 +161,97 @@ $(document).ready(function(){
                 $('#licenseNumber').text(data.strLicenseNumber);
                 $('#issued').text(data.dateIssued);
                 $('#expiration').text(data.dateExpiration);
-                
             }
         });//get guard waiting
     });
+
+    $('#btnSave').click(function(){
+        $.ajax({
+            type: "POST",
+            url: "{{action('GunViewController@update')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                intGunID: gunID,
+                strGunName: $('#editGunName').val() ,
+                strMaker: $('#editGunManufacturer').val() ,
+                strSerialNumber: $('#editSerialNumber').val() ,
+                strLicenseNumber: $('#editLicenseNumber').val(),
+                intTypeOfGunID: $('#selectGunType').val()
+            },
+            success: function(data){
+                refreshTable();
+                $('#modaleditGun').closeModal();
+                swal("Success!", "Gun Updated!", "success");
+
+            },
+            error: function(data){
+            }
+        });//ajax
+    });
+
+    function refreshTable(){
+        $.ajax({
+
+            type: "GET",
+            url: "{{action('GunViewController@getGuns')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            success: function(data){
+                var table = $('#dataTable').DataTable();
+                table.clear().draw();
+                $.each(data, function(index, value) {
+                    var onclick = "Materialize.showStaggeredList('#collectionActive')";
+                    var btnMore = '<button class="btn blue col s12 buttonMore" id = "' + value.intGunID + '" onclick="' + onclick + '" >MORE</button>';
+                    var status;
+                    if (value.boolFlag == 0){
+                        status = 'Defective';
+                    }else if (value.boolFlag == 1){
+                        status = 'Inventory';
+                    }else if (value.boolFlag == 2){
+                        status = 'Deployed';
+                    }else if (value.boolFlag == 3){
+                        status = 'Pending in Delivery';
+                    }
+                    
+                    table.row.add([
+                        '<button class="btnEdit btn col s12" id="' + value.intGunID+'" ><i class="material-icons">edit</i></button><label for="' +value.intGunID+'"></label>',
+                        '<h id = "id' +value.intGunID + '">' + value.intGunID +'</h>',
+                        '<h id = "name' +value.intGunID + '">' + value.strGunName +'</h>',
+                        '<h id = "type' +value.intGunID + '">' + value.strTypeOfGun +'</h>',
+                        '<h id = "status' +value.intGunID + '">' + status +'</h>',
+                        btnMore
+                    ]).draw();
+                });//foreach
+            }
+        });//get guard waiting
+    }
+
+    function setDataToModal(id){
+        $.ajax({
+            type: "GET",
+            url: "/gunView/get/gun?gunID=" + id ,
+            success: function(data){
+                $('#selectGunType').val(data.intTypeOfGunID);
+                $('#editGunName').val(data.strGunName);
+                $('#editGunManufacturer').val(data.strMaker);
+                $('#editSerialNumber').val(data.strSerialNumber);
+                $('#editLicenseNumber').val(data.strLicenseNumber);
+
+                $('select').material_select();
+            },
+        });//ajax
+    }
 
     $("#dataTable").DataTable({
          "columns": [
@@ -217,6 +265,8 @@ $(document).ready(function(){
         "pageLength":5,
         "lengthMenu": [5,10,15,20]
     });
+
+
 });
     
 </script>

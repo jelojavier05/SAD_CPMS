@@ -19,7 +19,23 @@ class DashboardAdminController extends Controller
         $accountType = $request->session()->get('accountType');
 
         if ($accountType == 3){
-             return view('/DashboardAdmin');
+            $countClient = DB::table('tblclient')
+                ->where('deleted_at', null)
+                ->count();
+            $countGuard = DB::table('tblguard')
+                ->where('deleted_at', null)
+                ->count();
+            $countGun = DB::table('tblgun')
+                ->where('deleted_at', null)
+                ->count();
+
+            $value = new \stdClass();
+            $value->countClient = $countClient;
+            $value->countGuard = $countGuard;
+            $value->countGun = $countGun;
+
+             return view('/DashboardAdmin')
+                ->with('value', $value);
         }else{
             return redirect('/userlogin');
         }
@@ -30,30 +46,5 @@ class DashboardAdminController extends Controller
 //            return redirect('/userlogin');
 //        }
        
-    }
-
-    public function getCountClient(Request $request){
-        $countClient = DB::table('tblclient')
-            ->where('deleted_at', null)
-            ->count();
-        
-        return response()->json($countClient);
-            
-    }
-    
-    public function getCountGuard(Request $requst){
-        $countGuard = DB::table('tblguard')
-            ->where('deleted_at', null)
-            ->count();
-        
-        return response()->json($countGuard);
-    }
-    
-    public function getCountGun(Request $request){
-        $countGun = DB::table('tblgun')
-            ->where('deleted_at', null)
-            ->count();
-        
-        return response()->json($countGun);
     }
 }

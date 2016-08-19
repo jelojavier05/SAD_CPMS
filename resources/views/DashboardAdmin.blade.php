@@ -21,16 +21,13 @@ Admin
 </div> -->
 
 
-
-<!-----------------CLIENTS----------------->
-
 <div class="row">
       <div class="col l12">
           
       <div class="col l2 offset-l3" >
       	 <div class="card " style="background-color:#8D230F" >
             <div class="card-content white-text">
-              <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'></span>
+              <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'>{{$value->countClient}}</span>
               <p style="margin-l	eft:10px;">Clients</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
             </div>
@@ -42,13 +39,12 @@ Admin
             </div>
           </div>
       </div>
-		  
-<!-----------------GUARDS----------------->
+
 
         <div class="col l2">
           <div class="card" style="background-color:#1E434C">
             <div class="card-content white-text">
-              <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'guardNumber'></span>
+              <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'guardNumber'>{{$value->countGuard}}</span>
               <p style="margin-left:10px;">Guards</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">accessibility</i>
             </div>
@@ -61,13 +57,12 @@ Admin
           </div>
         </div>
      
-    
-<!-----------------GUNS----------------->
+
      <div class="col l2">
            <div class="card" style="background-color:#9B4F0F">
             <div class="card-content white-text">
 
-              <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'gunNumber'></span>
+              <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'gunNumber'>{{$value->countGun}}</span>
               <p style="margin-left:10px;">Guns</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">tonality</i>
 
@@ -81,8 +76,6 @@ Admin
           </div> 
           
         </div>
-
-<!-----------------DEPLOYED RESOURCES----------------->
    
      <div class="col l2">
 
@@ -129,8 +122,6 @@ Admin
           
           </div>
 
-    
-<!-----------------BALANCE PAYMENT FOR CLIENT (Unpaid)----------------->
    
 </div>
 </div>
@@ -140,50 +131,6 @@ Admin
 @section('script')
 <script type="text/javascript">
 $(document).ready(function(){
-    $.ajax({
-        type: "GET",
-        url: "{{action('DashboardAdminController@getCountClient')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
-        success: function(data){
-            $('#clientNumber').text(data);    
-        }
-    });//client count
-    
-    $.ajax({
-        type: "GET",
-        url: "{{action('DashboardAdminController@getCountGuard')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
-        success: function(data){
-            $('#guardNumber').text(data);
-        }
-    });//guard count
-    
-    $.ajax({
-        type: "GET",
-        url: "{{action('DashboardAdminController@getCountGun')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
-        success: function(data){
-            $('#gunNumber').text(data);
-        }
-    });//guard count
     
     
 });//document.ready 

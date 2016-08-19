@@ -13,7 +13,14 @@ use Input;
 class GunViewController extends Controller{
     
     public function index(){
-        return view('GunAdmin.gunView');
+        $gunType = DB::table('tbltypeofgun')
+            ->select('*')
+            ->whereNull('deleted_at')
+            ->where('boolFlag', 1)
+            ->orderBy('strTypeOfGun','asc')
+            ->get();
+        return view('GunAdmin.gunView')
+            ->with('gunType',$gunType);
     }
     
     public function getGuns(){
@@ -32,10 +39,28 @@ class GunViewController extends Controller{
         
         $guns = DB::table('tblgun')
             ->join('tblgunlicense', 'tblgunlicense.intGunID', '=', 'tblgun.intGunID')
-            ->select('tblgun.strMaker','tblgun.strSerialNumber','tblgunlicense.strLicenseNumber', 'tblgunlicense.dateIssued', 'tblgunlicense.dateExpiration')
+            ->select('tblgun.*','tblgunlicense.strLicenseNumber')
             ->where('tblgun.intGunID', '=' ,$gunID)
             ->first();
         
         return response()->json($guns);
+    }
+
+    public function update(Request $request){
+        $gunID = $request->intGunID;
+        DB::table('tblgun')
+            ->where('intGunID', $gunID)
+            ->update([
+                'strGunName' => $request->strGunName,
+                'strMaker' =>$request->strMaker,
+                'strSerialNumber' => $request->strSerialNumber,
+                'intTypeOfGunID' => $request->intTypeOfGunID
+            ]);
+
+        DB::table('tblgunlicense')
+            ->where('intGunID', $gunID)
+            ->update([
+                'strLicenseNumber' => $request->strLicenseNumber
+            ]);
     }
 }

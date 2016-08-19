@@ -20,13 +20,11 @@ Route::get('/crm/home', 'CRMHomeController@index');
 Route::get('/gunView', 'GunViewController@index');
 Route::get('/gunView/get/guns', 'GunViewController@getGuns');
 Route::get('/gunView/get/gun', 'GunViewController@getGun');
+Route::post('/gunView/post/update', 'GunViewController@update');
 
 Route::get('/gunLicenses', 'GunLicensesController@index');
 
 Route::get('/dashboardadmin', 'DashboardAdminController@index');
-Route::get('/dashboardadmin/get/clientcount', 'DashboardAdminController@getCountClient');
-Route::get('/dashboardadmin/get/guardcount', 'DashboardAdminController@getCountGuard');
-Route::get('/dashboardadmin/get/guncount', 'DashboardAdminController@getCountGun');
 
 Route::get('/client/gunTagging', 'GunTaggingController@index');
 Route::post('/client/gunTagging/post', 'GunTaggingController@post');
