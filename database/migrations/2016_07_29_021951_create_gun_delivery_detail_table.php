@@ -16,7 +16,7 @@ class CreateGunDeliveryDetailTable extends Migration
             $table->increments('intGunDeliveryDetailID');
             $table->integer('intGunDeliveryHeaderID')->unsigned();
             $table->integer('intGunOrderDetailID')->unsigned();
-            $table->tinyInteger('boolStatus')->default(1); //0 = on delivery 1 = na deliver 2 = di tinanggap
+            $table->tinyInteger('boolStatus')->default(1); //0 = di tinanggap 1 = on deliver 2 = natanggap
             
             $table->foreign('intGunDeliveryHeaderID')->references('intGunDeliveryHeaderID')->on('tblgundeliveryheader');
             $table->foreign('intGunOrderDetailID')->references('intGunOrderDetailID')->on('tblgunorderdetail');

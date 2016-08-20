@@ -32,7 +32,7 @@ class GunDeliveryViewController extends Controller
         $deliveryID = Input::get('id');
         
         $deliveryInformation = DB::table('tblgundeliveryheader')
-            ->select('strDeliveredBy', 'strContactNumber')
+            ->select('strDeliveredBy', 'strContactNumber', 'strDeliveryCode')
             ->where('intGunDeliveryHeaderID', $deliveryID)
             ->first();
         

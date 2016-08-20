@@ -53,23 +53,23 @@ Delivery
 							<form>
 
                                 <div class="input-field col s3 offset-s9 pull-s9">
-                                <input  id="orderID" type="text" class="validate blue-text" readonly required="" aria-required="true" value = '{{$orderDetail->intGunOrderHeaderID}}'>
+                                <input  id="orderID" type="text" class="blue-text" readonly required="" aria-required="true" value = '{{$orderDetail->intGunOrderHeaderID}}'>
 									<label for="orderID">Order ID</label>
 								</div>
                                 
                                 <div class="input-field col s8 offset-s2 pull-s2">
-									<input  id="clientName" type="text" class="validate blue-text" readonly required="" aria-required="true" value = '{{$orderDetail->strClientName}}'>
+									<input  id="clientName" type="text" class="blue-text" readonly required="" aria-required="true" value = '{{$orderDetail->strClientName}}'>
 									<label for="clientName">Client Name</label>
 								</div>
                                 
                                 
                                 <div class="input-field col s8 offset-s2 pull-s2">
-									<input  id="address" type="text" class="validate blue-text" readonly required="" aria-required="true" value = '{{$orderDetail->strAddress}}  {{$orderDetail->strCityName}}, {{$orderDetail->strProvinceName}}'>
+									<input  id="address" type="text" class="blue-text" readonly required="" aria-required="true" value = '{{$orderDetail->strAddress}}  {{$orderDetail->strCityName}}, {{$orderDetail->strProvinceName}}'>
 									<label for="address">Address</label>
 								</div>
                                 
                                   <div class="input-field col s3 offset-s9 pull-s9">
-									<input  id="contactNumber" type="text" class="validate blue-text" readonly required="" aria-required="true" value= '{{$orderDetail->strContactNumber}}'>
+									<input  id="contactNumber" type="text" class="blue-text" readonly required="" aria-required="true" value= '{{$orderDetail->strContactNumber}}'>
 									<label for="contactNumber">Contact Number</label>
 								</div>
 
@@ -82,6 +82,16 @@ Delivery
 									<input placeholder=" " id="contactNumber" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
 									<label data-error="Incorrect" for="contactDeliver">Contact Number (Delivery)</label>
 								</div>
+
+								<div class="input-field col s6">
+									<input placeholder=" " id="deliveryCode" type="text" aria-required="true" readonly="" class="blue-text">
+									<label data-error="Incorrect" for="deliveryCode">Delivery Code</label>
+								</div>
+
+								<div class="input-field col s6">
+									<a class="btn-large green waves-effect z-depth-2 right" id="btnDeliveryCode" style="margin-top:20px;" >Generate Code</a>
+								</div>
+								
 
 							</form>
 
@@ -103,8 +113,15 @@ Delivery
 @section('script')
 
 
-<script type="text/javascript">
+<script>
 	$(document).ready(function(){
+
+		$('#deliveryCode').val(getRandomPassword());
+
+		$('#btnDeliveryCode').click(function(){
+			$('#deliveryCode').val(getRandomPassword());
+		});
+
         $('#btnDeliver').click(function(){
             var deliveredBy = $('#deliveredBy').val();
             var contactNumber = $('#contactNumber').val();
@@ -120,11 +137,18 @@ Delivery
                 },
                 data: {
                     deliveredBy: deliveredBy,
-                    contactNumber: contactNumber
+                    contactNumber: contactNumber,
+                    deliveryCode: $('#deliveryCode').val()
                 },
                 success: function(data){
-                    swal("Success!", "Delivery Recorded", "success");
-                    window.location.href = '{{ URL::to("/gunDeliveryView") }}';
+
+                	swal({
+						title: "Success!",
+						text: "Delivery Recorded",
+						type: "success"
+					},function(){
+						window.location.href = '{{ URL::to("/gunDeliveryView") }}';
+					});
                 },
                 error: function(data){
                     var toastContent = $('<span>Error Occured. </span>');
@@ -133,6 +157,16 @@ Delivery
                 }
             });//ajax
         });
+
+        function getRandomPassword(){
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for( var i=0; i < 8; i++ ){
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            return text;
+        }
         
         $("#dataTable").DataTable({
                  "columns": [

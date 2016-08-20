@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -17,7 +17,9 @@ class CreateGunDeliveryHeaderTable extends Migration
             $table->integer('intGunOrderHeaderID')->unsigned();
             $table->string('strDeliveredBy', 100);
             $table->string('strContactNumber', 20);
+            $table->string('strDeliveryCode', 20);
             $table->timestamp('datetimeDeliver');
+            $table->tinyInteger('boolStatus')->default(1); // 1 = unverified || unchecked, 0 = checked || verified
             
             $table->foreign('intGunOrderHeaderID')->references('intGunOrderHeaderID')->on('tblgunorderheader');
         });

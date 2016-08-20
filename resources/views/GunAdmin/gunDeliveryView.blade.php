@@ -78,6 +78,14 @@ Delivery
 											<p id = 'contactNumber'></p>
 										</div>
 
+                                        <div>
+                                            <span class = "card-title white-text">Delivery Code</span>
+                                        </div>
+
+                                        <div>
+                                            <p id = 'deliveryCode'></p>
+                                        </div>
+
 										<div>
 											<span class = "card-title white-text">Items:</span>
 										</div>
@@ -129,31 +137,19 @@ Delivery
         
         $('#dataTable').on('click','.btnMore',function(){
             var id = this.id;
+            
             $.ajax({
 
                 type: "GET",
                 url: "/gunDeliveryView/get/deliveryinformation?id=" +id,
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                data: { 
-
-                },
                 success: function(data){
                     $('#deliveredBy').text(data.information.strDeliveredBy);
                     $('#contactNumber').text(data.information.strContactNumber);
-                    
+                    $('#deliveryCode').text(data.information.strDeliveryCode);
+                    $('#tableItem tr').not(function(){ return !!$(this).has('th').length; }).remove();
                     $.each(data.detail, function(index, value){
-                        $('#tableItem tr:last').after('<tr><td>' + value.strSerialNumber + '</td><td>' + value.strGunName +'<td/><td>' + value.strTypeOfGun + '</td><td>' + value.intRounds +'<td/></tr>');
+                        $('#tableItem tr:last').after('<tr><td>' + value.strSerialNumber + '</td><td>' + value.strGunName +'</td><td>' + value.strTypeOfGun + '</td><td>' + value.intRounds +'<td/></tr>');
                     });
-                },
-
-                error: function(data){
-                    confirm ('guard pending');
                 }
             });
         });

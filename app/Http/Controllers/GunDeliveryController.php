@@ -34,8 +34,9 @@ class GunDeliveryController extends Controller
     public function postDelivery(Request $request){
         $orderID = $request->session()->get('orderID');
         $gunSelected = $request->session()->get('gunSelected');
-        $deliveredBy = $request->deliveredBy;
+        $deliveredBy = $request->deliveredBy;   
         $contactNumber = $request->contactNumber;
+        $deliveryCode = $request->deliveryCode;
         $now = Carbon::now();
         
         try{
@@ -45,14 +46,14 @@ class GunDeliveryController extends Controller
                 'intGunOrderHeaderID' => $orderID, 
                 'strDeliveredBy' => $deliveredBy,
                 'strContactNumber' => $contactNumber,
-                'datetimeDeliver' => $now
+                'datetimeDeliver' => $now,
+                'strDeliveryCode' => $deliveryCode
             ]);
             
             foreach($gunSelected as $value){
                 DB::table('tblgundeliverydetail')->insert([
                     'intGunDeliveryHeaderID' => $deliveryID,
-                    'intGunOrderDetailID' => $value->id,
-                    'boolStatus' => 0
+                    'intGunOrderDetailID' => $value->id
                 ]);
                 
                 DB::table('tblgunorderdetail')

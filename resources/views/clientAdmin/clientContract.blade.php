@@ -246,13 +246,6 @@ $(document).ready(function() {
     $.ajax({
         type: "GET",
         url: "{{action('ClientContractController@getGuardAccepted')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
         success: function(data){
             
             $('#guardContainer').empty();
@@ -271,13 +264,6 @@ $(document).ready(function() {
     $.ajax({
         type: "GET",
         url: "{{action('ClientContractController@getGunTagged')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
         success: function(data){
             //var table = $('#tableGun').DataTable();
             
@@ -292,13 +278,6 @@ $(document).ready(function() {
     $.ajax({
         type: "GET",
         url: "{{action('ClientContractController@getClientDetail')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
         success: function(data){
             
             var area = commaSeparateNumber(data.deciAreaSize);

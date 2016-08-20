@@ -110,21 +110,19 @@ Delivery
         var orderID;
         $('#dataTableOder').on('click','.btnMore', function(){
             orderID = this.id;
+            tableGun = [];
+            tableSelected = [];
+            refreshTable();
+            
             $.ajax({
                 type: "GET",
                 url: '/gunDeliveryCart/get/gunorderdetail?id=' + this.id,
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
                 success: function(data){
                     
                     var dataTableGunArr = $('#dataTableGun').DataTable();
                     dataTableGunArr.clear().draw();
                     
+
                     $.each(data, function(index, value) {
                         tableGun.push(value);
                         dataTableGunArr.row.add([
