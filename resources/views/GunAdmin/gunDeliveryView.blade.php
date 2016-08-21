@@ -86,6 +86,22 @@ Delivery
                                             <p id = 'deliveryCode'></p>
                                         </div>
 
+                                        <div>
+                                            <span class = "card-title white-text">Status:</span>
+                                        </div>
+
+                                        <div>
+                                            <p id = 'deliveryStatus'></p>
+                                        </div>
+
+                                        <div id = 'reason' style="display: none;">
+                                            <span class = "card-title white-text">Reason:</span>
+                                        </div>
+
+                                        <div id = 'deliveryReason' style="display: none;">
+                                            <p id = 'strReason'></p>
+                                        </div>
+
 										<div>
 											<span class = "card-title white-text">Items:</span>
 										</div>
@@ -97,6 +113,7 @@ Delivery
 												  <th class="white-text">Name</th>
 												  <th class="white-text">Type of Gun</th>
 												  <th class="white-text">Rounds</th>
+                                                  <th class="white-text">Status</th>
 											  </tr>
 											</thead>
 
@@ -143,12 +160,42 @@ Delivery
                 type: "GET",
                 url: "/gunDeliveryView/get/deliveryinformation?id=" +id,
                 success: function(data){
+
                     $('#deliveredBy').text(data.information.strDeliveredBy);
                     $('#contactNumber').text(data.information.strContactNumber);
                     $('#deliveryCode').text(data.information.strDeliveryCode);
                     $('#tableItem tr').not(function(){ return !!$(this).has('th').length; }).remove();
+                    var strDeliveryStatus;
+
+                    if (data.information.boolStatus == 1){
+                        strDeliveryStatus = 'On Delivery';
+                    }else{
+                        strDeliveryStatus = 'Verified';
+                    }
+
+                    $('#deliveryStatus').text(strDeliveryStatus);
+
+                    if (data.reason){
+                        $('#reason').show();
+                        $('#deliveryReason').show();
+                        $('#strReason').text(data.reason);
+                    }else{
+                        $('#reason').hide();
+                        $('#deliveryReason').hide();
+                    }
+
                     $.each(data.detail, function(index, value){
-                        $('#tableItem tr:last').after('<tr><td>' + value.strSerialNumber + '</td><td>' + value.strGunName +'</td><td>' + value.strTypeOfGun + '</td><td>' + value.intRounds +'<td/></tr>');
+                        var strStatus;
+
+                        if (value.boolStatus == 0){
+                            strStatus = 'Return';
+                        }else if (value.boolStatus == 1){
+                            strStatus = 'On Delivery';
+                        }else if (value.boolStatus == 2){
+                            strStatus = 'Accepted';
+                        }
+
+                        $('#tableItem tr:last').after('<tr><td>' + value.strSerialNumber + '</td><td>' + value.strGunName +'</td><td>' + value.strTypeOfGun + '</td><td>' + value.intRounds +'</td><td>'+strStatus+'</td></tr>');
                     });
                 }
             });

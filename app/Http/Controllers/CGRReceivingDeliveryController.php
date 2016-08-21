@@ -171,12 +171,6 @@ class CGRReceivingDeliveryController extends Controller
                         'intGunDeliveryDetailID' => $deliveryDetailID,
                         'boolStatus' => $deliveryStatus
                     ]);
-                    
-                DB::table('tblgundeliverydetail')
-                    ->where('intGunDeliveryDetailID', $deliveryDetailID)
-                    ->update([
-                        'boolStatus' => $deliveryStatus
-                    ]);
 
                 $gun = DB::table('tblgundeliverydetail')
                     ->join('tblgunorderdetail', 'tblgunorderdetail.intGunOrderDetailID', '=', 'tblgundeliverydetail.intGunOrderDetailID')
@@ -186,6 +180,8 @@ class CGRReceivingDeliveryController extends Controller
 
                 if ($deliveryStatus == 1){
                     $gunStatus = 2;
+                    $deliveryDetailStatus = 2;
+
                     DB::table('tblclientgun')
                         ->insert([
                             'intGunID' => $gun->intGunID, 
@@ -195,12 +191,19 @@ class CGRReceivingDeliveryController extends Controller
                     ]);
                 }else{
                     $gunStatus = 1;
+                    $deliveryDetailStatus = 0;
                 }
 
                 DB::table('tblgun')
                     ->where('intGunID', $gun->intGunID)
                     ->update([
                         'boolFlag' => $gunStatus
+                    ]);
+
+                DB::table('tblgundeliverydetail')
+                    ->where('intGunDeliveryDetailID', $deliveryDetailID)
+                    ->update([
+                        'boolStatus' => $deliveryDetailStatus
                     ]);
             }
 

@@ -184,6 +184,10 @@ $(document).ready(function(){
       });
   });//button verify
 
+  tableDelivery.on('click', '.buttonVerified', function(){
+
+  });
+
   $('#btnReceive').click(function(){
     getCheckedItem();
     $('#reason').val('');

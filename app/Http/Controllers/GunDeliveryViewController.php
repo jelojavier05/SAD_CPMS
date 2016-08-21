@@ -32,7 +32,7 @@ class GunDeliveryViewController extends Controller
         $deliveryID = Input::get('id');
         
         $deliveryInformation = DB::table('tblgundeliveryheader')
-            ->select('strDeliveredBy', 'strContactNumber', 'strDeliveryCode')
+            ->select('strDeliveredBy', 'strContactNumber', 'strDeliveryCode', 'boolStatus')
             ->where('intGunDeliveryHeaderID', $deliveryID)
             ->first();
         
@@ -41,11 +41,23 @@ class GunDeliveryViewController extends Controller
             ->join('tblgunorderdetail', 'tblgunorderdetail.intGunOrderDetailID' ,'=', 'tblgundeliverydetail.intGunOrderDetailID')
             ->join('tblgun', 'tblgun.intGunID', '=', 'tblgunorderdetail.intGunID')
             ->join('tbltypeofgun', 'tbltypeofgun.intTypeOfGunID','=', 'tblgun.intTypeOfGunID')
-            ->select('tblgun.strSerialNumber', 'tblgun.strGunName', 'tbltypeofgun.strTypeOfGun', 'tblgunorderdetail.intRounds')
+            ->select('tblgun.strSerialNumber', 'tblgun.strGunName', 'tbltypeofgun.strTypeOfGun', 'tblgunorderdetail.intRounds', 'tblgundeliverydetail.boolStatus')
             ->where('tblgundeliveryheader.intGunDeliveryHeaderID',$deliveryID)
             ->get();
-        
+
+        $result = DB::table('tblgunreceiveheader')
+            ->select('strReason')
+            ->where('intGunDeliveryHeaderID', $deliveryID)
+            ->first();
+
         $delivery = new \stdClass();
+
+        if ($result->strReason == '' || (is_null($result))){
+            $delivery->reason = false;
+        }else{
+            $delivery->reason = $result->strReason;
+        }
+        
         $delivery->information = $deliveryInformation;
         $delivery->detail = $deliveryDetail;
         
