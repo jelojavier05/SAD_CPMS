@@ -103,7 +103,7 @@ Type of Gun
         
             <div class="modal-header">
                 <div class="h">
-                    <h3><center>Government Exam</center></h3>  
+                    <h3><center>Type of Gun</center></h3>  
 				</div>
 
         	</div>
@@ -155,7 +155,7 @@ Type of Gun
         
             <div class="modal-header">
                 <div class="h">
-                    <h3><center>Government Exam</center></h3>  
+                    <h3><center>Type of Gun</center></h3>  
 				</div>
 
         	</div>
