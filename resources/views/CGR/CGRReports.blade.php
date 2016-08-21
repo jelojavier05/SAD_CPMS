@@ -35,65 +35,70 @@ Reports
 					</div>
 					
 					<div class='row'>
-					<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px; margin-bottom:10px;">
-						<legend><h5>Information on Incident</h5></legend>
-						<div class="col s12">
-							
-							<div class="input-field col s6">
-								<input class="" type='date' id="">
-								<label class="active" data-error="Incorrect">Date of the Incident</label>
-							</div>
-							
-							<div class="input-field col s6">
-								<input class="validate" id="" type='text' placeholder=" " pattern="[0-9:]{5,}" required="" aria-required="true">
-								<label data-error="Incorrect">Time of the Incident</label>
-							</div>
-							
-							<div class="input-field col s6">
-								<input id="" placeholder = " " id="" type="text" class="validate" pattern="[A-za-z0-9.,' ]{2,}" required="" aria-required="true">
-								<label class="ci" data-error="Incorrect">Place of the Incident</label>
-							</div>
-							
-							<div class="input-field col s6">
-								<input id="" placeholder = " " id="" type="text" class="validate" pattern="[A-za-z0-9.,' ]{2,}" required="" aria-required="true">
-								<label class="ci" data-error="Incorrect">Exact Location of the Incident</label>
-							</div>
-							
-							<div class="input-field col s12">								 
-								 <textarea placeholder=" " class="materialize-textarea" id="strMessageAdd" type="text" length="224"></textarea>
-								 <label for="input_text">Description of Incident</label> 
 
-							 </div>
-							
-							<div class="input-field col s6">
-								<input class="validate" id="" type='text' placeholder=" " pattern="[A-za-z.' ][^0-9]{2,}" required="" aria-required="true">
-								<label data-error="Incorrect">Witness Name</label>
+						<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px; margin-bottom:10px;">
+							<legend><h5>Information on Incident</h5></legend>
+							<div class="col s12">
+								
+								<div class="input-field col s6">
+									<input class="" type='date' id="dateIncident">
+									<label class="active" data-error="Incorrect">Date of the Incident</label>
+								</div>
+								
+								<div class="input-field col s6">
+									<select id = "selectHour" class="browser-default col s8 offset-s2" style='width:65px;'>
+									  	<option value="" disabled selected>---</option>
+									</select>
+
+									<select id = "selectMinute" class="browser-default col s8 offset-s2" style='width:65px;'>
+									  	<option value="" disabled selected>---</option>
+									</select>
+
+									<select id = "selectPeriod" class="browser-default col s8 offset-s2" style='width:65px;'>
+									  	<option value="" disabled selected>---</option>
+									  	<option value = 'AM'>AM</option>
+									  	<option value = 'PM'>PM</option>
+									</select>
+								</div>
+								
+								<div class="input-field col s6">
+									<input id="" placeholder = " " id="" type="text" class="validate" pattern="[A-za-z0-9.,' ]{2,}" required="" aria-required="true">
+									<label class="ci" data-error="Incorrect">Exact Location of the Incident</label>
+								</div>
+								
+								<div class="input-field col s12">								 
+									 <textarea placeholder=" " class="materialize-textarea" id="strMessageAdd" type="text" length="224"></textarea>
+									 <label for="input_text">Description of Incident</label> 
+								</div>
+									
+								<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px;">
+									<legend><h4>Witness</h4></legend>
+									<button style="margin-top:-15%; margin-left:380px;" class="z-depth-1 btn green" id = "btnAddWitness">
+									<i class="material-icons left">add</i>ADD
+									</button>
+			                        
+									<div class="col s10 push-s1">
+										<table class="bordered grey lighten-1" id = "tableWitness" style="margin-bottom:15px;">
+											<thead>
+												<tr>
+													<th style="width:20px;"><center>Action</center></th>
+													<th style="width:20px;"><center>Witness Name</center></th>
+													<th style="width:10px;"><center>Contact Number</center></th>
+												</tr>
+											</thead>
+											<tbody> 
+											</tbody>
+										</table>
+									</div>
+								</div>
+								
 							</div>
 							
-							<div class="input-field col s6">
-								<input class="validate" id="" type='text' placeholder=" " pattern="[0-9+]{11,}" required="" aria-required="true">
-								<label data-error="Incorrect">Contact Number</label>
-							</div>
+							<div class="row"></div>												
 							
-							<div class="input-field col s6">
-								<input class="validate" id="" type='text' placeholder=" " pattern="[A-za-z.' ][^0-9]{2,}" required="" aria-required="true">
-								<label data-error="Incorrect">Witness Name</label>
-							</div>
-							
-							<div class="input-field col s6">
-								<input class="validate" id="" type='text' placeholder=" " pattern="[0-9+]{11,}" required="" aria-required="true">
-								<label data-error="Incorrect">Contact Number</label>
-							</div>
-							
-							
-							
-						</div>
+							<div class="row"></div>
+						</div>						
 						
-						<div class="row"></div>												
-						
-						<div class="row"></div>
-					</div>						
-					
 					</div>
 						<center><button class="btn blue" style="margin:1%;" id ='btnSubmit'>Submit</button></center>
 				</div>
@@ -102,17 +107,129 @@ Reports
 
 </div>
 
+
+<div id="modalWitness" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
+  <div class="modal-header">
+    <div class="h">
+      <h3><center>Login</center></h3>  
+    </div>
+  </div>
+  <div class="modal-content">
+    <div class="row">
+      <div class="col s10 push-s1" style="margin-top:-30px;">      
+        <div class="row"></div>  
+        <div class="input-field col s12">
+          <i class="material-icons prefix" style="font-size:35px;">account_circle</i>
+          <input id="witnessName" type="text" class="validate" required="" aria-required="true">
+          <label for="">Witness Name</label> 
+        </div>
+      </div>
+      <div class="col s10 push-s1" style="margin-top:-30px;">      
+        <div class="row"></div>
+        <div class="row"></div>  
+        <div class="input-field col s12">
+          <i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+          <input id="contactNumber" type="text" class="validate" name = "" required="" aria-required="true">
+          <label for="">Contact Number</label> 
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="modal-footer" style="background-color: #00293C;">
+    <button class="btn large green" style="margin-right: 30px;" id = "btnOkay">OK
+    </button>
+  </div>  
+</div>
 @stop
 
 @section('script')
 
 <script>
 $(document).ready(function(){
+	var tableWitness = $('#tableWitness').DataTable();
+	var arrWitnessName = [];
+	var arrContactNumber = [];
 
- $('#btnSubmit').click(function(){
- 	var guardID = $('#selectGuard').val();
- 	confirm(guardID);
- });
+	// Select Hour Start
+	for (intLoop = 1; intLoop < 12; intLoop ++){
+		$('#selectHour').append(
+			$("<option></option>")
+				.attr("value",intLoop)
+				.text(intLoop)
+		);
+	}
+	$('#selectHour').append(
+		$("<option></option>")
+			.attr('value', 0)
+			.text('12')
+	);
+	// Select Hour End
+	
+	// Select Minute Start
+	for (intLoop = 1; intLoop < 61; intLoop ++){
+		$('#selectMinute').append(
+			$("<option></option>")
+				.attr("value",intLoop)
+				.text(intLoop)
+		);
+	}
+	// Select Minute End
+
+	$('#btnSubmit').click(function(){
+		var guardID = $('#selectGuard').val();
+		var hour = parseInt($('#selectHour').val());
+		var minute = parseInt($('#selectMinute').val());
+		var date = $('#dateIncident').val();
+
+		if ($('#selectPeriod').val() == "PM"){
+			hour += 12;
+		}//if period is PM
+		
+		var dateTime = moment(date + ' ' + hour + ':' + minute, 'YYYY-MM-DD HH:mm');
+	});//btn submit
+
+	$('#btnAddWitness').click(function(){
+		$('#modalWitness').openModal();
+		$('#witnessName').val('');
+		$('#contactNumber').val('');
+	});//btn add witness
+
+	$('#btnOkay').click(function(){
+		var witnessName = $('#witnessName').val().trim();
+		var contactNumber = $('#contactNumber').val().trim();
+
+		if (witnessName != '' && contactNumber != ''){
+			$('#modalWitness').closeModal();
+			arrWitnessName.push(witnessName);
+			arrContactNumber.push(contactNumber);
+			refreshTable();
+		}else{
+			var toastContent = $('<span>All inputs are required.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}// if else
+	});//btn okay
+
+	$('#tableWitness').on('click', '.btnDelete', function(){
+		arrWitnessName.splice(this.id,1);
+		arrContactNumber.splice(this.id,1);
+		refreshTable();
+	});
+
+	function refreshTable(){
+		tableWitness.clear().draw(); //clear all the row
+
+		for (intLoop = 0; intLoop < arrWitnessName.length; intLoop ++){
+			var buttonDelete = '<button class = "btn red btnDelete" id = "'+intLoop+'">X</button>';
+			var name = '<h>'+arrWitnessName[intLoop]+'</h>';
+			var contact = '<h>'+arrContactNumber[intLoop]+'</h>';
+			tableWitness.row.add([
+	            buttonDelete,
+	            name,
+	            contact
+	          ]).draw();
+		}		
+	}
 });
 </script>
 @stop
