@@ -19,13 +19,12 @@ Reports
 						<div class="col s12">
 							
 							<div class="input-field col s6">
-								<input class="validate" id="" type='text' placeholder=" " pattern="[A-za-z.' ][^0-9]{2,}" required="" aria-required="true">
-								<label data-error="Incorrect">Name</label>
-							</div>
-							
-							<div class="input-field col s6">
-								<input class="validate" id="" type='text' placeholder=" " pattern="[0-9+]{11,}" required="" aria-required="true">
-								<label data-error="Incorrect">Contact Number</label>
+								<select id = 'selectGuard'>
+								<option disabled="" selected="">Choose Name Guard</option>
+								@foreach($clientGuard as $value)
+									<option value = '{{$value->intGuardID}}'>{{$value->strFirstName}} {{$value->strLastName}}</option>
+								@endforeach
+								</select>
 							</div>
 							
 						</div>
@@ -96,11 +95,24 @@ Reports
 					</div>						
 					
 					</div>
-						<center><button class="btn blue waves-effect waves-light" style="margin:1%;">Submit</button></center>
+						<center><button class="btn blue" style="margin:1%;" id ='btnSubmit'>Submit</button></center>
 				</div>
 		</div>
 	</div>
 
 </div>
 
+@stop
+
+@section('script')
+
+<script>
+$(document).ready(function(){
+
+ $('#btnSubmit').click(function(){
+ 	var guardID = $('#selectGuard').val();
+ 	confirm(guardID);
+ });
+});
+</script>
 @stop

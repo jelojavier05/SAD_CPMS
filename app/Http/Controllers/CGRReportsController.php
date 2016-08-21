@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
+use Carbon\Carbon;
 class CGRReportsController extends Controller
 {
     /**
@@ -14,74 +15,41 @@ class CGRReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-         return view('/CGR/CGRReports');
+        $cgrmID = $request->session()->get('id');
+        $now = Carbon::now();
+
+        $clientID = DB::table('tblcgrm')
+            ->select('intClientID')
+            ->where('intCgrmID', $cgrmID)
+            ->first();
+        
+        $guardID = DB::table('tblclient')
+            ->join('tblcontract', 'tblcontract.intClientID', '=','tblclient.intClientID')
+            ->join('tblclientguard' ,'tblclientguard.intContractID', '=','tblcontract.intContractID')
+            ->join('tblguard', 'tblguard.intGuardID', '=','tblclientguard.intGuardID')
+            ->select('tblguard.intGuardID')
+            ->where('tblclient.intClientID', $clientID->intClientID)
+            ->groupBy('tblclientguard.intGuardID')
+            ->get();
+
+        $clientGuard = array();
+        foreach($guardID as $value){
+            $result = DB::table('tblclientguard')
+                ->join('tblguard', 'tblguard.intGuardID', '=', 'tblclientguard.intGuardID')
+                ->select('tblguard.strFirstName','tblguard.strLastName','tblguard.intGuardID', 'tblclientguard.boolStatus')
+                ->where('tblclientguard.intGuardID' ,$value->intGuardID)
+                ->where('tblclientguard.created_at', '<', $now)
+                ->orderBy('tblclientguard.created_at', 'desc')
+                ->first();
+
+            if ($result->boolStatus == 1 || $result->boolStatus == 3){                    
+                array_push($clientGuard, $result);
+            }
+        }
+        return view('/CGR/CGRReports')
+            ->with('clientGuard', $clientGuard);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
