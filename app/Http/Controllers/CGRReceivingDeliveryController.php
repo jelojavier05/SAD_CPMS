@@ -77,7 +77,7 @@ class CGRReceivingDeliveryController extends Controller
             ->first();
 
         if (is_null($result) || $result->intAccountType != 2){
-            return response()->json('false');
+            return response()->json(false);
         }
 
         $accountID = $result->intAccountID;
@@ -116,10 +116,97 @@ class CGRReceivingDeliveryController extends Controller
 
             if (($result->boolStatus == 1 || $result->boolStatus == 3) && $result->intGuardID == $guardID){
                 $request->session()->put('guardIDReceiver', $guardID);
-                return response()->json('true');
+                return response()->json(true);
             }//filter
         }//foreach
 
-        return response()->json('false');
+        return response()->json(false);
+    }
+
+    public function postItem(Request $request){
+        $guardIDReceiver = $request->session()->get('guardIDReceiver');
+        $itemID = $request->arrItemPost;
+        $status = $request->arrItemStatus;
+        $reason = $request->reason;
+        $deliveryID = $request->deliveryID;
+        $now = Carbon::now();
+
+        $id = $request->session()->get('id');
+
+        $result = DB::table('tblcgrm')
+            ->select('intClientID')
+            ->where('intCgrmID', $id)
+            ->first();
+        $clientID = $result->intClientID;
+        $result = DB::table('tblcontract')
+            ->select('intContractID')
+            ->where('intClientID', $clientID)
+            ->where('boolStatus', 1)
+            ->first();
+        $contractID = $result->intContractID;
+
+        try{
+            DB::beginTransaction();
+
+            $receiveHeaderID = DB::table('tblgunreceiveheader')
+                ->insertGetId([
+                    'intGunDeliveryHeaderID' => $deliveryID,
+                    'intGuardIDReceiver' => $guardIDReceiver,
+                    'strReason' => $reason
+                ]);
+
+            DB::table('tblgundeliveryheader')
+                ->where('intGunDeliveryHeaderID', $deliveryID)
+                ->update([
+                    'boolStatus' => 0
+                ]);
+
+            for($intLoop = 0; $intLoop < count($itemID); $intLoop ++){
+                $deliveryDetailID = $itemID[$intLoop];
+                $deliveryStatus = $status[$intLoop];
+
+                DB::table('tblgunreceivedetail')
+                    ->insert([
+                        'intGunReceiveHeaderID' => $receiveHeaderID,
+                        'intGunDeliveryDetailID' => $deliveryDetailID,
+                        'boolStatus' => $deliveryStatus
+                    ]);
+                    
+                DB::table('tblgundeliverydetail')
+                    ->where('intGunDeliveryDetailID', $deliveryDetailID)
+                    ->update([
+                        'boolStatus' => $deliveryStatus
+                    ]);
+
+                $gun = DB::table('tblgundeliverydetail')
+                    ->join('tblgunorderdetail', 'tblgunorderdetail.intGunOrderDetailID', '=', 'tblgundeliverydetail.intGunOrderDetailID')
+                    ->select('tblgunorderdetail.intGunID', 'tblgunorderdetail.intRounds')
+                    ->where('tblgundeliverydetail.intGunDeliveryDetailID', $deliveryDetailID)
+                    ->first();
+
+                if ($deliveryStatus == 1){
+                    $gunStatus = 2;
+                    DB::table('tblclientgun')
+                        ->insert([
+                            'intGunID' => $gun->intGunID, 
+                            'intContractID' => $contractID,
+                            'intRound' => $gun->intRounds,
+                            'created_at' => $now
+                    ]);
+                }else{
+                    $gunStatus = 1;
+                }
+
+                DB::table('tblgun')
+                    ->where('intGunID', $gun->intGunID)
+                    ->update([
+                        'boolFlag' => $gunStatus
+                    ]);
+            }
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
     }
 }

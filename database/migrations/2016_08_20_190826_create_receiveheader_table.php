@@ -16,7 +16,8 @@ class CreateReceiveheaderTable extends Migration
             $table->increments('intGunReceiveHeaderID');
             $table->integer('intGunDeliveryHeaderID')->unsigned();
             $table->integer('intGuardIDReceiver')->unsigned();
-            $table->timestamp('datetimeReceive');
+            $table->string('strReason');
+            $table->timestamp('datetimeReceive')->useCurrent = true;
 
             $table->foreign('intGunDeliveryHeaderID')->references('intGunDeliveryHeaderID')->on('tblgundeliveryheader');
             $table->foreign('intGuardIDReceiver')->references('intGuardID')->on('tblguard');

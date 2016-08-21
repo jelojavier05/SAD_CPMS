@@ -105,6 +105,7 @@ Route::get('/cgrreceivingdelivery/get/delivery', 'CGRReceivingDeliveryController
 Route::get('/cgrreceivingdelivery/get/deliverycode', 'CGRReceivingDeliveryController@getDeliveryCode');
 Route::get('/cgrreceivingdelivery/get/deliverydetail', 'CGRReceivingDeliveryController@getDeliveryDetail');
 Route::post('/cgrreceivingdelivery/post/setGuardReceiver', 'CGRReceivingDeliveryController@setGuardReceiver');
+Route::post('/cgrreceivingdelivery/post/item', 'CGRReceivingDeliveryController@postItem');
 Route::get('/cgrreports', 'CGRReportsController@index');
 
 //SECURITY GUARD INTERFACE ----------------------------------------------------

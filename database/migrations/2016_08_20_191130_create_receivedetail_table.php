@@ -16,13 +16,11 @@ class CreateReceivedetailTable extends Migration
             $table->increments('intGunReceiveDetailID');
             $table->integer('intGunReceiveHeaderID')->unsigned();
             $table->integer('intGunDeliveryDetailID')->unsigned();
-            $table->timestamp('datetimeReceive');
+            $table->tinyInteger('boolStatus'); //1 = tinanggap, 0 = di tinanggap
 
             $table->foreign('intGunReceiveHeaderID')->references('intGunReceiveHeaderID')->on('tblgunreceiveheader');
             $table->foreign('intGunDeliveryDetailID')->references('intGunDeliveryDetailID')->on('tblgundeliverydetail');
         });
-
-
     }
 
     /**

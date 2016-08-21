@@ -76,7 +76,7 @@ Receiving Delivery
   </div>
   <div class="modal-footer ci" style="background-color: #00293C;">
     <div id = "buttons" >	
-      <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "btnReceive">OK</button>
+      <button class="btn green" name="" style="margin-right: 30px;" id = "btnReceive">OK</button>
     </div>
   </div>
 </div>
@@ -112,11 +112,41 @@ Receiving Delivery
     </div>
   </div>
   <div class="modal-footer" style="background-color: #00293C;">
-    <button class="btn large waves-effect waves-light green" name="action" style="margin-right: 30px;" id = "btnOkay">OK
+    <button class="btn large green" name="action" style="margin-right: 30px;" id = "btnOkay">OK
     </button>
   </div>  
 </div>
 <!-- sg login End -->
+
+<!-- Reason Start-->
+<div id="modalReason" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
+  <div class="modal-header">
+    <div class="h">
+      <h3><center>Reason</center></h3>  
+    </div>
+  </div>
+  <div class="modal-content">
+    <div class="row">
+      <div class="col s10 push-s1" style="margin-top:-30px;">      
+        <div class="row"></div>  
+        <div class="input-field col s12">
+          <i class="material-icons prefix" style="font-size:35px;">account_circle</i>
+          <input id="reason" type="text" class="validate" required="" aria-required="true">
+          <label for="">Reason</label> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer" style="background-color: #00293C;">
+    <button class="btn large red" name="action" style="margin-right: 30px;" id = "btnCancel">Cancel
+    </button>
+
+    <button class="btn large green" name="action" style="margin-right: 30px;" id = "btnReason">OK
+    </button>
+    
+  </div>  
+</div>
+<!-- Reason End -->
 @stop
 
 @section('script')
@@ -125,11 +155,15 @@ Receiving Delivery
 $(document).ready(function(){
   refreshTableDelivery();
   var arrItemDelivery;
+  var arrItemPost = [];
+  var arrItemStatus= [];
   var tableItem = $('#tableItem').DataTable();
   var tableDelivery = $('#tableDelivery').DataTable();
+  var boolModalReasonChecker;
+  var intDeliveryID;
 
   tableDelivery.on('click', '.buttonVerify', function(){
-    var id = this.id;
+    intDeliveryID = this.id;
     swal({    
       title: "Delivery Code.",   
       text: "Enter the delivery code.",   
@@ -139,36 +173,38 @@ $(document).ready(function(){
       animation: "slide-from-top"
     }, 
       function(inputValue){     
-        if (isDeliveryCodeCorrect(inputValue, id) == false) {     
+        if (isDeliveryCodeCorrect(inputValue) == false) {     
           swal.showInputError("Check your code.");     
           return false;
         }else{
           this.closeOnConfirm = true; //close swal.
           $('#modalDeliveryDetails').openModal();
-          refreshTableItem(id);
+          refreshTableItem();
         }
       });
   });//button verify
 
   $('#btnReceive').click(function(){
-    $('#modalLogin').openModal();
+    getCheckedItem();
+    $('#reason').val('');
+    if (boolModalReasonChecker){
+      $('#modalLogin').openModal();  
+    }else{
+      $('#modalReason').openModal();
+    }
+  });
 
-    // $.ajax({
-    //   type: "POST",
-    //   url: "{{action('ArmedServiceController@addArmedService')}}",
-    //   beforeSend: function (xhr) {
-    //     var token = $('meta[name="csrf_token"]').attr('content');
-    //     if (token) {
-    //       return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-    //     }
-    //   },
-    //   data: {
-    //     arrItemCheck:getCheckedItem()
-    //   },
-    //   success: function(data){
+  $('#btnReason').click(function(){
+    if ($('#reason').val() != ''){
+      $('#modalLogin').openModal();
+      $('#modalReason').closeModal();
+    }else{
+      confirm('wala');
+    }
+  });
 
-    //   }
-    // });//ajax
+  $('#btnCancel').click(function(){
+    $('#modalReason').closeModal();
   });
 
   $('#btnOkay').click(function(){
@@ -192,7 +228,7 @@ $(document).ready(function(){
         },
         success: function(data){
           if (data){
-            
+            databaseItem();
           }else{
             var toastContent = $('<span>Login failed.</span>');
             Materialize.toast(toastContent, 1500,'red', 'edit');      
@@ -239,11 +275,11 @@ $(document).ready(function(){
     });//ajax
   }//refresh delivery table
 
-  function isDeliveryCodeCorrect(input,id){
+  function isDeliveryCodeCorrect(input){
     var checker;
     $.ajax({
       type: "GET",
-      url: "/cgrreceivingdelivery/get/deliverycode?id=" + id,
+      url: "/cgrreceivingdelivery/get/deliverycode?id=" + intDeliveryID,
       success: function(data){
         if (data == input){
           checker = true;
@@ -255,10 +291,10 @@ $(document).ready(function(){
     return checker;
   }//check delivery code correct
 
-  function refreshTableItem(id){
+  function refreshTableItem(){
     $.ajax({
       type: "GET",
-      url: "/cgrreceivingdelivery/get/deliverydetail?id=" + id,
+      url: "/cgrreceivingdelivery/get/deliverydetail?id=" + intDeliveryID,
       success: function(data){
         tableItem.clear().draw(); //clear all the row
         arrItemDelivery = data;    
@@ -283,14 +319,50 @@ $(document).ready(function(){
   }//refresh table item
 
   function getCheckedItem(){
-    var arrItemCheck = [];
+    boolModalReasonChecker = true;
+    arrItemPost = [];
+    arrItemStatus = [];
+    $('#username').val('');
+    $('#password').val('');
 
     $.each(arrItemDelivery, function(index,value){
+      var boolStatus;
+      
       if ($('#checkbox' + value.intGunDeliveryDetailID).is(':checked')){
-        arrItemCheck.push($('#checkbox' + value.intGunDeliveryDetailID).val());
+        boolStatus = 1;
+      }else{
+        boolStatus = 0;
+        boolModalReasonChecker = false;
       }
-    });
-    return arrItemCheck;
+      arrItemPost.push($('#checkbox' + value.intGunDeliveryDetailID).val());
+      arrItemStatus.push(boolStatus);
+    });//for each
+
+    console.log(arrItemPost);
+    console.log(arrItemStatus);
+  }//get checked item
+
+  function databaseItem(){
+    $.ajax({
+      type: "POST",
+      url: "{{action('CGRReceivingDeliveryController@postItem')}}",
+      beforeSend: function (xhr) {
+          var token = $('meta[name="csrf_token"]').attr('content');
+
+          if (token) {
+                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+          }
+      },
+      data: {
+          arrItemPost:arrItemPost,
+          arrItemStatus:arrItemStatus,
+          reason:$('#reason').val(),
+          deliveryID: intDeliveryID
+      },
+      success: function(data){
+        confirm('hell yeah');
+      },
+    });//ajax
   }
 
 });//document ready function
