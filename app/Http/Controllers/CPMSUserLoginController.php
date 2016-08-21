@@ -66,7 +66,7 @@ class CPMSUserLoginController extends Controller
                 $request->session()->put('id', $guardID->intGuardID);
             }else if ($account->intAccountType == 3){//admin account
                 
-            }else if ($account->intAccountType == 4){
+            }else if ($account->intAccountType == 4){//cgrm
 
                 $macAddress = DB::table('tblcgrm')
                     ->select('intCgrmID')

@@ -9,12 +9,12 @@
   <!-- ================================CSS===========================================  -->
 
   <link href="{!! URL::asset('../css/materialize.css') !!}" type="text/css" rel="stylesheet"/>
-  <link rel="stylesheet" type="text/css" media="screen,projection" href="{{!! URL::asset('../css/materialize.min.css') !!}"/>
+  <link rel="stylesheet" type="text/css" media="screen,projection" href="{!! URL::asset('../css/materialize.min.css') !!}"/>
 <!--	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">-->
 <!--		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
  
   <link href="{!! URL::asset('../css/animate.css') !!}" type="text/css" rel="stylesheet"/>
-  <link href="{!! URL::asset('../sweetalert2.css') !!}" type="text/css" rel="stylesheet"/>
+  <link href="{!! URL::asset('../sweetalert.css') !!}" type="text/css" rel="stylesheet"/>
 <!--  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../datatable.css') !!}">-->
 <!--  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/dataTables.material.min.css') !!}">-->
 <!--  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/jquery.dataTables.min.css') !!}">-->
@@ -24,11 +24,11 @@
   <script src="{!! URL::asset('../javascript/jquery-2.2.1.js') !!}"></script>
 <!--	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>-->
 
-  <script src="{{!! URL::asset('../js/materialize.js') !!}}"></script>
+  <script src="{!! URL::asset('../js/materialize.js') !!}"></script>
 <!--  <script src="{!! URL::asset('../jquery/jquery-1.12.0.min.js')!!}"></script> -->
   <script src="{!! URL::asset('../js/init.js') !!}"></script>
   <script src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
-  <script src="{!! URL::asset('../sweetalert2.min.js') !!}"></script>
+  <script src="{!! URL::asset('../sweetalert.min.js') !!}"></script>
 <!--  <script src="{!! URL::asset('../datatable.js') !!}"></script>-->
 <!--  <script src="{!! URL::asset('../dataTables.material.min.js') !!}"></script>-->
 <!--  <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>-->

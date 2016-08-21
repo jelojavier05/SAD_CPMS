@@ -101,6 +101,10 @@ Route::post('/cgrguardattendance/post/login', 'CGRGuardAttendanceController@logi
 Route::post('/cgrguardattendance/post/timein', 'CGRGuardAttendanceController@timeIn');
 Route::post('/cgrguardattendance/post/timeout', 'CGRGuardAttendanceController@timeOut');
 Route::get('/cgrreceivingdelivery', 'CGRReceivingDeliveryController@index');
+Route::get('/cgrreceivingdelivery/get/delivery', 'CGRReceivingDeliveryController@getDelivery');
+Route::get('/cgrreceivingdelivery/get/deliverycode', 'CGRReceivingDeliveryController@getDeliveryCode');
+Route::get('/cgrreceivingdelivery/get/deliverydetail', 'CGRReceivingDeliveryController@getDeliveryDetail');
+Route::post('/cgrreceivingdelivery/post/setGuardReceiver', 'CGRReceivingDeliveryController@setGuardReceiver');
 Route::get('/cgrreports', 'CGRReportsController@index');
 
 //SECURITY GUARD INTERFACE ----------------------------------------------------

@@ -22,7 +22,6 @@ Guard Form
 		</nav>
 	</div>
 </div>
-<!----------------------------------------------PAGES-------------------------------------->
 <div class="row">
 	<div class="col s6 push-s4" style="margin-left:10px;">
 		<div class="container-fluid grey lighten-4 z-depth-1 ci" style="border: 1px solid black; border-radius:5px;">

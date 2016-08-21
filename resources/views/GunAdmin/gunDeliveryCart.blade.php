@@ -110,9 +110,6 @@ Delivery
         var orderID;
         $('#dataTableOder').on('click','.btnMore', function(){
             orderID = this.id;
-            tableGun = [];
-            tableSelected = [];
-            refreshTable();
             
             $.ajax({
                 type: "GET",
@@ -122,7 +119,9 @@ Delivery
                     var dataTableGunArr = $('#dataTableGun').DataTable();
                     dataTableGunArr.clear().draw();
                     
-
+                    tableGun = [];
+                    tableSelected = [];
+                    refreshTable();
                     $.each(data, function(index, value) {
                         tableGun.push(value);
                         dataTableGunArr.row.add([
@@ -134,10 +133,6 @@ Delivery
                         ]).draw();
                     });//foreach  
                     
-                },
-                error: function(data){
-                    var toastContent = $('<span>Error Occured. </span>');
-                    Materialize.toast(toastContent, 1500,'red', 'edit');
                 }
             });//ajax 
         });

@@ -479,8 +479,6 @@ $(document).ready(function(){
 			guardBodyAttributeID[index] = value.intGuardBodyAttributeID;
 			guardBodyAttributeValue[index] = $('#' + strInputValue).val().trim();
 		});
-		console.log(guardBodyAttributeValue);
-		console.log(guardBodyAttributeID);
     	$.ajax({
 	        type: "POST",
 	        url: "{{action('SecuritySettingsController@updateDetail')}}",
