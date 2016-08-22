@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use DB;
 
 class ClientGuardRequestController extends Controller
 {
@@ -19,69 +21,40 @@ class ClientGuardRequestController extends Controller
         return view('/client/ClientGuardRequest');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-       //
-    }
+    public function getActiveGuard(Request $request){
+        $clientID = $request->session()->get('id');
+        $now = Carbon::now();
+        
+        $guardID = DB::table('tblclient')
+            ->join('tblcontract', 'tblcontract.intClientID', '=','tblclient.intClientID')
+            ->join('tblclientguard' ,'tblclientguard.intContractID', '=','tblcontract.intContractID')
+            ->join('tblguard', 'tblguard.intGuardID', '=','tblclientguard.intGuardID')
+            ->select('tblguard.intGuardID')
+            ->where('tblclient.intClientID', $clientID)
+            ->groupBy('tblclientguard.intGuardID')
+            ->get();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $clientGuard = array();
+        foreach($guardID as $value){
+            $result = DB::table('tblclientguard')
+                ->join('tblguard', 'tblguard.intGuardID', '=', 'tblclientguard.intGuardID')
+                ->join('tblguardlicense', 'tblguardlicense.intGuardID', '=', 'tblguard.intGuardID')
+                ->select('tblguard.strFirstName','tblguard.strLastName', 'tblguardlicense.strLicenseNumber','tblguard.intGuardID', 'tblclientguard.boolStatus', 'tblguard.strGender')
+                ->where('tblclientguard.intGuardID' ,$value->intGuardID)
+                ->where('tblclientguard.created_at', '<', $now)
+                ->orderBy('tblclientguard.created_at', 'desc')
+                ->first();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+            if ($result->boolStatus == 1 || $result->boolStatus == 3){
+                $resultAttendance = DB::table('tblattendance')
+                    ->select('datetimeIn', 'datetimeOut')
+                    ->where('intGuardID', $value->intGuardID)
+                    ->where('intClientID', $clientID)
+                    ->orderBy('datetimeIn', 'desc')
+                    ->first();       
+                array_push($clientGuard, $result);
+            }
+        }
+        return response()->json($clientGuard);
+    }//get active guard in the cgrm
 }

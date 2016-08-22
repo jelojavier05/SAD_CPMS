@@ -50,7 +50,8 @@ class GuardViewController extends Controller
             ->join('tblguardaddress', 'tblguard.intGuardID', '=', 'tblguardaddress.intGuardID')
             ->join('tblprovince', 'tblguardaddress.intProvinceID', '=', 'tblprovince.intProvinceID')
             ->join('tblcity', 'tblguardaddress.intCityID', '=', 'tblcity.intCityID')
-            ->select('tblguard.intGuardID', 'tblguardaddress.strAddress', 'tblprovince.strProvinceName', 'tblcity.strCityName')->where('tblguard.intGuardID', '=', $guardID)
+            ->select('tblguard.intGuardID', 'tblguardaddress.strAddress', 'tblprovince.strProvinceName', 'tblcity.strCityName')
+            ->where('tblguard.intGuardID', '=', $guardID)
             ->first();
         
         $bodyAttributesGuard = DB::table('tblguard')

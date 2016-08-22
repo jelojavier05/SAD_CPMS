@@ -144,6 +144,7 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
     Route::get('/client/getinformation', 'ClientDashboardController@getClientInformation');
     Route::get('/clienthomepage', 'ClientHomepageController@index');
     Route::get('/clientguardrequest', 'ClientGuardRequestController@index');
+    Route::get('/clientguardrequest/get/activeguard', 'ClientGuardRequestController@getActiveGuard');
     Route::get('/clientgunrequest', 'ClientGunRequestController@index');
     Route::get('/clientguardattendance', 'ClientGuardAttendanceController@index');
     Route::get('/clientsettings', 'ClientSettingsController@index');

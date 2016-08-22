@@ -37,39 +37,13 @@ Client Request of Guard
                                 <th style="width:50px;" class="blue darken-3 white-text"></th>
 								<th style="width:50px;" class="blue darken-3 white-text"></th>
                                 <th style="width:50px;" class="blue darken-3 white-text"></th>
-                                <th class="blue darken-3 white-text">Guard License</th>
+                                <th class="blue darken-3 white-text">License Number</th>
                                 <th class="blue darken-3 white-text">Name</th>
                                 <th class="blue darken-3 white-text">Gender</th>
                             </tr>
                         </thead>
                         
                         <tbody>
-                            
-                                <tr>
-                                    <td>
-										 <button data-position="bottom" data-delay="50" data-tooltip="Guard Details" class="tooltipped buttonMore  btn col s12" name="" id="">
-                                            <i class="material-icons">person_outline</i>
-                                        </button>
-                                        <label for=""></label>
-									</td>
-
-                                    <td>
-                                        <button data-position="bottom" data-delay="50" data-tooltip="Guard Replacement" class=" tooltipped buttonSwap blue btn col s12" name="" id="">
-                                            <i class="material-icons">swap_horiz</i>
-                                        </button>
-                                        <label for=""></label>
-                                    </td>
-
-                                    <td>
-                                        <button data-position="bottom" data-delay="50" data-tooltip="Guard Removal" class="tooltipped buttonDelete btn red col s12" id="" >
-                                            <i class="material-icons">close</i>
-                                        </button>
-                                    </td>
-                                    <td id = "">2013-01234-MN-0</td>
-                                    <td id = "" value = "">Mang Tomas</td>                                    
-                                    <td id = "">Male</td>
-                                </tr>
-                            
                         </tbody>
                     </table>
                 </div>
@@ -80,7 +54,6 @@ Client Request of Guard
 
 
 <!--modal guard add request-->
-
 <div id="modalguardAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:425px !important; border-radius:10px;">      
 	<div class="modal-header">
 		<div class="h">
@@ -116,12 +89,10 @@ Client Request of Guard
 		</button>
 	</div>	
 </div>
-
 <!--modal guard add request end-->
 
 
 <!--modal guard details-->
-
 <div id="modalguardDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:500px !important; border-radius:10px;">      
 	<div class="modal-header">
 		<div class="h">
@@ -138,52 +109,52 @@ Client Request of Guard
 					<li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s4">	
-								First Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Kobe</div>
+								First Name:<div style="font-weight:normal;" id = 'strFirstName'>&nbsp;&nbsp;&nbsp;Kobe</div>
 							</div>
 							
 							<div class="col s4">	
-								Middle Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Bean</div>
+								Middle Name:<div style="font-weight:normal;" id = 'strMiddleName'>&nbsp;&nbsp;&nbsp;Bean</div>
 							</div>
 							
 							<div class="col s4">	
-								Last Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Bryant</div>
+								Last Name:<div style="font-weight:normal;" id = 'strLastName'>&nbsp;&nbsp;&nbsp;Bryant</div>
 							</div>
 														
 						</div>
 						
 						<div class="row">
 							<div class="col s12">
-								Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 Hello Street Las Pinas, Metro Manila</div>
+								Address:<div style="font-weight:normal;" id = 'strAddress'>&nbsp;&nbsp;&nbsp;123 Hello Street Las Pinas, Metro Manila</div>
 							</div>																					
 						</div>
 						
 						<div class="row">
 							<div class="col s6">
-								Place of Birth:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Makati City</div>
+								Place of Birth:<div style="font-weight:normal;" id = 'strPlaceBirth'>&nbsp;&nbsp;&nbsp;Makati City</div>
 							</div>
 							
 							<div class="col s6">
-								Age:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;25</div>
+								Age:<div style="font-weight:normal;" id = 'intAge'>&nbsp;&nbsp;&nbsp;25</div>
 							</div>
 						</div>
 						
 						<div class="row">
 							<div class="col s6">
-								Contact Number (Mobile):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
+								Contact Number (Mobile):<div style="font-weight:normal;" id = 'strContactNumberMobile'>&nbsp;&nbsp;&nbsp;09123456789</div>
 							</div>
 							
 							<div class="col s6">
-								Contact Number (Landline):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;8123456</div>
+								Contact Number (Landline):<div style="font-weight:normal;" id = 'strContactNumberLandline'>&nbsp;&nbsp;&nbsp;8123456</div>
 							</div>
 						</div>
 						
 						<div class="row">
 							<div class="col s6">
-								Gender:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Male</div>
+								Gender:<div style="font-weight:normal;" id = 'strGender'>&nbsp;&nbsp;&nbsp;Male</div>
 							</div>
 							
 							<div class="col s6">
-								Civil Status:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Single</div>
+								Civil Status:<div style="font-weight:normal;" id = 'strCivilStatus'>&nbsp;&nbsp;&nbsp;Single</div>
 							</div>
 						</div>
 						
@@ -200,14 +171,10 @@ Client Request of Guard
 		</button>
 	</div>	
 </div>
-
-
 <!--modal guard details end-->
 
 
-
 <!--modal guard swap request-->
-
 <div id="modalguardSwap" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:360px !important; border-radius:10px;">      
 	<div class="modal-header">
 		<div class="h">
@@ -236,11 +203,10 @@ Client Request of Guard
 		</button>
 	</div>	
 </div>
-
 <!--modal guard swap request end-->
 
-<!--modal guard removal request-->
 
+<!--modal guard removal request-->
 <div id="modalguardDelete" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:360px !important; border-radius:10px;">      
 	<div class="modal-header">
 		<div class="h">
@@ -269,43 +235,100 @@ Client Request of Guard
 		</button>
 	</div>	
 </div>
-
 <!--modal guard removal request end-->
     
+@stop
+
+@section('script')
+<script>
+$(document).ready(function(){
+
+	refreshTable();
+
+	$('#dataTable').on('click', '.buttonMore', function(){
+		getGuardInformation(this.id);
+		$('#modalguardDetails').openModal();
+	});
+
+	function getGuardInformation(id){
+		
+		$.ajax({
+	        type: "GET",
+	        url: "/getInformation?guardID=" + id,
+	        success: function(data){
+	        	var birthday = moment(data.dateBirthday);
+	        	var intAge = moment().diff(birthday, 'years');
+	        	$('#strFirstName').text(data.strFirstName);
+	        	$('#strMiddleName').text(data.strMiddleName);
+	        	$('#strLastName').text(data.strLastName);
+	        	$('#strAddress').text(data.address.strAddress + ' ' + data.address.strCityName + ', ' + data.address.strProvinceName);
+	        	$('#strPlaceBirth').text(data.strPlaceBirth);
+	        	$('#intAge').text(intAge);
+	        	$('#strContactNumberMobile').text(data.strContactNumberMobile);
+	        	$('#strContactNumberLandline').text(data.strContactNumberLandline);
+	        	$('#strGender').text(data.strGender);
+	        	$('#strCivilStatus').text(data.strCivilStatus);
+
+	        }
+	    });//ajax
+	}
+
+	function refreshTable(){
+		$.ajax({
+            type: "GET",
+            url: "{{action('ClientGuardRequestController@getActiveGuard')}}",
+            success: function(data){
+            	var table = $('#dataTable').DataTable();
+            	table.clear().draw();
+            	$.each(data, function(index, value){
+            		
+            		var buttonMore = '<button data-position="bottom" data-delay="50" data-tooltip="Guard Details" class="tooltipped buttonMore btn col s12" id="'+value.intGuardID+'"><i class="material-icons">person_outline</i></button>';
+            		var buttonReplacement = '<button data-position="bottom" data-delay="50" data-tooltip="Guard Replacement" class=" tooltipped buttonSwap blue btn col s12" id="'+value.intGuardID+'"><i class="material-icons">swap_horiz</i></button>';
+            		var buttonDelete = '<button data-position="bottom" data-delay="50" data-tooltip="Guard Removal" class="tooltipped buttonDelete btn red col s12" id="'+value.intGuardID+'" ><i class="material-icons">close</i></button>';
+            		var licenseNumber = '<h>'+value.strLicenseNumber+'</h>';
+            		var name = '<h>'+value.strFirstName+' '+ value.strLastName +'</h>';
+            		var gender = '<h>'+value.strGender+'</h>';
+            		
+            		table.row.add([
+            			buttonMore,
+            			buttonReplacement,
+            			buttonDelete,
+            			licenseNumber,
+            			name,
+            			gender
+            		]).draw();
+            	});//foreach
+            }//success
+        });//ajax
+	}
+});
+</script>
+
 <script>
     $(document).ready(function(){
       $('.slider').slider({full_width: true});
     });
 	
 	$("#dataTable").DataTable({
-             "columns": [
-			{"searchable": false},
-			{"searchable": false},
-			{"searchable": false},
-            null,
-            null,
-			null
-            ] ,  
-			"pageLength":5,
-			"lengthMenu": [5,10,15,20],
-			
-		});
+         "columns": [
+		{"searchable": false},
+		{"searchable": false},
+		{"searchable": false},
+        null,
+        null,
+		null
+        ] ,  
+		"pageLength":5,
+		"lengthMenu": [5,10,15,20],
+		
+	});
 	
 	 $('#dataTable').on('click', '.buttonSwap', function(){
-            $('#modalguardSwap').openModal();            
-
-        });
+        $('#modalguardSwap').openModal();            
+    });
 	
 	$('#dataTable').on('click', '.buttonDelete', function(){
-            $('#modalguardDelete').openModal();            
-
-        });
-	
-	$('#dataTable').on('click', '.buttonMore', function(){
-            $('#modalguardDetails').openModal();            
-
-        });
-	
+        $('#modalguardDelete').openModal();            
+    });
 </script>
-
 @stop
