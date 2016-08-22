@@ -88,8 +88,8 @@ Client
 					<div class="container-fluid grey lighten-4 z-depth-1 col s10 push-s1" style="border: 1px solid black; border-radius:5px; margin-bottom:10px;">
 						<legend><h4>CGR Account</h4></legend>
 						<div class="input-field col s10 push-s1">
-							<input placeholder=" " id="strUserName" type="text" class="validate" name = "userName" required="" aria-required="true">
-							<label for="strUserName">Username</label>
+							<input placeholder=" " id="username" type="text" class="validate" name = "userName" required="" aria-required="true">
+							<label for="username">Username</label>
 						</div>
 						
 						<div class="input-field col s10 push-s1">
@@ -334,6 +334,9 @@ $(document).ready(function() {
         var dateStart = $('#contractStart').val();
         var dateEnd = $('#contractEnd').val();
         var ratePerHour = $('#rateperHour').val();
+        var username = $('#username').val();
+        var password = $('#password').val();
+
         $.ajax({
             type: "POST",
             url: "{{action('ClientContractController@postContract')}}",
@@ -355,7 +358,9 @@ $(document).ready(function() {
                 shiftFrom:shiftFrom,
                 shiftTo:shiftTo,
                 clientName: clientName,
-                address:address
+                address:address,
+                username: username,
+                password: password
                 
             },
             success: function(data){

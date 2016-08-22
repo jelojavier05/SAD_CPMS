@@ -8,6 +8,8 @@ use App\Model\GovernmentExam;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use Carbon\Carbon;
+
 class GuardRegistrationSummaryController extends Controller
 {
     public function index(){
@@ -52,6 +54,14 @@ class GuardRegistrationSummaryController extends Controller
                 'intAccountID' => $accountID,
                 'intStatusIdentifier' => 0
             ]);
+
+            $now = Carbon::now();
+            DB::table('tblguardstatus')
+                ->insert([
+                    'intGuardID' => $id,
+                    'intStatusIdentifier' => 0,
+                    'dateEffectivity' => $now
+                ]);
             
             $educationalBackground = $request->session()->get('educationalBackgroundDB');
             foreach ($educationalBackground as $value) {

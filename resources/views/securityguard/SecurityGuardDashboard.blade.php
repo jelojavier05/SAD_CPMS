@@ -16,9 +16,9 @@
           
           <link href="{!! URL::asset('../css/animate.css') !!}" type="text/css" rel="stylesheet"/>
           <link href="{!! URL::asset('../sweetalert.css') !!}" type="text/css" rel="stylesheet"/>
-        <!--  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../datatable.css') !!}">-->
+          <link rel="stylesheet" type="text/css" href="{!! URL::asset('../datatable.css') !!}">
         <!--  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/dataTables.material.min.css') !!}">-->
-        <!--  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/jquery.dataTables.min.css') !!}">-->
+          <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/jquery.dataTables.min.css') !!}">
         <!--  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">-->
             
 <!-- ===============================JSjquery======================================= -->
@@ -32,16 +32,16 @@
           <script src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
           <script src="{!! URL::asset('../sweetalert.min.js') !!}"></script>
           <script src="{!! URL::asset('../js/moment.min.js') !!}"></script>
-     <!--  <script src="{!! URL::asset('../datatable.js') !!}"></script>-->
+       <script src="{!! URL::asset('../datatable.js') !!}"></script>
      <!--  <script src="{!! URL::asset('../dataTables.material.min.js') !!}"></script>-->
-     <!--  <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>-->
+       <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>
      <!--  <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>-->
         
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
+        <!-- <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css"> -->
 		
-        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+        <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script> -->
 		<link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
-           <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+           <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script> -->
 		<link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
         
     </head>
