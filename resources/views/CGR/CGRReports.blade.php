@@ -6,6 +6,8 @@ Reports
 @section('content')
 
 <div class="row"></div>
+
+<!-- Incident Report Form Start -->
 <div class= "row">
 
 	<div class="col s8 push-s3">
@@ -62,12 +64,12 @@ Reports
 								</div>
 								
 								<div class="input-field col s6">
-									<input id="" placeholder = " " id="" type="text" class="validate" pattern="[A-za-z0-9.,' ]{2,}" required="" aria-required="true">
+									<input placeholder = " " id="location" type="text" class="validate" pattern="[A-za-z0-9.,' ]{2,}" required="" aria-required="true">
 									<label class="ci" data-error="Incorrect">Exact Location of the Incident</label>
 								</div>
 								
 								<div class="input-field col s12">								 
-									 <textarea placeholder=" " class="materialize-textarea" id="strMessageAdd" type="text" length="224"></textarea>
+									 <textarea placeholder=" " class="materialize-textarea" id="incidentDescription" type="text" length="224"></textarea>
 									 <label for="input_text">Description of Incident</label> 
 								</div>
 									
@@ -104,10 +106,10 @@ Reports
 				</div>
 		</div>
 	</div>
-
 </div>
+<!-- Incident Report Form End -->
 
-
+<!-- Adding Witness Start -->
 <div id="modalWitness" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
   <div class="modal-header">
     <div class="h">
@@ -141,6 +143,44 @@ Reports
     </button>
   </div>  
 </div>
+<!-- Adding Witness End -->
+
+<!-- sg login Start-->
+<div id="modalLogin" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
+	<div class="modal-header">
+		<div class="h">
+			<h3><center>Login</center></h3>  
+		</div>
+	</div>
+	<div class="modal-content">
+		<div class="row">
+			<div class="col s10 push-s1" style="margin-top:-30px;">      
+				<div class="row"></div>  
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
+					<input id="username" type="text" class="validate" required="" aria-required="true">
+					<label for="">Username</label> 
+				</div>
+			</div>
+			<div class="col s10 push-s1" style="margin-top:-30px;">      
+				<div class="row"></div>
+				<div class="row"></div>  
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+					<input id="password" type="password" class="validate" name = "" required="" aria-required="true">
+					<label for="">Password</label> 
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="modal-footer" style="background-color: #00293C;">
+		<button class="btn large waves-effect waves-light green" name="action" style="margin-right: 30px;" id = "btnLogin">OK
+		</button>
+	</div>	
+</div>
+<!-- sg login End -->
+
 @stop
 
 @section('script')
@@ -165,9 +205,10 @@ $(document).ready(function(){
 			.text('12')
 	);
 	// Select Hour End
+
 	
 	// Select Minute Start
-	for (intLoop = 1; intLoop < 61; intLoop ++){
+	for (intLoop = 0; intLoop < 60; intLoop ++){
 		$('#selectMinute').append(
 			$("<option></option>")
 				.attr("value",intLoop)
@@ -176,18 +217,66 @@ $(document).ready(function(){
 	}
 	// Select Minute End
 
-	$('#btnSubmit').click(function(){
-		var guardID = $('#selectGuard').val();
-		var hour = parseInt($('#selectHour').val());
-		var minute = parseInt($('#selectMinute').val());
-		var date = $('#dateIncident').val();
 
-		if ($('#selectPeriod').val() == "PM"){
-			hour += 12;
-		}//if period is PM
+	$('#btnSubmit').click(function(){
+		if (checkInput()){
+			$('#modalLogin').openModal();	
+		}else{
+			var toastContent = $('<span>Check your input. All fields are required.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
 		
-		var dateTime = moment(date + ' ' + hour + ':' + minute, 'YYYY-MM-DD HH:mm');
 	});//btn submit
+
+	$('#btnLogin').click(function(){
+		if (login()){
+			var guardID = $('#selectGuard').val();
+			var hour = parseInt($('#selectHour').val());
+			var minute = parseInt($('#selectMinute').val());
+			var date = $('#dateIncident').val();
+			var location = $('#location').val();
+			var description = $('#incidentDescription').val();
+
+			if ($('#selectPeriod').val() == "PM"){
+				hour += 12;
+			}//if period is PM
+			
+			var dateTime = moment(date + ' ' + hour + ':' + minute, 'YYYY-MM-DD HH:mm').format();
+			$.ajax({
+	            type: "POST",
+	            url: "{{action('CGRReportsController@postReport')}}",
+	            beforeSend: function (xhr) {
+	                var token = $('meta[name="csrf_token"]').attr('content');
+
+	                if (token) {
+	                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+	                }
+	            },
+	            data: {
+	                intGuardID: guardID,
+	                datetimeIncident: dateTime,
+	                location: location,
+	                description: description,
+	                arrWitnessName: arrWitnessName,
+	                arrContactNumber: arrContactNumber
+	            },
+	            success: function(data){
+					swal({
+						title: "Success!",
+						text: "Incident Reported.",
+						type: "success"
+					},
+					function(){
+						window.location.href = '{{ URL::to("/cgrguardattendance") }}';
+					});
+
+	            }
+	        });//ajax
+		}else{
+			var toastContent = $('<span>Login Failed.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
+	});
 
 	$('#btnAddWitness').click(function(){
 		$('#modalWitness').openModal();
@@ -229,6 +318,63 @@ $(document).ready(function(){
 	            contact
 	          ]).draw();
 		}		
+	}
+
+	function login(){
+		var username = $('#username').val();
+		var password = $('#password').val();
+		var intGuardID = $('#selectGuard').val();
+		var checker;
+		$.ajax({
+            type: "POST",
+            url: "{{action('CGRGuardAttendanceController@login')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+               	username: username,
+               	password: password,
+               	intGuardID: intGuardID
+            },
+            success: function(data){
+            	if (data){
+            		checker = true;
+            	}else{
+            		checker = false;
+            	}
+            },async:false
+        });//ajax
+
+        return checker;
+	}
+
+	function checkInput(){
+		var checker;
+		var guardID = $('#selectGuard').val();
+		var hour = $('#selectHour').val();
+		var minute = $('#selectMinute').val();
+		var date = $('#dateIncident').val();
+		var location = $('#location').val().trim();
+		var description = $('#incidentDescription').val().trim();
+		var dateChecker = moment(date, 'YYYY-MM-DD').isValid();
+		
+		if ($('#selectPeriod').val() == "PM"){
+			var intHour = parseInt(hour) + 12;
+		}//if period is PM
+
+		var dateTime = new Date(moment(date + ' ' + intHour + ':' + minute, 'YYYY-MM-DD HH:mm').format());
+		var now = new Date();
+
+		if (guardID == null || hour == null || minute == null || !(dateChecker) || description == '' || location == '' || (now < dateTime)){
+			checker = false;
+		}else{
+			checker = true;
+		}
+		return checker;
 	}
 });
 </script>

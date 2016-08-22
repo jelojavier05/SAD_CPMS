@@ -15,8 +15,7 @@ class CGRReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request){
         $cgrmID = $request->session()->get('id');
         $now = Carbon::now();
 
@@ -52,4 +51,45 @@ class CGRReportsController extends Controller
             ->with('clientGuard', $clientGuard);
     }
 
+    public function postReport(Request $request){
+        $cgrmID = $request->session()->get('id');
+        $guardID = $request->intGuardID;
+        $datetimeIncident = $request->datetimeIncident;
+        $location = $request->location;
+        $description = $request->description;
+        $arrWitnessName = $request->arrWitnessName;
+        $arrContactNumber = $request->arrContactNumber;
+
+        try{
+            DB::beginTransaction();
+            $result = DB::table('tblcgrm')
+                ->select('intClientID')
+                ->where('intCgrmID', $cgrmID)
+                ->first();
+            $clientID = $result->intClientID;
+
+            $incidentID = DB::table('tblreportincident')
+            ->insertGetId([
+                'intClientID' => $clientID,
+                'intGuardID' => $guardID,
+                'datetimeIncident' => $datetimeIncident,
+                'strLocation' => $location, 
+                'strDescription' => $description
+            ]);
+
+            for($intLoop = 0; $intLoop < count($arrWitnessName); $intLoop ++){
+                DB::table('tblincidentwitness')
+                    ->insert([
+                        'intReportIncidentID' => $incidentID, 
+                        'strWitnessName' => $arrWitnessName[$intLoop],
+                        'strContactNumber' => $arrContactNumber[$intLoop],
+                    ]);
+            }
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+    }
+
+    
 }

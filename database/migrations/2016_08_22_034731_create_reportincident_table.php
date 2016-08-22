@@ -14,7 +14,15 @@ class CreateReportincidentTable extends Migration
     {
         Schema::create('tblreportincident', function (Blueprint $table) {
             $table->increments('intReportIncidentID');
-            $table->tinyInteger('boolStatus'); //1 = tinanggap, 0 = di tinanggap
+            $table->integer('intClientID')->unsigned();
+            $table->integer('intGuardID')->unsigned();
+            $table->timestamp('datetimeIncident'); 
+            $table->string('strLocation'); 
+            $table->string('strDescription'); 
+            $table->timestamp('datetimeReport')->useCurrent = true;
+
+            $table->foreign('intClientID')->references('intClientID')->on('tblclient');
+            $table->foreign('intGuardID')->references('intGuardID')->on('tblguard');
         });
     }
 
