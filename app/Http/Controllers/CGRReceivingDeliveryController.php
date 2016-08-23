@@ -86,7 +86,6 @@ class CGRReceivingDeliveryController extends Controller
             ->select('intGuardID')
             ->where('intAccountID', $accountID)
             ->first();
-
         $guardID = $result->intGuardID;
         
         $clientID = DB::table('tblcgrm')

@@ -222,7 +222,7 @@ $(document).ready(function(){
                 }
             },async:false
         });//guard information
-
+        
         if (statusChecker){
             $.ajax({
                 type: "POST",

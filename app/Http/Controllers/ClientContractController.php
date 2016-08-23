@@ -45,8 +45,8 @@ class ClientContractController extends Controller
                 ->get();
             
             foreach($shift as $value){
-                $value->timeFrom = date('h:i A', strtotime($value->timeFrom)); 
-                $value->timeTo = date('h:i A', strtotime($value->timeTo)); 
+                $value->from = date('h:i A', strtotime($value->timeFrom)); 
+                $value->to = date('h:i A', strtotime($value->timeTo)); 
             }
 
             $client->shifts = $shift;
@@ -92,6 +92,10 @@ class ClientContractController extends Controller
             $shiftNumber = $request->shiftNumber;
             $shiftFrom = $request->shiftFrom;
             $shiftTo = $request->shiftTo;
+
+            //cgrm
+            $username = $request->username;
+            $password = $request->password;
             
             for ($intLoop = 0; $intLoop < count($shiftNumber); $intLoop ++){
                 $value = new \stdClass();
@@ -136,9 +140,12 @@ class ClientContractController extends Controller
                     'created_at' => $now
                 ]);
                 
-                DB::table('tblguard')
-                    ->where('intGuardID', $value->intGuardID)
-                    ->update(['intStatusIdentifier' => 2]);    
+                DB::table('tblguardstatus')    
+                    ->insert([
+                        'intGuardID' => $value->intGuardID,
+                        'intStatusIdentifier' => 2,
+                        'dateEffectivity' => $now
+                    ]);
                 
                 DB::table('tblinbox')->insert([
                     'intAccountIDReceiver' => $value->intAccountID,
@@ -192,6 +199,19 @@ class ClientContractController extends Controller
                 ->where('intAccountID', '=', $clientAccount->intAccountID)
                 ->update(['intAccountType' => 1]);
             
+            $cgrmAccountID = DB::table('tblaccount')
+                ->insertGetId([
+                    'strUsername' => $username,
+                    'strPassword' => $password,
+                    'intAccountType' => 4
+                ]);
+
+            DB::table('tblcgrm')
+                ->insert([
+                    'intAccountID' => $cgrmAccountID,
+                    'intClientID' => $clientID
+                ]);
+
             DB::commit();
         }catch(Exception $e){
             DB::rollback();

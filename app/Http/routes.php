@@ -5,6 +5,7 @@ Route::post('/inbox/post/readinbox', 'InboxController@readInbox');
 Route::get('/inbox/get/numberofunreadmessages', 'InboxController@getNumberOfUnreadMessages');
 
 Route::get('/adminInbox', 'AdminInboxController@index');
+Route::get('/adminInbox/get/guardwaiting', 'AdminInboxController@getGuardWaiting');
 Route::get('/adminInbox/get/numberguard', 'AdminInboxController@getNewClientNumberOfGuard');
 Route::post('/adminInbox/send/newclientnotification', 'AdminInboxController@sendGuardPendingNotification');
 Route::get('/adminInbox/get/guardhasnotification', 'AdminInboxController@getGuardHasNotification');
@@ -170,8 +171,6 @@ Route::get('/getInformation', 'GuardViewController@getInformationGuard');
 
 
 Route::get('/clientView', 'ClientViewController@index');
-Route::get('/clientView/get/clientpending', 'ClientViewController@getClientPending');
-Route::get('/clientView/get/guardwaiting', 'ClientViewController@getGuardWaiting');
 Route::get('/clientView/get/clientpending', 'ClientViewController@getClientPending');
 Route::get('/clientView/get/guardaccept', 'ClientViewController@getGuardAccept');
 Route::get('/clientView/get/selectedclientpending', 'ClientViewController@getSelectedClientPending');

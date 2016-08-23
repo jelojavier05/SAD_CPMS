@@ -68,13 +68,13 @@
                 
                 <ul class="right hide-on-med-and-down">    
                       <li  id="notification_li">
-                            <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES"     href="/securityInbox" class="tooltipped">
+                            <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/securityInbox" class="tooltipped">
                                 <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
                                 <span id="notification_count">3</span>
                             </a>
                       </li>                                                                                                
                       <li id="notification_li">
-                            <a  data-position="bottom" data-delay="50" data-tooltip="HOME"href="/securityHome" class=" tooltipped">
+                            <a  data-position="bottom" data-delay="50" data-tooltip="HOME" href="/securityHome" class=" tooltipped">
                           <i class="material-icons">store</i>
                             </a>
                        </li>
@@ -171,7 +171,9 @@
     </ul>
         <div class="col l9">
         
-        
+
+
+
              @yield('content')
         
         
@@ -200,10 +202,10 @@
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusiness'>&nbsp;&nbsp;&nbsp;Bank</div>
+								Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusiness'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s6">
-								Client Name:<div style="font-weight:normal;" id = 'clientName'>&nbsp;&nbsp;&nbsp;LandBank</div>
+								Client Name:<div style="font-weight:normal;" id = 'clientName'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
                     </li>
@@ -212,10 +214,10 @@
 					<li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;123 Hello Street Pasig, Metro Manila</div>
+								Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s6">
-								Contact Number (Client):<div style="font-weight:normal;" id = 'contactNumberClient'>&nbsp;&nbsp;&nbsp;09123456789</div>
+								Contact Number (Client):<div style="font-weight:normal;" id = 'contactNumberClient'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
                     </li>
@@ -223,10 +225,10 @@
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Person in Charge:<div style="font-weight:normal;" id = 'personInCharge'>&nbsp;&nbsp;&nbsp;Mang Tomas</div>
+								Person in Charge:<div style="font-weight:normal;" id = 'personInCharge'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s6">
-								Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'contactNumberPIC'>&nbsp;&nbsp;&nbsp;09123456789</div>
+								Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'contactNumberPIC'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
                     </li>
@@ -235,10 +237,10 @@
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s4">	
-								Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSize'>&nbsp;&nbsp;&nbsp;1000</div>
+								Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSize'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s4">
-								Population (approx.):<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;10</div>
+								Population (approx.):<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						
 				</ul>
@@ -293,6 +295,8 @@ $(document).ready(function() {
     if (statusIdentifier == 2){
       $('#modalCurrentClientDetails').openModal();
       getClientInformation();
+    }else{
+      swal("No Client.", "You are not assigned to any client.", "error");
     }
   });
   
@@ -335,6 +339,35 @@ $(document).ready(function() {
     });//ajax
   }
 });      
+</script>
+
+<script>
+  $(document).ready(function(){
+    $.ajax({
+          type: "GET",
+          url: "{{action('InboxController@getNumberOfUnreadMessages')}}",
+          beforeSend: function (xhr) {
+              var token = $('meta[name="csrf_token"]').attr('content');
+
+              if (token) {
+                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+              }
+          },
+          success: function(data){
+              if (data > 0){
+                $('#notification_count').text(data);
+                $('#notification_count').show();
+              }
+          }
+      });//ajax get client information
+
+    $("#notificationLink").click(function(){
+      $("#notificationContainer").fadeToggle(300);
+      $("#notification_count").fadeOut("slow");
+      window.location.href = '{{ URL::to("/securityInbox") }}';
+      return false;
+    });
+  });
 </script>
 	
     </body>

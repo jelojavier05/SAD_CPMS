@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Input;
 use DB;
+use Carbon\Carbon;
 
 class AdminInboxController extends Controller
 {
@@ -16,6 +17,38 @@ class AdminInboxController extends Controller
         return view('/adminInbox');
     }
     
+    public function getGuardWaiting(){
+        $now = Carbon::now();
+        
+        $guardID = DB::table('tblguard')
+            ->select('intGuardID')
+            ->where('boolStatus', 1)
+            ->get();
+
+        $guardWaiting = array();
+        foreach($guardID as $value){
+            $result = DB::table('tblguardstatus')
+                ->select('intStatusIdentifier')
+                ->where('intGuardID', $value->intGuardID)
+                ->where('dateEffectivity', '<', $now)
+                ->orderBy('dateEffectivity', 'desc')
+                ->first();
+
+            if ($result->intStatusIdentifier == 0){
+                $guardResult = DB::table('tblguard')
+                    ->join('tblguardaddress', 'tblguard.intGuardID', '=', 'tblguardaddress.intGuardID')
+                    ->join('tblprovince', 'tblguardaddress.intProvinceID', '=', 'tblprovince.intProvinceID')
+                    ->join('tblcity', 'tblguardaddress.intCityID', '=', 'tblcity.intCityID')
+                    ->select('tblguard.intGuardID', 'tblguard.strFirstName', 'tblguard.strLastName', 'tblguard.dateBirthday', 'tblprovince.strProvinceName','tblcity.strCityName')
+                    ->where('tblguard.intGuardID', $value->intGuardID)
+                    ->first();        
+
+                array_push($guardWaiting, $guardResult);
+            }
+        }
+        return response()->json($guardWaiting);
+    }
+
     public function getNewClientNumberOfGuard(Request $request){
         $id = Input::get('id');
         
@@ -118,7 +151,7 @@ class AdminInboxController extends Controller
         $result = DB::table('tblguardleaverequest')
             ->join('tblguard', 'tblguard.intGuardID', '=','tblguardleaverequest.intGuardID')
             ->join('tblleave', 'tblleave.intLeaveID', '=','tblguardleaverequest.intLeaveID')
-            ->select('tblguard.intGuardID', 'tblleave.strLeaveType', 'tblguardleaverequest.strReason', 'tblguardleaverequest.boolStatus')
+            ->select('tblguard.intGuardID', 'tblleave.strLeaveType', 'tblguardleaverequest.strReason', 'tblguardleaverequest.boolStatus', 'tblguardleaverequest.dateStart', 'tblguardleaverequest.dateEnd')
             ->where('tblguardleaverequest.intInboxID', $inboxID)
             ->first();
 

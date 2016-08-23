@@ -24,11 +24,15 @@ class SecurityHomepageController extends Controller
     public function getGuardInformation(Request $request){
         if ($request->session()->has('id')){
             $id = $request->session()->get('id');
+            $now = Carbon::now();
             
             $guard = DB::table('tblguard')
                 ->join('tblguardlicense', 'tblguardlicense.intGuardID', '=', 'tblguard.intGuardID')
-                ->select('tblguard.intGuardID', 'tblguard.strFirstName', 'tblguard.strLastName', 'tblguardlicense.strLicenseNumber', 'tblguard.intStatusIdentifier')
+                ->join('tblguardstatus', 'tblguardstatus.intGuardID', '=', 'tblguard.intGuardID')
+                ->select('tblguard.intGuardID', 'tblguard.strFirstName', 'tblguard.strLastName', 'tblguardlicense.strLicenseNumber', 'tblguardstatus.intStatusIdentifier')
                 ->where('tblguard.intGuardID', '=', $id)
+                ->where('tblguardstatus.dateEffectivity','<', $now)
+                ->orderBy('tblguardstatus.dateEffectivity', 'desc')
                 ->first();
             
             return response()->json($guard);
@@ -69,6 +73,7 @@ class SecurityHomepageController extends Controller
     public function acceptNewClient(Request $request){
         $guardID = $request->session()->get('id');
         $inboxID = $request->inboxID;
+        $now = Carbon::now();
         try{
             DB::beginTransaction();
             
@@ -83,9 +88,12 @@ class SecurityHomepageController extends Controller
                 ->where('intGuardID','=', $guardID)
                 ->update(['intStatusIdentifier' => 2]);
 
-            DB::table('tblguard')
-                ->where('intGuardID','=', $guardID)
-                ->update(['intStatusIdentifier' => 1]);
+            DB::table('tblguardstatus')
+                ->insert([
+                    'intGuardID' => $guardID,
+                    'intStatusIdentifier' => 1,
+                    'dateEffectivity' => $now
+                ]);
             
             $result = DB::table('tblclientpendingnotification')
                 ->select('intNumberOfGuard')
@@ -319,9 +327,14 @@ class SecurityHomepageController extends Controller
                     ['intGuardID' => $guardID, 'boolStatus' => 0,'intContractID'=>$contractID ,'created_at' =>$dateReturn]
                 ]);
 
-            DB::table('tblguard')
-                ->where('intGuardID', $guardID)
-                ->update(['intStatusIdentifier' => 2]);
+            DB::table('tblguardstatus')
+                ->insert([
+                    ['intGuardID' => $guardRequested, 'intStatusIdentifier' => 3 ,'dateEffectivity' => $dateLeaveStart], //start date ng leave
+                    ['intGuardID' => $guardRequested, 'intStatusIdentifier' => 2 ,'dateEffectivity' => $dateReturn],//pag babalik niya
+                    ['intGuardID' => $guardID, 'intStatusIdentifier' => 5 ,'dateEffectivity' =>$now],//kung kelan siya nag confirm
+                    ['intGuardID' => $guardID, 'intStatusIdentifier' => 4 ,'dateEffectivity' =>$dateLeaveStart],//start ng reliever
+                    ['intGuardID' => $guardID, 'intStatusIdentifier' => 0 ,'dateEffectivity' =>$dateReturn]//tigil na ng reliever niya
+                ]);
 
             $result = DB::table('tblaccount')
                 ->select('intAccountID')

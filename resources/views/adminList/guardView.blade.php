@@ -405,7 +405,8 @@ Guard
                     var governmentExamGuard = data.governmentExamGuard;
                     var governmentExam = data.governmentExam;
                     
-                    $('#guardStatus').text(getGuardStatus(data.intStatusIdentifier));
+                    $('#clientName').text(data.guardClient);
+                    $('#guardStatus').text(getGuardStatus(data.guardStatus));
                     $('#firstName').text(data.strFirstName);
                     $('#middleName').text(data.strMiddleName);
                     $('#lastName').text(data.strLastName);
@@ -418,6 +419,7 @@ Guard
                     $('#landlineNumber').text(data.strContactNumberLandline);
                     $('#civilStatus').text(data.strCivilStatus);
                     
+
                     if (bodyAttributesGuard){
                         for (intLoop = 0; intLoop < bodyAttributes.length; intLoop ++){
                             $('#bodyAttribute' + bodyAttributes[intLoop].intBodyAttributeID)
@@ -483,10 +485,14 @@ Guard
         function getGuardStatus(status){
             if (status == 0){
                 return 'Waiting';
-            }else if (status == 1){
+            }else if (status == 1 || status == 5){
                 return 'Pending';
             }else if (status == 2){
                 return 'Deployed';
+            }else if (status == 3){
+                return 'On Leave';
+            }else if (status == 4){
+                return 'Reliever';
             }
         }
 	});

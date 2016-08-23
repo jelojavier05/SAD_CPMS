@@ -282,7 +282,7 @@ $(document).ready(function() {
             
             var area = commaSeparateNumber(data.deciAreaSize);
             var population = commaSeparateNumber(data.intPopulation);
-            var operationTime = data.shifts[data.shifts.length - 1].timeTo - data.shifts[0].timeFrom;
+            var operationTime = 0;
             $('#clientID').text(data.intClientID);
             $('#natureOfBusiness').text(data.strNatureOfBusiness);
             $('#name').text(data.strClientName);
@@ -292,16 +292,24 @@ $(document).ready(function() {
             $('#address').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
             $('#areaSize').text(area);
             $('#population').text(population);
-            
-            $.each(data.shifts, function(index, value){
-                
-                var from = value.timeFrom;
-                var to = value.timeTo;
+
+            $.each(data.shifts, function(index, value){    
+                var from = value.from;
+                var to = value.to;
+
+
                 $('#tableShift tr:last').after('<tr><td><center>' + value.strShiftNumber + '</center></td>'+
                      '<td><center>' + from +'</center></td>'+
                      '<td><center>' + to +'</center></td>'+
                      '</tr>');
-                
+                var timeDifference =  ( new Date("1970-1-1 " + value.timeTo) - new Date("1970-1-1 " + value.timeFrom) ) / 1000 / 60 / 60;
+
+                if (timeDifference<0){
+                	timeDifference *= -1;
+                }
+
+                operationTime += timeDifference;
+                confirm(operationTime);	
                 shiftNumber.push(value.strShiftNumber);
                 shiftFrom.push(from);
                 shiftTo.push(to);

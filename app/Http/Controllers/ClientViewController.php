@@ -42,19 +42,6 @@ class ClientViewController extends Controller
         return response()->json($clientPending);
     }
     
-    public function getGuardWaiting(){
-        $guardWaiting = DB::table('tblguard')
-            ->join('tblguardaddress', 'tblguard.intGuardID', '=', 'tblguardaddress.intGuardID')
-            ->join('tblprovince', 'tblguardaddress.intProvinceID', '=', 'tblprovince.intProvinceID')
-            ->join('tblcity', 'tblguardaddress.intCityID', '=', 'tblcity.intCityID')
-            ->select('tblguard.intGuardID', 'tblguard.strFirstName', 'tblguard.strLastName', 'tblguard.dateBirthday', 'tblprovince.strProvinceName','tblcity.strCityName')
-            ->where('tblguard.intStatusIdentifier','=', '0')
-            ->where('tblguard.deleted_at', '=', null)
-            ->get();
-        
-        return response()->json($guardWaiting);
-    }
-    
     public function sendGuardPendingNotification(Request $request){
         $arrayGuardID = $request->guardWaiting;
         $clientPendingID = $request->clientPendingID;

@@ -123,6 +123,13 @@ Inbox
 									<div class="col s6">
 										Client:<div style="font-size:18px;" id = "strClientName">&nbsp;</div>
 									</div>
+                                    <div class = "row"></div>
+                                    <div class="col s6">
+                                        Date Start:<div style="font-size:18px;" id = "strDateStart">&nbsp;</div>
+                                    </div>
+                                    <div class="col s6">
+                                        Date End:<div style="font-size:18px;" id = "strDateEnd">&nbsp;</div>
+                                    </div>
 								</div>
 					
 							</li>
@@ -295,7 +302,6 @@ $(document).ready(function(){
 
     // NEW CLIENT START
     function newClientClient(){
-        
         if (isRequestAvailable()){
             $('#modalSendNoti').openModal();
             getGuardWaiting();
@@ -326,7 +332,7 @@ $(document).ready(function(){
         if (guardWaiting.length<=0){
             $.ajax({
                 type: "GET",
-                url: "{{action('ClientViewController@getGuardWaiting')}}",
+                url: "{{action('AdminInboxController@getGuardWaiting')}}",
                 success: function(data){
                     guardWaiting = data;
                 },async:false
@@ -338,6 +344,7 @@ $(document).ready(function(){
         var table = $('#dataTableSendNoti').DataTable();
         table.clear().draw();
         getGuardHasNotification();
+
         for(intLoop = 0; intLoop < guardWaiting.length; intLoop ++){
            var boolchecker = true;
            for (intLoop2 = 0; intLoop2 < guardHasNotification.length; intLoop2 ++){
@@ -446,8 +453,7 @@ $(document).ready(function(){
     function guardLeaveRequest(){
 
         $('#modalLeaveRequestApproval').openModal();
-        getGuardRequestLeaveInformation();// request leave information
-        
+        getGuardRequestLeaveInformation();// request leave information   
     }
 
     function getGuardRequestLeaveInformation(){
@@ -459,7 +465,12 @@ $(document).ready(function(){
                 $('#strLeaveType').text(data.strLeaveType);
                 $('#strClientName').text(data.strClientName);
                 $('#strReason').text(data.strReason);
-                if(data.boolStatus == 1){
+                $('#strDateStart').text(moment(data.dateStart).format('MMMM D, YYYY'));
+                $('#strDateEnd').text(moment(data.dateEnd).format('MMMM D, YYYY'));
+                var dateStart = new Date(data.dateStart);
+                var dateNow = new Date();
+
+                if(data.boolStatus == 1 && !(dateStart < dateNow)){
                     getGuardWaiting(); //guard waiting
                     populateTableRequestLeave();
                     $('#divTable').show();
@@ -471,7 +482,7 @@ $(document).ready(function(){
                     $('#sendLeaveRequest').hide();
                     $('#acceptedLeaveRequest').show();
                     $('#rejectedLeaveRequest').hide();
-                }else if (data.boolStatus == 3){
+                }else if (data.boolStatus == 3 || (dateStart < dateNow)){
                     $('#divTable').hide();
                     $('#sendLeaveRequest').hide();
                     $('#acceptedLeaveRequest').hide();

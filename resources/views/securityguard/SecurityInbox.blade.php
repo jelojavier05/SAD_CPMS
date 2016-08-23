@@ -536,7 +536,28 @@ $(document).ready(function(){
                     inboxID: inboxID
                 }
             });//ajax
+            $.ajax({
+                type: "GET",
+                url: "{{action('InboxController@getNumberOfUnreadMessages')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                success: function(data){
+                    if (data > 0){
+                        $('#notification_count').text(data);
+                        $('#notification_count').show();
+                    }else{
+                        $('#notification_count').hide();    
+                    }
+                }
+            });//notification update
         }//if else
+
+
     }//function readMessage
 
     function message(){

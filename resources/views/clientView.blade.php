@@ -24,7 +24,7 @@ Clients
                     
                     <div class="row">
                         <div class="col s11" style="margin: -15px 25px 25px 25px;">
-                            <table class="highlight white" style="border-radius:10px;" id="dataTable">
+                            <table class="highlight white" style="border-radius:10px;" id="tableActive">
                                 <thead>
                                     <tr>
                                         <th style="width:50px;"></th>
@@ -176,42 +176,6 @@ Clients
             </div>
         </div>
     </div>
-    
-    <div id="modalsendNoti" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:610px; margin-top:-20px;">
-        	<div class="modal-header">
-                <div class="h">
-                    <h3><center>Send Notifications</center></h3>  
-				</div>
-
-            </div>
-        <div class="modal-content">
-            <div class="row">
-                <div class="col s12">
-                    <button class="btn blue col s12" style="width:20%;" id="btnSuggested">
-                    Suggested
-                    </button>
-                    <table class="striped white" style="border-radius:10px; width:100%;" id="dataTablenoti">
-                        <thead>
-                            <th style="width:10px;"></th>
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Province</th>
-                            <th>City</th>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        
-        <div class="modal-footer ci" style="background-color: #00293C;">
-            <button class="btn waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnSendNotification">Send
-            <i class="material-icons right">send</i>
-            </button>
-        </div>
-    </div>
 </div>
 
 @stop
@@ -227,79 +191,10 @@ Clients
         var guardChecked;
         var guardHasNotification;
         
-        $.ajax({
-
-            type: "GET",
-            url: "{{action('ClientViewController@getGuardWaiting')}}",
-            beforeSend: function (xhr) {
-                var token = $('meta[name="csrf_token"]').attr('content');
-
-                if (token) {
-                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                }
-            },
-            data: { 
-
-            },
-            success: function(data){
-                guardWaiting = data;
-            },
-
-            error: function(data){
-                confirm ('guard pending');
-            },async:false
-        });//get guard waiting
-        
-        $('#dataTablePending').on('click', '.buttonNotification', function(){
-            var id = this.id
-            $.ajax({
-
-                type: "GET",
-                url: "/clientView/get/guardcount?notificationID=" + id,
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                data: { 
-
-                },
-                success: function(data){
-                    if (data.countAccepted == data.countNeedGuard.intNumberOfGuard){
-                        var toastContent = $('<span>You have enough guards for this client.</span>');
-                        Materialize.toast(toastContent, 1500,'green', 'edit');
-                    }else{
-                        clientID = 'clientID' + id;
-                        clientPendingID = id;
-                        $('#modalsendNoti').openModal();
-                        populateTable(clientPendingID);
-                    }
-                },
-
-                error: function(data){
-                    confirm ('guard pending');
-                }
-            });//get guard waiting
-            
-            
-        });
-        
         $('#dataTablePending').on('click', '.buttonMore', function(){
             $.ajax({    
                 type: "GET",
                 url: "/clientView/get/guardaccept?notificationID=" + this.id,
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                data: { 
-
-                },
                 success: function(data){
                     var items = [];
                     $('#guardcontainer').empty();
@@ -307,21 +202,11 @@ Clients
                         $("#guardcontainer").append('<li class="collection-item" style="opacity:100;">' + item.strFirstName + ' ' + item.strLastName + '</li>');
                     });
                 }
-            });//get guard waiting
+            });//get guard accepted
             
             $.ajax({    
                 type: "GET",
                 url: "/clientView/get/selectedclientpending?notificationID=" + this.id,
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                data: { 
-
-                },
                 success: function(data){
                     var area = commaSeparateNumber(data.deciAreaSize);
                     var population = commaSeparateNumber(data.intPopulation);
@@ -342,13 +227,6 @@ Clients
 
                 type: "GET",
                 url: "/clientView/get/guardcount?notificationID=" + this.id,
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
                 success: function(data){
                     $('#guardCount').text('Guards - ' + data.countAccepted + '/' + data.countNeedGuard.intNumberOfGuard);
                 },
@@ -356,7 +234,6 @@ Clients
                     confirm ('guard pending');
                 }
             });//get guard count accepted
-
         });
         
         $('#dataTablePending').on('click', '.buttonProceed', function(){
@@ -365,13 +242,6 @@ Clients
             $.ajax({
                 type: "GET",
                 url: "/clientView/get/guardcount?notificationID=" + id,
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
                 success: function(data){
                     var guardNeeded = data.countNeedGuard.intNumberOfGuard - data.countAccepted;
                     
@@ -381,23 +251,11 @@ Clients
                         var toastContent = $('<span>Not enough guards.</span>');
                         Materialize.toast(toastContent, 1500,'red', 'edit');
                     }
-                },
-                error: function(data){
-                    confirm ('guard pending');
                 }
             });//get guard count accepted
         });
         
-        $('#btnSendNotification').click(function(){
-            getCheckedGuard();
-            if (guardChecked.length > 0){
-                sendData();
-            }else{
-                confirm ('magcheck ka bes! para tumuloy');
-            }
-        });
-        
-        $("#dataTable").DataTable({
+        $("#tableActive").DataTable({
              "columns": [   
             { "orderable": false },
             null,
@@ -410,29 +268,16 @@ Clients
         });
 		
 		$("#dataTablePending").DataTable({
-                 "columns": [
-				{ "orderable": false },
-                null,
-                null,
-				{ "orderable": false },
-				{ "orderable": false }
-                ] ,  
-                "pageLength":5,
-				"lengthMenu": [5,10,15,20]
-            });
-		
-		$("#dataTablenoti").DataTable({
-                 "columns": [
-                { "orderable": false },
-                null,
-                null,
-				null,
-                null,
-                null
-                ] ,  
-                "pageLength":5,
-				"lengthMenu": [5,10,15,20]
-            });
+             "columns": [
+			{ "orderable": false },
+            null,
+            null,
+			{ "orderable": false },
+			{ "orderable": false }
+            ] ,  
+            "pageLength":5,
+			"lengthMenu": [5,10,15,20]
+        });
 		
         $('.buttonMore').click(function() {
 			
@@ -453,66 +298,6 @@ Clients
 				'height': '400px'
 			});
 		});
-        
-        function populateTable(notificationID){
-            var table = $('#dataTablenoti').DataTable();
-            table.clear().draw();
-            $.ajax({
-
-                type: "GET",
-                url: "/clientView/get/clientPendingNotification?notificationID=" + notificationID,
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                success: function(data){
-                    guardHasNotification = data;
-                },
-                error: function(data){
-                    var toastContent = $('<span>Error Occured. </span>');
-                    Materialize.toast(toastContent, 1500,'red', 'edit');
-
-                },async:false
-                
-            });//ajax
-            
-            for(intLoop = 0; intLoop < guardWaiting.length; intLoop ++){
-                var boolchecker = true;
-                for (intLoop2 = 0; intLoop2 < guardHasNotification.length; intLoop2 ++){
-                    if (guardWaiting[intLoop].intGuardID == guardHasNotification[intLoop2].intGuardID){
-                        boolchecker = false;
-                        break;
-                    }
-                }
-                
-                if (boolchecker){
-                    table.row.add([
-                        '<input type="checkbox" id="checkBox' +guardWaiting[intLoop].intGuardID  + '" value = "'+ guardWaiting[intLoop].intGuardID +'"><label for="checkBox' + guardWaiting[intLoop].intGuardID + '"></label>',
-                        
-                        '<h style="height:-15px;">' + guardWaiting[intLoop].intGuardID + '</h>',
-                        '<h style="height:-15px;">' + guardWaiting[intLoop].strFirstName + '</h>',
-                        '<h style="height:-15px;">' + guardWaiting[intLoop].strLastName + '</h>',
-                        '<h style="height:-15px;">' + guardWaiting[intLoop].strProvinceName + '</h>',
-                        '<h style="height:-15px;">' + guardWaiting[intLoop].strCityName + '</h>',
-                    ]).draw(false);
-                }
-            }
-        }
-        
-        function getCheckedGuard(){
-            var intCounter = 0;
-            guardChecked = [];
-            for(intLoop = 0; intLoop < guardWaiting.length; intLoop ++){
-                var guardID = 'checkBox' + guardWaiting[intLoop]['intGuardID'];
-                if ($('#' + guardID).is(':checked')){
-                    guardChecked[intCounter] = guardWaiting[intLoop]['intGuardID'];
-                    intCounter++;
-                }
-            }
-        }
         
         function commaSeparateNumber(val){
             while (/(\d+)(\d{3})/.test(val.toString())){
@@ -545,22 +330,7 @@ Clients
                 }
             });//ajax
         }// magsesend ng clientID sa session
-        
     });
-	
-	$('#dataTablePending').on('click', '.buttonDelete', function(){
-            
-              
-            swal({   title: "Are you sure?",   
-                     text: "Record will be deleted!",   
-                     type: "warning",   
-                     showCancelButton: true,   
-                     confirmButtonColor: "#DD6B55",   
-                     confirmButtonText: "Yes, delete it!",   
-                     closeOnConfirm: false 
-                 });
-        });
-	
 </script>
 
 <script>

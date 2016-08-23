@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Validator;
 use Input;
 use DB;
+use Carbon\Carbon;
 
 class GuardViewController extends Controller
 {
@@ -37,9 +38,31 @@ class GuardViewController extends Controller
     
     public function getInformationGuard(){
         $guardID = Input::get('guardID');
-        
+        $now = Carbon::now();
+
         $guard = Guard::where('intGuardID', $guardID)
             ->first();
+
+        $guard->guardClient = 'No Client';
+
+        $guardStatus = DB::table('tblguardstatus')
+            ->select('intStatusIdentifier')
+            ->where('intGuardID', $guardID)
+            ->where('dateEffectivity', '<', $now)
+            ->orderBy('dateEffectivity', 'desc')
+            ->first();
+
+        if ($guardStatus->intStatusIdentifier == 2 || $guardStatus->intStatusIdentifier == 3){
+            $guardClient = DB::table('tblclientguard')
+                ->join('tblcontract', 'tblcontract.intContractID', '=', 'tblclientguard.intContractID')
+                ->join('tblclient', 'tblclient.intClientID', '=', 'tblcontract.intClientID')
+                ->select('tblclient.strClientName')
+                ->where('tblclientguard.intGuardID', $guard->intGuardID)
+                ->where('tblclientguard.created_at', '<', $now)
+                ->orderBy('tblclientguard.created_at', 'desc')
+                ->first();
+            $guard->guardClient = $guardClient->strClientName;
+        }
         
         $licenseNumber = DB::table('tblguardlicense')
             ->select('strLicenseNumber')
@@ -92,6 +115,7 @@ class GuardViewController extends Controller
         $guard->armedService = $armedService;
         $guard->governmentExamGuard = $governmentExamGuard;
         $guard->governmentExam = $governmentExam;
+        $guard->guardStatus = $guardStatus->intStatusIdentifier;
         
         
         return response()->json($guard);

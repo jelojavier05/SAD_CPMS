@@ -40,17 +40,18 @@ class CGRGuardAttendanceController extends Controller
     		->get();
 
     	$clientGuard = array();
+
     	foreach($guardID as $value){
     		$result = DB::table('tblclientguard')
     			->join('tblguard', 'tblguard.intGuardID', '=', 'tblclientguard.intGuardID')
     			->join('tblguardlicense', 'tblguardlicense.intGuardID', '=', 'tblguard.intGuardID')
     			->select('tblguard.strFirstName','tblguard.strLastName', 'tblguardlicense.strLicenseNumber','tblguard.intGuardID', 'tblclientguard.boolStatus')
-    			->where('tblclientguard.intGuardID' ,$value->intGuardID)
+    			->where('tblclientguard.intGuardID', $value->intGuardID)
     			->where('tblclientguard.created_at', '<', $now)
     			->orderBy('tblclientguard.created_at', 'desc')
     			->first();
 
-			if ($result->boolStatus == 1 || $result->boolStatus == 3){
+			if (!is_null($result) && ($result->boolStatus == 1 || $result->boolStatus == 3)){
 				$resultAttendance = DB::table('tblattendance')
 					->select('datetimeIn', 'datetimeOut')
 					->where('intGuardID', $value->intGuardID)
@@ -68,11 +69,11 @@ class CGRGuardAttendanceController extends Controller
 					}
 				}
 					
-				array_push($clientGuard, $result);
+		  		array_push($clientGuard, $result);
 			}
 
-
     	}
+
     	return response()->json($clientGuard);
     }//get active guard in the cgrm
 

@@ -39,7 +39,7 @@ class GunViewController extends Controller{
         
         $guns = DB::table('tblgun')
             ->join('tblgunlicense', 'tblgunlicense.intGunID', '=', 'tblgun.intGunID')
-            ->select('tblgun.*','tblgunlicense.strLicenseNumber')
+            ->select('tblgun.*','tblgunlicense.strLicenseNumber', 'tblgunlicense.dateExpiration', 'tblgunlicense.dateIssued')
             ->where('tblgun.intGunID', '=' ,$gunID)
             ->first();
         

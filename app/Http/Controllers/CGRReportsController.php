@@ -43,7 +43,7 @@ class CGRReportsController extends Controller
                 ->orderBy('tblclientguard.created_at', 'desc')
                 ->first();
 
-            if ($result->boolStatus == 1 || $result->boolStatus == 3){                    
+            if (!is_null($result) && ($result->boolStatus == 1 || $result->boolStatus == 3)){                    
                 array_push($clientGuard, $result);
             }
         }
