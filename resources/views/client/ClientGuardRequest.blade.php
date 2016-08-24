@@ -75,7 +75,7 @@ Client Request of Guard
 				<div class="row"></div>
 				 <div class="input-field col s12">
 					 <i class="material-icons prefix" style="font-size:35px;">announcement</i>
-					 <textarea  class="materialize-textarea" id="strMessageEdit" type="text" length="224" placeholder=" "></textarea>
+					 <textarea  class="materialize-textarea" id="strMessageEdit" type="text"  placeholder=" "></textarea>
 					 <label for="input_text">Reason</label> 
 					 
 				 </div>
@@ -167,7 +167,7 @@ Client Request of Guard
 		</div>
 	</div>
 	<div class="modal-footer" style="background-color: #00293C;">
-		<button class="btn large green waves-effect waves-light modal-close" name="action" style="margin-right: 30px;" id = "">OK		
+		<button class="btn large green  modal-close" name="action" style="margin-right: 30px;" id = "">OK		
 		</button>
 	</div>	
 </div>
@@ -189,7 +189,7 @@ Client Request of Guard
 				<div class="row"></div>
 				 <div class="input-field col s12">
 					 <i class="material-icons prefix" style="font-size:35px;">announcement</i>
-					 <textarea  class="materialize-textarea" id="strMessageEdit" type="text" length="224" placeholder=" "></textarea>
+					 <textarea  class="materialize-textarea" id="strMessageEdit" type="text"  placeholder=" "></textarea>
 					 <label for="input_text">Reason</label> 
 					 
 				 </div>
@@ -221,7 +221,7 @@ Client Request of Guard
 				<div class="row"></div>
 				 <div class="input-field col s12">
 					 <i class="material-icons prefix" style="font-size:35px;">announcement</i>
-					 <textarea  class="materialize-textarea" id="strMessageEdit" type="text" length="224" placeholder=" "></textarea>
+					 <textarea  class="materialize-textarea" id="strMessageEdit" type="text"  placeholder=" "></textarea>
 					 <label for="input_text">Reason</label> 
 					 
 				 </div>

@@ -20,18 +20,18 @@ Admin
 	<hr>
 </div> -->
  <div class="row"> 
-                    <div class="col s12 push-s3">
-                        <div class="col s3 pull-s1">
-                            <div class="row"></div>
-                            <i class="material-icons" style="font-size:4rem;margin-top:-5%">view_comfy</i>
-                        </div>
-                        <div class="col s4 pull-s3">
-                            <div class="row"></div>
-                            <div class="row"></div>
-                         <h5 style="font-family:Trebuchet MS;color:#262F34;margin-left:-12%;margin-top:-3%">DASHBOARD</h5> 
-                        </div>
-                    
-                    </div>  
+	 <div class="col s12 push-s3">
+		 <div class="col s3 pull-s1">
+			 <div class="row"></div>
+			 <i class="material-icons" style="font-size:4rem;margin-top:-5%">view_comfy</i>
+		 </div>
+		 <div class="col s4 pull-s3">
+			 <div class="row"></div>
+			 <div class="row"></div>
+			 <h5 style="font-family:Trebuchet MS;color:#262F34;margin-left:-12%;margin-top:-3%">DASHBOARD</h5> 
+		 </div>
+         	           
+	 </div>  
      <hr>
  </div>	
 

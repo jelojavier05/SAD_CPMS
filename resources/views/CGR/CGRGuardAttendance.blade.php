@@ -198,12 +198,12 @@ function refreshTable(){
       $.each(data, function(index, value) {
         var strLicense = '<h>'+value.strLicenseNumber+'</h>';
         var strName = '<h>'+value.strFirstName+' '+value.strLastName+'</h>';
-        var btnAction = '<button class="btn waves-effect waves-light blue darken-4 btnTimeIn" type="button" id = '+value.intGuardID+' >Time In</button>';
+        var btnAction = '<button class="btn blue darken-4 btnTimeIn" type="button" id = '+value.intGuardID+' >Time In</button>';
         var strTimeIn = '';
 
         if (value.timeIn != null){
           strTimeIn = value.timeIn;
-          btnAction = '<button class="btn waves-effect waves-light red darken-4 btnTimeOut" type="button" id = '+value.intGuardID+'>Time Out</button>'
+          btnAction = '<button class="btn red darken-4 btnTimeOut" type="button" id = '+value.intGuardID+'>Time Out</button>'
         }
 
         dataTable.row.add([
