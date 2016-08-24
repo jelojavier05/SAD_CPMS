@@ -1,5 +1,8 @@
 <?php
 
+Route::get('/test', 'TestController@index');
+
+
 Route::get('/inbox/get', 'InboxController@getInbox');
 Route::post('/inbox/post/readinbox', 'InboxController@readInbox');
 Route::get('/inbox/get/numberofunreadmessages', 'InboxController@getNumberOfUnreadMessages');

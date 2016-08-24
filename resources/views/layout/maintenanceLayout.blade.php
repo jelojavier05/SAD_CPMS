@@ -21,15 +21,15 @@
   <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/jquery.dataTables.min.css') !!}">
 <!--  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">-->
     <!-- ===============================JSjquery======================================= -->
-   
-  <script src="{!! URL::asset('../javascript/jquery-2.2.1.js') !!}"></script>
+   <script src="{!! URL::asset('../javascript/jquery-2.1.4.js') !!}"></script>
+<!--  <script src="{!! URL::asset('../javascript/jquery-2.2.1.js') !!}"></script>-->
 <!--	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>-->
 
   <!-- <script src="{!! URL::asset('../js/materialize.js') !!}"></script> -->
 <!--  <script src="{!! URL::asset('../jquery/jquery-1.12.0.min.js')!!}"></script> -->
   <script src="{!! URL::asset('../js/init.js') !!}"></script>
   <script src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
-     <script src="{!! URL::asset('../js/jquery.min.1.9.js') !!}"></script>
+     
   <script src="{!! URL::asset('../sweetalert.min.js') !!}"></script>
   <script src="{!! URL::asset('../js/moment.min.js') !!}"></script>
   <script src="{!! URL::asset('../datatable.js') !!}"></script>
@@ -442,6 +442,14 @@ $(document).ready(function() {
 			return false;
 		});
 	});
+</script>
+<script>
+
+$('.datepicker').pickadate({
+    selectMonths: true, 
+    selectYears: 15 
+  });
+
 </script>
 	
 
