@@ -10,7 +10,7 @@ Client
 
 <div class="row">
 	<div class="col s6 push-s4" style=" margin-left:10px; margin-top: 1%;">
-		<div class="container-fluid grey lighten-4 z-depth-2" style="border: 1px solid black; border-radius:5px;" id="personaldata">
+		<div class="container-fluid grey lighten-4 z-depth-2 animated fadeIn" style="border: 1px solid black; border-radius:5px;" id="personaldata">
 			<h4 class = "blue darken-2 white-text" style="margin-top:0px;">Client</h4>
 			<div class = "row">
 				<div class='col s10 push-s1'>

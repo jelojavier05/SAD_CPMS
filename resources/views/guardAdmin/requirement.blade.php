@@ -24,7 +24,7 @@ Guard Form
 </div>
 <div class="row">
 	<div class="col s6 push-s4" style="margin-left:10px;">
-		<div class="container-fluid grey lighten-4 z-depth-1 ci" style="border: 1px solid black; border-radius:5px;">
+		<div class="container-fluid grey lighten-4 z-depth-1 ci animated slideInLeft" style="border: 1px solid black; border-radius:5px;">
 			<div class="row">
 					<div class="col l12 offset-l4">
 						
@@ -61,8 +61,8 @@ Guard Form
 				</div>
 			</div>
 		</div>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id = "backRequirement">Back</button>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextRequirement">Next</button>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left animated slideInLeft" id = "backRequirement">Back</button>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right animated slideInLeft" id = "nextRequirement">Next</button>
 	</div>
 </div>
 @stop

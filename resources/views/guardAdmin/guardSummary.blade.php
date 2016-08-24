@@ -28,7 +28,7 @@ Guard Form
 
 <div class="row">
 	<div class="col s5 push-s4" style="margin-left:10px;">
-		<div class="container-fluid grey lighten-4 z-depth-1 ci" style="border: 1px solid black; border-radius:5px;">
+		<div class="container-fluid grey lighten-4 z-depth-1 ci animated slideInDown" style="border: 1px solid black; border-radius:5px;">
 			<div class="row">
 					<div class="col l12 offset-l2">
 						
@@ -185,7 +185,7 @@ Guard Form
 					</div>
 				</div>
 		</div>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#" id = "backSgSummary">Back</button>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left animated slideInDown" href="#" id = "backSgSummary">Back</button>
 		<button style="margin-top:20px;" class=" z-depth-2 btn-large green right animated infinite flash" id = "btnSave">Save</button>
 	</div>
 </div>

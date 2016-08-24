@@ -11,10 +11,10 @@ Gun Registration
 <div style="margin-top:3%;">
 		
 	<div class="row">
-		<div class="row"></div>
+		
 		<div class="row"></div>
 		<div class="col s8 push-s3" style="margin-left:10px;">
-			<div class="container-fluid grey lighten-4 z-depth-1 ci" style="border: 1px solid black; border-radius:5px;">
+			<div class="container-fluid grey lighten-4 z-depth-1 ci animated bounceIn" style="border: 1px solid black; border-radius:5px;">
 			<div class="row">
 					<div class="col l12">
 						<div class="col l6 push-l1">

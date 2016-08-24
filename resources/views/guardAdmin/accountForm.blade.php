@@ -28,7 +28,7 @@ Guard Form
 
 <div class="row">
 	<div class="col s5 push-s4" style="margin-left:10px;">
-		<div class="container-fluid grey lighten-4 z-depth-1 ci" style="border: 1px solid black; border-radius:5px;">
+		<div class="container-fluid grey lighten-4 z-depth-1 ci animated slideInLeft" style="border: 1px solid black; border-radius:5px;">
 			<div class="row">
 					<div class="col l12 offset-l4">
 						
@@ -56,8 +56,8 @@ Guard Form
             </div>
 		
 		</div>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" href="#" id = "backAccount">Back</button>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" href="#" id = "nextAccount">Next</button>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left animated slideInLeft" href="#" id = "backAccount">Back</button>
+		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right animated slideInLeft" href="#" id = "nextAccount">Next</button>
 	</div>
 </div>
 

@@ -26,7 +26,7 @@ Guard Form
     
 <div id="pd" class="row">
     <div class="col s8 push-s3" style=" margin-left:10px;">
-		<div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;" id="personaldata">
+		<div class="container-fluid grey lighten-4 z-depth-1 animated slideInLeft" style="border: 1px solid black; border-radius:5px;" id="personaldata">
 			<div class="row">	
 				<div class="col s4 push-s4">
 					<h4>Personal Data</h4>
@@ -173,7 +173,7 @@ Guard Form
 
 <div id="gl" class="row">
     <div class="col s8 push-s3" style="margin-left:10px;">
-        <div class="container-fluid grey lighten-4 z-depth-1" style="border: 1px solid black; border-radius:5px;">
+        <div class="container-fluid grey lighten-4 z-depth-1 animated slideInLeft" style="border: 1px solid black; border-radius:5px;">
             <div class="row">	
 				<div class="col s4 push-s4 ci">
 					<h4>Guard License</h4>

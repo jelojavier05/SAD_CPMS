@@ -45,7 +45,7 @@ Admin
       <div class="col l12">
           
       <div class="col l2 offset-l3" >
-      	 <div class="card " style="background-color:#8D230F" >
+      	 <div class="card animated zoomIn" style="background-color:#8D230F" >
             <div class="card-content white-text">
               <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'>{{$value->countClient}}</span>
               <p style="margin-l	eft:10px;">Clients</p>
@@ -62,7 +62,7 @@ Admin
 
 
         <div class="col l2">
-          <div class="card" style="background-color:#1E434C">
+          <div class="card animated zoomIn" style="background-color:#1E434C">
             <div class="card-content white-text">
               <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'guardNumber'>{{$value->countGuard}}</span>
               <p style="margin-left:10px;">Guards</p>
@@ -79,7 +79,7 @@ Admin
      
 
      <div class="col l2">
-           <div class="card" style="background-color:#9B4F0F">
+           <div class="card animated zoomIn" style="background-color:#9B4F0F">
             <div class="card-content white-text">
 
               <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'gunNumber'>{{$value->countGun}}</span>
@@ -99,7 +99,7 @@ Admin
    
      <div class="col l2">
 
-          <div class="card" style="background-color:#323030">
+          <div class="card animated zoomIn" style="background-color:#323030">
             <div class="card-content white-text">
               <span class="card-title" style="font-size:40px; font-weight:bold;">10</span>
               <p style="margin-left:10px;">Gun<br>Licenses</p>
@@ -119,7 +119,7 @@ Admin
           <div class="row">
             <div class="col l12">
                     <div class="col l2 push-l3">
-                         <div class="card" style="background-color:#00293C">
+                         <div class="card animated zoomIn" style="background-color:#00293C">
                                     <div class="card-content white-text">
                                       <span class="card-title" style="font-size:40px; font-weight:bold;">35</span>
                                       <p style="margin-left:10px;">Unpaid <br> Clients</p>

@@ -26,7 +26,7 @@ Guard Form
 
 <div class="row">
     <div class="col s8 push-s3" style="margin-left:10px;">
-        <div class="container-fluid grey lighten-4 z-depth-1 ci" style="border: 1px solid black; border-radius:5px;">
+        <div class="container-fluid grey lighten-4 z-depth-1 ci animated slideInLeft" style="border: 1px solid black; border-radius:5px;">
            <div class="row">
 					<div class="col l12 offset-l4">
 						
@@ -78,7 +78,7 @@ Guard Form
 
 <div class ="row">
     <div class = "col s8 push-s3" style="margin-left:10px;">
-        <div class="container-fluid grey lighten-4 z-depth-1 ci" style="border: 1px solid black; border-radius:5px;">
+        <div class="container-fluid grey lighten-4 z-depth-1 ci animated slideInLeft" style="border: 1px solid black; border-radius:5px;">
               <div class="row">
 					<div class="col l12 offset-l4">
 						
@@ -105,8 +105,8 @@ Guard Form
                 </tbody>
             </table>
         </div>
-        <button style="margin-top:20px;" class=" z-depth-2 btn-large blue left" id="backArmed">Back</button>
-        <button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextArmed">Next</button>
+        <button style="margin-top:20px;" class=" z-depth-2 btn-large blue left animated slideInLeft" id="backArmed">Back</button>
+        <button style="margin-top:20px;" class=" z-depth-2 btn-large blue right animated slideInLeft" id = "nextArmed">Next</button>
     </div>
 </div>
 
