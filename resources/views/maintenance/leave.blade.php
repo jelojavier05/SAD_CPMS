@@ -471,8 +471,7 @@ Leave
 
         function refreshTextfield(){
             document.getElementById('strLeaveType').value = "";
-            document.getElementById('intNumberOfDays').value = "";
-			document.getElementById('intNumberOfRequest').value = "";
+            document.getElementById('intLeaveCount').value = "";			
 			document.getElementById('intNotificationPeriod').value = "";
         }
 

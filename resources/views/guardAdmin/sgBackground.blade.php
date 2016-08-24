@@ -67,7 +67,7 @@ Guard Form
                         <label for="dischargedDishonorably">Discharged Dishonorably</label>
                     </div>
                     <div class="input-field col s6">
-                        <input placeholder = " " id="reason" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true" >
+                        <input placeholder = " " id="reason" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true" >
                         <label data-error="Incorrect" for="reason">Reason</label>
                     </div>
 				</div>

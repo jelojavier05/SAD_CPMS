@@ -266,6 +266,7 @@ Rank
                         refreshTable();
                         $('#modalrankAdd').closeModal();
                         swal("Success!", "Record has been Added!", "success");
+						refreshTextfield();
 
                     },
                     error: function(data){
@@ -453,6 +454,10 @@ Rank
                 }
             });
             return asName;
+        }
+		
+		function refreshTextfield(){            
+            document.getElementById('addRank').value = "";						
         }
         
 	});

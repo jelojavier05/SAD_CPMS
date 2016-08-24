@@ -126,7 +126,7 @@ Client
         <div class="row">
             <div class="col s10 push-s1">
                 <div class="input-field">
-                    <input id="addRounds" type="number" class="validate" required="" aria-required="true">
+                    <input id="addRounds" type="number" class="validate" required="" max="3" aria-required="true">
                     <label for="">Rounds</label> 
                 </div>
             </div>
