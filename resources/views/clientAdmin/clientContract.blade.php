@@ -239,6 +239,7 @@ Client
 $(document).ready(function() {
     
     var countGuard = [];
+    var shiftCount;
     var shiftNumber = [];
     var shiftTo = [];
     var shiftFrom = [];
@@ -293,6 +294,8 @@ $(document).ready(function() {
             $('#areaSize').text(area);
             $('#population').text(population);
 
+            shiftCount = data.shifts.length;
+
             $.each(data.shifts, function(index, value){    
                 var from = value.from;
                 var to = value.to;
@@ -309,7 +312,7 @@ $(document).ready(function() {
                 }
 
                 operationTime += timeDifference;
-                confirm(operationTime);	
+                
                 shiftNumber.push(value.strShiftNumber);
                 shiftFrom.push(from);
                 shiftTo.push(to);
