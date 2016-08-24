@@ -78,9 +78,17 @@ Guard Form
                     </select>
 				</div>
 
+<!--
 				<div class="input-field col s6 ci">
 						<input  id="dateOfbirth" type="date" class="datepicker ci">
 						<label class="active ci" data-error="Incorrect" for="dateOfbirth">Date of Birth</label>
+				</div>
+-->
+			   
+			   <div class="col s6 ci">
+					<label class="active" style="color:#64b5f6;"  for="dateOfbirth">Date of Birth</label>	
+				   <input  id="dateOfbirth" type="date" class="datepicker">
+						
 				</div>
 
 				<div class="input-field col s6">
@@ -421,6 +429,7 @@ Guard Form
         }//sendData()
     });
    
+	
 </script>
 
 @stop
