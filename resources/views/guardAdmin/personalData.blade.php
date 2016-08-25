@@ -5,7 +5,7 @@ Guard Form
 @endsection
 
 @section('content')
-
+<body onload="window.location='#scroll';">
 <div class="row">
 	<div class="col s12 push-s2">
 		<nav>
@@ -14,7 +14,7 @@ Guard Form
 					<div class="col s12 offset-s1">
 						
 						
-							<a href="{{URL::route('personaldata')}}" class="breadcrumb ci">Personal Data</a>
+							<a href="{{URL::route('personaldata')}}" class="breadcrumb ci" >Personal Data</a>
 				
 					
 					</div>
@@ -29,7 +29,7 @@ Guard Form
 		<div class="container-fluid grey lighten-4 z-depth-1 animated slideInLeft" style="border: 1px solid black; border-radius:5px;" id="personaldata">
 			<div class="row">	
 				<div class="col s4 push-s4">
-					<h4>Personal Data</h4>
+					<h4 id="scroll">Personal Data</h4>
 				</div>
 			</div>
 		   <div class="row" style="margin:1%;">
@@ -216,13 +216,14 @@ Guard Form
          </div>
 		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue right" id = "nextPersonalData">Next</button>
      </div>
-</div>
+</body>
 
 
 
 
 
 <input type="hidden" id = "counter" value = "{{$counter}}">
+</div>
 
 @stop
 @section('script')
@@ -428,6 +429,8 @@ Guard Form
             });//ajax
         }//sendData()
     });
+	
+	
    
 	
 </script>
