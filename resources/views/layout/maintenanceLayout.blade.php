@@ -449,8 +449,8 @@ $('.datepicker').pickadate({
     selectMonths: true, 
     selectYears: 60,
 	yearRange: "1960:Today",
-	max: 'Today',
-	format: 'mmmm/d/yyyy'
+	max: new Date(2025,1,1),
+	format: 'yyyy/mm/dd'
 	
   });
 

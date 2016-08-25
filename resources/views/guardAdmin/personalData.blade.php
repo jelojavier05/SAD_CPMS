@@ -85,9 +85,9 @@ Guard Form
 				</div>
 -->
 			   
-			   <div class="col s6 ci">
+			   <div class="input-field col s6 ci">
 					<label class="active" style="color:#64b5f6;"  for="dateOfbirth">Date of Birth</label>	
-				   <input  id="dateOfbirth" type="date" class="datepicker">
+				   <input placeholder=""  id="dateOfbirth" type="date" class="datepicker">
 						
 				</div>
 
