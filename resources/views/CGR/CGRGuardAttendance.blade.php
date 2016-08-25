@@ -50,7 +50,7 @@ Guard Attendance
 							Time In
 						</div>
 						<div class="col s2">
-							12:30AM
+							12/12/12 12:30AM
 						</div>
 					</div>
 				</li>
@@ -67,7 +67,7 @@ Guard Attendance
 							Time In
 						</div>
 						<div class="col s2">
-							12:30AM
+							12/12/12 12:30AM
 						</div>
 					</div>
 				</li>
@@ -84,7 +84,7 @@ Guard Attendance
 							Time Out
 						</div>
 						<div class="col s2">
-							8:30AM
+							12/12/12 8:30AM
 						</div>
 					</div>
 				</li>
