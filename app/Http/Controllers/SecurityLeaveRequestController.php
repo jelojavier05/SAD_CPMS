@@ -33,9 +33,9 @@ class SecurityLeaveRequestController extends Controller
                 ->where('tblguardleave.intLeaveID',$value->intLeaveID)
                 ->orderBy('intGuardLeaveID','desc')
                 ->first();
-            $result->intNotificationPeriod = $value->intNotificationPeriod;
             if (!is_null($result)){
-                array_push($guardLeave, $result);    
+                $result->intNotificationPeriod = $value->intNotificationPeriod;
+                array_push($guardLeave, $result);
             }
         }
 
