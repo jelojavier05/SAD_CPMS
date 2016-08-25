@@ -34,7 +34,7 @@ Guard Attendance
     </div>
 	
 	<div class='col s4 ' style="margin-top:-25px;">
-		<table class="" style="border: 1px solid black;  ">
+		<table class="" style="border: 1px solid black; " id = 'tableAttendanceLog'>
 		
 			<thead class="tablescrollhead">
 				<tr>
@@ -43,44 +43,7 @@ Guard Attendance
 			</thead>
 			
 			<tbody class='tablescrollbody' style=" min-height:200px; max-height:200px;">
-				<tr>		
-					<td>123-321 Martinez have TIMED IN 12/12/12 12:30AM</td>
-					
-				</tr>
 				
-				<tr>
-					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
-				</tr>
-				<tr>
-					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
-				</tr>
-				<tr>
-					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
-				</tr>
-				<tr>
-					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
-				</tr>
-				<tr>
-					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
-				</tr>
-				<tr>
-					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
-				</tr>
-				<tr>
-					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
-				</tr>
-				<tr>
-					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
-				</tr>
-				<tr>
-					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
-				</tr>
-				<tr>
-					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
-				</tr>
-				<tr>
-					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
-				</tr>
 			</tbody>
 		</table>
 	</div> 
@@ -277,15 +240,17 @@ function refreshAttendanceLog(){
     type: "GET",
     url: "{{action('CGRGuardAttendanceController@attendanceLog')}}",
     success: function(data){
-      console.log(data);
+      $('#tableAttendanceLog tr').not(function(){ return !!$(this).has('th').length; }).remove();
       $.each(data, function(index, value){
         var identifier = value.identifier;
         var action;
         if (identifier == 0){
-          action = 'Time out';
+          action = 'OUT';
         }else{
-          action = 'Time in';
+          action = 'IN';
         }
+
+        $('#tableAttendanceLog tr:last').after('<tr><td>'+value.guardName+' - ' +action+ ' - '+ value.dateTime +'</td></tr>');
       });
     }
   });//ajax
