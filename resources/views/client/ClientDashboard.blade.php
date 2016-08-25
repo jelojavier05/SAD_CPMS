@@ -292,6 +292,25 @@ $(document).ready(function() {
   var statusIdentifier;
 
   $.ajax({
+      type: "GET",
+      url: "{{action('InboxController@getNumberOfUnreadMessages')}}",
+      beforeSend: function (xhr) {
+          var token = $('meta[name="csrf_token"]').attr('content');
+
+          if (token) {
+                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+          }
+      },
+      success: function(data){
+          if (data > 0){
+            $('#notification_count').text(data);
+            $('#notification_count').show();
+          }
+      }
+  });//ajax get client information
+
+
+  $.ajax({
     type: "GET",
     url: "{{action('ClientDashboardController@getClientInformation')}}",
     success: function(data){
