@@ -64,7 +64,7 @@ Reports
 									</select>
 -->
 									<label for="input_starttime">Time</label>
-									<input id="input_starttime" input-clock data-twelvehour="false" type="text">
+									<input id="input_starttime" input-clock data-twelvehour="false" type="text" class="timepicker">
 								</div>
 								
 								<div class="input-field col s6">

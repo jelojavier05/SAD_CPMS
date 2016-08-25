@@ -254,6 +254,18 @@ $(document).ready(function() {
     });
 });
 </script>
+	
+	
+<script>
+$('.timepicker').pickatime({
+    default: 'now',
+    twelvehour: true, 
+    donetext: 'OK',
+  autoclose: false,
+ 
+});	
+	
+</script>
 
 	
 	
