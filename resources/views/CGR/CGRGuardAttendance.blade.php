@@ -71,8 +71,8 @@ Guard Attendance
 	</div>	
 </div>
 <!-- sg login End -->
-
-
+  
+  
 @stop
 
 @section('script')
