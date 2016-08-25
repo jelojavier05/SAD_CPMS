@@ -46,6 +46,7 @@ Guard Attendance
 				
 			</tbody>
 		</table>
+		<center><button class="btn blue" style="margin-top:10px;">Load More</button></center>
 	</div> 
   </div>
 </div>

@@ -22,7 +22,7 @@ Reports
 							
 							<div class="input-field col s6">
 								<select id = 'selectGuard'>
-								<option disabled="" selected="">Choose Name Guard</option>
+								<option disabled="" selected="">Choose Guard</option>
 								@foreach($clientGuard as $value)
 									<option value = '{{$value->intGuardID}}'>{{$value->strFirstName}} {{$value->strLastName}}</option>
 								@endforeach
@@ -48,6 +48,7 @@ Reports
 								</div>
 								
 								<div class="input-field col s6">
+<!--
 									<select id = "selectHour" class="browser-default col s8 offset-s2" style='width:65px;'>
 									  	<option value="" disabled selected>---</option>
 									</select>
@@ -61,6 +62,9 @@ Reports
 									  	<option value = 'AM'>AM</option>
 									  	<option value = 'PM'>PM</option>
 									</select>
+-->
+									<label for="input_starttime">Time</label>
+									<input id="input_starttime" input-clock data-twelvehour="false" type="text">
 								</div>
 								
 								<div class="input-field col s6">
