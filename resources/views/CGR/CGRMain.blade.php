@@ -100,11 +100,7 @@
                                                   <a  data-position="right" data-delay="50" data-tooltip="REPORTS"href="/cgrreports" class=" tooltipped"><i class="material-icons" style="font-size:5rem;color:black;margin-left:30%">content_paste</i></a>
     
                                 </div> 
-                                 <div class="row">
-        
-                                                  <a  data-position="right" data-delay="50" data-tooltip="SETTINGS"href="#" class=" tooltipped"><i class="material-icons" style="font-size:5rem;color:black;margin-left:30%">settings</i></a>
-    
-                                </div> 
+                                  
                                
                         
 								
