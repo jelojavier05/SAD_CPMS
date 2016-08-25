@@ -182,8 +182,17 @@ min-height: -25px;
 */
 
 
+.tablescrollbody
+{
+	display: block;
+	height: 100px;       
+    overflow-y: auto;    
+    overflow-x: hidden; 
+}
 
-
-
+.tablescrollhead
+{
+	display:block;
+}
 
 

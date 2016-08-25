@@ -33,29 +33,56 @@ Guard Attendance
       </table>
     </div>
 	
-	<div class='col s4' style="margin-top:-25px;">
-		<ul class="collection with-header attendanceLog" id="attendanceLog" style="border:1px solid black;">
-			<li class="collection-header blue white-text" ><h5 style="font-weight:bold;">Attendance Log</h5>
-			</li>
-			<div class="sidenavhover" style="min-height:300px; max-height:300px;">
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s4">	
-							2013-04019-MN-0
-						</div>
-						<div class="col s3">
-							Bryant
-						</div>
-						<div class="col s3">
-							Time In
-						</div>
-						<div class="col s2">
-							12/12/12 12:30AM
-						</div>
-					</div>
-				</li>
-			</div>
-		</ul>
+	<div class='col s4 ' style="margin-top:-25px;">
+		<table class="" style="border: 1px solid black;  ">
+		
+			<thead class="tablescrollhead">
+				<tr>
+					<th class=""><h4>Attendance Logs</h4></th>
+				</tr>
+			</thead>
+			
+			<tbody class='tablescrollbody' style=" min-height:200px; max-height:200px;">
+				<tr>		
+					<td>123-321 Martinez have TIMED IN 12/12/12 12:30AM</td>
+					
+				</tr>
+				
+				<tr>
+					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
+				</tr>
+				<tr>
+					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
+				</tr>
+				<tr>
+					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
+				</tr>
+				<tr>
+					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
+				</tr>
+				<tr>
+					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
+				</tr>
+				<tr>
+					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
+				</tr>
+				<tr>
+					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
+				</tr>
+				<tr>
+					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
+				</tr>
+				<tr>
+					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
+				</tr>
+				<tr>
+					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
+				</tr>
+				<tr>
+					<td>456-654 Hello have TIMED IN 11/11/11 1:30AM</td>
+				</tr>
+			</tbody>
+		</table>
 	</div> 
   </div>
 </div>
