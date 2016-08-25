@@ -34,8 +34,8 @@ Guard Attendance
     </div>
 	
 	<div class='col s4' style="margin-top:-25px;">
-		<ul class="collection with-header" id="" style="border:1px solid black;">
-			<li class="collection-header blue white-text " ><h5 style="font-weight:bold;">Attendance Log</h5>
+		<ul class="collection with-header attendanceLog" id="attendanceLog" style="border:1px solid black;">
+			<li class="collection-header blue white-text" ><h5 style="font-weight:bold;">Attendance Log</h5>
 			</li>
 			<div class="sidenavhover" style="min-height:300px; max-height:300px;">
 				<li class="collection-item">
@@ -54,52 +54,6 @@ Guard Attendance
 						</div>
 					</div>
 				</li>
-					
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s4">	
-							2013-012345-MN-0
-						</div>
-						<div class="col s3">
-							Durant
-						</div>
-						<div class="col s3">
-							Time In
-						</div>
-						<div class="col s2">
-							12/12/12 12:30AM
-						</div>
-					</div>
-				</li>
-				
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s4">	
-							2013-012345-MN-0
-						</div>
-						<div class="col s3">
-							Durant
-						</div>
-						<div class="col s3">
-							Time Out
-						</div>
-						<div class="col s2">
-							12/12/12 8:30AM
-						</div>
-					</div>
-				</li>
-				<li class="collection-item">test</li>
-				<li class="collection-item">test</li>
-				<li class="collection-item">test</li>
-				<li class="collection-item">test</li>
-				<li class="collection-item">test</li>
-				<li class="collection-item">test</li>
-				<li class="collection-item">test</li>
-				<li class="collection-item">test</li>
-				<li class="collection-item">test</li>
-				<li class="collection-item">test</li>
-				<li class="collection-item">test</li>
-				<li class="collection-item">test</li>
 			</div>
 		</ul>
 	</div> 
@@ -153,6 +107,9 @@ $(document).ready(function(){
   var btnInOut;
   var intGuardID;
   refreshTable();
+  refreshAttendanceLog();
+
+  
 });
 
 $('#tableAttendance').on('click', '.btnTimeIn', function(){
@@ -285,6 +242,25 @@ function refreshTable(){
         ]).draw();
       });//foreach
     },
+  });//ajax
+}
+
+function refreshAttendanceLog(){
+  $.ajax({
+    type: "GET",
+    url: "{{action('CGRGuardAttendanceController@attendanceLog')}}",
+    success: function(data){
+      console.log(data);
+      $.each(data, function(index, value){
+        var identifier = value.identifier;
+        var action;
+        if (identifier == 0){
+          action = 'Time out';
+        }else{
+          action = 'Time in';
+        }
+      });
+    }
   });//ajax
 }
 </script>

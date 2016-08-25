@@ -153,4 +153,60 @@ class CGRGuardAttendanceController extends Controller
 				'deciTotalHours' => $dateDifference
 			]);
     }
+
+    public function attendanceLog(Request $request){
+        $cgrmID = $request->session()->get('id');
+        $now = Carbon::now();
+
+        $result = DB::table('tblcgrm')
+            ->select('intClientID')
+            ->where('intCgrmID', $cgrmID)
+            ->first();
+        $clientID = $result->intClientID;
+    
+        $timeIn = DB::table('tblattendance')
+            ->select('datetimeIn', 'intGuardID')
+            ->where('intClientID', $clientID)
+            ->get();
+
+        $timeOut = DB::table('tblattendance')
+            ->select('datetimeOut', 'intGuardID')
+            ->where('intClientID', $clientID)
+            ->get();
+
+        $attendanceLog = array(); 
+        foreach ($timeIn as $value){
+            $guardName = DB::table('tblguard')
+                ->select('strFirstName', 'strLastName')
+                ->where('intGuardID', $value->intGuardID)
+                ->first();
+
+            $attendance = new \stdClass();
+            $attendance->guardName = $guardName->strFirstName . ' ' . $guardName->strLastName;
+            $attendance->dateTime = $value->datetimeIn;
+            $attendance->identifier = 1;
+
+            // array_push($attendanceLog, $attendance);
+            $attendanceLog [$value->datetimeIn] = $attendance;
+        }
+
+        foreach($timeOut as $value){
+            $guardName = DB::table('tblguard')
+                ->select('strFirstName', 'strLastName')
+                ->where('intGuardID', $value->intGuardID)
+                ->first();
+
+            if (!($value->datetimeOut == '0000-00-00 00:00:00')){
+                $attendance = new \stdClass();
+                $attendance->guardName = $guardName->strFirstName . ' ' . $guardName->strLastName;
+                $attendance->dateTime = $value->datetimeOut;
+                $attendance->identifier = 0;
+
+                // array_push($attendanceLog, $attendance);
+                $attendanceLog [$value->datetimeOut] = $attendance;
+            }
+        }
+        krsort($attendanceLog);
+        return response()->json($attendanceLog);
+    }//attendance log
 }

@@ -101,6 +101,7 @@ Route::get('/userlogin/logout', 'CPMSUserLoginController@logoutAccount');
 Route::get('/cgrmain', 'CGRMainController@index');
 Route::get('/cgrguardattendance', 'CGRGuardAttendanceController@index');
 Route::get('/cgrguardattendance/get/activeguard', 'CGRGuardAttendanceController@getActiveGuard');
+Route::get('/cgrguardattendance/get/attendanceLog', 'CGRGuardAttendanceController@attendanceLog');
 Route::post('/cgrguardattendance/post/login', 'CGRGuardAttendanceController@login');
 Route::post('/cgrguardattendance/post/timein', 'CGRGuardAttendanceController@timeIn');
 Route::post('/cgrguardattendance/post/timeout', 'CGRGuardAttendanceController@timeOut');
