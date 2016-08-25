@@ -450,7 +450,7 @@ $('.datepicker').pickadate({
     selectYears: 60,
 	yearRange: "1960:Today",
 	max: 'Today',
-	format: 'mmmm/d/yyyy'
+	format: 'yyyy/mm/dd'
 	
   });
 
