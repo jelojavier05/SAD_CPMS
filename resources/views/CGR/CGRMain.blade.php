@@ -21,8 +21,8 @@
 	<link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/materialize.clockpicker.css') !!}">
 <!--  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">-->
     <!-- ===============================JSjquery======================================= -->
-   
-  <script src="{!! URL::asset('../javascript/jquery-2.2.1.js') !!}"></script>
+   <script src="{!! URL::asset('../javascript/jquery-2.1.4.js') !!}"></script>
+<!--  <script src="{!! URL::asset('../javascript/jquery-2.2.1.js') !!}"></script>-->
 <!--	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>-->
 
   <script src="{!! URL::asset('../js/materialize.js') !!}"></script>
@@ -263,7 +263,16 @@ $('.timepicker').pickatime({
     donetext: 'OK',
   autoclose: false,
  
-});	
+});
+
+$('.datepicker').pickadate({
+    selectMonths: true, 
+    selectYears: 60,
+	yearRange: "1960:Today",
+	max: new Date(2025,1,1),
+	format: 'yyyy/mm/dd'
+	
+  });
 	
 </script>
 

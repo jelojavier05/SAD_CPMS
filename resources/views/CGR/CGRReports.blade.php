@@ -43,8 +43,12 @@ Reports
 							<div class="col s12">
 								
 								<div class="input-field col s6">
+<!--
 									<input class="" type='date' id="dateIncident">
 									<label class="active" data-error="Incorrect">Date of the Incident</label>
+-->
+									<label class="active" style="color:#64b5f6;"  for="dateIncident">Date of the Incident</label>	
+									<input placeholder=""  id="dateIncident" type="date" class="datepicker">
 								</div>
 								
 								<div class="input-field col s6">
@@ -64,7 +68,7 @@ Reports
 									</select>
 -->
 									<label for="input_starttime">Time</label>
-									<input id="input_starttime" input-clock data-twelvehour="false" type="text" class="timepicker">
+									<input id="input_starttime" input-clock data-twelvehour="false" type="text" class="timepicker" placeholder="">
 								</div>
 								
 								<div class="input-field col s6">
