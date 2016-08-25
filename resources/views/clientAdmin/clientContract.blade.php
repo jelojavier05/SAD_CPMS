@@ -37,7 +37,7 @@ Client
 							</div>
 
 							<div class="input-field col s6">
-								<input  id="contractEnd" type="date" class="datepicker"  required="" aria-required="true" readonly>
+								<input  id="contractEnd" type="date" class="datepicker"  required="" aria-required="true" placeholder="" readonly>
 								<label class="active" data-error="Incorrect" for="contractEnd">End Date</label>
 							</div>
 

@@ -15,10 +15,10 @@ Guard Attendance
 
 <!-- Guard Table Start-->
 <div class="row">
-  <div class="col l12">
-    <div class="col l10 offset-l2 grey lighten-2" style=";max-height:690px; margin-top:-25px;">
+  <div class="col s12 push-s1">
+    <div class="col s6 offset-s1 grey lighten-2" style=";max-height:690px; margin-top:-25px;">
       <table class="centered" id="tableAttendance">
-		  <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/tlph/fn6/fs15/fc222/tct/pct/ftb/bo2/tt0/tw0/th2/ta1/tb4" frameborder="0" width="143" height="40" allowTransparency="true" style="margin-left:80%; margin-top:10px;pointer-events:none;"></iframe>
+		  <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/tlph/fn6/fs15/fc222/tct/pct/ftb/bo2/tt0/tw0/th2/ta1/tb4" frameborder="0" width="143" height="40" allowTransparency="true" style="margin-left:70%; margin-top:10px;pointer-events:none;"></iframe>
         <thead>
           <tr>
             <th data-field="">SG License</th>
@@ -32,6 +32,77 @@ Guard Attendance
         </tbody>
       </table>
     </div>
+	
+	<div class='col s4' style="margin-top:-25px;">
+		<ul class="collection with-header" id="" style="border:1px solid black;">
+			<li class="collection-header blue white-text " ><h5 style="font-weight:bold;">Attendance Log</h5>
+			</li>
+			<div class="sidenavhover" style="min-height:300px; max-height:300px;">
+				<li class="collection-item">
+					<div class="row">
+						<div class="col s4">	
+							2013-04019-MN-0
+						</div>
+						<div class="col s3">
+							Bryant
+						</div>
+						<div class="col s3">
+							Time In
+						</div>
+						<div class="col s2">
+							12:30AM
+						</div>
+					</div>
+				</li>
+					
+				<li class="collection-item">
+					<div class="row">
+						<div class="col s4">	
+							2013-012345-MN-0
+						</div>
+						<div class="col s3">
+							Durant
+						</div>
+						<div class="col s3">
+							Time In
+						</div>
+						<div class="col s2">
+							12:30AM
+						</div>
+					</div>
+				</li>
+				
+				<li class="collection-item">
+					<div class="row">
+						<div class="col s4">	
+							2013-012345-MN-0
+						</div>
+						<div class="col s3">
+							Durant
+						</div>
+						<div class="col s3">
+							Time Out
+						</div>
+						<div class="col s2">
+							8:30AM
+						</div>
+					</div>
+				</li>
+				<li class="collection-item">test</li>
+				<li class="collection-item">test</li>
+				<li class="collection-item">test</li>
+				<li class="collection-item">test</li>
+				<li class="collection-item">test</li>
+				<li class="collection-item">test</li>
+				<li class="collection-item">test</li>
+				<li class="collection-item">test</li>
+				<li class="collection-item">test</li>
+				<li class="collection-item">test</li>
+				<li class="collection-item">test</li>
+				<li class="collection-item">test</li>
+			</div>
+		</ul>
+	</div> 
   </div>
 </div>
 <!-- Guard Table End -->
