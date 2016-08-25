@@ -52,7 +52,7 @@ class GunDeliveryViewController extends Controller
 
         $delivery = new \stdClass();
 
-        if ($result->strReason == '' || (is_null($result))){
+        if ((is_null($result)) || $result->strReason == ''){
             $delivery->reason = false;
         }else{
             $delivery->reason = $result->strReason;

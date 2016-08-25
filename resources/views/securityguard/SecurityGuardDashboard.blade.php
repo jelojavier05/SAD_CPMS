@@ -292,7 +292,7 @@ $(document).ready(function() {
   });//ajax
 
   $('#btnClient').click(function(){
-    if (statusIdentifier == 2){
+    if (statusIdentifier == 2 || statusIdentifier == 3 || statusIdentifier == 4){
       $('#modalCurrentClientDetails').openModal();
       getClientInformation();
     }else{

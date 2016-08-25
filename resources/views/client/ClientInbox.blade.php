@@ -52,18 +52,24 @@ Inbox
 
 @section('script')
 <script>
-$("#inboxTable").DataTable({
-             "columns": [         
-			{"orderable": false},
-			{"orderable": false},
-			null,
-			null,
-			null,
-            ] ,  
-			"pageLength":5,
-			"lengthMenu": [5,10,15,20],
-			"bFilter" : false
-		});
+$(document).ready(function(){
+	
+});
+
 </script>
 
+<script>
+$("#inboxTable").DataTable({
+     "columns": [         
+	{"orderable": false},
+	{"orderable": false},
+	null,
+	null,
+	null,
+    ] ,  
+	"pageLength":5,
+	"lengthMenu": [5,10,15,20],
+	"bFilter" : false
+});
+</script>
 @stop
