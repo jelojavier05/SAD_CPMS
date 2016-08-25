@@ -447,7 +447,11 @@ $(document).ready(function() {
 
 $('.datepicker').pickadate({
     selectMonths: true, 
-    selectYears: 15 
+    selectYears: 60,
+	yearRange: "1960:Today",
+	max: 'Today',
+	format: 'mmmm/d/yyyy'
+	
   });
 
 </script>
