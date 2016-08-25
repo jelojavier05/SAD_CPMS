@@ -313,7 +313,6 @@ $(document).ready(function(){
             }
         },
         success: function(data){
-            console.log(data);
             if (data){
 
                 $.each(data, function(index,value){
