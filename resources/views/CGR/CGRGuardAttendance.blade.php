@@ -132,6 +132,7 @@ $('#btnOkay').click(function(){
             intGuardID: intGuardID
         },
         success: function(data){
+            
             if (data){
               if (btnInOut == 1){
                 timeIn();
@@ -142,6 +143,7 @@ $('#btnOkay').click(function(){
               var toastContent = $('<span>Login failed.</span>');
               Materialize.toast(toastContent, 1500,'red', 'edit');    
             }
+            refreshAttendanceLog();
         },
     });//ajax
   }else{
