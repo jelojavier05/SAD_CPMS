@@ -37,13 +37,18 @@ Guard Attendance
 		<table class="" style="border: 1px solid black; " id = 'tableAttendanceLog'>
 		
 			<thead class="tablescrollhead">
-				<tr>
-					<th class=""><h4>Attendance Logs</h4></th>
-				</tr>
+			
+        <tr>
+          <th>Name</th>
+          <th>Date Time</th>
+          <th>Action</th>
+        </tr>
 			</thead>
 			
 			<tbody class='tablescrollbody' style=" min-height:200px; max-height:200px;">
-				
+				<tr>
+          <td></td>
+        </tr>
 			</tbody>
 		</table>
 		<center><button class="btn blue" style="margin-top:10px;">Load More</button></center>
@@ -243,7 +248,7 @@ function refreshAttendanceLog(){
     type: "GET",
     url: "{{action('CGRGuardAttendanceController@attendanceLog')}}",
     success: function(data){
-      $('#tableAttendanceLog tr').not(function(){ return !!$(this).has('th').length; }).remove();
+      $('#tableAttendanceLog').not(function(){ return !!$(this).has('th').length; }).remove();
       $.each(data, function(index, value){
         var identifier = value.identifier;
         var action;
@@ -253,7 +258,7 @@ function refreshAttendanceLog(){
           action = 'IN';
         }
 
-        $('#tableAttendanceLog tr:last').after('<tr><td>'+value.guardName+' - ' +action+ ' - '+ value.dateTime +'</td></tr>');
+        $('#tableAttendanceLog tr:last').after('<tr><td>'+value.guardName+'</td><td>' +action+ '</td><td>' + value.dateTime +'</td></tr>');
       });
     }
   });//ajax
