@@ -43,32 +43,15 @@ Reports
 							<div class="col s12">
 								
 								<div class="input-field col s6">
-<!--
-									<input class="" type='date' id="dateIncident">
-									<label class="active" data-error="Incorrect">Date of the Incident</label>
--->
+
 									<label class="active" style="color:#64b5f6;"  for="dateIncident">Date of the Incident</label>	
 									<input placeholder=""  id="dateIncident" type="date" class="datepicker">
 								</div>
 								
 								<div class="input-field col s6">
-<!--
-									<select id = "selectHour" class="browser-default col s8 offset-s2" style='width:65px;'>
-									  	<option value="" disabled selected>---</option>
-									</select>
 
-									<select id = "selectMinute" class="browser-default col s8 offset-s2" style='width:65px;'>
-									  	<option value="" disabled selected>---</option>
-									</select>
-
-									<select id = "selectPeriod" class="browser-default col s8 offset-s2" style='width:65px;'>
-									  	<option value="" disabled selected>---</option>
-									  	<option value = 'AM'>AM</option>
-									  	<option value = 'PM'>PM</option>
-									</select>
--->
-									<label for="input_starttime">Time</label>
-									<input id="input_starttime" input-clock data-twelvehour="false" type="text" class="timepicker" placeholder="">
+									<label for="timeIncident">Time</label>
+									<input id="timeIncident" input-clock data-twelvehour="false" type="text" class="timepicker" placeholder="">
 								</div>
 								
 								<div class="input-field col s6">
@@ -199,34 +182,8 @@ $(document).ready(function(){
 	var arrWitnessName = [];
 	var arrContactNumber = [];
 
-	// Select Hour Start
-	for (intLoop = 1; intLoop < 12; intLoop ++){
-		$('#selectHour').append(
-			$("<option></option>")
-				.attr("value",intLoop)
-				.text(intLoop)
-		);
-	}
-	$('#selectHour').append(
-		$("<option></option>")
-			.attr('value', 0)
-			.text('12')
-	);
-	// Select Hour End
-
-	
-	// Select Minute Start
-	for (intLoop = 0; intLoop < 60; intLoop ++){
-		$('#selectMinute').append(
-			$("<option></option>")
-				.attr("value",intLoop)
-				.text(intLoop)
-		);
-	}
-	// Select Minute End
-
-
 	$('#btnSubmit').click(function(){
+		
 		if (checkInput()){
 			$('#modalLogin').openModal();	
 		}else{
@@ -239,17 +196,12 @@ $(document).ready(function(){
 	$('#btnLogin').click(function(){
 		if (login()){
 			var guardID = $('#selectGuard').val();
-			var hour = parseInt($('#selectHour').val());
-			var minute = parseInt($('#selectMinute').val());
-			var date = $('#dateIncident').val();
 			var location = $('#location').val();
 			var description = $('#incidentDescription').val();
+			var date = $('#dateIncident').val();
+			var militaryTime = moment($('#timeIncident').val(), ["h:mmA"]).format("HH:mm");
 
-			if ($('#selectPeriod').val() == "PM"){
-				hour += 12;
-			}//if period is PM
-			
-			var dateTime = moment(date + ' ' + hour + ':' + minute, 'YYYY-MM-DD HH:mm').format();
+			var dateTime = moment(date + ' ' + militaryTime, 'YYYY-MM-DD HH:mm').format();
 			$.ajax({
 	            type: "POST",
 	            url: "{{action('CGRReportsController@postReport')}}",
@@ -363,21 +315,16 @@ $(document).ready(function(){
 	function checkInput(){
 		var checker;
 		var guardID = $('#selectGuard').val();
-		var hour = $('#selectHour').val();
-		var minute = $('#selectMinute').val();
-		var date = $('#dateIncident').val();
 		var location = $('#location').val().trim();
 		var description = $('#incidentDescription').val().trim();
+		var date = $('#dateIncident').val();
 		var dateChecker = moment(date, 'YYYY-MM-DD').isValid();
-		
-		if ($('#selectPeriod').val() == "PM"){
-			var intHour = parseInt(hour) + 12;
-		}//if period is PM
+		var militaryTime = moment($('#timeIncident').val(), ["h:mmA"]).format("HH:mm");
 
-		var dateTime = new Date(moment(date + ' ' + intHour + ':' + minute, 'YYYY-MM-DD HH:mm').format());
+		var dateTime = new Date(moment(date + ' ' + militaryTime, 'YYYY-MM-DD HH:mm').format());
 		var now = new Date();
 
-		if (guardID == null || hour == null || minute == null || !(dateChecker) || description == '' || location == '' || (now < dateTime)){
+		if (guardID == null || !(dateChecker) || description == '' || location == '' || (now < dateTime)){
 			checker = false;
 		}else{
 			checker = true;
