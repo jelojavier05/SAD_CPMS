@@ -39,9 +39,7 @@ Guard Attendance
 			<thead class="tablescrollhead">
 			
         <tr>
-          <th>Name</th>
-          <th>Date Time</th>
-          <th>Action</th>
+          <th>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Action&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date/Time</th>
         </tr>
 			</thead>
 			
@@ -258,7 +256,7 @@ function refreshAttendanceLog(){
           action = 'IN';
         }
 
-        $('#tableAttendanceLog tr:last').after('<tr><td>'+value.guardName+'</td><td>' +action+ '</td><td>' + value.dateTime +'</td></tr>');
+        $('#tableAttendanceLog tr:last').after('<tr><td style="width:100px;">'+value.guardName+'</td><td style="width:100px;"><center>' +action+ '</center></td><td>' + value.dateTime +'</td></tr>');
       });
     }
   });//ajax
