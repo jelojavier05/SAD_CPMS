@@ -17,7 +17,7 @@ Inbox
 		<div id="message">
 			<div class="container-fluid grey lighten-2">	
 				<table class="striped" id="dataTableMsg">
-					<button class="btn modal-trigger" href="#modalClientAddGuard">test</button>
+<!--					<button class="btn modal-trigger" href="#modalClientAddGuard">test</button>-->
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
@@ -203,7 +203,7 @@ Inbox
 			
 			
 <!--modal client request additional guards-->
-		<div id="modalClientAddGuard" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
+		<div id="modalClientAddGuard" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
             <div class="modal-header">
               	<div class="h">
         			<h3><center>Additional Guards</center></h3>  
@@ -213,8 +213,7 @@ Inbox
         	<div class="modal-content">
         		<div class="row">
         			<div class="col s12">
-        				<ul class="collection with-header" id="collectionActive">
-							<li class="collection-header" style="font-weight:bold;">LandBank North Edsa</li>
+        				<ul class="collection with-header" id="collectionActive">							
 							<li class="collection-header" style="font-weight:bold;">
 								<div class='row'>
 									<div class='col s4'>
@@ -228,15 +227,46 @@ Inbox
 							</li>
         					<li class="collection-item"><p id = ''>Penge Guard Need Namen Madami Birthday ni Boss</p>
                             </li>
+							
+							<li class="collection-item">
+        						<div class="row">
+        							<div class="col s12">
+        								
+        								<table class="striped white" style="border-radius:10px; width:100%;" id="dataTableSendNotiMoreGuard">
+        									<thead>
+        										<th class="grey lighten-1" style="width:10px;"></th>
+        										<th class="grey lighten-1">ID</th>
+        										<th class="grey lighten-1">First Name</th>
+        										<th class="grey lighten-1">Last Name</th>
+        										<th class="grey lighten-1">Province</th>
+        										<th class="grey lighten-1">City</th>
+        									</thead>
+        									<tbody>
+        										<tr>
+													<td>
+														<input type="checkbox" id="test1" value = "">
+														<label for="test1"></label>
+													</td>
+													<td>1</td>
+													<td>Kevin</td>
+													<td>Durant</td>
+													<td>Metro Manila</td>
+													<td>Mandaluyong</td>
+												</tr>
+        									</tbody>
+        								</table>
+        							</div>
+        						</div>
+                            </li>
         			</div>
         		</div>
         	</div>
 
             <!-- button -->
-            <div class="modal-footer ci modal-close" style="background-color: #00293C;">
-                <button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK
+            <div class="modal-footer ci" style="background-color: #00293C;">
+        		<button class="btn blue waves-effect waves-light" name="" id = "" style="margin-right: 30px;">Send<i class="material-icons right">send</i>
                 </button>
-            </div>
+        	</div>
 		</div>	
 			
 <!--modal client request additional guards end-->
@@ -672,5 +702,24 @@ $(document).ready(function(){
         "pageLength":5,
         "lengthMenu": [5,10,15,20]
      });
+	
+	$('#dataTableSendNotiMoreGuard').DataTable({
+         "columns": [
+        { "orderable": false },
+        null,
+        null,
+        null,
+        null,
+        null
+        ] ,  
+        "pageLength":3,
+        "lengthMenu": [5,10,15,20]
+     });
+	
+//	$('#btnApproveAdd').click(function(){
+//       $('#modalClientAddGuard').closeModal();
+//    });
+	
+	
 </script>
 @stop

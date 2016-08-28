@@ -6,9 +6,9 @@ Client Homepage
 
 @section('content')
 <body style="overflow:hidden;">
-<div class="container-fluid cards" >
+<div class="container-fluid" >
 <div class='row'>
-	<div class="col s9 push-s2" style="">
+	<div class="col s9 push-s2" style="margin-top: 150px;">
 		<div class="col s6 push-s1" >
       	 <div class="card animated flipInX" style="background-color:#1E434C" >
             <div class="card-content white-text">
@@ -49,11 +49,11 @@ Client Homepage
 
 <!--ITEMSguard-->
 <!--<div class="row">	-->
-<div class='container-fluid guardscroll'>
+<div class='container-fluid'>
 	<div class="col s12">
 		<div class="row">
 			<div class="col s4 push-s3">	
-		<ul class="collection with-header " id="guardcontainer" style="border:none;">
+		<ul class="collection with-header guardscroll " id="guardcontainer" style="border:none;">
 			<li class="collection-header" style="opacity:0;"><h5 style="font-weight:bold;">Guards</h5><a href="#!" class="btn blue right btnback" style="margin-top:-40px;"><i class="material-icons">vertical_align_top</i></a></li>            	        			
 				<div id="guardlist" style="">	
 					<li class="collection-item" style="opacity:0;">
