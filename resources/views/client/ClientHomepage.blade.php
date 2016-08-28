@@ -54,7 +54,7 @@ Client Homepage
 		<div class="row">
 			<div class="col s4 push-s3">	
 		<ul class="collection with-header guardscroll " id="guardcontainer" style="border:none;">
-			<li class="collection-header" style="opacity:0;"><h5 style="font-weight:bold;">Guards</h5><a href="#!" class="btn blue right btnback" style="margin-top:-40px;"><i class="material-icons">vertical_align_top</i></a></li>            	        			
+			<li class="collection-header" style="opacity:0;"><h5 style="font-weight:bold;">Guards</h5><a href="#!" class="btn blue right btnbackguard" style="margin-top:-40px;"><i class="material-icons">vertical_align_top</i></a></li>            	        			
 				<div id="guardlist" style="">	
 					<li class="collection-item" style="opacity:0;">
 						<div class="row">
@@ -122,8 +122,8 @@ Client Homepage
 
 	
 	<div class="col s4 push-s3">	
-		<ul class="collection with-header" id="guncontainer" style="border:none; margin-left:100px;">
-			<li class="collection-header" style="opacity:0;"><h5 style="font-weight:bold;">Guns</h5></li>            	        			
+		<ul class="collection with-header gunscroll" id="guncontainer" style="border:none; margin-left:100px;">
+			<li class="collection-header" style="opacity:0;"><h5 style="font-weight:bold;">Guns</h5><a href="#!" class="btn blue right btnbackgun" style="margin-top:-40px;"><i class="material-icons">vertical_align_top</i></a></li>            	        			
 				<div id="gunlist" style="">	
 					<li class="collection-item" style="opacity:0;">
 						<div class="row">
@@ -209,7 +209,14 @@ $('.guardbtn').click(function() {
         'slow');
 });
 
-$('.btnback').click(function() {
+$('.btnbackguard').click(function() {
+			
+	$('body').animate({
+        scrollTop: $(".cards").offset().top},
+        'slow');
+});
+
+$('.btnbackgun').click(function() {
 			
 	$('body').animate({
         scrollTop: $(".cards").offset().top},
@@ -223,6 +230,10 @@ $('.gunbtn').click(function() {
 		'overflow': 'scroll',
 		'overflow-x': 'hidden',		
 	});
+	
+	$('body').animate({
+        scrollTop: $(".gunscroll").offset().top},
+        'slow');
 });
 </script>
 
