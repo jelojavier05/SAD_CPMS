@@ -47,7 +47,7 @@
     </head>
 
 
-<body id="scrollhider" class="bodyscrollhider grey lighten-3 ci">
+<body id="scrollhider" class="bodyscrollhider grey lighten-3 ci cards">
       <nav class="blue darken-4">
         
          <div class="nav-wrapper">
