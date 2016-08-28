@@ -5,8 +5,8 @@ Client Homepage
 
 
 @section('content')
-<body style="overflow:hidden;">
-<div class="container-fluid" >
+
+<div class="container-fluid cards" >
 <div class='row'>
 	<div class="col s9 push-s2" style="margin-top: 150px;">
 		<div class="col s6 push-s1" >
@@ -189,7 +189,7 @@ Client Homepage
 	</div>
 	</div>
 <!--</div>-->
-</body>
+
 
 <!--ITEMSgunend-->
 @stop
