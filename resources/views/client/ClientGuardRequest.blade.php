@@ -5,26 +5,18 @@ Client Request of Guard
 
 @section('content')
 
-  <div class="row" style="margin-top:-30px;">
-  <div class="row"> 
-        
-    <div class="row">
- 
-     <div class="col s5 push-s3" style="margin-left:-2%">
-    
-                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Guard</h3>
-                </div>
-    
-    </div>
-   
-    </div>
+<div class="row" style="margin-top:-30px;">
+  	<div class="row"> 
+	    <div class="row">
+			<div class="col s5 push-s3" style="margin-left:-2%">
+		       <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Guard</h3>
+		    </div>
+	    </div>
+	</div>
     <div class="col s12 push-s1" style="margin-top:-4%">
         <div class="container white lighten-2 z-depth-2 animated fadeIn">
-<!--            <div class="row">-->
-               
-
-                <div class="col s3 offset-s9">
-                <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalguardAdd">
+			<div class="col s3 offset-s9">
+                <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green">
                     <i class="material-icons left">add</i> ADD
                 </button>
             </div>
@@ -42,7 +34,6 @@ Client Request of Guard
                                 <th class="blue darken-3 white-text">Gender</th>
                             </tr>
                         </thead>
-                        
                         <tbody>
                         </tbody>
                     </table>
@@ -51,7 +42,6 @@ Client Request of Guard
         </div>
     </div>
 </div>
-
 
 <!--modal guard add request-->
 <div id="modalguardAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:425px !important; border-radius:10px;">      
@@ -66,8 +56,8 @@ Client Request of Guard
 				<div class="row"></div>  
 				<div class="input-field col s12">
 					<i class="material-icons prefix" style="font-size:35px;">accessibility</i>
-					<input id="" type="number" class="validate" name = "" required="" aria-required="true" min="1" value="1">
-					<label for="">Number of Guards</label> 
+					<input id="addNumberOfGuards" type="number" class="validate" required="" aria-required="true" min="1" value="1">
+					<label for="addNumberOfGuards">Number of Guards</label> 
 				</div>
 			</div>
 			<div class="col s10 push-s1" style="margin-top:-30px;">      
@@ -75,16 +65,15 @@ Client Request of Guard
 				<div class="row"></div>
 				 <div class="input-field col s12">
 					 <i class="material-icons prefix" style="font-size:35px;">announcement</i>
-					 <textarea  class="materialize-textarea" id="strMessageEdit" type="text"  placeholder=" "></textarea>
-					 <label for="input_text">Reason</label> 
-					 
+					 <textarea  class="materialize-textarea" id="addReason" type="text"  placeholder=" "></textarea>
+					 <label for="addReason">Reason</label> 
 				 </div>
 			</div>
 			
 		</div>
 	</div>
 	<div class="modal-footer" style="background-color: #00293C;">
-		<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnChangePasswordSave">Send
+		<button class="btn large waves-effect waves-light" style="margin-right: 30px;" id = "btnAddRequest">Send
 			<i class="material-icons right">send</i>
 		</button>
 	</div>	
@@ -109,52 +98,52 @@ Client Request of Guard
 					<li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s4">	
-								First Name:<div style="font-weight:normal;" id = 'strFirstName'>&nbsp;&nbsp;&nbsp;Kobe</div>
+								First Name:<div style="font-weight:normal;" id = 'strFirstName'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							
 							<div class="col s4">	
-								Middle Name:<div style="font-weight:normal;" id = 'strMiddleName'>&nbsp;&nbsp;&nbsp;Bean</div>
+								Middle Name:<div style="font-weight:normal;" id = 'strMiddleName'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							
 							<div class="col s4">	
-								Last Name:<div style="font-weight:normal;" id = 'strLastName'>&nbsp;&nbsp;&nbsp;Bryant</div>
+								Last Name:<div style="font-weight:normal;" id = 'strLastName'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 														
 						</div>
 						
 						<div class="row">
 							<div class="col s12">
-								Address:<div style="font-weight:normal;" id = 'strAddress'>&nbsp;&nbsp;&nbsp;123 Hello Street Las Pinas, Metro Manila</div>
+								Address:<div style="font-weight:normal;" id = 'strAddress'>&nbsp;&nbsp;&nbsp;</div>
 							</div>																					
 						</div>
 						
 						<div class="row">
 							<div class="col s6">
-								Place of Birth:<div style="font-weight:normal;" id = 'strPlaceBirth'>&nbsp;&nbsp;&nbsp;Makati City</div>
+								Place of Birth:<div style="font-weight:normal;" id = 'strPlaceBirth'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							
 							<div class="col s6">
-								Age:<div style="font-weight:normal;" id = 'intAge'>&nbsp;&nbsp;&nbsp;25</div>
+								Age:<div style="font-weight:normal;" id = 'intAge'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
 						
 						<div class="row">
 							<div class="col s6">
-								Contact Number (Mobile):<div style="font-weight:normal;" id = 'strContactNumberMobile'>&nbsp;&nbsp;&nbsp;09123456789</div>
+								Contact Number (Mobile):<div style="font-weight:normal;" id = 'strContactNumberMobile'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							
 							<div class="col s6">
-								Contact Number (Landline):<div style="font-weight:normal;" id = 'strContactNumberLandline'>&nbsp;&nbsp;&nbsp;8123456</div>
+								Contact Number (Landline):<div style="font-weight:normal;" id = 'strContactNumberLandline'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
 						
 						<div class="row">
 							<div class="col s6">
-								Gender:<div style="font-weight:normal;" id = 'strGender'>&nbsp;&nbsp;&nbsp;Male</div>
+								Gender:<div style="font-weight:normal;" id = 'strGender'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							
 							<div class="col s6">
-								Civil Status:<div style="font-weight:normal;" id = 'strCivilStatus'>&nbsp;&nbsp;&nbsp;Single</div>
+								Civil Status:<div style="font-weight:normal;" id = 'strCivilStatus'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
 						
@@ -240,6 +229,79 @@ Client Request of Guard
 @stop
 
 @section('script')
+
+
+<!-- Request Add Guard Start-->
+<script>
+$(document).ready(function(){
+	$('#btnAddRequest').click(function(){
+		if (checkInput() && hasAddRequest()){
+			send();
+		}
+	});
+
+	function checkInput(){
+		var numberGuard = $('#addNumberOfGuards').val();
+		var reason = $('#addReason').val().trim();
+		if(numberGuard <= 0 || reason == '' || numberGuard > 50){
+			swal("Error!", "Please check your input.", "error");
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	function hasAddRequest(){
+		var checker;
+		$.ajax({
+	        type: "GET",
+	        url: "{{action('ClientGuardRequestController@hasAddRequest')}}",
+	        success: function(data){
+	        	checker = data;
+	        },
+	        error: function(data){
+	        	var toastContent = $('<span>Error Database.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+	        }
+	    });//ajax
+	    
+	    if (!checker){
+	    	swal("Error!", "You still have pending request.", "error");
+	    }
+		return checker;
+	}
+
+	function send(){
+		var numberGuard = $('#addNumberOfGuards').val();
+		var reason = $('#addReason').val().trim();
+
+		$.ajax({
+	        type: "POST",
+	        url: "{{action('ClientGuardRequestController@addGuard')}}",
+	        beforeSend: function (xhr) {
+	            var token = $('meta[name="csrf_token"]').attr('content');
+
+	            if (token) {
+	                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+	            }
+	        },
+	        data: {
+	            numberGuard: numberGuard,
+	            reason: reason
+	        },
+	        success: function(data){
+	        	swal("Success!", "Request has been sent. Wait for the response.", "success");
+	        },
+	        error: function(){
+	        	var toastContent = $('<span>Error Database.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+	        }
+	    });//ajax
+	}
+});
+</script>
+<!-- Request Add Guard End-->
+
 <script>
 $(document).ready(function(){
 
@@ -248,6 +310,12 @@ $(document).ready(function(){
 	$('#dataTable').on('click', '.buttonMore', function(){
 		getGuardInformation(this.id);
 		$('#modalguardDetails').openModal();
+	});
+
+	$('#btnAdd').click(function(){
+		$('#modalguardAdd').openModal();
+		$('#addNumberOfGuards').val(0);
+		$('#addReason').val('');
 	});
 
 	function getGuardInformation(id){

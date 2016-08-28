@@ -57,4 +57,54 @@ class ClientGuardRequestController extends Controller
         }
         return response()->json($clientGuard);
     }//get active guard in the cgrm
+
+    public function hasAddRequest(Request $request){
+        $clientID = $request->session()->get('id');
+
+        $result = DB::table('tblclientpendingnotification')
+            ->where('intClientID', $clientID)
+            ->where('intStatusIdentifier', 1)
+            ->count();
+
+        if ($result > 0){
+            return response()->json(true);
+        }else{
+            return response()->json(false);
+        }
+    }
+
+    public function addGuard(Request $request){
+            
+
+        try{
+            DB::beginTransaction();
+            $numberGuard = $request->numberGuard;
+            $reason = $request->reason;
+            $senderID = $request->session()->get('accountID');
+            $result = DB::table('tblaccount')
+                ->select('intAccountID')
+                ->where('intAccountType', 3)
+                ->first();
+            $receiverID = $result->intAccountID;
+            $clientID = $request->session()->get('id');
+
+            $inboxID = DB::table('tblinbox')->insertGetId([
+                'intAccountIDSender' => $senderID,
+                'intAccountIDReceiver' => $receiverID,
+                'strMessage' => $reason,
+                'strSubject' => 'Additional guard request',
+                'tinyintType' => 5 // add guard
+            ]);
+            
+            DB::table('tblclientpendingnotification')->insert([
+                'intClientID' => $clientID,
+                'intNumberOfGuard' => $numberGuard,
+                'intInboxID' => $inboxID   
+            ]);
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+    }
 }
