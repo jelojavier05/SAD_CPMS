@@ -17,7 +17,6 @@ Inbox
 		<div id="message">
 			<div class="container-fluid grey lighten-2">	
 				<table class="striped" id="dataTableMsg">
-<!--					<button class="btn modal-trigger" href="#modalClientAddGuard">test</button>-->
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
@@ -119,7 +118,7 @@ Inbox
 			
 			
 			
-<!--		modal sg leave request approval-->
+<!--modal sg leave request approval-->
 		<div id="modalLeaveRequestApproval" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:630px; margin-top:-50px;">
             <div class="modal-header">
               	<div class="h">
@@ -220,12 +219,12 @@ Inbox
 										Number of Guards:
 									</div>
 									
-									<div class="col s2 pull-s1">
-										10
+									<div class="col s2 pull-s1" id = 'numberAdditionalGuard'>
+										
 									</div>
 								</div>
 							</li>
-        					<li class="collection-item"><p id = ''>Penge Guard Need Namen Madami Birthday ni Boss</p>
+        					<li class="collection-item"><p id = 'reasonAdditionalGuard'></p>
                             </li>
 							
 							<li class="collection-item">
@@ -242,17 +241,6 @@ Inbox
         										<th class="grey lighten-1">City</th>
         									</thead>
         									<tbody>
-        										<tr>
-													<td>
-														<input type="checkbox" id="test1" value = "">
-														<label for="test1"></label>
-													</td>
-													<td>1</td>
-													<td>Kevin</td>
-													<td>Durant</td>
-													<td>Metro Manila</td>
-													<td>Mandaluyong</td>
-												</tr>
         									</tbody>
         								</table>
         							</div>
@@ -264,7 +252,7 @@ Inbox
 
             <!-- button -->
             <div class="modal-footer ci" style="background-color: #00293C;">
-        		<button class="btn blue waves-effect waves-light" name="" id = "" style="margin-right: 30px;">Send<i class="material-icons right">send</i>
+        		<button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationAdditionalGuard" style="margin-right: 30px;">Send<i class="material-icons right">send</i>
                 </button>
         	</div>
 		</div>	
@@ -325,6 +313,8 @@ $(document).ready(function(){
             newClientClient();
         }else if (type == 3){
             guardLeaveRequest();
+        }else if(type == 5){
+            clientAdditionalRequest();
         }//if else
     });//button read click
     
@@ -348,6 +338,18 @@ $(document).ready(function(){
 
         }
     });//button send notifiation for guard (leave request)
+
+    $('#btnSendNotificationAdditionalGuard').click(function(){
+        getCheckedGuard();
+        if (guardChecked.length > 0){
+            sendAdditionalGuardNotification();
+        }else{
+            var toastContent = $('<span>Select at least one guard. </span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+
+        }
+    });
+
 
     function readMessage(){
         if($('#radio' + inboxID).is(':checked')){
@@ -647,6 +649,86 @@ $(document).ready(function(){
     // GUARD LEAVE REQUEST END
 
 
+    // ADDITIONAL GUARD REQUEST START
+    function clientAdditionalRequest(){
+        $('#modalClientAddGuard').openModal();
+        if (isRequestAvailable()){
+            getGuardWaiting();
+            populateAdditionalGuard();
+            setRequestInformation();
+        }else{
+
+        }
+    }
+
+    function populateAdditionalGuard(){
+        var table = $('#dataTableSendNotiMoreGuard').DataTable();
+        table.clear().draw();
+        getGuardHasNotification();
+
+        for(intLoop = 0; intLoop < guardWaiting.length; intLoop ++){
+           var boolchecker = true;
+           for (intLoop2 = 0; intLoop2 < guardHasNotification.length; intLoop2 ++){
+               if (guardWaiting[intLoop].intGuardID == guardHasNotification[intLoop2].intGuardID){
+                   boolchecker = false;
+                   break;
+               }
+           }
+
+           if (boolchecker){
+                table.row.add([
+                    '<input type="checkbox" id="checkBox' +guardWaiting[intLoop].intGuardID  + '" value = "'+ guardWaiting[intLoop].intGuardID +'"><label for="checkBox' + guardWaiting[intLoop].intGuardID + '"></label>',
+
+                    '<h style="height:-15px;">' + guardWaiting[intLoop].intGuardID + '</h>',
+                    '<h style="height:-15px;">' + guardWaiting[intLoop].strFirstName + '</h>',
+                    '<h style="height:-15px;">' + guardWaiting[intLoop].strLastName + '</h>',
+                    '<h style="height:-15px;">' + guardWaiting[intLoop].strProvinceName + '</h>',
+                    '<h style="height:-15px;">' + guardWaiting[intLoop].strCityName + '</h>',
+                ]).draw(false);
+           }
+        }
+    }
+
+    function setRequestInformation(){
+        $.ajax({
+            type: "GET",
+            url: "/adminInbox/get/getRequestInformation?id=" + inboxID,
+            success: function(data){
+                $('#numberAdditionalGuard').text(data.intNumberOfGuard);
+                $('#reasonAdditionalGuard').text(data.strMessage);
+            }
+        });//get number of guard
+    }
+
+    function sendAdditionalGuardNotification(){
+        $.ajax({
+            type: "POST",
+            url: "{{action('AdminInboxController@sendAdditionalGuardNotification')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                guardWaiting: guardChecked,
+                inboxID: inboxID,
+            },
+            success: function(data){
+                swal("Success!", "Request has been sent.", "success");
+                $('#modalClientAddGuard').closeModal();
+            },
+            error: function(data){
+                var toastContent = $('<span>Error Occured. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+
+            }
+        });//ajax
+    }
+
+    // ADDITIONAL GUARD REQUEST END
+
 }); 
 </script>        
         
@@ -715,11 +797,6 @@ $(document).ready(function(){
         "pageLength":3,
         "lengthMenu": [5,10,15,20]
      });
-	
-//	$('#btnApproveAdd').click(function(){
-//       $('#modalClientAddGuard').closeModal();
-//    });
-	
-	
 </script>
+	
 @stop

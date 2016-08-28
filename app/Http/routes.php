@@ -16,7 +16,9 @@ Route::get('/adminInbox/get/message', 'AdminInboxController@getMessage');
 Route::get('/adminInbox/get/clientpendingnotificationstatus', 'AdminInboxController@getClientPendingNotificationStatus');
 Route::get('/adminInbox/get/guardrequestleaveinformation', 'AdminInboxController@getGuardRequestLeaveInformation');
 Route::get('/adminInbox/get/getGuardHasNotificationLeaveRequest', 'AdminInboxController@getGuardHasNotificationLeaveRequest');
+Route::get('/adminInbox/get/getRequestInformation', 'AdminInboxController@getRequestInformation');
 Route::post('/adminInbox/send/leaverequestnotification', 'AdminInboxController@sendLeaveRequestNotification');
+Route::post('/adminInbox/send/AdditionalGuardNotification', 'AdminInboxController@sendAdditionalGuardNotification');
 
 
 Route::get('/crm/home', 'CRMHomeController@index');

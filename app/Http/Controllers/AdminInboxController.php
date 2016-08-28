@@ -228,4 +228,62 @@ class AdminInboxController extends Controller
             DB::rollBack();
         }
     }
+
+    public function getRequestInformation(Request $request){
+        $id = Input::get('id');
+        
+        $guardNumber = DB::table('tblinbox')
+            ->join('tblclientpendingnotification', 'tblclientpendingnotification.intInboxID','=','tblinbox.intInboxID')
+            ->select('tblclientpendingnotification.intNumberOfGuard', 'tblinbox.strMessage')
+            ->where('tblinbox.intInboxID',$id)
+            ->first();
+        
+        return response()->json($guardNumber);
+    }
+
+    public function sendAdditionalGuardNotification(Request $request){
+        $arrayGuardID = $request->guardWaiting; 
+        $inboxID = $request->inboxID;
+        $guardID = array(); 
+        $accountID = $request->session()->get('accountID');
+        
+        for ($intLoop = 0; $intLoop < count($arrayGuardID); $intLoop ++){
+            $value = new \stdClass();
+            $value->intGuardID = $arrayGuardID[$intLoop];
+            $accountGuardID = DB::table('tblguard')
+                ->select('intAccountID')
+                ->where('intGuardID', $arrayGuardID[$intLoop])
+                ->first();
+
+            $value->intAccountID = $accountGuardID->intAccountID;
+            array_push($guardID, $value);
+        }
+        
+        try{
+            DB::beginTransaction();
+            $clientPendingID = DB::table('tblclientpendingnotification')
+                ->select('intClientPendingID')
+                ->where('intInboxID', $inboxID)
+                ->first();
+            
+            foreach ($guardID as $value){   
+                $inboxID = DB::table('tblinbox')->insertGetId([
+                    'intAccountIDSender' => $accountID,
+                    'intAccountIDReceiver' =>$value->intAccountID,
+                    'strSubject' => 'Additional Guard',
+                    'tinyintType' => 6
+                ]);
+                
+                DB::table('tblguardpendingnotification')->insert([
+                    'intClientPendingID' => $clientPendingID->intClientPendingID,
+                    'intGuardID' => $value->intGuardID,
+                    'intInboxID' => $inboxID
+                ]);
+            }
+            
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollBack();
+        }
+    }
 }
