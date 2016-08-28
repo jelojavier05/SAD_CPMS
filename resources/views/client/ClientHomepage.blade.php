@@ -6,7 +6,7 @@ Client Homepage
 
 @section('content')
 
-<body style="overflow:hidden">
+<body style="overflow:hidden" onload="window.scrollTo(0, 0);">
 <div class='row'>
 	<div class="col s9 push-s2" style="height:600px;">
 		<div class="col s6 push-s1" >
