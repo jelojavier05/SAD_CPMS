@@ -17,6 +17,7 @@ Inbox
 		<div id="message">
 			<div class="container-fluid grey lighten-2">	
 				<table class="striped" id="dataTableMsg">
+					<button class="btn modal-trigger" href="#modalClientAddGuard">test</button>
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
@@ -32,6 +33,11 @@ Inbox
 				</table>
 			</div>
 		</div>	
+		
+		
+		
+		
+		
         <!-- Message Modal -->
         <div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
             <div class="modal-header">
@@ -57,6 +63,11 @@ Inbox
                 </button>
             </div>
 		</div>
+			
+			
+			
+			
+			
         <!-- Sending notification to guard (new Client) Modal -->
         <div id="modalSendNoti" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:630px; margin-top:-50px;">
             <div class="modal-header">
@@ -102,6 +113,11 @@ Inbox
                 </button>
         	</div>
         </div>
+			
+			
+			
+			
+			
 			
 <!--		modal sg leave request approval-->
 		<div id="modalLeaveRequestApproval" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:630px; margin-top:-50px;">
@@ -180,7 +196,50 @@ Inbox
         	</div>
         </div>
 			
-<!--			modal sg leave request approval end-->
+<!--modal sg leave request approval end-->
+			
+			
+			
+			
+			
+<!--modal client request additional guards-->
+		<div id="modalClientAddGuard" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
+            <div class="modal-header">
+              	<div class="h">
+        			<h3><center>Additional Guards</center></h3>  
+        		</div>
+            </div>
+        	
+        	<div class="modal-content">
+        		<div class="row">
+        			<div class="col s12">
+        				<ul class="collection with-header" id="collectionActive">
+							<li class="collection-header" style="font-weight:bold;">LandBank North Edsa</li>
+							<li class="collection-header" style="font-weight:bold;">
+								<div class='row'>
+									<div class='col s4'>
+										Number of Guards:
+									</div>
+									
+									<div class="col s2 pull-s1">
+										10
+									</div>
+								</div>
+							</li>
+        					<li class="collection-item"><p id = ''>Penge Guard Need Namen Madami Birthday ni Boss</p>
+                            </li>
+        			</div>
+        		</div>
+        	</div>
+
+            <!-- button -->
+            <div class="modal-footer ci modal-close" style="background-color: #00293C;">
+                <button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK
+                </button>
+            </div>
+		</div>	
+			
+<!--modal client request additional guards end-->
 		
 	</div>
 </div>
