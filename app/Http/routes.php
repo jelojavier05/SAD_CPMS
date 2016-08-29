@@ -2,6 +2,8 @@
 
 Route::get('/test', 'TestController@index');
 
+Route::get('/addguardrequestcomplete', 'AddRequestCompleteController@index');
+
 
 Route::get('/inbox/get', 'InboxController@getInbox');
 Route::post('/inbox/post/readinbox', 'InboxController@readInbox');
