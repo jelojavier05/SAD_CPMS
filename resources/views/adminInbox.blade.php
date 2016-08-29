@@ -16,7 +16,7 @@ Inbox
 		<!-- table message -->
 		<div id="message">
 			<div class="container-fluid grey lighten-2">	
-				<table class="striped" id="dataTableMsg">
+				<table class="striped" id="dataTableMsg">					
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
@@ -258,6 +258,67 @@ Inbox
 		</div>	
 			
 <!--modal client request additional guards end-->
+	
+<!--modal add guard request complete guards-->
+	
+		<div id="modaladdguardAccepted" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
+            <div class="modal-header">
+              	<div class="h">
+        			<h3><center>Confirmed Guards</center></h3>  
+        		</div>
+            </div>
+        	
+        	<div class="modal-content">
+        		<div class="row">
+        			<div class="col s12">
+        				<ul class="collection with-header" id="collectionActive">							
+							<li class="collection-header" style="font-weight:bold;">
+								<div class='row'>
+									<div class='col s4'>
+										Number of Guards:
+									</div>
+									
+									<div class="col s2 pull-s1" id = ''>
+										10
+									</div>
+								</div>
+							</li>
+        					<li class="collection-item"><p id = ''>Test Hello Test Hello Test Hello Test Hello Test HelloTest Hello Test Hello Test Hello Test Hello Test Hello Test Hello Test Hello Test Hello Test Hello Test Hello</p>
+                            </li>
+							
+							<li class="collection-item">
+        						<div class="row">
+        							<div class="col s12">
+        								
+        								<table class="striped white" style="border-radius:10px; width:100%;" id="dataTableAcceptedfromMoreGuardRequest">
+        									<thead>        										        										
+        										<th class="grey lighten-1">First Name</th>
+        										<th class="grey lighten-1">Last Name</th>
+        										<th class="grey lighten-1">Gender</th>        										
+        									</thead>
+        									<tbody>
+												<tr>
+													<td>Michael</td>
+													<td>Jordan</td>
+													<td>Male</td>
+												</tr>
+        									</tbody>
+        								</table>
+        							</div>
+        						</div>
+                            </li>
+        			</div>
+        		</div>
+        	</div>
+
+            <!-- button -->
+            <div class="modal-footer ci" style="background-color: #00293C;">
+        		<button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK
+                </button>
+        	</div>
+		</div>	
+			
+<!--modal add guard request complete guards end-->
 		
 	</div>
 </div>
@@ -790,6 +851,16 @@ $(document).ready(function(){
         { "orderable": false },
         null,
         null,
+        null,
+        null,
+        null
+        ] ,  
+        "pageLength":3,
+        "lengthMenu": [5,10,15,20]
+     });
+	
+	$('#dataTableAcceptedfromMoreGuardRequest').DataTable({
+         "columns": [        
         null,
         null,
         null

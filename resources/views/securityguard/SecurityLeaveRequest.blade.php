@@ -7,7 +7,7 @@ Security Leave Request
 
 @section('content')
 
-<!--BASIC LEAVE-->
+
 <div class="row" class="ci">
     
               <div class="col s12 push-s3">
@@ -15,40 +15,9 @@ Security Leave Request
               </div>  
        
     <div class="col s10 push-s3" style="margin-left:-2%;">
-        <div class="col s6 z-depth-1" style="background-color:#90AFC5;border: .5px solid grey">
-                <div class="row">
-                    <div class="col l12 push-l1">
-                        <div class="col s6 pull-s1">
-                            <div class="row"></div>
-                            <span class="black-text" style="font-size:20px;font-family:Myriad Pro">BASIC LEAVE
-                            </span>
-                        </div>
-						<div class="col s12 pull-s1">
-							<table class ="centered">
-								<thead>
-									<tr>
-										<th style="width:50px;" class="blue darken-3 white-text">Leave Type</th>
-										<th style="width:50px;" class="blue darken-3 white-text">Leave Count</th>
-										<th style="width:50px;" class="blue darken-3 white-text">Notification Period</th>
-									</tr>
-								</thead>
-								
-								<tbody>
-									@foreach($guardLeave as $value)
-                                    <tr>
-									   <td>{{$value->strLeaveType}}</td>
-                                       <td>{{$value->intLeaveCount}}</td>
-                                       <td>{{$value->intNotificationPeriod}}</td>
-									</tr>
-                                    @endforeach
-								</tbody>
-							</table>
-						</div>
-                    </div>
-                </div>
-        </div>
+        
     
-        <!-- END OF BASIC LEAVE -->
+       
         
         
         
@@ -135,6 +104,58 @@ Security Leave Request
                 </div>
             </form>  
         </div>
+		
+		<div class="col s5" >
+			<table class="" style="border: 1px solid black; background-color:#90AFC5;" id = 'tableAttendanceLog'>
+		
+				<thead class="tablescrollhead">
+			
+					<tr>
+          	<th>&nbsp;&nbsp;&nbsp;Leave Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date End</th>
+					</tr>
+				</thead>
+			
+				<tbody class='tablescrollbody' style=" min-height:200px; max-height:200px;">
+					<tr>
+						<td style="width:100px;"><center>Sick</center></td>
+						<td style="width:100px;"><center>01/01/2016</center></td>
+						<td style="width:100px;"><center>01/08/2016</center></td>
+					</tr>
+					
+					<tr>
+						<td style="width:100px;"><center>Sick</center></td>
+						<td style="width:100px;"><center>01/01/2016</center></td>
+						<td style="width:100px;"><center>01/08/2016</center></td>
+					</tr>
+					
+					<tr>
+						<td style="width:100px;"><center>Sick</center></td>
+						<td style="width:100px;"><center>01/01/2016</center></td>
+						<td style="width:100px;"><center>01/08/2016</center></td>
+					</tr>
+					
+					<tr>
+						<td style="width:100px;"><center>Sick</center></td>
+						<td style="width:100px;"><center>01/01/2016</center></td>
+						<td style="width:100px;"><center>01/08/2016</center></td>
+					</tr>
+					
+					<tr>
+						<td style="width:100px;"><center>Sick</center></td>
+						<td style="width:100px;"><center>01/01/2016</center></td>
+						<td style="width:100px;"><center>01/08/2016</center></td>
+					</tr>
+					
+					<tr>
+						<td style="width:100px;"><center>Sick</center></td>
+						<td style="width:100px;"><center>01/01/2016</center></td>
+						<td style="width:100px;"><center>01/08/2016</center></td>
+					</tr>
+					
+					
+				</tbody>
+			</table>
+		</div>
     </div>
 </div>
 
