@@ -72,7 +72,8 @@ class SecurityHomepageController extends Controller
     
     public function acceptNewClient(Request $request){
         $guardID = $request->session()->get('id');
-        $inboxID = $request->inboxID;
+        $inboxID = $request->inboxID;  
+        $type = $request->type;
         $now = Carbon::now();
         try{
             DB::beginTransaction();
@@ -131,23 +132,34 @@ class SecurityHomepageController extends Controller
                     ->where('tblclientpendingnotification.intClientPendingID', $clientPendingID)
                     ->first();
 
-                $messageStringAdmin = 'The guards are now complete. ' . $clientAccount->strClientName . ' is ready for contract.';
+                if ($type == 2){
+                    $messageStringAdmin = 'The guards are now complete. ' . $clientAccount->strClientName . ' is ready for contract.';
+                    $strSubjectAdmin = 'New Client Ready';
+
+                    $messageStringClient = 'The guards are now complete. You can finalize your contract in the office.';
+                    $strSubjectClient = 'Guard Complete';
+
+                    DB::table('tblinbox')->insert([
+                        'intAccountIDSender' => $adminAccountID->intAccountID,
+                        'intAccountIDReceiver' => $clientAccount->intAccountID,
+                        'strSubject' => $strSubjectClient,
+                        'strMessage' => $messageStringClient,
+                        'tinyintType' => 0
+                    ]);//inbox for admin
+                }else if ($type == 6){
+                    $messageStringAdmin = 'The guards are now complete for additional guard request.';
+                    $strSubjectAdmin = 'Additional Guard Update';
+                }
+                    
                 DB::table('tblinbox')->insert([
                     'intAccountIDSender' => $clientAccount->intAccountID,
                     'intAccountIDReceiver' => $adminAccountID->intAccountID,
-                    'strSubject' => 'New Client Ready',
+                    'strSubject' => $strSubjectAdmin,
                     'strMessage' => $messageStringAdmin,
                     'tinyintType' => 0
                 ]);//inbox for admin
-
-                $messageStringClient = 'The guards are now complete. You can finalize your contract in the office.';
-                DB::table('tblinbox')->insert([
-                    'intAccountIDSender' => $adminAccountID->intAccountID,
-                    'intAccountIDReceiver' => $clientAccount->intAccountID,
-                    'strSubject' => 'Guard Complete',
-                    'strMessage' => $messageStringClient,
-                    'tinyintType' => 0
-                ]);//inbox for admin
+                
+                    
             }//if else
 
             DB::commit();
@@ -397,6 +409,10 @@ class SecurityHomepageController extends Controller
         }catch(Exception $e){
             DB::rollback();
         }
+    }
+
+    public function acceptAdditionalGuard(Request $request){
+
     }
 }
 

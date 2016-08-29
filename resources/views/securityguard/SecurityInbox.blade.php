@@ -8,19 +8,13 @@ Security Homepage
   <!--MESSAGE-->
 <div class="row">
 	<div class="col s8 push-s3">
-		
         
-        
-		<!--<ul class="tabs" style="">
-        	<li style="color:white"class="tab col l3"><a href="#message" class="active">Messages</a></li>
-        </ul>	-->
-        
-          <div class="row" style="margin-top:-40px;"> 
-                    <div class="col s12 push-s4">
-                     <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#34675C;font-weight:bold">MESSAGES</h3>
-                    </div>  
-                <hr>
-          </div>	
+        <div class="row" style="margin-top:-40px;"> 
+                <div class="col s12 push-s4">
+                 <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#34675C;font-weight:bold">MESSAGES</h3>
+                </div>  
+            <hr>
+        </div>	
         <hr>
 		<!-- table message -->
 		<div id="message">
@@ -288,7 +282,8 @@ $(document).ready(function(){
     var tableRowCounter = 0;
     var table = $('#inboxTable').DataTable();
     var inboxID;
-    
+    var type; 
+
     $.ajax({
             
         type: "GET",
@@ -337,13 +332,13 @@ $(document).ready(function(){
     });//get inbox 
     
     $('#inboxTable').on('click', '.buttonRead', function(){
-        var type = $('#type' + this.id).val();
+        type = $('#type' + this.id).val();
         inboxID = this.id;
         readMessage();
 
         if (type == 0){
             message();
-        }else if (type == 2){//new client request
+        }else if (type == 2 || type == 6){//new client request
             newClient();
         }else if (type == 3){
             leaveRequest();
@@ -351,43 +346,7 @@ $(document).ready(function(){
     });
     
     $('#btnAccept').click(function(){
-        var statusChecker;
-        $.ajax({
-            
-            type: "GET",
-            url: "{{action('SecurityHomepageController@getGuardInformation')}}",
-            success: function(data){
-                if (data.intStatusIdentifier == 0){
-                    statusChecker = true;
-                }else{
-                    statusChecker = false;
-                }
-            },async:false
-        });//guard information
-
-        if (statusChecker){
-            $.ajax({
-                type: "POST",
-                url: "{{action('SecurityHomepageController@acceptNewClient')}}",
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-                    if (token) {
-                        return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                data: {
-                    inboxID:inboxID
-                },
-                success: function(data){
-                    $('#modalNewClientRequest').closeModal();
-                    swal("Accepted", "You accepted the offer. Wait for announcement.", "success");
-                }
-                
-            });//accept
-        }else{
-            var toastContent = $('<span>You are now committed to other client.</span>');
-            Materialize.toast(toastContent, 1500,'red', 'edit');
-        }
+        acceptNewClient();
     });
     
     $('#btnDecline').click(function(){
@@ -416,8 +375,49 @@ $(document).ready(function(){
 
     $('#btnDeclineLeaveRequest').click(function(){
         declineRequestLeave();
-    })
-    
+    });
+
+    function acceptNewClient(){
+        var statusChecker;
+        $.ajax({
+            
+            type: "GET",
+            url: "{{action('SecurityHomepageController@getGuardInformation')}}",
+            success: function(data){
+                if (data.intStatusIdentifier == 0){
+                    statusChecker = true;
+                }else{
+                    statusChecker = false;
+                }
+            },async:false
+        });//guard information
+
+        if (statusChecker){
+            $.ajax({
+                type: "POST",
+                url: "{{action('SecurityHomepageController@acceptNewClient')}}",
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+                    if (token) {
+                        return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: {
+                    inboxID:inboxID,
+                    type: type
+                },
+                success: function(data){
+                    $('#modalNewClientRequest').closeModal();
+                    swal("Accepted", "You accepted the offer. Wait for announcement.", "success");
+                }
+                
+            });//accept
+        }else{
+            var toastContent = $('<span>You are now committed to other client.</span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+    }
+
     function commaSeparateNumber(val){
         while (/(\d+)(\d{3})/.test(val.toString())){
             val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
@@ -555,8 +555,6 @@ $(document).ready(function(){
                 }
             });//notification update
         }//if else
-
-
     }//function readMessage
 
     function message(){
@@ -677,9 +675,8 @@ $(document).ready(function(){
             }
         });//ajax
     }
-
-
     // Leave Request Reliever End
+
 });
 	
 	
