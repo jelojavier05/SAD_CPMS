@@ -11,7 +11,7 @@ Add Request Completion
         
     <div class="row">
  
-     <div class="col s5 push-s3" style="margin-left:-2%">
+     <div class="col s4 push-s3" style="margin-left:-2%">
     
                    <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Guards</h3>
                 </div>
@@ -35,9 +35,13 @@ Add Request Completion
 	    			<div style="font-weight:bold;"><h5>Number of Guards:</div>
 	    		</div>
 
-	    		<div class="col s2">
+	    		<div class="col s1 pull-s1">
 	    			<div><h5>10</h5></div>
 	    		</div>
+					
+				<div class="col s3">
+					<button class="btn blue" style="margin-top:10px;" id="btnProceed">Proceed<i class="material-icons right">send</i></button>
+				</div>
 	    	</div>
 	    </li>
 
@@ -53,15 +57,15 @@ Add Request Completion
                         </thead>
                         
                         <tbody>
-                        	@foreach ($requestInformation->guards as $value)
+                        	
                             <tr>
 							
-								<td><button class="btn blue darken-4 buttonGuardDetails" id = '{{$value->intGuardID}}'><i class="material-icons">chevron_right</i></button></td>
-								<td>{{$value->strLicenseNumber}}</td>
-								<td>{{$value->strFirstName}} {{$value->strLastName}}</td>
-								<td>{{$value->strGender}}</td>
+								<td><button class="btn blue darken-4 buttonGuardDetails" id = ''><i class="material-icons">chevron_right</i></button></td>
+								<td>123-321</td>
+								<td>Hi Hello</td>
+								<td>Male</td>
 							</tr>
-							@endforeach
+							
                         </tbody>
                     </table>
 	    </li>
