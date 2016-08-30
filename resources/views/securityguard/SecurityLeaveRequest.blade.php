@@ -99,24 +99,55 @@ Security Leave Request
             </form>  
         </div>
 		
-		<div class="col s5" >
-			<table class="" style="border: 1px solid black; background-color:#90AFC5;" id = 'tableAttendanceLog'>
+		<div class="col s5"  >
+			<div class="container-fluid grey lighten-2" style="padding:2%;">
+			<table class="striped" style="border: 1px solid black;" id = 'tableLeaveLog'>
 		
-				<thead class="tablescrollhead">
+				<thead>
 			
+
 					<tr>
-          	<th>&nbsp;&nbsp;&nbsp;Leave Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date End</th>
+						<th class="grey lighten-1">Leave Type</th>
+						<th class="grey lighten-1">Date Start</th>
+						<th class="grey lighten-1">Date End</th>
 					</tr>
 				</thead>
 			
-				<tbody class='tablescrollbody' style=" min-height:200px; max-height:200px;">
+				<tbody  style=" min-height:200px; max-height:200px;">
 					<tr>
-						<td style="width:100px;"><center>Sick</center></td>
-						<td style="width:100px;"><center>01/01/2016</center></td>
-						<td style="width:100px;"><center>01/08/2016</center></td>
+						<td>Sick</td>
+						<td>01/01/2016</td>
+						<td>01/08/2016</td>
 					</tr>
+					<tr>
+						<td>Sick</td>
+						<td>01/01/2016</td>
+						<td>01/08/2016</td>
+					</tr>
+					<tr>
+						<td>Sick</td>
+						<td>01/01/2016</td>
+						<td>01/08/2016</td>
+					</tr>
+					<tr>
+						<td>Sick</td>
+						<td>01/01/2016</td>
+						<td>01/08/2016</td>
+					</tr>
+					<tr>
+						<td>Sick</td>
+						<td>01/01/2016</td>
+						<td>01/08/2016</td>
+					</tr>
+					<tr>
+						<td>Sick</td>
+						<td>01/01/2016</td>
+						<td>01/08/2016</td>
+					</tr>
+					
 				</tbody>
 			</table>
+		</div>
 		</div>
     </div>
 </div>
@@ -225,5 +256,17 @@ Security Leave Request
 
 
     });
+</script>
+<script>
+
+$("#tableLeaveLog").DataTable({             
+ "columns": [      
+ null,
+ null,
+ null,
+ ] ,  
+ "pageLength":5,
+ "bLengthChange": false		
+});
 </script>
 @stop
