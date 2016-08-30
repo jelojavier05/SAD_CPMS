@@ -19,21 +19,31 @@ Add Request Completion
     </div>
    
     </div>
-    <div class="col s12 push-s1" style="margin-top:-4%">
-        <div class="container white lighten-2 z-depth-2 animated fadeIn">
-<!--            <div class="row">-->
-               
+    <div class="col s8 push-s3" style="margin-top:-4%">
+    <ul class="collection with-header">
+	    <li class="collection-header">
+	    	<div class="row">
+	    		<div class="col s1">
+	    			<div style="font-weight:bold;"><h5>Client:</div>
+	    		</div>
 
-                <div class="col s6 offset-s9">
-                <button style="margin-top: 30px;" id="btnProceed" class=" z-depth-2 btn-large blue " >
-                     Proceed<i class="material-icons right">send</i>
-                </button>
-            </div>
-            
-            <div class="row">
-                <div class="col s12" style="margin-top:-5px;">
-                    <table class="striped white" style="border-radius:10px;" id="tableConfirmedGuards">
-                        <thead>
+	    		<div class="col s3">
+	    			<div><h5>LandBank</h5></div>
+	    		</div>
+
+	    		<div class="col s4">
+	    			<div style="font-weight:bold;"><h5>Number of Guards:</div>
+	    		</div>
+
+	    		<div class="col s2">
+	    			<div><h5>10</h5></div>
+	    		</div>
+	    	</div>
+	    </li>
+
+	    <li class="collection-item">
+	    	<table class="striped white" style="border-radius:10px;" id="tableConfirmedGuards">
+                    	   <thead>
                             <tr>
                                 <th style="width:50px;" class="grey lighten-1 "></th>                                
                                 <th class="grey lighten-1 ">Guard License</th>
@@ -54,9 +64,8 @@ Add Request Completion
 							@endforeach
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
+	    </li>
+    </ul>
     </div>
 </div>
 
