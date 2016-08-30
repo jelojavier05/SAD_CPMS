@@ -15,12 +15,6 @@ Security Leave Request
               </div>  
        
     <div class="col s10 push-s3" style="margin-left:-2%;">
-        
-    
-       
-        
-        
-        
         <!-- LEAVE FORM -->
         <div class="col s5">
             <form class="card medium z-depth-1" style="height:420px !important;margin-top:-.1%;background-color:#90AFC5;border: .5px solid grey">
@@ -121,38 +115,6 @@ Security Leave Request
 						<td style="width:100px;"><center>01/01/2016</center></td>
 						<td style="width:100px;"><center>01/08/2016</center></td>
 					</tr>
-					
-					<tr>
-						<td style="width:100px;"><center>Sick</center></td>
-						<td style="width:100px;"><center>01/01/2016</center></td>
-						<td style="width:100px;"><center>01/08/2016</center></td>
-					</tr>
-					
-					<tr>
-						<td style="width:100px;"><center>Sick</center></td>
-						<td style="width:100px;"><center>01/01/2016</center></td>
-						<td style="width:100px;"><center>01/08/2016</center></td>
-					</tr>
-					
-					<tr>
-						<td style="width:100px;"><center>Sick</center></td>
-						<td style="width:100px;"><center>01/01/2016</center></td>
-						<td style="width:100px;"><center>01/08/2016</center></td>
-					</tr>
-					
-					<tr>
-						<td style="width:100px;"><center>Sick</center></td>
-						<td style="width:100px;"><center>01/01/2016</center></td>
-						<td style="width:100px;"><center>01/08/2016</center></td>
-					</tr>
-					
-					<tr>
-						<td style="width:100px;"><center>Sick</center></td>
-						<td style="width:100px;"><center>01/01/2016</center></td>
-						<td style="width:100px;"><center>01/08/2016</center></td>
-					</tr>
-					
-					
 				</tbody>
 			</table>
 		</div>
