@@ -288,15 +288,7 @@ $(document).ready(function(){
         $.ajax({
             type: "GET",
             url: "/getInformation?guardID=" + this.id,
-            beforeSend: function (xhr) {
-                var token = $('meta[name="csrf_token"]').attr('content');
-
-                if (token) {
-                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                }
-            },
             success: function(data){
-                console.log(data);
 
                 var dob = new Date(data.dateBirthday);
                 var today = new Date();

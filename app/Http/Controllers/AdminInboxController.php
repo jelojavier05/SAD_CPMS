@@ -286,4 +286,61 @@ class AdminInboxController extends Controller
             DB::rollBack();
         }
     }
+
+    public function getAdditionalGuardInformation(Request $request){
+        $inboxID = Input::get('inboxID');
+        
+        $result = DB::table('tblinbox')
+            ->select('intAccountIDSender')
+            ->where('intInboxID', $inboxID)
+            ->first();
+        $accountIDSender = $result->intAccountIDSender;
+
+        $result = DB::table('tblaccount')
+            ->join('tblclient', 'tblclient.intAccountID', '=', 'tblaccount.intAccountID')
+            ->join('tblclientpendingnotification','tblclientpendingnotification.intClientID', '=', 'tblclient.intClientID')
+            ->select('tblclientpendingnotification.intClientPendingID')
+            ->where('tblaccount.intAccountID', $accountIDSender)
+            ->orderBy('tblclientpendingnotification.intClientPendingID', 'desc')
+            ->first();
+        $clientPendingID = $result->intClientPendingID;
+
+        $requestInformation = DB::table('tblclientpendingnotification')
+            ->join('tblinbox', 'tblinbox.intInboxID', '=', 'tblclientpendingnotification.intInboxID')
+            ->select('tblinbox.strMessage', 'tblclientpendingnotification.intNumberOfGuard')
+            ->where('tblclientpendingnotification.intClientPendingID', $clientPendingID)
+            ->first();
+
+        
+        $result = DB::table('tblguardpendingnotification')
+            ->join('tblguard','tblguard.intGuardID', '=', 'tblguardpendingnotification.intGuardID')
+            ->select('tblguard.strFirstName','tblguard.strLastName', 'tblguard.strGender')
+            ->where('tblguardpendingnotification.intClientPendingID', $clientPendingID)
+            ->where('tblguardpendingnotification.intStatusIdentifier', 2)
+            ->get();
+
+        $requestInformation->guards = $result;
+
+        return response()->json($requestInformation);
+    }
+
+    public function setAdditionalGuardID(Request $request){
+        $inboxID = $request->inboxID;
+        $result = DB::table('tblinbox')
+            ->select('intAccountIDSender')
+            ->where('intInboxID', $inboxID)
+            ->first();
+        $accountIDSender = $result->intAccountIDSender;
+
+        $result = DB::table('tblaccount')
+            ->join('tblclient', 'tblclient.intAccountID', '=', 'tblaccount.intAccountID')
+            ->join('tblclientpendingnotification','tblclientpendingnotification.intClientID', '=', 'tblclient.intClientID')
+            ->select('tblclientpendingnotification.intClientPendingID')
+            ->where('tblaccount.intAccountID', $accountIDSender)
+            ->orderBy('tblclientpendingnotification.intClientPendingID', 'desc')
+            ->first();
+        $clientPendingID = $result->intClientPendingID;
+
+        $request->session()->put('additionalGuardID', $clientPendingID);
+    }       
 }

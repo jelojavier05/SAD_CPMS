@@ -39,20 +39,19 @@ Add Request Completion
                                 <th class="grey lighten-1 ">Guard License</th>
                                 <th class="grey lighten-1 ">Name</th>
                                 <th class="grey lighten-1 ">Gender</th>
-								<th class="grey lighten-1">Address</th>
                             </tr>
                         </thead>
                         
                         <tbody>
+                        	@foreach ($requestInformation->guards as $value)
                             <tr>
 							
-								<td><button class="btn blue darken-4 buttonGuardDetails"><i class="material-icons">chevron_right</i></button></td>
-								<td>2013-12345-MN-0</td>
-								<td>Stephen Curry</td>
-								<td>Male</td>
-								<td>123 Hello Street Pasig Metro Manila</td>
-								
+								<td><button class="btn blue darken-4 buttonGuardDetails" id = '{{$value->intGuardID}}'><i class="material-icons">chevron_right</i></button></td>
+								<td>{{$value->strLicenseNumber}}</td>
+								<td>{{$value->strFirstName}} {{$value->strLastName}}</td>
+								<td>{{$value->strGender}}</td>
 							</tr>
+							@endforeach
                         </tbody>
                     </table>
                 </div>
@@ -73,57 +72,56 @@ Add Request Completion
 			
 			<div class="col s12" style="margin-top:-30px;">      
 				<ul class="collection with-header" id="collectionActive" >
-					<div >
-							
+					<div >							
 					<li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s4">	
-								First Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Jason</div>
+								First Name:<div style="font-weight:normal;" id = 'firstName'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							
 							<div class="col s4">	
-								Middle Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Rivera</div>
+								Middle Name:<div style="font-weight:normal;" id = 'middleName'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							
 							<div class="col s4">	
-								Last Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Paredes</div>
+								Last Name:<div style="font-weight:normal;" id = 'lastName'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 														
 						</div>
 						
 						<div class="row">
 							<div class="col s12">
-								Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 Hello Street Pasig, Metro Manila</div>
+								Address:<div style="font-weight:normal;" id = 'addressGuard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>																					
 						</div>
 						
 						<div class="row">
 							<div class="col s6">
-								Place of Birth:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Makati City</div>
+								Place of Birth:<div style="font-weight:normal;" id = 'placeOfBirth'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							
 							<div class="col s6">
-								Age:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;30</div>
+								Age:<div style="font-weight:normal;" id = 'age'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
 						
 						<div class="row">
 							<div class="col s6">
-								Contact Number (Mobile):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
+								Contact Number (Mobile):<div style="font-weight:normal;" id = 'mobileNumber'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							
 							<div class="col s6">
-								Contact Number (Landline):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;8123456</div>
+								Contact Number (Landline):<div style="font-weight:normal;" id = 'landlineNumber'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
 						
 						<div class="row">
 							<div class="col s6">
-								Gender:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Male</div>
+								Gender:<div style="font-weight:normal;" id = 'gender'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							
 							<div class="col s6">
-								Civil Status:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Single</div>
+								Civil Status:<div style="font-weight:normal;" id = 'civilStatus'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
 						
@@ -153,13 +151,41 @@ $("#tableConfirmedGuards").DataTable({
  null,
  null,
  null,
- null
  ] ,  
  "pageLength":5,
  "lengthMenu": [5,10,15,20],		
 });
 
  $('#tableConfirmedGuards').on('click', '.buttonGuardDetails', function(){
+	 $.ajax({
+            type: "GET",
+            url: "/getInformation?guardID=" + this.id,
+            success: function(data){
+
+                var dob = new Date(data.dateBirthday);
+                var today = new Date();
+                var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+                var bodyAttributesGuard = data.bodyAttributesGuard;
+                var bodyAttributes = data.bodyAttributes;
+                var armedService = data.armedService;
+                var governmentExamGuard = data.governmentExamGuard;
+                var governmentExam = data.governmentExam;
+
+                $('#firstName').text(data.strFirstName);
+                $('#middleName').text(data.strMiddleName);
+                $('#lastName').text(data.strLastName);
+                $('#licenseNumber').text(data.licenseNumber.strLicenseNumber);
+                $('#addressGuard').text(data.address.strAddress + ' ' + data.address.strCityName + ', ' + data.address.strProvinceName);
+                $('#age').text(age);
+                $('#gender').text(data.strGender);
+                $('#placeOfBirth').text(data.strPlaceBirth);
+                $('#mobileNumber').text(data.strContactNumberMobile);
+                $('#landlineNumber').text(data.strContactNumberLandline);
+                $('#civilStatus').text(data.strCivilStatus);
+            }
+         
+        });//ajax
+
 	$('#modalGuardDetails').openModal(); 
  });
 	

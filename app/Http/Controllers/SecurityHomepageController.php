@@ -145,10 +145,13 @@ class SecurityHomepageController extends Controller
                         'strSubject' => $strSubjectClient,
                         'strMessage' => $messageStringClient,
                         'tinyintType' => 0
-                    ]);//inbox for admin
+                    ]);//inbox for client
+
+                    $intType = 0;
                 }else if ($type == 6){
                     $messageStringAdmin = 'The guards are now complete for additional guard request.';
                     $strSubjectAdmin = 'Additional Guard Update';
+                    $intType = 7;
                 }
                     
                 DB::table('tblinbox')->insert([
@@ -156,7 +159,7 @@ class SecurityHomepageController extends Controller
                     'intAccountIDReceiver' => $adminAccountID->intAccountID,
                     'strSubject' => $strSubjectAdmin,
                     'strMessage' => $messageStringAdmin,
-                    'tinyintType' => 0
+                    'tinyintType' => $intType
                 ]);//inbox for admin
                 
                     

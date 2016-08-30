@@ -112,12 +112,7 @@ Inbox
                 </button>
         	</div>
         </div>
-			
-			
-			
-			
-			
-			
+		
 <!--modal sg leave request approval-->
 		<div id="modalLeaveRequestApproval" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:630px; margin-top:-50px;">
             <div class="modal-header">
@@ -196,11 +191,7 @@ Inbox
         </div>
 			
 <!--modal sg leave request approval end-->
-			
-			
-			
-			
-			
+					
 <!--modal client request additional guards-->
 		<div id="modalClientAddGuard" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
             <div class="modal-header">
@@ -278,12 +269,10 @@ Inbox
 										Number of Guards:
 									</div>
 									
-									<div class="col s2 pull-s1" id = ''>
-										10
-									</div>
+									<div class="col s2 pull-s1" id = 'addRequestGuard'></div>
 								</div>
 							</li>
-        					<li class="collection-item"><p id = ''>Test Hello Test Hello Test Hello Test Hello Test HelloTest Hello Test Hello Test Hello Test Hello Test Hello Test Hello Test Hello Test Hello Test Hello Test Hello</p>
+        					<li class="collection-item"><p id = 'addRequestReason'></p>
                             </li>
 							
 							<li class="collection-item">
@@ -297,11 +286,7 @@ Inbox
         										<th class="grey lighten-1">Gender</th>        										
         									</thead>
         									<tbody>
-												<tr>
-													<td>Michael</td>
-													<td>Jordan</td>
-													<td>Male</td>
-												</tr>
+												
         									</tbody>
         								</table>
         							</div>
@@ -313,7 +298,7 @@ Inbox
 
             <!-- button -->
             <div class="modal-footer ci" style="background-color: #00293C;">
-        		<button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK
+        		<button class="btn green waves-effect waves-light" id = "btnAddRequestProceed" style="margin-right: 30px;">Proceed
                 </button>
         	</div>
 		</div>	
@@ -376,6 +361,8 @@ $(document).ready(function(){
             guardLeaveRequest();
         }else if(type == 5){
             clientAdditionalRequest();
+        }else if (type == 7){
+            additionalGuardApproved();
         }//if else
     });//button read click
     
@@ -409,6 +396,11 @@ $(document).ready(function(){
             Materialize.toast(toastContent, 1500,'red', 'edit');
 
         }
+    });
+
+    $('#btnAddRequestProceed').click(function(){
+        setAdditionalGuardID();
+        window.location.href = '{{ URL::to("/addguardrequestcomplete") }}';
     });
 
 
@@ -787,8 +779,58 @@ $(document).ready(function(){
             }
         });//ajax
     }
-
     // ADDITIONAL GUARD REQUEST END
+
+    // ADDITIONAL GUARD REQUEST APPROVED START
+    function additionalGuardApproved(){
+        $('#modaladdguardAccepted').openModal();
+        getInfoAddGuardApproved();
+    }
+
+    function getInfoAddGuardApproved(){
+        $.ajax({
+            type: "GET",
+            url: "/adminInbox/get/AdditionalGuardInformation?inboxID=" + inboxID,
+            success: function(data){
+                $('#addRequestGuard').text(data.intNumberOfGuard);
+                $('#addRequestReason').text(data.strMessage);
+                var table = $('#dataTableAcceptedfromMoreGuardRequest').DataTable();
+                table.clear().draw();
+
+                $.each(data.guards,function(index,value){
+                    var firstName = '<h>' + value.strFirstName + '</h>';
+                    var lastName = '<h>' + value.strLastName + '</h>';
+                    var gender = '<h>' + value.strGender + '</h>';
+                    table.row.add([
+                        firstName,
+                        lastName,
+                        gender
+                    ]).draw(false);
+                }); 
+            }
+        });//ajax
+    }
+
+    function setAdditionalGuardID(){
+        $.ajax({
+            type: "POST",
+            url: "{{action('AdminInboxController@setAdditionalGuardID')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                inboxID: inboxID
+            },
+            success: function(data){
+
+            }
+        });//ajax
+    }
+    // ADDITIONAL GUARD REQUEST APPROVED END
 
 }); 
 </script>        
