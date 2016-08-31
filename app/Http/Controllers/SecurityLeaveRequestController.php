@@ -23,8 +23,14 @@ class SecurityLeaveRequestController extends Controller
             ->where('intAccountID', $accountID)
             ->first();
 
-        $guardLeave = array();
+        $guardLeaveLogResult = DB::table('tblguardleaverequest')
+            ->join('tblleave', 'tblleave.intLeaveID', '=', 'tblguardleaverequest.intLeaveID')
+            ->select('tblguardleaverequest.dateStart', 'tblguardleaverequest.dateEnd','tblguardleaverequest.boolStatus', 'tblleave.strLeaveType')
+            ->where('intGuardID', $guardInformation->intGuardID)
+            ->orderBy('dateStart', 'desc')
+            ->get();
 
+        $guardLeave = array();
         foreach($arrLeaveID as $value){
             $result = DB::table('tblguardleave')
                 ->join('tblleave', 'tblleave.intLeaveID', '=','tblguardleave.intLeaveID')
@@ -39,8 +45,29 @@ class SecurityLeaveRequestController extends Controller
             }
         }
 
+        $guardLeaveLog = array();
+        foreach($guardLeaveLogResult as $value){
+            $value->dateStartFormat = date('M d', strtotime($value->dateStart));    
+            $value->dateEndFormat = date('M d', strtotime($value->dateEnd));    
+
+            $boolStatus = $value->boolStatus;
+
+            if ($boolStatus == 0){
+                $value->strStatus = 'Rejected';
+            }else if ($boolStatus == 1){
+                $value->strStatus = 'Pending';
+            }else if ($boolStatus == 2){
+                $value->strStatus = 'Accepted';
+            }
+
+            array_push($guardLeaveLog, $value);
+        }
+
+        
+
         return view('/securityguard/SecurityLeaveRequest')
             ->with('guardInformation', $guardInformation)
+            ->with('guardLeaveLog', $guardLeaveLog)
             ->with('guardLeave', $guardLeave);
     }
 

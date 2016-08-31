@@ -704,13 +704,13 @@ $(document).ready(function(){
 
     // ADDITIONAL GUARD REQUEST START
     function clientAdditionalRequest(){
-        $('#modalClientAddGuard').openModal();
         if (isRequestAvailable()){
+            $('#modalClientAddGuard').openModal();
             getGuardWaiting();
             populateAdditionalGuard();
             setRequestInformation();
         }else{
-
+            swal("N/A!", "Not Available Anymore.", 'error');
         }
     }
 

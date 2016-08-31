@@ -10,7 +10,7 @@
 <!-- ================================CSS===========================================  -->
         
           <link href="{!! URL::asset('../css/materialize.css') !!}" type="text/css" rel="stylesheet"/>
-          <link rel="stylesheet" type="text/css" media="screen,projection" href="{{!! URL::asset('../css/materialize.min.css') !!}"/>
+          <link rel="stylesheet" type="text/css" media="screen,projection" href="{!! URL::asset('../css/materialize.min.css') !!}"/>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">-->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
           
@@ -26,7 +26,7 @@
           <script src="{!! URL::asset('../javascript/jquery-2.2.1.js') !!}"></script>
      <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>-->
 
-          <script src="{{!! URL::asset('../js/materialize.js') !!}}"></script>
+          <script src="{!! URL::asset('../js/materialize.js') !!}"></script>
      <!--  <script src="{!! URL::asset('../jquery/jquery-1.12.0.min.js')!!}"></script> -->
           <script src="{!! URL::asset('../js/init.js') !!}"></script>
           <script src="{!! URL::asset('../js/materialize.min.js') !!}"></script>

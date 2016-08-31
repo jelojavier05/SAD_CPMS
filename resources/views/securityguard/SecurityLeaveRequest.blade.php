@@ -104,47 +104,23 @@ Security Leave Request
 			<table class="striped" style="border: 1px solid black;" id = 'tableLeaveLog'>
 		
 				<thead>
-			
-
 					<tr>
 						<th class="grey lighten-1">Leave Type</th>
 						<th class="grey lighten-1">Date Start</th>
 						<th class="grey lighten-1">Date End</th>
+                        <th class="grey lighten-1">Status</th>
 					</tr>
 				</thead>
 			
 				<tbody  style=" min-height:200px; max-height:200px;">
-					<tr>
-						<td>Sick</td>
-						<td>01/01/2016</td>
-						<td>01/08/2016</td>
-					</tr>
-					<tr>
-						<td>Sick</td>
-						<td>01/01/2016</td>
-						<td>01/08/2016</td>
-					</tr>
-					<tr>
-						<td>Sick</td>
-						<td>01/01/2016</td>
-						<td>01/08/2016</td>
-					</tr>
-					<tr>
-						<td>Sick</td>
-						<td>01/01/2016</td>
-						<td>01/08/2016</td>
-					</tr>
-					<tr>
-						<td>Sick</td>
-						<td>01/01/2016</td>
-						<td>01/08/2016</td>
-					</tr>
-					<tr>
-						<td>Sick</td>
-						<td>01/01/2016</td>
-						<td>01/08/2016</td>
-					</tr>
-					
+					@foreach($guardLeaveLog as $value)
+                    <tr>
+                        <td>{{$value->strLeaveType}}</td>
+                        <td>{{$value->dateStartFormat}}</td>
+                        <td>{{$value->dateEndFormat}}</td>
+                        <td>{{$value->strStatus}}</td>
+                    </tr>
+                    @endforeach
 				</tbody>
 			</table>
 		</div>
@@ -190,7 +166,15 @@ Security Leave Request
                             strReason: $('#strReason').val() ,
                         },
                         success: function(data){
-                            confirm('success');
+                            swal({
+                                title: "Success!",
+                                text: "Request for leave has been sent.",
+                                type: "success"
+                            },
+                                function(){
+                                window.location.href = '{{ URL::to("/securityleaverequest") }}';
+                            });
+
                         },
                         error: function(data){
                             confirm('error');
@@ -264,6 +248,7 @@ $("#tableLeaveLog").DataTable({
  null,
  null,
  null,
+ null
  ] ,  
  "pageLength":5,
  "bLengthChange": false		
