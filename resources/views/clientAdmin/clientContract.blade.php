@@ -122,7 +122,6 @@ Client
 											<thead>
 											  <tr>
 												  <th data-field="">Date</th>
-												  <th data-field="">Amount</th>
 											  </tr>
 
 											</thead>
@@ -448,8 +447,6 @@ $(document).ready(function() {
                 counter ++;
             }
             
-            getBillPerMonth(arr);
-            
             $('#tableBilling tr').not(function(){ return !!$(this).has('th').length; }).remove();
             var dateStart1 = new Date($('#contractStart').val());
             $.each(arr, function(index,value){
@@ -459,19 +456,11 @@ $(document).ready(function() {
                 var date = month + '/' + day + '/' + year;
                 
                 var days = daydiff(dateStart1, value);
-                var hourPerDay = $('#operatingTime').val();
-                var ratePerHour = $('#rateperHour').val();
-                
-                var bill = days  * ratePerHour * countGuard[0] * 8;
 
                 dateStart1 = value;
                 
-                $('#tableBilling tr:last').after('<tr><td>' + date + '</td><td>' + commaSeparateNumber(bill) +'<td/></tr>');
+                $('#tableBilling tr:last').after('<tr><td>' + date + '</td></tr>');
             });
-            
-            
-            
-            console.log(arr);
         }
     }
     
@@ -535,14 +524,6 @@ $(document).ready(function() {
         }
         
         return hour12;
-    }
-    
-    function getBillPerMonth(arr){
-        var dateStart = new Date($('#contractStart').val());
-        
-        $.each(arr, function (index,value){
-            dateStart = value;
-        });
     }
     
     function daydiff(first, second) {

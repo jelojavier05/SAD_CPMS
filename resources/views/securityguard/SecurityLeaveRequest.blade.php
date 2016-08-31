@@ -248,7 +248,7 @@ $("#tableLeaveLog").DataTable({
  null,
  null,
  null,
- null
+ null   
  ] ,  
  "pageLength":5,
  "bLengthChange": false		

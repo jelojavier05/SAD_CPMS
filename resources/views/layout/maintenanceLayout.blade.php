@@ -313,12 +313,13 @@
              
 							<ul class="right hide-on-med-and-down">
 								 
-                                <li><a  data-position="bottom" data-delay="50" data-tooltip="DASHBOARD"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">apps</i></a></li>
+                                
                                 <li  id="notification_li">
                                     <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/adminInbox" class="tooltipped">
                                         <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
                                         <span id="notification_count">3</span></a>
-                                </li>                                                
+                                </li>     
+                                <li><a  data-position="bottom" data-delay="50" data-tooltip="DASHBOARD"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">apps</i></a></li>                                           
                                 <li><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>
                                 
 							</ul>

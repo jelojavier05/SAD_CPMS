@@ -17,7 +17,7 @@ class CreateAccountTable extends Migration
             $table->string('strUsername', 30);
             $table->string('strPassword', 30);
             $table->integer('intAccountType');//1 = admin, 2 = sg, 3 =client 
-            
+            $table->tinyInteger('boolStatus')->default(1);  // 0 = deactive 1 = active
         });
 
     }

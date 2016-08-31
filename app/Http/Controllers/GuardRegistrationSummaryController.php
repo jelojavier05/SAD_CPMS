@@ -51,8 +51,7 @@ class GuardRegistrationSummaryController extends Controller
                 'strContactNumberLandline' => $personalData->contactLandline,
                 'strCivilStatus' => $personalData->civilStatus,
                 'strGender' => $personalData->gender,
-                'intAccountID' => $accountID,
-                'intStatusIdentifier' => 0
+                'intAccountID' => $accountID
             ]);
 
             $now = Carbon::now();
