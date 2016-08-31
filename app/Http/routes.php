@@ -3,6 +3,7 @@
 Route::get('/test', 'TestController@index');
 
 Route::get('/addguardrequestcomplete', 'AddRequestCompleteController@index');
+Route::post('/addguardrequestcomplete/post/proceedToFinalization', 'AddRequestCompleteController@proceedToFinalization');
 
 
 Route::get('/inbox/get', 'InboxController@getInbox');

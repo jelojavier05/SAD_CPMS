@@ -139,22 +139,17 @@ class SecurityHomepageController extends Controller
                     $messageStringClient = 'The guards are now complete. You can finalize your contract in the office.';
                     $strSubjectClient = 'Guard Complete';
 
-                    DB::table('tblinbox')->insert([
-                        'intAccountIDSender' => $adminAccountID->intAccountID,
-                        'intAccountIDReceiver' => $clientAccount->intAccountID,
-                        'strSubject' => $strSubjectClient,
-                        'strMessage' => $messageStringClient,
-                        'tinyintType' => 0
-                    ]);//inbox for client
-
                     $intType = 0;
                 }else if ($type == 6){
                     $messageStringAdmin = 'The guards are now complete for additional guard request.';
                     $strSubjectAdmin = 'Additional Guard Update';
+
+                    $messageStringClient = 'The guards are now complete. You can finalize your request for additional guard in the office.';
+                    $strSubjectClient = 'Additional Guard Update';
                     $intType = 7;
                 }
                     
-                DB::table('tblinbox')->insert([
+                $inboxIDAdmin = DB::table('tblinbox')->insertGetId([
                     'intAccountIDSender' => $clientAccount->intAccountID,
                     'intAccountIDReceiver' => $adminAccountID->intAccountID,
                     'strSubject' => $strSubjectAdmin,
@@ -162,6 +157,19 @@ class SecurityHomepageController extends Controller
                     'tinyintType' => $intType
                 ]);//inbox for admin
                 
+                DB::table('tblinbox')->insert([
+                    'intAccountIDSender' => $adminAccountID->intAccountID,
+                    'intAccountIDReceiver' => $clientAccount->intAccountID,
+                    'strSubject' => $strSubjectClient,
+                    'strMessage' => $messageStringClient,
+                    'tinyintType' => 0
+                ]);//inbox for client
+
+                DB::table('tblclientadditionalguard')
+                    ->insert([
+                        'intInboxID' => $inboxIDAdmin,
+                        'intClientPendingID' => $clientPendingID
+                    ]);
                     
             }//if else
 
@@ -412,10 +420,6 @@ class SecurityHomepageController extends Controller
         }catch(Exception $e){
             DB::rollback();
         }
-    }
-
-    public function acceptAdditionalGuard(Request $request){
-
     }
 }
 

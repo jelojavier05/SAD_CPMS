@@ -24,11 +24,11 @@ Add Request Completion
 	    <li class="collection-header">
 	    	<div class="row">
 	    		<div class="col s1">
-	    			<div style="font-weight:bold;"><h5>Client:</div>
+	    			<div style="font-weight:bold;"><h5>Client: </div>
 	    		</div>
 
 	    		<div class="col s3">
-	    			<div><h5>LandBank</h5></div>
+	    			<div><h5>{{$requestInformation->strClientName}}</h5></div>
 	    		</div>
 
 	    		<div class="col s4">
@@ -36,7 +36,7 @@ Add Request Completion
 	    		</div>
 
 	    		<div class="col s1 pull-s1">
-	    			<div><h5>10</h5></div>
+	    			<div><h5>{{$requestInformation->intNumberOfGuard}}</h5></div>
 	    		</div>
 					
 				<div class="col s3">
@@ -57,15 +57,14 @@ Add Request Completion
                         </thead>
                         
                         <tbody>
-                        	
+                        	@foreach($requestInformation->guards as $value)
                             <tr>
-							
-								<td><button class="btn blue darken-4 buttonGuardDetails" id = ''><i class="material-icons">chevron_right</i></button></td>
-								<td>123-321</td>
-								<td>Hi Hello</td>
-								<td>Male</td>
+								<td><button class="btn blue darken-4 buttonGuardDetails" id = '{{$value->intGuardID}}'><i class="material-icons">chevron_right</i></button></td>
+								<td>{{$value->strLicenseNumber}}</td>
+								<td>{{$value->strFirstName}} {{$value->strLastName}}</td>
+								<td>{{$value->strGender}}</td>
 							</tr>
-							
+							@endforeach
                         </tbody>
                     </table>
 	    </li>
@@ -203,16 +202,35 @@ $("#tableConfirmedGuards").DataTable({
  });
 	
 $("#btnProceed").click(function(){
-
-	swal({   title: "Confirm Password",
-			text: "Please Enter Password",
-			type: "input",
-			inputType: "password",
-			showCancelButton: true,
-			closeOnConfirm: false,
-			animation: "slide-from-top",
-			inputPlaceholder: "Enter Password"
-            })
+	proceed();
 });
+
+function proceed(){
+	$.ajax({
+        type: "POST",
+        url: "{{action('AddRequestCompleteController@proceedToFinalization')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        data: {
+            
+        },
+        success: function(data){
+        	swal({
+					title: "Success!",
+					text: "Guard has been registered!",
+					type: "success"
+				},
+				function(){
+				window.location.href = '{{ URL::to("/dashboardadmin") }}';
+			});
+
+        }
+    });//ajax
+}
 </script>
 @stop

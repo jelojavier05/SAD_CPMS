@@ -290,18 +290,9 @@ class AdminInboxController extends Controller
     public function getAdditionalGuardInformation(Request $request){
         $inboxID = Input::get('inboxID');
         
-        $result = DB::table('tblinbox')
-            ->select('intAccountIDSender')
+        $result = DB::table('tblclientadditionalguard')
+            ->select('intClientPendingID')
             ->where('intInboxID', $inboxID)
-            ->first();
-        $accountIDSender = $result->intAccountIDSender;
-
-        $result = DB::table('tblaccount')
-            ->join('tblclient', 'tblclient.intAccountID', '=', 'tblaccount.intAccountID')
-            ->join('tblclientpendingnotification','tblclientpendingnotification.intClientID', '=', 'tblclient.intClientID')
-            ->select('tblclientpendingnotification.intClientPendingID')
-            ->where('tblaccount.intAccountID', $accountIDSender)
-            ->orderBy('tblclientpendingnotification.intClientPendingID', 'desc')
             ->first();
         $clientPendingID = $result->intClientPendingID;
 
@@ -311,7 +302,6 @@ class AdminInboxController extends Controller
             ->where('tblclientpendingnotification.intClientPendingID', $clientPendingID)
             ->first();
 
-        
         $result = DB::table('tblguardpendingnotification')
             ->join('tblguard','tblguard.intGuardID', '=', 'tblguardpendingnotification.intGuardID')
             ->select('tblguard.strFirstName','tblguard.strLastName', 'tblguard.strGender')
@@ -326,18 +316,9 @@ class AdminInboxController extends Controller
 
     public function setAdditionalGuardID(Request $request){
         $inboxID = $request->inboxID;
-        $result = DB::table('tblinbox')
-            ->select('intAccountIDSender')
+        $result = DB::table('tblclientadditionalguard')
+            ->select('intClientPendingID')
             ->where('intInboxID', $inboxID)
-            ->first();
-        $accountIDSender = $result->intAccountIDSender;
-
-        $result = DB::table('tblaccount')
-            ->join('tblclient', 'tblclient.intAccountID', '=', 'tblaccount.intAccountID')
-            ->join('tblclientpendingnotification','tblclientpendingnotification.intClientID', '=', 'tblclient.intClientID')
-            ->select('tblclientpendingnotification.intClientPendingID')
-            ->where('tblaccount.intAccountID', $accountIDSender)
-            ->orderBy('tblclientpendingnotification.intClientPendingID', 'desc')
             ->first();
         $clientPendingID = $result->intClientPendingID;
 
