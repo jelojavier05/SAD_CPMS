@@ -19,8 +19,7 @@ Security Homepage
 		<!-- table message -->
 		<div id="message">
 			<div class="container-fluid grey lighten-2" style="border: 1px solid grey; margin-top:-10px;">	
-				<table class="striped" id="inboxTable">
-					<button class="btn blue modal-trigger" href="#modalSwapGuardNotice">Test</button>
+				<table class="striped" id="inboxTable">					
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
