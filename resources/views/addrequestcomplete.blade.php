@@ -24,7 +24,7 @@ Add Request Completion
 	    <li class="collection-header">
 	    	<div class="row">
 	    		<div class="col s1">
-	    			<div style="font-weight:bold;"><h5>Client: </div>
+	    			<div><h5 style="font-weight:bold;">Client: </div>
 	    		</div>
 
 	    		<div class="col s3">
@@ -32,7 +32,7 @@ Add Request Completion
 	    		</div>
 
 	    		<div class="col s4">
-	    			<div style="font-weight:bold;"><h5>Number of Guards:</div>
+	    			<div><h5 style="font-weight:bold;">Number of Guards:</div>
 	    		</div>
 
 	    		<div class="col s1 pull-s1">

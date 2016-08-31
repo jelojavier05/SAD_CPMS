@@ -5,6 +5,7 @@ Route::get('/test', 'TestController@index');
 Route::get('/addguardrequestcomplete', 'AddRequestCompleteController@index');
 Route::post('/addguardrequestcomplete/post/proceedToFinalization', 'AddRequestCompleteController@proceedToFinalization');
 
+Route::get('/swapguardrequestcomplete', 'SwapRequestCompleteController@index');
 
 Route::get('/inbox/get', 'InboxController@getInbox');
 Route::post('/inbox/post/readinbox', 'InboxController@readInbox');
