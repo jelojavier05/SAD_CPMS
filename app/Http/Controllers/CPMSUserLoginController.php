@@ -38,8 +38,9 @@ class CPMSUserLoginController extends Controller
         
         $account = DB::table('tblaccount')
             ->select('intAccountID', 'strUsername', 'strPassword', 'intAccountType')
-            ->where('strUsername', '=', $username)
-            ->where('strPassword', '=', $password)
+            ->where('strUsername', $username)
+            ->where('strPassword', $password)
+            ->where('boolStatus', 1)
             ->first();
         
         if (is_null($account)){

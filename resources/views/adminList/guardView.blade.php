@@ -376,10 +376,10 @@ Guard
             "lengthMenu": [5,10,15,20]
         });
 		
-		$('#dataTable').on('click', '.buttonUpdate', function(){
-            $('#modalchangeDetails').openModal();            
-
-        });
+//		$('#dataTable').on('click', '.buttonUpdate', function(){
+//            $('#modalchangeDetails').openModal();            
+//
+//        });
         
         $('#dataTable').on('click', '.buttonMore', function(){
             $.ajax({

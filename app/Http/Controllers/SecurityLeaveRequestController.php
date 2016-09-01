@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use Carbon\Carbon;
 
 class SecurityLeaveRequestController extends Controller
 {
@@ -16,59 +17,74 @@ class SecurityLeaveRequestController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request){
-        $accountID = $request->session()->get('accountID');
-        $arrLeaveID = DB::table('tblleave')->get();
-        $guardInformation = DB::table('tblguard')
-            ->select('intGuardID', 'strFirstName', 'strLastName')
-            ->where('intAccountID', $accountID)
+        $id = $request->session()->get('id');
+        $now = Carbon::now();
+        
+        $guard = DB::table('tblguard')
+            ->join('tblguardstatus', 'tblguardstatus.intGuardID', '=', 'tblguard.intGuardID')
+            ->select('tblguardstatus.intStatusIdentifier')
+            ->where('tblguard.intGuardID', '=', $id)
+            ->where('tblguardstatus.dateEffectivity','<', $now)
+            ->orderBy('tblguardstatus.dateEffectivity', 'desc')
             ->first();
 
-        $guardLeaveLogResult = DB::table('tblguardleaverequest')
-            ->join('tblleave', 'tblleave.intLeaveID', '=', 'tblguardleaverequest.intLeaveID')
-            ->select('tblguardleaverequest.dateStart', 'tblguardleaverequest.dateEnd','tblguardleaverequest.boolStatus', 'tblleave.strLeaveType')
-            ->where('intGuardID', $guardInformation->intGuardID)
-            ->orderBy('dateStart', 'desc')
-            ->get();
-
-        $guardLeave = array();
-        foreach($arrLeaveID as $value){
-            $result = DB::table('tblguardleave')
-                ->join('tblleave', 'tblleave.intLeaveID', '=','tblguardleave.intLeaveID')
-                ->select('tblguardleave.*', 'tblleave.strLeaveType')
-                ->where('intGuardID',$guardInformation->intGuardID)
-                ->where('tblguardleave.intLeaveID',$value->intLeaveID)
-                ->orderBy('intGuardLeaveID','desc')
+        if ($guard->intStatusIdentifier == 2){
+            $accountID = $request->session()->get('accountID');
+            $arrLeaveID = DB::table('tblleave')->get();
+            $guardInformation = DB::table('tblguard')
+                ->select('intGuardID', 'strFirstName', 'strLastName')
+                ->where('intAccountID', $accountID)
                 ->first();
-            if (!is_null($result)){
-                $result->intNotificationPeriod = $value->intNotificationPeriod;
-                array_push($guardLeave, $result);
+
+            $guardLeaveLogResult = DB::table('tblguardleaverequest')
+                ->join('tblleave', 'tblleave.intLeaveID', '=', 'tblguardleaverequest.intLeaveID')
+                ->select('tblguardleaverequest.dateStart', 'tblguardleaverequest.dateEnd','tblguardleaverequest.boolStatus', 'tblleave.strLeaveType')
+                ->where('intGuardID', $guardInformation->intGuardID)
+                ->orderBy('dateStart', 'desc')
+                ->get();
+
+            $guardLeave = array();
+            foreach($arrLeaveID as $value){
+                $result = DB::table('tblguardleave')
+                    ->join('tblleave', 'tblleave.intLeaveID', '=','tblguardleave.intLeaveID')
+                    ->select('tblguardleave.*', 'tblleave.strLeaveType')
+                    ->where('intGuardID',$guardInformation->intGuardID)
+                    ->where('tblguardleave.intLeaveID',$value->intLeaveID)
+                    ->orderBy('intGuardLeaveID','desc')
+                    ->first();
+                if (!is_null($result)){
+                    $result->intNotificationPeriod = $value->intNotificationPeriod;
+                    array_push($guardLeave, $result);
+                }
             }
-        }
 
-        $guardLeaveLog = array();
-        foreach($guardLeaveLogResult as $value){
-            $value->dateStartFormat = date('M d', strtotime($value->dateStart));    
-            $value->dateEndFormat = date('M d', strtotime($value->dateEnd));    
+            $guardLeaveLog = array();
+            foreach($guardLeaveLogResult as $value){
+                $value->dateStartFormat = date('M d', strtotime($value->dateStart));    
+                $value->dateEndFormat = date('M d', strtotime($value->dateEnd));    
 
-            $boolStatus = $value->boolStatus;
+                $boolStatus = $value->boolStatus;
 
-            if ($boolStatus == 0){
-                $value->strStatus = 'Rejected';
-            }else if ($boolStatus == 1){
-                $value->strStatus = 'Pending';
-            }else if ($boolStatus == 2){
-                $value->strStatus = 'Accepted';
+                if ($boolStatus == 0){
+                    $value->strStatus = 'Rejected';
+                }else if ($boolStatus == 1){
+                    $value->strStatus = 'Pending';
+                }else if ($boolStatus == 2){
+                    $value->strStatus = 'Accepted';
+                }
+
+                array_push($guardLeaveLog, $value);
             }
 
-            array_push($guardLeaveLog, $value);
+            
+
+            return view('/securityguard/SecurityLeaveRequest')
+                ->with('guardInformation', $guardInformation)
+                ->with('guardLeaveLog', $guardLeaveLog)
+                ->with('guardLeave', $guardLeave);
+        }else{
+            return redirect('/securityHome');
         }
-
-        
-
-        return view('/securityguard/SecurityLeaveRequest')
-            ->with('guardInformation', $guardInformation)
-            ->with('guardLeaveLog', $guardLeaveLog)
-            ->with('guardLeave', $guardLeave);
     }
 
     public function postLeaveRequest(Request $request){
@@ -112,23 +128,25 @@ class SecurityLeaveRequestController extends Controller
     }
 
     public function guardStatus(Request $request){
-        $accountID = $request->session()->get('accountID');
-        $status = DB::table('tblguard')
-            ->select('intStatusIdentifier')
-            ->where('intAccountID', $accountID)
-            ->first();
 
-        $guardID = DB::table('tblguard')
-            ->select('intGuardID')
-            ->where('intAccountID', $accountID)
+        $guardID = $request->session()->get('id');
+        $now = Carbon::now();
+        
+        $guard = DB::table('tblguard')
+            ->join('tblguardstatus', 'tblguardstatus.intGuardID', '=', 'tblguard.intGuardID')
+            ->select('tblguardstatus.intStatusIdentifier')
+            ->where('tblguard.intGuardID', '=', $guardID)
+            ->where('tblguardstatus.dateEffectivity','<', $now)
+            ->orderBy('tblguardstatus.dateEffectivity', 'desc')
             ->first();
 
         $countActiveLeaveRequest = DB::table ('tblguardleaverequest')
-            ->where('intGuardID', $guardID->intGuardID)
-            ->Where('boolStatus', 1)
+            ->where('intGuardID', $guardID)
+            ->where('boolStatus', 1)
             ->count();// checking if there's still existing leave 
 
-        $status->countActiveLeaveRequest = $countActiveLeaveRequest;
-        return response()->json($status);
+        $guard->countActiveLeaveRequest = $countActiveLeaveRequest;
+        
+        return response()->json($guard);
     }
 }

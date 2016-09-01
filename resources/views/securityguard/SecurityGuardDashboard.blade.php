@@ -118,7 +118,7 @@
                      <center>
                          <h id = 'strProfileName'></h><br>
                          <h id = 'strProfileLicenseNumber'></h>
-						 <button class="btn blue waves-effect waves-light" style="height:30px;" id = 'btnClient'>Client</button>
+						 <button class="btn blue" style="height:30px;" id = 'btnClient'>Client</button>
 						 <div class="row"></div>
                     </center>
                 </div>
@@ -128,7 +128,7 @@
                   <div class="col s12 z-depth-1" style="margin-top:-10px;">
                             <div class="col s6">
                                  <div class="card blue darken-4" style="height:55px; width:95px;">
-                                        <a data-position="top" data-delay="50" data-tooltip="LEAVE REQUEST" href="/securityleaverequest" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">LEAVE    
+                                        <a data-position="top" data-delay="50" data-tooltip="LEAVE REQUEST" id = 'btnDashBoardLeave' class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">LEAVE    
                                                      
                                      </a> 
                                      <i class="material-icons" style="font-size:2rem;margin-top:-50%;margin-left:68%;position:absolute;color:white">near_me</i>    
@@ -137,7 +137,7 @@
                             </div>
                             <div class="col s6">
                                  <div class="card blue darken-4" style="height:55px; width:95px;">
-                                        <a data-position="top" data-delay="50" data-tooltip="CHANGE LOCATION" href="/securitychangelocation" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">SWAP
+                                        <a data-position="top" data-delay="50" data-tooltip="CHANGE LOCATION" id = 'btnDashBoardSwap' class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">SWAP
                                      </a>
                                       <i class="material-icons" style="font-size:2rem;margin-top:-53%;margin-left:65%;position:absolute;color:white">swap_horiz</i>   
                                 </div>
@@ -214,7 +214,7 @@
 					<li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;</div>
+								Address:<div style="font-weight:normal;" id = 'clientAddress'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s6">
 								Contact Number (Client):<div style="font-weight:normal;" id = 'contactNumberClient'>&nbsp;&nbsp;&nbsp;</div>
@@ -322,14 +322,31 @@ $(document).ready(function() {
     });//ajax
   });
 
+  $('#btnDashBoardLeave').click(function(){
+    if (statusIdentifier == 2 || statusIdentifier == 3 || statusIdentifier == 4){
+      window.location.href = '{{ URL::to("/securityleaverequest") }}';
+    }else{
+      swal("Restriction", "You cannot access this page.", "error");
+    }
+  });
+
+  $('#btnDashBoardSwap').click(function(){
+    if (statusIdentifier == 2 || statusIdentifier == 3 || statusIdentifier == 4){
+      window.location.href = '{{ URL::to("/securitychangelocation") }}';
+    }else{
+      swal("Restriction", "You cannot access this page.", "error");
+    }
+  });
+
   function getClientInformation(){
     $.ajax({
       type: "GET",
       url: "{{action('SecurityGuardDashboardController@getClientInformation')}}",
       success: function(data){
+        console.log(data);
         $('#natureOfBusiness').text(data.strNatureOfBusiness);
         $('#clientName').text(data.strClientName);
-        $('#address').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+        $('#clientAddress').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
         $('#contactNumberClient').text(data.strContactNumber);
         $('#personInCharge').text(data.strPersonInCharge);
         $('#contactNumberPIC').text(data.strPOICContactNumber);

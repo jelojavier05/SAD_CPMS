@@ -15,7 +15,6 @@ class CreateGovernmentExamTable extends Migration
         Schema::create('tblgovernmentexam', function (Blueprint $table) {
             $table->increments('intGovernmentExamID');
             $table->string('strGovernmentExam', 100)->unique();
-            $table->string('strDescription');
             $table->softDeletes();
             $table->boolean('boolFlag')->default(true);
         });

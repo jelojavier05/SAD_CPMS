@@ -14,6 +14,7 @@ class CreateGuardTable extends Migration
     {
         Schema::create('tblguard', function (Blueprint $table) {
             $table->increments('intGuardID');
+            $table->integer('intAccountID')->unsigned();
             
             $table->string('strFirstName', 100);
             $table->string('strMiddleName', 100);
@@ -24,11 +25,10 @@ class CreateGuardTable extends Migration
             $table->string('strContactNumberLandline', 15);
             $table->string('strCivilStatus', 30);
             $table->string('strGender', 6);
-            $table->string('strLicenseNumber', 30);
             $table->boolean('boolStatus')->default(true);
-            $table->timestamps();
-            
             $table->softDeletes();
+            
+            $table->foreign('intAccountID')->references('intAccountID')->on('tblaccount');
         });
 
     }

@@ -137,14 +137,14 @@ class ClientContractController extends Controller
                 DB::table('tblclientguard')->insert([
                     'intContractID' => $contractID,
                     'intGuardID' => $value->intGuardID,
-                    'created_at' => $now
+                    'created_at' => $request->dateStart
                 ]);
                 
                 DB::table('tblguardstatus')    
                     ->insert([
                         'intGuardID' => $value->intGuardID,
                         'intStatusIdentifier' => 2,
-                        'dateEffectivity' => $now
+                        'dateEffectivity' => $request->dateStart
                     ]);
                 
                 DB::table('tblinbox')->insert([
