@@ -17,7 +17,7 @@ Inbox
 		<div id="message">
 			<div class="container-fluid grey lighten-2">	
 				<table class="striped" id="dataTableMsg">
-					<button class="btn blue modal-trigger" href="#modalcoSGswaprequest">Test</button>
+					<button class="btn blue modal-trigger" href="#modalSGswaprequestapproval">Test</button>
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
@@ -375,6 +375,149 @@ Inbox
 		</div>
 			
 <!--modal swap guard request end-->
+
+<!--modal sg swap location request approval-->
+<div id="modalSGswaprequestapproval" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
+	<div class="modal-header">
+		<div class="h">
+			<h3><center>SG Swap Request</center></h3>  
+		</div>
+	</div>
+        	
+	<div class="modal-content">
+		<div class="row" >	
+			<div class="col s6">									      
+				<ul class="collection with-header" id="collectionActive" >
+					<div >
+						<li class="collection-header grey lighten-1"><h5 class='red-text' style="font-weight:bold;">Guard Removed</h5></li>
+						<li class="collection-item grey lighten-2" style="font-weight:bold;">
+							<div class="row">
+								<div class="col s4">	
+								First Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Klay</div>
+								</div>
+							
+								<div class="col s4">	
+									Middle Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Test</div>
+								</div>
+							
+								<div class="col s4">	
+									Last Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Thompson</div>
+								</div>
+														
+							</div>
+						
+							<div class="row">
+								<div class="col s12">
+									Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 TY Street Muntinlupa Metro Manila</div>
+								</div>																					
+							</div>
+						
+							<div class="row">
+								<div class="col s6">
+									Place of Birth:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Makati City</div>
+								</div>
+							
+								<div class="col s6">
+									Age:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;20</div>
+								</div>
+							</div>
+						
+							<div class="row">
+								<div class="col s6">
+									Contact Number (Mobile):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
+								</div>
+							
+								<div class="col s6">
+									Contact Number (Landline):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;8123456</div>
+								</div>
+							</div>
+						
+							<div class="row">
+								<div class="col s6">
+									Gender:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Male</div>
+								</div>
+							
+								<div class="col s6">
+									Civil Status:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Single</div>
+								</div>
+							</div>						
+						</li>
+                                      
+					</div>
+				</ul>								
+			</div>
+		
+			<div class='col s6'>
+				<ul class="collection with-header" id="collectionActive" >
+					<div >
+						<li class="collection-header grey lighten-1"><h5 class='green-text' style="font-weight:bold;">Guard Replacement</h5></li>
+						<li class="collection-item grey lighten-2" style="font-weight:bold;">
+							<div class="row">
+								<div class="col s4">	
+									First Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Paul</div>
+								</div>
+							
+								<div class="col s4">	
+									Middle Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Test</div>
+								</div>
+							
+								<div class="col s4">	
+									Last Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;George</div>
+								</div>
+														
+							</div>
+						
+							<div class="row">
+								<div class="col s12">
+									Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 Hey Street Mandaluyong Metro Manila</div>
+								</div>																					
+							</div>
+						
+							<div class="row">
+								<div class="col s6">
+									Place of Birth:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Makati City</div>
+								</div>
+							
+								<div class="col s6">
+									Age:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;30</div>
+								</div>
+							</div>
+						
+							<div class="row">
+								<div class="col s6">
+									Contact Number (Mobile):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
+								</div>
+							
+								<div class="col s6">
+									Contact Number (Landline):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;8123456</div>
+								</div>
+							</div>
+						
+							<div class="row">
+								<div class="col s6">
+									Gender:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Male</div>
+								</div>
+							
+								<div class="col s6">
+									Civil Status:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Single</div>
+								</div>
+							</div>
+						
+						</li>
+                                      
+					</div>
+				</ul>					
+			</div>	
+		</div>	
+	</div>
+
+	<!-- button -->
+	<div class="modal-footer ci" style="background-color: #00293C;">
+		<button class="btn green waves-effect waves-light" id = "btnAddRequestProceed" style="margin-right: 30px;">Proceed
+		</button>
+	</div>
+</div>				
+<!--modal sg swap location request approval end-->
 		
 	</div>
 </div>
