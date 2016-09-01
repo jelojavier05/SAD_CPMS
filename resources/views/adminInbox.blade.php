@@ -377,7 +377,7 @@ Inbox
 <!--modal swap guard request end-->
 
 <!--modal sg swap location request approval-->
-<div id="modalSGswaprequestapproval" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
+<div id="modalSGswaprequestapproval" class="modal modal-fixed-footer ci" style="overflow:hidden; width:900px;max-height:100%; height:650px; margin-top:-60px;">
 	<div class="modal-header">
 		<div class="h">
 			<h3><center>SG Swap Request</center></h3>  
@@ -386,14 +386,28 @@ Inbox
         	
 	<div class="modal-content">
 		<div class="row" >	
-			<div class="col s6">									      
+			<div class="col s6" style="margin-top: -20px;">									      
 				<ul class="collection with-header" id="collectionActive" >
-					<div >
-						<li class="collection-header grey lighten-1"><h5 class='red-text' style="font-weight:bold;">Guard Removed</h5></li>
+					<div>
+						<li class="collection-header grey lighten-1"><h5 class='blue-text' style="font-weight:bold;">Guard Requesting</h5></li>
+						
+						<li class="collection-item grey lighten-2" style="font-weight:bold;">
+							<div class="row">
+								<div class="col s2">	
+									Client:
+								</div>
+							
+								<div class="col s6" style="font-weight:normal;" id = ''>	
+									StarMall Alabang
+								</div>															
+														
+							</div>
+						</li>
+						
 						<li class="collection-item grey lighten-2" style="font-weight:bold;">
 							<div class="row">
 								<div class="col s4">	
-								First Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Klay</div>
+									First Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Stephen</div>
 								</div>
 							
 								<div class="col s4">	
@@ -401,14 +415,14 @@ Inbox
 								</div>
 							
 								<div class="col s4">	
-									Last Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Thompson</div>
+									Last Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Curry</div>
 								</div>
 														
 							</div>
 						
 							<div class="row">
 								<div class="col s12">
-									Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 TY Street Muntinlupa Metro Manila</div>
+									Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 Bye Street San Juan Metro Manila</div>
 								</div>																					
 							</div>
 						
@@ -447,14 +461,28 @@ Inbox
 				</ul>								
 			</div>
 		
-			<div class='col s6'>
+			<div class='col s6' style="margin-top: -20px;">
 				<ul class="collection with-header" id="collectionActive" >
 					<div >
-						<li class="collection-header grey lighten-1"><h5 class='green-text' style="font-weight:bold;">Guard Replacement</h5></li>
+						<li class="collection-header grey lighten-1"><h5 class='green-text' style="font-weight:bold;">Guard Requested</h5></li>
+						
+						<li class="collection-item grey lighten-2" style="font-weight:bold;">
+							<div class="row">
+								<div class="col s2">	
+									Client:
+								</div>
+							
+								<div class="col s6" style="font-weight:normal;" id = ''>	
+									SM Megamall
+								</div>															
+														
+							</div>
+						</li>
+						
 						<li class="collection-item grey lighten-2" style="font-weight:bold;">
 							<div class="row">
 								<div class="col s4">	
-									First Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Paul</div>
+									First Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Dwyane</div>
 								</div>
 							
 								<div class="col s4">	
@@ -462,14 +490,14 @@ Inbox
 								</div>
 							
 								<div class="col s4">	
-									Last Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;George</div>
+									Last Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Wade</div>
 								</div>
 														
 							</div>
 						
 							<div class="row">
 								<div class="col s12">
-									Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 Hey Street Mandaluyong Metro Manila</div>
+									Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 Hey Street Marikina Metro Manila</div>
 								</div>																					
 							</div>
 						
@@ -513,9 +541,24 @@ Inbox
 
 	<!-- button -->
 	<div class="modal-footer ci" style="background-color: #00293C;">
-		<button class="btn green waves-effect waves-light" id = "btnAddRequestProceed" style="margin-right: 30px;">Proceed
-		</button>
-	</div>
+        <div id = "buttons" style="display: none;">	
+            <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "">Accept
+            </button>
+
+            <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "">Decline
+            </button>
+        </div>
+        
+        <div id = "accepted" style="display: none;">           			
+			<button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted
+            </button>
+        </div>
+        
+        <div id = "rejected" style="display: none;">			
+            <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined
+            </button>
+        </div>                
+    </div>
 </div>				
 <!--modal sg swap location request approval end-->
 		
