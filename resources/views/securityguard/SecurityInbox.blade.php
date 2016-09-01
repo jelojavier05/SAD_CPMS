@@ -19,7 +19,7 @@ Security Homepage
 		<!-- table message -->
 		<div id="message">
 			<div class="container-fluid grey lighten-2" style="border: 1px solid grey; margin-top:-10px;">	
-				<table class="striped" id="inboxTable">						
+				<table class="striped" id="inboxTable">					
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
@@ -485,6 +485,81 @@ Security Homepage
 </div>
 	
 <!--modal kapwa guard swap notice end-->
+	
+<!--modal alert pending swap location/client-->
+<div id="modalPendingSwapLocationRequestAlert" class="modal modal-fixed-footer ci" style="overflow:hidden; width:550px; max-height:100%; height:500px; margin-top:10px;">
+    <div class="modal-header">
+		<div class="h">
+			<h3><center>Warning</center></h3>  
+		</div>
+
+	</div>
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12" style="margin-top:-10px;">
+                <ul class="collection with-header" >
+					
+					<li class="collection-header" >
+						<div class="red-text" style="font-weight:bold;"><h5 class="animated shake">You Still Have a Pending Location Request!</h5></div>
+					</li>
+					
+					<li class="collection-header" >
+						<div class='row'>
+							<div class='col s4'>
+								<div style="font-weight:bold;">Requested Client:</div>
+							</div>
+										
+							<div class="col s3" style="margin-left:-10px;" id = ''>
+								ChinaBank
+							</div>
+							
+							<div class="col s3">
+								<div style="font-weight:bold;">Contact Number:</div>
+							</div>
+							
+							<div class="col s2" id="">
+								09090909090
+							</div>
+						</div>
+					</li>
+					
+					
+					<li class="collection-header" >
+						<div class='row'>
+							<div class='col s4'>
+								<div style="font-weight:bold;">Guard Requested:</div>
+							</div>
+										
+							<div class="col s3" style="margin-left:-10px;" id = ''>
+								Larry Bird
+							</div>
+							
+							<div class="col s3">
+								<div style="font-weight:bold;">Contact Number:</div>
+							</div>
+							
+							<div class="col s2" id="">
+								09123456789
+							</div>
+						</div>
+					</li>
+										
+					
+					<li class="collection-item" style="font-weight:bold;">Date Sent:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;01/01/2016</div>
+					</li>						
+                
+                </ul>
+            </div>
+        </div>
+		<div class="row"></div>
+    </div>
+    
+    <div class="modal-footer ci modal-close" style="background-color: #00293C;">
+		<button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK
+            </button>
+	</div>
+</div>	
+<!--modal alert pending swap location/client end-->
 
 <script>
 $(document).ready(function(){
