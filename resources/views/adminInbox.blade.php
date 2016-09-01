@@ -16,8 +16,7 @@ Inbox
 		<!-- table message -->
 		<div id="message">
 			<div class="container-fluid grey lighten-2">	
-				<table class="striped" id="dataTableMsg">
-					<button class="btn blue modal-trigger" href="#modalSGswaprequestapproval">Test</button>
+				<table class="striped" id="dataTableMsg">					
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
