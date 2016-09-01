@@ -15,6 +15,8 @@ Gun
                     <div class="col s6 push-s1">
                         <h4 class="blue-text">Guns</h4>
                     </div>
+					
+					<div class="col s4 push-s3"><a class="btn blue" style="margin-top:10px;" href="/gun/registration">ADD</a></div>
                     
                     <div class="row">
                         <div class="col s11" style="margin: -15px 25px 25px 25px;">
