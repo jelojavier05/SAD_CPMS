@@ -118,7 +118,7 @@
                      <center>
                          <h id = 'strProfileName'></h><br>
                          <h id = 'strProfileLicenseNumber'></h>
-						 <button class="btn blue waves-effect waves-light" style="height:30px;" id = 'btnClient'>Client</button>
+						 <button class="btn blue" style="height:30px;" id = 'btnClient'>Client</button>
 						 <div class="row"></div>
                     </center>
                 </div>
