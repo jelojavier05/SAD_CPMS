@@ -113,7 +113,7 @@ Body Attributes
                                                
                                   <div class="col s10 push-s1" style="margin-top:-30px;">      
                                             
-                                        <div class="row"></div>  
+                                          
                                         <div class="input-field col s12">
                             				<select  class="browser-default" id = "addMeasurement">
                                                 <option disabled selected value = "0">Unit of Measurement</option>
