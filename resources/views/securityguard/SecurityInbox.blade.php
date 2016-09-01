@@ -19,7 +19,8 @@ Security Homepage
 		<!-- table message -->
 		<div id="message">
 			<div class="container-fluid grey lighten-2" style="border: 1px solid grey; margin-top:-10px;">	
-				<table class="striped" id="inboxTable">					
+				<table class="striped" id="inboxTable">	
+					<button class="btn blue modal-trigger" href="#modalcoSGswaprequest">Test</button>
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
@@ -379,6 +380,112 @@ Security Homepage
 </div>
 
 <!--modal swap guard notice end-->
+	
+	
+<!--modal kapwa guard swap notice-->
+	
+<div id="modalcoSGswaprequest" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
+    <div class="modal-header">
+		<div class="h">
+			<h3><center>Swap Post Request</center></h3>  
+		</div>
+
+	</div>
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12">
+                <ul class="collection with-header" >
+					<li class="collection-header" >
+						<div class='row'>
+							<div class='col s4'>
+								<div style="font-weight:bold;">Guard to be Replaced:</div>
+							</div>
+										
+							<div class="col s3" style="margin-left:-10px;" id = ''>
+								Allen Iverson
+							</div>
+							
+							<div class="col s3">
+								<div style="font-weight:bold;">Contact Number:</div>
+							</div>
+							
+							<div class="col s2" id="">
+								09123456789
+							</div>
+						</div>
+					</li>
+					
+					<li class="collection-header"><h5 style="font-weight:bold;">Details</h5></li>
+					
+						<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Bank</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Client Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;ChinaBank</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Chun Li</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 Welcome Street Manila Metro Manila</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;100</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;10</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Number of Guards:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;1</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Shift/s:
+							<div style="font-weight:normal;">
+								<table class="" style="font-family:Myriad Pro" id = 'shiftTableSwap'>
+									<thead>
+									<tr>
+										<th data-field="st">Shift</th>
+										<th data-field="fr">From</th>
+										<th data-field="to">To</th>
+									</tr>
+									</thead>
+
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>12AM</td>
+											<td>8AM</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</li>
+                
+                </ul>
+            </div>
+        </div>
+		<div class="row"></div>
+    </div>
+    
+    <div class="modal-footer ci" style="background-color: #00293C;">
+        <div id = "buttons" style="display: none;">	
+            <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "">Accept
+            </button>
+
+            <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "">Decline
+            </button>
+        </div>
+        
+        <div id = "accepted" style="display: none;">           			
+			<button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted
+            </button>
+        </div>
+        
+        <div id = "rejected" style="display: none;">			
+            <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined
+            </button>
+        </div>                
+    </div>
+</div>
+	
+<!--modal kapwa guard swap notice end-->
 
 <script>
 $(document).ready(function(){
