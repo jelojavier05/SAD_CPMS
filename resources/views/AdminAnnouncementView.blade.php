@@ -7,18 +7,20 @@ Announcement
 @section('content')
 
 <div class="row" style="margin-top:-30px;">
+        
   <div class="row"> 
         
     <div class="row">
  
      <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Announcements</h3>
+                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Announcement</h3>
                 </div>
     
     </div>
    
     </div>
+ 
     <div class="col s12 push-s1" style="margin-top:-4%">
         <div class="container white lighten-2 z-depth-2 animated fadeIn">
 <!--            <div class="row">-->

@@ -171,6 +171,13 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
 //PDF ----------------------------------------------------
 Route::get('/pdfcontract', 'PDFContractController@index');
 
+
+
+//Settings -----------------------------------------------
+Route::get('/settings', 'SettingsController@index');
+
+
+
 Route::get('/adminannouncement', 'AdminAnnouncementViewController@index');
 Route::get('/adminannouncement/get', 'AdminAnnouncementViewController@get');
 Route::post('/adminannouncement/create', 'AdminAnnouncementViewController@create');
