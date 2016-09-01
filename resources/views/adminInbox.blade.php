@@ -304,6 +304,76 @@ Inbox
 		</div>	
 			
 <!--modal add guard request complete guards end-->
+			
+<!--modal swap guard request -->
+
+	  	<div id="modalClientSwapGuard" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
+            <div class="modal-header">
+              	<div class="h">
+        			<h3><center>Replacement of Guards</center></h3>  
+        		</div>
+            </div>
+        	
+        	<div class="modal-content">
+        		<div class="row">
+        			<div class="col s12">
+        				<ul class="collection with-header" id="collectionActive">							
+							<li class="collection-header" style="font-weight:bold;">
+								<div class='row'>
+									<div class='col s4'>
+										Name of Guard:
+									</div>
+									
+									<div class="col s4 pull-s1" id = ''>
+										Russell Westbrook
+									</div>
+								</div>
+							</li>
+        					<li class="collection-item"><p id = ''>Masyadong Mahusay. Mahilig sa Triple Double</p>
+                            </li>
+							
+							<li class="collection-item">
+        						<div class="row">
+        							<div class="col s12">
+        								
+        								<table class="striped white" style="border-radius:10px; width:100%;" id="dataTableSendNotiSwapGuard">
+        									<thead>
+        										<th class="grey lighten-1" style="width:10px;"></th>
+        										<th class="grey lighten-1">ID</th>
+        										<th class="grey lighten-1">First Name</th>
+        										<th class="grey lighten-1">Last Name</th>
+        										<th class="grey lighten-1">City</th>
+        										<th class="grey lighten-1">Province</th>
+        									</thead>
+        									<tbody>
+												<tr>
+													<td>
+														<input type="checkbox" id="test1" value = ""><label for="test1"></label>
+													</td>
+													
+													<td>1</td>
+													<td>Blake</td>
+													<td>Griffin</td>
+													<td>Las Pinas</td>
+													<td>Metro Manila</td>
+												</tr>
+        									</tbody>
+        								</table>
+        							</div>
+        						</div>
+                            </li>
+        			</div>
+        		</div>
+        	</div>
+
+            <!-- button -->
+            <div class="modal-footer ci" style="background-color: #00293C;">
+        		<button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationAdditionalGuard" style="margin-right: 30px;">Send<i class="material-icons right">send</i>
+                </button>
+        	</div>
+		</div>
+			
+<!--modal swap guard request end-->
 		
 	</div>
 </div>
@@ -903,6 +973,19 @@ $(document).ready(function(){
 	
 	$('#dataTableAcceptedfromMoreGuardRequest').DataTable({
          "columns": [        
+        null,
+        null,
+        null
+        ] ,  
+        "pageLength":3,
+        "lengthMenu": [5,10,15,20]
+     });
+	
+	$('#dataTableSendNotiSwapGuard').DataTable({
+         "columns": [
+        { "orderable": false },
+        null,
+        null,
         null,
         null,
         null

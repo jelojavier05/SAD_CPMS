@@ -128,7 +128,7 @@ Nature of Business
                                         <div class="row"></div>  
                                         <div class="input-field col s12">
 											<i class="mdi-action-trending-up prefix" style="font-size:35px;"></i>
-                                            <input  id="deciRate" maxlength="6" type="text" class="validate" pattern="[0-9.]{3,}" required="" aria-required="true">
+                                            <input  id="deciRate" maxlength="6" type="text" class="validate" pattern="[0-9.]{2,}" required="" aria-required="true">
                                             <label data-error="Incorrect" for="deciRate">Rate (per hour)</label>
 
                                         </div>
@@ -188,7 +188,7 @@ Nature of Business
 							<div class="col s12">
 								<div class="input-field">
 								<i class="mdi-action-trending-up prefix" style="font-size:35px;"></i>
-								<input  id="editRate" maxlength="6" type="text" class="validate" pattern="[0-9.]{3,}" required="" value = " "aria-required="true">
+								<input  id="editRate" maxlength="6" type="text" class="validate" pattern="[0-9.]{2,}" required="" value = " "aria-required="true">
 								<label data-error="Incorrect" for="editRate">Rate (per hour)</label>
 								</div>
 							</div>

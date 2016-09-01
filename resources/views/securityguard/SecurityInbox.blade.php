@@ -19,7 +19,7 @@ Security Homepage
 		<!-- table message -->
 		<div id="message">
 			<div class="container-fluid grey lighten-2" style="border: 1px solid grey; margin-top:-10px;">	
-				<table class="striped" id="inboxTable">
+				<table class="striped" id="inboxTable">					
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
@@ -42,7 +42,7 @@ Security Homepage
 <div id="modalNewClientRequest" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
     <div class="modal-header">
                 <div class="h">
-                    <h3><center>Message</center></h3>  
+                    <h3><center>New Client</center></h3>  
 				</div>
 
             </div>
@@ -156,7 +156,7 @@ Security Homepage
 <div id="modalLeaveRequestNotification" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:600px; margin-top:-50px;">
     <div class="modal-header">
       	<div class="h">
-			<h3><center>Message</center></h3>  
+			<h3><center>Reliever Notice</center></h3>  
 		</div>
     </div>
 	
@@ -275,6 +275,110 @@ Security Homepage
 	</div>
 </div>
 <!--modal leave request from other guard////releiver end-->
+	
+<!--modal swap guard notice-->
+<div id="modalSwapGuardNotice" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
+    <div class="modal-header">
+                <div class="h">
+                    <h3><center>Swap Guard Notice</center></h3>  
+				</div>
+
+            </div>
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12">
+                <ul class="collection with-header" >
+					<li class="collection-header" >
+						<div class='row'>
+							<div class='col s6'>
+								<h5 style="font-weight:bold;">Guard to be Replaced:</h5>
+							</div>
+										
+							<div class="col s4" id = ''>
+								<h5>Chris Paul</h5>
+							</div>
+						</div>
+					</li>
+					
+					<li class="collection-header"><h5 style="font-weight:bold;">Details</h5></li>
+					
+						<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Bar</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Client Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;The Bar</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Choco Bar</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 Welcome Street Pasig Metro Manila</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;100</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;10</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Number of Guards:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;1</div>
+						</li>
+						<li class="collection-item" style="font-weight:bold;">Shift/s:
+							<div style="font-weight:normal;">
+								<table class="" style="font-family:Myriad Pro" id = 'shiftTableSwap'>
+									<thead>
+									<tr>
+										<th data-field="st">Shift</th>
+										<th data-field="fr">From</th>
+										<th data-field="to">To</th>
+									</tr>
+									</thead>
+
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>8AM</td>
+											<td>4PM</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</li>
+                
+                </ul>
+            </div>
+        </div>
+		<div class="row"></div>
+    </div>
+    
+    <div class="modal-footer ci" style="background-color: #00293C;">
+        <div id = "buttons" style="display: none;">	
+            <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "">Accept
+            </button>
+
+            <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "">Decline
+            </button>
+        </div>
+        
+        <div id = "accepted" style="display: none;">
+            <button class="btn blue left" style="margin-right: 10px" id="">I've changed my mind</button>
+			
+			<button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted
+            </button>
+        </div>
+        
+        <div id = "rejected" style="display: none;">
+			<button class="btn blue left" style="margin-right: 10px" id="">I've changed my mind</button>
+            <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined
+            </button>
+        </div>
+        
+        <div id = "notAvailable" style="display: none;">
+            <button class="btn grey" name="" style="margin-right: 30px; cursor:default;" id = "">Unavailable
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--modal swap guard notice end-->
 
 <script>
 $(document).ready(function(){
