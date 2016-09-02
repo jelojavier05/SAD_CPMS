@@ -6,8 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AddAccountIdFkColumn' => $baseDir . '/database/migrations/2016_07_10_230402_add_account_id_fk_column.php',
-    'CreateAccountTable' => $baseDir . '/database/migrations/2016_07_10_225221_create_account_table.php',
+    'CreateAccountTable' => $baseDir . '/database/migrations/2016_02_10_225221_create_account_table.php',
     'CreateAnnouncementTable' => $baseDir . '/database/migrations/2016_08_09_032513_create_announcement_table.php',
     'CreateArmedServiceTable' => $baseDir . '/database/migrations/2016_02_28_080305_create_armed_service_table.php',
     'CreateAttendanceTable' => $baseDir . '/database/migrations/2016_08_15_213138_create_attendance_table.php',
@@ -38,7 +37,6 @@ return array(
     'CreateGuardstatusTable' => $baseDir . '/database/migrations/2016_08_22_164537_create_guardstatus_table.php',
     'CreateGunDeliveryDetailTable' => $baseDir . '/database/migrations/2016_07_29_021951_create_gun_delivery_detail_table.php',
     'CreateGunDeliveryHeaderTable' => $baseDir . '/database/migrations/2016_07_29_021346_create_gun_delivery_header_table.php',
-    'CreateGunLicenseNumberTable' => $baseDir . '/database/migrations/2016_03_11_182629_create_gun_license_number_table.php',
     'CreateGunOrderDetailTable' => $baseDir . '/database/migrations/2016_07_28_121947_create_gun_order_detail_table.php',
     'CreateGunOrderHeaderTable' => $baseDir . '/database/migrations/2016_07_28_121622_create_gun_order_header_table.php',
     'CreateGunTable' => $baseDir . '/database/migrations/2016_03_11_181358_create_gun_table.php',
@@ -56,11 +54,10 @@ return array(
     'CreateReceiveheaderTable' => $baseDir . '/database/migrations/2016_08_20_190826_create_receiveheader_table.php',
     'CreateReportincidentTable' => $baseDir . '/database/migrations/2016_08_22_034731_create_reportincident_table.php',
     'CreateRequirementsTable' => $baseDir . '/database/migrations/2016_06_08_164140_create_requirements_table.php',
+    'CreateSwaprequestTable' => $baseDir . '/database/migrations/2016_09_01_210503_create_swaprequest_table.php',
     'CreateTypeOfContractTable' => $baseDir . '/database/migrations/2016_06_06_180120_create_type_of_contract_table.php',
     'CreateTypeOfGunTable' => $baseDir . '/database/migrations/2016_02_29_164748_create_type_of_gun_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
-    'DeleteDescriptionGovernmentexam' => $baseDir . '/database/migrations/2016_07_10_100236_delete_description_governmentexam.php',
-    'DeleteStrlicenseColumn' => $baseDir . '/database/migrations/2016_07_08_092932_delete_strlicense_column.php',
     'EasyPeasyICS' => $vendorDir . '/phpmailer/phpmailer/extras/EasyPeasyICS.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',

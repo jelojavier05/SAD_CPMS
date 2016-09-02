@@ -145,6 +145,8 @@ Route::post('/securityleaverequest/post/leaverequest', 'SecurityLeaveRequestCont
 Route::get('/securityleaverequest/get/guardStatus', 'SecurityLeaveRequestController@guardStatus');
 Route::get('/securitychangelocation', 'SecurityChangeLocationController@index');
 Route::get('/securitychangelocation/get/clientactiveguards', 'SecurityChangeLocationController@getClientActiveGuards');
+Route::get('/securitychangelocation/get/hasPendingRequest', 'SecurityChangeLocationController@hasPendingRequest');
+Route::post('/securitychangelocation/post/sendRequest', 'SecurityChangeLocationController@sendRequest');
 
 Route::get('/securitysettings', 'SecuritySettingsController@index');
 Route::get('/securitysettings/get', 'SecuritySettingsController@getGuardInformation');

@@ -52,9 +52,7 @@ class SecurityChangeLocationController extends Controller
                 ->with('clients', $clients);
         }else{
             return redirect('/securityHome');
-        }
-
-            
+        }    
     }
 
     public function getClientActiveGuards(Request $request){
@@ -104,5 +102,31 @@ class SecurityChangeLocationController extends Controller
             }
         }
         return response()->json($clientGuard);
+    }
+
+    public function hasPendingRequest(Request $request){
+        $id = $request->session()->get('id');
+
+        $clientGuardID = DB::table('tblclientguard')
+            ->select('intClientGuardID')
+            ->where('intGuardID', $id)
+            ->where('boolStatus', 1)
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        $result = DB::table('tblswaprequest')
+            ->where('intClientGuardSenderID', $clientGuardID->intClientGuardID)
+            ->where('boolStatus', 1)
+            ->count();
+
+        if ($result > 0){
+            return response()->json('true');
+        }else{
+            return response()->json('false');
+        }
+    }
+
+    public function sendRequest(Request $request){
+
     }
 }

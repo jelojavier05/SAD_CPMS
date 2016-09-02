@@ -48,7 +48,7 @@ Security Change Location
 												
 												<td>
 													<button id="{{$value->intClientID}}" class="btn blue buttonGuards">
-														Send Request
+														More
 													</button>
 												</td>
 											</tr>
@@ -111,16 +111,27 @@ Security Change Location
 <script>
 $(document).ready(function(){
 	$('#dataTable').on('click', '.buttonGuards', function(){
+		
+
 		$('#modalClientGuardList').openModal();   
-		refreshTableGuard(this.id);         
-	});
-
-	$('#dataTableGuards').on('click', '.radioGuard', function(){
-
+		refreshTableGuard(this.id);
 	});
 
 	$('#btnSend').click(function(){
-		confirm($('input[name=guard]:checked').val());
+		var guardIDSelected = $('input[name=guard]:checked').val();
+
+		if (hasPendingRequest()){
+			if (guardIDSelected != null){
+				sendData(guardIDSelected);
+			}else{
+				var toastContent = $('<span>Please select guard.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+			}
+		}else{
+			var toastContent = $('<span>You still have pending request.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
+		
 	});
 
 	function refreshTableGuard(id){
@@ -130,7 +141,6 @@ $(document).ready(function(){
             success: function(data){
             	var table = $('#dataTableGuards').DataTable();
             	table.clear().draw();
-            	console.log(data);
             	$.each(data, function(index,value){
             		table.row.add([
             			'<input name="guard" class = "with-gap radioGuard" type="radio" id="radio'+value.intGuardID+'" value = "'+value.intGuardID+'"/> <label for="radio'+value.intGuardID+'"></label>',
@@ -139,6 +149,44 @@ $(document).ready(function(){
 	                    '<h>' + value.strProvinceName +'</h>'
 	                ]).draw(false);
             	});
+            }
+        });//ajax
+	}
+
+	function hasPendingRequest(){
+		var checker;
+		$.ajax({
+            type: "GET",
+            url: "{{action('SecurityChangeLocationController@hasPendingRequest')}}",
+            success: function(data){
+            	checker = data;
+            },async:false
+        });//ajax
+
+		return checker;
+	}
+
+	function sendData(id){
+		$.ajax({
+            type: "POST",
+            url: "{{action('SecurityChangeLocationController@sendRequest')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                guardIDSelected: id
+            },
+            success: function(data){
+
+            },
+            error: function(data){
+				var toastContent = $('<span>Error Database </span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+
             }
         });//ajax
 	}
