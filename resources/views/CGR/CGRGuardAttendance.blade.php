@@ -34,19 +34,18 @@ Guard Attendance
     </div>
 	
 	<div class='col s4 ' style="margin-top:-25px;">
-		<table class="" style="border: 1px solid black; " id = 'tableAttendanceLog'>
+		<table style="border: 1px solid black; " id = 'tableAttendanceLog'>
 		
-			<thead class="tablescrollhead">
-			
+			<thead>
         <tr>
-          <th>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Action&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date/Time</th>
+          <th>Name</th>
+          <th>Action</th>
+          <th>DateTime</th>
         </tr>
 			</thead>
 			
-			<tbody class='tablescrollbody' style=" min-height:200px; max-height:200px;">
-				<tr>
-          <td></td>
-        </tr>
+			<tbody style=" min-height:200px; max-height:200px;">
+				
 			</tbody>
 		</table>
 		<center><button class="btn blue" style="margin-top:10px;">Load More</button></center>
@@ -142,11 +141,12 @@ $('#btnOkay').click(function(){
               }else if (btnInOut == 0){
                 timeOut();
               }
+              refreshAttendanceLog();
             }else{
               var toastContent = $('<span>Login failed.</span>');
               Materialize.toast(toastContent, 1500,'red', 'edit');    
             }
-            refreshAttendanceLog();
+            
         },
     });//ajax
   }else{
@@ -246,7 +246,9 @@ function refreshAttendanceLog(){
     type: "GET",
     url: "{{action('CGRGuardAttendanceController@attendanceLog')}}",
     success: function(data){
-      $('#tableAttendanceLog').not(function(){ return !!$(this).has('th').length; }).remove();
+      var dataTable = $('#tableAttendanceLog').DataTable();
+      dataTable.clear().draw(); //clear all the row
+
       $.each(data, function(index, value){
         var identifier = value.identifier;
         var action;
@@ -255,9 +257,15 @@ function refreshAttendanceLog(){
         }else{
           action = 'IN';
         }
-
-        $('#tableAttendanceLog tr:last').after('<tr><td style="width:100px;">'+value.guardName+'</td><td style="width:100px;"><center>' +action+ '</center></td><td>' + value.dateTime +'</td></tr>');
+        dataTable.row.add([
+            '<h>' + value.guardName +'</h>',
+            '<h>' + action +'</h>',
+            '<h>' + value.dateTime +'</h>',
+        ]).draw(false);
+        console.log(value);
       });
+
+
     }
   });//ajax
 }
@@ -273,6 +281,17 @@ $("#tableAttendance").DataTable({
   ] ,  
   "pageLength":5,
   "lengthMenu": [5,10,15,20],
+});
+
+$("#tableAttendanceLog").DataTable({
+  "columns": [
+  null,
+  null,
+  null
+  ] ,  
+  "pageLength":5,
+  "lengthMenu": [5,10,15,20],
+  "order": [[2, "desc"]]
 });
 </script>
 
