@@ -128,23 +128,24 @@ class SecurityLeaveRequestController extends Controller
     }
 
     public function guardStatus(Request $request){
-        $accountID = $request->session()->get('accountID');
-        $status = DB::table('tblguard')
-            ->select('intStatusIdentifier')
-            ->where('intAccountID', $accountID)
-            ->first();
 
-        $guardID = DB::table('tblguard')
-            ->select('intGuardID')
-            ->where('intAccountID', $accountID)
+        $guardID = $request->session()->get('id');
+        $now = Carbon::now();
+        
+        $guard = DB::table('tblguard')
+            ->join('tblguardstatus', 'tblguardstatus.intGuardID', '=', 'tblguard.intGuardID')
+            ->select('tblguardstatus.intStatusIdentifier')
+            ->where('tblguard.intGuardID', '=', $guardID)
+            ->where('tblguardstatus.dateEffectivity','<', $now)
+            ->orderBy('tblguardstatus.dateEffectivity', 'desc')
             ->first();
 
         $countActiveLeaveRequest = DB::table ('tblguardleaverequest')
-            ->where('intGuardID', $guardID->intGuardID)
+            ->where('intGuardID', $guardID)
             ->Where('boolStatus', 1)
             ->count();// checking if there's still existing leave 
 
-        $status->countActiveLeaveRequest = $countActiveLeaveRequest;
+        $guard->countActiveLeaveRequest = $countActiveLeaveRequest;
         return response()->json($status);
     }
 }
