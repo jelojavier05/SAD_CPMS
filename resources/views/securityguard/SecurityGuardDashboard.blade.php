@@ -128,7 +128,7 @@
                   <div class="col s12 z-depth-1" style="margin-top:-10px;">
                             <div class="col s6">
                                  <div class="card blue darken-4" style="height:55px; width:95px;">
-                                        <a data-position="top" data-delay="50" data-tooltip="LEAVE REQUEST" href="/securityleaverequest" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">LEAVE    
+                                        <a data-position="top" data-delay="50" data-tooltip="LEAVE REQUEST" id = 'btnDashBoardLeave' class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">LEAVE    
                                                      
                                      </a> 
                                      <i class="material-icons" style="font-size:2rem;margin-top:-50%;margin-left:68%;position:absolute;color:white">near_me</i>    
@@ -137,7 +137,7 @@
                             </div>
                             <div class="col s6">
                                  <div class="card blue darken-4" style="height:55px; width:95px;">
-                                        <a data-position="top" data-delay="50" data-tooltip="CHANGE LOCATION" href="/securitychangelocation" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">SWAP
+                                        <a data-position="top" data-delay="50" data-tooltip="CHANGE LOCATION" id = 'btnDashBoardSwap' class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">SWAP
                                      </a>
                                       <i class="material-icons" style="font-size:2rem;margin-top:-53%;margin-left:65%;position:absolute;color:white">swap_horiz</i>   
                                 </div>
@@ -320,6 +320,22 @@ $(document).ready(function() {
         Materialize.toast(toastContent, 1500,'red', 'edit');   
       }
     });//ajax
+  });
+
+  $('#btnDashBoardLeave').click(function(){
+    if (statusIdentifier == 2 || statusIdentifier == 3 || statusIdentifier == 4){
+      window.location.href = '{{ URL::to("/securityleaverequest") }}';
+    }else{
+      swal("Restriction", "You cannot access this page.", "error");
+    }
+  });
+
+  $('#btnDashBoardSwap').click(function(){
+    if (statusIdentifier == 2 || statusIdentifier == 3 || statusIdentifier == 4){
+      window.location.href = '{{ URL::to("/securitychangelocation") }}';
+    }else{
+      swal("Restriction", "You cannot access this page.", "error");
+    }
   });
 
   function getClientInformation(){
