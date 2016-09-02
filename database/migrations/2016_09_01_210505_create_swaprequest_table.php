@@ -18,7 +18,7 @@ class CreateSwaprequestTable extends Migration
             $table->integer('intClientGuardReceiverID')->unsigned();
             $table->integer('intInboxID')->unsigned();
             $table->timestamp('datetimeSwapRequest')->useCurrent = true;
-            $table->tinyInteger('boolStatus');//0 - rejected, 1 - waiting, 2 - accepted
+            $table->tinyInteger('boolStatus')->default(1);//0 - rejected, 1 - waiting, 2 - accepted
             $table->timestamp('updated_at');
 
             $table->foreign('intClientGuardSenderID')->references('intClientGuardID')->on('tblclientguard');

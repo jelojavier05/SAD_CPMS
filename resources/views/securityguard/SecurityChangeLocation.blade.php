@@ -186,23 +186,21 @@ Security Change Location
 $(document).ready(function(){
 	$('#dataTable').on('click', '.buttonGuards', function(){
 		
-
-		$('#modalClientGuardList').openModal();   
-		refreshTableGuard(this.id);
+		if (hasPendingRequest()){
+			$('#modalPendingSwapLocationRequestAlert').openModal();
+		}else{
+			$('#modalClientGuardList').openModal();   
+			refreshTableGuard(this.id);
+		}
 	});
 
 	$('#btnSend').click(function(){
 		var guardIDSelected = $('input[name=guard]:checked').val();
 
-		if (hasPendingRequest()){
-			if (guardIDSelected != null){
-				sendData(guardIDSelected);
-			}else{
-				var toastContent = $('<span>Please select guard.</span>');
-				Materialize.toast(toastContent, 1500,'red', 'edit');
-			}
+		if (guardIDSelected != null){
+			sendData(guardIDSelected);
 		}else{
-			var toastContent = $('<span>You still have pending request.</span>');
+			var toastContent = $('<span>Please select guard.</span>');
 			Materialize.toast(toastContent, 1500,'red', 'edit');
 		}
 		
@@ -255,10 +253,17 @@ $(document).ready(function(){
                 guardIDSelected: id
             },
             success: function(data){
-
+            	swal({
+						title: "Success!",
+						text: "Request has been sent. Please wait for response.",
+						type: "success"
+					},
+					function(){
+					window.location.href = '{{ URL::to("/securitychangelocation") }}';
+				});
             },
             error: function(data){
-				var toastContent = $('<span>Error Database </span>');
+				var toastContent = $('<span>Error Database.</span>');
 				Materialize.toast(toastContent, 1500,'red', 'edit');
 
             }
