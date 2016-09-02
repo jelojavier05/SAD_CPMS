@@ -40,17 +40,17 @@ Clients
                                     @foreach($clientActive as $value)
                                     <tr>
                                         <td>
-                                            <button class="buttonUpdate btn col s12"  name="" id="{{$value->intClientID}}" >
+                                            <button class="buttonUpdate btn col s12" id="{{$value->intClientID}}" >
                                                 <i class="material-icons">edit</i>
                                             </button>
                                             <label for=""></label>
                                         </td>
                                         
-                                        <td id = "">{{$value->intClientID}}</td>
-                                        <td id = "">{{$value->strClientName}}</td>
-                                        <td id = "">{{$value->strPersonInCharge}}</td>
+                                        <td>{{$value->intClientID}}</td>
+                                        <td>{{$value->strClientName}}</td>
+                                        <td>{{$value->strPersonInCharge}}</td>
                                         <td>
-                                            <button id="detaillist" class="btn blue" onclick="Materialize.showStaggeredList('#collectionActive')" >
+                                            <button id="{{$value->intClientID}}" class="btn blue detaillist btnActiveMore" onclick="Materialize.showStaggeredList('#collectionActive')" >
                                             MORE
                                             </button>
                                         </td>
@@ -254,33 +254,12 @@ Clients
                 }
             });//get guard count accepted
         });
-        
-        $("#tableActive").DataTable({
-             "columns": [   
-            { "orderable": false },
-            null,
-            null,
-            null,
-			{ "orderable": false }
-            ] ,  
-            "pageLength":5,
-			"lengthMenu": [5,10,15,20]
-        });
-		
-		$("#dataTablePending").DataTable({
-             "columns": [
-			{ "orderable": false },
-            null,
-            null,
-			{ "orderable": false },
-			{ "orderable": false }
-            ] ,  
-            "pageLength":5,
-			"lengthMenu": [5,10,15,20]
+
+        $('#tableActive').on('click', 'btnActiveMore', function(){
+            confirm(this.id);
         });
 		
         $('.buttonMore').click(function() {
-			
             $('#guardcontainer').css({
 				'visibility': 'visible',
 				'max-height': '400px',
@@ -290,7 +269,7 @@ Clients
 			});
 		});
 		
-		$('#detaillist').click(function() {
+		$('.detaillist').click(function() {
 			$('#detailcontainer').css({
 				'visibility': 'visible',
 				'overflow': 'scroll',
@@ -336,6 +315,30 @@ Clients
 <script>
     $(document).ready(function(){
         $('ul.tabs').tabs();
+
+        $("#tableActive").DataTable({
+             "columns": [   
+            { "orderable": false },
+            null,
+            null,
+            null,
+            { "orderable": false }
+            ] ,  
+            "pageLength":5,
+            "lengthMenu": [5,10,15,20]
+        });
+        
+        $("#dataTablePending").DataTable({
+             "columns": [
+            { "orderable": false },
+            null,
+            null,
+            { "orderable": false },
+            { "orderable": false }
+            ] ,  
+            "pageLength":5,
+            "lengthMenu": [5,10,15,20]
+        });
     });
 </script>
 @stop

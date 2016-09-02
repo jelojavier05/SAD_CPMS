@@ -214,7 +214,7 @@
 					<li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Address:<div style="font-weight:normal;" id = 'address'>&nbsp;&nbsp;&nbsp;</div>
+								Address:<div style="font-weight:normal;" id = 'clientAddress'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s6">
 								Contact Number (Client):<div style="font-weight:normal;" id = 'contactNumberClient'>&nbsp;&nbsp;&nbsp;</div>
@@ -327,9 +327,10 @@ $(document).ready(function() {
       type: "GET",
       url: "{{action('SecurityGuardDashboardController@getClientInformation')}}",
       success: function(data){
+        console.log(data);
         $('#natureOfBusiness').text(data.strNatureOfBusiness);
         $('#clientName').text(data.strClientName);
-        $('#address').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+        $('#clientAddress').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
         $('#contactNumberClient').text(data.strContactNumber);
         $('#personInCharge').text(data.strPersonInCharge);
         $('#contactNumberPIC').text(data.strPOICContactNumber);
