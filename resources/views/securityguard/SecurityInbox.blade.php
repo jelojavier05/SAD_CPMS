@@ -104,14 +104,12 @@ Security Homepage
         </div>
         
         <div id = "accepted" style="display: none;">
-            <button class="btn blue left" style="margin-right: 10px" id="">I've changed my mind</button>
 			
 			<button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted
             </button>
         </div>
         
         <div id = "rejected" style="display: none;">
-			<button class="btn blue left" style="margin-right: 10px" id="">I've changed my mind</button>
             <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined
             </button>
         </div>
@@ -294,31 +292,41 @@ Security Homepage
 								<h5 style="font-weight:bold;">Guard to be Replaced:</h5>
 							</div>
 										
-							<div class="col s4" id = ''>
-								<h5>Chris Paul</h5>
+							<div class="col s4" >
+								<h5 id = 'swapGuardName'></h5>
+							</div>
+						</div>
+					</li>
+
+					<li class="collection-header" >
+						<div class='row'>
+							<div class='col s6'>
+								<h5 style="font-weight:bold;">Contact Number:</h5>
+							</div>
+										
+							<div class="col s4" >
+								<h5 id = 'swapContactNumber'></h5>
 							</div>
 						</div>
 					</li>
 					
 					<li class="collection-header"><h5 style="font-weight:bold;">Details</h5></li>
 					
-						<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Bar</div>
+						<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = 'swapNatureOfBusiness'>&nbsp;&nbsp;&nbsp;Bar</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Client Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;The Bar</div>
+						<li class="collection-item" style="font-weight:bold;">Client Name:<div style="font-weight:normal;" id = 'swapClientName'>&nbsp;&nbsp;&nbsp;The Bar</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
+						<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;" id = 'swapContactNumberClient'>&nbsp;&nbsp;&nbsp;09123456789</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Choco Bar</div>
+						<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;" id = 'swapPerson'>&nbsp;&nbsp;&nbsp;Choco Bar</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
+						<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'swapPersonContact'>&nbsp;&nbsp;&nbsp;09123456789</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 Welcome Street Pasig Metro Manila</div>
+						<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = 'swapAddress'>&nbsp;&nbsp;&nbsp;123 Welcome Street Pasig Metro Manila</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;100</div>
+						<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'swapAreaSize'>&nbsp;&nbsp;&nbsp;100</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;10</div>
-						</li>
-						<li class="collection-item" style="font-weight:bold;">Number of Guards:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;1</div>
+						<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = 'swapPopulation'>&nbsp;&nbsp;&nbsp;10</div>
 						</li>
 						<li class="collection-item" style="font-weight:bold;">Shift/s:
 							<div style="font-weight:normal;">
@@ -333,9 +341,7 @@ Security Homepage
 
 									<tbody>
 										<tr>
-											<td>1</td>
-											<td>8AM</td>
-											<td>4PM</td>
+											
 										</tr>
 
 									</tbody>
@@ -350,7 +356,7 @@ Security Homepage
     </div>
     
     <div class="modal-footer ci" style="background-color: #00293C;">
-        <div id = "buttons" style="display: none;">	
+        <div id = "swapButton" style="display: none;">	
             <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "">Accept
             </button>
 
@@ -358,20 +364,18 @@ Security Homepage
             </button>
         </div>
         
-        <div id = "accepted" style="display: none;">
-            <button class="btn blue left" style="margin-right: 10px" id="">I've changed my mind</button>
+        <div id = "swapAccepted" style="display: none;">
 			
 			<button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted
             </button>
         </div>
         
-        <div id = "rejected" style="display: none;">
-			<button class="btn blue left" style="margin-right: 10px" id="">I've changed my mind</button>
+        <div id = "swapRejected" style="display: none;">
             <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined
             </button>
         </div>
         
-        <div id = "notAvailable" style="display: none;">
+        <div id = "swapNotAvailable" style="display: none;">
             <button class="btn grey" name="" style="margin-right: 30px; cursor:default;" id = "">Unavailable
             </button>
         </div>
@@ -554,6 +558,8 @@ $(document).ready(function(){
             newClient();
         }else if (type == 3){
             leaveRequest();
+        }else if (type == 8 ){
+        	swapRequest();
         }
     });
     
@@ -889,6 +895,79 @@ $(document).ready(function(){
     }
     // Leave Request Reliever End
 
+
+    // Swap Request Start
+    function swapRequest(){
+    	$('#modalSwapGuardNotice').openModal();
+    	setSwapRequest();
+    }
+    // Swap Request End
+
+    function setSwapRequest(){
+		$.ajax({
+            type: "GET",
+            url: "/securityInbox/get/SwapRequest?inboxID=" + inboxID,
+            success: function(data){
+            	var areaSize = commaSeparateNumber(data.deciAreaSize);
+                var population = commaSeparateNumber(data.intPopulation);
+                var arrayShift = data.shift;
+                var statusIdentifier = data.boolStatus;
+
+            	$('#swapGuardName').text(data.strFirstName + ' ' + data.strLastName);
+            	$('#swapContactNumber').text(data.strContactNumberMobile);
+            	$('#swapNatureOfBusiness').text(data.strNatureOfBusiness);
+                $('#swapClientName').text(data.strClientName);
+                $('#swapContactNumberClient').text(data.strContactNumber);
+                $('#swapPerson').text(data.strPersonInCharge);
+                $('#swapPersonContact').text(data.strPOICContactNumber);
+                $('#swapAddress').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+                $('#swapAreaSize').text(areaSize);
+                $('#swapPopulation').text(population);
+                
+                $('#shiftTableSwap tr').not(function(){ return !!$(this).has('th').length; }).remove(); 
+                $.each(arrayShift, function (index, value) {
+                    
+                    $('#shiftTableSwap tr:last').after(
+                        '<tr>'+
+                            '<td>' + value.strShiftNumber +'</td>' +
+                            '<td>' + value.timeFrom + '</td>' +
+                            '<td>' + value.timeTo + '</td>' +
+                        '</tr>'
+                    );
+                });
+
+
+
+
+
+                if (statusIdentifier == 1){
+                    $('#swapButton').show();
+                    $('#swapAccepted').hide();
+                    $('#swapRejected').hide();
+                    $('#swapNotAvailable').hide();
+                }else if (statusIdentifier == 2){
+                    $('#swapButton').hide();
+                    $('#swapAccepted').show();
+                    $('#swapRejected').hide();
+                    $('#swapNotAvailable').hide();
+                }else if (statusIdentifier == 0){
+                    $('#swapButton').hide();
+                    $('#swapAccepted').hide();
+                    $('#swapRejected').show();
+                    $('#swapNotAvailable').hide();
+                }else if (statusIdentifier == 3){
+                    $('#swapButton').hide();
+                    $('#swapAccepted').hide();
+                    $('#swapRejected').hide();
+                    $('#swapNotAvailable').show();
+                }
+            },
+            error: function(data){
+				var toastContent = $('<span>Error Database </span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+        });//ajax
+    }
 });
 	
 	

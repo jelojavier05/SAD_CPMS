@@ -134,6 +134,7 @@ Route::get('/securityInbox/get/message', 'SecurityHomepageController@getInboxMes
 Route::post('/securityInbox/post/readmessage', 'SecurityHomepageController@readNewInbox');
 Route::get('/securityInbox/get/clientinformation', 'SecurityHomepageController@getClientInformation');
 Route::get('/securityInbox/get/getLeaveRequestInformation', 'SecurityHomepageController@getLeaveRequestInformation');
+Route::get('/securityInbox/get/SwapRequest', 'SecurityHomepageController@getSwapRequest');
 Route::post('/securityInbox/get/guard', 'SecurityHomepageController@readNewClient');
 Route::post('/securityInbox/accept/guard', 'SecurityHomepageController@acceptNewClient');
 Route::post('/securityInbox/decline/guard', 'SecurityHomepageController@declineNewClient');

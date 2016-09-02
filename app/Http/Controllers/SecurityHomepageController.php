@@ -421,5 +421,37 @@ class SecurityHomepageController extends Controller
             DB::rollback();
         }
     }
+
+    public function getSwapRequest(Request $request){
+        $inboxID = Input::get('inboxID');
+
+        $result = DB::table('tblinbox')
+            ->join('tblswaprequest', 'tblswaprequest.intInboxID', '=', 'tblinbox.intInboxID')
+            ->join('tblclientguard', 'tblclientguard.intClientGuardID', '=', 'tblswaprequest.intClientGuardSenderID')
+            ->join('tblguard', 'tblguard.intGuardID', '=', 'tblclientguard.intGuardID')
+            ->join('tblcontract', 'tblcontract.intContractID', '=', 'tblclientguard.intContractID')
+            ->join('tblclient', 'tblclient.intClientID', '=', 'tblcontract.intClientID')
+            ->join('tblnatureofbusiness', 'tblnatureofbusiness.intNatureOfBusinessID', '=', 'tblclient.intNatureOfBusinessID')
+            ->join('tblclientaddress', 'tblclientaddress.intClientID', '=', 'tblclient.intClientID')
+            ->join('tblprovince', 'tblprovince.intProvinceID','=','tblclientaddress.intProvinceID')
+            ->join('tblcity', 'tblcity.intCityID','=','tblclientaddress.intCityID')
+            ->select('tblclient.*', 'tblguard.strFirstName', 'tblguard.strLastName','tblguard.strContactNumberMobile', 'tblclientaddress.strAddress','tblprovince.strProvinceName', 'tblcity.strCityName', 'tblnatureofbusiness.strNatureOfBusiness', 'tblswaprequest.boolStatus')
+            ->where('tblinbox.intInboxID', $inboxID)
+            ->first();
+        $shift = DB::table('tblclientshift')
+            ->select('*')
+            ->where('intClientID', '=', $result->intClientID)
+            ->get();
+
+        foreach($shift as $value){
+            $value->timeFrom = date('h:i A', strtotime($value->timeFrom)); 
+            $value->timeTo = date('h:i A', strtotime($value->timeTo)); 
+        }
+        
+        $result->shift = $shift;
+        
+        return response()->json($result);
+
+    }
 }
 
