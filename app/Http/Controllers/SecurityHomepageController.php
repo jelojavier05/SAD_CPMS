@@ -451,7 +451,50 @@ class SecurityHomepageController extends Controller
         $result->shift = $shift;
         
         return response()->json($result);
+    }
 
+    public function acceptSwapRequest(Request $request){
+        try{
+
+            DB::beginTransaction();
+            $inboxIDRequest = $request->inboxID;
+            $accountID = $request->session()->get('accountID');
+
+            $swapRequestID = DB::table('tblswaprequest')
+                ->select('intSwapRequestID')
+                ->where('intInboxID', $inboxIDRequest)
+                ->first();
+
+            $adminID = DB::table('tblaccount')
+                ->select('intAccountID')
+                ->where('intAccountType', 3)
+                ->first();
+
+            $subject = 'Swap Guard Location';
+
+            $inboxIDReponse = DB::table('tblinbox')->insertGetId([
+                'intAccountIDSender' => $accountID,
+                'intAccountIDReceiver' =>$adminID->intAccountID,
+                'strSubject' => $subject, 
+                'tinyintType' => 9
+            ]);
+
+            DB::table('tblswapresponse')->insert([
+                'intSwapRequestID' => $swapRequestID->intSwapRequestID,
+                'intInboxID' => $inboxIDReponse,
+                'boolResponse' => 1
+            ]);
+
+            DB::table('tblswaprequest')
+                ->where('intSwapRequestID', $swapRequestID->intSwapRequestID)
+                ->update([
+                    'boolStatus' => 3//accepted by guard
+                ]);
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
     }
 }
 

@@ -140,6 +140,7 @@ Route::post('/securityInbox/accept/guard', 'SecurityHomepageController@acceptNew
 Route::post('/securityInbox/decline/guard', 'SecurityHomepageController@declineNewClient');
 Route::post('/securityInbox/accept/guardleaverequest', 'SecurityHomepageController@acceptLeaveRequest');
 Route::post('/securityInbox/decline/guardleaverequest', 'SecurityHomepageController@declineLeaveRequest');
+Route::post('/securityInbox/accept/SwapRequest', 'SecurityHomepageController@acceptSwapRequest');
 
 Route::get('/securityleaverequest', 'SecurityLeaveRequestController@index');
 Route::post('/securityleaverequest/post/leaverequest', 'SecurityLeaveRequestController@postLeaveRequest');

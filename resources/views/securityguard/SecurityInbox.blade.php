@@ -274,8 +274,8 @@ Security Homepage
 </div>
 <!--modal leave request from other guard////releiver end-->
 	
-<!--modal swap guard notice-->
-<div id="modalSwapGuardNotice" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
+<!--modal kapwa guard notice-->
+<div id="swapguardModal" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
     <div class="modal-header">
                 <div class="h">
                     <h3><center>Swap Guard Notice</center></h3>  
@@ -293,7 +293,7 @@ Security Homepage
 							</div>
 										
 							<div class="col s4" >
-								<h5 id = 'swapGuardName'></h5>
+								<h5 id = 'swapguardGuardName'></h5>
 							</div>
 						</div>
 					</li>
@@ -305,32 +305,32 @@ Security Homepage
 							</div>
 										
 							<div class="col s4" >
-								<h5 id = 'swapContactNumber'></h5>
+								<h5 id = 'swapguardContactNumber'></h5>
 							</div>
 						</div>
 					</li>
 					
 					<li class="collection-header"><h5 style="font-weight:bold;">Details</h5></li>
 					
-						<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = 'swapNatureOfBusiness'>&nbsp;&nbsp;&nbsp;Bar</div>
+						<li class="collection-item" style="font-weight:bold;">Nature of Business:<div style="font-weight:normal;" id = 'swapguardNatureOfBusiness'>&nbsp;&nbsp;&nbsp;Bar</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Client Name:<div style="font-weight:normal;" id = 'swapClientName'>&nbsp;&nbsp;&nbsp;The Bar</div>
+						<li class="collection-item" style="font-weight:bold;">Client Name:<div style="font-weight:normal;" id = 'swapguardClientName'>&nbsp;&nbsp;&nbsp;The Bar</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;" id = 'swapContactNumberClient'>&nbsp;&nbsp;&nbsp;09123456789</div>
+						<li class="collection-item" style="font-weight:bold;">Contact Number (Client):<div style="font-weight:normal;" id = 'swapguardContactNumberClient'>&nbsp;&nbsp;&nbsp;09123456789</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;" id = 'swapPerson'>&nbsp;&nbsp;&nbsp;Choco Bar</div>
+						<li class="collection-item" style="font-weight:bold;">Person in Charge:<div style="font-weight:normal;" id = 'swapguardPerson'>&nbsp;&nbsp;&nbsp;Choco Bar</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'swapPersonContact'>&nbsp;&nbsp;&nbsp;09123456789</div>
+						<li class="collection-item" style="font-weight:bold;">Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'swapguardPersonContact'>&nbsp;&nbsp;&nbsp;09123456789</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = 'swapAddress'>&nbsp;&nbsp;&nbsp;123 Welcome Street Pasig Metro Manila</div>
+						<li class="collection-item" style="font-weight:bold;">Address:<div style="font-weight:normal;" id = 'swapguardAddress'>&nbsp;&nbsp;&nbsp;123 Welcome Street Pasig Metro Manila</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'swapAreaSize'>&nbsp;&nbsp;&nbsp;100</div>
+						<li class="collection-item" style="font-weight:bold;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'swapguardAreaSize'>&nbsp;&nbsp;&nbsp;100</div>
 						</li>
-						<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = 'swapPopulation'>&nbsp;&nbsp;&nbsp;10</div>
+						<li class="collection-item" style="font-weight:bold;">Population (approx.):<div style="font-weight:normal;" id = 'swapguardPopulation'>&nbsp;&nbsp;&nbsp;10</div>
 						</li>
 						<li class="collection-item" style="font-weight:bold;">Shift/s:
 							<div style="font-weight:normal;">
-								<table class="" style="font-family:Myriad Pro" id = 'shiftTableSwap'>
+								<table class="" style="font-family:Myriad Pro" id = 'swapguardShiftTable'>
 									<thead>
 									<tr>
 										<th data-field="st">Shift</th>
@@ -356,36 +356,34 @@ Security Homepage
     </div>
     
     <div class="modal-footer ci" style="background-color: #00293C;">
-        <div id = "swapButton" style="display: none;">	
-            <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "">Accept
-            </button>
+        <div id = "swapguardButton" style="display: none;">	
+            <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "swapguardAccept">Accept</button>
 
-            <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "">Decline
-            </button>
+            <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "swapguardDecline">Decline</button>
         </div>
         
-        <div id = "swapAccepted" style="display: none;">
+        <div id = "swapguardAccepted" style="display: none;">
 			
 			<button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted
             </button>
         </div>
         
-        <div id = "swapRejected" style="display: none;">
+        <div id = "swapguardRejected" style="display: none;">
             <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined
             </button>
         </div>
         
-        <div id = "swapNotAvailable" style="display: none;">
+        <div id = "swapguardNotAvailable" style="display: none;">
             <button class="btn grey" name="" style="margin-right: 30px; cursor:default;" id = "">Unavailable
             </button>
         </div>
     </div>
 </div>
 
-<!--modal swap guard notice end-->
+<!--modal kapwa guard notice end-->
 	
 	
-<!--modal kapwa guard swap notice-->
+<!--modal swap guard notice-->
 	
 <div id="modalcoSGswaprequest" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
     <div class="modal-header">
@@ -440,7 +438,7 @@ Security Homepage
 						</li>
 						<li class="collection-item" style="font-weight:bold;">Shift/s:
 							<div style="font-weight:normal;">
-								<table class="" style="font-family:Myriad Pro" id = 'shiftTableSwap'>
+								<table class="" style="font-family:Myriad Pro" id = 'swapguardShiftTable'>
 									<thead>
 									<tr>
 										<th data-field="st">Shift</th>
@@ -488,7 +486,7 @@ Security Homepage
     </div>
 </div>
 	
-<!--modal kapwa guard swap notice end-->
+<!--modal swap guard notice end-->
 	
 
 
@@ -564,38 +562,6 @@ $(document).ready(function(){
     });
     
     $('#btnAccept').click(function(){
-        acceptNewClient();
-    });
-    
-    $('#btnDecline').click(function(){
-        $.ajax({
-            type: "POST",
-            url: "{{action('SecurityHomepageController@declineNewClient')}}",
-            beforeSend: function (xhr) {
-                var token = $('meta[name="csrf_token"]').attr('content');
-                if (token) {
-                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                }
-            },
-            data: {
-                inboxID:inboxID
-            },
-            success: function(data){
-                swal("Declined", "You declined the offer.", "success");
-            }
-            
-        });//decline
-    });
-
-    $('#btnAcceptLeaveRequest').click(function(){
-        acceptRequestLeave();
-    });
-
-    $('#btnDeclineLeaveRequest').click(function(){
-        declineRequestLeave();
-    });
-
-    function acceptNewClient(){
         var statusChecker;
         $.ajax({
             
@@ -634,7 +600,100 @@ $(document).ready(function(){
             var toastContent = $('<span>You are now committed to other client.</span>');
             Materialize.toast(toastContent, 1500,'red', 'edit');
         }
-    }
+    });
+    
+    $('#btnDecline').click(function(){
+        $.ajax({
+            type: "POST",
+            url: "{{action('SecurityHomepageController@declineNewClient')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+                if (token) {
+                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                inboxID:inboxID
+            },
+            success: function(data){
+                swal("Declined", "You declined the offer.", "success");
+            }
+            
+        });//decline
+    });
+
+    $('#btnAcceptLeaveRequest').click(function(){
+        $.ajax({
+            type: "POST",
+            url: "{{action('SecurityHomepageController@acceptLeaveRequest')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                intInboxID: inboxID,
+            },
+            success: function(data){
+                swal("Accepted", "You accepted the request.", "success");
+            }
+        });//ajax
+    });
+
+    $('#btnDeclineLeaveRequest').click(function(){
+        $.ajax({
+            type: "POST",
+            url: "{{action('SecurityHomepageController@declineLeaveRequest')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                intInboxID: inboxID,
+            },
+            success: function(data){
+                swal("Decline", "You decline the request.", "error");
+            }
+        });//ajax
+    });
+
+    $('#swapguardAccept').click(function(){
+		$.ajax({
+            type: "POST",
+            url: "{{action('SecurityHomepageController@acceptSwapRequest')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                inboxID: inboxID
+            },
+            success: function(data){
+
+            	swal({
+						title: "You accepted the request!",
+						text: "Please wait for the response of the admin.",
+						type: "success"
+					},
+					function(){
+					$('#swapguardModal').closeModal();
+				});
+
+            },
+            error: function(data){
+				var toastContent = $('<span>Error Database </span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+            }
+        });//ajax
+    });
 
     function commaSeparateNumber(val){
         while (/(\d+)(\d{3})/.test(val.toString())){
@@ -795,10 +854,6 @@ $(document).ready(function(){
 
     // Leave Request Reliever Start
     function leaveRequest(){
-        setData();
-    }
-
-    function setData(){
         $.ajax({
             type: "GET",
             url: "/securityInbox/get/getLeaveRequestInformation?inboxID=" + inboxID,
@@ -848,48 +903,6 @@ $(document).ready(function(){
                     $('#rejectedLeaveRequest').hide();
                     $('#notAvailableLeaveRequest').show();
                 }
-
-
-            }
-        });//ajax
-    }
-
-    function acceptRequestLeave(){
-        $.ajax({
-            type: "POST",
-            url: "{{action('SecurityHomepageController@acceptLeaveRequest')}}",
-            beforeSend: function (xhr) {
-                var token = $('meta[name="csrf_token"]').attr('content');
-
-                if (token) {
-                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                }
-            },
-            data: {
-                intInboxID: inboxID,
-            },
-            success: function(data){
-                swal("Accepted", "You accepted the request.", "success");
-            }
-        });//ajax
-    }
-
-    function declineRequestLeave(){
-        $.ajax({
-            type: "POST",
-            url: "{{action('SecurityHomepageController@declineLeaveRequest')}}",
-            beforeSend: function (xhr) {
-                var token = $('meta[name="csrf_token"]').attr('content');
-
-                if (token) {
-                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                }
-            },
-            data: {
-                intInboxID: inboxID,
-            },
-            success: function(data){
-                swal("Decline", "You decline the request.", "error");
             }
         });//ajax
     }
@@ -898,13 +911,7 @@ $(document).ready(function(){
 
     // Swap Request Start
     function swapRequest(){
-    	$('#modalSwapGuardNotice').openModal();
-    	setSwapRequest();
-    }
-    // Swap Request End
-
-    function setSwapRequest(){
-		$.ajax({
+    	$.ajax({
             type: "GET",
             url: "/securityInbox/get/SwapRequest?inboxID=" + inboxID,
             success: function(data){
@@ -912,22 +919,22 @@ $(document).ready(function(){
                 var population = commaSeparateNumber(data.intPopulation);
                 var arrayShift = data.shift;
                 var statusIdentifier = data.boolStatus;
-
-            	$('#swapGuardName').text(data.strFirstName + ' ' + data.strLastName);
-            	$('#swapContactNumber').text(data.strContactNumberMobile);
-            	$('#swapNatureOfBusiness').text(data.strNatureOfBusiness);
-                $('#swapClientName').text(data.strClientName);
-                $('#swapContactNumberClient').text(data.strContactNumber);
-                $('#swapPerson').text(data.strPersonInCharge);
-                $('#swapPersonContact').text(data.strPOICContactNumber);
-                $('#swapAddress').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
-                $('#swapAreaSize').text(areaSize);
-                $('#swapPopulation').text(population);
+                $('#swapguardModal').openModal();
+            	$('#swapguardGuardName').text(data.strFirstName + ' ' + data.strLastName);
+            	$('#swapguardContactNumber').text(data.strContactNumberMobile);
+            	$('#swapguardNatureOfBusiness').text(data.strNatureOfBusiness);
+                $('#swapguardClientName').text(data.strClientName);
+                $('#swapguardContactNumberClient').text(data.strContactNumber);
+                $('#swapguardPerson').text(data.strPersonInCharge);
+                $('#swapguardPersonContact').text(data.strPOICContactNumber);
+                $('#swapguardAddress').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+                $('#swapguardAreaSize').text(areaSize);
+                $('#swapguardPopulation').text(population);
                 
-                $('#shiftTableSwap tr').not(function(){ return !!$(this).has('th').length; }).remove(); 
+                $('#swapguardShiftTable tr').not(function(){ return !!$(this).has('th').length; }).remove(); 
                 $.each(arrayShift, function (index, value) {
                     
-                    $('#shiftTableSwap tr:last').after(
+                    $('#swapguardShiftTable tr:last').after(
                         '<tr>'+
                             '<td>' + value.strShiftNumber +'</td>' +
                             '<td>' + value.timeFrom + '</td>' +
@@ -936,31 +943,22 @@ $(document).ready(function(){
                     );
                 });
 
-
-
-
-
                 if (statusIdentifier == 1){
-                    $('#swapButton').show();
-                    $('#swapAccepted').hide();
-                    $('#swapRejected').hide();
-                    $('#swapNotAvailable').hide();
-                }else if (statusIdentifier == 2){
-                    $('#swapButton').hide();
-                    $('#swapAccepted').show();
-                    $('#swapRejected').hide();
-                    $('#swapNotAvailable').hide();
-                }else if (statusIdentifier == 0){
-                    $('#swapButton').hide();
-                    $('#swapAccepted').hide();
-                    $('#swapRejected').show();
-                    $('#swapNotAvailable').hide();
+                    $('#swapguardButton').show();
+                    $('#swapguardAccepted').hide();
+                    $('#swapguardRejected').hide();
+                    $('#swapguardNotAvailable').hide();
                 }else if (statusIdentifier == 3){
-                    $('#swapButton').hide();
-                    $('#swapAccepted').hide();
-                    $('#swapRejected').hide();
-                    $('#swapNotAvailable').show();
-                }
+                    $('#swapguardButton').hide();
+                    $('#swapguardAccepted').show();
+                    $('#swapguardRejected').hide();
+                    $('#swapguardNotAvailable').hide();
+                }else if (statusIdentifier == 0){
+                    $('#swapguardButton').hide();
+                    $('#swapguardAccepted').hide();
+                    $('#swapguardRejected').show();
+                    $('#swapguardNotAvailable').hide();
+                }	
             },
             error: function(data){
 				var toastContent = $('<span>Error Database </span>');
@@ -968,6 +966,7 @@ $(document).ready(function(){
             }
         });//ajax
     }
+    // Swap Request End
 });
 	
 	
