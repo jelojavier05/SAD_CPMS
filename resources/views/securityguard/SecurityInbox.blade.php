@@ -497,30 +497,11 @@ $(document).ready(function(){
     var table = $('#inboxTable').DataTable();
     var inboxID;
     var type; 
-
-    $.ajax({
-            
-        type: "GET",
-        url: "{{action('SecurityHomepageController@getGuardInformation')}}",
-        success: function(data){
-            if (data){
-                $('#strProfileName').text(data.strFirstName + ' ' + data.strLastName);
-                $('#strProfileLicenseNumber').text(data.strLicenseNumber);    
-            }
-        }
-    });//guard information
     
     $.ajax({
             
         type: "GET",
         url: "{{action('InboxController@getInbox')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
         success: function(data){
             if (data){
 

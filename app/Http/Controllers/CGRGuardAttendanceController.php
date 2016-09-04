@@ -25,29 +25,31 @@ class CGRGuardAttendanceController extends Controller
     	$cgrmID = $request->session()->get('id');
     	$now = Carbon::now();
 
-    	$clientID = DB::table('tblcgrm')
-    		->select('intClientID')
-    		->where('intCgrmID', $cgrmID)
-    		->first();
-    	
-    	$guardID = DB::table('tblclient')
-    		->join('tblcontract', 'tblcontract.intClientID', '=','tblclient.intClientID')
-    		->join('tblclientguard' ,'tblclientguard.intContractID', '=','tblcontract.intContractID')
-    		->join('tblguard', 'tblguard.intGuardID', '=','tblclientguard.intGuardID')
-    		->select('tblguard.intGuardID')
-    		->where('tblclient.intClientID', $clientID->intClientID)
-    		->groupBy('tblclientguard.intGuardID')
-    		->get();
+    	$client = DB::table('tblcgrm')
+            ->join('tblcontract', 'tblcontract.intClientID', '=', 'tblcgrm.intClientID')
+            ->select('tblcgrm.intClientID', 'tblcontract.intContractID')
+            ->where('intCgrmID', $cgrmID)
+            ->where('tblcontract.boolStatus', 1)
+            ->first();
+
+        $guardID = DB::table('tblclientguard')
+            ->select('intGuardID')
+            ->where('intContractID', $client->intContractID)
+            ->groupBy('intGuardID')
+            ->get();
+
 
     	$clientGuard = array();
 
     	foreach($guardID as $value){
-    		$result = DB::table('tblclientguard')
+    		$result = DB::table('tblcontract')    
+                ->join('tblclientguard', 'tblclientguard.intContractID', '=', 'tblcontract.intContractID')
     			->join('tblguard', 'tblguard.intGuardID', '=', 'tblclientguard.intGuardID')
     			->join('tblguardlicense', 'tblguardlicense.intGuardID', '=', 'tblguard.intGuardID')
     			->select('tblguard.strFirstName','tblguard.strLastName', 'tblguardlicense.strLicenseNumber','tblguard.intGuardID', 'tblclientguard.boolStatus')
     			->where('tblclientguard.intGuardID', $value->intGuardID)
-    			->where('tblclientguard.created_at', '<', $now)
+                ->where('tblclientguard.intContractID', $client->intContractID)
+    			->where('tblclientguard.created_at', '<=', $now)
     			->orderBy('tblclientguard.created_at', 'desc')
     			->first();
 
@@ -55,7 +57,7 @@ class CGRGuardAttendanceController extends Controller
 				$resultAttendance = DB::table('tblattendance')
 					->select('datetimeIn', 'datetimeOut')
 					->where('intGuardID', $value->intGuardID)
-					->where('intClientID', $clientID->intClientID)
+					->where('intClientID', $client->intClientID)
 					->orderBy('datetimeIn', 'desc')
 					->first();
 
@@ -73,6 +75,7 @@ class CGRGuardAttendanceController extends Controller
 			}
 
     	}
+        
         krsort($clientGuard);
         
     	return response()->json($clientGuard);

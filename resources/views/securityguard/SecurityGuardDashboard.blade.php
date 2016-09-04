@@ -202,10 +202,10 @@
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusiness'>&nbsp;&nbsp;&nbsp;</div>
+								Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusinessDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s6">
-								Client Name:<div style="font-weight:normal;" id = 'clientName'>&nbsp;&nbsp;&nbsp;</div>
+								Client Name:<div style="font-weight:normal;" id = 'clientNameDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
                     </li>
@@ -214,10 +214,10 @@
 					<li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Address:<div style="font-weight:normal;" id = 'clientAddress'>&nbsp;&nbsp;&nbsp;</div>
+								Address:<div style="font-weight:normal;" id = 'clientAddressDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s6">
-								Contact Number (Client):<div style="font-weight:normal;" id = 'contactNumberClient'>&nbsp;&nbsp;&nbsp;</div>
+								Contact Number (Client):<div style="font-weight:normal;" id = 'contactNumberClientDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
                     </li>
@@ -225,10 +225,10 @@
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Person in Charge:<div style="font-weight:normal;" id = 'personInCharge'>&nbsp;&nbsp;&nbsp;</div>
+								Person in Charge:<div style="font-weight:normal;" id = 'personInChargeDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s6">
-								Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'contactNumberPIC'>&nbsp;&nbsp;&nbsp;</div>
+								Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'contactNumberPICDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
                     </li>
@@ -237,10 +237,10 @@
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s4">	
-								Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSize'>&nbsp;&nbsp;&nbsp;</div>
+								Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSizeDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s4">
-								Population (approx.):<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;</div>
+								populationDashboard (approx.):<div style="font-weight:normal;" id = 'populationDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						
 				</ul>
@@ -344,14 +344,14 @@ $(document).ready(function() {
       url: "{{action('SecurityGuardDashboardController@getClientInformation')}}",
       success: function(data){
         console.log(data);
-        $('#natureOfBusiness').text(data.strNatureOfBusiness);
-        $('#clientName').text(data.strClientName);
-        $('#clientAddress').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
-        $('#contactNumberClient').text(data.strContactNumber);
-        $('#personInCharge').text(data.strPersonInCharge);
-        $('#contactNumberPIC').text(data.strPOICContactNumber);
-        $('#areaSize').text(data.deciAreaSize);
-        $('#population').text(data.intPopulation);
+        $('#natureOfBusinessDashboard').text(data.strNatureOfBusiness);
+        $('#clientNameDashboard').text(data.strClientName);
+        $('#clientAddressDashboard').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+        $('#contactNumberClientDashboard').text(data.strContactNumber);
+        $('#personInChargeDashboard').text(data.strPersonInCharge);
+        $('#contactNumberPICDashboard').text(data.strPOICContactNumber);
+        $('#areaSizeDashboard').text(data.deciAreaSize);
+        $('#populationDashboard').text(data.intPopulation);
       }
     });//ajax
   }

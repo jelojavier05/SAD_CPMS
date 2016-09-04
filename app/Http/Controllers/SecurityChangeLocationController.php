@@ -26,7 +26,7 @@ class SecurityChangeLocationController extends Controller
             ->join('tblguardstatus', 'tblguardstatus.intGuardID', '=', 'tblguard.intGuardID')
             ->select('tblguardstatus.intStatusIdentifier')
             ->where('tblguard.intGuardID', '=', $id)
-            ->where('tblguardstatus.dateEffectivity','<', $now)
+            ->where('tblguardstatus.dateEffectivity','<=', $now)
             ->orderBy('tblguardstatus.dateEffectivity', 'desc')
             ->first();
 
@@ -58,14 +58,16 @@ class SecurityChangeLocationController extends Controller
     public function getClientActiveGuards(Request $request){
         $clientID = Input::get('clientID');
         $now = Carbon::now();
+        $contract = DB::table('tblcontract')
+            ->select('intContractID')
+            ->where('intClientID', $clientID)
+            ->where('boolStatus', 1)
+            ->first();
         
-        $guardID = DB::table('tblclient')
-            ->join('tblcontract', 'tblcontract.intClientID', '=','tblclient.intClientID')
-            ->join('tblclientguard' ,'tblclientguard.intContractID', '=','tblcontract.intContractID')
-            ->join('tblguard', 'tblguard.intGuardID', '=','tblclientguard.intGuardID')
-            ->select('tblguard.intGuardID')
-            ->where('tblclient.intClientID', $clientID)
-            ->groupBy('tblclientguard.intGuardID')
+        $guardID = DB::table('tblclientguard')
+            ->select('intGuardID')
+            ->where('intContractID', $contract->intContractID)
+            ->groupBy('intGuardID')
             ->get();
 
         $clientGuard = array();
@@ -77,9 +79,11 @@ class SecurityChangeLocationController extends Controller
                 ->join('tblcity','tblcity.intCityID','=','tblguardaddress.intCityID')
                 ->select('tblguard.strFirstName','tblguard.strLastName', 'tblguard.intGuardID','tblprovince.strProvinceName','tblcity.strCityName', 'tblclientguard.boolStatus')
                 ->where('tblclientguard.intGuardID' ,$value->intGuardID)
-                ->where('tblclientguard.created_at', '<', $now)
+                ->where('tblclientguard.intContractID', $contract->intContractID)
+                ->where('tblclientguard.created_at', '<=', $now)
                 ->orderBy('tblclientguard.created_at', 'desc')
                 ->first();
+
 
             $countLeaveRequestActive = DB::table('tblguardleaverequest')
                 ->where('intGuardID', $value->intGuardID)
@@ -90,17 +94,18 @@ class SecurityChangeLocationController extends Controller
                 ->join('tblguardstatus', 'tblguardstatus.intGuardID', '=', 'tblguard.intGuardID')
                 ->select('tblguardstatus.intStatusIdentifier')
                 ->where('tblguard.intGuardID', '=', $value->intGuardID)
-                ->where('tblguardstatus.dateEffectivity','<', $now)
+                ->where('tblguardstatus.dateEffectivity','<=', $now)
                 ->orderBy('tblguardstatus.dateEffectivity', 'desc')
                 ->first();
             
-            if ($result->boolStatus == 1 && $guard->intStatusIdentifier == 2 && $countLeaveRequestActive == 0){   
+            if (!is_null($result) && $result->boolStatus == 1 && $guard->intStatusIdentifier == 2 && $countLeaveRequestActive == 0){   
                 //first - kung active siya dun sa client na yon
                 //second - kung nakadeploy ba talaga siya at hindi lang siya reliever
                 //third - kung wala siyang pending na request leave
                 array_push($clientGuard, $result);
             }
         }
+
         return response()->json($clientGuard);
     }
 

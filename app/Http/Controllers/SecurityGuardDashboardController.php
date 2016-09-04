@@ -34,7 +34,7 @@ class SecurityGuardDashboardController extends Controller
             ->join('tblcity', 'tblcity.intCityID','=','tblclientaddress.intCityID')
             ->select('tblclient.*', 'tblnatureofbusiness.strNatureOfBusiness', 'tblclientaddress.strAddress','tblprovince.strProvinceName','tblcity.strCityName')
             ->where('tblclientguard.intGuardID', $guardID)
-            ->where('tblclientguard.created_at', '<', $now)
+            ->where('tblclientguard.created_at', '<=', $now)
             ->orderBy('tblclientguard.created_at', 'desc')
             ->first();
         

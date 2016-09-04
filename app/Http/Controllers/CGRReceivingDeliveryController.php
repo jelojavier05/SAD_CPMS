@@ -88,28 +88,29 @@ class CGRReceivingDeliveryController extends Controller
             ->first();
         $guardID = $result->intGuardID;
         
-        $clientID = DB::table('tblcgrm')
-            ->select('intClientID')
+        $client = DB::table('tblcgrm')
+            ->join('tblcontract', 'tblcontract.intClientID', '=', 'tblcgrm.intClientID')
+            ->select('tblcgrm.intClientID', 'tblcontract.intContractID')
             ->where('intCgrmID', $cgrmID)
+            ->where('tblcontract.boolStatus', 1)
             ->first();
-        
-        $guardIDs = DB::table('tblclient')
-            ->join('tblcontract', 'tblcontract.intClientID', '=','tblclient.intClientID')
-            ->join('tblclientguard' ,'tblclientguard.intContractID', '=','tblcontract.intContractID')
-            ->join('tblguard', 'tblguard.intGuardID', '=','tblclientguard.intGuardID')
-            ->select('tblguard.intGuardID')
-            ->where('tblclient.intClientID', $clientID->intClientID)
-            ->groupBy('tblclientguard.intGuardID')
+
+        $guardIDs = DB::table('tblclientguard')
+            ->select('intGuardID')
+            ->where('intContractID', $client->intContractID)
+            ->groupBy('intGuardID')
             ->get();
 
         $clientGuard = array();
         foreach($guardIDs as $value){
-            $result = DB::table('tblclientguard')
+            $result = DB::table('tblcontract')    
+                ->join('tblclientguard', 'tblclientguard.intContractID', '=', 'tblcontract.intContractID')
                 ->join('tblguard', 'tblguard.intGuardID', '=', 'tblclientguard.intGuardID')
                 ->join('tblguardlicense', 'tblguardlicense.intGuardID', '=', 'tblguard.intGuardID')
                 ->select('tblguard.strFirstName','tblguard.strLastName', 'tblguardlicense.strLicenseNumber','tblguard.intGuardID', 'tblclientguard.boolStatus')
-                ->where('tblclientguard.intGuardID' ,$value->intGuardID)
-                ->where('tblclientguard.created_at', '<', $now)
+                ->where('tblclientguard.intGuardID', $value->intGuardID)
+                ->where('tblclientguard.intContractID', $client->intContractID)
+                ->where('tblclientguard.created_at', '<=', $now)
                 ->orderBy('tblclientguard.created_at', 'desc')
                 ->first();
 
