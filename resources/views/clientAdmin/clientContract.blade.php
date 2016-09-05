@@ -9,7 +9,7 @@ Client
 <div class="row">
 	<div class="col s10 push-s2">
 		<div class="col s6">
-			<div class="container-fluid grey lighten-4 z-depth-2" style="border: 1px solid black; border-radius:5px;" id="">
+			<div class="container-fluid grey lighten-4 z-depth-2 animated fadeInUp" style="border: 1px solid black; border-radius:5px;" id="">
 				<h4 class = "blue white-text" style="margin-top:0px;">Contract</h4>
 				<div class = "row">
 					<div class="col s10 push-s1">
@@ -113,7 +113,7 @@ Client
 		<div class="col s6">
 			<div class="row">
 				<div class="col s6">
-					<ul class="collection with-header" id="" style="border:1px solid black;">
+					<ul class="collection with-header animated fadeInUp" id="" style="border:1px solid black;">
 								<li class="collection-header blue white-text" ><h5 style="font-weight:bold;">Billing Dates</h5></li>
 							<div>
 								<li class="collection-item sidenavhover" style="height:300px;">
@@ -144,7 +144,7 @@ Client
 				</div>
 				
 				<div class="col s6">
-					<ul class="collection with-header" id="" style="border:1px solid black;">
+					<ul class="collection with-header animated fadeInUp" id="" style="border:1px solid black;">
 						<li class="collection-header blue white-text" ><h5 style="font-weight:bold;">Client Details</h5>
 						</li>
 							<div class="sidenavhover" style=" height:300px;">
@@ -181,7 +181,7 @@ Client
 				</div>
 				
 				<div class="col s6">
-					<ul class="collection with-header" id="" style="border:1px solid black;">
+					<ul class="collection with-header animated fadeInUp" id="" style="border:1px solid black;">
 								<li class="collection-header blue white-text" ><h5 style="font-weight:bold;" id ='guardHeader'></h5></li>
 							<div class="sidenavhover" style=" height:300px;" id = 'guardContainer'>
 								<li class="collection-item">
@@ -195,7 +195,7 @@ Client
 				</div>
 				
 				<div class="col s6">
-					<ul class="collection with-header" id="" style="border:1px solid black;">
+					<ul class="collection with-header animated fadeInUp" id="" style="border:1px solid black;">
 								<li class="collection-header blue white-text" ><h5 style="font-weight:bold;" id = 'gunHeader'></h5></li>
 							<div>
 								<li class="collection-item sidenavhover" style=" height:300px;">

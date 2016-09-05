@@ -118,14 +118,13 @@
 														
 														<li><a class="blue-text swa" href="/maintenance/armedservice">Armed Service</a></li>
 														
+														<li><a class="blue-text swa" href="/maintenance/rank">Rank</a></li>
+														
 														<li><a class="blue-text swa" href="/maintenance/bodyAttribute">Body Attributes</a></li>
 														
 														<li><a class="blue-text" href="/maintenance/governmentExam">Government Exam</a></li>
 														
-														<li><a class="blue-text swa" href="/maintenance/leave">Leave</a></li>
-														
-														<li><a class="blue-text swa" href="/maintenance/rank">Rank</a></li>
-														
+														<li><a class="blue-text swa" href="/maintenance/leave">Leave</a></li>																																									
 														
 													</ul>
 														

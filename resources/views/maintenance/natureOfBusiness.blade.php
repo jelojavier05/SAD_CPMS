@@ -31,6 +31,16 @@ Nature of Business
                         <i class="material-icons left">add</i> ADD
                     </button>
                 </div>
+				
+				<div class="nav-wrapper">
+				<form>
+				<div class="input-field col s3 push-s2">
+					<input id="mySearch" type="search" placeholder="Search">
+					<label for="search"></label>
+					<i class="material-icons">close</i>
+				</div>
+				
+				</div>
 <!--            </div>-->
         
         
@@ -41,7 +51,7 @@ Nature of Business
                         <thead>
                             <tr>
                                 <th style="width:50px;" class="blue darken-3 white-text"></th>
-                                <th style="width:50px;" class="blue darken-3 white-text"></th>
+                                <th style="width:50px;" class="blue darken-3 white-text">Actions</th>
 								<th style="width:50px;" class="blue darken-3 white-text"></th>
                                 <th class="blue darken-3 white-text">ID</th>
                                 <th class="blue darken-3 white-text">Name</th>
@@ -231,10 +241,17 @@ Nature of Business
             ] ,  
 //		    "pagingType": "full_numbers",
 			"pageLength":5,
-			"lengthMenu": [5,10,15,20]
+			"lengthMenu": [5,10,15,20],
+//			"bFilter": false
 
 
 		});
+		
+		search = $('#dataTable').DataTable();
+		$("#mySearch").keyup(function(){
+			search.search($(this).val()).draw();
+		});
+		
 
 		$("#btnAddSave").click(function(){
            if ($('#strNatureOfBusiness').val().trim()){

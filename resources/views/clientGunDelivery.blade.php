@@ -11,7 +11,7 @@ Delivery
 		
 		<div class ="col s5" style=" margin-top:38px;">
 			<div class="col s12">
-				<div class="container-fluid grey lighten-5 z-depth-2" style="border-radius:5px; border: 1px solid black;">
+				<div class="container-fluid grey lighten-5 z-depth-2 animated fadeInUp" style="border-radius:5px; border: 1px solid black;">
 					<h4 class = "blue white-text" style="margin-top:0px;">Summary</h4>
 						<div class="row">
 							<div class="col s12">
@@ -46,7 +46,7 @@ Delivery
 		
 		<div class="col s7">
 			<div class="col s12" style=" margin-left:10px; margin-top: 6%;">
-				<div class="container-fluid grey lighten-4 z-depth-2" style="border: 1px solid black; border-radius:5px; padding-bottom:1%;" id="personaldata">
+				<div class="container-fluid grey lighten-4 z-depth-2 animated fadeInUp" style="border: 1px solid black; border-radius:5px; padding-bottom:1%;" id="personaldata">
 					<h4 class = "blue white-text" style="margin-top:0px;">Delivery</h4>
 					<div class = "row">
 						<div class="col s10 push-s1">

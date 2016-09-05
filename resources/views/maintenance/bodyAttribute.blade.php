@@ -38,7 +38,7 @@ Body Attributes
                         <thead>
                             <tr>
                                 <th style="width:50px;" class="blue darken-3 white-text"></th>
-                                <th style="width:50px;" class="blue darken-3 white-text"></th>
+                                <th style="width:50px;" class="blue darken-3 white-text">Actions</th>
 								<th style="width:50px;" class="blue darken-3 white-text"></th>
                                 <th class="blue darken-3 white-text">ID</th>
                                 <th class="blue darken-3 white-text">Name</th>

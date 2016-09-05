@@ -324,8 +324,16 @@ Guard Form
         }); //get data
         
         $('#nextPersonalData').click(function(){
-            sendData();
-            window.location.href = '{{ URL::to("/guard/registration/educationalbackground") }}';
+            
+			if (checkInput()){
+				sendData();
+				window.location.href = '{{ URL::to("/guard/registration/educationalbackground") }}';
+//				confirm('tama');
+			}else{
+				confirm('mali');
+			}
+			
+				
         });
         
         $('#provinceSelect').on('change',function(){
@@ -428,6 +436,32 @@ Guard Form
                 }
             });//ajax
         }//sendData()
+		
+		function checkInput(){
+			var checker;
+			
+//			$.each(bodyAttribute, function(index,value){
+//				
+//				var specs = $('#specification' + value.intBodyAttributeID);
+//				confirm(specs);
+//				if (specs == ''){
+//					checker = false;
+//					confirm ('test');
+//					return false;
+//				}
+//			});
+//				
+//			console.log(bodyAttribute);
+			var firstName = $('#firstName').val();
+			if (firstName == '' || checker == false){
+				checker = false;
+			}else{
+				checker = true;
+			}
+			
+			return checker;
+		}
+		
     });
 	
 	

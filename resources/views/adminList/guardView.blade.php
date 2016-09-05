@@ -57,124 +57,87 @@ Guard
         </div>
     </div>
     
-    <div class ="col s4" style=" margin-top:30px;">
-        <div class="col s12">
-            <div class="container-fluid grey lighten-5 z-depth-1" style="border-radius:15px;">
-                <div class="blue darken-1 white-text" style="position:relative; z-index:100; width:405px; height: 38px; font-size:30px;">Details</div>
-                <div class="row">
-                    <div class="col s12" style="overflow:scroll; overflow-x:hidden; height:500px;">
-                        <div class="card grey darken-1">
-                            <div class="card-content">
-                                <div>
-                                    <span class = "card-title black-text" style="font-weight:bold;">Client:</span>
-                                </div>
-                                <div>
-                                    <p style="color:#212121; font-size: 18px;" id = "clientName"></p>
-                                </div>
-								<div>
-                                    <span class = "card-title black-text" style="font-weight:bold;">Status:</span>
-                                </div>		
-                                <div>
-                                    <p style="color:#212121; font-size: 18px;" id = "guardStatus"></p>
-                                </div>					
-								<div>
-                                    <span class = "card-title black-text" style="font-weight:bold;">Personal Data:</span>
-                                </div>
-                                <div>
-                                    <p style="color: #eeeeee; font-size: 20px;">First Name:</p>
-                                </div>
-                                <div>
-                                    <p style="color:#212121; font-size: 18px;" id = "firstName"></p>
-                                </div>
-                                <div>
-                                    <p style="color: #eeeeee; font-size: 20px;">Middle Name:</p>
-                                </div>
-                                <div>
-                                    <p style="color:#212121; font-size: 18px;" id = "middleName"></p>
-                                </div>
-                                <div>
-                                    <p style="color: #eeeeee; font-size: 20px;">Last Name:</p>
-                                </div>
-                                <div>
-                                    <p style="color:#212121; font-size: 18px;" id = "lastName"></p>
-                                </div>
-                                <div>
-                                    <p style="color: #eeeeee; font-size: 20px;">License Number:</p>
-                                </div>
-                                <div>
-                                    <p style="color:#212121; font-size: 18px;" id = "licenseNumber"></p>
-                                </div>
-                                <div>
-                                    <p style="color: #eeeeee; font-size: 20px;">Address:</p>
-                                </div>
-                                <div>
-                                    <p style="color:#212121; font-size: 18px;" id= "address"></p>
-                                </div>
-                                <div>
-                                    <p style="color: #eeeeee; font-size: 20px;">Age:</p>
-                                </div>
-                                <div>
-                                    <p style="color:#212121; font-size: 18px;" id = "age"></p>
-                                </div>
-                                <div>
-                                    <p style="color: #eeeeee; font-size: 20px;">Gender:</p>
-                                </div>
-                                <div>
-                                    <p style="color:#212121; font-size: 18px;" id = "gender"></p>
-                                </div>
-                                <div>
-                                    <p style="color: #eeeeee; font-size: 20px;">Place of Birth:</p>
-                                </div>
-                                <div>
-                                    <p style="color:#212121; font-size: 18px;" id = "placeOfBirth"></p>
-                                </div>
-                                <div>
-                                    <p style="color: #eeeeee; font-size: 20px;">Contact Number (Mobile):</p>
-                                </div>
-                                <div>
-                                    <p style="color:#212121; font-size: 18px;" id = "mobileNumber"></p>
-                                </div>
-                                <div>
-                                    <p style="color: #eeeeee; font-size: 20px;">Contact Number (Landline):</p>
-                                </div>
-                                <div>
-                                    <p style="color:#212121; font-size: 18px;" id = "landlineNumber"></p>
-                                </div>
-                                <div>
-                                    <p style="color: #eeeeee; font-size: 20px;">Civil Status:</p>
-                                </div>
-                                <div>
-                                    <p style="color:#212121; font-size: 18px;" id = "civilStatus"></p>
-                                </div>
-                                <div>
-                                    <span class = "card-title black-text" style="font-weight:bold;">Body Attributes:</span>
-                                </div>
-                                @foreach($bodyAttributes as $bodyAttribute)
-                                    <div>
-                                        <p style="color: #eeeeee; font-size: 20px;" id = "bodyAttribute{{$bodyAttribute->intBodyAttributeID}}"> {{$bodyAttribute->strBodyAttributeName}} </p>
-                                        <p style="color:#212121; font-size: 18px;" id = "value{{$bodyAttribute->intBodyAttributeID}}">N/A</p>
-                                    </div>
-                                @endforeach
-                                <div>
-                                    <span class = "card-title black-text" style="font-weight:bold;">Armed Services:</span>
-                                </div>
-                                <div>
-                                    <p style="color:#eeeeee; font-size: 18px;" id = "armedService">N/A</p>
-                                </div>
-                                <div>
-                                    <span class = "card-title black-text" style="font-weight:bold;">Government Exams:</span>
-                                </div>
-                                <div>
-                                    @foreach($governmentExams as $value)
-                                        <p style="color:#eeeeee; font-size: 18px;" id = "governmentExam{{$value->intGovernmentExamID}}">• {{ $value->strGovernmentExam }} - N/A</p>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>	
+    <div class ="col s4" style=" margin-top:40px; overflow:scroll; overflow-x:hidden; height:500px;">
+      <ul class="collection with-header" id="collectionActive">
+		  <li class="collection-header" style=""><h5 style="font-weight:bold;">Details</h5></li>          	          		 
+			  <li class="collection-item" style="font-weight:bold; ">Client:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;ChinaBank</div>
+			  </li>		  		  	  
+		  
+		  	  <li class="collection-item" style="font-weight:bold; ">Status:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Active</div>
+			  </li>
+		  
+		  <li class="collection-header"><h5 style="font-weight:bold;">Personal Data</h5></li>
+		  	  <li class="collection-item">
+		  		<div class='row'>
+					<div class='col s4' style="font-weight:bold;">
+						First Name:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Larry</div>
+					</div>
+					
+					<div class='col s4' style="font-weight:bold;">
+						Middle Name:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Test</div>
+					</div>
+					
+					<div class='col s4' style="font-weight:bold;">
+						Last Name:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Bird</div>
+					</div>
+				</div>
+		  	  </li>
+		  
+		 	  <li class="collection-item" style="font-weight:bold; ">License Number:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;2013-12345-MN-0</div>
+			  </li>
+		  	
+		  	  <li class="collection-item" style="font-weight:bold; ">Address:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;123 Hello Street Almanza Las Pinas Metro Manila</div>
+			  </li>		  		  	  
+		  
+		  	  <li class="collection-item" style="font-weight:bold; ">Place of Birth:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Makati City</div>
+			  </li>
+		  
+		  	  <li class="collection-item">
+		  		<div class='row'>
+					<div class='col s4' style="font-weight:bold;">
+						Age:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;31</div>
+					</div>
+					
+					<div class='col s4' style="font-weight:bold;">
+						Gender:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Male</div>
+					</div>
+					
+					<div class='col s4' style="font-weight:bold;">
+						Civil Status:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Single</div>
+					</div>
+				</div>
+		  	  </li>
+		  
+		  	  <li class="collection-item">
+		  		<div class='row'>
+					<div class='col s6' style="font-weight:bold;">
+						Contact Number (Mobile):<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;09123456789</div>
+					</div>
+					
+					<div class='col s6' style="font-weight:bold;">
+						Contact Number (Landline):<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;8123456</div>
+					</div>										
+				</div>
+		  	  </li>
+		  <li class="collection-header"><h5 style="font-weight:bold;">Body Attributes</h5></li>
+		  	 <div> 
+		      <li class="collection-item" style="font-weight:bold;">Wingspan: 72 inches</li>
+		  	  <li class="collection-item" style="font-weight:bold;">Height: 72 inches</li>
+			  <li></li>
+			 </div>
+		  <li class="collection-header"><h5 style="font-weight:bold;">Armed Services</h5></li>
+		  	 <div> 
+		      <li class="collection-item" style="font-weight:bold;">PNP</li>
+		  	  <li class="collection-item" style="font-weight:bold;">SAF</li>
+			  <li></li>
+			 </div>
+		  <li class="collection-header"><h5 style="font-weight:bold;">Government Exams</h5></li>
+		  	 <div> 
+		      <li class="collection-item" style="font-weight:bold;">Civil Service Examination - 99</li>
+		  	  <li class="collection-item" style="font-weight:bold;">Guard Exam - 100</li>
+			  <li></li>
+			 </div>
+		</ul>  
     </div>
 
 <div id="modalRequirements" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:330px !important;">

@@ -54,6 +54,15 @@ Guard Form
 					</div>
 				</div>
             </div>
+			
+			<div class="row">
+				<div class="col s8 push-s2">
+					<div class="input-field">
+						<input placeholder=" " id="confirmPassword" type="text" class="validate" name = "" required="" aria-required="true">
+						<label for="confirmPassword">Confirm Password</label> 
+					</div>
+				</div>
+            </div>
 		
 		</div>
 		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left animated slideInLeft" href="#" id = "backAccount">Back</button>

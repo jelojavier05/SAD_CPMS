@@ -16,7 +16,8 @@ Inbox
 		<!-- table message -->
 		<div id="message">
 			<div class="container-fluid grey lighten-2">	
-				<table class="striped" id="dataTableMsg">					
+				<table class="striped" id="dataTableMsg">
+<!--					<button class="btn blue modal-trigger" href="#modaladdguardAccepted">Test</button>-->
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
