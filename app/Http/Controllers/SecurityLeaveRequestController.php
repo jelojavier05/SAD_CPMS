@@ -28,7 +28,7 @@ class SecurityLeaveRequestController extends Controller
             ->orderBy('tblguardstatus.dateEffectivity', 'desc')
             ->first();
 
-        if ($guard->intStatusIdentifier == 2){
+        if ($guard->intStatusIdentifier == 2 || $guard->intStatusIdentifier == 3){
             $accountID = $request->session()->get('accountID');
             $arrLeaveID = DB::table('tblleave')->get();
             $guardInformation = DB::table('tblguard')

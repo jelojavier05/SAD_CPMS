@@ -7,15 +7,24 @@ Security Settings
 
 @section('content')
 <div class="row">			
-	<div class="ci col s8 push-s3" style="margin-top:25px;">	
-		<ul class="collection with-header" id="collectionActive">
-			<li class="collection-header" ><h4 style="font-weight:bold;">Details
-				<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue right tooltipped" id = 'buttonDetail'><i class="material-icons">mode_edit</i></a></h4>
-				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword' style="margin-top:-84px; margin-left:650px;"><i class="material-icons">vpn_key</i></a></h4>
-			</li>
-			<div>
-						
+	<div class="ci col s12 l8 push-l3" style="margin-top:25px;">	
+		<ul class="collection with-header" style="background-color:white" id="collectionActive"> 
+            <li class="collection-item" style="font-weight:bold;">
+            <h4 style="font-weight:bold;">Basic Information</h4>
+            <div class="col s12 l12 push-s6 push-l7">
+              
+                <div class="col s3 l3">
+                    <a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue right tooltipped" id = 'buttonDetail'><i class="material-icons">mode_edit</i></a>
                 
+                </div>
+                <div class="col s3 l3">
+                    <a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword'><i class="material-icons">vpn_key</i></a>
+                        
+                </div>
+
+            </div>
+            </li>
+
                 <div class="col s12">
                     <div class="col s6">
                     
@@ -58,7 +67,8 @@ Security Settings
                 
 				
 				
-				<li class="collection-item" style="font-weight:bold;">Body Attributes
+				<li class="collection-item" style="font-weight:bold;">
+                      <h4 style="font-weight:bold;">Body Attributes</h4>
 					<div style="font-weight:normal;" id = ''>
 						<table class="" style="font-family:Myriad Pro" id = 'tableViewBodyAttribute'>
                             <thead>
@@ -75,12 +85,11 @@ Security Settings
                         </table>
 					</div>
 				</li>
-			</div>	
 		</ul>
 	</div>
 </div>
 <!-- Change Password Start-->
-<div id="modalchangePassword" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">      
+<div id="modalchangePassword" class="modal modal-fixed-footer ci" style="overflow:hidden; border-radius:10px; margin-top:5% !important">      
 	<div class="modal-header">
 		<div class="h">
 			<h3><center>Change Password</center></h3>  
@@ -124,11 +133,12 @@ Security Settings
 </div>
 <!-- Change Password End -->
 
+
 <div class="row"></div>
 <div class="row"></div>
 
 <!-- Change Detail Start -->
-<div id="modalchangeDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:800px !important; margin-top:10px !important;  max-height:100% !important; height:550px !important; border-radius:10px;">
+<div id="modalchangeDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; border-radius:10px;">
 	<div class="modal-header">
 		<div class="h">
 			<h3><center>Edit Details</center></h3>  
@@ -136,70 +146,73 @@ Security Settings
 	</div>
 	<div class="modal-content sidenavhover " id="" style="overflow-x:hidden;" >
 		<div class="row">
-			<div class="col s4" >      
-				<div class="input-field col s12">
+			<div class="col s12 l4">      
+				<div class="input-field col s12 l12">
 					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
 					<input placeholder=" " id="strFirstName" type="text" class="validate" name = "" required="" aria-required="true">
 					<label for="">First Name</label> 
 				</div>
 			</div>
-			<div class="col s4" >      
-				<div class="input-field col s12">
+			<div class="col s12 l4" >      
+				<div class="input-field col s12 l12">
 					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
 					<input  placeholder=" " id="strMiddleName" type="text" class="validate" name = "" required="" aria-required="true">
 					<label for="">Middle Name</label> 
 				</div>
 			</div>
-			<div class="col s4" >      
+			<div class="col s12 l4" >      
 				<div class="input-field col s12">
 					<i class="material-icons prefix" style="font-size:35px;">account_circle</i>
 					<input  placeholder=" " id="strLastName" type="text" class="validate" name = "" required="" aria-required="true">
 					<label for="">Last Name</label> 
 				</div>
 			</div>
-			<div class="col s6">      
+			<div class="col s12 l6">      
 				<div class="input-field col s12">
 					<i class="material-icons prefix" style="font-size:35px;">store</i>
 					<input placeholder=" " id="strAddress" type="text" class="validate" name = "" required="" aria-required="true">
 					<label for="">Address</label> 
 				</div>
 			</div>
-			<div class="col s3">
+			<div class="col s12 l3">
+                   
 				<div class=" input-field col s12">
+                    
 					<select id = 'selectProvince'>
-						
+					
 					</select>
 				</div>
+            
 			</div>
-			<div class="col s3">
+			<div class="col s12 l3">
 				<div class=" input-field col s12">
 					<select id = 'selectCity'>
 
 					</select>
 				</div>
 			</div>
-			<div class="col s6">
-				<div class="input-field col s12">
+			<div class="col s12 l6">
+				<div class="input-field col s12 l12">
 					<i class="material-icons prefix" style="font-size:35px; color:#64b5f6;">star</i>
 					<input type="date" id="dateOfbirth" class="datepicker"/>
 					<label class="active" for="dateOfbirth">Date of Birth</label>
 				</div>
 			</div>
-			<div class="col s6" >      
-				<div class="input-field col s12">
+			<div class="col s12 l6" >      
+				<div class="input-field col s12 l12">
 					<i class="material-icons prefix" style="font-size:35px;">star</i>
 					<input placeholder=" " id="strPlaceBirth" type="text" class="validate" name = "" required="" aria-required="true">
 					<label for="">Place of Birth</label> 
 				</div>
 			</div>
-			<div class="col s6">
+			<div class="col s12 l6">
 				<div class="input-field col s12">
 					<i class="material-icons prefix" style="font-size: 35px;">smartphone</i>
 					<input placeholder=" " id="strContactNumberMobile" type="text" class="validate" name="" required="" aria-required="true"/>
 					<label for="">Contact Number (Mobile)</label>
 				</div>
 			</div>
-			<div class="col s6">
+			<div class="col s12 l6">
 				<div class="input-field col s12">
 					<i class="material-icons prefix" style="font-size: 35px;">phone</i>
 					<input placeholder=" " id="strContactNumberLandline" type="text" class="validate" name="" required="" aria-required="true"/>

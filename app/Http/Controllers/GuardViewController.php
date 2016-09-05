@@ -52,13 +52,17 @@ class GuardViewController extends Controller
             ->orderBy('dateEffectivity', 'desc')
             ->first();
 
-        if ($guardStatus->intStatusIdentifier == 2 || $guardStatus->intStatusIdentifier == 3){
+        if ($guardStatus->intStatusIdentifier == 2 || $guardStatus->intStatusIdentifier == 3 || $guardStatus->intStatusIdentifier == 4){
             $guardClient = DB::table('tblclientguard')
                 ->join('tblcontract', 'tblcontract.intContractID', '=', 'tblclientguard.intContractID')
                 ->join('tblclient', 'tblclient.intClientID', '=', 'tblcontract.intClientID')
                 ->select('tblclient.strClientName')
                 ->where('tblclientguard.intGuardID', $guard->intGuardID)
                 ->where('tblclientguard.created_at', '<', $now)
+                ->where(function ($query) {
+                    $query->where('tblclientguard.boolStatus', 1)
+                          ->orWhere('tblclientguard.boolStatus', 3);
+                })
                 ->orderBy('tblclientguard.created_at', 'desc')
                 ->first();
             $guard->guardClient = $guardClient->strClientName;

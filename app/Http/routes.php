@@ -2,6 +2,12 @@
 
 Route::get('/test', 'TestController@index');
 
+Route::get('/insertmaintenance', 'MaintenanceController@insert');
+
+Route::get('/swaprequest/get/checkStatusSwapRequest', 'SwapRequestGuardController@checkStatusSwapRequest');
+Route::get('/swaprequest/get/GuardInvolve', 'SwapRequestGuardController@getGuardInvolve');
+Route::post('/swaprequest/post/acceptSwapRequest', 'SwapRequestGuardController@acceptSwapRequest');
+
 Route::get('/addguardrequestcomplete', 'AddRequestCompleteController@index');
 Route::post('/addguardrequestcomplete/post/proceedToFinalization', 'AddRequestCompleteController@proceedToFinalization');
 
@@ -22,6 +28,7 @@ Route::get('/adminInbox/get/guardrequestleaveinformation', 'AdminInboxController
 Route::get('/adminInbox/get/getGuardHasNotificationLeaveRequest', 'AdminInboxController@getGuardHasNotificationLeaveRequest');
 Route::get('/adminInbox/get/getRequestInformation', 'AdminInboxController@getRequestInformation');
 Route::get('/adminInbox/get/AdditionalGuardInformation', 'AdminInboxController@getAdditionalGuardInformation');
+
 Route::post('/adminInbox/send/leaverequestnotification', 'AdminInboxController@sendLeaveRequestNotification');
 Route::post('/adminInbox/send/AdditionalGuardNotification', 'AdminInboxController@sendAdditionalGuardNotification');
 Route::post('/adminInbox/send/setAdditionalGuardID', 'AdminInboxController@setAdditionalGuardID');
@@ -175,7 +182,7 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
 
 
 //PDF ----------------------------------------------------
-Route::get('/pdfcontract', 'PDFContractController@index');
+Route::get('/getPDF', 'PDFContractController@getPDF');
 
 
 

@@ -9,15 +9,17 @@ Security Home
 
 <!--MESSAGE-->
 <div class="row">
-	<div class="col s8 push-s3">
+	<div class="col s12 l8 push-l3">
 		
 		  <div class="row" style="margin-top:-40px;"> 
-                    <div class="col s12 push-s3">
+                    <div class="col s12 l12 push-s1 push-l3">
                      <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#34675C;font-weight:bold">ANNOUNCEMENTS</h3>
                     </div>  
+              <div class="col s12 l12">
                 <hr>
+              </div>
           </div>
-       
+          <div class="col s12 l12">
 		    <div class="container-fluid grey lighten-2" style="border: 1px solid grey; margin-top:-10px;">	
 				<table class="striped" id="announcementTable">
 					<thead>
@@ -33,6 +35,7 @@ Security Home
 					</tbody>
 				</table>
 			</div>
+        </div>
 	</div>
 </div>
 <!--Modal announcement content-->

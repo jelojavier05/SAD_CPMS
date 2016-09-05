@@ -49,24 +49,32 @@
 
 <body id="scrollhider" class="bodyscrollhider grey lighten-3 ci">
       <nav class="blue darken-4">
-        
+    
          <div class="nav-wrapper">
-<!--                <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>-->
-                    
-<!--					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >-->
+               <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
+            
 				<div>
                     <a href="#" class="brand-logo">
                        <div class="row">
-                        <div class="col l12">
-                            <div class="col l6 push-l4">
-                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.2rem">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>     
+                        <div class="col s4 l12">
+                            <div class="col s12 l6 pull-s12 push-l3 hide-on-med-and-down">
+                            <p style="margin-top:9px;font-family:Myriad Pro;font-size:2.2rem">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>     
                             </div>
+                              <div class="col s6 pull-s12">
+                              
+                                   <p style="margin-top:9px;font-family:Myriad Pro;font-size:.8rem">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>   
+                                
+                             
+                            </div>
+                          
+                            
+                        
                         </div>
                     </div>
                     </a>
                 </div>
                 
-                <ul class="right hide-on-med-and-down">    
+                <ul class="right">    
                       <li  id="notification_li">
                             <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/securityInbox" class="tooltipped">
                                 <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
@@ -88,13 +96,15 @@
     </nav>
     
     <div class="row"></div> 
-     <ul class="side-nav fixed" id="mobile-nav" style="background-color:#90AFC5;overflow:hidden">
+
+    
+    <ul class="side-nav fixed" id="mobile-nav" style="background-color:#90AFC5;overflow:hidden">
                      <div class="iconposition">
                         <div class="card-panel blue darken-4" style="height:115px;">
 
                                 <div class="row">
                                     <div class="col l12">
-                                          <div class="col l6 push-l3" style="margin-top:-6%">
+                                          <div class="col s6 l6 push-s3 push-l3" style="margin-top:-6%">
 
                                             <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="110%">
 
@@ -103,7 +113,7 @@
                                 </div>
 
                                 <div class="row">
-                                        <div class="col l12 push-l2">
+                                        <div class="col s12 l12 push-s2 push-l2">
                                          <p class="ci" style="margin-top:-10%;position:absolute;color:white;">GUARD ACCOUNT</p>
 
                                     </div>
@@ -159,7 +169,7 @@
              <div class="col s12 push-s3">
           <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/szw110/szh110/hoc09f/hbw2/hfc09f/cf100/hnc09f/hwc000/hcw2/fan2/facfff/fdi76/mqc9ff/mqs4/mql18/mqw1/mqd50/mhc009/mhs4/mhl5/mhw2/mhd60/mmv0/hhcfff/hhs1/hhb10/hmcfff/hmb10/hscfff/hsw3" frameborder="0" width="110" height="110" style="margin-left:-2%"></iframe>
                     <div class="row">
-                        <div class="col l12 pull-l4">
+                        <div class="col s12 l12 pull-s4 pull-l4">
       <iframe src="http://free.timeanddate.com/clock/i5bybb84/n145/tlph/fn16/tct/pct/ftb/bat4/tt0/th2/ta1/tb4" frameborder="0" width="212" height="36" allowTransparency="true"></iframe>
                         </div>
 
@@ -169,6 +179,7 @@
          
          </div>
     </ul>
+     
         <div class="col l9">
         
 
@@ -202,10 +213,10 @@
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusiness'>&nbsp;&nbsp;&nbsp;</div>
+								Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusinessDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s6">
-								Client Name:<div style="font-weight:normal;" id = 'clientName'>&nbsp;&nbsp;&nbsp;</div>
+								Client Name:<div style="font-weight:normal;" id = 'clientNameDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
                     </li>
@@ -214,10 +225,10 @@
 					<li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Address:<div style="font-weight:normal;" id = 'clientAddress'>&nbsp;&nbsp;&nbsp;</div>
+								Address:<div style="font-weight:normal;" id = 'clientAddressDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s6">
-								Contact Number (Client):<div style="font-weight:normal;" id = 'contactNumberClient'>&nbsp;&nbsp;&nbsp;</div>
+								Contact Number (Client):<div style="font-weight:normal;" id = 'contactNumberClientDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
                     </li>
@@ -225,10 +236,10 @@
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s6">	
-								Person in Charge:<div style="font-weight:normal;" id = 'personInCharge'>&nbsp;&nbsp;&nbsp;</div>
+								Person in Charge:<div style="font-weight:normal;" id = 'personInChargeDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s6">
-								Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'contactNumberPIC'>&nbsp;&nbsp;&nbsp;</div>
+								Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'contactNumberPICDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
                     </li>
@@ -237,10 +248,10 @@
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
 							<div class="col s4">	
-								Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSize'>&nbsp;&nbsp;&nbsp;</div>
+								Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSizeDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 							<div class="col s4">
-								Population (approx.):<div style="font-weight:normal;" id = 'population'>&nbsp;&nbsp;&nbsp;</div>
+								populationDashboard (approx.):<div style="font-weight:normal;" id = 'populationDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						
 				</ul>
@@ -344,14 +355,14 @@ $(document).ready(function() {
       url: "{{action('SecurityGuardDashboardController@getClientInformation')}}",
       success: function(data){
         console.log(data);
-        $('#natureOfBusiness').text(data.strNatureOfBusiness);
-        $('#clientName').text(data.strClientName);
-        $('#clientAddress').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
-        $('#contactNumberClient').text(data.strContactNumber);
-        $('#personInCharge').text(data.strPersonInCharge);
-        $('#contactNumberPIC').text(data.strPOICContactNumber);
-        $('#areaSize').text(data.deciAreaSize);
-        $('#population').text(data.intPopulation);
+        $('#natureOfBusinessDashboard').text(data.strNatureOfBusiness);
+        $('#clientNameDashboard').text(data.strClientName);
+        $('#clientAddressDashboard').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+        $('#contactNumberClientDashboard').text(data.strContactNumber);
+        $('#personInChargeDashboard').text(data.strPersonInCharge);
+        $('#contactNumberPICDashboard').text(data.strPOICContactNumber);
+        $('#areaSizeDashboard').text(data.deciAreaSize);
+        $('#populationDashboard').text(data.intPopulation);
       }
     });//ajax
   }

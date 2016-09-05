@@ -189,7 +189,7 @@ Armed Service
 @section('script')
 <script type="text/javascript">
     $(document).ready(function(){
-
+        
         $("#dataTable").DataTable({
              "columns": [
             { "orderable": false },

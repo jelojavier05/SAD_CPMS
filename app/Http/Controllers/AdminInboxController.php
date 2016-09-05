@@ -324,4 +324,5 @@ class AdminInboxController extends Controller
 
         $request->session()->put('additionalGuardID', $clientPendingID);
     }       
+
 }
