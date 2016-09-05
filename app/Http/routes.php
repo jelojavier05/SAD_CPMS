@@ -182,7 +182,7 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
 
 
 //PDF ----------------------------------------------------
-Route::get('/pdfcontract', 'PDFContractController@index');
+Route::get('/getPDF', 'PDFContractController@getPDF');
 
 
 
