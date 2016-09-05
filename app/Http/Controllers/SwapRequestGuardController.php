@@ -25,6 +25,63 @@ class SwapRequestGuardController extends Controller{
         return response()->json($status);
     }
 
+    public function getGuardInvolve(Request $request){
+        $inboxID = Input::get('inboxID');
+
+        $guards = DB::table('tblswapresponse')
+            ->join('tblswaprequest', 'tblswaprequest.intSwapRequestID', '=', 'tblswapresponse.intSwapRequestID')
+            ->select('tblswaprequest.intClientGuardSenderID', 'tblswaprequest.intClientGuardReceiverID', 'tblswapresponse.datetimeSwapResponse')
+            ->where('tblswapresponse.intInboxID', $inboxID)
+            ->first();
+
+        $guardSenderInformation = DB::table('tblclientguard')
+            ->join('tblguard', 'tblguard.intGuardID', '=', 'tblclientguard.intGuardID')
+            ->join('tblguardaddress', 'tblguardaddress.intGuardID','=','tblguard.intGuardID')
+            ->join('tblprovince', 'tblprovince.intProvinceID', '=', 'tblguardaddress.intProvinceID')
+            ->join('tblcity', 'tblcity.intCityID', '=','tblguardaddress.intCityID')
+            ->select('tblguard.*','tblprovince.strProvinceName', 'tblcity.strCityName', 'tblguardaddress.strAddress')
+            ->where('tblclientguard.intClientGuardID', $guards->intClientGuardSenderID)
+            ->first();
+        $guardSenderClient = DB::table('tblclientguard')
+            ->join('tblcontract', 'tblcontract.intContractID', '=', 'tblclientguard.intContractID')
+            ->join('tblclient','tblclient.intClientID', '=', 'tblcontract.intClientID')
+            ->select('tblclient.strClientName')
+            ->where('tblclientguard.intClientGuardID', $guards->intClientGuardSenderID)
+            ->where('tblclientguard.created_at', '<=', $guards->datetimeSwapResponse)
+            ->where('tblclientguard.boolStatus', 1)
+            ->orderBy('tblclientguard.created_at', 'desc')
+            ->first();
+
+        $guardReceiverInformation = DB::table('tblclientguard')
+            ->join('tblguard', 'tblguard.intGuardID', '=', 'tblclientguard.intGuardID')
+            ->join('tblguardaddress', 'tblguardaddress.intGuardID','=','tblguard.intGuardID')
+            ->join('tblprovince', 'tblprovince.intProvinceID', '=', 'tblguardaddress.intProvinceID')
+            ->join('tblcity', 'tblcity.intCityID', '=','tblguardaddress.intCityID')
+            ->select('tblguard.*','tblprovince.strProvinceName', 'tblcity.strCityName', 'tblguardaddress.strAddress')
+            ->where('tblclientguard.intClientGuardID', $guards->intClientGuardReceiverID)
+            ->first();
+        $guardReceiverClient = DB::table('tblclientguard')
+            ->join('tblcontract', 'tblcontract.intContractID', '=', 'tblclientguard.intContractID')
+            ->join('tblclient','tblclient.intClientID', '=', 'tblcontract.intClientID')
+            ->select('tblclient.strClientName')
+            ->where('tblclientguard.intClientGuardID', $guards->intClientGuardReceiverID)
+            ->where('tblclientguard.created_at', '<=', $guards->datetimeSwapResponse)
+            ->where('tblclientguard.boolStatus', 1)
+            ->orderBy('tblclientguard.created_at', 'desc')
+            ->first();
+
+        $guardSenderInformation->age = (new Carbon($guardSenderInformation->dateBirthday))->diffInYears(new Carbon());
+        $guardReceiverInformation->age = (new Carbon($guardReceiverInformation->dateBirthday))->diffInYears(new Carbon());
+
+        $guardSenderInformation->strClientName = $guardSenderClient->strClientName;
+        $guardReceiverInformation->strClientName = $guardReceiverClient->strClientName;
+
+        $guards->senderInformation = $guardSenderInformation;
+        $guards->receiverInformation = $guardReceiverInformation;
+        
+        return response()->json($guards);
+    }
+
     public function acceptSwapRequest(Request $request){
         $inboxID = $request->inboxID;
         try{
@@ -87,8 +144,8 @@ class SwapRequestGuardController extends Controller{
                 DB::table('tblclientguard')->insert([
                     ['intGuardID' => $guardSenderInformation->intGuardID, 'intContractID' => $guardReceiverInformation->intContractID, 'boolStatus' => 1, 'created_at' => $dayEffectivity],
                     ['intGuardID' => $guardReceiverInformation->intGuardID, 'intContractID' => $guardSenderInformation->intContractID, 'boolStatus' => 1, 'created_at' => $dayEffectivity],//new client
-                    ['intGuardID' => $guardSenderInformation->intGuardID, 'intContractID' => $guardSenderInformation->intContractID, 'boolStatus' => 0, 'created_at' => $dayEffectivity],
-                    ['intGuardID' => $guardReceiverInformation->intGuardID, 'intContractID' => $guardReceiverInformation->intContractID, 'boolStatus' => 0, 'created_at' => $dayEffectivity]//previous client
+                    ['intGuardID' => $guardSenderInformation->intGuardID, 'intContractID' => $guardSenderInformation->intContractID, 'boolStatus' => 0, 'created_at' => $dayEffectivity->addSecond()],
+                    ['intGuardID' => $guardReceiverInformation->intGuardID, 'intContractID' => $guardReceiverInformation->intContractID, 'boolStatus' => 0, 'created_at' => $dayEffectivity->addSecond()]//previous client
                 ]);
             //changing the client in specific date end
 
@@ -99,3 +156,4 @@ class SwapRequestGuardController extends Controller{
         }     
     }
 }
+

@@ -330,48 +330,48 @@ Inbox
               <li class="collection-item grey lighten-2" style="font-weight:bold;">
                 <div class="row">
                   <div class="col s2">Client:</div>
-                  <div class="col s6" style="font-weight:normal;" id = ''>StarMall Alabang</div>
+                  <div class="col s6" style="font-weight:normal;" id = 'swapSenderClientName'></div>
                 </div>
               </li>
               <li class="collection-item grey lighten-2" style="font-weight:bold;">
                 <div class="row">
                   <div class="col s4">    
-                    First Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Stephen</div>
+                    First Name:<div style="font-weight:normal;" id = 'swapSenderFirstName'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                   <div class="col s4">    
-                    Middle Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Test</div>
+                    Middle Name:<div style="font-weight:normal;" id = 'swapSenderMiddleName'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                   <div class="col s4">    
-                    Last Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Curry</div>
+                    Last Name:<div style="font-weight:normal;" id = 'swapSenderLastName'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col s12">
-                    Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 Bye Street San Juan Metro Manila</div>
+                    Address:<div style="font-weight:normal;" id = 'swapSenderAddress'>&nbsp;&nbsp;&nbsp;</div>
                   </div>                                                                                  
                 </div>
                 <div class="row">
                   <div class="col s6">
-                    Place of Birth:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Makati City</div>
+                    Place of Birth:<div style="font-weight:normal;" id = 'swapSenderPlaceBirth'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                   <div class="col s6">
-                    Age:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;20</div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s6">
-                    Contact Number (Mobile):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
-                  </div>
-                  <div class="col s6">
-                    Contact Number (Landline):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;8123456</div>
+                    Age:<div style="font-weight:normal;" id = 'swapSenderAge'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col s6">
-                    Gender:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Male</div>
+                    Contact Number (Mobile):<div style="font-weight:normal;" id = 'swapSenderMobile'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                   <div class="col s6">
-                    Civil Status:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Single</div>
+                    Contact Number (Landline):<div style="font-weight:normal;" id = 'swapSenderLandline'>&nbsp;&nbsp;&nbsp;</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s6">
+                    Gender:<div style="font-weight:normal;" id = 'swapSenderGender'>&nbsp;&nbsp;&nbsp;</div>
+                  </div>
+                  <div class="col s6">
+                    Civil Status:<div style="font-weight:normal;" id = 'swapSenderCivilStatus'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                 </div>                      
               </li>
@@ -385,48 +385,48 @@ Inbox
               <li class="collection-item grey lighten-2" style="font-weight:bold;">
                 <div class="row">
                   <div class="col s2">Client:</div>
-                  <div class="col s6" style="font-weight:normal;" id = ''>SM Megamall</div>    
+                  <div class="col s6" style="font-weight:normal;" id = 'swapReceiverClientName'></div>    
                 </div>
               </li>
               <li class="collection-item grey lighten-2" style="font-weight:bold;">
                 <div class="row">
                   <div class="col s4">    
-                    First Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Dwyane</div>
+                    First Name:<div style="font-weight:normal;" id = 'swapReceiverFirstName'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                   <div class="col s4">    
-                    Middle Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Test</div>
+                    Middle Name:<div style="font-weight:normal;" id = 'swapReceiverMiddleName'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                   <div class="col s4">    
-                    Last Name:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Wade</div>
+                    Last Name:<div style="font-weight:normal;" id = 'swapReceiverLastName'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col s12">
-                    Address:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;123 Hey Street Marikina Metro Manila</div>
+                    Address:<div style="font-weight:normal;" id = 'swapReceiverAddress'>&nbsp;&nbsp;&nbsp;</div>
                   </div>                                                                                  
                 </div>
                 <div class="row">
                   <div class="col s6">
-                    Place of Birth:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Makati City</div>
+                    Place of Birth:<div style="font-weight:normal;" id = 'swapReceiverPlaceBirth'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                   <div class="col s6">
-                    Age:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;30</div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s6">
-                    Contact Number (Mobile):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;09123456789</div>
-                  </div>
-                  <div class="col s6">
-                    Contact Number (Landline):<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;8123456</div>
+                    Age:<div style="font-weight:normal;" id = 'swapReceiverAge'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col s6">
-                    Gender:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Male</div>
+                    Contact Number (Mobile):<div style="font-weight:normal;" id = 'swapReceiverMobile'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                   <div class="col s6">
-                    Civil Status:<div style="font-weight:normal;" id = ''>&nbsp;&nbsp;&nbsp;Single</div>
+                    Contact Number (Landline):<div style="font-weight:normal;" id = 'swapReceiverLandline'>&nbsp;&nbsp;&nbsp;</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s6">
+                    Gender:<div style="font-weight:normal;" id = 'swapReceiverGender'>&nbsp;&nbsp;&nbsp;</div>
+                  </div>
+                  <div class="col s6">
+                    Civil Status:<div style="font-weight:normal;" id = 'swapReceiverCivilStatus'>&nbsp;&nbsp;&nbsp;</div>
                   </div>
                 </div>
               </li>
@@ -490,92 +490,95 @@ $(document).ready(function(){
         }//success ajax
     }); //get inbox
 
-    $('#dataTableMsg').on('click','.buttonRead', function(){
-        var type = $('#type' + this.id).val();
-        inboxID = this.id;
-        readMessage();
-        if (type == 0){
-            message();
-        }else if (type == 1){//new client (client)
-            newClientClient();
-        }else if (type == 3){
-            guardLeaveRequest();
-        }else if(type == 5){
-            clientAdditionalRequest();
-        }else if (type == 7){
-            additionalGuardApproved();
-        }else if (type == 9){
-          swapLocation();
-        }//if else
-    });//button read click
-    
-    $('#btnSendNotificationNewClient').click(function(){
-        getCheckedGuard();
-        if (guardChecked.length > 0){
-            sendNewClientNotificationGuard();
-        }else{
-            var toastContent = $('<span>Select at least one guard. </span>');
-            Materialize.toast(toastContent, 1500,'red', 'edit');
-        }
-    });//button send notification for guard (new client)
+    //Buttons Start
+      $('#dataTableMsg').on('click','.buttonRead', function(){
+          var type = $('#type' + this.id).val();
+          inboxID = this.id;
+          readMessage();
+          if (type == 0){
+              message();
+          }else if (type == 1){//new client (client)
+              newClientClient();
+          }else if (type == 3){
+              guardLeaveRequest();
+          }else if(type == 5){
+              clientAdditionalRequest();
+          }else if (type == 7){
+              additionalGuardApproved();
+          }else if (type == 9){
+            swapLocation();
+          }//if else
+      });//button read click
+      
+      $('#btnSendNotificationNewClient').click(function(){
+          getCheckedGuard();
+          if (guardChecked.length > 0){
+              sendNewClientNotificationGuard();
+          }else{
+              var toastContent = $('<span>Select at least one guard. </span>');
+              Materialize.toast(toastContent, 1500,'red', 'edit');
+          }
+      });//button send notification for guard (new client)
 
-    $('#btnSendNotificationLeaveRequest').click(function(){
-        getCheckedGuard();
-        if (guardChecked.length > 0){
-            sendLeaveRequestNotification();
-        }else{
-            var toastContent = $('<span>Select at least one guard. </span>');
-            Materialize.toast(toastContent, 1500,'red', 'edit');
+      $('#btnSendNotificationLeaveRequest').click(function(){
+          getCheckedGuard();
+          if (guardChecked.length > 0){
+              sendLeaveRequestNotification();
+          }else{
+              var toastContent = $('<span>Select at least one guard. </span>');
+              Materialize.toast(toastContent, 1500,'red', 'edit');
 
-        }
-    });//button send notifiation for guard (leave request)
+          }
+      });//button send notifiation for guard (leave request)
 
-    $('#btnSendNotificationAdditionalGuard').click(function(){
-        getCheckedGuard();
-        if (guardChecked.length > 0){
-            sendAdditionalGuardNotification();
-        }else{
-            var toastContent = $('<span>Select at least one guard. </span>');
-            Materialize.toast(toastContent, 1500,'red', 'edit');
-        }
-    });
+      $('#btnSendNotificationAdditionalGuard').click(function(){
+          getCheckedGuard();
+          if (guardChecked.length > 0){
+              sendAdditionalGuardNotification();
+          }else{
+              var toastContent = $('<span>Select at least one guard. </span>');
+              Materialize.toast(toastContent, 1500,'red', 'edit');
+          }
+      });
 
-    $('#btnAddRequestProceed').click(function(){
-        setAdditionalGuardID();
-        window.location.href = '{{ URL::to("/addguardrequestcomplete") }}';
-    });//additional guard proceed || client requested additional guard
+      $('#btnAddRequestProceed').click(function(){
+          setAdditionalGuardID();
+          window.location.href = '{{ URL::to("/addguardrequestcomplete") }}';
+      });//additional guard proceed || client requested additional guard
 
-    $('#btnSwapAccept').click(function(){
-      $.ajax({
-        type: "POST",
-        url: "{{action('SwapRequestGuardController@acceptSwapRequest')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
+      $('#btnSwapAccept').click(function(){
+        $.ajax({
+          type: "POST",
+          url: "{{action('SwapRequestGuardController@acceptSwapRequest')}}",
+          beforeSend: function (xhr) {
+              var token = $('meta[name="csrf_token"]').attr('content');
 
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
-        data: {
-            inboxID: inboxID
-        },
-        success: function(data){
-          swal({
-            title: "Request Accepted!",
-            text: "You successfully swap the two guards.",
-            type: "success"
+              if (token) {
+                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+              }
           },
-          function(){
-            window.location.href = '{{ URL::to("/adminInbox") }}';
-          });
-        },
-        error: function(data){
-          var toastContent = $('<span>Error Database.</span>');
-          Materialize.toast(toastContent, 1500,'red', 'edit');
-        }
-      });//ajax
-    });
+          data: {
+              inboxID: inboxID
+          },
+          success: function(data){
+            swal({
+              title: "Request Accepted!",
+              text: "You successfully swap the two guards.",
+              type: "success"
+            },
+            function(){
+              window.location.href = '{{ URL::to("/adminInbox") }}';
+            });
+          },
+          error: function(data){
+            var toastContent = $('<span>Error Database.</span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+          }
+        });//ajax
+      });
+    //Buttons end
 
+      
     function readMessage(){
         if($('#radio' + inboxID).is(':checked')){
             $('#radio' + inboxID).attr('checked', false); // all read mark as unread        
@@ -992,7 +995,52 @@ $(document).ready(function(){
     //Swap Request (Guard requested) Start
       function swapLocation(){
         checkSwapRequest();
+        getGuardInvolve();
         $('#modalSGswaprequestapproval').openModal();
+      }
+
+      function getGuardInvolve(){
+        $.ajax({
+
+          type: "GET",
+          url: "/swaprequest/get/GuardInvolve?inboxID=" + inboxID,
+          success: function(data){
+            //guardSender Start 
+              var guardSender = data.senderInformation;
+              $('#swapSenderClientName').text(guardSender.strClientName);
+              $('#swapSenderFirstName').text(guardSender.strFirstName);
+              $('#swapSenderMiddleName').text(guardSender.strMiddleName);
+              $('#swapSenderLastName').text(guardSender.strLastName);
+              $('#swapSenderAddress').text(guardSender.strAddress + ' ' + guardSender.strCityName + ', ' + guardSender.strProvinceName);
+              $('#swapSenderPlaceBirth').text(guardSender.strPlaceBirth);
+              $('#swapSenderAge').text(guardSender.age);
+              $('#swapSenderMobile').text(guardSender.strContactNumberMobile);
+              $('#swapSenderLandline').text(guardSender.strContactNumberLandline);
+              $('#swapSenderGender').text(guardSender.strGender);
+              $('#swapSenderCivilStatus').text(guardSender.strCivilStatus);
+            //guardSender End
+
+            //guardReceiver Start
+              var guardReceiver = data.receiverInformation;
+              $('#swapReceiverClientName').text(guardReceiver.strClientName);
+              $('#swapReceiverFirstName').text(guardReceiver.strFirstName);
+              $('#swapReceiverMiddleName').text(guardReceiver.strMiddleName);
+              $('#swapReceiverLastName').text(guardReceiver.strLastName);
+              $('#swapReceiverAddress').text(guardReceiver.strAddress + ' ' + guardReceiver.strCityName + ', ' + guardReceiver.strProvinceName);
+              $('#swapReceiverPlaceBirth').text(guardReceiver.strPlaceBirth);
+              $('#swapReceiverAge').text(guardReceiver.age);
+              $('#swapReceiverMobile').text(guardReceiver.strContactNumberMobile);
+              $('#swapReceiverLandline').text(guardReceiver.strContactNumberLandline);
+              $('#swapReceiverGender').text(guardReceiver.strGender);
+              $('#swapReceiverCivilStatus').text(guardReceiver.strCivilStatus);
+            //guardReceiver End
+          },
+          error: function(data){
+            var toastContent = $('<span>Error Database </span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+
+          }
+        });//ajax
       }
 
       function checkSwapRequest(){
@@ -1002,9 +1050,15 @@ $(document).ready(function(){
           success: function(data){
             if (data == 3){//waiting
               $('#swapButtonsDiv').show();
+              $('#swapRejectedDiv').hide();
+              $('#swapAcceptedDiv').hide();
             }else if (data == 0){//rejected
+              $('#swapButtonsDiv').hide();
               $('#swapRejectedDiv').show();
+              $('#swapAcceptedDiv').hide();
             }else if (data == 2){//accepted
+              $('#swapButtonsDiv').hide();
+              $('#swapRejectedDiv').hide();
               $('#swapAcceptedDiv').show();
             }
           },

@@ -3,6 +3,7 @@
 Route::get('/test', 'TestController@index');
 
 Route::get('/swaprequest/get/checkStatusSwapRequest', 'SwapRequestGuardController@checkStatusSwapRequest');
+Route::get('/swaprequest/get/GuardInvolve', 'SwapRequestGuardController@getGuardInvolve');
 Route::post('/swaprequest/post/acceptSwapRequest', 'SwapRequestGuardController@acceptSwapRequest');
 
 Route::get('/addguardrequestcomplete', 'AddRequestCompleteController@index');
