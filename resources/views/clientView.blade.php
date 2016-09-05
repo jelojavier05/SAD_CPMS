@@ -246,7 +246,25 @@ Clients
                     var guardNeeded = data.countNeedGuard.intNumberOfGuard - data.countAccepted;
                     
                     if (guardNeeded == 0){
-                        sendClientID(clientID);
+
+                        swal({    
+                          title: "Proceed Code.",   
+                          text: "Enter the code to proceed.",   
+                          type: "input",   
+                          showCancelButton: true,   
+                          closeOnConfirm: false,   
+                          animation: "slide-from-top"
+                        }, 
+                          function(inputValue){     
+                            if (inputValue == data.code) {     
+                                this.closeOnConfirm = true; //close swal. 
+                                sendClientID(clientID);
+                            }else{
+                                swal.showInputError("Check your code.");
+                                return false;
+                            }
+                          });
+                        
                     }else{
                         var toastContent = $('<span>Not enough guards.</span>');
                         Materialize.toast(toastContent, 1500,'red', 'edit');
@@ -309,6 +327,7 @@ Clients
                 }
             });//ajax
         }// magsesend ng clientID sa session
+
     });
 </script>
 

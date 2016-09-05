@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use DB;
+use Input;
 
 class ClientGuardRequestController extends Controller
 {
@@ -24,28 +25,33 @@ class ClientGuardRequestController extends Controller
     public function getActiveGuard(Request $request){
         $clientID = $request->session()->get('id');
         $now = Carbon::now();
+
+        $contractID = DB::table('tblcontract')
+            ->select('intContractID')
+            ->where('intClientID', $clientID)
+            ->where('boolStatus', 1)
+            ->first();
         
-        $guardID = DB::table('tblclient')
-            ->join('tblcontract', 'tblcontract.intClientID', '=','tblclient.intClientID')
-            ->join('tblclientguard' ,'tblclientguard.intContractID', '=','tblcontract.intContractID')
-            ->join('tblguard', 'tblguard.intGuardID', '=','tblclientguard.intGuardID')
-            ->select('tblguard.intGuardID')
-            ->where('tblclient.intClientID', $clientID)
-            ->groupBy('tblclientguard.intGuardID')
+        $guardID = DB::table('tblclientguard')
+            ->select('intGuardID')
+            ->where('intContractID', $contractID->intContractID)
+            ->groupBy('intGuardID')
             ->get();
 
         $clientGuard = array();
         foreach($guardID as $value){
-            $result = DB::table('tblclientguard')
+            $result = DB::table('tblcontract')    
+                ->join('tblclientguard', 'tblclientguard.intContractID', '=', 'tblcontract.intContractID')
                 ->join('tblguard', 'tblguard.intGuardID', '=', 'tblclientguard.intGuardID')
                 ->join('tblguardlicense', 'tblguardlicense.intGuardID', '=', 'tblguard.intGuardID')
                 ->select('tblguard.strFirstName','tblguard.strLastName', 'tblguardlicense.strLicenseNumber','tblguard.intGuardID', 'tblclientguard.boolStatus', 'tblguard.strGender')
-                ->where('tblclientguard.intGuardID' ,$value->intGuardID)
-                ->where('tblclientguard.created_at', '<', $now)
+                ->where('tblclientguard.intGuardID', $value->intGuardID)
+                ->where('tblclientguard.intContractID', $contractID->intContractID)
+                ->where('tblclientguard.created_at', '<=', $now)
                 ->orderBy('tblclientguard.created_at', 'desc')
                 ->first();
 
-            if ($result->boolStatus == 1 || $result->boolStatus == 3){
+            if ($result->boolStatus == 1 || $result->boolStatus == 2){
                 $resultAttendance = DB::table('tblattendance')
                     ->select('datetimeIn', 'datetimeOut')
                     ->where('intGuardID', $value->intGuardID)
@@ -74,37 +80,59 @@ class ClientGuardRequestController extends Controller
     }
 
     public function addGuard(Request $request){
-            
-
         try{
             DB::beginTransaction();
             $numberGuard = $request->numberGuard;
             $reason = $request->reason;
-            $senderID = $request->session()->get('accountID');
+            $clientAccountID = $request->session()->get('accountID');
             $result = DB::table('tblaccount')
                 ->select('intAccountID')
                 ->where('intAccountType', 3)
                 ->first();
-            $receiverID = $result->intAccountID;
+            $adminID = $result->intAccountID;
             $clientID = $request->session()->get('id');
 
             $inboxID = DB::table('tblinbox')->insertGetId([
-                'intAccountIDSender' => $senderID,
-                'intAccountIDReceiver' => $receiverID,
+                'intAccountIDSender' => $clientAccountID,
+                'intAccountIDReceiver' => $adminID,
                 'strMessage' => $reason,
                 'strSubject' => 'Additional guard request',
                 'tinyintType' => 5 // add guard
+            ]);
+
+            $code = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 8);
+            $message = 'Please take note of this code "' . $code .'". This will be needed in finalization of your additional guard request. Thank you.';
+            DB::table('tblinbox')->insert([
+                'intAccountIDSender' => $adminID,
+                'intAccountIDReceiver' => $clientAccountID,
+                'strSubject' => 'Additional Guard Request',
+                'strMessage' => $message,
+                'tinyintType' => 0
             ]);
             
             DB::table('tblclientpendingnotification')->insert([
                 'intClientID' => $clientID,
                 'intNumberOfGuard' => $numberGuard,
-                'intInboxID' => $inboxID   
+                'intInboxID' => $inboxID,
+                'strCode' => $code
             ]);
 
             DB::commit();
         }catch(Exception $e){
             DB::rollback();
         }
+    }
+
+    public function getCode(Request $request){
+        $inboxID = Input::get('inboxID');
+
+        $result = DB::table('tblclientadditionalguard')
+            ->join('tblclientpendingnotification', 'tblclientpendingnotification.intClientPendingID', '=', 'tblclientadditionalguard.intClientPendingID')
+            ->select('tblclientpendingnotification.strCode')
+            ->where('tblclientadditionalguard.intInboxID',$inboxID)
+            ->first();
+        $code = $result->strCode;
+
+        return response()->json($code);
     }
 }

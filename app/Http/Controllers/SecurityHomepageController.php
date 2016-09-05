@@ -136,7 +136,7 @@ class SecurityHomepageController extends Controller
                     $messageStringAdmin = 'The guards are now complete. ' . $clientAccount->strClientName . ' is ready for contract.';
                     $strSubjectAdmin = 'New Client Ready';
 
-                    $messageStringClient = 'The guards are now complete. You can finalize your contract in the office.';
+                    $messageStringClient = 'The guards are now complete. You can finalize your contract in the office. Please take note of your code we sent to you last time.';
                     $strSubjectClient = 'Guard Complete';
 
                     $intType = 0;
@@ -144,7 +144,7 @@ class SecurityHomepageController extends Controller
                     $messageStringAdmin = 'The guards are now complete for additional guard request.';
                     $strSubjectAdmin = 'Additional Guard Update';
 
-                    $messageStringClient = 'The guards are now complete. You can finalize your request for additional guard in the office.';
+                    $messageStringClient = 'The guards are now complete. You can finalize your request for additional guard in the office. Please take note of your code we sent to you last time.';
                     $strSubjectClient = 'Additional Guard Update';
                     $intType = 7;
                 }

@@ -543,8 +543,32 @@ $(document).ready(function(){
       });
 
       $('#btnAddRequestProceed').click(function(){
-          setAdditionalGuardID();
-          window.location.href = '{{ URL::to("/addguardrequestcomplete") }}';
+          var id = this.id;
+          var clientID = this.value;
+          $.ajax({
+              type: "GET",
+              url: "/clientguardrequest/get/code?inboxID=" + inboxID,
+              success: function(data){
+                swal({    
+                  title: "Proceed Code.",   
+                  text: "Enter the code to proceed.",   
+                  type: "input",   
+                  showCancelButton: true,   
+                  closeOnConfirm: false,   
+                  animation: "slide-from-top"
+                }, 
+                  function(inputValue){     
+                    if (inputValue == data) {     
+                        this.closeOnConfirm = true; //close swal. 
+                        setAdditionalGuardID();
+                        window.location.href = '{{ URL::to("/addguardrequestcomplete") }}';
+                    }else{
+                        swal.showInputError("Check your code.");
+                        return false;
+                    }
+                });
+              }
+            });
       });//additional guard proceed || client requested additional guard
 
       $('#btnSwapAccept').click(function(){

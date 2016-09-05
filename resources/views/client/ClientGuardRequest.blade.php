@@ -235,7 +235,7 @@ Client Request of Guard
 <script>
 $(document).ready(function(){
 	$('#btnAddRequest').click(function(){
-		if (checkInput() && hasAddRequest()){
+		if (checkInput() && !hasAddRequest()){
 			send();
 		}
 	});
@@ -262,10 +262,10 @@ $(document).ready(function(){
 	        error: function(data){
 	        	var toastContent = $('<span>Error Database.</span>');
 				Materialize.toast(toastContent, 1500,'red', 'edit');
-	        }
+	        },async:false
 	    });//ajax
-	    
-	    if (!checker){
+
+	    if (checker){
 	    	swal("Error!", "You still have pending request.", "error");
 	    }
 		return checker;

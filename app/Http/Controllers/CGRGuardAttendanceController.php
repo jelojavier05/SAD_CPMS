@@ -52,14 +52,20 @@ class CGRGuardAttendanceController extends Controller
     			->where('tblclientguard.created_at', '<=', $now)
     			->orderBy('tblclientguard.created_at', 'desc')
     			->first();
+                
+            $resultAttendance = DB::table('tblattendance')
+                ->select('datetimeIn', 'datetimeOut')
+                ->where('intGuardID', $value->intGuardID)
+                ->where('intClientID', $client->intClientID)
+                ->orderBy('datetimeIn', 'desc')
+                ->first();
+
+            if (!is_null($resultAttendance) && 
+                (!is_null($resultAttendance->datetimeIn) && $resultAttendance->datetimeOut == '0000-00-00 00:00:00')){
+                $result->boolStatus = 3;
+            }
 
 			if (!is_null($result) && ($result->boolStatus == 1 || $result->boolStatus == 3)){
-				$resultAttendance = DB::table('tblattendance')
-					->select('datetimeIn', 'datetimeOut')
-					->where('intGuardID', $value->intGuardID)
-					->where('intClientID', $client->intClientID)
-					->orderBy('datetimeIn', 'desc')
-					->first();
 
 				if (is_null($resultAttendance)){
 					$result->timeIn = null;
@@ -70,7 +76,6 @@ class CGRGuardAttendanceController extends Controller
 						$result->timeIn = null;
 					}
 				}
-					
 		  		array_push($clientGuard, $result);
 			}
 
