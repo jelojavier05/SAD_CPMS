@@ -32,6 +32,7 @@
           <script src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
           <script src="{!! URL::asset('../sweetalert.min.js') !!}"></script>
           <script src="{!! URL::asset('../js/moment.min.js') !!}"></script>
+          <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
        <script src="{!! URL::asset('../datatable.js') !!}"></script>
      <!--  <script src="{!! URL::asset('../dataTables.material.min.js') !!}"></script>-->
        <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>
@@ -372,7 +373,10 @@ $(document).ready(function() {
 
 <script>
   $(document).ready(function(){
-    $.ajax({
+    refreshNotification();
+
+    function refreshNotification(){
+      $.ajax({
         type: "GET",
         url: "{{action('InboxController@getNumberOfUnreadMessages')}}",
         beforeSend: function (xhr) {
@@ -388,7 +392,8 @@ $(document).ready(function() {
               $('#notification_count').show();
             }
         }
-    });//ajax get client information
+      });//ajax get client information
+    }
 
     $("#notificationLink").click(function(){
       $("#notificationContainer").fadeToggle(300);
@@ -396,6 +401,13 @@ $(document).ready(function() {
       window.location.href = '{{ URL::to("/securityInbox") }}';
       return false;
     });
+  });
+
+  var pusher = new Pusher('{{env("PUSHER_KEY")}}');
+  var channel = pusher.subscribe('notifications');
+
+  channel.bind('new-message', function(data){
+    refreshNotification();
   });
 </script>
 	

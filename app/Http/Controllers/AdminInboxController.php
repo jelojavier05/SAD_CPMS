@@ -101,8 +101,11 @@ class AdminInboxController extends Controller
                 ]);
             }
             
-            
             DB::commit();
+
+            $pusher = App::make('pusher');
+            $pusher->trigger('notifications',
+                             'new-message');
         }catch(Exception $e){
             DB::rollBack();
         }
