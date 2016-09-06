@@ -39,7 +39,8 @@ Security Home
 	</div>
 </div>
 <!--Modal announcement content-->
-<div id="modalContent" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
+<!--width:700px;max-height:100%; height:470px; margin-top:-10px;-->
+<div id="modalContent" class="modal modal-fixed-footer ci" style="overflow:hidden; ">
     <div class="modal-header">
       	<div class="h">
 			<h3><center>Announcement</center></h3>  

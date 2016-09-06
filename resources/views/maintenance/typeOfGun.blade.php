@@ -21,7 +21,7 @@ Type of Gun
    
     </div>
     <div class="col s12 push-s1" style="margin-top:-4%">
-        <div class="container white lighten-2 z-depth-2 animated fadeIn">
+        <div class="container white lighten-2 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
 <!--            <div class="row">-->
                
 

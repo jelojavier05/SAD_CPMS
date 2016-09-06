@@ -10,17 +10,17 @@ Security Leave Request
 
 <div class="row" class="ci">
     
-              <div class="col s12 push-s3">
+              <div class="col s12 l12 push-s3 push-l3">
                  <h3 class="blue-text" style="font-family:Myriad Pro;margin-left:-2.5%;margin-top:1%">Leave Request</h3>
               </div>  
        
-    <div class="col s10 push-s3" style="margin-left:-2%;">
+    <div class="col s12 l10 push-l3" style="margin-left:-2%;">
         <!-- LEAVE FORM -->
-        <div class="col s5">
+        <div class="col s12 l5">
             <form class="card medium z-depth-1" style="height:420px !important;margin-top:-.1%;background-color:#90AFC5;border: .5px solid grey">
                 <div class="row"></div>
-                <div class="col l12">
-                    <div class="col l6 push-l2">
+                <div class="col s12 l12">
+                    <div class="col s6 push-s2 l6 push-l2">
                         <i class="material-icons" style="font-size:16rem">web</i>
                     </div>
                     <div class="col l6 pull-l1">
@@ -99,7 +99,7 @@ Security Leave Request
             </form>  
         </div>
 		
-		<div class="col s5"  >
+		<div class="col s12 l5"  >
 			<div class="container-fluid grey lighten-2" style="padding:2%;">
 			<table class="striped" style="border: 1px solid black;" id = 'tableLeaveLog'>
 		

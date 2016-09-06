@@ -22,8 +22,8 @@ Rank
    
     </div>
     <div class="col s12 push-s1" style="margin-top:-4%">
-        <div class="container white lighten-2 z-depth-2 animated fadeIn">
-<!--            <div class="row">-->
+        <div class="container white lighten-2 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
+
                
 
                 <div class="col s3 offset-s9">
@@ -31,7 +31,7 @@ Rank
                         <i class="material-icons left">add</i> ADD
                     </button>
                 </div>
-<!--            </div>-->
+
         
             <div class="row">
                 <div class="col s12" style="margin-top:-20px;">

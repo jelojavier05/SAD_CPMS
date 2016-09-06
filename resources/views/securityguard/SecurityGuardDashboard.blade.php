@@ -196,7 +196,7 @@
 
 <!--modal current client details-->
 
-<div id="modalCurrentClientDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:600px; margin-top:-50px;">
+<div id="modalCurrentClientDetails" class="modal modal-fixed-footer ci" style="overflow:hidden;">
     <div class="modal-header">
       	<div class="h">
 			<h3><center>Current Client</center></h3>  
@@ -205,17 +205,17 @@
 	
 	<div class="modal-content">
 		<div class="row">
-			<div class="col s12">
+			<div class="col s12 l12">
 				<ul class="collection with-header" id="collectionActive">				
 					
 					<li class="collection-header" ><h4 style="font-weight:bold;">Details</h4></li>
                 <div>
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
-							<div class="col s6">	
+							<div class="col s12 l6">	
 								Nature of Business:<div style="font-weight:normal;" id = 'natureOfBusinessDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
-							<div class="col s6">
+							<div class="col s12 l6">
 								Client Name:<div style="font-weight:normal;" id = 'clientNameDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
@@ -224,10 +224,10 @@
 					
 					<li class="collection-item" style="font-weight:bold;">
 						<div class="row">
-							<div class="col s6">	
+							<div class="col s12 l6">	
 								Address:<div style="font-weight:normal;" id = 'clientAddressDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
-							<div class="col s6">
+							<div class="col s12 l6">
 								Contact Number (Client):<div style="font-weight:normal;" id = 'contactNumberClientDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
@@ -235,10 +235,10 @@
 
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
-							<div class="col s6">	
+							<div class="col s12 l6">	
 								Person in Charge:<div style="font-weight:normal;" id = 'personInChargeDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
-							<div class="col s6">
+							<div class="col s12 l6">
 								Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'contactNumberPICDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
@@ -247,11 +247,11 @@
                     
                     <li class="collection-item" style="font-weight:bold;">
 						<div class="row">
-							<div class="col s4">	
+							<div class="col s12 l4">	
 								Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'areaSizeDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
-							<div class="col s4">
-								populationDashboard (approx.):<div style="font-weight:normal;" id = 'populationDashboard'>&nbsp;&nbsp;&nbsp;</div>
+							<div class="col s12 l4">
+								PopulationDashboard (approx.):<div style="font-weight:normal;" id = 'populationDashboard'>&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						
 				</ul>
@@ -294,6 +294,7 @@ $(document).ready(function() {
     type: "GET",
     url: "{{action('SecurityHomepageController@getGuardInformation')}}",
     success: function(data){
+      console.log(data);
       if (data){
         $('#strProfileName').text(data.strFirstName + ' ' + data.strLastName);
         $('#strProfileLicenseNumber').text(data.strLicenseNumber);    

@@ -209,6 +209,7 @@ Route::get('/clientView/get/clientpending', 'ClientViewController@getClientPendi
 Route::get('/clientView/get/guardaccept', 'ClientViewController@getGuardAccept');
 Route::get('/clientView/get/selectedclientpending', 'ClientViewController@getSelectedClientPending');
 Route::get('/clientView/get/guardcount', 'ClientViewController@getGuardAccepted');
+Route::get('/clientView/get/client', 'ClientViewController@getClient');
 Route::post('/clientView/send/clientPendingID', 'ClientViewController@post');
 
 

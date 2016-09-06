@@ -128,5 +128,21 @@ class ClientViewController extends Controller
     public function post(Request $request){
         $request->session()->put('contractClientID', $request->clientID);
     }
+
+    public function getClient(Request $request){
+        $id = Input::get('clientID');
+        
+        $client = DB::table('tblclient')
+            ->join('tblnatureofbusiness', 'tblnatureofbusiness.intNatureOfBusinessID','=', 'tblclient.intNatureOfBusinessID')
+            ->join('tblclientaddress', 'tblclientaddress.intClientID','=','tblclient.intClientID')
+            ->join('tblprovince', 'tblprovince.intProvinceID', '=', 'tblclientaddress.intProvinceID')
+            ->join('tblcity', 'tblcity.intCityID', '=', 'tblclientaddress.intCityID')
+            ->join('tblclientpendingnotification', 'tblclientpendingnotification.intClientID', '=', 'tblclient.intClientID')
+            ->select('tblclient.*', 'tblnatureofbusiness.strNatureOfBusiness', 'tblclientaddress.strAddress', 'tblprovince.strProvinceName', 'tblcity.strCityName','tblclientpendingnotification.intNumberOfGuard')
+            ->where('tblclient.intClientID', $id)
+            ->first();
+        
+        return response()->json($client);
+    }
     
 }

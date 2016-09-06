@@ -35,6 +35,7 @@ class SecurityHomepageController extends Controller
                 ->orderBy('tblguardstatus.dateEffectivity', 'desc')
                 ->first();
             
+            
             return response()->json($guard);
         }else{
             return response()->json(false);;

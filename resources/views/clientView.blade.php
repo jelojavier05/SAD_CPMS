@@ -68,21 +68,19 @@ Clients
                     <li class="collection-header" style="opacity:0;"><h5 style="font-weight:bold;">Details</h5></li>
                     
                     <div style="visibility:hidden;" id="detailcontainer">
-                        <li class="collection-item" style="font-weight:bold; opacity:0;">Nature of Business:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Bank</div>
+                        <li class="collection-item" style="font-weight:bold; opacity:0;">Nature of Business:<div style="font-weight:normal;" id = 'activeBusiness'>&nbsp;&nbsp;&nbsp;</div>
                         </li>
-                        <li class="collection-item" style="font-weight:bold; opacity:0;">Contact Number (Client):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09123456789</div>
+                        <li class="collection-item" style="font-weight:bold; opacity:0;">Contact Number (Client):<div style="font-weight:normal;" id = 'activeContactClient'>&nbsp;&nbsp;&nbsp;</div>
                         </li>
-                        <li class="collection-item" style="font-weight:bold; opacity:0;">Person in Charge:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Emilio Aguinaldo</div>
+                        <li class="collection-item" style="font-weight:bold; opacity:0;">Person in Charge:<div style="font-weight:normal;" id = 'activeInCharge'>&nbsp;&nbsp;&nbsp;</div>
                         </li>
-                        <li class="collection-item" style="font-weight:bold; opacity:0;">Contact Number (Person in Charge):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;09987654321</div>
+                        <li class="collection-item" style="font-weight:bold; opacity:0;">Contact Number (Person in Charge):<div style="font-weight:normal;" id = 'activeContactPerson'>&nbsp;&nbsp;&nbsp;</div>
                         </li>
-                        <li class="collection-item" style="font-weight:bold; opacity:0;">Address:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;Hello Street Pasig City, Metro Manila</div>
+                        <li class="collection-item" style="font-weight:bold; opacity:0;">Address:<div style="font-weight:normal;" id = 'activeAddress'>&nbsp;&nbsp;&nbsp;</div>
                         </li>
-                        <li class="collection-item" style="font-weight:bold; opacity:0;">Area Size (approx. in square meters):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;1000</div>
+                        <li class="collection-item" style="font-weight:bold; opacity:0;">Area Size (approx. in square meters):<div style="font-weight:normal;" id = 'activeAreaSize'>&nbsp;&nbsp;&nbsp;</div>
                         </li>
-                        <li class="collection-item" style="font-weight:bold; opacity:0;">Population (approx.):<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10000</div>
-                        </li>
-                        <li class="collection-item" style="font-weight:bold; opacity:0;">Number of Guards:<div style="font-weight:normal;">&nbsp;&nbsp;&nbsp;10</div>
+                        <li class="collection-item" style="font-weight:bold; opacity:0;">Population (approx.):<div style="font-weight:normal;" id = 'activePopulation'>&nbsp;&nbsp;&nbsp;</div>
                         </li>
                     </div>
                 </ul>
@@ -273,8 +271,32 @@ Clients
             });//get guard count accepted
         });
 
-        $('#tableActive').on('click', 'btnActiveMore', function(){
-            confirm(this.id);
+        $('#tableActive').on('click', '.btnActiveMore', function(){
+            $.ajax({
+                type: "GET",
+                url: "/clientView/get/client?clientID=" + this.id,
+                success: function(data){
+                    console.log(data);
+                    $('#activeBusiness').text(data.strNatureOfBusiness);
+                    $('#activeContactClient').text(data.strContactNumber);
+                    $('#activeInCharge').text(data.strPersonInCharge);
+                    $('#activeContactPerson').text(data.strPOICContactNumber);
+                    $('#activeAddress').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+                    $('#activeAreaSize').text(data.deciAreaSize);
+                    $('#activePopulation').text(data.intPopulation);
+
+
+
+
+
+
+                },
+                error: function(data){
+                    var toastContent = $('<span>Error Database.</span>');
+                    Materialize.toast(toastContent, 1500,'red', 'edit');
+
+                }
+            });//ajax
         });
 		
         $('.buttonMore').click(function() {

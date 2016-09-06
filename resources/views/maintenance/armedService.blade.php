@@ -21,7 +21,7 @@ Armed Service
    
     </div>
     <div class="col s12 push-s1" style="margin-top:-4%">
-        <div class="container white lighten-2 z-depth-2 animated fadeIn">
+        <div class="container white lighten-2 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
            
             <div class="col s3 offset-s9">
                 <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalarmedserviceAdd">

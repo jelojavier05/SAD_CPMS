@@ -40,7 +40,7 @@ Security Homepage
 </div>
 
 <!--modal new client request-->
-<div id="modalNewClientRequest" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
+<div id="modalNewClientRequest" class="modal modal-fixed-footer ci" style="overflow:hidden;">
     <div class="modal-header">
                 <div class="h">
                     <h3><center>New Client</center></h3>  
@@ -125,7 +125,7 @@ Security Homepage
 
 
 <!--modal message approved client/contract-->
-<div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
+<div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden;">
     <div class="modal-header">
       	<div class="h">
 			<h3><center>Message</center></h3>  
@@ -276,7 +276,7 @@ Security Homepage
 <!--modal leave request from other guard////releiver end-->
 	
 <!--modal kapwa guard notice-->
-<div id="swapguardModal" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
+<div id="swapguardModal" class="modal modal-fixed-footer ci" style="overflow:hidden;">
     <div class="modal-header">
                 <div class="h">
                     <h3><center>Swap Guard Notice</center></h3>  
@@ -385,8 +385,9 @@ Security Homepage
 	
 	
 <!--modal swap guard notice-->
+    <!--width:700px;max-height:100%; height:570px; margin-top:-30px;-->
 	
-<div id="modalcoSGswaprequest" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
+<div id="modalcoSGswaprequest" class="modal modal-fixed-footer ci" style="overflow:hidden; ">
     <div class="modal-header">
 		<div class="h">
 			<h3><center>Swap Post Request</center></h3>  
