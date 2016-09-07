@@ -42,7 +42,7 @@ Guard Form
 				 <span class="card-title activator grey-text text-darken-4">Armed Services<i class="material-icons right animated infinite flash" style="font-size:3rem">add</i></span>
 			 </div>
 			 <div class="card-reveal">
-				 <span class="card-title grey-text text-darken-4">Armed Services<i class="material-icons right">close</i></span>				 
+				 <span class="card-title grey-text text-darken-4">Armed Services<button class="btn red right"><i class="material-icons">close</i></button></span>				 
 			
 				 <div class="row">		
 					 <div class="col s12">
