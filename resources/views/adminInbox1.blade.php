@@ -271,8 +271,28 @@ Inbox
     <div class="modal-content">
       <div class="row">
         <div class="col s12">
-          <ul class="collection with-header" id="collectionActive">                                       
-            <li class="collection-item"><p id = ''>Masyadong Mahusay. Mahilig sa Triple Double</p></li>
+          <ul class="collection with-header" id="collectionActive">			  
+			<li class="collection-item">
+				<div class="row">
+					<div class="col s1">
+						<div ><h5 style="font-weight:bold;">Client:</h5></div>
+					</div>
+					
+					<div class="col s4">
+						<div ><h5>LandBank Almanza</h5></div>
+					</div>
+				</div>
+			</li>
+            <li class="collection-item">
+				<div class="row">
+					<div class="col s12">
+						<div ><h5 style="font-weight:bold;">Reason:</h5></div>
+						<div ><p>Masyadong Mahusay Mahilig sa Triple Double</p></div>
+					</div>
+					
+					
+				</div>
+			</li>
             <li class="collection-item">
               <div class="row">
                 
@@ -282,18 +302,14 @@ Inbox
 					  <h5 class="red-text">Guards to be Replaced</h5>
 					  <thead>						  
 						  <th class="grey lighten-1">ID</th>
-						  <th class="grey lighten-1">First Name</th>
-						  <th class="grey lighten-1">Last Name</th>
-						  <th class="grey lighten-1">City</th>
-						  <th class="grey lighten-1">Province</th>
+						  <th class="grey lighten-1">Name</th>
+						  <th class="grey lighten-1">Address</th>						  
 					  </thead>
 					  <tbody>
 						  <tr>							  
 							  <td>1</td>
-							  <td>DeAndre</td>
-							  <td>Jordan</td>
-							  <td>Valenzeula</td>
-							  <td>Metro Manila</td>
+							  <td>DeAndre Jordan</td>							  
+							  <td>123 Hello Street Test Valenzeula, Metro Manila</td>							  
 						  </tr>
 					  </tbody>
 					</table>  
@@ -305,26 +321,23 @@ Inbox
                     <thead>
                       <th class="grey lighten-1" style="width:10px;"></th>
                       <th class="grey lighten-1">ID</th>
-                      <th class="grey lighten-1">First Name</th>
-                      <th class="grey lighten-1">Last Name</th>
-                      <th class="grey lighten-1">City</th>
-                      <th class="grey lighten-1">Province</th>
+                      <th class="grey lighten-1">Name</th>
+                      <th class="grey lighten-1">Address</th>                                            
                     </thead>
                     <tbody>
                       <tr>
                         <td><input type="checkbox" id="test1" value = ""><label for="test1"></label></td>
                         <td>1</td>
-                        <td>Blake</td>
-                        <td>Griffin</td>
-                        <td>Las Pinas</td>
-                        <td>Metro Manila</td>
-                      </tr>
+                        <td>Blake Griffin</td>
+                        <td>321 Bye Street Almanza Las Pinas, Metro Manila</td>                        
+                      </tr>												
                     </tbody>
                   </table>
                 </div>
 				</div>
 			  </li>
 			</ul>
+			<div class="row"></div>
 		  </div>
 		</div>
 	  </div>
@@ -1203,9 +1216,7 @@ $(document).ready(function(){
     
     $('#dataTableSendNotiSwapGuard').DataTable({
          "columns": [
-        { "orderable": false },
-        null,
-        null,
+        { "orderable": false },        
         null,
         null,
         null
@@ -1215,9 +1226,7 @@ $(document).ready(function(){
      });
 	
 	$('#dataTableGuardstobeReplaced').DataTable({
-         "columns": [        
-        null,
-        null,
+         "columns": [               
         null,
         null,
         null
