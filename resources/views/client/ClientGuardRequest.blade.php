@@ -15,12 +15,26 @@ Client Request of Guard
 		    </div>
 		</div>
 	    <div class="col s12 push-s1" style="margin-top:-4%">
-	        <div class="container white lighten-2 z-depth-2 animated fadeIn">
-				<div class="col s3 offset-s9">
-	                <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green">
-	                    <i class="material-icons left">add</i> ADD
-	                </button>
-	            </div>
+	        <div class="container white lighten-2 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
+				<div class="row">	
+					<div class="col s2 offset-s6">
+						<button style="margin-top: 30px;" id="btnAdd" class=" tooltipped z-depth-1 btn green" data-position="bottom" data-delay="50" data-tooltip="Guard Details">
+							<i class="material-icons">add</i>
+						</button>
+					</div>
+
+					<div class="col s2">
+						<button style="margin-top: 30px;" id="btnReplace" class="tooltipped z-depth-1 btn blue" data-position="bottom" data-delay="50" data-tooltip="Replace Guards">
+							<i class="material-icons">swap_horiz</i>
+						</button>
+					</div>
+
+					<div class="col s2">
+						<button style="margin-top: 30px;" id="btnRemove" class="tooltipped z-depth-1 btn red" data-position="bottom" data-delay="50" data-tooltip="Remove Guards">
+							<i class="material-icons">close</i>
+						</button>
+					</div>
+				</div>
 	            
 	            <div class="row">
 	                <div class="col s12" style="margin-top:-20px;">
@@ -29,13 +43,23 @@ Client Request of Guard
 	                            <tr>                                
 	                                <th style="width:50px;" class="blue darken-3 white-text"></th>
 									<th style="width:50px;" class="blue darken-3 white-text"></th>
-	                                <th style="width:50px;" class="blue darken-3 white-text"></th>
 	                                <th class="blue darken-3 white-text">License Number</th>
 	                                <th class="blue darken-3 white-text">Name</th>
 	                                <th class="blue darken-3 white-text">Gender</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
+								<tr>
+									<td>
+										<input type="checkbox" id="test1" value = ""><label for="test1"></label>
+									</td>
+									<td>
+										<button data-position="bottom" data-delay="50" data-tooltip="Guard Details" class="tooltipped buttonMore btn col s12" id="'"><i class="material-icons">person_outline</i></button>
+									</td>
+									<td>123-123-123</td>
+									<td>Jason Kidd</td>
+									<td>Male</td>
+								</tr>
 	                        </tbody>
 	                    </table>
 	                </div>
@@ -70,6 +94,11 @@ Client Request of Guard
 						 <textarea  class="materialize-textarea" id="addReason" type="text"  placeholder=" "></textarea>
 						 <label for="addReason">Reason</label> 
 					 </div>
+				</div>
+				
+				<div class="col s10 push-s2">
+					<div class='row'></div>
+					<input class="filled-in" type="checkbox" id="test7" value = ""><label for="test7">I Agree to the Terms and Conditions</label>
 				</div>
 				
 			</div>
@@ -186,6 +215,11 @@ Client Request of Guard
 					 </div>
 				</div>
 				
+				<div class="col s10 push-s2">
+					<div class='row'></div>
+					<input class="filled-in" type="checkbox" id="test9" value = ""><label for="test9">I Agree to the Terms and Conditions</label>
+				</div>
+				
 			</div>
 		</div>
 		<div class="modal-footer" style="background-color: #00293C;">
@@ -216,6 +250,11 @@ Client Request of Guard
 						 <label for="input_text">Reason</label> 
 						 
 					 </div>
+				</div>
+				
+				<div class="col s10 push-s2">
+					<div class='row'></div>
+					<input class="filled-in" type="checkbox" id="test8" value = ""><label for="test8">I Agree to the Terms and Conditions</label>
 				</div>
 				
 			</div>
@@ -369,6 +408,15 @@ $(document).ready(function(){
 				$('#addNumberOfGuards').val(0);
 				$('#addReason').val('');
 			});
+			
+			$('#btnReplace').click(function(){
+				$('#modalguardSwap').openModal();
+				
+			});
+			
+			$('#btnRemove').click(function(){
+				$('#modalguardDelete').openModal();				
+			});
 
 			function getGuardInformation(id){
 				
@@ -433,9 +481,8 @@ $(document).ready(function(){
 		
 		$("#dataTable").DataTable({
 	         "columns": [
-			{"searchable": false},
-			{"searchable": false},
-			{"searchable": false},
+			{"orderable": false},
+			{"orderable": false},
 	        null,
 	        null,
 			null
