@@ -17,7 +17,7 @@ Inbox
       </ul>   
       <div id="message">
         <div class="container-fluid grey lighten-2">    
-          <table class="striped" id="dataTableMsg">                   
+          <table class="striped" id="dataTableMsg">			  
             <thead>
               <tr>
                 <th class="grey lighten-1" style="width: 20px;"></th>
@@ -262,7 +262,7 @@ Inbox
 <!--modal add guard request complete guards end-->
             
 <!--modal swap guard request -->
-  <div id="modalClientSwapGuard" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
+  <div id="modalClientSwapGuard" class="modal modal-fixed-footer ci" style="overflow:hidden; width:1000px;max-height:100%; height:650px; margin-top:-60px;">
     <div class="modal-header">
       <div class="h">
         <h3><center>Replacement of Guards</center></h3>  
@@ -271,18 +271,37 @@ Inbox
     <div class="modal-content">
       <div class="row">
         <div class="col s12">
-          <ul class="collection with-header" id="collectionActive">                           
-            <li class="collection-header" style="font-weight:bold;">
-              <div class='row'>
-                <div class='col s4'>Name of Guard:</div>
-                <div class="col s4 pull-s1" id = ''>Russell Westbrook</div>
-              </div>
-            </li>
+          <ul class="collection with-header" id="collectionActive">                                       
             <li class="collection-item"><p id = ''>Masyadong Mahusay. Mahilig sa Triple Double</p></li>
             <li class="collection-item">
               <div class="row">
-                <div class="col s12">
+                
+				
+				<div class="col s6">
+				  <table class="striped white" style="border-radius:10px; width:100%;" id="dataTableGuardstobeReplaced">
+					  <h5 class="red-text">Guards to be Replaced</h5>
+					  <thead>						  
+						  <th class="grey lighten-1">ID</th>
+						  <th class="grey lighten-1">First Name</th>
+						  <th class="grey lighten-1">Last Name</th>
+						  <th class="grey lighten-1">City</th>
+						  <th class="grey lighten-1">Province</th>
+					  </thead>
+					  <tbody>
+						  <tr>							  
+							  <td>1</td>
+							  <td>DeAndre</td>
+							  <td>Jordan</td>
+							  <td>Valenzeula</td>
+							  <td>Metro Manila</td>
+						  </tr>
+					  </tbody>
+					</table>  
+				  </div>
+				  
+				  <div class="col s6">
                   <table class="striped white" style="border-radius:10px; width:100%;" id="dataTableSendNotiSwapGuard">
+					<h5 class="green-text">Guards Replacement</h5>  
                     <thead>
                       <th class="grey lighten-1" style="width:10px;"></th>
                       <th class="grey lighten-1">ID</th>
@@ -303,12 +322,12 @@ Inbox
                     </tbody>
                   </table>
                 </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+				</div>
+			  </li>
+			</ul>
+		  </div>
+		</div>
+	  </div>
     <div class="modal-footer ci" style="background-color: #00293C;">
       <button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationAdditionalGuard" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
     </div>
@@ -1185,6 +1204,18 @@ $(document).ready(function(){
     $('#dataTableSendNotiSwapGuard').DataTable({
          "columns": [
         { "orderable": false },
+        null,
+        null,
+        null,
+        null,
+        null
+        ] ,  
+        "pageLength":3,
+        "lengthMenu": [5,10,15,20]
+     });
+	
+	$('#dataTableGuardstobeReplaced').DataTable({
+         "columns": [        
         null,
         null,
         null,
