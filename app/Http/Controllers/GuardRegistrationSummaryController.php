@@ -24,7 +24,7 @@ class GuardRegistrationSummaryController extends Controller
             ->orderBy('strGovernmentExam', 'asc')
             ->get();
 
-        return view('/guardAdmin/guardSummary')
+        return view('/guardAdmin/guardSummary1')
             ->with('bodyAttributes', $bodyAttributes)
             ->with ('governmentExams', $governmentExams);
     }

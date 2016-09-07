@@ -49,17 +49,6 @@ Client Request of Guard
 	                            </tr>
 	                        </thead>
 	                        <tbody>
-								<tr>
-									<td>
-										<input type="checkbox" id="test1" value = ""><label for="test1"></label>
-									</td>
-									<td>
-										<button data-position="bottom" data-delay="50" data-tooltip="Guard Details" class="tooltipped buttonMore btn col s12" id="'"><i class="material-icons">person_outline</i></button>
-									</td>
-									<td>123-123-123</td>
-									<td>Jason Kidd</td>
-									<td>Male</td>
-								</tr>
 	                        </tbody>
 	                    </table>
 	                </div>
@@ -68,6 +57,7 @@ Client Request of Guard
 	    </div>
 	</div>
 <!-- Table End -->
+
 
 <!--modal guard add request-->
 	<div id="modalguardAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:425px !important; border-radius:10px;">      
@@ -98,7 +88,7 @@ Client Request of Guard
 				
 				<div class="col s10 push-s2">
 					<div class='row'></div>
-					<input class="filled-in" type="checkbox" id="test7" value = ""><label for="test7">I Agree to the Terms and Conditions</label>
+					<input class="filled-in" type="checkbox" id="checkAdd" value = ""><label for="checkAdd">I Agree to the Terms and Conditions</label>
 				</div>
 				
 			</div>
@@ -217,7 +207,7 @@ Client Request of Guard
 				
 				<div class="col s10 push-s2">
 					<div class='row'></div>
-					<input class="filled-in" type="checkbox" id="test9" value = ""><label for="test9">I Agree to the Terms and Conditions</label>
+					<input class="filled-in" type="checkbox" id="checkSwap" value = ""><label for="checkSwap">I Agree to the Terms and Conditions</label>
 				</div>
 				
 			</div>
@@ -276,7 +266,7 @@ Client Request of Guard
 	<script>
 		$(document).ready(function(){
 			$('#btnAddRequest').click(function(){
-				if (checkInput() && !hasAddRequest()){
+				if (checkInput() && !hasAddRequest() && $('#checkAdd').is(':checked')){
 					send();
 				}
 			});
@@ -346,33 +336,14 @@ Client Request of Guard
 <!-- Request Swap Guard Start -->
 <script>
 $(document).ready(function(){
-	$('#dataTable').on('click', '.buttonSwap', function(){
-    $('#modalguardSwap').openModal();       
-  });
+
+	$('#btnReplace').click(function(){
+		$('#modalguardSwap').openModal();
+	});
 
 	$('#btnSwapGuard').click(function(){
 		if (checkInput()){
-			$.ajax({
-        type: "POST",
-        url: "{{action('')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
-        data: {
-
-        },
-        success: function(data){
-
-        },
-        error: function(data){
-					var toastContent = $('<span>Error Database.</span>');
-					Materialize.toast(toastContent, 1500,'red', 'edit');
-        }
-      });//ajax
+			
 		}
 	});
 
@@ -396,7 +367,7 @@ $(document).ready(function(){
 	<script>
 		$(document).ready(function(){
 
-			//refreshTable();
+			refreshTable();
 
 			$('#dataTable').on('click', '.buttonMore', function(){
 				getGuardInformation(this.id);
@@ -407,11 +378,6 @@ $(document).ready(function(){
 				$('#modalguardAdd').openModal();
 				$('#addNumberOfGuards').val(0);
 				$('#addReason').val('');
-			});
-			
-			$('#btnReplace').click(function(){
-				$('#modalguardSwap').openModal();
-				
 			});
 			
 			$('#btnRemove').click(function(){
@@ -451,16 +417,14 @@ $(document).ready(function(){
 		            	$.each(data, function(index, value){
 		            		
 		            		var buttonMore = '<button data-position="bottom" data-delay="50" data-tooltip="Guard Details" class="tooltipped buttonMore btn col s12" id="'+value.intGuardID+'"><i class="material-icons">person_outline</i></button>';
-		            		var buttonReplacement = '<button data-position="bottom" data-delay="50" data-tooltip="Guard Replacement" class=" tooltipped buttonSwap blue btn col s12" id="'+value.intGuardID+'"><i class="material-icons">swap_horiz</i></button>';
-		            		var buttonDelete = '<button data-position="bottom" data-delay="50" data-tooltip="Guard Removal" class="tooltipped buttonDelete btn red col s12" id="'+value.intGuardID+'" ><i class="material-icons">close</i></button>';
+		            		var checkbox = '<input type="checkbox" id="checkbox'+value.intGuardID+'" value = "'+value.intGuardID+'"><label for="checkbox'+value.intGuardID+'"></label>'
 		            		var licenseNumber = '<h>'+value.strLicenseNumber+'</h>';
 		            		var name = '<h>'+value.strFirstName+' '+ value.strLastName +'</h>';
 		            		var gender = '<h>'+value.strGender+'</h>';
 		            		
 		            		table.row.add([
 		            			buttonMore,
-		            			buttonReplacement,
-		            			buttonDelete,
+		            			checkbox,
 		            			licenseNumber,
 		            			name,
 		            			gender

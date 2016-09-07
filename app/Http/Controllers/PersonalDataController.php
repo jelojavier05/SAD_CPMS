@@ -35,6 +35,7 @@ class PersonalDataController extends Controller
         if ($request->session()->has('personalData')) {
             $personalData = new \stdClass();
             $personalData = $request->session()->get('personalData');
+            
             return response()->json($personalData);
         }else{
             

@@ -40,50 +40,50 @@ Guard Form
 					<div class="col s10 push-s1" style="overflow:scroll; overflow-x:hidden; height: 400px;">
 						<ul class="collection with-header" id="collectionActive">
 							<li class="collection-header" style=""><h5 style="font-weight:bold;">Account</h5></li>          	          		 
-							<li class="collection-item" style="font-weight:bold; ">Username:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;BhoxszLarry</div>
+							<li class="collection-item" style="font-weight:bold; ">Username:<div style="font-weight:normal;" id = "username">&nbsp;&nbsp;&nbsp;</div>
 							</li>		  		  	  
 		  
-							<li class="collection-item" style="font-weight:bold; ">Password:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;larrybhoxsz</div>
+							<li class="collection-item" style="font-weight:bold; ">Password:<div style="font-weight:normal;" id = "password">&nbsp;&nbsp;&nbsp;</div>
 							</li>
 		  
 							<li class="collection-header"><h5 style="font-weight:bold;">Personal Data</h5></li>
 							<li class="collection-item">
 								<div class='row'>
 									<div class='col s4' style="font-weight:bold;">
-										First Name:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Larry</div>
+										First Name:<div style="font-weight:normal;" id = "firstName">&nbsp;&nbsp;&nbsp;</div>
 									</div>
 					
 									<div class='col s4' style="font-weight:bold;">
-										Middle Name:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Test</div>
+										Middle Name:<div style="font-weight:normal;" id = "middleName">&nbsp;&nbsp;&nbsp;</div>
 									</div>
 					
 									<div class='col s4' style="font-weight:bold;">
-										Last Name:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Bird</div>
+										Last Name:<div style="font-weight:normal;" id = "lastName">&nbsp;&nbsp;&nbsp;</div>
 									</div>
 								</div>
 							</li>
 		  
-							<li class="collection-item" style="font-weight:bold; ">License Number:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;2013-12345-MN-0</div>
+							<li class="collection-item" style="font-weight:bold; ">License Number:<div style="font-weight:normal;" id = "licenseNumber">&nbsp;&nbsp;&nbsp;</div>
 							</li>
 		  	
-							<li class="collection-item" style="font-weight:bold; ">Address:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;123 Hello Street Almanza Las Pinas Metro Manila</div>
+							<li class="collection-item" style="font-weight:bold; ">Address:<div style="font-weight:normal;" id = "address">&nbsp;&nbsp;&nbsp;</div>
 							</li>		  		  	  
 		  
-							<li class="collection-item" style="font-weight:bold; ">Place of Birth:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Makati City</div>
+							<li class="collection-item" style="font-weight:bold; ">Place of Birth:<div style="font-weight:normal;" id = "placeOfBirth">&nbsp;&nbsp;&nbsp;</div>
 							</li>
 		  
 							<li class="collection-item">
 								<div class='row'>
 									<div class='col s4' style="font-weight:bold;">
-										Age:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;31</div>
+										Age:<div style="font-weight:normal;" id = "age">&nbsp;&nbsp;&nbsp;</div>
 									</div>
 					
 									<div class='col s4' style="font-weight:bold;">
-										Gender:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Male</div>
+										Gender:<div style="font-weight:normal;" id = "gender">&nbsp;&nbsp;&nbsp;</div>
 									</div>
 					
 									<div class='col s4' style="font-weight:bold;">
-										Civil Status:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Single</div>
+										Civil Status:<div style="font-weight:normal;" id = "civilStatus">&nbsp;&nbsp;&nbsp;</div>
 									</div>
 								</div>
 							</li>
@@ -91,30 +91,31 @@ Guard Form
 							<li class="collection-item">
 								<div class='row'>
 									<div class='col s6' style="font-weight:bold;">
-										Contact Number (Mobile):<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;09123456789</div>
+										Contact Number (Mobile):<div style="font-weight:normal;" id = "mobileNumber">&nbsp;&nbsp;&nbsp;</div>
 									</div>
 					
 									<div class='col s6' style="font-weight:bold;">
-										Contact Number (Landline):<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;8123456</div>
+										Contact Number (Landline):<div style="font-weight:normal;" id = "landlineNumber">&nbsp;&nbsp;&nbsp;</div>
 									</div>										
 								</div>
 							</li>
 							<li class="collection-header"><h5 style="font-weight:bold;">Body Attributes</h5></li>
 							<div> 
-								<li class="collection-item" style="font-weight:bold;">Wingspan: 72 inches</li>
-								<li class="collection-item" style="font-weight:bold;">Height: 72 inches</li>
+								@foreach($bodyAttributes as $value)
+								<li class="collection-item" style="font-weight:bold;" id = 'bodyAttribute{{$value->intBodyAttributeID}}'>{{$value->strBodyAttributeName}} - </li>
+								@endforeach
 								<li></li>
 							</div>
 							<li class="collection-header"><h5 style="font-weight:bold;">Armed Services</h5></li>
 							<div> 
-								<li class="collection-item" style="font-weight:bold;">PNP</li>
-								<li class="collection-item" style="font-weight:bold;">SAF</li>
+								<li class="collection-item" style="font-weight:bold;" id = 'armedService'></li>
 								<li></li>
 							</div>
 							<li class="collection-header"><h5 style="font-weight:bold;">Government Exams</h5></li>
 							<div> 
-								<li class="collection-item" style="font-weight:bold;">Civil Service Examination - 99</li>
-								<li class="collection-item" style="font-weight:bold;">Guard Exam - 100</li>
+								@foreach($governmentExams as $value)
+								<li class="collection-item" style="font-weight:bold;" id = 'governmentExam{{$value->intGovernmentExamID}}'>{{$value->strGovernmentExam}}</li>
+								@endforeach
 								<li></li>
 							</div>
 						</ul>
@@ -134,13 +135,6 @@ $(document).ready(function(){
     $.ajax({
         type: "GET",
         url: "{{action('PersonalDataController@get')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
         success: function(data){
 
             if (data){
@@ -164,11 +158,12 @@ $(document).ready(function(){
                 //bodyattribute
                 var bodyAttribute = data.bodyAttribute;
                 for (intLoop = 0; intLoop < bodyAttribute.length; intLoop ++){
+                	var str = $('#bodyAttribute' + bodyAttribute[intLoop].intBodyAttributeID).text() + ' ';
+                	str += bodyAttribute[intLoop].strValue + " " + bodyAttribute[intLoop].measurement;
+
                     $('#bodyAttribute' + bodyAttribute[intLoop].intBodyAttributeID)
-                        .text(bodyAttribute[intLoop].strValue + " " + bodyAttribute[intLoop].measurement);
+                        .text(str);
                 }
-                
-                console.log(data.province);
             }else{
 
             }
@@ -180,17 +175,10 @@ $(document).ready(function(){
 
         type: "GET",
         url: "{{action('SGBackgroundController@getGovernmentExam')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
         success: function(data){
             if (data){
                 for (intLoop = 0; intLoop < data.length; intLoop ++){
-                    $('#governmentExam' + data[intLoop].id).text('• ' + data[intLoop].name + " - " + data[intLoop].rating);
+                    $('#governmentExam' + data[intLoop].id).text(data[intLoop].name + " - " + data[intLoop].rating);
                 }
             }else{
 
@@ -202,13 +190,6 @@ $(document).ready(function(){
 
         type: "GET",
         url: "{{action('SGBackgroundController@getArmedService')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
         success: function(data){
             if (data){
 
@@ -223,13 +204,6 @@ $(document).ready(function(){
 
         type: "GET",
         url: "{{action('AccountController@get')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
         success: function(data){
             if (data){
 
