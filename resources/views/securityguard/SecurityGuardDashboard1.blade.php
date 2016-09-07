@@ -32,7 +32,8 @@
           <script src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
           <script src="{!! URL::asset('../sweetalert.min.js') !!}"></script>
           <script src="{!! URL::asset('../js/moment.min.js') !!}"></script>
-          <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+          <script src="//js.pusher.com/3.0/pusher.min.js"></script>
+          <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
        <script src="{!! URL::asset('../datatable.js') !!}"></script>
      <!--  <script src="{!! URL::asset('../dataTables.material.min.js') !!}"></script>-->
        <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>
@@ -374,7 +375,7 @@ $(document).ready(function() {
 <script>
   $(document).ready(function(){
     refreshNotification();
-
+    
     function refreshNotification(){
       $.ajax({
         type: "GET",
@@ -401,16 +402,38 @@ $(document).ready(function() {
       window.location.href = '{{ URL::to("/securityInbox") }}';
       return false;
     });
+
   });
 
-  var pusher = new Pusher('{{env("PUSHER_KEY")}}');
-  var channel = pusher.subscribe('notifications');
-
-  channel.bind('new-message', function(data){
-    refreshNotification();
-  });
+  
 </script>
-	
+<script>
+  var pusher = new Pusher("{{env('PUSHER_KEY')}}");
+  var channel = pusher.subscribe('notification');
+  channel.bind('new-message', function(data) {
+    var toastContent = $('<span>'+data.text+'</span>');
+    Materialize.toast(toastContent, 1500,'green', 'edit');
+
+    $.ajax({
+        type: "GET",
+        url: "{{action('InboxController@getNumberOfUnreadMessages')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data){
+            if (data > 0){
+              $('#notification_count').text(data);
+              $('#notification_count').show();
+            }
+        }
+      });//ajax get client information
+  });
+
+</script>
     </body>
 </html>
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Input;
 use DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
 
 class AdminInboxController extends Controller
 {
@@ -100,12 +101,14 @@ class AdminInboxController extends Controller
                     'intInboxID' => $inboxID
                 ]);
             }
-            
+            $pusher = App::make('pusher');
+            $pusher->trigger(
+                'notification',
+                'new-message', 
+                array('text' => 'New Message')
+            );
             DB::commit();
 
-            $pusher = App::make('pusher');
-            $pusher->trigger('notifications',
-                             'new-message');
         }catch(Exception $e){
             DB::rollBack();
         }

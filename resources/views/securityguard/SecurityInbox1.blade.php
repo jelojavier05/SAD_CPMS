@@ -1,4 +1,4 @@
-@extends('securityguard.SecurityGuardDashboard')
+@extends('securityguard.SecurityGuardDashboard1')
 @section('title')
 Security Homepage
 @endsection
@@ -494,7 +494,6 @@ Security Homepage
 
 <script>
 $(document).ready(function(){
-    
     var tableRowCounter = 0;
     var table = $('#inboxTable').DataTable();
     var inboxID;
@@ -953,6 +952,41 @@ $(document).ready(function(){
 });
 	
 	
+</script>
+
+<script>
+  var table = $('#inboxTable').DataTable();
+  var pusher = new Pusher("{{env('PUSHER_KEY')}}");
+  var channel = pusher.subscribe('notification');
+  channel.bind('new-message', function(data) {
+    $.ajax({
+        type: "GET",
+        url: "{{action('InboxController@getInbox')}}",
+        success: function(data){
+            if (data){
+
+                $.each(data, function(index,value){
+                    if (value.tinyintStatus == 1){
+                        radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" checked/> <label for="'+value.intInboxID+'"></label>';  
+                    }else{
+                        radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" /> <label for="'+value.intInboxID+'"></label>';
+                    }
+                    button = '<center><button class="btn blue darken-4 buttonRead" id="'+value.intInboxID+'"><i class="material-icons">keyboard_arrow_right</i></button></center>';
+                    
+                    table.row.add([
+                        radio,
+                        button,
+                        '<h>' + value.datetimeSend + '</h>',
+                        '<h>' + value.nameSender + '</h>',
+                        '<h>' + value.strSubject + '</h>' + 
+                        '<input type = "hidden" id = "type'+value.intInboxID+'" value="'+value.tinyintType+'">'
+                    ]).draw(false);
+                });//foreach
+            }//if else
+        },async:false
+    });//get inbox 
+  });
+
 </script>
 
 @stop

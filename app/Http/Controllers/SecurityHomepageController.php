@@ -18,7 +18,7 @@ class SecurityHomepageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request){
-        return view('/securityguard/SecurityInbox');
+        return view('/securityguard/SecurityInbox1');
     }
     
     public function getGuardInformation(Request $request){

@@ -147,6 +147,7 @@ return [
         
         
         Barryvdh\DomPDF\serviceProvider::class,
+        Vinkla\Pusher\PusherServiceProvider::class,
     ],
 
     /*
