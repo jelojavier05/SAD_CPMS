@@ -415,11 +415,6 @@ Security Homepage
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<tr>
 								</tbody>
 							</table>
 						</div>
@@ -431,27 +426,28 @@ Security Homepage
 		</div>
 
 		<div class="modal-footer ci" style="background-color: #00293C;">
-			<div id = "buttons" style="display: none;">	
-				<button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "">Accept</button>
-				<button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "">Decline</button>
+			<div id = "divChangeButton" style="display: none;">	
+				<button class="btn green waves-effect waves-light" style="margin-right: 30px;" id = "btnChangeAccept">Accept</button>
+				<button class="btn red waves-effect waves-light modal-close" style="margin-right: 30px;" id = "btnChangeDecline">Decline</button>
 			</div>
 
-			<div id = "accepted" style="display: none;">           			
-				<button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted</button>
+			<div id = "divChangeAccepted" style="display: none;">           			
+				<button class="btn green" style="margin-right: 30px; cursor:default;">Accepted</button>
 			</div>
 
-			<div id = "rejected" style="display: none;">			
-				<button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined</button>
+			<div id = "divChangeRejected" style="display: none;">			
+				<button class="btn red" style="margin-right: 30px; cursor:default;">Declined</button>
 			</div>    
 
-			<div id = "notAvailable" style="display: none;">
-        <button class="btn grey" name="" style="margin-right: 30px; cursor:default;" id = "">Unavailable</button>
+			<div id = "divChangeUnavailable" style="display: none;">
+        <button class="btn grey" style="margin-right: 30px; cursor:default;">Unavailable</button>
       </div>            
 		</div>
 	</div>
 <!--modal change guard notice end-->
+@stop
 
-
+@section('script')
 <script>
 $(document).ready(function(){
     var tableRowCounter = 0;
@@ -864,6 +860,68 @@ $(document).ready(function(){
     // Swap Location End
 	    
 	  // Change Guard Start
+	  	$('#btnChangeAccept').click(function(){
+				$.ajax({
+          type: "POST",
+          url: "{{action('ChangeGuardController@accept')}}",
+          beforeSend: function (xhr) {
+              var token = $('meta[name="csrf_token"]').attr('content');
+
+              if (token) {
+                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+              }
+          },
+          data: {
+          	inboxID: inboxID
+          },
+          success: function(data){
+	          swal({
+							title: "Success!",
+							text: "You accepted the offer. Please wait for further announcement.",
+							type: "success"
+						},function(){
+							$('#modalChangeGuard').closeModal();
+						});
+
+          },
+          error: function(data){
+	 					var toastContent = $('<span>Error Database.</span>');
+						Materialize.toast(toastContent, 1500,'red', 'edit');
+          }
+        });//ajax
+	  	});
+
+	  	$('#btnChangeDecline').click(function(){
+				$.ajax({
+          type: "POST",
+          url: "{{action('ChangeGuardController@decline')}}",
+          beforeSend: function (xhr) {
+              var token = $('meta[name="csrf_token"]').attr('content');
+
+              if (token) {
+                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+              }
+          },
+          data: {
+          	inboxID: inboxID
+          },
+          success: function(data){
+          	swal({
+							title: "Declined!",
+							text: "You declined the offer.",
+							type: "success"
+						},function(){
+							$('#modalChangeGuard').closeModal();
+						});
+          },
+          error: function(data){
+						var toastContent = $('<span>Error Database.</span>');
+						Materialize.toast(toastContent, 1500,'red', 'edit');
+
+          }
+        });//ajax
+	  	});
+
 	  	function changeGuard(){
 				$.ajax({
             type: "GET",
@@ -895,12 +953,30 @@ $(document).ready(function(){
                   '</tr>'
                 );
 	            });
+
+	            var responseStatus = data.boolStatus;
+	            if (responseStatus == 1){//waiting
+	            	showHideButton('divChangeButton', 'divChangeAccepted', 'divChangeRejected', 'divChangeUnavailable');
+	            }else if (responseStatus == 2){//accepted
+	            	showHideButton('divChangeAccepted', 'divChangeButton', 'divChangeRejected', 'divChangeUnavailable');
+	            }else if (responseStatus == 0){//rejected
+	            	showHideButton('divChangeRejected', 'divChangeAccepted', 'divChangeButton', 'divChangeUnavailable');
+	            }else if (responseStatus == 3){//N/A
+	            	showHideButton('divChangeUnavailable', 'divChangeAccepted', 'divChangeRejected', 'divChangeButton');
+	            }
             },
             error: function(data){
 							var toastContent = $('<span>Error Database.</span>');
 							Materialize.toast(toastContent, 1500,'red', 'edit');
             }
         });//ajax
+	  	}
+
+	  	function showHideButton(show, hide1, hide2,hide3){
+	  		$('#' + show).show();
+      	$('#' + hide1).hide();
+      	$('#' + hide2).hide();
+      	$('#' + hide3).hide();
 	  	}
 	  // Change Guard End
 

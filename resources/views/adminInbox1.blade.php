@@ -338,8 +338,20 @@ Inbox
 		</div>
 	  </div>
     <div class="modal-footer ci" style="background-color: #00293C;">
-      <button class="btn blue waves-effect waves-light" name="" id = "btnSwapGuardSend" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
-	  <button class="btn red " name="" id = "" style="margin-right: 30px;">Reject</button>
+
+      <div id = "divChangeButton" style="display: none;"> 
+        <button class="btn blue waves-effect waves-light" id = "btnSwapGuardSend" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
+        <button class="btn red waves-effect waves-light modal-close" style="margin-right: 30px;" id = "btnSwapGuardDecline">Decline</button>
+      </div>
+
+      <div id = "divChangeAccepted" style="display: none;">                 
+        <button class="btn green" style="margin-right: 30px; cursor:default;">Accepted</button>
+      </div>
+
+      <div id = "divChangeRejected" style="display: none;">     
+        <button class="btn red" style="margin-right: 30px; cursor:default;">Declined</button>
+      </div>            
+
     </div>
   </div>  
 <!--modal swap guard request end-->
@@ -1130,39 +1142,40 @@ $(document).ready(function(){
   // Swap Guard (Client Requested) Start
     var arrSwapGuardRequestWaitingGuard;//waiting guard 
     var arrSwapGuardRequestSelectedGuard;//selected guard
+    var swapRequestStatus;
 
     $('#btnSwapGuardSend').click(function(){
       setSwapGuardRequestSelectedGuard();
       if (arrSwapGuardRequestSelectedGuard.length > 0){
-            $.ajax({
-              type: "POST",
-              url: "{{action('ChangeGuardController@sendGuardNotification')}}",
-              beforeSend: function (xhr) {
-                  var token = $('meta[name="csrf_token"]').attr('content');
+        $.ajax({
+          type: "POST",
+          url: "{{action('ChangeGuardController@sendGuardNotification')}}",
+          beforeSend: function (xhr) {
+              var token = $('meta[name="csrf_token"]').attr('content');
 
-                  if (token) {
-                        return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                  }
-              },
-              data: {
-                arrGuardID: arrSwapGuardRequestSelectedGuard,
-                inboxID: inboxID
-              },
-              success: function(data){
-                swal({
-                  title: "Success!",
-                  text: "Request Sent!",
-                  type: "success"
-                },
-                function(){
-                  $('#modalClientSwapGuard').closeModal();
-                });
-              },
-              error: function(data){
-                var toastContent = $('<span>Error Database.</span>');
-                Materialize.toast(toastContent, 1500,'red', 'edit');
+              if (token) {
+                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
               }
-            });//ajax
+          },
+          data: {
+            arrGuardID: arrSwapGuardRequestSelectedGuard,
+            inboxID: inboxID
+          },
+          success: function(data){
+            swal({
+              title: "Success!",
+              text: "Request Sent!",
+              type: "success"
+            },
+            function(){
+              $('#modalClientSwapGuard').closeModal();
+            });
+          },
+          error: function(data){
+            var toastContent = $('<span>Error Database.</span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+          }
+        });//ajax
       }else{
         var toastContent = $('<span>Select Guard.</span>');
         Materialize.toast(toastContent, 1500,'red', 'edit');
@@ -1180,8 +1193,15 @@ $(document).ready(function(){
 
     function swapGuard(){     
       swapGuardFetchData();
-      swapGuardWaitingGuard();
       $('#modalClientSwapGuard').openModal();
+      if(swapRequestStatus == 1){
+        showHideButton('divChangeButton', 'divChangeAccepted', 'divChangeRejected')
+        swapGuardWaitingGuard();
+      }else if (swapRequestStatus == 2){
+        showHideButton('divChangeAccepted', 'divChangeButton', 'divChangeRejected')
+      }else if (swapRequestStatus == 0){
+        showHideButton('divChangeRejected', 'divChangeAccepted', 'divChangeButton')
+      }
     }
 
     function swapGuardFetchData(){
@@ -1191,7 +1211,7 @@ $(document).ready(function(){
         success: function(data){
           $('#swapGuardClientName').text(data.strClientName);
           $('#swapGuardReason').text(data.strReason);
-          
+          swapRequestStatus = data.boolStatus;
           var arrGuard = data.guards;
           var table = $('#dataTableGuardstobeReplaced').DataTable();
           table.clear().draw();
@@ -1206,7 +1226,7 @@ $(document).ready(function(){
         error: function(data){
           var toastContent = $('<span>Error Database.</span>');
           Materialize.toast(toastContent, 1500,'red', 'edit');
-        }
+        },async:false
       });//ajax
     }
 
@@ -1235,6 +1255,12 @@ $(document).ready(function(){
         },async:false
       });//ajax
     }
+
+    function showHideButton(show, hide1, hide2){
+        $('#' + show).show();
+        $('#' + hide1).hide();
+        $('#' + hide2).hide();
+      }
   // Swap Guard (Client Requested) End
 });
 </script>        
