@@ -15,7 +15,7 @@ class AdminInboxController extends Controller
 {
    
     public function index(){
-        return view('/adminInbox');
+        return view('/adminInbox1');
     }
     
     public function getGuardWaiting(){

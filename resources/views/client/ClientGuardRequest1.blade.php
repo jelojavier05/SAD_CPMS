@@ -334,106 +334,106 @@ Client Request of Guard
 <!-- Request Add Guard End-->
 
 <!-- Request Swap Guard Start -->
-<script>
-$(document).ready(function(){
-	var activeGuard;
-	var checkedGuard = [];
+	<script>
+		$(document).ready(function(){
+			var activeGuard;
+			var checkedGuard = [];
 
-	$.ajax({
-    type: "GET",
-    url: "{{action('ClientGuardRequestController@getActiveGuard')}}",
-    success: function(data){
-    	activeGuard = data;
-    }//success
-	});//get active guard
-
-	$('#btnReplace').click(function(){
-		setGuardChecked();
-		if (hasCheckedGuard()){
-			$('#strSwapReason').val('');
-			$('#checkSwap').attr('checked', false);
-			$('#modalguardSwap').openModal();
-		}
-	});
-
-	$('#btnSwapGuard').click(function(){
-		if (checkInput() && isAgree()){
-			var strReason = $('#strSwapReason').val();
 			$.ajax({
-        type: "POST",
-        url: "{{action('ClientGuardRequestController@swapGuard')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
+		    type: "GET",
+		    url: "{{action('ClientGuardRequestController@getActiveGuard')}}",
+		    success: function(data){
+		    	activeGuard = data;
+		    }//success
+			});//get active guard
 
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
-        data: {
-        	arrGuardID: checkedGuard,
-        	reason: strReason
-        },
-        success: function(data){	
-        	swal({
-						title: "Success!",
-						text: "Request sent. Wait for the admin's response.",
-						type: "success"
-					},
-					function(){
-						$('#modalguardSwap').closeModal();
-					});
-        },
-        error: function(data){
-					var toastContent = $('<span>Error Database.</span>');
-					Materialize.toast(toastContent, 1500,'red', 'edit');
-        }
-    	});//send swap request
-		}
-	});
+			$('#btnReplace').click(function(){
+				setGuardChecked();
+				if (hasCheckedGuard()){
+					$('#strSwapReason').val('');
+					$('#checkSwap').attr('checked', false);
+					$('#modalguardSwap').openModal();
+				}
+			});
 
-	function setGuardChecked(){
-		checkedGuard = [];
-		$.each(activeGuard, function(index, value){
-			if ($('#checkbox' + value.intGuardID).is(':checked')){
-				checkedGuard.push(value.intGuardID);
+			$('#btnSwapGuard').click(function(){
+				if (checkInput() && isAgree()){
+					var strReason = $('#strSwapReason').val();
+					$.ajax({
+		        type: "POST",
+		        url: "{{action('ClientGuardRequestController@swapGuard')}}",
+		        beforeSend: function (xhr) {
+		            var token = $('meta[name="csrf_token"]').attr('content');
+
+		            if (token) {
+		                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+		            }
+		        },
+		        data: {
+		        	arrGuardID: checkedGuard,
+		        	reason: strReason
+		        },
+		        success: function(data){	
+		        	swal({
+								title: "Success!",
+								text: "Request sent. Wait for the admin's response.",
+								type: "success"
+							},
+							function(){
+								$('#modalguardSwap').closeModal();
+							});
+		        },
+		        error: function(data){
+							var toastContent = $('<span>Error Database.</span>');
+							Materialize.toast(toastContent, 1500,'red', 'edit');
+		        }
+		    	});//send swap request
+				}
+			});
+
+			function setGuardChecked(){
+				checkedGuard = [];
+				$.each(activeGuard, function(index, value){
+					if ($('#checkbox' + value.intGuardID).is(':checked')){
+						checkedGuard.push(value.intGuardID);
+					}
+				});
 			}
+
+			function isAgree(){
+				if ($('#checkSwap').is(':checked')){
+					return true;
+				}else{
+					var toastContent = $('<span>Please check the button.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+					return false;
+				}
+			}
+
+			function hasCheckedGuard(){
+				if (checkedGuard.length > 0){
+					return true;
+				}else{
+					var toastContent = $('<span>Please Choose Guard.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+					return false;
+				}
+			}
+
+		  function checkInput(){
+		  	var reason = $('#strSwapReason').val();
+		  	var checker;
+		  	if (reason == ''){
+		  		checker = false;
+		  		var toastContent = $('<span>Check your input.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+		  	}else{
+		  		checker = true;
+		  	}
+		  	return checker;
+		  }
 		});
-	}
-
-	function isAgree(){
-		if ($('#checkSwap').is(':checked')){
-			return true;
-		}else{
-			var toastContent = $('<span>Please check the button.</span>');
-			Materialize.toast(toastContent, 1500,'red', 'edit');
-			return false;
-		}
-	}
-
-	function hasCheckedGuard(){
-		if (checkedGuard.length > 0){
-			return true;
-		}else{
-			var toastContent = $('<span>Please Choose Guard.</span>');
-			Materialize.toast(toastContent, 1500,'red', 'edit');
-			return false;
-		}
-	}
-
-  function checkInput(){
-  	var reason = $('#strSwapReason').val();
-  	var checker;
-  	if (reason == ''){
-  		checker = false;
-  		var toastContent = $('<span>Check your input.</span>');
-			Materialize.toast(toastContent, 1500,'red', 'edit');
-  	}else{
-  		checker = true;
-  	}
-  	return checker;
-  }
-});
-</script>
+	</script>
 <!-- Request Swap Guard End -->
 
 <!-- Guard Information Start-->
