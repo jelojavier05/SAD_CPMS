@@ -105,7 +105,7 @@ City
                                             
                                         <div class="row"></div>  
                                         <div class="input-field col s12">
-                            				<select  class="browser-default" id = "addSelectProvince">
+                            				<select  class="browser-default grey lighten-3" id = "addSelectProvince">
 												<option disabled selected value = "0">Choose Province</option>
 												@foreach($provinces as $province)
 													<option id = "{{$province->intProvinceID}}" value = "{{$province->intProvinceID}}">{{$province->strProvinceName}}</option>
@@ -167,7 +167,7 @@ City
                                             
                                         <div class="row"></div>  
                                         <div class="input-field col s12">
-                            				<select  class="browser-default" id = "editProvince" >
+                            				<select  class="browser-default grey lighten-3" id = "editProvince" >
 												<option disabled>Choose Province</option>
 												@foreach($provinces as $province)
 													<option id = "{{$province->intProvinceID}}" value = "{{$province->intProvinceID}}">{{$province->strProvinceName}}</option>

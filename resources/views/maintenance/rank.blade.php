@@ -111,7 +111,7 @@ Rank
                                             
                                         <div class="row"></div>  
                                         <div class="input-field col s12">
-											<select  class="browser-default" id = "addArmedService">
+											<select  class="browser-default grey lighten-3" id = "addArmedService">
 												<option disabled selected value = "0">Armed Service</option>
 												@foreach($armedServices as $armedService)
 													<option id = "{{ $armedService->intArmedServiceID}}" value = "{{ $armedService->intArmedServiceID}}">{{$armedService->strArmedServiceName}}</option>
@@ -170,7 +170,7 @@ Rank
                                             
                                         <div class="row"></div>  
                                         <div class="input-field col s12">
-											<select  class="browser-default" id = "editAS">
+											<select  class="browser-default grey lighten-3" id = "editAS">
 												<option disabled selected value = "0">Armed Service</option>
 												@foreach($armedServices as $armedService)
 													<option id = "{{ $armedService->intArmedServiceID}}" value = "{{ $armedService->intArmedServiceID}}">{{$armedService->strArmedServiceName}}</option>

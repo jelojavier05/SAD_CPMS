@@ -115,7 +115,7 @@ Body Attributes
                                             
                                           
                                         <div class="input-field col s12">
-                            				<select  class="browser-default" id = "addMeasurement">
+                            				<select  class="browser-default grey lighten-3" id = "addMeasurement">
                                                 <option disabled selected value = "0">Unit of Measurement</option>
                                                 @foreach ($measurements as $measurement)
                                                     <option id = "{{$measurement->intMeasurementID}}" value = "{{$measurement->intMeasurementID}}">{{$measurement->strMeasurement}}</option>
@@ -176,7 +176,7 @@ Body Attributes
                                             
                                         <div class="row"></div>  
                                         <div class="input-field col s12">
-                            				<select  class="browser-default" id = "editMeasurement">
+                            				<select  class="browser-default grey lighten-3" id = "editMeasurement">
 												<option disabled selected value = "0">Unit of Measurement</option>
 													@foreach ($measurements as $measurement)
                                     			<option id = "measurement{{$measurement->intMeasurementID}}"    value = "{{$measurement->intMeasurementID}}">{{$measurement->strMeasurement}}</option>
