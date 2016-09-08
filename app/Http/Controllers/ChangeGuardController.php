@@ -120,4 +120,34 @@ class ChangeGuardController extends Controller{
             DB::rollback();
         }
     }
+
+    public function getClientRequested(Request $request){
+        $inboxID = Input::get('inboxID');
+
+        $client = DB::table('tblswapguardresponse')
+            ->join('tblswapguardrequestheader', 'tblswapguardrequestheader.intSwapGuardHeaderID', '=', 'tblswapguardresponse.intSwapGuardHeaderID')
+            ->join('tblclient', 'tblclient.intClientID', '=', 'tblswapguardrequestheader.intClientID')
+            ->join('tblclientaddress', 'tblclientaddress.intClientID', '=', 'tblclient.intClientID')
+            ->join('tblprovince', 'tblprovince.intProvinceID', '=', 'tblclientaddress.intProvinceID')
+            ->join('tblcity', 'tblcity.intCityID', '=', 'tblclientaddress.intCityID')
+            ->join('tblnatureofbusiness', 'tblnatureofbusiness.intNatureOfBusinessID', '=', 'tblclient.intNatureOfBusinessID')
+            ->select('tblclient.*', 'tblnatureofbusiness.strNatureOfBusiness', 'tblprovince.strProvinceName','tblcity.strCityName','tblclientaddress.strAddress')
+            ->where('tblswapguardresponse.intInboxID', $inboxID)
+            ->first();
+
+        $shift = DB::table('tblclientshift')
+            ->join('tblclient', 'tblclient.intClientID', '=', 'tblclientshift.intClientID')
+            ->select('tblclientshift.*')
+            ->where('tblclient.intClientID', $client->intClientID)
+            ->get();
+        
+        foreach($shift as $value){
+            $value->timeFrom = date('h:i A', strtotime($value->timeFrom)); 
+            $value->timeTo = date('h:i A', strtotime($value->timeTo)); 
+        }
+
+        $client->shift = $shift;
+
+        return response()->json($client);
+    }
 }

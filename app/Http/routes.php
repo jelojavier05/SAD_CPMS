@@ -6,6 +6,7 @@ Route::get('/insertmaintenance', 'MaintenanceController@insert');
 
 Route::get('/changeguardrequest/get/ChangeGuardRequest', 'ChangeGuardController@getChangeGuardRequest');
 Route::get('/changeguardrequest/get/GuardWaiting', 'ChangeGuardController@getGuardWaiting');
+Route::get('/changeguardrequest/get/ClientRequested', 'ChangeGuardController@getClientRequested');
 Route::post('/changeguardrequest/post/sendGuardNotification', 'ChangeGuardController@sendGuardNotification');
 
 Route::get('/swaprequest/get/checkStatusSwapRequest', 'SwapRequestGuardController@checkStatusSwapRequest');
