@@ -34,9 +34,10 @@ Guard Form
 			</div>
 			<div class="row">
 				
-				<div class="col s6">
+				<div class="col s6 push-s1">
 					
-					<div class="col s12">
+					<div class="col s9">
+<!--
 						<div class="file-field input-field">
 						  <div class="btn blue green darken-2">
 							<span>Photo</span>
@@ -46,6 +47,17 @@ Guard Form
 							<input class="file-path validate" type="text">
 						  </div>
 						</div>
+-->
+						
+<!--
+						<div id="picUpload" class="dropzone">
+      						<div class="dz-default dz-message">Drag your Picture Here</div>
+						</div>
+-->
+						<form action="{{ url('user/upload')}}" class="dropzone" id="my-awesome-dropzone">
+							<div class="dz-default dz-message">Drag your Picture Here</div>
+						</form>
+						
 					</div>
 				</div>
 				
@@ -176,6 +188,28 @@ Guard Form
         
     });
         
+</script>
+
+<script>
+//	$("div#my-awesome-dropzone").dropzone({ url: "/file/post" });
+
+
+//$(document).ready(function () {
+//    Dropzone.autoDiscover = false;
+//    $("#picUpload").dropzone({
+//        url: "",
+//        addRemoveLinks: true,
+//        success: function (file, response) {
+//            var imgName = response;
+//            file.previewElement.classList.add("dz-success");
+//            console.log("Successfully uploaded :" + imgName);
+//        },
+//        error: function (file, response) {
+//            file.previewElement.classList.add("dz-error");
+//        }
+//    });
+//});
+
 </script>
 
 @stop

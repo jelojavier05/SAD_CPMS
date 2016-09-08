@@ -152,14 +152,19 @@ Inbox
               </div>
             </div>
             </li>
-          </ul>
+          </ul><div class="row"></div>
         </div>
       </div>
     </div>
     <div class="modal-footer ci" style="background-color: #00293C;">
       <div id="sendLeaveRequest" style="display: none;">  
-        <button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationLeaveRequest" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
+        <button class="btn blue " name="" id = "btnSendNotificationLeaveRequest" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
       </div>
+	  
+	  <div id="rejectLeaveRequest" style="display: none;">  
+        <button class="btn red " name="" id = "" style="margin-right: 30px;">Reject</button>
+      </div>
+		
       <div id = "acceptedLeaveRequest" style="display: none;">                                
         <button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted</button>
       </div>
@@ -213,6 +218,7 @@ Inbox
     <!-- button -->
     <div class="modal-footer ci" style="background-color: #00293C;">
       <button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationAdditionalGuard" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
+	  <button class="btn red " name="" id = "" style="margin-right: 30px;">Reject</button>
     </div>
   </div>  
 <!--modal client request additional guards end-->
@@ -257,6 +263,7 @@ Inbox
     <!-- button -->
     <div class="modal-footer ci" style="background-color: #00293C;">
       <button class="btn green waves-effect waves-light" id = "btnAddRequestProceed" style="margin-right: 30px;">Proceed</button>
+	  <button class="btn red " name="" id = "" style="margin-right: 30px;">Reject</button>
     </div>
   </div>  
 <!--modal add guard request complete guards end-->
@@ -332,6 +339,7 @@ Inbox
 	  </div>
     <div class="modal-footer ci" style="background-color: #00293C;">
       <button class="btn blue waves-effect waves-light" name="" id = "btnSwapGuardSend" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
+	  <button class="btn red " name="" id = "" style="margin-right: 30px;">Reject</button>
     </div>
   </div>  
 <!--modal swap guard request end-->
