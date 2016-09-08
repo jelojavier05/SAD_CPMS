@@ -245,7 +245,7 @@ $(document).ready(function(){
 				});
             },
             error: function(data){
-                confirm('error send data fvcked up');
+                swal("Oops!", "Please Check All Inputs", "warning");
             }
         });//ajax
     });
