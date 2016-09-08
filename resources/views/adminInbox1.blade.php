@@ -217,8 +217,20 @@ Inbox
     </div>
     <!-- button -->
     <div class="modal-footer ci" style="background-color: #00293C;">
-      <button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationAdditionalGuard" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
-	  <button class="btn red " name="" id = "" style="margin-right: 30px;">Reject</button>
+      <div id="sendClientAddGuardRequest" style="display: none;">  
+        <button class="btn blue " name="" id = "" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
+      </div>
+	  
+	  <div id="rejectClientAddGuardRequest" style="display: none;">  
+        <button class="btn red " name="" id = "" style="margin-right: 30px;">Reject</button>
+      </div>
+		
+      <div id = "acceptedClientAddGuardRequest" style="display: none;">                                
+        <button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted</button>
+      </div>
+      <div id = "rejectedClientAddGuardRequest" style="display: none;">                    
+        <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined</button>
+      </div>
     </div>
   </div>  
 <!--modal client request additional guards end-->
@@ -263,7 +275,7 @@ Inbox
     <!-- button -->
     <div class="modal-footer ci" style="background-color: #00293C;">
       <button class="btn green waves-effect waves-light" id = "btnAddRequestProceed" style="margin-right: 30px;">Proceed</button>
-	  <button class="btn red " name="" id = "" style="margin-right: 30px;">Reject</button>
+	  
     </div>
   </div>  
 <!--modal add guard request complete guards end-->
