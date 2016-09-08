@@ -1119,7 +1119,7 @@ $(document).ready(function(){
 
   // Swap Guard (Client Requested) Start
     function swapGuard(){
-      
+      $('#modalClientSwapGuard').openModal();
     }
   // Swap Guard (Client Requested) End
 });
