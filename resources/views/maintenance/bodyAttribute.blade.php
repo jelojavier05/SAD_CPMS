@@ -125,9 +125,8 @@ Body Attributes
                                         </div>
                                   </div>
 						
-								  <div class="col s10 push-s1" style="margin-top:-30px;">      
-                                            
-                                        <div class="row"></div>
+								  <div class="col s10 push-s1" >      
+                                                                                    
 									  	<div class="row"></div>
                                         <div class="input-field col s12">
 											<i class="mdi-maps-local-library prefix" style="font-size:35px;"></i>
@@ -187,9 +186,8 @@ Body Attributes
                                         </div>
                                   </div>
 						
-								  <div class="col s10 push-s1" style="margin-top:-30px;">      
-                                            
-                                        <div class="row"></div>
+								  <div class="col s10 push-s1" >      
+                                                                                    
 									  	<div class="row"></div>
                                         <div class="input-field col s12">
 											<i class="mdi-maps-local-library prefix" style="font-size:35px;"></i>

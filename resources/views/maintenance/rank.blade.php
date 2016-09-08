@@ -121,9 +121,8 @@ Rank
                                         </div>
                                   </div>
                             	
-								  <div class="col s10 push-s1" style="margin-top:-30px;">      
-                                            
-                                        <div class="row"></div>
+								  <div class="col s10 push-s1" >      
+                                                                                    
 									  	<div class="row"></div>
                                         <div class="input-field col s12">
 											<i class="material-icons prefix" style="font-size:35px;">star</i>
@@ -181,9 +180,8 @@ Rank
                                         </div>
                                   </div>
                             	
-								  <div class="col s10 push-s1" style="margin-top:-30px;">      
-                                            
-                                        <div class="row"></div>
+								  <div class="col s10 push-s1" >      
+                                                                                    
 									  	<div class="row"></div>
                                         <div class="input-field col s12">
 											<i class="material-icons prefix" style="font-size:35px;">star</i>
