@@ -19,8 +19,7 @@ Inbox
 		<!-- table message -->
 		<div id="message">
 			<div class="container-fluid grey lighten-2">	
-				<table class="striped" id="inboxTable">
-					<button class="btn blue modal-trigger" href="#modalGuards">test</button>
+				<table class="striped" id="inboxTable">					
 					<thead>
 						<tr>
 							<th class="grey lighten-1" style="width: 20px;"></th>
