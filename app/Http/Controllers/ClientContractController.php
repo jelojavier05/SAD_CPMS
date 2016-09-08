@@ -144,7 +144,7 @@ class ClientContractController extends Controller
                     ->insert([
                         'intGuardID' => $value->intGuardID,
                         'intStatusIdentifier' => 2,
-                        'dateEffectivity' => $request->dateStart
+                        'dateEffectivity' => $now
                     ]);
                 
                 DB::table('tblinbox')->insert([
@@ -161,7 +161,7 @@ class ClientContractController extends Controller
                     $counter = 0;
                     $shiftCounter ++;
                 }   
-            }
+            }//guards
             
             $gunOrderHeaderID = DB::table('tblgunorderheader')->insertGetId([
                 'intClientID' => $clientID,

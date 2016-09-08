@@ -279,7 +279,7 @@ Inbox
 					</div>
 					
 					<div class="col s4">
-						<div ><h5>LandBank Almanza</h5></div>
+						<div><h5 id = 'swapGuardClientName'></h5></div>
 					</div>
 				</div>
 			</li>
@@ -287,7 +287,7 @@ Inbox
 				<div class="row">
 					<div class="col s12">
 						<div ><h5 style="font-weight:bold;">Reason:</h5></div>
-						<div ><p>Masyadong Mahusay Mahilig sa Triple Double</p></div>
+						<div ><p id = 'swapGuardReason'></p></div>
 					</div>
 					
 					
@@ -303,14 +303,9 @@ Inbox
 					  <thead>						  
 						  <th class="grey lighten-1">ID</th>
 						  <th class="grey lighten-1">Name</th>
-						  <th class="grey lighten-1">Address</th>						  
+						  <th class="grey lighten-1">Location</th>						  
 					  </thead>
 					  <tbody>
-						  <tr>							  
-							  <td>1</td>
-							  <td>DeAndre Jordan</td>							  
-							  <td>123 Hello Street Test Valenzeula, Metro Manila</td>							  
-						  </tr>
 					  </tbody>
 					</table>  
 				  </div>
@@ -322,15 +317,9 @@ Inbox
                       <th class="grey lighten-1" style="width:10px;"></th>
                       <th class="grey lighten-1">ID</th>
                       <th class="grey lighten-1">Name</th>
-                      <th class="grey lighten-1">Address</th>                                            
+                      <th class="grey lighten-1">Location</th>                                            
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td><input type="checkbox" id="test1" value = ""><label for="test1"></label></td>
-                        <td>1</td>
-                        <td>Blake Griffin</td>
-                        <td>321 Bye Street Almanza Las Pinas, Metro Manila</td>                        
-                      </tr>												
+                    <tbody>											
                     </tbody>
                   </table>
                 </div>
@@ -342,7 +331,7 @@ Inbox
 		</div>
 	  </div>
     <div class="modal-footer ci" style="background-color: #00293C;">
-      <button class="btn blue waves-effect waves-light" name="" id = "btnSendNotificationAdditionalGuard" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
+      <button class="btn blue waves-effect waves-light" name="" id = "btnSwapGuardSend" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
     </div>
   </div>  
 <!--modal swap guard request end-->
@@ -1131,8 +1120,112 @@ $(document).ready(function(){
   //Swap Request (Guard requested) End
 
   // Swap Guard (Client Requested) Start
-    function swapGuard(){
+    var arrSwapGuardRequestWaitingGuard;//waiting guard 
+    var arrSwapGuardRequestSelectedGuard;//selected guard
+
+    $('#btnSwapGuardSend').click(function(){
+      setSwapGuardRequestSelectedGuard();
+      if (arrSwapGuardRequestSelectedGuard.length > 0){
+            $.ajax({
+              type: "POST",
+              url: "{{action('ChangeGuardController@sendGuardNotification')}}",
+              beforeSend: function (xhr) {
+                  var token = $('meta[name="csrf_token"]').attr('content');
+
+                  if (token) {
+                        return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                  }
+              },
+              data: {
+                arrGuardID: arrSwapGuardRequestSelectedGuard,
+                inboxID: inboxID
+              },
+              success: function(data){
+                swal({
+                  title: "Success!",
+                  text: "Request Sent!",
+                  type: "success"
+                },
+                function(){
+                  $('#modalClientSwapGuard').closeModal();
+                });
+              },
+              error: function(data){
+                var toastContent = $('<span>Error Database.</span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+              }
+            });//ajax
+      }else{
+        var toastContent = $('<span>Select Guard.</span>');
+        Materialize.toast(toastContent, 1500,'red', 'edit');
+      }
+    });//button clicked 
+
+    function setSwapGuardRequestSelectedGuard(){
+      arrSwapGuardRequestSelectedGuard = [];
+      $.each(arrSwapGuardRequestWaitingGuard, function(index,value){
+        if($('#checkGuardWaiting' + value).is(':checked')){
+          arrSwapGuardRequestSelectedGuard.push(value);
+        }//if may check yung guard
+      });//foreach
+    }//setting the selected guard to array
+
+    function swapGuard(){     
+      swapGuardFetchData();
+      swapGuardWaitingGuard();
       $('#modalClientSwapGuard').openModal();
+    }
+
+    function swapGuardFetchData(){
+      $.ajax({
+        type: "GET",
+        url: "/changeguardrequest/get/ChangeGuardRequest?inboxID=" + inboxID,
+        success: function(data){
+          $('#swapGuardClientName').text(data.strClientName);
+          $('#swapGuardReason').text(data.strReason);
+          
+          var arrGuard = data.guards;
+          var table = $('#dataTableGuardstobeReplaced').DataTable();
+          table.clear().draw();
+          $.each(arrGuard, function(index,value){
+            table.row.add([
+              '<h>' + value.intGuardID + '</h>',
+              '<h>' + value.strFirstName + ' ' + value.strLastName +'</h>',
+              '<h>' + value.strCityName + ', ' + value.strProvinceName +'</h>'
+            ]).draw(false);
+          });
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+      });//ajax
+    }
+
+    function swapGuardWaitingGuard(){
+      $.ajax({
+        type: "GET",
+        url: "/changeguardrequest/get/GuardWaiting?inboxID=" + inboxID,
+        success: function(data){
+          arrSwapGuardRequestWaitingGuard = [];
+          var table = $('#dataTableSendNotiSwapGuard').DataTable();
+          table.clear().draw();
+          $.each(data, function(index,value){
+            var checkButton = '<input type="checkbox" id="checkGuardWaiting'+value.intGuardID+'" value = "'+value.intGuardID+'"><label for="checkGuardWaiting'+value.intGuardID+'"></label>'
+            table.row.add([
+              checkButton,
+              '<h>' + value.intGuardID + '</h>',
+              '<h>' + value.strFirstName + ' ' + value.strLastName +'</h>',
+              '<h>' + value.strCityName + ', ' + value.strProvinceName +'</h>'
+            ]).draw(false);
+            arrSwapGuardRequestWaitingGuard.push(value.intGuardID);
+          });
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+        },async:false
+      });//ajax
     }
   // Swap Guard (Client Requested) End
 });
@@ -1225,7 +1318,7 @@ $(document).ready(function(){
         "lengthMenu": [5,10,15,20]
      });
 	
-	$('#dataTableGuardstobeReplaced').DataTable({
+	   $('#dataTableGuardstobeReplaced').DataTable({
          "columns": [               
         null,
         null,
