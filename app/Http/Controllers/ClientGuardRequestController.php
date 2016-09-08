@@ -19,7 +19,7 @@ class ClientGuardRequestController extends Controller
      */
     public function index()
     {
-        return view('/client/ClientGuardRequest');
+        return view('/client/ClientGuardRequest1');
     }
 
     public function getActiveGuard(Request $request){
@@ -134,5 +134,45 @@ class ClientGuardRequestController extends Controller
         $code = $result->strCode;
 
         return response()->json($code);
+    }
+
+    public function swapGuard(Request $request){
+        try{
+            DB::beginTransaction();
+            $arrGuardID = $request->arrGuardID;
+            $reason = $request->reason;
+            $clientID = $request->session()->get('id');
+            $clientAccountID = $request->session()->get('accountID');
+
+            $result = DB::table('tblaccount')
+                ->select('intAccountID')
+                ->where('intAccountType', 3)
+                ->first();
+            $adminAccountID = $result->intAccountID;
+
+            $adminInboxID = DB::table('tblinbox')->insertGetId([
+                'intAccountIDSender' => $clientAccountID,
+                'intAccountIDReceiver' => $adminAccountID,
+                'strSubject' => 'Change Guard Request', 
+                'tinyintType' => 10
+            ]);
+
+            $swapGuardHeaderID = DB::table('tblswapguardrequestheader')->insertGetId([
+                'intClientID' => $clientID,
+                'intInboxID' => $adminInboxID,
+                'strReason' => $reason
+            ]);
+
+            foreach($arrGuardID as $value){
+                DB::table('tblswapguardrequestdetail')->insert([
+                    'intSwapGuardHeaderID' => $swapGuardHeaderID,
+                    'intGuardID' => $value
+                ]);
+            }
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
     }
 }

@@ -42,7 +42,7 @@ Client Request of Guard
 	                        <thead>
 	                            <tr>                                
 	                                <th style="width:50px;" class="blue darken-3 white-text"></th>
-									<th style="width:50px;" class="blue darken-3 white-text"></th>
+																	<th style="width:50px;" class="blue darken-3 white-text"></th>
 	                                <th class="blue darken-3 white-text">License Number</th>
 	                                <th class="blue darken-3 white-text">Name</th>
 	                                <th class="blue darken-3 white-text">Gender</th>
@@ -336,23 +336,96 @@ Client Request of Guard
 <!-- Request Swap Guard Start -->
 <script>
 $(document).ready(function(){
+	var activeGuard;
+	var checkedGuard = [];
+
+	$.ajax({
+    type: "GET",
+    url: "{{action('ClientGuardRequestController@getActiveGuard')}}",
+    success: function(data){
+    	activeGuard = data;
+    }//success
+	});//get active guard
 
 	$('#btnReplace').click(function(){
-		$('#modalguardSwap').openModal();
+		setGuardChecked();
+		if (hasCheckedGuard()){
+			$('#strSwapReason').val('');
+			$('#checkSwap').attr('checked', false);
+			$('#modalguardSwap').openModal();
+		}
 	});
 
 	$('#btnSwapGuard').click(function(){
-		if (checkInput()){
-			
+		if (checkInput() && isAgree()){
+			var strReason = $('#strSwapReason').val();
+			$.ajax({
+        type: "POST",
+        url: "{{action('ClientGuardRequestController@swapGuard')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        data: {
+        	arrGuardID: checkedGuard,
+        	reason: strReason
+        },
+        success: function(data){	
+        	swal({
+						title: "Success!",
+						text: "Request sent. Wait for the admin's response.",
+						type: "success"
+					},
+					function(){
+						$('#modalguardSwap').closeModal();
+					});
+        },
+        error: function(data){
+					var toastContent = $('<span>Error Database.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+    	});//send swap request
 		}
 	});
+
+	function setGuardChecked(){
+		checkedGuard = [];
+		$.each(activeGuard, function(index, value){
+			if ($('#checkbox' + value.intGuardID).is(':checked')){
+				checkedGuard.push(value.intGuardID);
+			}
+		});
+	}
+
+	function isAgree(){
+		if ($('#checkSwap').is(':checked')){
+			return true;
+		}else{
+			var toastContent = $('<span>Please check the button.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+			return false;
+		}
+	}
+
+	function hasCheckedGuard(){
+		if (checkedGuard.length > 0){
+			return true;
+		}else{
+			var toastContent = $('<span>Please Choose Guard.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+			return false;
+		}
+	}
 
   function checkInput(){
   	var reason = $('#strSwapReason').val();
   	var checker;
   	if (reason == ''){
   		checker = false;
-  		var toastContent = $('<span>Error Occured.</span>');
+  		var toastContent = $('<span>Check your input.</span>');
 			Materialize.toast(toastContent, 1500,'red', 'edit');
   	}else{
   		checker = true;
@@ -409,29 +482,29 @@ $(document).ready(function(){
 
 			function refreshTable(){
 				$.ajax({
-		            type: "GET",
-		            url: "{{action('ClientGuardRequestController@getActiveGuard')}}",
-		            success: function(data){
-		            	var table = $('#dataTable').DataTable();
-		            	table.clear().draw();
-		            	$.each(data, function(index, value){
-		            		
-		            		var buttonMore = '<button data-position="bottom" data-delay="50" data-tooltip="Guard Details" class="tooltipped buttonMore btn col s12" id="'+value.intGuardID+'"><i class="material-icons">person_outline</i></button>';
-		            		var checkbox = '<input type="checkbox" id="checkbox'+value.intGuardID+'" value = "'+value.intGuardID+'"><label for="checkbox'+value.intGuardID+'"></label>'
-		            		var licenseNumber = '<h>'+value.strLicenseNumber+'</h>';
-		            		var name = '<h>'+value.strFirstName+' '+ value.strLastName +'</h>';
-		            		var gender = '<h>'+value.strGender+'</h>';
-		            		
-		            		table.row.add([
-		            			buttonMore,
-		            			checkbox,
-		            			licenseNumber,
-		            			name,
-		            			gender
-		            		]).draw();
-		            	});//foreach
-		            }//success
-		        });//ajax
+          type: "GET",
+          url: "{{action('ClientGuardRequestController@getActiveGuard')}}",
+          success: function(data){
+          	var table = $('#dataTable').DataTable();
+          	table.clear().draw();
+          	$.each(data, function(index, value){
+          		
+          		var buttonMore = '<button data-position="bottom" data-delay="50" data-tooltip="Guard Details" class="tooltipped buttonMore btn col s12" id="'+value.intGuardID+'"><i class="material-icons">person_outline</i></button>';
+          		var checkbox = '<input type="checkbox" id="checkbox'+value.intGuardID+'" value = "'+value.intGuardID+'"><label for="checkbox'+value.intGuardID+'"></label>'
+          		var licenseNumber = '<h>'+value.strLicenseNumber+'</h>';
+          		var name = '<h>'+value.strFirstName+' '+ value.strLastName +'</h>';
+          		var gender = '<h>'+value.strGender+'</h>';
+          		
+          		table.row.add([
+          			buttonMore,
+          			checkbox,
+          			licenseNumber,
+          			name,
+          			gender
+          		]).draw();
+          	});//foreach
+          }//success
+      	});//ajax
 			}
 		});
 	</script>

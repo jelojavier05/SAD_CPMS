@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientswapguardrequestTable extends Migration
+class CreateClientswapguardresponseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,15 @@ class CreateClientswapguardrequestTable extends Migration
      */
     public function up()
     {
-        Schema::create('tblclientswapguardrequest', function (Blueprint $table) {
-            $table->increments('intClientSwapGuardRequestID');
-            $table->integer('intClientID')->unsigned();
+        Schema::create('tblswapguardresponse', function (Blueprint $table) {
+            $table->increments('intSwapGuardReponseID');
+            $table->integer('intSwapGuardHeaderID')->unsigned();
             $table->integer('intGuardID')->unsigned();
             $table->integer('intInboxID')->unsigned();
-            $table->string('strReason');
-            $table->tinyInteger('boolStatus')->default(1);//0 - rejected, 1 - waiting, 2 - accepted
+            $table->tinyInteger('boolStatus')->default(1);//0 - rejected, 1 - waiting, 2 - accepted, 3 - unavailable
             $table->timestamp('updated_at');
 
-            $table->foreign('intClientID')->references('intClientID')->on('tblclient');
+            $table->foreign('intSwapGuardHeaderID')->references('intSwapGuardHeaderID')->on('tblswapguardrequestheader');
             $table->foreign('intGuardID')->references('intGuardID')->on('tblguard');
             $table->foreign('intInboxID')->references('intInboxID')->on('tblinbox');
         });
@@ -34,6 +33,6 @@ class CreateClientswapguardrequestTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tblclientswapguardrequest');
+        Schema::drop('tblclientswapguardresponse');
     }
 }
