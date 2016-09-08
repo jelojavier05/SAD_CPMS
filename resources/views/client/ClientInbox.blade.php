@@ -19,7 +19,7 @@ Inbox
 			<!-- table message -->
 			<div id="message">
 				<div class="container-fluid grey lighten-2">	
-					<table class="striped" id="inboxTable">					
+					<table class="striped" id="inboxTable">							
 						<thead>
 							<tr>
 								<th class="grey lighten-1" style="width: 20px;"></th>
@@ -68,7 +68,7 @@ Inbox
 	<div id="modalGuards" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
 	    <div class="modal-header">
 	      	<div class="h">
-				<h3><center>Guards</center></h3>  
+				<h3><center>Guards to be Acquired</center></h3>  
 			</div>
 	    </div>
 		
@@ -76,6 +76,14 @@ Inbox
 			<div class="row">
 				<div class="col s12">
 					<ul class="collection with-header" id="collectionActive">
+						<li class="collection-item">
+							<div class="row">
+								<div class="col s12">									
+									<div ><p id = ''>Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello</p></div>
+								</div>										
+							</div>
+						</li>
+						
 						<li class="collection-item">
 							<table class="striped white" style="border-radius:10px; width:100%;" id="dataTableGuards">
 								<thead>
