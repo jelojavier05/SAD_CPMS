@@ -5,7 +5,7 @@ Guard Form
 @endsection
 
 @section('content')
-
+<body onload="window.location='#acctscroll';">
 <div class="row">
 	<div class="col s12 push-s2">
 		<nav>
@@ -122,10 +122,13 @@ Guard Form
 					</div>
 				</div>
 		</div>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left animated slideInDown" href="#" id = "backSgSummary">Back</button>
-		<button style="margin-top:20px;" class=" z-depth-2 btn-large green right" id = "btnSave">Save</button>
+		<div id="acctscroll">
+			<button style="margin-top:20px;" class=" z-depth-2 btn-large blue left animated slideInDown" href="#" id = "backSgSummary">Back</button>
+			<button style="margin-top:20px;" class=" z-depth-2 btn-large green right" id = "btnSave">Save</button>
+		</div>
 	</div>
 </div>
+</body>
 
 @stop
 

@@ -42,7 +42,7 @@ Guard Form
 				 <span class="card-title activator grey-text text-darken-4">Armed Services<i class="material-icons right animated infinite flash" style="font-size:3rem">add</i></span>
 			 </div>
 			 <div class="card-reveal">
-				 <span class="card-title grey-text text-darken-4">Armed Services<i class="material-icons right">close</i></span>				 
+				 <span class="card-title grey-text text-darken-4">Armed Services<button class="btn red right"><i class="material-icons">close</i></button></span>				 
 			
 				 <div class="row">		
 					 <div class="col s12">
@@ -178,7 +178,7 @@ Guard Form
 </div>
 <!------------------------------------modal govexamEdit--------------------------------------------------->
 <div id="modalgovexamEdit" class="modal modal-fixed-footer" style="overflow:hidden; width:500px !important; height:420px !important;">
-	<div class="modal-header"><h3>Government Exam</h3></div>
+	<div class="modal-header" style="background-color:#01579b !important;"><legend><h3>Government Exam</h3></legend></div>
 		<div class="modal-content">
 			<div class="row">
 				<div class = "col s10 push-s1">    
@@ -199,7 +199,7 @@ Guard Form
 				</div>
 				
 				<div class="input-field col s10 push-s1">
-						<input  id="editdateTaken" type="date" class="datepicker"  required="" aria-required="true">
+						<input  id="editdateTaken" type="date" class="datepicker"  required="" aria-required="true" placeholder="">
 						<label class="active" data-error="Incorrect" for="editdateTaken">Date Taken</label>
 				</div>
 				
