@@ -17,7 +17,7 @@ Inbox
       </ul>   
       <div id="message">
         <div class="container-fluid grey lighten-2">    
-          <table class="striped" id="dataTableMsg">			  
+          <table class="striped" id="dataTableMsg">				  
             <thead>
               <tr>
                 <th class="grey lighten-1" style="width: 20px;"></th>
@@ -505,6 +505,53 @@ Inbox
   </div>              
 <!--modal sg swap location request approval end-->
 
+<!--modal client swap guards request || guards na nag accept-->
+<div id="modalconfirmedGuards" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
+	    <div class="modal-header">
+	      	<div class="h">
+				<h3><center>Swap Request</center></h3>  
+			</div>
+	    </div>
+		
+		<div class="modal-content">
+			<div class="row">
+				<div class="col s12">
+					<ul class="collection with-header" id="collectionActive">
+						<li class="collection-item">
+							<div class="row">
+								<div class="col s2">									
+									<h5 style="font-weight:bold;">Client:</h5>
+								</div>
+								
+								<div class="col s5">
+									<h5 style="margin-left:-15px;">LandBank</h5>
+								</div>
+							</div>
+						</li>
+						
+						<li class="collection-item">
+							<table class="striped white" style="border-radius:10px; width:100%;" id="AssuredGuards">
+								<h5 class="blue-text">Guards Deployed</h5>  
+								<thead>
+									<th class="grey lighten-1">Name</th>
+									<th class="grey lighten-1">Address</th>
+									<th class="grey lighten-1">Gender</th>
+								</thead>
+								
+								<tbody>
+								</tbody>
+							</table>
+	                    </li>
+					</ul><div class="row"></div>
+				</div>
+			</div>
+		</div>
+			
+		<div class="modal-footer ci modal-close" style="background-color: #00293C;">
+			<button class="btn green waves-effect waves-light" style="margin-right: 30px;">OK</button>
+		</div>
+	</div>
+<!--modal client swap guards request || guards na nag accept end-->
 @stop
 
 
@@ -1407,6 +1454,16 @@ $(document).ready(function(){
         "pageLength":3,
         "lengthMenu": [5,10,15,20]
      });
+	
+	$("#AssuredGuards").DataTable({
+	     "columns": [         
+		null,
+		null,
+		null,
+	    ] ,  
+		"pageLength":5,
+		"lengthMenu": [5,10,15,20]	
+	});
 </script>
     
 @stop
