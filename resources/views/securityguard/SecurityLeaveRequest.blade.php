@@ -177,7 +177,7 @@ Security Leave Request
 
                         },
                         error: function(data){
-                            confirm('error');
+                            swal("Ooops!", "Please Check Input", "warning");
                         }
                     });//ajax
                 }else{

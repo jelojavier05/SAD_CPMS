@@ -324,7 +324,7 @@ Client
                     success: function(data){
                         swal({
 								title: "Success!",
-								text: "Contract is Completed!",
+								text: "Client is Registered!",
 								type: "success"
 							},
 							function(){

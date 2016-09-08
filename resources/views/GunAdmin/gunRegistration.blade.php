@@ -156,7 +156,7 @@ Gun Registration
                     success: function(data){
                         swal({
 								title: "Success!",
-								text: "Gun has beed Registered!",
+								text: "Gun Successfully Registered!",
 								type: "success"
 							},
 							function(){

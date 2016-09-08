@@ -183,6 +183,7 @@ function timeIn(){
 
     },
     error: function(data){
+		swal("Ooops!", "Error Occured!", "warning");
     }
   });//ajax
 }
@@ -208,6 +209,7 @@ function timeOut(){
 
     },
     error: function(data){
+		swal("Ooops!", "Error Occured!", "warning");
     }
   });//ajax
 }

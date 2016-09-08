@@ -144,7 +144,7 @@ Delivery
 
                 	swal({
 						title: "Success!",
-						text: "Delivery Recorded",
+						text: "Delivery Recorded!",
 						type: "success"
 					},function(){
 						window.location.href = '{{ URL::to("/gunDeliveryView") }}';
