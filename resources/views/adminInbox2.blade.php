@@ -17,7 +17,7 @@ Inbox
       </ul>   
       <div id="message">
         <div class="container-fluid grey lighten-2">    
-          <table class="striped" id="dataTableMsg">				  
+          <table class="striped" id="dataTableMsg">              
             <thead>
               <tr>
                 <th class="grey lighten-1" style="width: 20px;"></th>
@@ -271,7 +271,10 @@ Inbox
     </div>
     <!-- button -->
     <div class="modal-footer ci" style="background-color: #00293C;">
-      <button class="btn green waves-effect waves-light" id = "btnAddRequestProceed" style="margin-right: 30px;">Proceed</button>
+      <div id = "divAdditionalGuardProceed" style="display: none;"> 
+        <button class="btn green waves-effect waves-light" id = "btnAddRequestProceed" style="margin-right: 30px;">Proceed</button>
+      </div>
+      
     </div>
   </div>  
 <!--modal add guard request complete guards end-->
@@ -548,6 +551,64 @@ Inbox
 		</div>
 	</div>
 <!--modal client swap guards request || guards na nag accept end-->
+
+<!--modal remove guard request complete guards-->
+  <div id="modalRemoveGuardRequest" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
+    <div class="modal-header">
+      <div class="h">
+        <h3><center>Guard Removal</center></h3>  
+      </div>
+    </div>
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s12">
+          <ul class="collection with-header" id="collectionActive">                                       
+            <li class="collection-header">
+                <div class="row">
+                    <div class="col s1">
+                        <h5 style="font-weight:bold;">Reason</h5>                        
+                    </div>
+                    <div class="col s12">
+                        <div><p id="">Hello hello hello hello hello hello</p></div>
+                    </div>            
+                </div>
+            </li>
+            <li class="collection-item">
+              <div class="row">
+                <div class="col s12">
+                  <table class="striped white" style="border-radius:10px; width:100%;" id="dataTableRemoveGuards">
+                    <h5 class="red-text" style="font-weight:bold;">Guards to be Removed</h5>
+                    <thead>                                                                                             
+                      <th class="grey lighten-1">First Name</th>
+                      <th class="grey lighten-1">Last Name</th>
+                      <th class="grey lighten-1">Gender</th>                                              
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- button -->
+    <div class="modal-footer ci" style="background-color: #00293C;">
+      <div id = "divRemoveButton" style="display: none;"> 
+        <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "">Accept</button>
+        <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "">Decline</button>
+      </div>
+      <div id = "divRemoveAccepted" style="display: none;">                    
+        <button class="btn green" name="" style="margin-right: 30px; cursor:default;">Accepted</button>
+      </div>
+      <div id = "divRemoveRejected" style="display: none;">            
+        <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined</button>
+      </div>  
+      
+    </div>
+  </div>  
+<!--modal remove guard request complete guards end-->
 @stop
 
 
@@ -609,7 +670,9 @@ $(document).ready(function(){
           swapGuard();
         }else if (type == 12){
           swapGuardAccepted();
-        }//if else
+        }else if (type == 13){
+          removeGuardRequest();
+        }
     });//button read click
     
     $('#btnSendNotificationNewClient').click(function(){
@@ -1100,6 +1163,10 @@ $(document).ready(function(){
                         gender
                     ]).draw(false);
                 }); 
+
+                if (data.intStatusIdentifier == 1){
+                  $('#divAdditionalGuardProceed').show();
+                }
             },
             error: function(data){
                 var toastContent = $('<span>Error Database.</span>');
@@ -1396,6 +1463,36 @@ $(document).ready(function(){
       });//ajax
     }
   // Swap Guard (Client Requested) Accepted End
+
+  // Remove Guard (Client Requested) Start
+    function removeGuardRequest(){
+      $('#modalRemoveGuardRequest').openModal();
+
+        $.ajax({
+          type: "POST",
+          url: "{{action('')}}",
+          beforeSend: function (xhr) {
+              var token = $('meta[name="csrf_token"]').attr('content');
+
+              if (token) {
+                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+              }
+          },
+          data: {
+
+          },
+          success: function(data){
+
+          },
+          error: function(data){
+            var toastContent = $('<span>Error Database.</span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+
+          }
+        });//ajax
+
+    }
+  // Remove Guard (Client Requested) End
 });
 </script>        
         
@@ -1505,6 +1602,16 @@ $(document).ready(function(){
   		"pageLength":5,
   		"lengthMenu": [5,10,15,20]	
   	});
+    
+    $('#dataTableRemoveGuards').DataTable({
+         "columns": [        
+        null,
+        null,
+        null
+        ] ,  
+        "pageLength":3,
+        "lengthMenu": [5,10,15,20]
+     });
 </script>
     
 @stop

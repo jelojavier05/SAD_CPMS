@@ -15,7 +15,7 @@ class AdminInboxController extends Controller
 {
    
     public function index(){
-        return view('/adminInbox11');
+        return view('/adminInbox2');
     }
     
     public function getGuardWaiting(){
@@ -304,7 +304,7 @@ class AdminInboxController extends Controller
 
         $requestInformation = DB::table('tblclientpendingnotification')
             ->join('tblinbox', 'tblinbox.intInboxID', '=', 'tblclientpendingnotification.intInboxID')
-            ->select('tblinbox.strMessage', 'tblclientpendingnotification.intNumberOfGuard')
+            ->select('tblinbox.strMessage', 'tblclientpendingnotification.intNumberOfGuard', 'tblclientpendingnotification.intStatusIdentifier')
             ->where('tblclientpendingnotification.intClientPendingID', $clientPendingID)
             ->first();
 
@@ -316,7 +316,6 @@ class AdminInboxController extends Controller
             ->get();
 
         $requestInformation->guards = $result;
-
         return response()->json($requestInformation);
     }
 

@@ -260,8 +260,6 @@ Client Request of Guard
 @stop
 
 @section('script')
-
-
 <!-- Request Add Guard Start-->
 	<script>
 		$(document).ready(function(){
