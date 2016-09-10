@@ -4,6 +4,9 @@ Route::get('/test', 'TestController@index');
 
 Route::get('/insertmaintenance', 'MaintenanceController@insert');
 
+Route::get('/clientaddgunproceed', 'ClientAddGunProceedController@index');
+
+
 Route::get('/removeguardrequest/get/requestInformation', 'RemoveGuardController@getRequestInformation');
 Route::post('/removeguardrequest/post/accept', 'RemoveGuardController@accept');
 Route::post('/removeguardrequest/post/decline', 'RemoveGuardController@decline');

@@ -17,7 +17,7 @@ Inbox
       </ul>   
       <div id="message">
         <div class="container-fluid grey lighten-2">    
-          <table class="striped" id="dataTableMsg">              
+          <table class="striped" id="dataTableMsg">			  
             <thead>
               <tr>
                 <th class="grey lighten-1" style="width: 20px;"></th>
@@ -609,6 +609,44 @@ Inbox
     </div>
   </div>  
 <!--modal remove guard request complete guards end-->
+
+<!--modal client add gun request-->
+ <div id="modalClientAddGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:500px; margin-top:0px;">
+    <div class="modal-header">
+      <div class="h">
+        <h3><center>Additional Guns</center></h3>  
+      </div>
+    </div>
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s12">
+          <ul class="collection with-header" id="collectionActive">                           
+            <li class="collection-header" style="font-weight:bold;">
+              <div class='row'>
+                <div class='col s1'><h5 style="font-weight:bold;">Client:</h5></div>
+                <div class="col s10 push-s1" id = ''><h5>LandBank Almanza</h5></div>
+              </div>
+            </li>
+			  
+			<li class="collection-item" style="font-weight:bold;">
+              <div class='row'>
+                <div class='col s5'><h5 style="font-weight:bold;">Number of Guns:</h5></div>
+                <div class="col s2 pull-s1" id = ''><h5>10</h5></div>
+              </div>
+            </li>
+            <li class="collection-item"><p id = ''>Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello</p></li>            
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- button -->
+    <div class="modal-footer ci" style="background-color: #00293C;">
+      <div id = "" style="display: none;"> 
+        <button class="btn green waves-effect waves-light" id = "btnAddGunRequestProceed" style="margin-right: 30px;">Proceed</button>
+      </div>
+    </div>
+  </div>  
+<!--modal client add gun request end-->
 @stop
 
 
@@ -1565,6 +1603,12 @@ $(document).ready(function(){
     });
 
   // Remove Guard (Client Requested) End
+	
+// Add Gun
+	$('#btnAddGunRequestProceed').click(function(){
+		window.location.href = '{{ URL::to("/clientaddgunproceed") }}';	
+	});
+//Add Gun End
 });
 </script>        
         
