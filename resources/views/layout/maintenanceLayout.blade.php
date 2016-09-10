@@ -33,11 +33,13 @@
   <script src="{!! URL::asset('../sweetalert.min.js') !!}"></script>
   <script src="{!! URL::asset('../js/moment.min.js') !!}"></script>
   <script src="{!! URL::asset('../datatable.js') !!}"></script>
+	<script src="{!! URL::asset('../dropzone.js') !!}"></script>
 <!--  <script src="{!! URL::asset('../dataTables.material.min.js') !!}"></script>-->
   <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>
 <!--  <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>-->
   <!-- <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css"> -->
 	 <link href="{!! URL::asset('../css/materialize.css') !!}" type="text/css" rel="stylesheet"/>
+	<link href="{!! URL::asset('../dropzone.css') !!}" type="text/css" rel="stylesheet"/>
 	<link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
   
 <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script> -->
