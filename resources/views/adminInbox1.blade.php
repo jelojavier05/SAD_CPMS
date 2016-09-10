@@ -1173,6 +1173,10 @@ $(document).ready(function(){
       }
     });//button clicked 
 
+    $('#btnSwapGuardDecline').click(function(){
+      
+    });
+
     function setSwapGuardRequestSelectedGuard(){
       arrSwapGuardRequestSelectedGuard = [];
       $.each(arrSwapGuardRequestWaitingGuard, function(index,value){
