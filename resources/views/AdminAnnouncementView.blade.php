@@ -22,12 +22,12 @@ Announcement
     </div>
  
     <div class="col s12 push-s1" style="margin-top:-4%">
-        <div class="container white lighten-2 z-depth-2 animated fadeIn">
+        <div class="container white lighten-2 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
 <!--            <div class="row">-->
                
 
                 <div class="col s6 offset-s8">
-                <button style="margin-top: 30px;" id="" class=" z-depth-2 btn-large blue modal-trigger" href="#modalcreateAnnouncement">
+                <button style="margin-top: 30px;" id="" class=" z-depth-1 btn-large blue modal-trigger" href="#modalcreateAnnouncement">
                      Make an Announcement
                 </button>
             </div>

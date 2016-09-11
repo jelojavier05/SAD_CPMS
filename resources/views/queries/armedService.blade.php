@@ -1,12 +1,10 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Nature of Business - Query
+Armed Service - Query
 @endsection
 
 @section('content')
-
-
 <style>
 .dataTables_filter
 	{
@@ -23,7 +21,7 @@ Nature of Business - Query
  
      <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Query - Nature of Business</h3>
+                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Query - Armed Service</h3>
                 </div>
     
     </div>
@@ -62,24 +60,22 @@ Nature of Business - Query
                 <div class="col s12" style="">
                     <table class="striped" style="border-radius:10px;" id="dataTable">						
                         <thead>
-                            <tr>                                
+                            <tr>                                                                                                
                                 <th class="blue darken-1 white-text">Name</th>
-								<th class="blue darken-1 white-text">Rate per Hour</th>
 								<th class="blue darken-1 white-text">Status</th>
                                 
                             </tr>
                         </thead>
 
                         <tbody>
-							<tr>								
-								<td>Salon</td>
-								<td>100</td>
+							<tr>
+								<td>PNP</td>
 								<td>Active</td>
+								
 							</tr>
 							
-							<tr>								
-								<td>Bank</td>
-								<td>200</td>
+							<tr>
+								<td>SWAT</td>
 								<td>Inactive</td>
 							</tr>
                         </tbody>
@@ -97,7 +93,6 @@ $(document).ready(function(){
 		
 		$("#dataTable").DataTable({
              "columns": [           
-            null,
             null,
 			null
             ] ,  

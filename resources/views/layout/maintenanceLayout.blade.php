@@ -226,9 +226,9 @@
 								  <a href="#!" class="waves-effect" id="buttonhover">Clients</a>
 								  <a href="#!" class="waves-effect" id="buttonhover">Guns</a>
                                   <a href="/querynatureofbusiness" class="waves-effect" id="buttonhover">Nature of Business</a>
-								  <a href="#!" class="waves-effect" id="buttonhover">Type of Contract</a>
-								  <a href="#!" class="waves-effect" id="buttonhover">Armed Service</a>
-								  <a href="#!" class="waves-effect" id="buttonhover">Rank</a>
+								  <a href="/querytypeofcontract" class="waves-effect" id="buttonhover">Type of Contract</a>
+								  <a href="/queryarmedservice" class="waves-effect" id="buttonhover">Armed Service</a>
+								  <a href="/queryrank" class="waves-effect" id="buttonhover">Rank</a>
 								  <a href="#!" class="waves-effect" id="buttonhover">Body Attributes</a>
 								  <a href="#!" class="waves-effect" id="buttonhover">Government Exam</a>
 								  <a href="#!" class="waves-effect" id="buttonhover">Leave</a>

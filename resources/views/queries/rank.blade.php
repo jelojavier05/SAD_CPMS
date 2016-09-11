@@ -1,12 +1,10 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Nature of Business - Query
+Rank - Query
 @endsection
 
 @section('content')
-
-
 <style>
 .dataTables_filter
 	{
@@ -23,7 +21,7 @@ Nature of Business - Query
  
      <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Query - Nature of Business</h3>
+                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Query - Rank</h3>
                 </div>
     
     </div>
@@ -34,16 +32,25 @@ Nature of Business - Query
 			<div class="row"></div>
 			<div class="row">
 				
-				<div class="input-field col s4">
+				<div class="input-field col s3">
 					<select>
-						<option disabled selected>Choose</option>
+						<option disabled selected>Choose Status</option>
 						<option>Active</option>
 						<option>Inactive</option>
 					</select>
 					<label>Status</label>
 				</div>
+				
+				<div class="input-field col s3">
+					<select>
+						<option disabled selected>Choose Armed Service</option>
+						<option>PNP</option>
+						<option>SWAT</option>
+					</select>
+					<label>Status</label>
+				</div>
 			
-				<div class="input-field col s4 offset-s4">
+				<div class="input-field col s4 offset-s2 ">
 					<nav style="height:55px;">
 						<div class="nav-wrapper blue-grey lighten-3">
 							<form>
@@ -62,24 +69,25 @@ Nature of Business - Query
                 <div class="col s12" style="">
                     <table class="striped" style="border-radius:10px;" id="dataTable">						
                         <thead>
-                            <tr>                                
-                                <th class="blue darken-1 white-text">Name</th>
-								<th class="blue darken-1 white-text">Rate per Hour</th>
+                            <tr>                                                                                                
+                                <th class="blue darken-1 white-text">Armed Service</th>
+                                <th class="blue darken-1 white-text">Rank</th>
 								<th class="blue darken-1 white-text">Status</th>
                                 
                             </tr>
                         </thead>
 
                         <tbody>
-							<tr>								
-								<td>Salon</td>
-								<td>100</td>
+							<tr>
+								<td>PNP</td>
+								<td>Captain</td>
 								<td>Active</td>
+								
 							</tr>
 							
-							<tr>								
-								<td>Bank</td>
-								<td>200</td>
+							<tr>
+								<td>SWAT</td>
+								<td>Major</td>
 								<td>Inactive</td>
 							</tr>
                         </tbody>
@@ -98,7 +106,7 @@ $(document).ready(function(){
 		$("#dataTable").DataTable({
              "columns": [           
             null,
-            null,
+			null,
 			null
             ] ,  
 //		    "pagingType": "full_numbers",
