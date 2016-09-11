@@ -100,7 +100,7 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul >
                                             <li>
-                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text swa" data-activates="dropdownclient" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Client</button>
+                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 swa" data-activates="dropdownclient" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover"><div class="left" style="margin-left:10px; color:#444;">Client</div></button>
 													
 													<ul id='dropdownclient' class='dropdown-content' style="margin-top:1px;">
 														<li><a class="blue-text swa" href="/maintenance/NatureOfBusiness">Nature of Business</a></li>
@@ -113,7 +113,7 @@
 													</ul>
                                             </li>
                                             <li>
-                                                <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text swa" data-activates="dropdownsg" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover">Security Guard</button>
+                                                <button href="#" class="dropdown-button waves-effect grey lighten-2  swa" data-activates="dropdownsg" data-gutter="240" data-hover="false" style="width:240px; border:none;" id="buttonhover"><div class="left" style="margin-left:10px; color:#444;">Security Guard</div></button>
 													
 													<ul id='dropdownsg' class='dropdown-content' style="margin-top:1px;">
 														
@@ -132,7 +132,7 @@
 														
                                             </li>
                                             <li>
-                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 black-text swa" data-activates="dropdowneq" data-gutter="241" data-hover="false" style="width:240px; border:none;" id="buttonhover">Others</button>
+                                                 <button href="#" class="dropdown-button waves-effect grey lighten-2 swa" data-activates="dropdowneq" data-gutter="241" data-hover="false" style="width:240px; border:none;" id="buttonhover"><div class="left" style="margin-left:10px; color:#444;">Others</div></button>
 													<ul id='dropdowneq' class='dropdown-content' style="margin-top:1px;">
 														
 														
@@ -169,11 +169,11 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             
-                                  <a href="/guard/registration/personaldata" class="center waves-effect grey lighten-2 black-text swa" style="width:240px; border:none;" id="buttonhover">Guard</a>
+                                  <a href="/guard/registration/personaldata" class="waves-effect grey lighten-2 swa" style="width:240px; border:none;" id="buttonhover">Guard</a>
 														
-								  <a href="/gun/registration" class="center waves-effect grey lighten-2 black-text swa" style="width:240px; border:none;" id="buttonhover">Gun</a>
+								  <a href="/gun/registration" class=" waves-effect grey lighten-2  swa" style="width:240px; border:none;" id="buttonhover">Gun</a>
 									
-								  <a href="/client/registration/basicInfo" class="center waves-effect grey lighten-2 black-text swa" style="width:240px; border:none;" id="buttonhover">Client</a>
+								  <a href="/client/registration/basicInfo" class="waves-effect grey lighten-2  swa" style="width:240px; border:none;" id="buttonhover">Client</a>
                                            
                                 </ul>
                             </div>
@@ -217,7 +217,32 @@
 					</li>		
 					
 							
-							
+					<li class="bold" style="width:280px;">
+								<a class="collapsible-header waves-effect waves-blue swa" href="#"><i class="material-icons">search</i><strong>Queries</strong><i class="mdi-navigation-arrow-drop-down right"></i></a>
+                            <div class="collapsible-body grey lighten-2">
+                                <ul>
+                                  
+								  <a href="#!" class="waves-effect" id="buttonhover">Guards</a>
+								  <a href="#!" class="waves-effect" id="buttonhover">Clients</a>
+								  <a href="#!" class="waves-effect" id="buttonhover">Guns</a>
+                                  <a href="#!" class="waves-effect" id="buttonhover">Nature of Business</a>
+								  <a href="#!" class="waves-effect" id="buttonhover">Type of Contract</a>
+								  <a href="#!" class="waves-effect" id="buttonhover">Armed Service</a>
+								  <a href="#!" class="waves-effect" id="buttonhover">Rank</a>
+								  <a href="#!" class="waves-effect" id="buttonhover">Body Attributes</a>
+								  <a href="#!" class="waves-effect" id="buttonhover">Government Exam</a>
+								  <a href="#!" class="waves-effect" id="buttonhover">Leave</a>
+								  <a href="#!" class="waves-effect" id="buttonhover">Province</a>
+								  <a href="#!" class="waves-effect" id="buttonhover">City</a>
+								  <a href="#!" class="waves-effect" id="buttonhover">Requirements</a>
+								  <a href="#!" class="waves-effect" id="buttonhover">Type of Gun</a>
+								  <a href="#!" class="waves-effect" id="buttonhover">Unit of Measurement</a>
+								
+																						  
+                                           
+                                </ul>
+                            </div>
+					</li>		
 							
 							
 					<li class="bold" style="width:280px;">
@@ -394,6 +419,13 @@
   <a class='dropdown-button btn' href='#' data-activates='dropdownsg' style="display:none;">Drop Me!</a>
   <a class='dropdown-button btn' href='#' data-activates='dropdowneq' style="display:none;">Drop Me!</a>
   <a class='dropdown-button btn' href='#' data-activates='dropdownothers' style="display:none;">Drop Me!</a>
+	
+	
+<!--
+<a class='dropdown-button btn' href='#' data-activates='dropdownclientquery' style="display:none;">Drop Me!</a>
+  <a class='dropdown-button btn' href='#' data-activates='dropdownsgquery' style="display:none;">Drop Me!</a>
+  <a class='dropdown-button btn' href='#' data-activates='dropdowneqquery' style="display:none;">Drop Me!</a>
+-->
  
   
 </li>
