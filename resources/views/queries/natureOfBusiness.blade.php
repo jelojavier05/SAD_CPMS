@@ -31,25 +31,38 @@ Nature of Business - Query
     </div>
     <div class="col s12 push-s1" style="margin-top:-4%;">
         <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
-				<div class="input-field col s4 offset-s8">
+			<div class="row"></div>
+			<div class="row">
+				
+				<div class="input-field col s4">
+					<select>
+						<option disabled selected>Choose</option>
+						<option>Active</option>
+						<option>Inactive</option>
+					</select>
+					<label>Status</label>
+				</div>
+			
+				<div class="input-field col s4 offset-s4">
 					<nav style="height:55px;">
 						<div class="nav-wrapper blue-grey lighten-3">
 							<form>
-								<div class="input-field" style="z-index:1000;">
+								<div class="input-field" style="">
 									<input id="mySearch" type="search" required>
 									<label for="search"><i class="material-icons">search</i></label>									
 								</div>
 							</form>
 						</div>
 					</nav>
-				</div>								        
+				</div>	
+				
+			</div>
         
             <div class="row">
-                <div class="col s12" style="margin-top:50px;">
+                <div class="col s12" style="">
                     <table class="striped" style="border-radius:10px;" id="dataTable">						
                         <thead>
                             <tr>                                
-                                <th class="blue darken-1 white-text">ID</th>
                                 <th class="blue darken-1 white-text">Name</th>
 								<th class="blue darken-1 white-text">Rate per Hour</th>
 								<th class="blue darken-1 white-text">Status</th>
@@ -58,15 +71,13 @@ Nature of Business - Query
                         </thead>
 
                         <tbody>
-							<tr>
-								<td>1</td>
+							<tr>								
 								<td>Salon</td>
 								<td>100</td>
 								<td>Active</td>
 							</tr>
 							
-							<tr>
-								<td>2</td>
+							<tr>								
 								<td>Bank</td>
 								<td>200</td>
 								<td>Inactive</td>
@@ -88,7 +99,6 @@ $(document).ready(function(){
              "columns": [           
             null,
             null,
-			null,
 			null
             ] ,  
 //		    "pagingType": "full_numbers",
