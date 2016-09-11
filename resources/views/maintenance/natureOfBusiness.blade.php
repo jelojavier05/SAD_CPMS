@@ -43,7 +43,7 @@ Nature of Business
 						<div class="nav-wrapper blue-grey lighten-3">
 							<form>
 								<div class="input-field" style="z-index:1000;">
-									<input id="mySearch" type="search" required>
+									<input id="mySearch" type="search" placeholder="Search" required>
 									<label for="search"><i class="material-icons">search</i></label>									
 								</div>
 							</form>
