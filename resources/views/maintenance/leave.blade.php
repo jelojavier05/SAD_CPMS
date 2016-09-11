@@ -5,7 +5,11 @@ Leave
 @endsection
 
 @section('content')
-
+<style>
+.dataTables_filter {
+    display: none;
+}
+</style>
 	
 
 <div class="row" style="margin-top:-30px;">
@@ -24,19 +28,31 @@ Leave
    
 </div>
     <div class="col s12 push-s1" style="margin-top:-4%">
-        <div class="container white lighten-2 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
-<!--            <div class="row">-->
-               
-
-                <div class="col s3 offset-s9">
-                    <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalleaveAdd">
+        <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
+            <div class="row">
+              
+                <div class="col s3">
+                    <button style="margin-top: 20px;" id="btnAdd" class=" z-depth-1 btn-large green modal-trigger" href="#modalleaveAdd">
                         <i class="material-icons left">add</i> ADD
                     </button>
                 </div>
-<!--            </div>-->
+			
+				<div class="input-field col s4 offset-s5">
+					<nav style="height:55px;">
+						<div class="nav-wrapper blue-grey lighten-3">
+							<form>
+								<div class="input-field" style="z-index:1000;">
+									<input id="mySearch" type="search" placeholder="Search" required>
+									<label for="search"><i class="material-icons">search</i></label>									
+								</div>
+							</form>
+						</div>
+					</nav>
+				</div>
+            </div>
         
             <div class="row">
-                <div class="col s12" style="margin-top:-20px;">
+                <div class="col s12" style="margin-top:">
                     <table class="striped white" style="border-radius:10px;" id="dataTable">
 
                         <thead>
@@ -251,8 +267,13 @@ Leave
             null
             ] ,  
 			"pageLength":5,
-			"lengthMenu": [5,10,15,20]
-         });   
+			"bLengthChange":false
+         });
+		
+		search = $('#dataTable').DataTable();
+		$("#mySearch").keyup(function(){
+			search.search($(this).val()).draw();
+		});
  
 		$("#btnAddSave").click(function(){
             if ($('#strLeaveType').val().trim() && $('#intLeaveCount').val().trim() > 0 && $('#intNotificationPeriod').val().trim() >= 0){

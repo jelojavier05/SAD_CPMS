@@ -5,6 +5,11 @@ Requirements
 @endsection
 
 @section('content') 
+<style>
+.dataTables_filter {
+    display: none;
+}
+</style>
 
 <div class="row" style="margin-top:-30px;">
   <div class="row"> 
@@ -20,26 +25,38 @@ Requirements
    
     </div>
     <div class="col s12 push-s1" style="margin-top:-4%">
-        <div class="container white lighten-2 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
-<!--            <div class="row">-->
-               
-
-                <div class="col s3 offset-s9">
-                    <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalrequirementsAdd">
+        <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
+            <div class="row">
+              
+                <div class="col s3">
+                    <button style="margin-top: 20px;" id="btnAdd" class=" z-depth-1 btn-large green modal-trigger" href="#modalrequirementsAdd">
                         <i class="material-icons left">add</i> ADD
                     </button>
                 </div>
-<!--            </div>-->
+			
+				<div class="input-field col s4 offset-s5">
+					<nav style="height:55px;">
+						<div class="nav-wrapper blue-grey lighten-3">
+							<form>
+								<div class="input-field" style="z-index:1000;">
+									<input id="mySearch" type="search" placeholder="Search" required>
+									<label for="search"><i class="material-icons">search</i></label>									
+								</div>
+							</form>
+						</div>
+					</nav>
+				</div>
+            </div>
         
             <div class="row">
-                <div class="col s12" style="margin-top:-20px;">
+                <div class="col s12" style="margin-top:">
                     <table class="striped white" style="border-radius:10px;" id="dataTable">
 
                         <thead>
                             <tr>
-                                <th style="width:40px;" class="blue darken-3 white-text"></th>
+                                <th style="width:50px;" class="blue darken-3 white-text"></th>
                                 <th style="width:50px;" class="blue darken-3 white-text">Actions</th>
-								<th style="width:40px;" class="blue darken-3 white-text"></th>
+                                <th style="width:50px;" class="blue darken-3 white-text"></th>
                                 <th class="blue darken-3 white-text">ID</th>
                                 <th class="blue darken-3 white-text">Name</th>
 								<th class="blue darken-3 white-text">Description</th>
@@ -68,7 +85,7 @@ Requirements
                                 	</td>
                                 
 									<td>
-                                    <button class="buttonUpdate btn"  name="" id = "{{ $requirement->intRequirementsID }}"  style="margin-right: -40px;margin-left:50px;">
+                                    <button class="buttonUpdate btn col s12"  name="" id = "{{ $requirement->intRequirementsID }}"  >
                                         <i class="material-icons">edit</i>
                                     </button>
                                     <label for="{{ $requirement->intRequirementsID }}"></label> 
@@ -105,7 +122,7 @@ Requirements
 
 <!-- Modal requirements ADD -->
 
-<div id="modalrequirementsAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:90px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
+<div id="modalrequirementsAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
         
        	<div class="modal-header">
                 <div class="h">
@@ -172,7 +189,7 @@ Requirements
         </div>
 </div>
 <!-- MODAL requirements EDIT -->
-<div id="modalrequirementsEdit" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:90px !important;  max-height:100% !important; height:450px !important; border-radius:10px;">
+<div id="modalrequirementsEdit" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:450px !important; border-radius:10px;">
         
        	<div class="modal-header">
                 <div class="h">
@@ -444,9 +461,14 @@ Requirements
             null
             ] ,  
 			"pageLength":5,
-			"lengthMenu": [5,10,15,20]
+			"bLengthChange":false
             
 
+		});
+		
+		search = $('#dataTable').DataTable();
+		$("#mySearch").keyup(function(){
+			search.search($(this).val()).draw();
 		});
         
         $('#dataTable').on('click', '.checkboxFlag', function(){

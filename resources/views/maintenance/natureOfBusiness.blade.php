@@ -29,16 +29,16 @@ Nature of Business
     </div>
     <div class="col s12 push-s1" style="margin-top:-4%;">
         <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
-<!--            <div class="row">-->
+            <div class="row">
                
 
-                <div class="col s3 offset-s9">
-                    <button style="margin-top:30px;" id="btnAdd" class=" z-depth-1 btn-large green modal-trigger" href="#modalnobAdd">
+                <div class="col s3">
+                    <button style="margin-top:20px;" id="btnAdd" class=" z-depth-1 btn-large green modal-trigger" href="#modalnobAdd">
                         <i class="material-icons left">add</i> ADD
                     </button>
                 </div>
 				
-				<div class="input-field col s4 offset-s8">
+				<div class="input-field col s4 offset-s5">
 					<nav style="height:55px;">
 						<div class="nav-wrapper blue-grey lighten-3">
 							<form>
@@ -52,11 +52,11 @@ Nature of Business
 				</div>
 				
 				
-<!--            </div>-->
+            </div>
         
         
             <div class="row">
-                <div class="col s12" style="margin-top:-60px;">
+                <div class="col s12" style="margin-top:;">
                     <table class="striped" style="border-radius:10px;" id="dataTable">						
                         <thead>
                             <tr>
@@ -253,7 +253,7 @@ Nature of Business
 			"pageLength":5,
 			"lengthMenu": [5,10,15,20],
 //			"bFilter": false
-//			"bLengthChange": false
+			"bLengthChange": false
 
 
 		});

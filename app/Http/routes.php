@@ -7,6 +7,7 @@ Route::get('/insertmaintenance', 'MaintenanceController@insert');
 Route::get('/clientaddgunproceed', 'ClientAddGunProceedController@index');
 
 Route::get('/querynatureofbusiness', 'QueryNatureOfBusinessController@index');
+Route::get('/querytypeofcontract', 'QueryTypeOfContractController@index');
 
 
 
