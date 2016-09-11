@@ -79,7 +79,7 @@ Inbox
 						<li class="collection-item">
 							<div class="row">
 								<div class="col s12">									
-									<div ><p id = ''>Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello</p></div>
+									<div ><p id = 'requestMessage'></p></div>
 								</div>										
 							</div>
 						</li>
@@ -195,7 +195,7 @@ $(document).ready(function(){
             }
         });//get guard waiting
     }
-
+    
     function swapRequestAccepted(){
 			$.ajax({
         type: "GET",
@@ -206,6 +206,8 @@ $(document).ready(function(){
 
         	var table = $('#dataTableGuards').DataTable();
         	table.clear().draw();
+
+        	$('#requestMessage').text(data.strMessage);
         	
         	$.each(arrGuard, function(index,value){
             var address = value.strAddress + ' ' + value.strCityName + ', ' + value.strProvinceName;

@@ -217,18 +217,15 @@ Inbox
     </div>
     <!-- button -->
     <div class="modal-footer ci" style="background-color: #00293C;">
-      <div id="sendClientAddGuardRequest" style="display: none;">  
-        <button class="btn blue " name="" id = "" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
-      </div>
-	  
-	  <div id="rejectClientAddGuardRequest" style="display: none;">  
+      <div id="divAdditionalButton" style="display: none;">  
+        <button class="btn blue " name="" id = "btnSendNotificationAdditionalGuard" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
         <button class="btn red " name="" id = "" style="margin-right: 30px;">Reject</button>
       </div>
 		
-      <div id = "acceptedClientAddGuardRequest" style="display: none;">                                
+      <div id = "divAdditionalAccepted" style="display: none;">                                
         <button class="btn green" name="" style="margin-right: 30px; cursor:default;" id = "">Accepted</button>
       </div>
-      <div id = "rejectedClientAddGuardRequest" style="display: none;">                    
+      <div id = "divAdditionalRejected" style="display: none;">                    
         <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined</button>
       </div>
     </div>
@@ -275,7 +272,6 @@ Inbox
     <!-- button -->
     <div class="modal-footer ci" style="background-color: #00293C;">
       <button class="btn green waves-effect waves-light" id = "btnAddRequestProceed" style="margin-right: 30px;">Proceed</button>
-	  
     </div>
   </div>  
 <!--modal add guard request complete guards end-->
@@ -506,7 +502,7 @@ Inbox
 <!--modal sg swap location request approval end-->
 
 <!--modal client swap guards request || guards na nag accept-->
-<div id="modalconfirmedGuards" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
+  <div id="modalconfirmedGuards" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
 	    <div class="modal-header">
 	      	<div class="h">
 				<h3><center>Swap Request</center></h3>  
@@ -520,11 +516,11 @@ Inbox
 						<li class="collection-item">
 							<div class="row">
 								<div class="col s2">									
-									<h5 style="font-weight:bold;">Client:</h5>
+									<h5 style="font-weight:bold;">Message:</h5>
 								</div>
 								
-								<div class="col s5">
-									<h5 style="margin-left:-15px;">LandBank</h5>
+								<div class="col s12">
+									<div ><p id = 'requestMessage'></p></div>
 								</div>
 							</div>
 						</li>
@@ -611,6 +607,8 @@ $(document).ready(function(){
           swapLocation();
         }else if (type == 10){
           swapGuard();
+        }else if (type == 12){
+          swapGuardAccepted();
         }//if else
     });//button read click
     
@@ -757,15 +755,27 @@ $(document).ready(function(){
             type: "GET",
             url: "adminInbox/get/clientpendingnotificationstatus?inboxID=" + inboxID,
             success: function(data){
-                if (data.intStatusIdentifier == 0){
-                    checker = false;
-                }else{
-                    checker = true;
+                var status = data.intStatusIdentifier;
+                if (status == 0){
+                  showHideButton('divAdditionalRejected','divAdditionalAccepted', 'divAdditionalButton');
+                  checker = false;
+                }else if (status == 1){
+                  showHideButton('divAdditionalButton','divAdditionalAccepted', 'divAdditionalRejected');
+                  checker = true;
+                }else if (status == 2){
+                  showHideButton('divAdditionalAccepted','divAdditionalRejected', 'divAdditionalButton');
+                  checker = false;
                 }
             },async:false
         });//ajax
         return checker;
     }
+
+    function showHideButton(show, hide1, hide2){
+        $('#' + show).show();
+        $('#' + hide1).hide();
+        $('#' + hide2).hide();
+      }
 
     function getGuardWaiting(){
         if (guardWaiting.length<=0){
@@ -1355,6 +1365,37 @@ $(document).ready(function(){
         $('#' + hide2).hide();
       }
   // Swap Guard (Client Requested) End
+
+  // Swap Guard (Client Requested) Accepted Start
+    function swapGuardAccepted(){
+      $.ajax({
+        type: "GET",
+        url: "/clientinbox/get/SwapGuardRequestAccepted?inboxID=" + inboxID,
+        success: function(data){
+          $('#modalconfirmedGuards').openModal();
+          var arrGuard = data.guards;
+
+          var table = $('#AssuredGuards').DataTable();
+          table.clear().draw();
+          $('#requestMessage').text(data.strMessage);
+          $.each(arrGuard, function(index,value){
+            var address = value.strAddress + ' ' + value.strCityName + ', ' + value.strProvinceName;
+            var name = value.strFirstName + ' ' + value.strLastName;
+
+            table.row.add([
+              '<h>' + name + '</h>',
+              '<h>' + address + '</h>',
+              '<h>' + value.strGender + '</h>'
+            ]).draw(false);
+          });//foreach
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+      });//ajax
+    }
+  // Swap Guard (Client Requested) Accepted End
 });
 </script>        
         
@@ -1455,15 +1496,15 @@ $(document).ready(function(){
         "lengthMenu": [5,10,15,20]
      });
 	
-	$("#AssuredGuards").DataTable({
-	     "columns": [         
-		null,
-		null,
-		null,
-	    ] ,  
-		"pageLength":5,
-		"lengthMenu": [5,10,15,20]	
-	});
+  	$("#AssuredGuards").DataTable({
+  	     "columns": [         
+  		null,
+  		null,
+  		null,
+  	    ] ,  
+  		"pageLength":5,
+  		"lengthMenu": [5,10,15,20]	
+  	});
 </script>
     
 @stop

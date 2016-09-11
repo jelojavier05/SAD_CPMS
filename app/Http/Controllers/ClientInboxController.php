@@ -18,7 +18,7 @@ class ClientInboxController extends Controller
      */
     public function index()
     {
-        return view('/client/ClientInbox');
+        return view('/client/ClientInbox1');
     }
 
     public function getSwapGuardRequestAccepted(Request $request){
