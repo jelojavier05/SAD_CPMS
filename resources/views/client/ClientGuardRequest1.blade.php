@@ -357,7 +357,8 @@ Client Request of Guard
 			});
 
 			$('#btnSwapGuard').click(function(){
-				if (checkInput() && isAgree()){
+
+				if (checkInput() && isAgree() && !hasPendingRequest()){
 					var strReason = $('#strSwapReason').val();
 					$.ajax({
 		        type: "POST",
@@ -390,6 +391,29 @@ Client Request of Guard
 		    	});//send swap request
 				}
 			});
+
+			function hasPendingRequest(){
+				var checker;
+				$.ajax({
+          type: "GET",
+          url: "{{action('ClientGuardRequestController@hasSwapGuardRequest')}}",
+          success: function(data){
+          	checker = data;
+          },
+          error: function(data){
+	 					var toastContent = $('<span>Error Database.</span>');
+						Materialize.toast(toastContent, 1500,'red', 'edit');
+
+          },async:false
+      	});//ajax
+
+				if (checker){
+					var toastContent = $('<span>You still have pending request.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+				}
+
+				return checker;
+			}
 
 			function setGuardChecked(){
 				checkedGuard = [];

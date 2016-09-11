@@ -120,6 +120,20 @@ class ChangeGuardController extends Controller{
         }
     }
 
+    public function declineRequest(Request $request){
+        $inboxID = $request->inboxID;
+
+        try{
+            DB::beginTransaction();
+            
+            
+            
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+    }
+
     public function getClientRequested(Request $request){
         $inboxID = Input::get('inboxID');
 
@@ -218,7 +232,7 @@ class ChangeGuardController extends Controller{
                     $guardWaiting = DB::table('tblswapguardresponse')
                         ->select('intSwapGuardReponseID')
                         ->where('intSwapGuardHeaderID', $swapGuardHeaderID)
-                        ->where('boolStatus', '<>', 2)
+                        ->where('boolStatus', 1)
                         ->get();
                     if (!is_null($guardWaiting)){
                         foreach($guardWaiting as $value){

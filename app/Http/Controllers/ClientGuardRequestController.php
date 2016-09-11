@@ -175,4 +175,19 @@ class ClientGuardRequestController extends Controller
             DB::rollback();
         }
     }
+
+    public function hasSwapGuardRequest(Request $request){
+        $clientID = $request->session()->get('id');
+
+        $result = DB::table('tblswapguardrequestheader')
+            ->where('intClientID', $clientID)
+            ->where('boolStatus', 1)
+            ->count();
+
+        if ($result > 0){
+            return response()->json(true);
+        }else{
+            return response()->json(false);
+        }
+    }
 }
