@@ -33,7 +33,7 @@ Nature of Business
                
 
                 <div class="col s3 offset-s9">
-                    <button style="margin-top:30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalnobAdd">
+                    <button style="margin-top:30px;" id="btnAdd" class=" z-depth-1 btn-large green modal-trigger" href="#modalnobAdd">
                         <i class="material-icons left">add</i> ADD
                     </button>
                 </div>
