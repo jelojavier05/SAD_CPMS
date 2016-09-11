@@ -49,9 +49,10 @@ Nature of Business - Query
                     <table class="striped" style="border-radius:10px;" id="dataTable">						
                         <thead>
                             <tr>                                
-                                <th class="blue darken-3 white-text">ID</th>
-                                <th class="blue darken-3 white-text">Name</th>
-								<th class="blue darken-3 white-text">Rate per Hour</th>
+                                <th class="blue darken-1 white-text">ID</th>
+                                <th class="blue darken-1 white-text">Name</th>
+								<th class="blue darken-1 white-text">Rate per Hour</th>
+								<th class="blue darken-1 white-text">Status</th>
                                 
                             </tr>
                         </thead>
@@ -61,12 +62,14 @@ Nature of Business - Query
 								<td>1</td>
 								<td>Salon</td>
 								<td>100</td>
+								<td>Active</td>
 							</tr>
 							
 							<tr>
 								<td>2</td>
 								<td>Bank</td>
 								<td>200</td>
+								<td>Inactive</td>
 							</tr>
                         </tbody>
                     </table>
@@ -85,6 +88,7 @@ $(document).ready(function(){
              "columns": [           
             null,
             null,
+			null,
 			null
             ] ,  
 //		    "pagingType": "full_numbers",
