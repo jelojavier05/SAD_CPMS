@@ -48,7 +48,7 @@
 
  
     
-<body id="scrollhider" class="bodyscrollhider ci" style="background-color:#F0EFEA">
+<body id="scrollhider" class="bodyscrollhider ci blue-grey lighten-5" style="">
     <nav class="blue darken-4">
         
          <div class="nav-wrapper">
@@ -63,11 +63,11 @@
 
 							<div class="row">
                                 <div class="col l12">
-									  <div class="col l6 push-l3" style="margin-top:-6%">
+									  <a class="col l6 push-l3" style="margin-top:-6%" href="/dashboardadmin">
 
-										<img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="100%">
+										  <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="100%">
 
-										</div>
+										</a>
                                     
                                   
                                 </div>
@@ -75,8 +75,8 @@
                             
                             <div class="row">
                            		
-                            <span class="card-title ci" style="font-size:20px;color:white;margin-top:-23%;margin-left:23%; position:absolute">John Cena</span>
-								  <span  style=" font-size: 14px; margin-top:-14%;margin-left:24%;position:absolute;color:red margin-left:-40px;">Administrator</span>
+                            <span class="card-title ci" style="font-size:20px;color:white;margin-top:-15%;margin-left:23%; position:absolute">John Cena</span>
+								  <span  style=" font-size: 14px; margin-top:-4%;margin-left:24%;position:absolute;color:red margin-left:-40px;">Administrator</span>
                             
                             </div>
 <!--
@@ -225,7 +225,7 @@
 								  <a href="#!" class="waves-effect" id="buttonhover">Guards</a>
 								  <a href="#!" class="waves-effect" id="buttonhover">Clients</a>
 								  <a href="#!" class="waves-effect" id="buttonhover">Guns</a>
-                                  <a href="#!" class="waves-effect" id="buttonhover">Nature of Business</a>
+                                  <a href="/querynatureofbusiness" class="waves-effect" id="buttonhover">Nature of Business</a>
 								  <a href="#!" class="waves-effect" id="buttonhover">Type of Contract</a>
 								  <a href="#!" class="waves-effect" id="buttonhover">Armed Service</a>
 								  <a href="#!" class="waves-effect" id="buttonhover">Rank</a>

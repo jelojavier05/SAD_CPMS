@@ -6,6 +6,9 @@ Route::get('/insertmaintenance', 'MaintenanceController@insert');
 
 Route::get('/clientaddgunproceed', 'ClientAddGunProceedController@index');
 
+Route::get('/querynatureofbusiness', 'QueryNatureOfBusinessController@index');
+
+
 
 Route::get('/removeguardrequest/get/requestInformation', 'RemoveGuardController@getRequestInformation');
 Route::post('/removeguardrequest/post/accept', 'RemoveGuardController@accept');
