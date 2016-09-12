@@ -39,6 +39,7 @@ Client Request of Gun
                         <thead>
                             <tr>                                                                
                                 <th class="blue darken-3 white-text"></th>
+								<th class="blue darken-3 white-text"></th>
                                 <th class="blue darken-3 white-text">License Number</th>
                                 <th class="blue darken-3 white-text">Serial Number</th>
                                 <th class="blue darken-3 white-text">Name</th>
@@ -47,6 +48,7 @@ Client Request of Gun
                         </thead>
                         
                         <tbody>
+								<td><input type="checkbox" id="test1" value = ""><label for="test1"></label></td>
 								<td><button data-position="bottom" data-delay="50" data-tooltip="Gun Details" class="tooltipped buttonMore btn col s12" id=""><i class="material-icons">security</i></button>
 								</td>
 																							
@@ -244,7 +246,8 @@ Client Request of Gun
 	
 	$("#dataTable").DataTable({
          "columns": [		
-		{"searchable": false},
+		{"orderable": false},
+		{"orderable": false},
         null,
         null,
 		null
