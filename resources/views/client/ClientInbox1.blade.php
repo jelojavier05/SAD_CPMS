@@ -9,9 +9,9 @@ Inbox
 <!--Inbox-->
 	<div class="row"></div>
 	<div class="row">
-		<div class="col s8 push-s3">
+		<div class="col s12 l8 push-l3">
 	          <div class="row" style="margin-top:-40px;"> 
-	                    <div class="col s12 push-s4">
+	                    <div class="col s12 l12 push-s3 push-l4">
 	                     <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#662E1C;font-weight:bold">MESSAGES</h3>
 	                    </div>  
 	               <hr>
@@ -22,8 +22,8 @@ Inbox
 					<table class="striped" id="inboxTable">							
 						<thead>
 							<tr>
-								<th class="grey lighten-1" style="width: 20px;"></th>
-								<th class="grey lighten-1" style="width: 30px;"></th>
+								<th class="grey lighten-1"></th>
+								<th class="grey lighten-1"></th>
 								<th class="grey lighten-1">Date</th>
 								<th class="grey lighten-1">From</th>
 								<th class="grey lighten-1">Subject</th>
@@ -40,7 +40,7 @@ Inbox
 <!--Inbox End-->
 
 <!--modal message start-->
-	<div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
+	<div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden;">
 	    <div class="modal-header">
 	      	<div class="h">
 				<h3><center>Message</center></h3>  

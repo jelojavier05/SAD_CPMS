@@ -8,12 +8,12 @@ Client Homepage
 
 <body style="overflow:hidden" onload="window.scrollTo(0, 0);">
 <div class='row'>
-	<div class="col s9 push-s2" style="height:600px;">
-		<div class="col s6 push-s1" >
+	<div class="col s12 l9 offset-l3" style="height:600px;">
+		<div class="col s6 l6" >
       	 <div class="card animated flipInX" style="background-color:#1E434C" >
             <div class="card-content white-text">
               <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'>12</span>
-              <p style="margin-l	eft:10px;">Guards</p>
+              <p style="margin-left:10px;">Guards</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">accessibility</i>
             </div>
             <div class="card-action" style="background-color:#1E434C">
@@ -25,7 +25,7 @@ Client Homepage
           </div>
       </div>
 	  
-	  <div class="col s6 push-s1">
+	  <div class="col s6 l6">
 		<div class="card animated flipInX" style="background-color:#9B4F0F">
             <div class="card-content white-text">
 
@@ -49,81 +49,77 @@ Client Homepage
 
 <!--ITEMSguard-->
 <!--<div class="row">	-->
-<div class='container-fluid' style="height:600px; margin-top:20px;">
-	<div class="col s12" >
-		<div class="row">
-			<div class="col s4 push-s3">	
-		<ul class="collection with-header " id="guardcontainer" style="border:none;">
-			<li class="collection-header guardscroll" style="opacity:0;"><h5 style="font-weight:bold;">Guards</h5><a href="#!" class="btn blue right btnbackguard" style="margin-top:-40px;"><i class="material-icons">vertical_align_top</i></a></li>            	        			
-				<div id="guardlist" style="">	
-					<li class="collection-item" style="opacity:0;">
-						<div class="row">
-							<div class="col s6">
-								2013-12345-MN-0
-							</div>
-							<div class="col s6">
-								Abdul Jakul
-							</div>
-						</div>
-					</li>
-					
-					<li class="collection-item" style="opacity:0;">
-						<div class="row">
-							<div class="col s6">
-								2013-12345-MN-0
-							</div>
-							<div class="col s6">
-								Abdul Jakul
-							</div>
-						</div>
-					</li>
-					
-					<li class="collection-item" style="opacity:0;">
-						<div class="row">
-							<div class="col s6">
-								2013-12345-MN-0
-							</div>
-							<div class="col s6">
-								Abdul Jakul
-							</div>
-						</div>
-					</li>
-					
-					<li class="collection-item" style="opacity:0;">
-						<div class="row">
-							<div class="col s6">
-								2013-12345-MN-0
-							</div>
-							<div class="col s6">
-								Abdul Jakul
-							</div>
-						</div>
-					</li>
-					
-					<li class="collection-item" style="opacity:0;">
-						<div class="row">
-							<div class="col s6">
-								2013-12345-MN-0
-							</div>
-							<div class="col s6">
-								Abdul Jakul
-							</div>
-						</div>
-					</li>
-					
-				</div>
-                	       			
-		</ul>
-	</div>
+<div class='container-fluid' style="height:600px; margin-top:50px;">
+    <div class="row">
+			<div class="col s12 l4 push-l3">
+                
+                     <ul class="collection with-header " id="guardcontainer" style="border:none;">
+		              	<li class="collection-header guardscroll" style="opacity:0;"><h5 style="font-weight:bold;">Guards</h5><a href="#!" class="btn blue right btnbackguard" style="margin-top:-40px;"><i class="material-icons">vertical_align_top</i></a></li>            	        			
+                                <div id="guardlist" style="">	
+                                    <li class="collection-item" style="opacity:0;">
+                                        <div class="row">
+                                            <div class="col s6">
+                                                2013-12345-MN-0
+                                            </div>
+                                            <div class="col s6">
+                                                Abdul Jakul
+                                            </div>
+                                        </div>
+                                    </li>
 
-<!--ITEMSguardend-->
+                                    <li class="collection-item" style="opacity:0;">
+                                        <div class="row">
+                                            <div class="col s6">
+                                                2013-12345-MN-0
+                                            </div>
+                                            <div class="col s6">
+                                                Abdul Jakul
+                                            </div>
+                                        </div>
+                                    </li>
 
-<!--ITEMSgun-->
+                                    <li class="collection-item" style="opacity:0;">
+                                        <div class="row">
+                                            <div class="col s6">
+                                                2013-12345-MN-0
+                                            </div>
+                                            <div class="col s6">
+                                                Abdul Jakul
+                                            </div>
+                                        </div>
+                                    </li>
 
-	
-	<div class="col s4 push-s3">	
-		<ul class="collection with-header gunscroll" id="guncontainer" style="border:none; margin-left:100px;">
-			<li class="collection-header" style="opacity:0;"><h5 style="font-weight:bold;">Guns</h5><a href="#!" class="btn blue right btnbackgun" style="margin-top:-40px;"><i class="material-icons">vertical_align_top</i></a></li>            	        			
+                                    <li class="collection-item" style="opacity:0;">
+                                        <div class="row">
+                                            <div class="col s6">
+                                                2013-12345-MN-0
+                                            </div>
+                                            <div class="col s6">
+                                                Abdul Jakul
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="collection-item" style="opacity:0;">
+                                        <div class="row">
+                                            <div class="col s6">
+                                                2013-12345-MN-0
+                                            </div>
+                                            <div class="col s6">
+                                                Abdul Jakul
+                                            </div>
+                                        </div>
+                                    </li>	
+                                </div>    	       			
+		          </ul>
+        </div>
+                    
+                    
+                <div class="col s12 l6 push-l3">	
+		<ul class="collection with-header gunscroll" id="guncontainer" style="border:none;">
+			<li class="collection-header" style="opacity:0;">
+                <h5 style="font-weight:bold;">Guns</h5>
+                <a href="#!" class="btn blue right btnbackgun" style="margin-top:-40px;"><i class="material-icons">vertical_align_top</i></a></li>            	        			
 				<div id="gunlist" style="">	
 					<li class="collection-item" style="opacity:0;">
 						<div class="row">
@@ -183,10 +179,16 @@ Client Homepage
 					
 				</div>
                 	       			
-		</ul>
-	</div>
-		</div>
-	</div>
+		  </ul>
+	   </div>
+		         
+	   </div>
+    </div>
+
+<!--ITEMSguardend-->
+
+<!--ITEMSgun-->
+	
 	</div>
 </body>
 <!--</div>-->

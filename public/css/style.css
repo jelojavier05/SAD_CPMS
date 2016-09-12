@@ -5,7 +5,10 @@
 }
 
 
-
+#pdf
+{
+    font-family:'Myriad Pro';
+}
 div.scroll {
     
     background-color: white;

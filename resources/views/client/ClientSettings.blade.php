@@ -8,14 +8,14 @@ Client Settings
 
 
   <div class="row">			
-	<div class="ci col s8 push-s3" style="margin-top:25px;">	
+	<div class="ci col s12 l8 push-l3" style="margin-top:25px;">	
 		<ul class="collection with-header" id="collectionActive" >
 			<li class="collection-header">
                 
-				<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue tooltipped " id = 'buttonDetail' style="margin-right: 20px;" ><i class="material-icons">mode_edit</i></a>
+				<a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue tooltipped " id = 'buttonDetail' ><i class="material-icons">mode_edit</i></a>
                
-				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword' style="margin-right: 20px;" ><i class="material-icons">vpn_key</i></a>
-				
+				<a  data-position="bottom" data-delay="50" data-tooltip="Change Password" class="btn blue tooltipped" id = 'btnUpdatePassword' ><i class="material-icons">vpn_key</i></a>
+				<br><br>
 				<a class="btn green" id = 'btnSaveMachine' >Set this machine to cgr</a>
             </li>
 			
@@ -63,7 +63,7 @@ Client Settings
       </div>
 	</div>
 <!-- Change Password Start-->
-<div id="modalchangePassword" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">      
+<div id="modalchangePassword" class="modal modal-fixed-footer ci" style="overflow:hidden;">      
 	<div class="modal-header">
 		<div class="h">
 			<h3><center>Change Password</center></h3>  
@@ -111,7 +111,7 @@ Client Settings
 <div class="row"></div>
 
 <!-- Change Detail Start -->
-<div id="modalchangeDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:800px !important; margin-top:10px !important;  max-height:100% !important; height:500px !important; border-radius:10px;">
+<div id="modalchangeDetails" class="modal modal-fixed-footer ci" style="overflow:hidden;">
 	<div class="modal-header">
 		<div class="h">
 			<h3><center>Edit Details</center></h3>  

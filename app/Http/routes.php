@@ -38,6 +38,10 @@ Route::get('/inbox/get', 'InboxController@getInbox');
 Route::post('/inbox/post/readinbox', 'InboxController@readInbox');
 Route::get('/inbox/get/numberofunreadmessages', 'InboxController@getNumberOfUnreadMessages');
 
+
+//ADMIN REPORTS//
+Route::get('/adminreports', 'AdminReportsController@index');
+
 Route::get('/adminInbox', 'AdminInboxController@index');
 Route::get('/adminInbox/get/guardwaiting', 'AdminInboxController@getGuardWaiting');
 Route::get('/adminInbox/get/numberguard', 'AdminInboxController@getNewClientNumberOfGuard');

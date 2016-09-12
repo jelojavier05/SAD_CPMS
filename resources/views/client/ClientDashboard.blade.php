@@ -51,22 +51,26 @@
       <nav class="blue darken-4">
         
          <div class="nav-wrapper">
-<!--                <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>-->
+                <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
                     
 <!--					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >-->
 				<div>
-                    <a href="#" class="brand-logo">
+                     <a href="#" class="brand-logo">
                        <div class="row">
-                        <div class="col l12">
-                            <div class="col l6 push-l4">
-                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.2rem">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>     
+                        <div class="col s4 l12">
+                            <div class="col s12 l6 pull-s12 push-l3 hide-on-med-and-down">
+                            <p style="margin-top:9px;font-family:Myriad Pro;font-size:2.2rem">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>     
+                            </div>
+                              <div class="col s6 pull-s12">
+                              
+                                   <p style="margin-top:9px;font-family:Myriad Pro;font-size:.8rem">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>   
                             </div>
                         </div>
                     </div>
                     </a>
                 </div>
                 
-                <ul class="right hide-on-med-and-down">    
+                <ul class="right">    
                       <li  id="notification_li">
                             <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES"     href="/clientinbox" class="tooltipped">
                                 <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
@@ -92,22 +96,20 @@
                      <div class="iconposition">
                         <div class="card-panel blue darken-4" style="height:115px;">
 
-                                <div class="row">
+                                  <div class="row">
                                     <div class="col l12">
-                                          <div class="col l6 push-l3" style="margin-top:-6%">
+                                          <div class="col s6 l6 push-s3 push-l3" style="margin-top:-6%">
 
                                             <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="110%">
 
                                             </div>  
                                     </div>
                                 </div>
-
                                 <div class="row">
-                                        <div class="col l12 push-l2">
+                                        <div class="col s12 l12 push-s2 push-l2">
                                          <p class="ci" style="margin-top:-10%;position:absolute;color:white;">CLIENT ACCOUNT</p>
-
-                                    </div>
-                            </div>
+                                        </div>
+                                </div>
                         </div>
                  </div>
          <div class="row">
@@ -125,16 +127,16 @@
           <div class="row">
                   <div class="col s12 z-depth-1" style="margin-top:-10px;">
 								
-					  			<div class="col s6">
-									 <div class="card blue darken-4" style="height:55px; width:95px;">
+					  			<div class="col s6 l6">
+									 <div class="card blue darken-4">
 											<a data-position="top" data-delay="50" data-tooltip="REQUEST GUARDS" href="/clientguardrequest" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">GUARD        
 											</a> 
 										 <i class="material-icons" style="font-size:1.8rem;margin-top:-50%;margin-left:73%;position:absolute;color:white">accessibility</i>    
 									</div>
 
 								</div>
-								<div class="col s6">
-									 <div class="card blue darken-4" style="height:55px; width:95px;">
+								<div class="col s6 l6">
+									 <div class="card blue darken-4">
 											<a data-position="top" data-delay="50" data-tooltip="REQUEST GUNS" href="/clientgunrequest" class="white-text tooltipped" style="font-size:18px;font-family:Myriad Pro">GUN
 										 </a>
 										  <i class="material-icons" style="font-size:1.8rem;margin-top:-53%;margin-left:65%;position:absolute;color:white">tonality</i>   

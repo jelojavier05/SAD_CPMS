@@ -14,6 +14,6 @@ class PDFContractController extends Controller
         public function getPDF()
         {
             $pdf=PDF::loadView('pdf.contract');
-            return $pdf->download('contract.pdf');
+            return $pdf->stream('contract.pdf');
         }
 }

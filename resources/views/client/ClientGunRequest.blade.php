@@ -6,40 +6,31 @@ Client Request of Gun
 @section('content')
 
 <div class="row" style="margin-top:-30px;">
-  <div class="row"> 
-        
-    <div class="row">
- 
-     <div class="col s5 push-s3" style="margin-left:-2%">
-    
-                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Guns</h3>
-                </div>
-    
-    </div>
-   
-    </div>
-    <div class="col s12 push-s1" style="margin-top:-4%">
+     <div class="col s12 l5 push-l3">
+            <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Guns</h3>
+     </div>
+     <div class="row"></div>
+    <div class="row"></div>
+    <div class="col s12 l12 push-l1" style="margin-top:-4%">
         <div class="container white lighten-2 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
-
-               
-
-                <div class="col s3 offset-s9">
-                <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalgunAdd">
-                    <i class="material-icons left">add</i> ADD
-                </button>
-            </div>
-            
+                <div class="col s6 l4 offset-l9">
+                        <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalgunAdd">
+                            <i class="material-icons left">add</i>ADD
+                        </button>
+                </div>
+            <div class="row"></div>
             <div class="row">
-                <div class="col s12" style="margin-top:-20px;">
+                <div class="col s12 l12">
                     <table class="striped white" style="border-radius:10px;" id="dataTable">
                         <thead>
                             <tr>                                
-                                <th style="width:50px;" class="blue darken-3 white-text"></th>
-								<th style="width:50px;" class="blue darken-3 white-text"></th>
-                                <th style="width:50px;" class="blue darken-3 white-text"></th>
+                                <th class="blue darken-3 white-text"></th>
+								<th class="blue darken-3 white-text"></th>
+                                <th class="blue darken-3 white-text"></th>
                                 <th class="blue darken-3 white-text">License Number</th>
                                 <th class="blue darken-3 white-text">Serial Number</th>
                                 <th class="blue darken-3 white-text">Name</th>
+                               
                             </tr>
                         </thead>
                         
@@ -55,7 +46,8 @@ Client Request of Gun
 							
 								<td>123-321-123</td>
 								<td>456-654-456</td>
-								<td>Fire-Seven</td>
+                                <td>Fire Seven</td>
+                                
                         </tbody>
                     </table>
                 </div>

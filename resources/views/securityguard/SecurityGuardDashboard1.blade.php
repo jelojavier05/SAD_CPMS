@@ -65,12 +65,7 @@
                               <div class="col s6 pull-s12">
                               
                                    <p style="margin-top:9px;font-family:Myriad Pro;font-size:.8rem">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>   
-                                
-                             
                             </div>
-                          
-                            
-                        
                         </div>
                     </div>
                     </a>
@@ -117,9 +112,8 @@
                                 <div class="row">
                                         <div class="col s12 l12 push-s2 push-l2">
                                          <p class="ci" style="margin-top:-10%;position:absolute;color:white;">GUARD ACCOUNT</p>
-
-                                    </div>
-                            </div>
+                                        </div>
+                                 </div>
                         </div>
                  </div>
          <div class="row">

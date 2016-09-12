@@ -34,26 +34,19 @@
             
                 <div class="col s6">                        
                         <li class="collection-item" style="font-weight:bold;">
-                            Organization/Site Name:
+                            Organization/System Name:
                             <div style="font-weight:normal;" id = ''>
                                 &nbsp;&nbsp;&nbsp; CLIENT AND PERSONNEL MANAGEMENT SYSTEM
                             </div>
                         </li>
 
                         <li class="collection-item" style="font-weight:bold;">
-                            Site Logo:
+                            System Logo:
                             <div style="font-weight:normal;" id = ''>
                                 &nbsp;&nbsp;&nbsp; 
                                 <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="30%">
                             </div>
-                        </li>
-                        
-                        <li class="collection-item" style="font-weight:bold;">
-                            Allowed Image Size:
-                            <div style="font-weight:normal;" id = ''>
-                                &nbsp;&nbsp;&nbsp; 1 MB
-                            </div>
-                        </li>
+                    </li>
                 </div>
                      
                 <div class="col s6">
@@ -71,20 +64,13 @@
                                 &nbsp;&nbsp;&nbsp; #F0EFEA
                             </div>
                         </li>
-                        
-                        <li class="collection-item" style="font-weight:bold;">
-                            Font :
-                            <div style="font-weight:normal;" id = ''>
-                                &nbsp;&nbsp;&nbsp; Arial
-                            </div>
-                        </li>
-                        
+                  
                 </div>
                      
 			 </div>
             
             <li class="collection-item" style="font-weight:bold;color:transparent">
-                <a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue tooltipped " id = '' style="margin-right: 20px;" href="#modalSettings"><i class="material-icons">mode_edit</i></a>
+                <a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue tooltipped " id = 'buttonEditAccount' style="margin-right: 20px;" href="#modalEditAccount "><i class="material-icons">mode_edit</i></a>
                 
                 
             </li>
@@ -94,7 +80,7 @@
         
     </div>
 
-
+<!--
   <div class="fixed-action-btn vertical click-to-toggle" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large blue darken-4">
       <i class="material-icons">menu</i>
@@ -184,85 +170,68 @@
         </div>
     </div>
 
-<!--------------------PRIVELEGES & AUTHENTICATION-----------------
-
-    <div id="PriAuth" class="col s10 push-s2">
-        <div class="col s10 push-s2">
-    
-            <ul class="collection with-header" id="collectionActive" >
-			
-			<li class="collection-header">
-				<h4 style="font-weight:bold;">Admin Email Settings</h4>
-			</li>
-                
-            <div class="col s12"> 
-            
-                <div class="col s6">                        
-                        <li class="collection-item" style="font-weight:bold;">
-                            Organization/Site Name:
-                            <div style="font-weight:normal;" id = ''>
-                                &nbsp;&nbsp;&nbsp; CLIENT AND PERSONNEL MANAGEMENT SYSTEM
-                            </div>
-                        </li>
-
-                        <li class="collection-item" style="font-weight:bold;">
-                            Site Logo:
-                            <div style="font-weight:normal;" id = ''>
-                                &nbsp;&nbsp;&nbsp; 
-                                <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="30%">
-                            </div>
-                        </li>
-                        
-                        <li class="collection-item" style="font-weight:bold;">
-                            Allowed Image Size:
-                            <div style="font-weight:normal;" id = ''>
-                                &nbsp;&nbsp;&nbsp; 1 MB
-                            </div>
-                        </li>
-                </div>
-                     
-                <div class="col s6">
-                      
-                        <li class="collection-item" style="font-weight:bold;">
-                            Primary Color:
-                            <div style="font-weight:normal;" id = ''>
-                                &nbsp;&nbsp;&nbsp; #0d47a1
-                            </div>
-                        </li>
-                        
-                        <li class="collection-item" style="font-weight:bold;">
-                            Secondary Color:
-                            <div style="font-weight:normal;" id = ''>
-                                &nbsp;&nbsp;&nbsp; #F0EFEA
-                            </div>
-                        </li>
-                        
-                        <li class="collection-item" style="font-weight:bold;">
-                            Font :
-                            <div style="font-weight:normal;" id = ''>
-                                &nbsp;&nbsp;&nbsp; Arial
-                            </div>
-                        </li>
-                        
-                </div>
-                     
-			 </div>
-            
-            <li class="collection-item" style="font-weight:bold;color:transparent">
-                <a  data-position="bottom" data-delay="50" data-tooltip="Edit Account" class="btn blue tooltipped " id = '' style="margin-right: 20px;" href="#modalSettings"><i class="material-icons">mode_edit</i></a>
-                
-                
-            </li>
-            
-		</ul>
-            
-        </div>
-    </div>
-
--->
-
+<div id="modalEditAccount" class="modal modal-fixed-footer ci" style="overflow:hidden; border-radius:10px; margin-top:5% !important">      
+	<div class="modal-header">
+		<div class="h">
+			<h3><center>Edit Admin Account</center></h3>  
+		</div>
+	</div>
+	<div class="modal-content">
+		<div class="row">
+			<div class="col s10 push-s1" style="margin-top:-30px;">      
+				<div class="row"></div>  
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+					<input id="strCurrent" type="password" class="validate" name = "" required="" aria-required="true">
+					<label for="">Organization/Site Name:</label> 
+				</div>
+			</div>
+			<div class="col s10 push-s1" style="margin-top:-30px;">      
+				<div class="row"></div>
+				<div class="row"></div>  
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+					<input id="strNew" type="password" class="validate" name = "" required="" aria-required="true">
+					<label for="">System Logo</label> 
+				</div>
+			</div>
+			<div class="col s10 push-s1" style="margin-top:-30px;">      
+				<div class="row"></div>
+				<div class="row"></div>
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+					<input id="strConfirm" type="password" class="validate" name = "" required="" aria-required="true">
+					<label for="">Primary Color</label> 
+				</div>
+			</div>
+            <div class="col s10 push-s1" style="margin-top:-30px;">      
+				<div class="row"></div>
+				<div class="row"></div>
+				<div class="input-field col s12">
+					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+					<input id="strConfirm" type="password" class="validate" name = "" required="" aria-required="true">
+					<label for="">Secondary Color</label> 
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer" style="background-color: #00293C;">
+		<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnChangePasswordSave">Save
+			<i class="material-icons right">send</i>
+		</button>
+	</div>	
 </div>
 
+@stop
+
+@section('script')
+<script>
+	$('#buttonEditAccount').click(function(){
+		
+
+		$('#modalEditAccount').openModal();
+	});
 
 
+</script>
 @stop

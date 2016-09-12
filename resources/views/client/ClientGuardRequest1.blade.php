@@ -7,42 +7,41 @@ Client Request of Guard
 
 <!-- Table Start -->
 	<div class="row" style="margin-top:-30px;">
-	  	<div class="row"> 
 		    <div class="row">
-				<div class="col s5 push-s3" style="margin-left:-2%">
+				<div class="col s8 l5 push-s1 push-l3" style="margin-left:-2%">
 			       <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Guard</h3>
 			    </div>
 		    </div>
-		</div>
-	    <div class="col s12 push-s1" style="margin-top:-4%">
-	        <div class="container white lighten-2 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
-				<div class="row">	
-					<div class="col s2 offset-s6">
-						<button style="margin-top: 30px;" id="btnAdd" class=" tooltipped z-depth-1 btn green" data-position="bottom" data-delay="50" data-tooltip="Guard Details">
-							<i class="material-icons">add</i>
-						</button>
-					</div>
+        <div class="row"></div>
+	    <div class="col s12 l12 push-l1" style="margin-top:-4%">
+	        <div class="container white lighten-2 z-depth-2 animated fadeIn" style="padding-right:2%;">
+				<div class="row">
+                        <div class="col s3 l2 offset-s1 offset-l6">
+                            <button style="margin-top: 30px;" id="btnAdd" class=" tooltipped z-depth-1 btn green" data-position="bottom" data-delay="50" data-tooltip="Guard Details">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </div>
 
-					<div class="col s2">
-						<button style="margin-top: 30px;" id="btnReplace" class="tooltipped z-depth-1 btn blue" data-position="bottom" data-delay="50" data-tooltip="Replace Guards">
-							<i class="material-icons">swap_horiz</i>
-						</button>
-					</div>
+                        <div class="col s3 l2 push-s1 pull-l1">
+                            <button style="margin-top: 30px;" id="btnReplace" class="tooltipped z-depth-1 btn blue" data-position="bottom" data-delay="50" data-tooltip="Replace Guards">
+                                <i class="material-icons">swap_horiz</i>
+                            </button>
+                        </div>
 
-					<div class="col s2">
-						<button style="margin-top: 30px;" id="btnRemove" class="tooltipped z-depth-1 btn red" data-position="bottom" data-delay="50" data-tooltip="Remove Guards">
-							<i class="material-icons">close</i>
-						</button>
-					</div>
-				</div>
-	            
+                        <div class="col s3 l2 push-s2 pull-l2">
+                            <button style="margin-top: 30px;" id="btnRemove" class="tooltipped z-depth-1 btn red" data-position="bottom" data-delay="50" data-tooltip="Remove Guards">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </div>
+                </div>
+				    
 	            <div class="row">
 	                <div class="col s12" style="margin-top:-20px;">
 	                    <table class="striped white" style="border-radius:10px;" id="dataTable">
 	                        <thead>
 	                            <tr>                                
 	                                <th style="width:50px;" class="blue darken-3 white-text"></th>
-																	<th style="width:50px;" class="blue darken-3 white-text"></th>
+								    <th style="width:50px;" class="blue darken-3 white-text"></th>
 	                                <th class="blue darken-3 white-text">License Number</th>
 	                                <th class="blue darken-3 white-text">Name</th>
 	                                <th class="blue darken-3 white-text">Gender</th>
@@ -60,7 +59,7 @@ Client Request of Guard
 
 
 <!--modal guard add request-->
-	<div id="modalguardAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:425px !important; border-radius:10px;">      
+	<div id="modalguardAdd" class="modal modal-fixed-footer ci" style="overflow:hidden;">      
 		<div class="modal-header">
 			<div class="h">
 				<h3><center>Request Additional Guards</center></h3>  
@@ -103,7 +102,7 @@ Client Request of Guard
 
 
 <!--modal guard details-->
-	<div id="modalguardDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:500px !important; border-radius:10px;">      
+	<div id="modalguardDetails" class="modal modal-fixed-footer ci" style="overflow:hidden;">      
 		<div class="modal-header">
 			<div class="h">
 				<h3><center>Guard Details</center></h3>  
@@ -185,7 +184,7 @@ Client Request of Guard
 
 
 <!--modal guard swap request-->
-	<div id="modalguardSwap" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:360px !important; border-radius:10px;">      
+	<div id="modalguardSwap" class="modal modal-fixed-footer ci" style="overflow:hidden;">      
 		<div class="modal-header">
 			<div class="h">
 				<h3><center>Guard Replacement</center></h3>  

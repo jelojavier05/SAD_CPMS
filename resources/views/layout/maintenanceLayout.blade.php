@@ -44,6 +44,13 @@
   
 <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script> -->
 
+    <!--charts-->
+    
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    
+    
 </head>
 
  
@@ -215,6 +222,22 @@
 -->
                             </div>
 					</li>		
+                            
+                            
+					<li class="bold" style="width:280px;">
+								<a class="collapsible-header waves-effect waves-blue swa" href="/adminreports"><i class="material-icons">assessment</i><strong>Reports</strong></a>
+                            <div class="collapsible-body grey lighten-2">
+<!--
+                                <ul>
+                                            
+                                  
+									
+									
+                                           
+                                </ul>
+-->
+                            </div>
+					</li>		
 					
 							
 					<li class="bold" style="width:280px;">
@@ -246,7 +269,7 @@
 							
 							
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="/settings"><i class="material-icons">settings_input_component</i><strong>Settings</strong></a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="/settings"><i class="material-icons">settings_input_component</i><strong>Utilities</strong></a>
                             <div class="collapsible-body grey lighten-2">
 <!--
                                 <ul>
