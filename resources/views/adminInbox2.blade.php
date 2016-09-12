@@ -624,27 +624,37 @@ Inbox
             <li class="collection-header" style="font-weight:bold;">
               <div class='row'>
                 <div class='col s1'><h5 style="font-weight:bold;">Client:</h5></div>
-                <div class="col s10 push-s1" id = ''><h5>LandBank Almanza</h5></div>
+                <div class="col s10 push-s1" id = 'strAddGunClientName'><h5></h5></div>
               </div>
             </li>
 			  
 			<li class="collection-item" style="font-weight:bold;">
               <div class='row'>
                 <div class='col s5'><h5 style="font-weight:bold;">Number of Guns:</h5></div>
-                <div class="col s2 pull-s1" id = ''><h5>10</h5></div>
+                <div class="col s2 pull-s1"><h5 id = 'intAddGunCount'></h5></div>
               </div>
             </li>
-            <li class="collection-item"><p id = ''>Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello</p></li>            
+            <li class="collection-item"><p id = 'strAddGunNote'></p></li>            
           </ul>
         </div>
       </div>
     </div>
     <!-- button -->
     <div class="modal-footer ci" style="background-color: #00293C;">
-      <div id = "" style="display: none;"> 
+
+      <div id = "divAddGunButton" style="display: none;"> 
         <button class="btn green waves-effect waves-light" id = "btnAddGunRequestProceed" style="margin-right: 30px;">Proceed</button>
+        <button class="btn red waves-effect waves-light" style="margin-right: 30px;" id = "btnAddGunRequestDecline">Decline</button>
       </div>
-    </div>
+
+      <div id = "divAddGunAccepted" style="display: none;">                 
+        <button class="btn green" style="margin-right: 30px; cursor:default;">Accepted</button>
+      </div>
+
+      <div id = "divAddGunRejected" style="display: none;">     
+        <button class="btn red" style="margin-right: 30px; cursor:default;">Declined</button>
+      </div> 
+        
   </div>  
 <!--modal client add gun request end-->
 @stop
@@ -710,6 +720,8 @@ $(document).ready(function(){
           swapGuardAccepted();
         }else if (type == 13){
           removeGuardRequest();
+        }else if (type == 14){
+          additionalGunRequest();
         }
     });//button read click
     
@@ -1601,14 +1613,86 @@ $(document).ready(function(){
         }
       });//ajax
     });
-
   // Remove Guard (Client Requested) End
 	
-// Add Gun
-	$('#btnAddGunRequestProceed').click(function(){
-		window.location.href = '{{ URL::to("/clientaddgunproceed") }}';	
-	});
-//Add Gun End
+
+  // Add Gun Start
+
+    function additionalGunRequest(){
+      $('#modalClientAddGun').openModal();
+      setInformation();
+    }
+
+    function setInformation(){
+      $.ajax({
+        type: "GET",
+        url: "/clientgunrequest/get/addGunRequest?inboxID=" + inboxID,
+        success: function(data){
+          console.log(data);
+          var boolStatus = data.boolStatus;
+
+
+          $('#strAddGunClientName').text(data.strClientName);
+          $('#intAddGunCount').text(data.intCountGun);
+          $('#strAddGunNote').text(data.strRequest);
+
+
+
+          if (boolStatus == 0){
+            showHideButton('divAddGunRejected', 'divAddGunButton', 'divAddGunAccepted');
+          }else if (boolStatus == 1){
+            showHideButton('divAddGunButton', 'divAddGunRejected', 'divAddGunAccepted');
+          }else if (boolStatus == 2){
+            showHideButton('divAddGunAccepted', 'divAddGunRejected', 'divAddGunButton');
+          }
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+      });//ajax
+    }
+
+  	$('#btnAddGunRequestProceed').click(function(){
+  		window.location.href = '{{ URL::to("/clientaddgunproceed") }}';	
+  	});
+
+    $('#btnAddGunRequestDecline').click(function(){
+      swal({  
+        title: "Are you sure?",   
+        text: "Decline the Request.",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, I decline the request",   
+        closeOnConfirm: false 
+      },
+      function(){
+        declineAddGunRequest();
+      });//sweet alert
+    });
+
+    function declineAddGunRequest(){
+      $.ajax({
+          type: "GET",
+          url: "/clientgunrequest/post/declineAddGunRequest?inboxID=" + inboxID,
+          success: function(data){
+            swal({
+              title: "Success!",
+              text: "You declined the request.",
+              type: "success"
+            },function(){
+              $('#modalClientAddGun').closeModal();
+            });
+
+          },
+          error: function(data){
+            var toastContent = $('<span>Error Database.</span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+          }
+        });//ajax
+    }
+  //Add Gun End
 });
 </script>        
         

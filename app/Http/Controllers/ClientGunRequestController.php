@@ -6,82 +6,124 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Input;
+use DB;
+use Carbon\Carbon;
 
-class ClientGunRequestController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+class ClientGunRequestController extends Controller{
+    public function index(){
         return view('/client/ClientGunRequest');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function getActiveGun(Request $request){
+
+        if ($request->session()->has('id')){
+            $clientID = $request->session()->get('id');
+            $clientGun = DB::table('tblcontract')
+                ->join('tblclientgun', 'tblclientgun.intContractID', '=', 'tblcontract.intContractID')
+                ->join('tblgun','tblgun.intGunID', '=', 'tblclientgun.intGunID')
+                ->join('tblgunlicense', 'tblgunlicense.intGunID', '=', 'tblgun.intGunID')
+                ->select('tblgun.strSerialNumber', 'tblgun.strGunName', 'tblgunlicense.strLicenseNumber', 'tblclientgun.intRound', 'tblgun.intGunID')
+                ->where('tblclientgun.boolStatus', 1)
+                ->where('tblcontract.intClientID', $clientID)
+                ->where('tblcontract.boolStatus', 1)
+                ->get();
+
+            return response()->json($clientGun);
+        }else{
+            return response()->json(false);
+        }// if session is set
+    }//function get active gun
+
+    public function insertAddGunRequest(Request $request){
+        try{
+            DB::beginTransaction();
+            // Set Variables Start
+                $clientID = $request->session()->get('id');
+                $clientAccountID = $request->session()->get('accountID');
+                $countGun = $request->intCountGun;
+                $strRequest = $request->strRequest;
+                $result = DB::table('tblaccount')
+                    ->select('intAccountID')
+                    ->where('intAccountType', 3)
+                    ->first();
+                $adminAccountID = $result->intAccountID;
+            // Set Variables End
+                
+            // Process Start
+                $inboxID = DB::table('tblinbox')->insertGetId([
+                    'intAccountIDSender' => $clientAccountID,
+                    'intAccountIDReceiver' => $adminAccountID,
+                    'strSubject' => 'Additional Gun Request', 
+                    'tinyintType' => 14
+                ]);
+
+                DB::table('tbladdgunrequest')->insert([
+                    'intClientID' => $clientID,
+                    'intInboxID' => $inboxID,
+                    'intCountGun' => $countGun, 
+                    'strRequest' => $strRequest
+                ]);
+            // Process End
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+    }//function insert add gun request
+
+    public function getAddGunRequest(Request $request){
+        $inboxID = Input::get('inboxID');
+
+        $requestInformation = DB::table('tbladdgunrequest')
+            ->join('tblclient', 'tblclient.intClientID', '=' ,'tbladdgunrequest.intClientID')
+            ->select('tbladdgunrequest.*', 'tblclient.strClientName')
+            ->where('intInboxID', $inboxID)
+            ->first();
+        
+        return response()->json($requestInformation);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function declineAddGunRequest(Request $request){
+        
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        try{
+            DB::beginTransaction();
+            // Set Variables start
+                $inboxID = Input::get('inboxID');
+                $adminAccountID = $request->session()->get('accountID');
+                $now = Carbon::now();
+                $result = DB::table('tbladdgunrequest')
+                    ->join('tblclient', 'tblclient.intClientID', ' =', 'tbladdgunrequest.intClientID')
+                    ->select('tblclient.intAccountID')
+                    ->where('tbladdgunrequest.intInboxID', $inboxID)
+                    ->first();
+                $clientAccountID = $result->intAccountID;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+                $message = 'Your Additional Gun Request has been declined by the admin.';
+                $subject = 'Additional Gun Request Update';
+            // Set Variables end
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+            // Process Start
+                DB::table('tblinbox')->insert([
+                    'intAccountIDSender' => $adminAccountID,
+                    'intAccountIDReceiver' => $clientAccountID,
+                    'strMessage' => $message, 
+                    'strSubject' => $subject,
+                    'tinyintType' => 0
+                ]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+                DB::table('tbladdgunrequest')
+                    ->where('intInboxID' ,$inboxID)
+                    ->update([
+                        'boolStatus' => 0, 
+                        'updated_at' => $now
+                    ]);
+            // Process End
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
     }
 }
