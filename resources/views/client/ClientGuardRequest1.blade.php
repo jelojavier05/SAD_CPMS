@@ -16,19 +16,19 @@ Client Request of Guard
 	    <div class="col s12 l12 push-l1" style="margin-top:-4%">
 	        <div class="container white lighten-2 z-depth-2 animated fadeIn" style="padding-right:2%;">
 				<div class="row">
-                        <div class="col s3 l2 offset-s1 offset-l6">
+                        <div class="col s3 offset-s3">
                             <button style="margin-top: 30px;" id="btnAdd" class=" tooltipped z-depth-1 btn green" data-position="bottom" data-delay="50" data-tooltip="Guard Details">
                                 <i class="material-icons">add</i>
                             </button>
                         </div>
 
-                        <div class="col s3 l2 push-s1 pull-l1">
+                        <div class="col s3 pull-s1">
                             <button style="margin-top: 30px;" id="btnReplace" class="tooltipped z-depth-1 btn blue" data-position="bottom" data-delay="50" data-tooltip="Replace Guards">
                                 <i class="material-icons">swap_horiz</i>
                             </button>
                         </div>
 
-                        <div class="col s3 l2 push-s2 pull-l2">
+                        <div class="col s3 pull-s2">
                             <button style="margin-top: 30px;" id="btnRemove" class="tooltipped z-depth-1 btn red" data-position="bottom" data-delay="50" data-tooltip="Remove Guards">
                                 <i class="material-icons">close</i>
                             </button>

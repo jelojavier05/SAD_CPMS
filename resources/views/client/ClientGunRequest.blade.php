@@ -13,19 +13,31 @@ Client Request of Gun
     <div class="row"></div>
     <div class="col s12 l12 push-l1" style="margin-top:-4%">
         <div class="container white lighten-2 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
-                <div class="col s6 l4 offset-l9">
-                        <button style="margin-top: 30px;" id="btnAdd" class=" z-depth-2 btn-large green modal-trigger" href="#modalgunAdd">
-                            <i class="material-icons left">add</i>ADD
-                        </button>
+                <div class="row">
+                        <div class="col s3 offset-s3">
+                            <button style="margin-top: 30px;" id="" class=" tooltipped z-depth-1 btn green" data-position="bottom" data-delay="50" data-tooltip="Gun Details">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </div>
+
+                        <div class="col s3 pull-s1">
+                            <button style="margin-top: 30px;" id="" class="tooltipped z-depth-1 btn blue" data-position="bottom" data-delay="50" data-tooltip="Replace Guns">
+                                <i class="material-icons">swap_horiz</i>
+                            </button>
+                        </div>
+
+                        <div class="col s3 pull-s2">
+                            <button style="margin-top: 30px;" id="" class="tooltipped z-depth-1 btn red" data-position="bottom" data-delay="50" data-tooltip="Remove Guns">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </div>
                 </div>
             <div class="row"></div>
             <div class="row">
                 <div class="col s12 l12">
                     <table class="striped white" style="border-radius:10px;" id="dataTable">
                         <thead>
-                            <tr>                                
-                                <th class="blue darken-3 white-text"></th>
-								<th class="blue darken-3 white-text"></th>
+                            <tr>                                                                
                                 <th class="blue darken-3 white-text"></th>
                                 <th class="blue darken-3 white-text">License Number</th>
                                 <th class="blue darken-3 white-text">Serial Number</th>
@@ -37,13 +49,7 @@ Client Request of Gun
                         <tbody>
 								<td><button data-position="bottom" data-delay="50" data-tooltip="Gun Details" class="tooltipped buttonMore btn col s12" id=""><i class="material-icons">security</i></button>
 								</td>
-								
-								<td><button data-position="bottom" data-delay="50" data-tooltip="Replace Gun" class="tooltipped buttonSwap btn blue col s12" id=""><i class="material-icons">swap_horiz</i></button>
-								</td>
-								
-								<td><button data-position="bottom" data-delay="50" data-tooltip="Return Gun" class="tooltipped buttonReturn btn red col s12" id=""><i class="material-icons">assignment_return</i></button>
-								</td>
-							
+																							
 								<td>123-321-123</td>
 								<td>456-654-456</td>
                                 <td>Fire Seven</td>
@@ -237,9 +243,7 @@ Client Request of Gun
     });
 	
 	$("#dataTable").DataTable({
-         "columns": [
-		{"searchable": false},
-		{"searchable": false},
+         "columns": [		
 		{"searchable": false},
         null,
         null,
