@@ -16,8 +16,8 @@ Receiving Delivery
 <div class="row">
   <div class="col l12">
     <div class="col l10 offset-l2" style="max-height:690px">
-      <table class="centered" id="tableDelivery">
-        <thead>
+		  <table class="centered" id="tableDelivery">			  
+			<thead>
           <tr>
             <th data-field="status">Delivery ID</th>                              
             <th data-field="status">Delivery Date</th>
@@ -81,6 +81,83 @@ Receiving Delivery
   </div>
 </div>
 <!--Modal Delivery Detail End-->
+
+<!--modal delivery swap-->
+<div id="modalSwapDeliveryDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:1000px;max-height:100%; height:650px; margin-top:-60px;">
+  <div class="modal-header">
+    <div class="h">
+      <h3><center>Delivery</center></h3>  
+    </div>
+  </div>
+  <div class="modal-content">
+    <div class="row">
+      <div class="col s12">
+        <ul class="collection with-header" id="collectionActive">
+          <div>
+            <li class="collection-item" style="font-weight:bold;">
+              <div style="font-weight:normal;">
+                <div class='row'>
+                  <div class="col s6">
+                    <table class="" style="font-family:Myriad Pro" id = 'tableGunsReturned'>
+						<h5 class="red-text">Guns Returned</h5>
+                      <thead>
+                        <tr>                        
+                        <th class="grey lighten-1">Serial Number</th>
+                        <th class="grey lighten-1">Name</th>
+                        <th class="grey lighten-1">Type of Gun</th>
+                        <th class="grey lighten-1">Rounds</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+						<tr>
+							<td>123-123</td>
+							<td>Anaconda</td>
+							<td>Pistol</td>
+							<td>45</td>
+						</tr>
+                      </tbody>
+                    </table>
+                  </div>
+				  
+				  <div class="col s6">
+					<table class="" style="font-family:Myriad Pro" id = 'tableGunsReplacement'>
+						<h5 class="green-text">Guns Replacement</h5>
+                      <thead>
+                        <tr>
+                        <th class="grey lighten-1"></th>
+                        <th class="grey lighten-1">Serial Number</th>
+                        <th class="grey lighten-1">Name</th>
+                        <th class="grey lighten-1">Type of Gun</th>
+                        <th class="grey lighten-1">Rounds</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+						<tr>
+							<td><input type="checkbox" id="test1" value=""><label for="test1"></label></td>
+							<td>123-123</td>
+							<td>Glock</td>
+							<td>Pistol</td>
+							<td>60</td>
+						</tr>
+                      </tbody>
+                    </table>
+				  </div>
+                </div>
+              </div>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <div class="row"></div>
+  </div>
+  <div class="modal-footer ci" style="background-color: #00293C;">
+    <div id = "buttons" >	
+      <button class="btn green" name="" style="margin-right: 30px;" id = "">Proceed</button>
+    </div>
+  </div>
+</div>
+<!--modal delivery swap end-->
 
 <!-- sg login Start-->
 <div id="modalLogin" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
@@ -402,6 +479,31 @@ $('#tableItem').DataTable({
 			null
             ] ,  
 			"pageLength":5,
+			"lengthMenu": [5,10,15,20],
+			"bFilter" : false
+		});
+	
+$('#tableGunsReturned').DataTable({
+             "columns": [         								
+			null,
+			null,
+			null,
+			null
+            ] ,  
+			"pageLength":3,
+			"lengthMenu": [5,10,15,20],
+			"bFilter" : false
+		});
+	
+$('#tableGunsReplacement').DataTable({
+             "columns": [         					
+			{"orderable": false},
+			null,
+			null,
+			null,
+			null
+            ] ,  
+			"pageLength":3,
 			"lengthMenu": [5,10,15,20],
 			"bFilter" : false
 		});
