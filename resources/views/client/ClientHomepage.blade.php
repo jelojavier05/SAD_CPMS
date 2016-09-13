@@ -42,6 +42,43 @@ Client Homepage
             </div>
           </div> 
 	  </div>
+		
+	<div class="col s12">
+		<table class="striped white" style="border:1px solid black;" id="dataTablePresentGuards">
+			<h4 style="font-weight:bold;">Present Guards</h4>
+			<thead>
+				<th>Name</th>
+				<th>Gender</th>
+			</thead>
+			
+			<tbody>
+				<tr>
+					<td>Tim Duncan</td>
+					<td>Male</td>
+				</tr>
+				<tr>
+					<td>Tim Duncan</td>
+					<td>Male</td>
+				</tr>
+				<tr>
+					<td>Tim Duncan</td>
+					<td>Male</td>
+				</tr>
+				<tr>
+					<td>Tim Duncan</td>
+					<td>Male</td>
+				</tr>
+				<tr>
+					<td>Tim Duncan</td>
+					<td>Male</td>
+				</tr>
+				<tr>
+					<td>Tim Duncan</td>
+					<td>Male</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>	
 
 	</div>
 </div>
@@ -115,7 +152,7 @@ Client Homepage
         </div>
                     
                     
-                <div class="col s12 l6 push-l3">	
+                <div class="col s12 l4 push-l3">	
 		<ul class="collection with-header gunscroll" id="guncontainer" style="border:none;">
 			<li class="collection-header" style="opacity:0;">
                 <h5 style="font-weight:bold;">Guns</h5>
@@ -238,6 +275,18 @@ $('.gunbtn').click(function() {
         scrollTop: $(".gunscroll").offset().top},
         'slow');
 });
+</script>
+
+<script>
+	$('#dataTablePresentGuards').DataTable({
+             "columns": [         								
+			null,
+			null
+            ] ,  
+			"pageLength":5,
+			"bLengthChange":false,
+			"bFilter" : false
+		});
 </script>
 
 @stop
