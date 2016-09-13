@@ -5,6 +5,8 @@ Route::get('/test', 'TestController@index');
 Route::get('/insertmaintenance', 'MaintenanceController@insert');
 
 Route::get('/clientaddgunproceed', 'ClientAddGunProceedController@index');
+Route::get('/clientaddgunproceed/setInboxSession', 'ClientAddGunProceedController@setInboxSession');
+Route::post('/clientaddgunproceed/post/insertgunorder', 'ClientAddGunProceedController@insertGunOrder');
 
 Route::get('/querynatureofbusiness', 'QueryNatureOfBusinessController@index');
 Route::get('/querytypeofcontract', 'QueryTypeOfContractController@index');

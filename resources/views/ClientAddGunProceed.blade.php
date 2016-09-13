@@ -17,7 +17,7 @@ Additional Gun Request
 					<h4 class="blue darken-1 white-text">Guns</h4>
 						<div class="row">
 							<div class="col s12">
-								<table class="striped grey lighten-1" style="border-radius:10px;" id="dataTableAvailableGuns">
+								<table class="striped grey lighten-1" style="border-radius:10px;" id="tableAvailableGun">
 
 									<thead>
 										<tr>
@@ -29,12 +29,6 @@ Additional Gun Request
 									</thead>
 
 									<tbody>
-										<tr>
-											<td><button id="" class="btn green buttonAdd"><i class="material-icons">add</i></button></td>
-											<td>123-321</td>
-											<td>AWP</td>
-											<td>Rifle</td>
-										</tr>
 									</tbody>
 								</table>
 							</div>
@@ -47,7 +41,7 @@ Additional Gun Request
 						<h4 class="blue darken-1 white-text">Selected</h4>
 						<div class="row">
 							<div class="col s12">
-								<table class="striped grey lighten-1" style="border-radius:10px;" id="dataTableSelectedGuns">
+								<table class="striped grey lighten-1" style="border-radius:10px;" id="tableSelectedGun">
 
 									<thead>
 										<tr>
@@ -55,18 +49,11 @@ Additional Gun Request
 											<th>License No</th>
 											<th>Name</th>
 											<th>Type of Gun</th>
-                                            <th>Rounds</th>
+											<th>Rounds</th>
 										</tr>
 									</thead>
 
 									<tbody>                        
-                                        <tr>
-											<td><button id="" class="btn red"><i class="material-icons">close</i></button></td>
-											<td>456-654</td>
-											<td>P90</td>
-											<td>SMG</td>
-											<td>150</td>
-										</tr>
 									</tbody>
 								</table>
 							</div>
@@ -90,7 +77,7 @@ Additional Gun Request
         <div class="row">
             <div class="col s10 push-s1">
                 <div class="input-field">
-                    <input id="" type="number" class="validate" required="" aria-required="true">
+                    <input id="intRounds" type="number" class="validate" required="" aria-required="true">
                     <label for="">Rounds</label> 
                 </div>
             </div>
@@ -98,7 +85,7 @@ Additional Gun Request
     </div>
     
     <div class="modal-footer" style="background-color:#01579b !important;">
-        <button class="btn waves-effect waves-light green" name="action" style="margin-right:47px;" id = "">Add
+        <button class="btn waves-effect waves-light green" name="action" style="margin-right:47px;" id = "btnAddRounds">Add
         </button>
     </div>
 </div>
@@ -130,47 +117,6 @@ Additional Gun Request
 							</thead>
 							
 							<tbody>
-								<tr>
-									<td>789-987</td>
-									<td>AK-47</td>
-									<td>Rifle</td>
-									<th>90</th>
-								</tr>
-								
-								<tr>
-									<td>789-987</td>
-									<td>AK-47</td>
-									<td>Rifle</td>
-									<th>90</th>
-								</tr>
-								
-								<tr>
-									<td>789-987</td>
-									<td>AK-47</td>
-									<td>Rifle</td>
-									<th>90</th>
-								</tr>
-																
-								<tr>
-									<td>123-321</td>
-									<td>AWP</td>
-									<td>Rifle</td>
-									<th>45</th>
-								</tr>
-								
-								<tr>
-									<td>123-321</td>
-									<td>AWP</td>
-									<td>Rifle</td>
-									<th>45</th>
-								</tr>
-								
-								<tr>
-									<td>123-321</td>
-									<td>AWP</td>
-									<td>Rifle</td>
-									<th>45</th>
-								</tr>
 							</tbody>
 						</table>
 					</li>
@@ -180,7 +126,7 @@ Additional Gun Request
     </div>
     
     <div class="modal-footer ci" style="background-color: #00293C;">
-        <button class="btn waves-effect waves-light green" name="action" style="margin-right:47px;" id = "">Save
+        <button class="btn waves-effect waves-light green" name="action" style="margin-right:47px;" id = "btnGunSave">Save
         </button>
     </div>
 </div>
@@ -191,56 +137,211 @@ Additional Gun Request
 @section('script')
 
 <script>
+	$(document).ready(function(){
+		var tableGun = [];
+		var tableGunID = [];
+    var tableAdded = [];
+    var gunRounds = [];
 
-$('#btnBack').click(function(){
- window.location.href = '{{ URL::to("/adminInbox") }}';
-});	
-	
-$('#btnOK').click(function(){
-	$('#modalGunSummary').openModal();
-})
+		$.ajax({
+      type: "GET",
+      url: "{{action('GunViewController@getGuns')}}",
+      success: function(data){
+        var table = $('#tableAvailableGun').DataTable();
+        table.clear().draw();
+        $.each(data, function(index, value) {
+          if (value.boolFlag == 1){
+            tableGun.push(value);
+            table.row.add([
+                '<button id="' + value.intGunID+ '" class="btn green buttonAdd"><i class="material-icons">add</i></button>',
+                '<h id = "licenseNumber' +value.intGunID + '">' + value.strLicenseNumber +'</h>',
+                '<h id = "name' +value.intGunID + '">' + value.strGunName +'</h>',
+                '<h id = "type' +value.intGunID + '">' + value.strTypeOfGun +'</h>'
+            ]).draw();
+              
+          }
+        });//foreach   
+      },
+      error: function(data){
+        var toastContent = $('<span>Error Database.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+      }
+  	});//get guard waiting
 
-$('.buttonAdd').click(function(){
-	$('#modalRounds').openModal();
-})
+  	$('#tableAvailableGun').on('click', '.buttonAdd', function(){ 
+      $('#modalRounds').openModal();
+      $('#btnAddRounds').val(this.id);
+    });
 
+    $('#tableSelectedGun').on('click', '.buttonRemove', function(){
+      var id = this.id;
+      $.each(tableAdded, function(index, value) {
+        if (value.intGunID == id){
+          var roundCount = $('#intRounds').val();
+          tableAdded.splice(index,1);
+          tableGun.push(value);
+          gunRounds.splice(index,1);
+          tableGunID.splice(index,1);
+          return false;
+        }
+      });//foreach   
+      refreshTable();
+    });
 
-	
-$("#dataTableAvailableGuns").DataTable({
-	"columns": [
-	{ "orderable": false },
-	null,
-    null,
-	null
-    ] ,  
-	"pageLength":5,
-	"lengthMenu": [5,10,15,20]
-    }); 
+    $('#btnAddRounds').click(function(){
+	    var roundCount = $('#intRounds').val();
+	    if (roundCount > 0 && roundCount < 100){
+	        var id = $('#btnAddRounds').val();
+	        
+	        $.each(tableGun, function(index, value) {
+	            if (value.intGunID == id){
+	                var roundCount = $('#intRounds').val();
+	                tableGun.splice(index,1);
+	                tableAdded.push(value);
+	                tableGunID.push(value.intGunID);
+	                gunRounds.push(roundCount);
+	                return false;
+	            }
+	        });//foreach   
+	        refreshTable(); 
+	        $('#modalRounds').closeModal();
+	        $('#intRounds').val(0);
+	    }else{
+	        var toastContent = $('<span>Please Check Your Input. </span>');
+	        Materialize.toast(toastContent, 1500,'red', 'edit');
+	    }      
+    });
+
+    $('#btnOK').click(function(){
+    	if (tableAdded.length > 0){
+    		var table = $('#tableGunSummary').DataTable();
+    		table.clear().draw();
+	    	$.each(tableAdded, function(index, value) {
+	        table.row.add([
+	          '<h id = "licenseNumber' +value.intGunID + '">' + value.strLicenseNumber +'</h>',
+	          '<h id = "name' +value.intGunID + '">' + value.strGunName +'</h>',
+	          '<h id = "type' +value.intGunID + '">' + value.strTypeOfGun +'</h>',
+	          '<h id = "rounds' +value.intGunID + '">' + gunRounds[index] +'</h>'
+	        ]).draw();
+	      });//foreach  
+				$('#modalGunSummary').openModal();
+    	}else{
+    		var toastContent = $('<span>Select Gun.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+    	}
+		});
+
+		$('#btnGunSave').click(function(){
+			$.ajax({
+        type: "POST",
+        url: "{{action('ClientAddGunProceedController@insertGunOrder')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        data: {
+        	arrGunAdded: tableGunID,
+        	arrGunRound: gunRounds
+        },
+        success: function(data){
+        	swal({
+						title: "Success! You accepted the gun request.",
+						text: "Go to Delivery page.",
+						type: "success"
+					},
+					function(){
+						window.location.href = '{{ URL::to("/adminInbox") }}';
+					});
+
+        },
+        error: function(data){
+					var toastContent = $('<span>Error Database.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+
+        }
+      });//ajax
+		});
+
+    function refreshTable(){
+      var table = $('#tableAvailableGun').DataTable();
+      var table2 = $('#tableSelectedGun').DataTable();
+      table.clear().draw();
+      table2.clear().draw();
+      
+      $.each(tableGun, function(index, value) {
+          table.row.add([
+              '<button id="' + value.intGunID+ '" class="btn green buttonAdd"><i class="material-icons">add</i></button>',
+              '<h id = "licenseNumber' +value.intGunID + '">' + value.strLicenseNumber +'</h>',
+              '<h id = "name' +value.intGunID + '">' + value.strGunName +'</h>',
+              '<h id = "type' +value.intGunID + '">' + value.strTypeOfGun +'</h>'
+          ]).draw();
+      });//foreach  
+      
+      $.each(tableAdded, function(index, value) {
+          table2.row.add([
+              '<button id="' + value.intGunID+ '" class="btn red buttonRemove"><i class="material-icons">close</i></button>',
+              '<h id = "licenseNumber' +value.intGunID + '">' + value.strLicenseNumber +'</h>',
+              '<h id = "name' +value.intGunID + '">' + value.strGunName +'</h>',
+              '<h id = "type' +value.intGunID + '">' + value.strTypeOfGun +'</h>',
+              '<h id = "rounds' +value.intGunID + '">' + gunRounds[index] +'</h>'
+          ]).draw();
+      });//foreach  
+    }
+	});
+
+</script>
+
+<script>
+
+	$('#btnBack').click(function(){
+	 window.location.href = '{{ URL::to("/adminInbox") }}';
+	});	
 		
-$("#dataTableSelectedGuns").DataTable({
-    "columns": [
-    { "orderable": false },
-    null,
-	null,
-	null,
-	null
-	] ,  
-	"pageLength":5,
-	"lengthMenu": [5,10,15,20]
- }); 
 	
-$("#tableGunSummary").DataTable({
-    "columns": [    
-    null,
-	null,
-	null,
-	null
-	] ,  
-	"pageLength":3,	
-	bFilter:false,
-	bLengthChange:false
- }); 
-	
+
+	$('.buttonAdd').click(function(){
+		$('#modalRounds').openModal();
+	})
+
+
+		
+	$("#tableAvailableGun").DataTable({
+		"columns": [
+		{ "orderable": false },
+		null,
+	    null,
+		null
+	    ] ,  
+		"pageLength":5,
+		"lengthMenu": [5,10,15,20]
+	    }); 
+			
+	$("#tableSelectedGun").DataTable({
+	    "columns": [
+	    { "orderable": false },
+	    null,
+		null,
+		null,
+		null
+		] ,  
+		"pageLength":5,
+		"lengthMenu": [5,10,15,20]
+	 }); 
+		
+	$("#tableGunSummary").DataTable({
+	    "columns": [    
+	    null,
+		null,
+		null,
+		null
+		] ,  
+		"pageLength":3,	
+		bFilter:false,
+		bLengthChange:false
+	 }); 
 </script>
 
 @stop

@@ -1617,7 +1617,6 @@ $(document).ready(function(){
 	
 
   // Add Gun Start
-
     function additionalGunRequest(){
       $('#modalClientAddGun').openModal();
       setInformation();
@@ -1631,12 +1630,9 @@ $(document).ready(function(){
           console.log(data);
           var boolStatus = data.boolStatus;
 
-
           $('#strAddGunClientName').text(data.strClientName);
           $('#intAddGunCount').text(data.intCountGun);
           $('#strAddGunNote').text(data.strRequest);
-
-
 
           if (boolStatus == 0){
             showHideButton('divAddGunRejected', 'divAddGunButton', 'divAddGunAccepted');
@@ -1654,7 +1650,17 @@ $(document).ready(function(){
     }
 
   	$('#btnAddGunRequestProceed').click(function(){
-  		window.location.href = '{{ URL::to("/clientaddgunproceed") }}';	
+      $.ajax({
+        type: "GET",
+        url: "/clientaddgunproceed/setInboxSession?inboxID=" + inboxID,
+        success: function(data){
+          window.location.href = '{{ URL::to("/clientaddgunproceed") }}'; 
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+      });//ajax
   	});
 
     $('#btnAddGunRequestDecline').click(function(){

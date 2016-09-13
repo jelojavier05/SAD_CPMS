@@ -364,7 +364,15 @@ $(document).ready(function(){
           deliveryID: intDeliveryID
       },
       success: function(data){
-        confirm('hell yeah');
+        swal({
+            title: "Success!",
+            text: "Guard has been registered!",
+            type: "success"
+          },
+          function(){
+            window.location.href = '{{ URL::to("/cgrreceivingdelivery") }}';
+          });
+
       },
     });//ajax
   }
