@@ -573,23 +573,68 @@ Inbox
                     </div>            
                 </div>
             </li>
+			
             <li class="collection-item">
               <div class="row">
                 <div class="col s12">
                   <table class="striped white" style="border-radius:10px; width:100%;" id="dataTableRemoveGuards">
-                    <h5 class="red-text" style="font-weight:bold;">Guards to be Removed</h5>
+                    <h5 class="red-text">Guards to be Removed</h5>
                     <thead>                                                                                             
-                      <th class="grey lighten-1">First Name</th>
-                      <th class="grey lighten-1">Last Name</th>
+                      <th class="grey lighten-1">Name</th>                      
                       <th class="grey lighten-1">Gender</th>                                              
                     </thead>
                     <tbody>
+						<tr>
+							<td>Derrick Rose</td>
+							<td>Male</td>
+						</tr>
                     </tbody>
                   </table>
                 </div>
               </div>
             </li>
+			  
+			<li class="collection-item">
+				<div class="row">
+					<div class="col s9">
+						<h5 style="font-weight:bold;">Guards Remaining After Removal:</h5>
+					</div>
+					
+					<div class="col s1 pull-s1">
+						<h5 style="font-weight:bold;">10</h5>
+					</div>
+				</div>
+			</li>
+			
+			<li class="collection-item">
+				<div class="row">
+					<div class="col s12">
+						<table class="" style=" border-radius:10px; width:100%;" id = 'tableGunsRemoval'>
+								<h5 class="red-text">Guns to be Removed</h5>
+							  <thead>
+								<tr>
+								<th class="grey lighten-1"></th>
+								<th class="grey lighten-1">Serial Number</th>
+								<th class="grey lighten-1">Name</th>
+								<th class="grey lighten-1">Type of Gun</th>
+								<th class="grey lighten-1">Rounds</th>
+							  </tr>
+							  </thead>
+							  <tbody>
+								<tr>
+									<td><input type="checkbox" id="test1" value=""><label for="test1"></label></td>
+									<td>456-654</td>
+									<td>P225</td>
+									<td>Pistol</td>
+									<td>80</td>
+								</tr>
+							  </tbody>
+							</table> 
+					</div>
+				</div>
+			</li>
           </ul>
+			<div class="row"></div>
         </div>
       </div>
     </div>
@@ -1810,14 +1855,26 @@ $(document).ready(function(){
   	});
     
     $('#dataTableRemoveGuards').DataTable({
-         "columns": [        
-        null,
+         "columns": [       
         null,
         null
         ] ,  
         "pageLength":3,
         "lengthMenu": [5,10,15,20]
      });
+	
+	$('#tableGunsRemoval').DataTable({
+             "columns": [         					
+			{"orderable": false},
+			null,
+			null,
+			null,
+			null
+            ] ,  
+			"pageLength":3,
+			"lengthMenu": [5,10,15,20],
+			"bFilter" : false
+		});
 </script>
     
 @stop
