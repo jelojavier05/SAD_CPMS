@@ -129,17 +129,58 @@ Admin
                 
                 
                     </div>
+				
+				<div class="col l2 push-l3">
+                         <div class="card animated zoomIn indigo darken-2" style="">
+                                    <div class="card-content white-text">
+                                      <span class="card-title" style="font-size:40px; font-weight:bold;">20</span>
+                                      <p style="margin-left:10px;">Guard <br> Licenses</p>
+                                      <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">security</i>
+                                    </div>
+                                    <div class="card-action indigo darken-2" style="">
+                                      <center>
+                                          <a href="#!" class="white-text">See All</a>
+                                          <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
+                                      </center>
+                                    </div>
+                    </div>
                 
+                
+                
+                    </div>
+				
+				
+				<div class="col l2 push-l3">
+                         <div class="card animated zoomIn teal darken-1" style="">
+                                    <div class="card-content white-text">
+                                      <span class="card-title" style="font-size:40px; font-weight:bold;">30</span>
+                                      <p style="margin-left:10px;">Contract <br> Extensions</p>
+                                      <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">extension</i>
+                                    </div>
+                                    <div class="card-action teal darken-1" style="">
+                                      <center>
+                                          <a href="#!" class="white-text">See All</a>
+                                          <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
+                                      </center>
+                                    </div>
+                    </div>
+                
+                
+                
+                    </div>
+                
+<!--
                 <div class="col l6 push-l3">
                 
                      <div id="container" style="min-width: 310px; height: 220px; margin: 0 auto;"></div>
                 
                 </div>
+-->
                    
-              </div>
-          
-          
+              </div>			  			  			  			                      
           </div>
+		  
+		  
          
           
 
