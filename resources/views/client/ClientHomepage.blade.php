@@ -232,6 +232,31 @@ Client Homepage
 
 
 <!--ITEMSgunend-->
+
+
+<!--modal contract extension notice-->
+<div id="modalExtendContractNoti" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:400px; margin-top:30px;">
+    <div class="modal-header">
+      <div class="h">
+        <h3><center>Notice</center></h3>  
+      </div>
+    </div>
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s12">
+          <ul class="collection with-header" id="collectionActive">
+            <li class="collection-header" style="font-weight:bold;">Subject:<div class="red-text" style="font-size:18px;" id = "">&nbsp;End Of Contract</div></li>
+            <li class="collection-item"><p id = ''>Your current contract is about to <span class="red-text">END</span>. Please head to our main office or contact us as soon as possible for a <span class="green-text">CONTRACT EXTENSION</span></p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer ci modal-close" style="background-color: #00293C;">
+      <button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK
+      </button>
+    </div>
+  </div>
+<!--modal contract extension notice end-->
 @stop
 
 @section('script')
