@@ -58,6 +58,8 @@ return array(
     'CreateReceiveheaderTable' => $baseDir . '/database/migrations/2016_08_20_190826_create_receiveheader_table.php',
     'CreateRemoveguardrequestdetailTable' => $baseDir . '/database/migrations/2016_09_12_051350_create_removeguardrequestdetail_table.php',
     'CreateRemoveguardrequestheaderTable' => $baseDir . '/database/migrations/2016_09_12_051333_create_removeguardrequestheader_table.php',
+    'CreateRemovegundetailTable' => $baseDir . '/database/migrations/2016_09_16_011250_create_removegundetail_table.php',
+    'CreateRemovegunheaderTable' => $baseDir . '/database/migrations/2016_09_16_010405_create_removegunheader_table.php',
     'CreateReportincidentTable' => $baseDir . '/database/migrations/2016_08_22_034731_create_reportincident_table.php',
     'CreateRequirementsTable' => $baseDir . '/database/migrations/2016_06_08_164140_create_requirements_table.php',
     'CreateSwapguardrequestdetailTable' => $baseDir . '/database/migrations/2016_09_08_212739_create_swapguardrequestdetail_table.php',
