@@ -17,15 +17,15 @@
           <link href="{!! URL::asset('../css/animate.css') !!}" type="text/css" rel="stylesheet"/>
           <link href="{!! URL::asset('../sweetalert.css') !!}" type="text/css" rel="stylesheet"/>
           <link rel="stylesheet" type="text/css" href="{!! URL::asset('../datatable.css') !!}">
-			<link rel="stylesheet" type="text/css" href="{!! URL::asset('../pnotify.custom.min.css') !!}">
+<!--			<link rel="stylesheet" type="text/css" href="{!! URL::asset('../pnotify.custom.min.css') !!}">-->
         <!--  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/dataTables.material.min.css') !!}">-->
           <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/jquery.dataTables.min.css') !!}">
         <!--  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">-->
             
 <!-- ===============================JSjquery======================================= -->
 
-<!--          <script src="{!! URL::asset('../javascript/jquery-2.2.1.js') !!}"></script>-->
-		<script src="{!! URL::asset('../javascript/jquery-2.1.4.js') !!}"></script>
+          <script src="{!! URL::asset('../javascript/jquery-2.2.1.js') !!}"></script>
+<!--		<script src="{!! URL::asset('../javascript/jquery-2.1.4.js') !!}"></script>-->
      <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>-->
 
           <script src="{!! URL::asset('../js/materialize.js') !!}"></script>
@@ -37,8 +37,10 @@
           <script src="//js.pusher.com/3.0/pusher.min.js"></script>
           <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
        <script src="{!! URL::asset('../datatable.js') !!}"></script>
-		<script src="{!! URL::asset('../pnotify.custom.js') !!}"></script>
+<!--
+		<script src="{!! URL::asset('../pnotify.custom.js') !!}"></script>		
 		<script src="{!! URL::asset('../pnotify.custom.min.js') !!}"></script>
+-->
      <!--  <script src="{!! URL::asset('../dataTables.material.min.js') !!}"></script>-->
        <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>
      <!--  <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>-->
@@ -47,13 +49,13 @@
 		
         <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script> -->
 		<link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
-           <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script> -->
-		<link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
+           <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script> -->		
         
     </head>
 
 
 <body id="scrollhider" class="bodyscrollhider grey lighten-3 ci">
+	
       <nav class="blue darken-4">
     
          <div class="nav-wrapper">
@@ -94,8 +96,17 @@
               </ul>
         </div>
     </nav>
-    
-    <div class="row"></div> 
+    <!--epal na warning-->
+<div class="row">
+	<div class="col s4 push-s8">
+		<div class="card-panel red animated bounceInRight" id="epalwarning">
+			<div class="white-text" style="font-size:20px;"><i class="material-icons left">warning</i>Notice!</div>
+          <span class="white-text">Your Guard License Expiration is near. Please Update it in the Agency.
+          </span>
+        </div>
+	</div>
+</div>
+<!--epal na warning end-->     
 
     
     <ul class="side-nav fixed" id="mobile-nav" style="background-color:#90AFC5;overflow:hidden">
@@ -435,6 +446,7 @@ $(document).ready(function() {
   });
 
 </script>
+<!--
 <script>
 $(function(){
    new PNotify({
@@ -458,6 +470,7 @@ $(function(){
 
 });
 </script>
+-->
     </body>
 </html>
 

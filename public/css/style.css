@@ -208,3 +208,16 @@ min-height: -25px;
     padding-left: 4rem;
     width: calc(100% - 4rem);
 }
+
+#epalwarning
+{	
+	position:absolute;
+	z-index:100;
+	margin-left:-30px;
+}
+
+#epalwarning:hover
+{
+	opacity:0.2;
+	cursor: default;
+}
