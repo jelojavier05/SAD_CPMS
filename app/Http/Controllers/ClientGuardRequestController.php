@@ -176,18 +176,74 @@ class ClientGuardRequestController extends Controller
         }
     }
 
-    public function hasSwapGuardRequest(Request $request){
+    public function removeGuard(Request $request){
+        try{
+            DB::beginTransaction();
+            $arrGuardID = $request->arrGuardID;
+            $reason = $request->reason;
+            $clientID = $request->session()->get('id');
+            $clientAccountID = $request->session()->get('accountID');
+
+            $result = DB::table('tblaccount')
+                ->select('intAccountID')
+                ->where('intAccountType', 3)
+                ->first();
+            $adminAccountID = $result->intAccountID;
+
+            $adminInboxID = DB::table('tblinbox')->insertGetId([
+                'intAccountIDSender' => $clientAccountID,
+                'intAccountIDReceiver' => $adminAccountID,
+                'strSubject' => 'Remove Guard Request', 
+                'tinyintType' => 13
+            ]);
+
+            $removeGuardHeaderID = DB::table('tblremoveguardheader')->insertGetId([
+                'intClientID' => $clientID,
+                'intInboxID' => $adminInboxID,
+                'strReason' => $reason
+            ]);
+
+            foreach($arrGuardID as $value){
+                DB::table('tblremoveguarddetail')->insert([
+                    'intRemoveGuardHeaderID' => $removeGuardHeaderID,
+                    'intGuardID' => $value
+                ]);
+            }
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+    }
+
+    public function hasGuardRequest(Request $request){
         $clientID = $request->session()->get('id');
 
-        $result = DB::table('tblswapguardrequestheader')
+        $swap = DB::table('tblswapguardrequestheader')
             ->where('intClientID', $clientID)
             ->where('boolStatus', 1)
             ->count();
 
-        if ($result > 0){
+        $remove = DB::table('tblremoveguardheader')
+            ->where('intClientID', $clientID)
+            ->where('boolStatus', 1)
+            ->count();
+
+        if ($swap > 0 && $remove > 0){
             return response()->json(true);
         }else{
             return response()->json(false);
         }
     }
+
+    public function getClientShiftCount(Request $request){
+        $clientID = $request->session()->get('id');
+
+        $clientShiftCount = DB::table('tblclientshift')
+            ->where('intClientID', $clientID)
+            ->count();
+
+        return response()->jsoN($clientShiftCount);
+    }
+
 }

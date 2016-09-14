@@ -236,7 +236,7 @@ Client Request of Guard
 					<div class="row"></div>
 					 <div class="input-field col s12">
 						 <i class="material-icons prefix" style="font-size:35px;">announcement</i>
-						 <textarea  class="materialize-textarea" id="strMessageEdit" type="text"  placeholder=" "></textarea>
+						 <textarea  class="materialize-textarea" id="strRemoveReason" type="text"  placeholder=" "></textarea>
 						 <label for="input_text">Reason</label> 
 						 
 					 </div>
@@ -244,13 +244,13 @@ Client Request of Guard
 				
 				<div class="col s10 push-s2">
 					<div class='row'></div>
-					<input class="filled-in" type="checkbox" id="test8" value = ""><label for="test8">I Agree to the Terms and Conditions</label>
+					<input class="filled-in" type="checkbox" id="checkRemove" value = ""><label for="checkRemove">I Agree to the Terms and Conditions</label>
 				</div>
 				
 			</div>
 		</div>
 		<div class="modal-footer" style="background-color: #00293C;">
-			<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnChangePasswordSave">Send
+			<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnRemoveGuard">Send
 				<i class="material-icons right">send</i>
 			</button>
 		</div>	
@@ -349,7 +349,7 @@ Client Request of Guard
 
 			$('#btnReplace').click(function(){
 				setGuardChecked();
-				if (hasCheckedGuard()){
+				if (!hasPendingRequest() && hasCheckedGuard()){
 					$('#strSwapReason').val('');
 					$('#checkSwap').attr('checked', false);
 					$('#modalguardSwap').openModal();
@@ -358,8 +358,8 @@ Client Request of Guard
 
 			$('#btnSwapGuard').click(function(){
 
-				if (checkInput() && isAgree() && !hasPendingRequest()){
-					var strReason = $('#strSwapReason').val();
+				if (checkInput() && isAgree()){
+					var strReason = $('#strSwapReason').val().trim();
 					$.ajax({
 		        type: "POST",
 		        url: "{{action('ClientGuardRequestController@swapGuard')}}",
@@ -396,7 +396,7 @@ Client Request of Guard
 				var checker;
 				$.ajax({
           type: "GET",
-          url: "{{action('ClientGuardRequestController@hasSwapGuardRequest')}}",
+          url: "{{action('ClientGuardRequestController@hasGuardRequest')}}",
           success: function(data){
           	checker = data;
           },
@@ -460,6 +460,160 @@ Client Request of Guard
 	</script>
 <!-- Request Swap Guard End -->
 
+<!-- Request Remove Guard Start -->
+	<script>
+		$(document).ready(function(){
+			var checkedGuard;
+			var activeGuard;
+			var countShift;
+
+			$.ajax({
+		    type: "GET",
+		    url: "{{action('ClientGuardRequestController@getClientShiftCount')}}",
+		    success: function(data){
+		    	countShift = data;
+		    },
+		    error: function(data){
+					var toastContent = $('<span>Error Database.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+		    }
+			});//ajax
+
+			$.ajax({
+		    type: "GET",
+		    url: "{{action('ClientGuardRequestController@getActiveGuard')}}",
+		    success: function(data){
+		    	activeGuard = data;
+		    }//success
+			});//get active guard
+
+			$('#btnRemove').click(function(){
+				setGuardChecked();
+				if (!hasPendingRequest() && hasCheckedGuard() && isCountGuardEnough()){
+					$('#strRemoveReason').val('');
+					$('#checkRemove').attr('checked', false);
+					$('#modalguardDelete').openModal();
+				}
+			});
+
+			$('#btnRemoveGuard').click(function(){
+				if (checkInput() && isAgree()){
+					var strReason = $('#strRemoveReason').val().trim();
+
+					$.ajax({
+		        type: "POST",
+		        url: "{{action('ClientGuardRequestController@removeGuard')}}",
+		        beforeSend: function (xhr) {
+		            var token = $('meta[name="csrf_token"]').attr('content');
+
+		            if (token) {
+		                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+		            }
+		        },
+		        data: {
+		        	arrGuardID: checkedGuard,
+		        	reason: strReason
+		        },
+		        success: function(data){	
+		        	swal({
+								title: "Success!",
+								text: "Request sent. Wait for the admin's response.",
+								type: "success"
+							},
+							function(){
+								window.location.href = '{{ URL::to("/clientguardrequest") }}';
+							});
+		        },
+		        error: function(data){
+							var toastContent = $('<span>Error Database.</span>');
+							Materialize.toast(toastContent, 1500,'red', 'edit');
+		        }
+		    	});//send swap request
+				}else{
+					
+				}
+			});
+
+			function setGuardChecked(){
+				checkedGuard = [];
+				$.each(activeGuard, function(index, value){
+					if ($('#checkbox' + value.intGuardID).is(':checked')){
+						checkedGuard.push(value.intGuardID);
+					}
+				});
+			}
+
+			function hasCheckedGuard(){
+				if (checkedGuard.length>0){
+					return true;
+				}else{
+					var toastContent = $('<span>Please select guard.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+					return false;
+				}
+			}
+
+			function checkInput(){
+				var reason = $('#strRemoveReason').val().trim();
+				if (reason == ''){
+					var toastContent = $('<span>Check Input.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+					return false;
+				}else{
+					return true;
+				}
+			}
+
+			function isAgree(){
+				if ($('#checkRemove').is(':checked')){
+							return true;
+						}else{
+							var toastContent = $('<span>Please check the button.</span>');
+							Materialize.toast(toastContent, 1500,'red', 'edit');
+							return false;
+						}
+			}
+
+			function hasPendingRequest(){
+				var checker;
+				$.ajax({
+		      type: "GET",
+		      url: "{{action('ClientGuardRequestController@hasGuardRequest')}}",
+		      success: function(data){
+		      	checker = data;
+		      },
+		      error: function(data){
+							var toastContent = $('<span>Error Database.</span>');
+						Materialize.toast(toastContent, 1500,'red', 'edit');
+
+		      },async:false
+		  	});//ajax
+
+				if (checker){
+					var toastContent = $('<span>You still have pending request.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+				}
+
+				return checker;
+			}
+
+			function isCountGuardEnough(){
+				var countActive = activeGuard.length;
+				var countChecked = checkedGuard.length;
+				
+				console.log(countActive - countChecked);
+				if ((countActive - countChecked) >= countShift){
+					return true;
+				}else{
+					var toastContent = $('<span>Guards will not be enough for the shift.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+					return false;
+				}
+			}
+		});
+	</script>
+<!-- Request Remove Guard End -->
+
 <!-- Guard Information Start-->
 	<script>
 		$(document).ready(function(){
@@ -475,10 +629,6 @@ Client Request of Guard
 				$('#modalguardAdd').openModal();
 				$('#addNumberOfGuards').val(0);
 				$('#addReason').val('');
-			});
-			
-			$('#btnRemove').click(function(){
-				$('#modalguardDelete').openModal();				
 			});
 
 			function getGuardInformation(id){

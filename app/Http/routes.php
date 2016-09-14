@@ -179,10 +179,12 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
     Route::get('/clientguardrequest', 'ClientGuardRequestController@index');
     Route::get('/clientguardrequest/get/activeguard', 'ClientGuardRequestController@getActiveGuard');
     Route::get('/clientguardrequest/get/hasAddRequest', 'ClientGuardRequestController@hasAddRequest');
-    Route::get('/clientguardrequest/get/hasSwapGuardRequest', 'ClientGuardRequestController@hasSwapGuardRequest');
+    Route::get('/clientguardrequest/get/hasGuardRequest', 'ClientGuardRequestController@hasGuardRequest');
     Route::get('/clientguardrequest/get/code', 'ClientGuardRequestController@getCode');
+    Route::get('/clientguardrequest/get/ClientShiftCount', 'ClientGuardRequestController@getClientShiftCount');
     Route::post('/clientguardrequest/post/add', 'ClientGuardRequestController@addGuard');
     Route::post('/clientguardrequest/post/swap', 'ClientGuardRequestController@swapGuard');
+    Route::post('/clientguardrequest/post/remove', 'ClientGuardRequestController@removeGuard');
 
     Route::get('/clientgunrequest', 'ClientGunRequestController@index');
     Route::get('/clientguardattendance', 'ClientGuardAttendanceController@index');
