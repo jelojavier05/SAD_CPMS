@@ -110,5 +110,23 @@ Security Home
 			"bFilter": false,
 			
 		});
+		
+	
 </script>	
+
+<script>
+$(function(){
+    new PNotify({
+         title: 'Non-Blocking Notice',
+    text: 'I\'m a special kind of notice called "non-blocking". When you hover over me I\'ll fade to show the elements underneath. Feel free to click any of them just like I wasn\'t even here.\n\nNote: HTML links don\'t trigger in some browsers, due to security settings.',
+    nonblock: {
+        nonblock: true,
+        nonblock_opacity: .2
+    }
+        
+		
+		
+    });
+});
+</script>
 @stop
