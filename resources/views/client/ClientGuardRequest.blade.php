@@ -357,7 +357,7 @@ $(document).ready(function(){
 	<script>
 		$(document).ready(function(){
 
-			refreshTable();
+			//refreshTable();
 
 			$('#dataTable').on('click', '.buttonMore', function(){
 				getGuardInformation(this.id);
