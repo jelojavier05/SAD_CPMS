@@ -9,7 +9,7 @@ Guard Form
 <div class="row">
 	<div class="col s12 push-s2">
 		<nav>
-			<div class="nav-wrapper blue darken-3">
+			<div class="nav-wrapper">
 				<div class="row">	
 					<div class="col s12 offset-s1">
 						
