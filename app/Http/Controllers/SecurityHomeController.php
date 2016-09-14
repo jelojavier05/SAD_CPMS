@@ -21,7 +21,7 @@ class SecurityHomeController extends Controller
             $accountType = $request->session()->get('accountType');
             
             if ($accountType == 2){
-                return view('securityguard.SecurityHome');
+                return view('securityguard.SecurityHome1');
             }else{
                 return redirect('/userlogin');
             }

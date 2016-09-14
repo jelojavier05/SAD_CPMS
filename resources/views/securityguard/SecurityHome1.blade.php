@@ -1,4 +1,4 @@
-@extends('securityguard.SecurityGuardDashboard')
+@extends('securityguard.SecurityGuardDashboard1')
 
 @section('title')
 Security Home

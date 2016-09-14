@@ -498,7 +498,7 @@ $(document).ready(function(){
     var table = $('#inboxTable').DataTable();
     var inboxID;
     var type; 
-    
+
     $.ajax({
             
         type: "GET",
