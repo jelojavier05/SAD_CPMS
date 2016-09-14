@@ -69,6 +69,7 @@ Route::get('/gunView/get/gun', 'GunViewController@getGun');
 Route::post('/gunView/post/update', 'GunViewController@update');
 
 Route::get('/gunLicenses', 'GunLicensesController@index');
+Route::get('/guardLicenses', 'GuardLicensesController@index');
 
 Route::get('/dashboardadmin', 'DashboardAdminController@index');
 

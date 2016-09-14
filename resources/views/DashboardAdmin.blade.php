@@ -139,7 +139,7 @@ Admin
                                     </div>
                                     <div class="card-action indigo darken-2" style="">
                                       <center>
-                                          <a href="#!" class="white-text">See All</a>
+                                          <a href="/guardLicenses" class="white-text">See All</a>
                                           <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
                                       </center>
                                     </div>
