@@ -167,37 +167,7 @@ Admin
                 
                 
                 
-<<<<<<< HEAD
-               
-=======
-                    </div>
-                
-<!--
-                <div class="col l6 push-l3">
-                
-                     <div id="container" style="min-width: 310px; height: 220px; margin: 0 auto;"></div>
-                
-                </div>
--->
->>>>>>> 36ec79664e89f2d3a5ae2465b53e88e580479c49
-                   
-              </div>			  			  			  			                      
-          </div>
-<<<<<<< HEAD
-          <div class="row">
-             
-          <div class="col l8 push-l3 animated zoomIn">
-                
-                     <div id="container"style="min-width: 310px; height: 220px; margin: 0 auto;"></div>
-                
-                </div>
-           <div>
-=======
-		  
-		  
-         
-          
->>>>>>> 36ec79664e89f2d3a5ae2465b53e88e580479c49
+
 
    
 </div>

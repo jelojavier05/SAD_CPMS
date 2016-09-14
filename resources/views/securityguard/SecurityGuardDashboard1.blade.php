@@ -24,7 +24,8 @@
             
 <!-- ===============================JSjquery======================================= -->
 
-          <script src="{!! URL::asset('../javascript/jquery-2.2.1.js') !!}"></script>
+<!--          <script src="{!! URL::asset('../javascript/jquery-2.2.1.js') !!}"></script>-->
+		<script src="{!! URL::asset('../javascript/jquery-2.1.4.js') !!}"></script>
      <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>-->
 
           <script src="{!! URL::asset('../js/materialize.js') !!}"></script>
@@ -36,6 +37,7 @@
           <script src="//js.pusher.com/3.0/pusher.min.js"></script>
           <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
        <script src="{!! URL::asset('../datatable.js') !!}"></script>
+		<script src="{!! URL::asset('../pnotify.custom.js') !!}"></script>
 		<script src="{!! URL::asset('../pnotify.custom.min.js') !!}"></script>
      <!--  <script src="{!! URL::asset('../dataTables.material.min.js') !!}"></script>-->
        <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>
@@ -432,6 +434,29 @@ $(document).ready(function() {
       });//ajax get client information
   });
 
+</script>
+<script>
+$(function(){
+   new PNotify({
+        title: 'Now Look Here',
+        text: 'There\'s something you need to know, and I won\'t go away until you come to grips with it.',
+	   animation: 'slide',
+	   animate_speed: 400,
+        hide: false,
+        buttons: {
+            closer: false,
+            sticker: false
+        },
+        mobile: {
+            swipe_dismiss: false
+        },
+	   nonblock: {
+                nonblock: true,
+                nonblock_opacity: .1
+            },
+    });
+
+});
 </script>
     </body>
 </html>
