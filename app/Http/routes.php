@@ -6,6 +6,7 @@ Route::get('/insertmaintenance', 'MaintenanceController@insert');
 
 Route::get('/clientaddgunproceed', 'ClientAddGunProceedController@index');
 Route::get('/clientaddgunproceed/setInboxSession', 'ClientAddGunProceedController@setInboxSession');
+Route::get('/clientaddgunproceed/getRequestIdentifier', 'ClientAddGunProceedController@getRequestIdentifier');
 Route::post('/clientaddgunproceed/post/insertgunorder', 'ClientAddGunProceedController@insertGunOrder');
 
 Route::get('/querynatureofbusiness', 'QueryNatureOfBusinessController@index');
@@ -148,12 +149,15 @@ Route::get('/cgrguardattendance/get/attendanceLog', 'CGRGuardAttendanceControlle
 Route::post('/cgrguardattendance/post/login', 'CGRGuardAttendanceController@login');
 Route::post('/cgrguardattendance/post/timein', 'CGRGuardAttendanceController@timeIn');
 Route::post('/cgrguardattendance/post/timeout', 'CGRGuardAttendanceController@timeOut');
+
 Route::get('/cgrreceivingdelivery', 'CGRReceivingDeliveryController@index');
 Route::get('/cgrreceivingdelivery/get/delivery', 'CGRReceivingDeliveryController@getDelivery');
 Route::get('/cgrreceivingdelivery/get/deliverycode', 'CGRReceivingDeliveryController@getDeliveryCode');
 Route::get('/cgrreceivingdelivery/get/deliverydetail', 'CGRReceivingDeliveryController@getDeliveryDetail');
 Route::post('/cgrreceivingdelivery/post/setGuardReceiver', 'CGRReceivingDeliveryController@setGuardReceiver');
 Route::post('/cgrreceivingdelivery/post/item', 'CGRReceivingDeliveryController@postItem');
+Route::get('/cgrreceivingdelivery/get/swapRequestGunInformation', 'CGRReceivingDeliveryController@swapRequestGunInformation');
+Route::post('/cgrreceivingdelivery/post/swapRequest', 'CGRReceivingDeliveryController@postSwapRequest');
 Route::get('/cgrreports', 'CGRReportsController@index');
 Route::post('/cgrreports/post/report', 'CGRReportsController@postReport');
 
@@ -210,6 +214,7 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
     Route::get('/clientgunrequest/get/activegun', 'ClientGunRequestController@getActiveGun');
     Route::get('/clientgunrequest/get/addGunRequest', 'ClientGunRequestController@getAddGunRequest');
     Route::get('/clientgunrequest/get/hasSwapGunRequest', 'ClientGunRequestController@hasSwapGunRequest');
+    Route::get('/clientgunrequest/get/SwapGunRequestInformation', 'ClientGunRequestController@getSwapGunRequestInformation');
     Route::post('/clientgunrequest/post/insertAddGunRequest', 'ClientGunRequestController@insertAddGunRequest');
     Route::get('/clientgunrequest/post/declineAddGunRequest', 'ClientGunRequestController@declineAddGunRequest');
     Route::post('/clientgunrequest/post/insertSwapGunRequest', 'ClientGunRequestController@insertSwapGunRequest');

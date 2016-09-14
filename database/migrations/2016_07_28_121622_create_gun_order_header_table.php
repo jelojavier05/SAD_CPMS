@@ -16,6 +16,7 @@ class CreateGunOrderHeaderTable extends Migration
             $table->increments('intGunOrderHeaderID');
             $table->integer('intClientID')->unsigned();
             $table->tinyInteger('boolStatus')->default(1); //0 = N/A 1 = A
+            $table->tinyInteger('tinyintType'); //0 = add, 1 = swap, remove
             $table->timestamps();
             
             $table->foreign('intClientID')->references('intClientID')->on('tblclient');

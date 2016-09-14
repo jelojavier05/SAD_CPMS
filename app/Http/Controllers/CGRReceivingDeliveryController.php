@@ -142,6 +142,7 @@ class CGRReceivingDeliveryController extends Controller
         $status = $request->arrItemStatus;
         $reason = $request->reason;
         $deliveryID = $request->deliveryID;
+        $deliveryType = $request->deliveryType;
         $now = Carbon::now();
 
         $id = $request->session()->get('id');
@@ -218,11 +219,80 @@ class CGRReceivingDeliveryController extends Controller
                     ->update([
                         'boolStatus' => $deliveryDetailStatus
                     ]);
+
+                if ($deliveryType == 1){
+                    $swapRequestID = DB::table('tblgundeliveryheader')
+                        ->join('tblgunorderheader', 'tblgunorderheader.intGunOrderHeaderID', '=', 'tblgundeliveryheader.intGunOrderHeaderID')
+                        ->join('tblswapordergun', 'tblswapordergun.intGunOrderHeaderID', '=', 'tblgunorderheader.intGunOrderHeaderID')
+                        ->join('tblswapgunheader', 'tblswapgunheader.intSwapGunHeaderID', '=', 'tblswapordergun.intSwapGunHeaderID')
+                        ->select('tblswapgunheader.intSwapGunHeaderID')
+                        ->where('tblgundeliveryheader.intGunDeliveryHeaderID', $deliveryID)
+                        ->first();
+
+                    DB::table('tblswapgunheader')
+                        ->where('intSwapGunHeaderID', $swapRequestID->intSwapGunHeaderID)
+                        ->update([
+                            'boolStatus' => 2,
+                            'updated_at' => $now
+                        ]);
+
+                    $arrGunRemove = $request->arrGunRemove;
+                    
+                    foreach($arrGunRemove as $value){
+                        DB::table('tblclientgun')
+                            ->where('intGunID', $value)
+                            ->where('intContractID', $contractID)
+                            ->where('boolStatus', 1)
+                            ->update([
+                                'boolStatus' => 0,
+                                'updated_at' => $now
+                            ]);
+
+                        DB::table('tblgun')
+                            ->where('intGunID', $value)
+                            ->update([
+                                'boolFlag' => 1
+                            ]);
+                    }
+                }
             }
 
             DB::commit();
         }catch(Exception $e){
             DB::rollback();
         }
+    }
+
+    public function swapRequestGunInformation(Request $request){
+        $deliveryID = Input::get('deliveryID');
+
+        $gunRemove = DB::table('tblgundeliveryheader')
+            ->join('tblgunorderheader', 'tblgunorderheader.intGunOrderHeaderID', '=', 'tblgundeliveryheader.intGunOrderHeaderID')
+            ->join('tblswapordergun','tblswapordergun.intGunOrderHeaderID', '=', 'tblgunorderheader.intGunOrderHeaderID')
+            ->join('tblswapgunheader', 'tblswapgunheader.intSwapGunHeaderID', '=', 'tblswapordergun.intSwapGunHeaderID')
+            ->join('tblswapgundetail', 'tblswapgundetail.intSwapGunHeaderID', '=', 'tblswapgunheader.intSwapGunHeaderID')
+            ->join('tblgun', 'tblgun.intGunID', '=', 'tblswapgundetail.intGunID')
+            ->join('tbltypeofgun', 'tbltypeofgun.intTypeOfGunID', '=', 'tblgun.intTypeOfGunID')
+            ->select('tblgun.strGunName', 'tblgun.strSerialNumber', 'tbltypeofgun.strTypeOfGun', 'tblgun.intGunID')
+            ->where('tblgundeliveryheader.intGunDeliveryHeaderID', $deliveryID)
+            ->get();
+
+        $gunDeliver = DB::table('tblgundeliverydetail')
+            ->join('tblgunorderdetail', 'tblgunorderdetail.intGunOrderDetailID', '=', 'tblgundeliverydetail.intGunOrderDetailID')
+            ->join('tblgun', 'tblgun.intGunID', '=','tblgunorderdetail.intGunID')
+            ->join('tbltypeofgun','tbltypeofgun.intTypeOfGunID', '=', 'tblgun.intTypeOfGunID')
+            ->select('tblgun.strGunName','tblgun.strSerialNumber', 'tbltypeofgun.strTypeOfGun', 'tblgunorderdetail.intRounds', 'tblgundeliverydetail.intGunDeliveryDetailID')
+            ->where('tblgundeliverydetail.intGunDeliveryHeaderID', $deliveryID)
+            ->get();
+
+        $guns = new \stdClass();
+        $guns->gunRemove = $gunRemove;
+        $guns->gunDeliver = $gunDeliver;
+        
+        return response()->json($guns);
+    }
+
+    public function postSwapRequest(Request $request){
+
     }
 }

@@ -142,6 +142,7 @@ Additional Gun Request
 		var tableGunID = [];
     var tableAdded = [];
     var gunRounds = [];
+    var requestIdentifier;
 
 		$.ajax({
       type: "GET",
@@ -161,6 +162,18 @@ Additional Gun Request
               
           }
         });//foreach   
+      },
+      error: function(data){
+        var toastContent = $('<span>Error Database.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+      }
+  	});//get guard waiting
+
+  	$.ajax({
+      type: "GET",
+      url: "{{action('ClientAddGunProceedController@getRequestIdentifier')}}",
+      success: function(data){
+      	requestIdentifier = data;
       },
       error: function(data){
         var toastContent = $('<span>Error Database.</span>');
@@ -232,37 +245,37 @@ Additional Gun Request
 		});
 
 		$('#btnGunSave').click(function(){
-			$.ajax({
-        type: "POST",
-        url: "{{action('ClientAddGunProceedController@insertGunOrder')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
+				$.ajax({
+	        type: "POST",
+	        url: "{{action('ClientAddGunProceedController@insertGunOrder')}}",
+	        beforeSend: function (xhr) {
+	            var token = $('meta[name="csrf_token"]').attr('content');
 
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
-        data: {
-        	arrGunAdded: tableGunID,
-        	arrGunRound: gunRounds
-        },
-        success: function(data){
-        	swal({
-						title: "Success! You accepted the gun request.",
-						text: "Go to Delivery page.",
-						type: "success"
-					},
-					function(){
-						window.location.href = '{{ URL::to("/adminInbox") }}';
-					});
+	            if (token) {
+	                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+	            }
+	        },
+	        data: {
+	        	arrGunAdded: tableGunID,
+	        	arrGunRound: gunRounds
+	        },
+	        success: function(data){
+	        	swal({
+							title: "Success! You accepted the gun request.",
+							text: "Go to Delivery page.",
+							type: "success"
+						},
+						function(){
+							window.location.href = '{{ URL::to("/adminInbox") }}';
+						});
 
-        },
-        error: function(data){
-					var toastContent = $('<span>Error Database.</span>');
-					Materialize.toast(toastContent, 1500,'red', 'edit');
+	        },
+	        error: function(data){
+						var toastContent = $('<span>Error Database.</span>');
+						Materialize.toast(toastContent, 1500,'red', 'edit');
 
-        }
-      });//ajax
+	        }
+	      });//ajax
 		});
 
     function refreshTable(){
