@@ -111,10 +111,16 @@ class ClientViewController extends Controller
             ->where('intClientPendingID', $clientPendingID)
             ->where('intStatusIdentifier', 2)
             ->count();
+
+        $code = DB::table('tblclientpendingnotification')
+            ->select('strCode')
+            ->where('intClientPendingID', $clientPendingID)
+            ->first();
         
         $count = new \stdClass();
         $count->countNeedGuard = $countNeedGuard;
         $count->countAccepted = $countAccepted;
+        $count->code = $code->strCode;
         
         return response()->json($count);
     }

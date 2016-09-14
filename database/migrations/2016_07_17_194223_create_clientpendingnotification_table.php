@@ -18,6 +18,7 @@ class CreateClientpendingnotificationTable extends Migration
             $table->integer('intInboxID')->unsigned();
             $table->integer('intNumberOfGuard');
             $table->integer('intStatusIdentifier')->default(1);
+            $table->string('strCode', 10);
             
             $table->foreign('intClientID')->references('intClientID')->on('tblclient');
             $table->foreign('intInboxID')->references('intInboxID')->on('tblinbox');

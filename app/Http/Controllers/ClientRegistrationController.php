@@ -14,7 +14,6 @@ use DB;
 class ClientRegistrationController extends Controller
 {
     public function index(){
-        
         $natureOfBusinesses = NatureOfBusiness::where('deleted_at', null)
             ->where('boolFlag', 1)
             ->get();
@@ -69,18 +68,29 @@ class ClientRegistrationController extends Controller
                 ]);
             }
             
-            $receiverID = $request->session()->get('accountID');
+            $adminID = $request->session()->get('accountID');
             $inboxID = DB::table('tblinbox')->insertGetId([
                 'intAccountIDSender' => $accountID,
-                'intAccountIDReceiver' => $receiverID,
+                'intAccountIDReceiver' => $adminID,
                 'strSubject' => 'New Client',
                 'tinyintType' => 1
+            ]);
+
+            $code = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 8);
+            $message = 'Welcome ' . $request->clientName . '. Please take note of this code "' . $code .'". This will be needed in finalization of your contract. Thank you.';
+            $inboxID = DB::table('tblinbox')->insert([
+                'intAccountIDSender' => $adminID,
+                'intAccountIDReceiver' => $accountID,
+                'strSubject' => 'New Client',
+                'strMessage' => $message,
+                'tinyintType' => 0
             ]);
             
             DB::table('tblclientpendingnotification')->insert([
                 'intClientID' => $id,
                 'intNumberOfGuard' => $request->guardNo,
-                'intInboxID' => $inboxID   
+                'intInboxID' => $inboxID,
+                'strCode' => $code
             ]);
             
             DB::commit();
