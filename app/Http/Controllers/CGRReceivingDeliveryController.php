@@ -115,8 +115,21 @@ class CGRReceivingDeliveryController extends Controller
                 ->first();
 
             if (($result->boolStatus == 1 || $result->boolStatus == 3) && $result->intGuardID == $guardID){
-                $request->session()->put('guardIDReceiver', $guardID);
-                return response()->json(true);
+                
+                $resultAttendance = DB::table('tblattendance')
+                    ->select('datetimeIn', 'datetimeOut')
+                    ->where('intGuardID', $value->intGuardID)
+                    ->where('intClientID', $client->intClientID)
+                    ->orderBy('intAttendanceID', 'desc')
+                    ->first();
+
+                if (!is_null($resultAttendance) &&
+                    (!is_null($resultAttendance->datetimeIn) && $resultAttendance->datetimeOut == '0000-00-00 00:00:00')){
+                    $request->session()->put('guardIDReceiver', $guardID);
+                    return response()->json(true);    
+                }else{
+                    return response()->json(false);
+                }// if the guard is logged in
             }//filter
         }//foreach
 

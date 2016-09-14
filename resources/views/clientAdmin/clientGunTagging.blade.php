@@ -69,7 +69,6 @@ Client
 	</div>
 </div>
 
-<!-------------------------------------------------modalRounds---------------------->
 <div id="modalRounds" class="modal modal-fixed-footer" style="overflow:hidden; width:200px !important; height:260px !important; border-radius:15px; margin-top:100px;">
     <div class="modal-header" style="background-color:#01579b !important;"><h2 class="center-align">Rounds</h2></div>
     
@@ -139,7 +138,6 @@ Client
         });//get guard waiting
         
         $('#dataTable').on('click', '.buttonAdd', function(){ 
-             
             $('#modalRounds').openModal();
             $('#btnAddRounds').val(this.id);
            

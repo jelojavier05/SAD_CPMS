@@ -36,6 +36,8 @@ Inbox
   </div>
 <!-- Table End -->
 
+
+
 <!-- modal Message Modal Start-->
   <div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
     <div class="modal-header">
@@ -573,23 +575,68 @@ Inbox
                     </div>            
                 </div>
             </li>
+			
             <li class="collection-item">
               <div class="row">
                 <div class="col s12">
                   <table class="striped white" style="border-radius:10px; width:100%;" id="dataTableRemoveGuards">
-                    <h5 class="red-text" style="font-weight:bold;">Guards to be Removed</h5>
+                    <h5 class="red-text">Guards to be Removed</h5>
                     <thead>                                                                                             
-                      <th class="grey lighten-1">First Name</th>
-                      <th class="grey lighten-1">Last Name</th>
+                      <th class="grey lighten-1">Name</th>                      
                       <th class="grey lighten-1">Gender</th>                                              
                     </thead>
                     <tbody>
+						<tr>
+							<td>Derrick Rose</td>
+							<td>Male</td>
+						</tr>
                     </tbody>
                   </table>
                 </div>
               </div>
             </li>
+			  
+			<li class="collection-item">
+				<div class="row">
+					<div class="col s9">
+						<h5 style="font-weight:bold;">Guards Remaining After Removal:</h5>
+					</div>
+					
+					<div class="col s1 pull-s1">
+						<h5 style="font-weight:bold;">10</h5>
+					</div>
+				</div>
+			</li>
+			
+			<li class="collection-item">
+				<div class="row">
+					<div class="col s12">
+						<table class="" style=" border-radius:10px; width:100%;" id = 'tableGunsRemoval'>
+								<h5 class="red-text">Guns to be Removed</h5>
+							  <thead>
+								<tr>
+								<th class="grey lighten-1"></th>
+								<th class="grey lighten-1">Serial Number</th>
+								<th class="grey lighten-1">Name</th>
+								<th class="grey lighten-1">Type of Gun</th>
+								<th class="grey lighten-1">Rounds</th>
+							  </tr>
+							  </thead>
+							  <tbody>
+								<tr>
+									<td><input type="checkbox" id="test1" value=""><label for="test1"></label></td>
+									<td>456-654</td>
+									<td>P225</td>
+									<td>Pistol</td>
+									<td>80</td>
+								</tr>
+							  </tbody>
+							</table> 
+					</div>
+				</div>
+			</li>
           </ul>
+			<div class="row"></div>
         </div>
       </div>
     </div>
@@ -609,6 +656,86 @@ Inbox
     </div>
   </div>  
 <!--modal remove guard request complete guards end-->
+
+<!--modal client gun swap request-->
+<div id="modalClientSwapGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
+    <div class="modal-header">
+      <div class="h">
+        <h3><center>Replacement of Guns</center></h3>  
+      </div>
+    </div>
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s12">
+          <ul class="collection with-header" id="collectionActive">			  
+			<li class="collection-item">
+				<div class="row">
+					<div class="col s2">
+						<div ><h5 style="font-weight:bold;">Client:</h5></div>
+					</div>
+					
+					<div class="col s4">
+						<div><h5 style="font-weight:bold;" id = ''>LandBank</h5></div>
+					</div>
+				</div>
+			</li>
+            <li class="collection-item">
+				<div class="row">
+					<div class="col s12">
+						<div ><h5 style="font-weight:bold;">Notes:</h5></div>
+						<div ><p id = ''>Test Test Test Test Test Test Test Test Test Test Test </p></div>
+					</div>
+					
+					
+				</div>
+			</li>
+            <li class="collection-item">
+              <div class="row">
+                
+				
+				<div class="col s12">
+				  <table class="striped white" style="border-radius:10px; width:100%;" id="dataTableGunstobeReplaced">
+					  <h5 class="red-text">Guns to be Replaced</h5>
+					  <thead>						  
+						  <th class="grey lighten-1">Serial Number</th>
+						  <th class="grey lighten-1">Name</th>
+						  <th class="grey lighten-1">Type of Gun</th>						  
+					  </thead>
+					  <tbody>
+						  <tr>
+						  	<td>098-890</td>
+							<td>Magnum</td>
+							<td>Pistol</td>
+						  </tr>
+					  </tbody>
+					</table>  
+				  </div>
+				  				  
+				</div>
+			  </li>
+			</ul>
+			<div class="row"></div>
+		  </div>
+		</div>
+	  </div>
+    <div class="modal-footer ci" style="background-color: #00293C;">
+
+      <div id = "" style=""> 
+        <button class="btn green waves-effect waves-light" id = "btnSwapProceed" style="margin-right: 30px;">Proceed</button>
+        <button class="btn red waves-effect waves-light" style="margin-right: 30px;" id = "">Decline</button>
+      </div>
+
+      <div id = "" style="display: none;">                 
+        <button class="btn green" style="margin-right: 30px; cursor:default;">Accepted</button>
+      </div>
+
+      <div id = "" style="display: none;">     
+        <button class="btn red" style="margin-right: 30px; cursor:default;">Declined</button>
+      </div>             
+
+    </div>
+  </div>  
+<!--modal client gun swap request end-->
 
 <!--modal client add gun request-->
  <div id="modalClientAddGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:500px; margin-top:0px;">
@@ -722,6 +849,8 @@ $(document).ready(function(){
           removeGuardRequest();
         }else if (type == 14){
           additionalGunRequest();
+        }else if (type == 15){
+          swapGunRequest();
         }
     });//button read click
     
@@ -734,6 +863,14 @@ $(document).ready(function(){
             Materialize.toast(toastContent, 1500,'red', 'edit');
         }
     });//button send notification for guard (new client)
+	
+	 $('#btnTest').click(function(){
+       $('#modalClientSwapGun').openModal();
+    });
+	
+	 $('#btnSwapProceed').click(function(){
+       window.location.href = '{{ URL::to("/clientaddgunproceed") }}';
+    });
 
     $('#btnSendNotificationLeaveRequest').click(function(){
         getCheckedGuard();
@@ -1614,10 +1751,8 @@ $(document).ready(function(){
       });//ajax
     });
   // Remove Guard (Client Requested) End
-	
 
   // Add Gun Start
-
     function additionalGunRequest(){
       $('#modalClientAddGun').openModal();
       setInformation();
@@ -1631,12 +1766,9 @@ $(document).ready(function(){
           console.log(data);
           var boolStatus = data.boolStatus;
 
-
           $('#strAddGunClientName').text(data.strClientName);
           $('#intAddGunCount').text(data.intCountGun);
           $('#strAddGunNote').text(data.strRequest);
-
-
 
           if (boolStatus == 0){
             showHideButton('divAddGunRejected', 'divAddGunButton', 'divAddGunAccepted');
@@ -1654,7 +1786,17 @@ $(document).ready(function(){
     }
 
   	$('#btnAddGunRequestProceed').click(function(){
-  		window.location.href = '{{ URL::to("/clientaddgunproceed") }}';	
+      $.ajax({
+        type: "GET",
+        url: "/clientaddgunproceed/setInboxSession?inboxID=" + inboxID,
+        success: function(data){
+          window.location.href = '{{ URL::to("/clientaddgunproceed") }}'; 
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+      });//ajax
   	});
 
     $('#btnAddGunRequestDecline').click(function(){
@@ -1692,7 +1834,13 @@ $(document).ready(function(){
           }
         });//ajax
     }
-  //Add Gun End
+  // Add Gun End
+
+  // Swap Gun Request Start
+    function swapGunRequest(){
+      $('#modalClientSwapGun').openModal();
+    }
+  // Swap Gun Request End
 });
 </script>        
         
@@ -1804,7 +1952,29 @@ $(document).ready(function(){
   	});
     
     $('#dataTableRemoveGuards').DataTable({
-         "columns": [        
+         "columns": [       
+        null,
+        null
+        ] ,  
+        "pageLength":3,
+        "lengthMenu": [5,10,15,20]
+     });
+	
+	 $('#tableGunsRemoval').DataTable({
+             "columns": [         					
+			{"orderable": false},
+			null,
+			null,
+			null,
+			null
+            ] ,  
+			"pageLength":3,
+			"lengthMenu": [5,10,15,20],
+			"bFilter" : false
+		});
+	
+	 $('#dataTableGunstobeReplaced').DataTable({
+         "columns": [               
         null,
         null,
         null

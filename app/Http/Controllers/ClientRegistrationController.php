@@ -78,7 +78,7 @@ class ClientRegistrationController extends Controller
 
             $code = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 8);
             $message = 'Welcome ' . $request->clientName . '. Please take note of this code "' . $code .'". This will be needed in finalization of your contract. Thank you.';
-            $inboxID = DB::table('tblinbox')->insert([
+            DB::table('tblinbox')->insert([
                 'intAccountIDSender' => $adminID,
                 'intAccountIDReceiver' => $accountID,
                 'strSubject' => 'New Client',

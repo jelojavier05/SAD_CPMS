@@ -8,7 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Cpdf' => $vendorDir . '/dompdf/dompdf/lib/Cpdf.php',
     'CreateAccountTable' => $baseDir . '/database/migrations/2016_02_10_225221_create_account_table.php',
-    'CreateAddgunrequestTable' => $baseDir . '/database/migrations/2016_09_12_220546_create_addgunrequest_table.php',
+    'CreateAddgunrequestTable' => $baseDir . '/database/migrations/2016_09_12_220547_create_addgunrequest_table.php',
     'CreateAnnouncementTable' => $baseDir . '/database/migrations/2016_08_09_032513_create_announcement_table.php',
     'CreateArmedServiceTable' => $baseDir . '/database/migrations/2016_02_28_080305_create_armed_service_table.php',
     'CreateAttendanceTable' => $baseDir . '/database/migrations/2016_08_15_213138_create_attendance_table.php',
@@ -62,6 +62,9 @@ return array(
     'CreateRequirementsTable' => $baseDir . '/database/migrations/2016_06_08_164140_create_requirements_table.php',
     'CreateSwapguardrequestdetailTable' => $baseDir . '/database/migrations/2016_09_08_212739_create_swapguardrequestdetail_table.php',
     'CreateSwapguardrequestinboxTable' => $baseDir . '/database/migrations/2016_09_14_230812_create_swapguardrequestinbox_table.php',
+    'CreateSwapgundetailTable' => $baseDir . '/database/migrations/2016_09_14_002143_create_swapgundetail_table.php',
+    'CreateSwapgunheaderTable' => $baseDir . '/database/migrations/2016_09_14_001812_create_swapgunheader_table.php',
+    'CreateSwapordergunTable' => $baseDir . '/database/migrations/2016_09_14_002347_create_swapordergun_table.php',
     'CreateSwaprequestTable' => $baseDir . '/database/migrations/2016_09_01_210505_create_swaprequest_table.php',
     'CreateSwaprespondTable' => $baseDir . '/database/migrations/2016_09_03_131650_create_swaprespond_table.php',
     'CreateTypeOfContractTable' => $baseDir . '/database/migrations/2016_06_06_180120_create_type_of_contract_table.php',

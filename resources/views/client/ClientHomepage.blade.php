@@ -42,6 +42,43 @@ Client Homepage
             </div>
           </div> 
 	  </div>
+		
+	<div class="col s12">
+		<table class="striped white" style="border:1px solid black;" id="dataTablePresentGuards">
+			<h4 style="font-weight:bold;">Present Guards</h4>
+			<thead>
+				<th>Name</th>
+				<th>Gender</th>
+			</thead>
+			
+			<tbody>
+				<tr>
+					<td>Tim Duncan</td>
+					<td>Male</td>
+				</tr>
+				<tr>
+					<td>Tim Duncan</td>
+					<td>Male</td>
+				</tr>
+				<tr>
+					<td>Tim Duncan</td>
+					<td>Male</td>
+				</tr>
+				<tr>
+					<td>Tim Duncan</td>
+					<td>Male</td>
+				</tr>
+				<tr>
+					<td>Tim Duncan</td>
+					<td>Male</td>
+				</tr>
+				<tr>
+					<td>Tim Duncan</td>
+					<td>Male</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>	
 
 	</div>
 </div>
@@ -115,7 +152,7 @@ Client Homepage
         </div>
                     
                     
-                <div class="col s12 l6 push-l3">	
+                <div class="col s12 l4 push-l3">	
 		<ul class="collection with-header gunscroll" id="guncontainer" style="border:none;">
 			<li class="collection-header" style="opacity:0;">
                 <h5 style="font-weight:bold;">Guns</h5>
@@ -195,6 +232,31 @@ Client Homepage
 
 
 <!--ITEMSgunend-->
+
+
+<!--modal contract extension notice-->
+<div id="modalExtendContractNoti" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:400px; margin-top:30px;">
+    <div class="modal-header">
+      <div class="h">
+        <h3><center>Notice</center></h3>  
+      </div>
+    </div>
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s12">
+          <ul class="collection with-header" id="collectionActive">
+            <li class="collection-header" style="font-weight:bold;">Subject:<div class="red-text" style="font-size:18px;" id = "">&nbsp;End Of Contract</div></li>
+            <li class="collection-item"><p id = ''>Your current contract is about to <span class="red-text">END</span>. Please head to our main office or contact us as soon as possible for a <span class="green-text">CONTRACT EXTENSION</span></p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer ci modal-close" style="background-color: #00293C;">
+      <button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK
+      </button>
+    </div>
+  </div>
+<!--modal contract extension notice end-->
 @stop
 
 @section('script')
@@ -238,6 +300,18 @@ $('.gunbtn').click(function() {
         scrollTop: $(".gunscroll").offset().top},
         'slow');
 });
+</script>
+
+<script>
+	$('#dataTablePresentGuards').DataTable({
+             "columns": [         								
+			null,
+			null
+            ] ,  
+			"pageLength":5,
+			"bLengthChange":false,
+			"bFilter" : false
+		});
 </script>
 
 @stop

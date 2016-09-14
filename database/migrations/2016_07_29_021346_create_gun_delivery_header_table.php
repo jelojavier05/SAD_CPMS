@@ -19,6 +19,7 @@ class CreateGunDeliveryHeaderTable extends Migration
             $table->string('strContactNumber', 20);
             $table->string('strDeliveryCode', 20);
             $table->timestamp('datetimeDeliver');
+            $table->tinyInteger('tinyintType'); //0 - add gun, 1 - replacement, 2 - remove
             $table->tinyInteger('boolStatus')->default(1); // 1 = unverified || unchecked, 0 = checked || verified
             
             $table->foreign('intGunOrderHeaderID')->references('intGunOrderHeaderID')->on('tblgunorderheader');

@@ -264,10 +264,9 @@ function refreshAttendanceLog(){
             '<h>' + action +'</h>',
             '<h>' + value.dateTime +'</h>',
         ]).draw(false);
+
         console.log(value);
       });
-
-
     }
   });//ajax
 }

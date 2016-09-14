@@ -5,6 +5,8 @@ Route::get('/test', 'TestController@index');
 Route::get('/insertmaintenance', 'MaintenanceController@insert');
 
 Route::get('/clientaddgunproceed', 'ClientAddGunProceedController@index');
+Route::get('/clientaddgunproceed/setInboxSession', 'ClientAddGunProceedController@setInboxSession');
+Route::post('/clientaddgunproceed/post/insertgunorder', 'ClientAddGunProceedController@insertGunOrder');
 
 Route::get('/querynatureofbusiness', 'QueryNatureOfBusinessController@index');
 Route::get('/querytypeofcontract', 'QueryTypeOfContractController@index');
@@ -67,6 +69,7 @@ Route::get('/gunView/get/gun', 'GunViewController@getGun');
 Route::post('/gunView/post/update', 'GunViewController@update');
 
 Route::get('/gunLicenses', 'GunLicensesController@index');
+Route::get('/guardLicenses', 'GuardLicensesController@index');
 
 Route::get('/dashboardadmin', 'DashboardAdminController@index');
 
@@ -206,8 +209,10 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
     Route::get('/clientgunrequest', 'ClientGunRequestController@index');
     Route::get('/clientgunrequest/get/activegun', 'ClientGunRequestController@getActiveGun');
     Route::get('/clientgunrequest/get/addGunRequest', 'ClientGunRequestController@getAddGunRequest');
+    Route::get('/clientgunrequest/get/hasSwapGunRequest', 'ClientGunRequestController@hasSwapGunRequest');
     Route::post('/clientgunrequest/post/insertAddGunRequest', 'ClientGunRequestController@insertAddGunRequest');
     Route::get('/clientgunrequest/post/declineAddGunRequest', 'ClientGunRequestController@declineAddGunRequest');
+    Route::post('/clientgunrequest/post/insertSwapGunRequest', 'ClientGunRequestController@insertSwapGunRequest');
 
 
     Route::get('/clientguardattendance', 'ClientGuardAttendanceController@index');

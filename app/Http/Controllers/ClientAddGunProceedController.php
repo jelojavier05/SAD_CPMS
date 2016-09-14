@@ -6,82 +6,88 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Input;
+use DB;
+use Carbon\Carbon;
 
 class ClientAddGunProceedController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    public function index(){
         return view('/ClientAddGunProceed');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function setInboxSession(Request $request){
+        $inboxID = Input::get('inboxID');
+
+        $request->session()->put('addGunRequestInboxID', $inboxID);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function insertGunOrder(Request $request){
+        if ($request->session()->has('addGunRequestInboxID')){
+            try{
+                DB::beginTransaction();
+                // Set Variables Start
+                    $arrGun = $request->arrGunAdded;
+                    $arrRound = $request->arrGunRound;
+                    $inboxID = $request->session()->get('addGunRequestInboxID');
+                    $clientInformation = DB::table('tbladdgunrequest')
+                        ->join('tblclient','tblclient.intClientID', '=','tbladdgunrequest.intClientID')
+                        ->select('tbladdgunrequest.intClientID', 'tblclient.intAccountID')
+                        ->where('tbladdgunrequest.intInboxID', $inboxID)
+                        ->first();
+                    $result = DB::table('tblaccount')
+                        ->select('intAccountID')
+                        ->where('intAccountType', 3)
+                        ->first();
+                    $adminAccountID = $result->intAccountID;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+                    $message = 'Your Additional Gun Request has been Approved. We will deliver the gun as soon as possible.';
+                    $subject = 'Additional Gun Update';
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+                    $now = Carbon::now();
+                // Set Variables End
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+                // Process Start
+                    DB::table('tblinbox')->insert([
+                        'intAccountIDSender' => $adminAccountID,
+                        'intAccountIDReceiver' => $clientInformation->intAccountID,
+                        'strMessage' => $message,
+                        'strSubject' => $subject,
+                        'tinyintType' => 0
+                    ]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+                    DB::table('tbladdgunrequest')
+                        ->where('intInboxID', $inboxID)
+                        ->update([
+                            'boolStatus' => 2,
+                            'updated_at' => $now
+                        ]);
+
+                    $orderHeaderID = DB::table('tblgunorderheader')->insertGetId([
+                        'intClientID' => $clientInformation->intClientID,
+                        'created_at' => $now
+                    ]);
+
+                    for($intLoop = 0; $intLoop < count($arrGun); $intLoop ++){
+                        DB::table('tblgunorderdetail')->insert([
+                            'intGunOrderHeaderID' => $orderHeaderID,
+                            'intGunID' => $arrGun[$intLoop],
+                            'intRounds' => $arrRound[$intLoop]
+                        ]);
+
+                        DB::table('tblgun')
+                            ->where('intGunID', $arrGun[$intLoop])
+                            ->update([
+                                'boolFlag' => 3
+                            ]);
+                    }
+                // Process End
+                DB::commit();
+            }catch(Exception $e){   
+                DB::rollback();
+            }
+
+                
+        }//if else
     }
 }
