@@ -11,10 +11,20 @@ Security Home
 <div class="row">
 	<div class="col s12 l8 push-l3">
 		
-		  <div class="row" style="margin-top:-40px;"> 
-                    <div class="col s12 l12 push-s1 push-l3">
-                     <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#34675C;font-weight:bold">ANNOUNCEMENTS</h3>
-                    </div>  
+		  <div class="row"> 
+              <div class="col s11 l12 push-l3 hide-on-small-only">
+                     <h3 style="font-family:Myriad Pro;color:#34675C;font-weight:bold">ANNOUNCEMENTS</h3>
+              </div>  
+           </div>
+        
+         <div class="row"> 
+              <div class="col s11 push-s1 l12 push-l3 hide-on-large-only">
+                     <h4 style="font-family:Myriad Pro;color:#34675C;font-weight:bold">ANNOUNCEMENTS</h4>
+              </div>  
+           </div>
+        
+        
+        <div class="row">
               <div class="col s12 l12">
                 <hr>
               </div>

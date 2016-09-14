@@ -11,7 +11,7 @@ Inbox
 	<div class="row">
 		<div class="col s12 l8 push-l3">
 	          <div class="row" style="margin-top:-40px;"> 
-	                    <div class="col s12 l12 push-s3 push-l4">
+	                    <div class="col s12 l12 push-s2 push-l4">
 	                     <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#662E1C;font-weight:bold">MESSAGES</h3>
 	                    </div>  
 	               <hr>
@@ -125,7 +125,7 @@ $(document).ready(function(){
                     }else{
                         radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" /> <label for="'+value.intInboxID+'"></label>';
                     }
-                    button = '<center><button class="btn blue darken-4 buttonRead" id="'+value.intInboxID+'"><i class="material-icons">keyboard_arrow_right</i></button></center>';
+                    button = '<center><a class="buttonRead" style="color:darkblue;"id="'+value.intInboxID+'"><i class="material-icons">markunread</i></a></center>';
                     
                     table.row.add([
                         radio,

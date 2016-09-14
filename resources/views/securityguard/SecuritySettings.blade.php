@@ -96,8 +96,14 @@ Security Settings
 		</div>
 	</div>
 	<div class="modal-content">
+        <div class="row">
+            <div class="col l12 push-l4">
+                  <i class="material-icons" style="font-size:10rem">security</i>
+            </div>
+        </div>
+      
 		<div class="row">
-			<div class="col s10 push-s1" style="margin-top:-30px;">      
+			<div class="col s12 l11 push-s1" style="margin-top:-30px;">      
 				<div class="row"></div>  
 				<div class="input-field col s12">
 					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
@@ -105,20 +111,20 @@ Security Settings
 					<label for="">Current Password</label> 
 				</div>
 			</div>
-			<div class="col s10 push-s1" style="margin-top:-30px;">      
+			<div class="col s12 l11 push-s1" style="margin-top:-30px;">      
 				<div class="row"></div>
 				<div class="row"></div>  
 				<div class="input-field col s12">
-					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+					<i class="material-icons prefix" style="font-size:35px;">fingerprint</i>
 					<input id="strNew" type="password" class="validate" name = "" required="" aria-required="true">
 					<label for="">New Password</label> 
 				</div>
 			</div>
-			<div class="col s10 push-s1" style="margin-top:-30px;">      
+			<div class="col s12 l11 push-s1" style="margin-top:-30px;">      
 				<div class="row"></div>
 				<div class="row"></div>
 				<div class="input-field col s12">
-					<i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+					<i class="material-icons prefix" style="font-size:35px;">lock</i>
 					<input id="strConfirm" type="password" class="validate" name = "" required="" aria-required="true">
 					<label for="">Confirm New Password</label> 
 				</div>

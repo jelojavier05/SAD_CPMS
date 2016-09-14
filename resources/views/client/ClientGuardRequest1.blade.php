@@ -38,7 +38,16 @@ Client Request of Guard
 	            <div class="row">
 	                <div class="col s12" style="margin-top:-20px;">
 	                    <table class="striped white" style="border-radius:10px;" id="dataTable">
-	                        <thead>
+	                        <thead class="hide-on-med-and-down">
+	                            <tr>                                
+	                                <th class="blue darken-3 white-text"></th>
+								    <th class="blue darken-3 white-text"></th>
+	                                <th class="blue darken-3 white-text">License Number</th>
+	                                <th class="blue darken-3 white-text">Name</th>
+	                                <th class="blue darken-3 white-text">Gender</th>
+	                            </tr>
+	                        </thead>
+                             <thead class="hide-on-med-and-up">
 	                            <tr>                                
 	                                <th style="width:50px;" class="blue darken-3 white-text"></th>
 								    <th style="width:50px;" class="blue darken-3 white-text"></th>
@@ -66,8 +75,14 @@ Client Request of Guard
 			</div>
 		</div>
 		<div class="modal-content">
+            
+            <div class="row">
+                <div class="col l12 push-l4">
+                      <i class="material-icons" style="font-size:10rem">group_add</i>
+                </div>
+            </div>
 			<div class="row">
-				<div class="col s10 push-s1" style="margin-top:-30px;">      
+				<div class="col s12 l10 push-s1" style="margin-top:-30px;">      
 					<div class="row"></div>  
 					<div class="input-field col s12">
 						<i class="material-icons prefix" style="font-size:35px;">accessibility</i>
@@ -75,9 +90,7 @@ Client Request of Guard
 						<label for="addNumberOfGuards">Number of Guards</label> 
 					</div>
 				</div>
-				<div class="col s10 push-s1" style="margin-top:-30px;">      
-					<div class="row"></div>
-					<div class="row"></div>
+				<div class="col s12 l10 push-s1">      
 					 <div class="input-field col s12">
 						 <i class="material-icons prefix" style="font-size:35px;">announcement</i>
 						 <textarea  class="materialize-textarea" id="addReason" type="text"  placeholder=" "></textarea>
@@ -117,15 +130,15 @@ Client Request of Guard
 								
 						<li class="collection-item" style="font-weight:bold;">
 							<div class="row">
-								<div class="col s4">	
+								<div class="col s12 l4 ">	
 									First Name:<div style="font-weight:normal;" id = 'strFirstName'>&nbsp;&nbsp;&nbsp;</div>
 								</div>
 								
-								<div class="col s4">	
+								<div class="col s12 l4">	
 									Middle Name:<div style="font-weight:normal;" id = 'strMiddleName'>&nbsp;&nbsp;&nbsp;</div>
 								</div>
 								
-								<div class="col s4">	
+								<div class="col s12 l4">	
 									Last Name:<div style="font-weight:normal;" id = 'strLastName'>&nbsp;&nbsp;&nbsp;</div>
 								</div>
 															
@@ -138,31 +151,31 @@ Client Request of Guard
 							</div>
 							
 							<div class="row">
-								<div class="col s6">
+								<div class="col s12 l6">
 									Place of Birth:<div style="font-weight:normal;" id = 'strPlaceBirth'>&nbsp;&nbsp;&nbsp;</div>
 								</div>
 								
-								<div class="col s6">
+								<div class="col s12 l6">
 									Age:<div style="font-weight:normal;" id = 'intAge'>&nbsp;&nbsp;&nbsp;</div>
 								</div>
 							</div>
 							
 							<div class="row">
-								<div class="col s6">
+								<div class="col s12 l6">
 									Contact Number (Mobile):<div style="font-weight:normal;" id = 'strContactNumberMobile'>&nbsp;&nbsp;&nbsp;</div>
 								</div>
 								
-								<div class="col s6">
+								<div class="col s12 l6">
 									Contact Number (Landline):<div style="font-weight:normal;" id = 'strContactNumberLandline'>&nbsp;&nbsp;&nbsp;</div>
 								</div>
 							</div>
 							
 							<div class="row">
-								<div class="col s6">
+								<div class="col s12 l6">
 									Gender:<div style="font-weight:normal;" id = 'strGender'>&nbsp;&nbsp;&nbsp;</div>
 								</div>
 								
-								<div class="col s6">
+								<div class="col s12 l6">
 									Civil Status:<div style="font-weight:normal;" id = 'strCivilStatus'>&nbsp;&nbsp;&nbsp;</div>
 								</div>
 							</div>
@@ -191,6 +204,11 @@ Client Request of Guard
 			</div>
 		</div>
 		<div class="modal-content">
+               <div class="row">
+                <div class="col l12 push-l4">
+                      <i class="material-icons" style="font-size:10rem">cached</i>
+                </div>
+            </div>
 			<div class="row">
 				
 				<div class="col s10 push-s1" style="margin-top:-30px;">      

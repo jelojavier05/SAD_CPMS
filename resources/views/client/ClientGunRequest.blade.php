@@ -39,8 +39,18 @@ Client Request of Gun
 				<div class="row">
 					<div class="col s12 l12">
 					<table class="striped white" style="border-radius:10px;" id="tableGun">
-						<thead>
+						<thead class="hide-on-med-and-down">
 							<tr>                                                                
+								<th class="blue darken-3 white-text"></th>
+								<th class="blue darken-3 white-text"></th>
+								<th class="blue darken-3 white-text">License Number</th>
+								<th class="blue darken-3 white-text">Serial Number</th>
+								<th class="blue darken-3 white-text">Name</th>
+								<th class="blue darken-3 white-text">Rounds</th>
+							</tr>
+                        </thead>
+                        <thead class="hide-on-med-and-up" style="font-size:8px">
+                            <tr>                                                                
 								<th class="blue darken-3 white-text"></th>
 								<th class="blue darken-3 white-text"></th>
 								<th class="blue darken-3 white-text">License Number</th>

@@ -10,12 +10,12 @@ Security Homepage
 		<div class="col s12 l8 push-l3">
 	        
 	        <div class="row" style="margin-top:-40px;"> 
-	                <div class="col s12 l12 push-s3 push-l4">
+	           <div class="col s12 l12 push-s2 push-l4">
 	                 <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#34675C;font-weight:bold">MESSAGES</h3>
-	                </div>  
+	           </div>  
 	           <div class="col s12 l12">
 	                <hr>
-	              </div>
+	           </div>
 	        </div>	
 			<!-- table message -->
 			<div id="message" class="col s12 l12">
@@ -23,8 +23,8 @@ Security Homepage
 					<table class="striped" id="inboxTable">					
 						<thead>
 							<tr>
-								<th class="grey lighten-1" style="width: 20px;"></th>
-								<th class="grey lighten-1" style="width: 30px;"></th>
+								<th class="grey lighten-1"></th>
+								<th class="grey lighten-1"></th>
 								<th class="grey lighten-1">Date</th>
 								<th class="grey lighten-1">From</th>
 								<th class="grey lighten-1">Subject</th>
@@ -462,14 +462,18 @@ $(document).ready(function(){
 	      success: function(data){
 	        if (data){
 
-		        $.each(data, function(index,value){
+		      $.each(data, function(index,value){
 	            if (value.tinyintStatus == 1){
+                 
 	              radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" checked/> <label for="'+value.intInboxID+'"></label>';
 	            }else{
+                  
 	                radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" /> <label for="'+value.intInboxID+'"></label>';
 	            }
-	            button = '<center><button class="btn blue darken-4 buttonRead" id="'+value.intInboxID+'"><i class="material-icons">keyboard_arrow_right</i></button></center>';
+              
+	            button = '<center><a class="material-icons buttonRead" id="'+value.intInboxID+'"><i class="material-icons">markunread</i></a></center>';
 	            
+                   
 	            table.row.add([
 	                radio,
 	                button,

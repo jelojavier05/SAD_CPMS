@@ -118,7 +118,7 @@ Nature of Business
 
 <!-- Modal nob ADD -->
 
-<div id="modalnobAdd" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
+<div id="modalnobAdd" class="modal modal-fixed-footer ci modals" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
         
         
             <div class="modal-header">
@@ -173,7 +173,7 @@ Nature of Business
 </div>
     
 <!-- MODAL nob EDIT -->
-<div id="modalnobEdit" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
+<div id="modalnobEdit" class="modal modal-fixed-footer ci modals" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
 			<div class="modal-header">
                 <div class="h">
                     <h3><center>Nature of Business</center></h3>  
@@ -221,7 +221,7 @@ Nature of Business
 				
 		
     		</div>
-		<div class="modal-footer" style="background-color: #00293C;">
+		<div class="modal-footer modals">
 			
 			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
