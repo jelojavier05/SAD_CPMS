@@ -101,7 +101,7 @@
 	<div class="col s5 l3 push-l9 push-s7" style="margin-left:-10px;">
 		<div class="card-panel red animated bounceInRight" id="epalwarning">
 			<div class="white-text" style="font-size:20px;"><i class="material-icons left">warning</i>Notice</div>
-          <span class="white-text">Your Guard License Expiration is near. Please Inform Update the Agency for Renewal Updates.
+          <span class="white-text">Your Guard License Expiration is near. Please Inform the Agency for Renewal Updates.
           </span>
         </div>
 	</div>

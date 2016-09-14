@@ -221,7 +221,7 @@ Nature of Business
 				
 		
     		</div>
-		<div class="modal-footer modals">
+		<div class="modal-footer modals" style="background-color: #00293C;">
 			
 			<button class="btn waves-effect waves-light" name="action1" style="margin-right: 30px;" id = "btnUpdate">Update
     			<i class="material-icons right">send</i>
