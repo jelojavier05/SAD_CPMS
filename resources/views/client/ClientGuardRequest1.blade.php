@@ -381,7 +381,7 @@ Client Request of Guard
 								type: "success"
 							},
 							function(){
-								$('#modalguardSwap').closeModal();
+								window.location.href = '{{ URL::to("/clientguardrequest") }}';
 							});
 		        },
 		        error: function(data){

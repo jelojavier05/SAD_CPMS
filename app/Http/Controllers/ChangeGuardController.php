@@ -122,12 +122,90 @@ class ChangeGuardController extends Controller{
 
     public function declineRequest(Request $request){
         $inboxID = $request->inboxID;
+        $now = Carbon::now();
+        $result = DB::table('tblaccount')
+            ->select('intAccountID')
+            ->where('intAccountType', 3)
+            ->first();
+        $adminAccountID = $result->intAccountID;
 
         try{
             DB::beginTransaction();
             
-            
-            
+            $result = DB::table('tblswapguardrequestheader')
+                ->join('tblclient', 'tblclient.intClientID', '=', 'tblswapguardrequestheader.intClientID')
+                ->select('tblswapguardrequestheader.intSwapGuardHeaderID', 'tblclient.strClientName', 'tblclient.intAccountID')
+                ->where('tblswapguardrequestheader.intInboxID', $inboxID)
+                ->first();
+            $swapGuardHeaderID = $result->intSwapGuardHeaderID;
+            $clientName = $result->strClientName;
+            $clientAccountID = $result->intAccountID;
+
+            DB::table('tblswapguardrequestheader')
+                ->where('intInboxID', $inboxID)
+                ->update([
+                    'boolStatus' => 0,
+                    'updated_at' => $now
+                ]);
+
+            //Guard Accepted Start
+                $guardAccepted = DB::table('tblswapguardresponse')
+                    ->select('intGuardID')
+                    ->where('intSwapGuardHeaderID', $swapGuardHeaderID)
+                    ->where('boolStatus', 2)
+                    ->get();
+
+                foreach($guardAccepted as $value){
+                    $guardID = $value->intGuardID;
+                    $result = DB::table('tblguard')
+                        ->select('intAccountID')
+                        ->where('intGuardID', $guardID)
+                        ->first();
+                    $guardAccountID = $result->intAccountID;
+
+                    $message = 'The change guard request of ' . $clientName . ' has been cancelled.';
+                    $subject = 'Change Guard Request Update';
+                    DB::table('tblinbox')->insert([
+                        'intAccountIDSender' => $adminAccountID,
+                        'intAccountIDReceiver' =>  $guardAccountID,
+                        'strMessage' => $message,
+                        'strSubject' => $subject,
+                        'tinyintType' => 0
+                    ]);
+
+                    DB::table('tblguardstatus')->insert([
+                        'intGuardID' => $guardID,
+                        'intStatusIdentifier' => 0,
+                        'dateEffectivity' => $now
+                    ]);
+                }//guard accepted
+            //Guard Accepted End
+
+            //All Guard Has Request Start
+                $allGuard = DB::table('tblswapguardresponse')
+                    ->select('intSwapGuardReponseID')
+                    ->where('intSwapGuardHeaderID', $swapGuardHeaderID)
+                    ->get();
+
+                foreach($allGuard as $value){
+                    DB::table('tblswapguardresponse')
+                        ->where('intSwapGuardReponseID', $value->intSwapGuardReponseID)
+                        ->update([
+                            'boolStatus' => 3,
+                            'updated_at' => $now
+                        ]);
+                }//foreach all guard
+            //All Guard Has Request End                
+
+            $message = 'Your change guard request has been rejected.';
+            $subject = 'Change Guard Request Update';
+            DB::table('tblinbox')->insert([
+                'intAccountIDSender' => $adminAccountID,
+                'intAccountIDReceiver' =>  $clientAccountID,
+                'strMessage' => $message,
+                'strSubject' => $subject,
+                'tinyintType' => 0
+            ]);
             DB::commit();
         }catch(Exception $e){
             DB::rollback();
@@ -171,11 +249,13 @@ class ChangeGuardController extends Controller{
             //Setting variables needed Start
                 $inboxID = $request->inboxID;
                 $guardID = $request->session()->get('id');
-                $now = Carbon::now();
-                $effectivityDate = $now->addDays(2);
+                $now1 = Carbon::now();
+                $effectivityDate = $now1->addDays(2);
                 $effectivityDate->hour = 0;
                 $effectivityDate->minute = 0;
                 $effectivityDate->second = 0;
+
+                $now = Carbon::now();
 
                 $result = DB::table('tblswapguardresponse')
                     ->join('tblswapguardrequestheader', 'tblswapguardrequestheader.intSwapGuardHeaderID', '=', 'tblswapguardresponse.intSwapGuardHeaderID')
@@ -210,6 +290,12 @@ class ChangeGuardController extends Controller{
                     'boolStatus' => 2,
                     'updated_at' => $now
                 ]);
+
+            DB::table('tblguardstatus')->insert([
+                'intGuardID' => $guardID,
+                'intStatusIdentifier' => 1,
+                'dateEffectivity' => $now
+            ]);
 
             $countGuardReplaced = DB::table('tblswapguardrequestdetail')
                 ->where('intSwapGuardHeaderID', $swapGuardHeaderID)

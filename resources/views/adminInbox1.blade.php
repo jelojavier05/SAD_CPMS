@@ -353,7 +353,7 @@ Inbox
 
       <div id = "divChangeButton" style="display: none;"> 
         <button class="btn blue waves-effect waves-light" id = "btnSwapGuardSend" style="margin-right: 30px;">Send<i class="material-icons right">send</i></button>
-        <button class="btn red waves-effect waves-light modal-close" style="margin-right: 30px;" id = "btnSwapGuardDecline">Decline</button>
+        <button class="btn red waves-effect waves-light" style="margin-right: 30px;" id = "btnSwapGuardDecline">Decline</button>
       </div>
 
       <div id = "divChangeAccepted" style="display: none;">                 
@@ -1195,7 +1195,35 @@ $(document).ready(function(){
     });//button clicked 
 
     $('#btnSwapGuardDecline').click(function(){
-      
+      $.ajax({
+        type: "POST",
+        url: "{{action('ChangeGuardController@declineRequest')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        data: {
+          inboxID: inboxID
+        },
+        success: function(data){
+          swal({
+            title: "Successs!",
+            text: "You rejected the request.",
+            type: "success"
+          },function(){
+            $('#modalClientSwapGuard').closeModal();
+          });
+
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+
+        }
+      });//ajax
     });
 
     function setSwapGuardRequestSelectedGuard(){
@@ -1209,6 +1237,8 @@ $(document).ready(function(){
 
     function swapGuard(){     
       swapGuardFetchData();
+      var table = $('#dataTableSendNotiSwapGuard').DataTable();
+      table.clear().draw();
       $('#modalClientSwapGuard').openModal();
       if(swapRequestStatus == 1){
         showHideButton('divChangeButton', 'divChangeAccepted', 'divChangeRejected')

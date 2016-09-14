@@ -10,6 +10,7 @@ Route::get('/changeguardrequest/get/ClientRequested', 'ChangeGuardController@get
 Route::post('/changeguardrequest/post/sendGuardNotification', 'ChangeGuardController@sendGuardNotification');
 Route::post('/changeguardrequest/post/accept', 'ChangeGuardController@accept');
 Route::post('/changeguardrequest/post/decline', 'ChangeGuardController@decline');
+Route::post('/changeguardrequest/post/declinerequest', 'ChangeGuardController@declineRequest');
 
 Route::get('/swaprequest/get/checkStatusSwapRequest', 'SwapRequestGuardController@checkStatusSwapRequest');
 Route::get('/swaprequest/get/GuardInvolve', 'SwapRequestGuardController@getGuardInvolve');
