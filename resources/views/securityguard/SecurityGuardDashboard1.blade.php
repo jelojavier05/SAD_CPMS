@@ -98,7 +98,7 @@
     </nav>
     <!--epal na warning-->
 <div class="row">
-	<div class="col s4 push-s8">
+	<div class="col s3 push-s9" style="margin-left:-10px;">
 		<div class="card-panel red animated bounceInRight" id="epalwarning">
 			<div class="white-text" style="font-size:20px;"><i class="material-icons left">warning</i>Notice!</div>
           <span class="white-text">Your Guard License Expiration is near. Please Update it in the Agency.
