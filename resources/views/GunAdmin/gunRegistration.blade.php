@@ -15,12 +15,10 @@ Gun Registration
 		<div class="row"></div>
 		<div class="col s8 push-s3" style="margin-left:10px;">
 			<div class="container-fluid grey lighten-4 z-depth-1 ci animated bounceIn" style="border: 1px solid black; border-radius:5px;">
+				<h4 class = "blue darken-2 white-text" style="margin-top:0px;">Gun Registration</h4>
 			<div class="row">
 					<div class="col l12">
-						<div class="col l6 push-l1">
-						
-						
-						<legend><h4>Gun Registration</h4></legend>
+						<div class="col l6 push-l1">																		
 							<div class="row">
 					
 					
