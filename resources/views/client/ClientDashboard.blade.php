@@ -171,20 +171,222 @@
         
 <!--------------------------------------END OF CLOCK & CALENDAR------------------------------->            
     <div class="row">
-        <div class="col s12 l12 push-s3 push-l3">
-
+        <div class="col s12 l12 push-s2 push-l2">
+<!--
     <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/szw110/szh110/hoc09f/hbw2/hfc09f/cf100/hnc09f/hwc000/hcw2/fan2/facfff/fdi76/mqc9ff/mqs4/mql18/mqw1/mqd50/mhc009/mhs4/mhl5/mhw2/mhd60/mmv0/hhcfff/hhs1/hhb10/hmcfff/hmb10/hscfff/hsw3" frameborder="0" width="110" height="110" style="margin-left:-2%"> </iframe>
         <div class="row">
                 <div class="col s12 l12 pull-s4 pull-l4">
     <iframe src="http://free.timeanddate.com/clock/i5bybb84/n145/tlph/fn16/tct/pct/ftb/bat4/tt0/th2/ta1/tb4" frameborder="0" width="212" height="36" allowTransparency="true"> </iframe>
                 </div>
         </div>
+-->
+<!--------------------------------------END OF CLOCK & CALENDAR-----------------------------           
+    <div class="row">
+        <div class="col s12 push-s2"> --> 
             
-      
+        <!----------SCRIPT---------->
+    <script>
+        function init(){
+            document.getElementById('loading').style.visibility="hidden";
+            document.getElementById('main-container').style.visibility="visible";
+            clock();
+        };
+
+        function clock(){
+            var day=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            var month=['January','February','March','April','May','June','July','August','September','October','November','December'];
+            //calculate angle
+            var d, h, m, s;
+            d = new Date;
+
+            h = 30 * ((d.getHours() % 12) + d.getMinutes() / 60);
+            m = 6 * d.getMinutes();
+            s = 6 * d.getSeconds();
+
+            //move hands
+            setAttr('h-hand', h);
+            setAttr('m-hand', m);
+            setAttr('s-hand', s);
+            setAttr('s-tail', s+180);
+
+            //display time
+            h = d.getHours();
+            m = d.getMinutes();
+            s = d.getSeconds();
+
+            if(h >= 12){
+                setText('suffix', 'PM');
+            }else{
+                setText('suffix', 'AM');
+            }
+
+            if(h != 12){
+                h %= 12;
+            }
+
+            setText('sec', s);
+            setText('min', m);
+            setText('hr', h);
+
+            setText('day',day[d.getDay()]);
+            setText('date',d.getDate());
+            setText('month-year',month[d.getMonth()]+' '+(1900+d.getYear()));
+
+            //call every second
+            setTimeout(clock, 1000);
+
+        };
+
+        function setAttr(id,val){
+            var v = 'rotate(' + val + ', 70, 70)';
+            document.getElementById(id).setAttribute('transform', v);
+        };
+
+        function setText(id,val){
+            if(val < 10){
+                val = '0' + val;
+            }
+            document.getElementById(id).innerHTML = val;
+        };
+
+        window.onload=init;
+    </script>
+            <!----------STYLE---------->
+    <style>
+            #loading{
+                margin:0;
+                padding:0;
+            }
+
+            #main-container{
+                margin:0;
+                padding:0;
+                font-family:sans-serif;
+                font-size:14px;
+            }
+
+            .analog-clock{
+                width:130px;
+                display:inline-block;
+                clear:both;
+            }
+
+            .cal{
+                padding:2px;
+                color:white;
+                background-color:dodgerblue;
+                text-align:center;
+                width:120px;
+                display:inline-block;
+                clear:both;
+            
+                width: 130px;
+                height: 76px;
+                border-radius: 5%;
+                box-shadow: 0 4px 4px 0 rgba(50, 50, 50, 0.4);
+            }
+
+            #day{
+                margin:0;
+                font-size:16px;
+            }
+
+            #date{
+                margin:0;
+                font-size:20px;
+            }
+
+            #month-year{
+                margin:0;
+                font-size:16px;
+            }
+
+            #clock-face{
+                stroke:black;
+                stroke-width:2px;
+                fill:white;
+            }
+
+            #h-hand, #m-hand, #s-hand, #s-tail{
+                stroke:black;
+                stroke-linecap:round;
+            }
+
+            #h-hand{
+                stroke-width:3px;
+            }
+
+            #m-hand{
+                stroke-width:2px;
+            }
+
+            #s-hand{
+                stroke-width:1px;
+            }
+
+            .time-text{
+                text-align:center;
+                padding:3px;
+                color:white;
+                background-color:dodgerblue;
+                text-align:center;
+                width:120px;
+                display:inline-block;
+                clear:both;
+                
+                width: 130px;
+                height: 30px;
+                border-radius: 5%;
+                box-shadow: 0 4px 4px 0 rgba(50, 50, 50, 0.4);
+            }
+            
+    </style>
+            
+            <!----------MAIN CONTAINER---------->
+            
+            <div class="app-container">
+                <p id="loading">Loading...</p>
+                <div id="main-container" style="visibility:hidden;">
+                    <div class="analog-clock">
+                        <svg width="140" height="140">
+                            <circle id="clock-face" cx="70" cy="70" r="65" />
+                            <line id="h-hand" x1="70" y1="70" x2="70" y2="38" />
+                            <line id="m-hand" x1="70" y1="70" x2="70" y2="20" />
+                            <line id="s-hand" x1="70" y1="70" x2="70" y2="12" />
+                            <line id="s-tail" x1="70" y1="70" x2="70" y2="56" />
+                            <text x="62" y="18">12</text>
+                            <text x="96" y="26">1</text>
+                            <text x="118" y="46">2</text>
+                            <text x="126" y="76">3</text>
+                            <text x="117" y="104">4</text>
+                            <text x="96" y="125">5</text>
+                            <text x="66" y="132">6</text>
+                            <text x="38" y="125">7</text>
+                            <text x="16" y="104">8</text>
+                            <text x="7" y="76">9</text>
+                            <text x="14" y="47">10</text>
+                            <text x="34" y="27">11</text>
+                        </svg>
+                        <div class="time-text">
+                            <span id="hr">00</span>
+                            <span>:</span>
+                            <span id="min">00</span>
+                            <span>:</span>
+                            <span id="sec">00</span>
+                            <span id="suffix">--</span>
+                        </div>
+                    </div>
+                    <div class="cal">
+                        <p id="day">---------</p>
+                        <p id="date">00</p>
+                        <p id="month-year">--------- 0000</p>
+                    </div>
+                </div>
             </div>   
         </div> 
-   
+    </div>
 <!--------------------------------------END OF CLOCK & CALENDAR------------------------------->
+
     </ul>
         <div class="col l9">
         
