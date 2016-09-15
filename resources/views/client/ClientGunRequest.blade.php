@@ -314,7 +314,7 @@ $(document).ready(function(){
 
 	$('#btnReplaceGun').click(function(){
 		setGunChecked();
-		if (hasCheckedGun()){
+		if (!hasPendingRequest() && hasCheckedGun()){
 			$('#modalgunSwap').openModal();
 		}
 	});
@@ -376,6 +376,27 @@ $(document).ready(function(){
 			Materialize.toast(toastContent, 1500,'red', 'edit');
 			return false;
 		}
+	}
+
+	function hasPendingRequest(){
+		var checker;
+		$.ajax({
+      type: "GET",
+      url: "{{action('ClientGunRequestController@hasSwapGunRequest')}}",
+      success: function(data){
+      	checker = data;
+      	if (checker){
+      		var toastContent = $('<span>You still have pending request.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+      	}
+      },
+      error: function(data){
+					var toastContent = $('<span>Error Database.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+
+      },async:false
+  	});//ajax
+  	return checker;
 	}
 });
 </script>

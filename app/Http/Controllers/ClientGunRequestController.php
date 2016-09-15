@@ -172,4 +172,18 @@ class ClientGunRequestController extends Controller{
             DB::rollback();
         }
     }
+
+    public function hasSwapGunRequest(Request $request){
+        $clientID = $request->session()->get('id');
+
+        $countSwapRequest = DB::table('tblswapgunheader')
+            ->where('intClientID', $clientID)
+            ->where('boolStatus', 1)
+            ->count();
+        if ($countSwapRequest > 0){
+            return response()->json(true);
+        }else{
+            return response()->json(false);
+        }
+    }
 }

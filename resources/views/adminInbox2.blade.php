@@ -784,10 +784,6 @@ Inbox
         
   </div>  
 <!--modal client add gun request end-->
-	 
-
-
-
 @stop
 
 
@@ -853,6 +849,8 @@ $(document).ready(function(){
           removeGuardRequest();
         }else if (type == 14){
           additionalGunRequest();
+        }else if (type == 15){
+          swapGunRequest();
         }
     });//button read click
     
@@ -870,7 +868,7 @@ $(document).ready(function(){
        $('#modalClientSwapGun').openModal();
     });
 	
-	$('#btnSwapProceed').click(function(){
+	 $('#btnSwapProceed').click(function(){
        window.location.href = '{{ URL::to("/clientaddgunproceed") }}';
     });
 
@@ -1753,7 +1751,6 @@ $(document).ready(function(){
       });//ajax
     });
   // Remove Guard (Client Requested) End
-	
 
   // Add Gun Start
     function additionalGunRequest(){
@@ -1837,7 +1834,13 @@ $(document).ready(function(){
           }
         });//ajax
     }
-  //Add Gun End
+  // Add Gun End
+
+  // Swap Gun Request Start
+    function swapGunRequest(){
+      $('#modalClientSwapGun').openModal();
+    }
+  // Swap Gun Request End
 });
 </script>        
         
@@ -1957,7 +1960,7 @@ $(document).ready(function(){
         "lengthMenu": [5,10,15,20]
      });
 	
-	$('#tableGunsRemoval').DataTable({
+	 $('#tableGunsRemoval').DataTable({
              "columns": [         					
 			{"orderable": false},
 			null,
@@ -1970,7 +1973,7 @@ $(document).ready(function(){
 			"bFilter" : false
 		});
 	
-	$('#dataTableGunstobeReplaced').DataTable({
+	 $('#dataTableGunstobeReplaced').DataTable({
          "columns": [               
         null,
         null,

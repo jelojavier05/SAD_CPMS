@@ -208,6 +208,7 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
     Route::get('/clientgunrequest', 'ClientGunRequestController@index');
     Route::get('/clientgunrequest/get/activegun', 'ClientGunRequestController@getActiveGun');
     Route::get('/clientgunrequest/get/addGunRequest', 'ClientGunRequestController@getAddGunRequest');
+    Route::get('/clientgunrequest/get/hasSwapGunRequest', 'ClientGunRequestController@hasSwapGunRequest');
     Route::post('/clientgunrequest/post/insertAddGunRequest', 'ClientGunRequestController@insertAddGunRequest');
     Route::get('/clientgunrequest/post/declineAddGunRequest', 'ClientGunRequestController@declineAddGunRequest');
     Route::post('/clientgunrequest/post/insertSwapGunRequest', 'ClientGunRequestController@insertSwapGunRequest');
