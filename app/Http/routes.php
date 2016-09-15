@@ -4,6 +4,10 @@ Route::get('/test', 'TestController@index');
 
 Route::get('/insertmaintenance', 'MaintenanceController@insert');
 
+Route::get('/removeguardrequest/get/requestInformation', 'RemoveGuardController@getRequestInformation');
+Route::post('/removeguardrequest/post/accept', 'RemoveGuardController@accept');
+Route::post('/removeguardrequest/post/decline', 'RemoveGuardController@decline');
+
 Route::get('/changeguardrequest/get/ChangeGuardRequest', 'ChangeGuardController@getChangeGuardRequest');
 Route::get('/changeguardrequest/get/GuardWaiting', 'ChangeGuardController@getGuardWaiting');
 Route::get('/changeguardrequest/get/ClientRequested', 'ChangeGuardController@getClientRequested');

@@ -569,7 +569,7 @@ Inbox
                         <h5 style="font-weight:bold;">Reason</h5>                        
                     </div>
                     <div class="col s12">
-                        <div><p id="">Hello hello hello hello hello hello</p></div>
+                        <div><p id="strRemoveReason">Hello hello hello hello hello hello</p></div>
                     </div>            
                 </div>
             </li>
@@ -596,8 +596,8 @@ Inbox
     <!-- button -->
     <div class="modal-footer ci" style="background-color: #00293C;">
       <div id = "divRemoveButton" style="display: none;"> 
-        <button class="btn green waves-effect waves-light" name="" style="margin-right: 30px;" id = "">Accept</button>
-        <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "">Decline</button>
+        <button class="btn green waves-effect waves-light" style="margin-right: 30px;" id = "btnRemoveGuardAccept">Accept</button>
+        <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "btnRemoveGuardDecline">Decline</button>
       </div>
       <div id = "divRemoveAccepted" style="display: none;">                    
         <button class="btn green" name="" style="margin-right: 30px; cursor:default;">Accepted</button>
@@ -1467,31 +1467,103 @@ $(document).ready(function(){
   // Remove Guard (Client Requested) Start
     function removeGuardRequest(){
       $('#modalRemoveGuardRequest').openModal();
-
         $.ajax({
-          type: "POST",
-          url: "{{action('')}}",
-          beforeSend: function (xhr) {
-              var token = $('meta[name="csrf_token"]').attr('content');
-
-              if (token) {
-                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-              }
-          },
-          data: {
-
-          },
+          type: "GET",
+          url: "/removeguardrequest/get/requestInformation?inboxID=" + inboxID,
           success: function(data){
+            var arrGuard = data.guards;
+            var table = $('#dataTableRemoveGuards').DataTable();
+            var requestSTatus = data.boolStatus;
+            table.clear().draw();
 
+            $('#strRemoveReason').text(data.strReason);
+
+            $.each(arrGuard, function(index,value){
+              var address = value.strAddress + ' ' + value.strCityName + ', ' + value.strProvinceName;
+              var name = value.strFirstName + ' ' + value.strLastName;
+
+              table.row.add([
+                '<h>' + name + '</h>',
+                '<h>' + address + '</h>',
+                '<h>' + value.strGender + '</h>'
+              ]).draw(false);
+            });//foreach
+
+            if (requestSTatus == 1){
+              showHideButton('divRemoveButton','divRemoveAccepted', 'divRemoveRejected');
+            }else if (requestSTatus == 2){
+              showHideButton('divRemoveAccepted','divRemoveButton', 'divRemoveRejected');
+            }else if (requestSTatus == 3){
+              showHideButton('divRemoveRejected','divRemoveButton', 'divRemoveAccepted');
+            }
           },
           error: function(data){
             var toastContent = $('<span>Error Database.</span>');
             Materialize.toast(toastContent, 1500,'red', 'edit');
-
           }
         });//ajax
-
     }
+
+    $('#btnRemoveGuardAccept').click(function(){
+      $.ajax({
+        type: "POST",
+        url: "{{action('RemoveGuardController@accept')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        data: {
+          inboxID: inboxID
+        },
+        success: function(data){
+          swal({
+            title: "Accepted!",
+            text: "You accepted the Remove Guard Request.",
+            type: "success"
+          },function(){
+            $('#modalRemoveGuardRequest').closeModal();
+          });
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+      });//ajax
+    });
+
+    $('#btnRemoveGuardDecline').click(function(){
+      $.ajax({
+        type: "POST",
+        url: "{{action('RemoveGuardController@decline')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        data: {
+          inboxID: inboxID
+        },
+        success: function(data){
+          swal({
+            title: "Declined!",
+            text: "You declined the Remove Guard Request.",
+            type: "success"
+          },function(){
+            $('#modalRemoveGuardRequest').closeModal();
+          });
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+      });//ajax
+    });
+
   // Remove Guard (Client Requested) End
 });
 </script>        
