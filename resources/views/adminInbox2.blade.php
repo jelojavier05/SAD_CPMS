@@ -36,6 +36,8 @@ Inbox
   </div>
 <!-- Table End -->
 
+
+
 <!-- modal Message Modal Start-->
   <div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
     <div class="modal-header">
@@ -655,6 +657,86 @@ Inbox
   </div>  
 <!--modal remove guard request complete guards end-->
 
+<!--modal client gun swap request-->
+<div id="modalClientSwapGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
+    <div class="modal-header">
+      <div class="h">
+        <h3><center>Replacement of Guns</center></h3>  
+      </div>
+    </div>
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s12">
+          <ul class="collection with-header" id="collectionActive">			  
+			<li class="collection-item">
+				<div class="row">
+					<div class="col s2">
+						<div ><h5 style="font-weight:bold;">Client:</h5></div>
+					</div>
+					
+					<div class="col s4">
+						<div><h5 style="font-weight:bold;" id = ''>LandBank</h5></div>
+					</div>
+				</div>
+			</li>
+            <li class="collection-item">
+				<div class="row">
+					<div class="col s12">
+						<div ><h5 style="font-weight:bold;">Notes:</h5></div>
+						<div ><p id = ''>Test Test Test Test Test Test Test Test Test Test Test </p></div>
+					</div>
+					
+					
+				</div>
+			</li>
+            <li class="collection-item">
+              <div class="row">
+                
+				
+				<div class="col s12">
+				  <table class="striped white" style="border-radius:10px; width:100%;" id="dataTableGunstobeReplaced">
+					  <h5 class="red-text">Guns to be Replaced</h5>
+					  <thead>						  
+						  <th class="grey lighten-1">Serial Number</th>
+						  <th class="grey lighten-1">Name</th>
+						  <th class="grey lighten-1">Type of Gun</th>						  
+					  </thead>
+					  <tbody>
+						  <tr>
+						  	<td>098-890</td>
+							<td>Magnum</td>
+							<td>Pistol</td>
+						  </tr>
+					  </tbody>
+					</table>  
+				  </div>
+				  				  
+				</div>
+			  </li>
+			</ul>
+			<div class="row"></div>
+		  </div>
+		</div>
+	  </div>
+    <div class="modal-footer ci" style="background-color: #00293C;">
+
+      <div id = "" style=""> 
+        <button class="btn green waves-effect waves-light" id = "btnSwapProceed" style="margin-right: 30px;">Proceed</button>
+        <button class="btn red waves-effect waves-light" style="margin-right: 30px;" id = "">Decline</button>
+      </div>
+
+      <div id = "" style="display: none;">                 
+        <button class="btn green" style="margin-right: 30px; cursor:default;">Accepted</button>
+      </div>
+
+      <div id = "" style="display: none;">     
+        <button class="btn red" style="margin-right: 30px; cursor:default;">Declined</button>
+      </div>             
+
+    </div>
+  </div>  
+<!--modal client gun swap request end-->
+
 <!--modal client add gun request-->
  <div id="modalClientAddGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:500px; margin-top:0px;">
     <div class="modal-header">
@@ -702,6 +784,10 @@ Inbox
         
   </div>  
 <!--modal client add gun request end-->
+	 
+
+
+
 @stop
 
 
@@ -779,6 +865,14 @@ $(document).ready(function(){
             Materialize.toast(toastContent, 1500,'red', 'edit');
         }
     });//button send notification for guard (new client)
+	
+	 $('#btnTest').click(function(){
+       $('#modalClientSwapGun').openModal();
+    });
+	
+	$('#btnSwapProceed').click(function(){
+       window.location.href = '{{ URL::to("/clientaddgunproceed") }}';
+    });
 
     $('#btnSendNotificationLeaveRequest').click(function(){
         getCheckedGuard();
@@ -1875,6 +1969,16 @@ $(document).ready(function(){
 			"lengthMenu": [5,10,15,20],
 			"bFilter" : false
 		});
+	
+	$('#dataTableGunstobeReplaced').DataTable({
+         "columns": [               
+        null,
+        null,
+        null
+        ] ,  
+        "pageLength":3,
+        "lengthMenu": [5,10,15,20]
+     });
 </script>
     
 @stop
