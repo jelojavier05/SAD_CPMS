@@ -180,7 +180,12 @@ class ClientGunRequestController extends Controller{
             ->where('intClientID', $clientID)
             ->where('boolStatus', 1)
             ->count();
-        if ($countSwapRequest > 0){
+        $countRemoveRequest = DB::table('tblremovegunheader')
+            ->where('intClientID', $clientID)
+            ->where('boolStatus', 1)
+            ->count();
+
+        if ($countSwapRequest > 0 || $countRemoveRequest > 0){
             return response()->json(true);
         }else{
             return response()->json(false);
@@ -207,6 +212,51 @@ class ClientGunRequestController extends Controller{
         $swapRequestInformation->guns = $guns;
 
         return response()->json($swapRequestInformation);
+    }
 
+    public function insertRemoveGunRequest(Request $request){
+        try{
+            DB::beginTransaction();
+            // Set Variables Start
+                $arrCheckedGun = $request->arrCheckedGun;
+                $strNote = $request->strNote;
+                $clientID = $request->session()->get('id');
+                $clientAccountID = $request->session()->get('accountID');
+                $result = DB::table('tblaccount')
+                    ->select('intAccountID')
+                    ->where('intAccountType', 3)
+                    ->first();
+                $adminAccountID = $result->intAccountID;
+                $subject = 'Remove Gun Request';
+            // Set Variables End
+
+
+            // Process Start
+                $inboxID = DB::table('tblinbox')->insertGetId([
+                    'intAccountIDSender' => $clientAccountID,
+                    'intAccountIDReceiver' => $adminAccountID,
+                    'strSubject' => $subject,
+                    'tinyintType' => 16
+                ]);
+
+                $removeGunHeaderID = DB::table('tblremovegunheader')->insertGetId([
+                    'intInboxID' => $inboxID,
+                    'intClientID' => $clientID,
+                    'strNote' => $strNote,
+                    'boolStatus' => 1
+                ]);
+
+                foreach($arrCheckedGun as $value){
+                    DB::table('tblremovegundetail')->insert([
+                        'intRemoveGunHeaderID' => $removeGunHeaderID,
+                        'intGunID' => $value
+                    ]);
+                }//foreach
+            // Process End
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
     }
 }

@@ -28,7 +28,7 @@ Client Request of Gun
 						</button>
 					</div>
 					<div class="col s3 pull-s2">
-						<button style="margin-top: 30px;" id="" class="tooltipped z-depth-1 btn red" data-position="bottom" data-delay="50" data-tooltip="Remove Guns">
+						<button style="margin-top: 30px;" id="btnRemoveGun" class="tooltipped z-depth-1 btn red" data-position="bottom" data-delay="50" data-tooltip="Remove Guns">
 							<i class="material-icons">close</i>
 						</button>
 					</div>
@@ -227,7 +227,7 @@ Client Request of Gun
 					<div class="row"></div>
 					 <div class="input-field col s12">
 						 <i class="material-icons prefix" style="font-size:35px;">announcement</i>
-						 <textarea  class="materialize-textarea" id="" type="text"  placeholder=" "></textarea>
+						 <textarea  class="materialize-textarea" id="strRemoveNote" type="text"  placeholder=" "></textarea>
 						 <label for="input_text">Reason</label> 
 						 
 					 </div>
@@ -236,7 +236,7 @@ Client Request of Gun
 			</div>
 		</div>
 		<div class="modal-footer" style="background-color: #00293C;">
-			<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnChangePasswordSave">Send
+			<button class="btn large waves-effect waves-light" name="action" style="margin-right: 30px;" id = "btnRemoveGunProceed">Send
 				<i class="material-icons right">send</i>
 			</button>
 		</div>	
@@ -305,178 +305,233 @@ Client Request of Gun
 	</script>
 <!-- Additional Gun Request  -->
 
-<!-- Replacement Gun Request -->
-<script>
-$(document).ready(function(){
-	var activeGun;
-	var checkedGun = [];
-	$.ajax({
-    type: "GET",
-    url: "{{action('ClientGunRequestController@getActiveGun')}}",
-    success: function(data){
-    	activeGun = data;
-    },
-    error: function(data){
-			var toastContent = $('<span>Error Database.</span>');
-			Materialize.toast(toastContent, 1500,'red', 'edit');
-    }
-  });//get active gun
-
-	$('#btnReplaceGun').click(function(){
-		setGunChecked();
-		if (!hasPendingRequest() && hasCheckedGun()){
-			$('#modalgunSwap').openModal();
-		}
-	});
-
-	$('#btnReplaceGunProceed').click(function(){
-		var strNote = $('#strSwapNote').val().trim();
-		if (strNote != ''){
-			$.ajax({
-        type: "POST",
-        url: "{{action('ClientGunRequestController@insertSwapGunRequest')}}",
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
-        data: {
-        	arrCheckedGun: checkedGun,
-        	strNote: strNote,
-        },
-        success: function(data){
-        	swal({
-						title: "Success!",
-						text: "Swap Gun Request Sent!",
-						type: "success"
-					},
-						function(){
-						window.location.href = '{{ URL::to("/clientgunrequest") }}';
-					});
-
-        },
-        error: function(data){
- 					var toastContent = $('<span>Error Database.</span>');
-					Materialize.toast(toastContent, 1500,'red', 'edit');
-
-        }
-    	});//ajax
-		}else{
-			var toastContent = $('<span>Check your input.</span>');
-			Materialize.toast(toastContent, 1500,'red', 'edit');
-		}
-	});
-
-	function setGunChecked(){
-		checkedGun = [];
-		$.each(activeGun, function(index, value){
-			if ($('#checkbox' + value.intGunID).is(':checked')){
-				checkedGun.push(value.intGunID);
-			}
-		});
-	}
-
-	function hasCheckedGun(){
-		if (checkedGun.length > 0){
-			return true;
-		}else{
-			var toastContent = $('<span>Please Select Gun.</span>');
-			Materialize.toast(toastContent, 1500,'red', 'edit');
-			return false;
-		}
-	}
-
-	function hasPendingRequest(){
-		var checker;
-		$.ajax({
-      type: "GET",
-      url: "{{action('ClientGunRequestController@hasSwapGunRequest')}}",
-      success: function(data){
-      	checker = data;
-      	if (checker){
-      		var toastContent = $('<span>You still have pending request.</span>');
-					Materialize.toast(toastContent, 1500,'red', 'edit');
-      	}
-      },
-      error: function(data){
-					var toastContent = $('<span>Error Database.</span>');
-				Materialize.toast(toastContent, 1500,'red', 'edit');
-
-      },async:false
-  	});//ajax
-  	return checker;
-	}
-});
-</script>
-<!-- Replacement Gun Request -->
-
-<script>
+<!-- Replacement/Remove Gun Request -->
+	<script>
 	$(document).ready(function(){
-		$.ajax({
-	    type: "GET",
-	    url: "{{action('ClientGunRequestController@getActiveGun')}}",
-	    success: function(data){
-	    	if (data){
-	    		var table = $('#tableGun').DataTable();
-	      	table.clear().draw();
-	      	$.each(data, function(index, value){
-	      		
-	      		var buttonMore = '<button data-position="bottom" data-delay="50" data-tooltip="Gun Details" class="tooltipped buttonMore btn col s12" id="'+value.intGunID+'"><i class="material-icons">security</i></button>';
-	      		var checkbox = '<input type="checkbox" id="checkbox'+value.intGunID+'" value = "'+value.intGunID+'"><label for="checkbox'+value.intGunID+'"></label>'
-	      		var licenseNumber = '<h>'+value.strLicenseNumber+'</h>';
-	      		var serialNumber = '<h>'+value.strSerialNumber+'</h>';
-	      		var name = '<h>'+value.strGunName+'</h>';
-	      		var rounds = '<h>'+value.intRound+'</h>';
-	      		
-	      		table.row.add([
-	      			checkbox,
-	      			buttonMore,
-	      			licenseNumber,
-	      			serialNumber,
-	      			name,
-	      			rounds
-	      		]).draw();
-	      	});//foreach
-	    	}
-	    },
-	    error: function(data){
-				var toastContent = $('<span>Error Database.</span>');
-				Materialize.toast(toastContent, 1500,'red', 'edit');
-	    }
-	  });//refresh table
+		var activeGun;
+		var checkedGun = [];
 
-		$('#tableGun').on('click', '.buttonMore',function(){
-			var id = this.id;
+		//Replace Gun Request
 			$.ajax({
-	      type: "GET",
-	      url: "/gunView/get/gun?gunID=" + id,
-	      success: function(data){
-	      	
-	      	var dateIssued = new Date(data.dateIssued);
-	      	var dateExpiration = new Date(data.dateExpiration);
-	      	
-	      	$('#gunType').text(data.strTypeOfGun);
-	      	$('#serialNumber').text(data.strSerialNumber);
-	      	$('#gunName').text(data.strGunName);
-	      	$('#manufacturer').text(data.strMaker);
-	      	$('#licenseNumber').text(data.strLicenseNumber);
-	      	$('#dateStart').text(moment(dateIssued).format('MMMM D YYYY'));
-	      	$('#dateEnd').text(moment(dateExpiration).format('MMMM D YYYY'));
-
-	      	$('#modalgunDetails').openModal();
-	      },
-	      error: function(data){
+		    type: "GET",
+		    url: "{{action('ClientGunRequestController@getActiveGun')}}",
+		    success: function(data){
+		    	activeGun = data;
+		    },
+		    error: function(data){
 					var toastContent = $('<span>Error Database.</span>');
 					Materialize.toast(toastContent, 1500,'red', 'edit');
-	      }
-	  	});//ajax
-			
+		    }
+		  });//get active gun
 
-		});
+			$('#btnReplaceGun').click(function(){
+				setGunChecked();
+				if (!hasPendingRequest() && hasCheckedGun()){
+					$('#modalgunSwap').openModal();
+				}
+			});
+
+			$('#btnReplaceGunProceed').click(function(){
+				var strNote = $('#strSwapNote').val().trim();
+				if (strNote != ''){
+					$.ajax({
+		        type: "POST",
+		        url: "{{action('ClientGunRequestController@insertSwapGunRequest')}}",
+		        beforeSend: function (xhr) {
+		            var token = $('meta[name="csrf_token"]').attr('content');
+
+		            if (token) {
+		                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+		            }
+		        },
+		        data: {
+		        	arrCheckedGun: checkedGun,
+		        	strNote: strNote,
+		        },
+		        success: function(data){
+		        	swal({
+								title: "Success!",
+								text: "Swap Gun Request Sent!",
+								type: "success"
+							},
+								function(){
+								window.location.href = '{{ URL::to("/clientgunrequest") }}';
+							});
+
+		        },
+		        error: function(data){
+		 					var toastContent = $('<span>Error Database.</span>');
+							Materialize.toast(toastContent, 1500,'red', 'edit');
+
+		        }
+		    	});//ajax
+				}else{
+					var toastContent = $('<span>Check your input.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+				}
+			});
+
+			function setGunChecked(){
+				checkedGun = [];
+				$.each(activeGun, function(index, value){
+					if ($('#checkbox' + value.intGunID).is(':checked')){
+						checkedGun.push(value.intGunID);
+					}
+				});
+			}
+
+			function hasCheckedGun(){
+				if (checkedGun.length > 0){
+					return true;
+				}else{
+					var toastContent = $('<span>Please Select Gun.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+					return false;
+				}
+			}
+
+			function hasPendingRequest(){
+				var checker;
+				$.ajax({
+		      type: "GET",
+		      url: "{{action('ClientGunRequestController@hasSwapGunRequest')}}",
+		      success: function(data){
+		      	checker = data;
+		      	if (checker){
+		      		var toastContent = $('<span>You still have pending request.</span>');
+							Materialize.toast(toastContent, 1500,'red', 'edit');
+		      	}
+		      },
+		      error: function(data){
+							var toastContent = $('<span>Error Database.</span>');
+						Materialize.toast(toastContent, 1500,'red', 'edit');
+
+		      },async:false
+		  	});//ajax
+		  	return checker;
+			}
+		//Replace Gun Request
+
+		//Remove Gun Request
+			$('#btnRemoveGun').click(function(){
+				setGunChecked();
+				if(!hasPendingRequest() && hasCheckedGun()){
+					$('#modalgunDelete').openModal();	
+				}
+			});
+
+			$('#btnRemoveGunProceed').click(function(){
+				var strNote = $('#strRemoveNote').val().trim();
+				if (strNote != ''){
+					$.ajax({
+		        type: "POST",
+		        url: "{{action('ClientGunRequestController@insertRemoveGunRequest')}}",
+		        beforeSend: function (xhr) {
+		            var token = $('meta[name="csrf_token"]').attr('content');
+
+		            if (token) {
+		                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+		            }
+		        },
+		        data: {
+		        	arrCheckedGun: checkedGun,
+		        	strNote: strNote,
+		        },
+		        success: function(data){
+		        	swal({
+								title: "Success!",
+								text: "Swap Gun Request Sent!",
+								type: "success"
+							},
+								function(){
+								window.location.href = '{{ URL::to("/clientgunrequest") }}';
+							});
+
+		        },
+		        error: function(data){
+		 					var toastContent = $('<span>Error Database.</span>');
+							Materialize.toast(toastContent, 1500,'red', 'edit');
+
+		        }
+		    	});//ajax
+				}else{
+					var toastContent = $('<span>Check your input.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+				}
+			});
+		//Remove Gun Request
+
 	});
-</script>
+	</script>
+<!-- Replacement/Remove Gun Request -->
+
+<!-- Get Active Gun -->
+	<script>
+		$(document).ready(function(){
+			$.ajax({
+		    type: "GET",
+		    url: "{{action('ClientGunRequestController@getActiveGun')}}",
+		    success: function(data){
+		    	if (data){
+		    		var table = $('#tableGun').DataTable();
+		      	table.clear().draw();
+		      	$.each(data, function(index, value){
+		      		
+		      		var buttonMore = '<button data-position="bottom" data-delay="50" data-tooltip="Gun Details" class="tooltipped buttonMore btn col s12" id="'+value.intGunID+'"><i class="material-icons">security</i></button>';
+		      		var checkbox = '<input type="checkbox" id="checkbox'+value.intGunID+'" value = "'+value.intGunID+'"><label for="checkbox'+value.intGunID+'"></label>'
+		      		var licenseNumber = '<h>'+value.strLicenseNumber+'</h>';
+		      		var serialNumber = '<h>'+value.strSerialNumber+'</h>';
+		      		var name = '<h>'+value.strGunName+'</h>';
+		      		var rounds = '<h>'+value.intRound+'</h>';
+		      		
+		      		table.row.add([
+		      			checkbox,
+		      			buttonMore,
+		      			licenseNumber,
+		      			serialNumber,
+		      			name,
+		      			rounds
+		      		]).draw();
+		      	});//foreach
+		    	}
+		    },
+		    error: function(data){
+					var toastContent = $('<span>Error Database.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+		    }
+		  });//refresh table
+
+			$('#tableGun').on('click', '.buttonMore',function(){
+				var id = this.id;
+				$.ajax({
+		      type: "GET",
+		      url: "/gunView/get/gun?gunID=" + id,
+		      success: function(data){
+		      	
+		      	var dateIssued = new Date(data.dateIssued);
+		      	var dateExpiration = new Date(data.dateExpiration);
+		      	
+		      	$('#gunType').text(data.strTypeOfGun);
+		      	$('#serialNumber').text(data.strSerialNumber);
+		      	$('#gunName').text(data.strGunName);
+		      	$('#manufacturer').text(data.strMaker);
+		      	$('#licenseNumber').text(data.strLicenseNumber);
+		      	$('#dateStart').text(moment(dateIssued).format('MMMM D YYYY'));
+		      	$('#dateEnd').text(moment(dateExpiration).format('MMMM D YYYY'));
+
+		      	$('#modalgunDetails').openModal();
+		      },
+		      error: function(data){
+						var toastContent = $('<span>Error Database.</span>');
+						Materialize.toast(toastContent, 1500,'red', 'edit');
+		      }
+		  	});//ajax
+				
+
+			});
+		});
+	</script>
+<!-- Get Active Gun -->
 
 <script>
   $(document).ready(function(){
