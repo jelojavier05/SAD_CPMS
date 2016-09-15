@@ -11,7 +11,7 @@ Security Change Location
         <div class="col s10 push-s2" style=";max-height:100% !important;height:550px !important;">
 			<div class="row">
 				<div class="row"> 
-					<div class="col s12 l12 pull-s1 push-l1">
+					<div class="col s12 l12 pull-s2 push-l1">
 						<h3 class="blue-text" style="font-family:Myriad Pro;margin-left:-3%;margin-top:9.2%">Change Location</h3>
 					</div>  
 				</div>

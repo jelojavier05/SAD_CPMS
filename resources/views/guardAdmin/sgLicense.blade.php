@@ -9,7 +9,7 @@ Security Guard License
 <div class="row">
 	<div class="col s10 push-s2" style="margin-left:10px;">
 		<nav>
-			<div class="nav-wrapper blue">
+			<div class="nav-wrapper">
 				<div class="row">	
 					<div class="col s12">
 						<a href="{{URL::route('personalDataBC')}}" class="breadcrumb">Personal Data</a>

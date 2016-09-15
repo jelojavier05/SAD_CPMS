@@ -1,12 +1,10 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Gun Licenses
+Guard Licenses
 @endsection
 
 @section('content')
-
-
 <div class="row" style="margin-top:-30px;">
   <div class="row"> 
         
@@ -14,7 +12,7 @@ Gun Licenses
  
      <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Gun Licenses</h3>
+                   <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:9.2%">Guard Licenses</h3>
                 </div>
     
     </div>
@@ -37,10 +35,9 @@ Gun Licenses
                         <thead>
                             <tr>
                                 <th style="width:50px;" class="grey lighten-1"></th>                                
-                                <th class="grey lighten-1">Serial No.</th>
-                                <th class="grey lighten-1">Name</th>
                                 <th class="grey lighten-1">License No.</th>
-								<th class="grey lighten-1">License Expiration Date</th>
+                                <th class="grey lighten-1">Name</th>
+                                <th class="grey lighten-1">Address</th>								
                             </tr>
                         </thead>
                         
@@ -50,10 +47,9 @@ Gun Licenses
                                     <td><input type="checkbox" id="test1" />
       									<label for="test1"></label>
 									</td>                                    
-                                    <td>123-123-123</td>
-                                    <td >M4A1</td>                                    
-                                    <td>456-456-456</td>
-									<td>12/12/2016</td>
+                                    <td>2013-12345-MN-0</td>
+                                    <td >Paul Lee</td>                                    
+                                    <td>900 Kamusta Street Paloma, Las Pinas Metro Manila</td>									
                                 </tr>
                             
                         </tbody>
@@ -65,7 +61,7 @@ Gun Licenses
 </div>
 
 <!--modal renew license-->
-<div id="modalRenewGunLicense" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:400px; margin-top:60px;">
+<div id="modalRenewGuardLicense" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:400px; margin-top:60px;">
     <div class="modal-header">
       <div class="h">
         <h3><center>License Renewal</center></h3>  
@@ -99,6 +95,7 @@ Gun Licenses
   </div>
 <!--modal renew license end-->
 
+
 @stop
 
 @section('script')
@@ -106,8 +103,7 @@ Gun Licenses
 
 $("#dataTable").DataTable({
              "columns": [
-            {"searchable": false},			
-            null,
+            {"searchable": false},			            
             null,
 			null,
 			null
@@ -116,9 +112,8 @@ $("#dataTable").DataTable({
 			"lengthMenu": [5,10,15,20],
 			
 		});
-	
 $("#btnRenew").click(function(){
-	$("#modalRenewGunLicense").openModal();
+	$("#modalRenewGuardLicense").openModal();
 });
 	
 </script>

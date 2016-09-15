@@ -17,6 +17,7 @@
           <link href="{!! URL::asset('../css/animate.css') !!}" type="text/css" rel="stylesheet"/>
           <link href="{!! URL::asset('../sweetalert.css') !!}" type="text/css" rel="stylesheet"/>
           <link rel="stylesheet" type="text/css" href="{!! URL::asset('../datatable.css') !!}">
+<!--			<link rel="stylesheet" type="text/css" href="{!! URL::asset('../pnotify.custom.min.css') !!}">-->
         <!--  <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/dataTables.material.min.css') !!}">-->
           <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/jquery.dataTables.min.css') !!}">
         <!--  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">-->
@@ -24,6 +25,7 @@
 <!-- ===============================JSjquery======================================= -->
 
           <script src="{!! URL::asset('../javascript/jquery-2.2.1.js') !!}"></script>
+<!--		<script src="{!! URL::asset('../javascript/jquery-2.1.4.js') !!}"></script>-->
      <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>-->
 
           <script src="{!! URL::asset('../js/materialize.js') !!}"></script>
@@ -35,6 +37,10 @@
           <script src="//js.pusher.com/3.0/pusher.min.js"></script>
           <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
        <script src="{!! URL::asset('../datatable.js') !!}"></script>
+<!--
+		<script src="{!! URL::asset('../pnotify.custom.js') !!}"></script>		
+		<script src="{!! URL::asset('../pnotify.custom.min.js') !!}"></script>
+-->
      <!--  <script src="{!! URL::asset('../dataTables.material.min.js') !!}"></script>-->
        <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>
      <!--  <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>-->
@@ -43,13 +49,13 @@
 		
         <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script> -->
 		<link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
-           <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script> -->
-		<link href="{!! URL::asset('../css/style.css') !!}" type="text/css" rel="stylesheet"/>
+           <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script> -->		
         
     </head>
 
 
 <body id="scrollhider" class="bodyscrollhider grey lighten-3 ci">
+	
       <nav class="blue darken-4">
     
          <div class="nav-wrapper">
@@ -58,13 +64,12 @@
 				<div>
                     <a href="#" class="brand-logo">
                        <div class="row">
-                        <div class="col s4 l12">
+                        <div class="col s12 l12">
                             <div class="col s12 l6 pull-s12 push-l3 hide-on-med-and-down">
                             <p class="flow-text" style="margin-top:9px;font-family:Myriad Pro;font-size:2.2rem">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>     
                             </div>
-                              <div class="col s6 pull-s12">
-                              
-                                   <p style="margin-top:9px;font-family:Myriad Pro;font-size:.8rem">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>   
+                              <div class="col s6 l6 pull-s4 pull-l8 ">
+                                   <p style="margin-top:9px;font-family:Myriad Pro;font-size:.6rem;">CLIENT & PERSONNEL MANAGEMENT SYSTEM</p>   
                             </div>
                         </div>
                     </div>
@@ -91,8 +96,17 @@
               </ul>
         </div>
     </nav>
-    
-    <div class="row"></div> 
+    <!--epal na warning-->
+<div class="row">
+	<div class="col s3 push-s9" style="margin-left:-10px;">
+		<div class="card-panel red animated bounceInRight" id="epalwarning">
+			<div class="white-text" style="font-size:20px;"><i class="material-icons left">warning</i>Notice!</div>
+          <span class="white-text">Your Guard License Expiration is near. Please Update it in the Agency.
+          </span>
+        </div>
+	</div>
+</div>
+<!--epal na warning end-->     
 
     
     <ul class="side-nav fixed" id="mobile-nav" style="background-color:#90AFC5;overflow:hidden">
@@ -160,20 +174,24 @@
                   			</div>
                  </div>
           </div>
+    
+<!--------------------------------------END OF CLOCK & CALENDAR------------------------------->            
+    <div class="row">
+        <div class="col s12 push-s2">
+
+    <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/szw110/szh110/hoc09f/hbw2/hfc09f/cf100/hnc09f/hwc000/hcw2/fan2/facfff/fdi76/mqc9ff/mqs4/mql18/mqw1/mqd50/mhc009/mhs4/mhl5/mhw2/mhd60/mmv0/hhcfff/hhs1/hhb10/hmcfff/hmb10/hscfff/hsw3" frameborder="0" width="110" height="110" style="margin-left:-2%"> </iframe>
+        <div class="row">
+                <div class="col s12 l12 pull-s4 pull-l4">
+    <iframe src="http://free.timeanddate.com/clock/i5bybb84/n145/tlph/fn16/tct/pct/ftb/bat4/tt0/th2/ta1/tb4" frameborder="0" width="212" height="36" allowTransparency="true"> </iframe>
+                </div>
+        </div> 
+            
+
+            </div>   
+        </div> 
+  
+<!--------------------------------------END OF CLOCK & CALENDAR------------------------------->
         
-         <div class="row">
-             <div class="col s12 push-s3">
-          <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/szw110/szh110/hoc09f/hbw2/hfc09f/cf100/hnc09f/hwc000/hcw2/fan2/facfff/fdi76/mqc9ff/mqs4/mql18/mqw1/mqd50/mhc009/mhs4/mhl5/mhw2/mhd60/mmv0/hhcfff/hhs1/hhb10/hmcfff/hmb10/hscfff/hsw3" frameborder="0" width="110" height="110" style="margin-left:-2%"></iframe>
-                    <div class="row">
-                        <div class="col s12 l12 pull-s4 pull-l4">
-      <iframe src="http://free.timeanddate.com/clock/i5bybb84/n145/tlph/fn16/tct/pct/ftb/bat4/tt0/th2/ta1/tb4" frameborder="0" width="212" height="36" allowTransparency="true"></iframe>
-                        </div>
-
-
-                   </div> 
-         </div>
-         
-         </div>
     </ul>
      
         <div class="col l9">
@@ -428,6 +446,31 @@ $(document).ready(function() {
   });
 
 </script>
+<!--
+<script>
+$(function(){
+   new PNotify({
+        title: 'Now Look Here',
+        text: 'There\'s something you need to know, and I won\'t go away until you come to grips with it.',
+	   animation: 'slide',
+	   animate_speed: 400,
+        hide: false,
+        buttons: {
+            closer: false,
+            sticker: false
+        },
+        mobile: {
+            swipe_dismiss: false
+        },
+	   nonblock: {
+                nonblock: true,
+                nonblock_opacity: .1
+            },
+    });
+
+});
+</script>
+-->
     </body>
 </html>
 

@@ -46,27 +46,28 @@
 
     <!--charts-->
     
-    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/highcharts-3d.js"></script>
     
-    
+    <!--colorpicker-->
+    <script src="{!! URL::asset('../js/jscolor.js') !!}"></script>
+
 </head>
 
  
     
-<body id="scrollhider" class="bodyscrollhider ci blue-grey lighten-5" style="">
-    <nav class="blue darken-4">
+<body id="scrollhider" class="bodyscrollhider ci" style="">
+    <nav id="header">
         
-         <div class="nav-wrapper">
+         <div id="wrap" class="nav-wrapper">
                
-                
                 <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
                     
 <!--					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >-->
-					<ul class="side-nav fixed white" id="mobile-nav">
+					<ul class="side-nav fixed " id="mobile-nav">
                     <div class="iconposition">
-						<div class="card-panel blue darken-4" style="height:138px;">
+						<div  id="ctitle"  class="card-panel" style="height:138px;">
 
 							<div class="row">
                                 <div class="col l12">
@@ -283,101 +284,7 @@
                             </div>
 					</li>
 							
-					<li>		
-				
-<!--           <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/szw110/szh110/hoc09f/hbw2/hfc09f/cf100/hnc09f/hwc000/hcw2/fan2/facfff/fdi76/mqc9ff/mqs4/mql18/mqw1/mqd50/mhc009/mhs4/mhl5/mhw2/mhd60/mmv0/hhcfff/hhs1/hhb10/hmcfff/hmb10/hscfff/hsw3" frameborder="0" width="110" height="110" style="margin-left:25%;"></iframe>
-                 <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/tlph/fn6/fs15/fc222/tct/pct/ftb/bo2/tt0/tw0/th2/ta1/tb4" frameborder="0" width="143" height="40" allowTransparency="true" style="margin-top:50px; margin-left:18%; pointer-events:none;"></iframe>     
--->
-<!--
-                        <iframe>
-                            <div id="clockDisplay" class="clockStyle"> 08 : 08 : 08 PM </div>
-                            <script type="text/javascript">
-                                function renderTime() {
-                                    var currentTime = new Date();
-                                    var diem = "AM";
-                                    var h = currentTime.getHours();
-                                    var m = currentTime.getMinutes();
-                                    var s = currentTime.getSeconds();
-
-                                    if (h == 0) {
-                                        h=12;
-                                    } else if (h > 12) {
-                                        h = h - 12;
-                                        diem = "PM";
-                                    }
-                                    if (h < 10) {
-                                        h = "0" + h;
-                                    }
-                                    if (m < 10) {
-                                        m = "0" + m;
-                                    }
-                                    if (s < 10) {
-                                        s = "0" + s;
-                                    }
-
-                                    var myClock = document.getElementById('clockDisplay');
-                                    myClock.textContent = h + ":" + m + ":" + s + " " + diem
-                                    myClock.innerText = h + ":" + m + ":" + s + " " + diem;	
-                                    setTimeout('renderTime()',1000);
-                                }
-                                renderTime();
-                            </script>
-                        </iframe>
--->
-       
-			</li>				
-<!--
-					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">people</i>Client<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                            <div class="collapsible-body grey lighten-2">
-                                <ul>
-                                            
-                                  	<a href="/clientView" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Records</a>
-									
-									
-                                           
-                                </ul>
-                            </div>
-					</li>
--->
-							
-							
-<!--
-                    <li class="bold" style="width:280px;">
-						<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">face</i>Security Guard<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                            <div class="collapsible-body grey lighten-2">
-                                <ul class="black-text">
-                                            
-									<a href="/guardView" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Records</a>
-									
-									
-									
-									<a href="/guard/deployment" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Deployment</a>
-                                           
-                                           
-                                </ul>
-                            </div>
-                    </li>
--->
-                            
-                      
-<!--
-                    <li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue" href="#"><i class="material-icons">gun</i>Gun<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                            <div class="collapsible-body grey lighten-2">
-                                <ul>
-                                            
-                                           
-											
-											<a href="/gun/tagging" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Tagging</a>		
-									
-											<a href="/gunDeliveryView" class="center waves-effect grey lighten-2 black-text" style="width:240px; border:none;" id="buttonhover">Delivery</a>
-                                           
-                                        </ul>
-                            </div>
-					</li>
--->
-                            
+	
                             
                 </ul>
                
@@ -389,7 +296,7 @@
                     <div class="row">
                         <div class="col l12">
                             <div class="col l6 push-l3">
-                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.5rem;font-weight:bold;color:#F4F4EF">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>
+                            <p id="tit" style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.5rem;font-weight:bold;color:#F4F4EF">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>
                             </div>    
                         </div>
                     </div>
@@ -416,23 +323,6 @@
 </div>
 
 
-
-    
-<!--
-	 Tab 
-
-
-	<div class="row">
-		<div class="col s10 push-s2">
-			<ul class="tabs">
-				<li class="tab col s2"><a class="active" href="#">Leave</a></li>
-				<li class="tab col s2"><a  href="#armedservice">Armed Service</a></li>
-				<li class="tab col s2"><a  href="#">Government Exam</a></li>
-				<li class="tab col s2"><a  href="#">Vital Statistic</a></li>
-				<li class="tab col s2"><a  href="#">Requirements</a></li>
-			</ul>
-		</div>	
-	</div>
 -->	 
 													
 <!-- Dropdown Trigger -->

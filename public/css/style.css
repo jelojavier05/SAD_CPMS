@@ -60,7 +60,7 @@ div.scroll {
 .h
 {
       background-color: #00293C;
-}
+}   
 .sn
 {
       color: #F1F3CE;
@@ -207,4 +207,17 @@ min-height: -25px;
     line-height: inherit;
     padding-left: 4rem;
     width: calc(100% - 4rem);
+}
+
+#epalwarning
+{	
+	position:absolute;
+	z-index:100;	
+	opacity: 0.2;
+}
+
+#epalwarning:hover
+{
+	opacity:1;
+	cursor: default;
 }

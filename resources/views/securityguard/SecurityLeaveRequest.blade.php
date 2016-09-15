@@ -10,7 +10,7 @@ Security Leave Request
 
 <div class="row" class="ci">
     
-              <div class="col s12 l12 push-s3 push-l3">
+              <div class="col s12 l12 push-s2 push-l3">
                  <h3 class="blue-text" style="font-family:Myriad Pro;margin-left:-2.5%;margin-top:1%">Leave Request</h3>
               </div>  
        
