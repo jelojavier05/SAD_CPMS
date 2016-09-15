@@ -186,4 +186,27 @@ class ClientGunRequestController extends Controller{
             return response()->json(false);
         }
     }
+
+    public function getSwapGunRequestInformation(Request $request){
+        $inboxID = Input::get('inboxID');
+
+        $swapRequestInformation = DB::table('tblswapgunheader')
+            ->join('tblswapgundetail', 'tblswapgundetail.intSwapGunHeaderID', '=', 'tblswapgunheader.intSwapGunHeaderID')
+            ->join('tblclient','tblclient.intClientID', '=', 'tblswapgunheader.intClientID')
+            ->select('tblswapgunheader.strNote', 'tblclient.strClientName', 'tblswapgunheader.intSwapGunHeaderID')
+            ->where('tblswapgunheader.intInboxID', $inboxID)
+            ->first();
+
+        $guns = DB::table('tblswapgundetail')
+            ->join('tblgun', 'tblgun.intGunID', '=', 'tblswapgundetail.intGunID')
+            ->join('tbltypeofgun','tbltypeofgun.intTypeOfGunID', '=', 'tblgun.intTypeOfGunID')
+            ->select('tblgun.strGunName', 'tbltypeofgun.strTypeOfGun', 'tblgun.strSerialNumber')
+            ->where('tblswapgundetail.intSwapGunHeaderID', $swapRequestInformation->intSwapGunHeaderID)
+            ->get();
+
+        $swapRequestInformation->guns = $guns;
+
+        return response()->json($swapRequestInformation);
+
+    }
 }

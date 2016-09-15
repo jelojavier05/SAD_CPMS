@@ -5,224 +5,210 @@ Receiving Delivery
 
 @section('content')
 <!-- Title Start -->
-<div class="row">
-  <div class="col s5 push-s3" style="margin-left:-2%">
-    <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:7%">Receiving Delivery</h3>
+  <div class="row">
+    <div class="col s5 push-s3" style="margin-left:-2%">
+      <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:7%">Receiving Delivery</h3>
+    </div>
   </div>
-</div>
 <!-- Title End -->
 
 <!-- Delivery Table Start-->
-<div class="row">
-  <div class="col l12">
-    <div class="col l10 offset-l2" style="max-height:690px">
-		  <table class="centered" id="tableDelivery">			  
-			<thead>
-          <tr>
-            <th data-field="status">Delivery ID</th>                              
-            <th data-field="status">Delivery Date</th>
-            <th data-field="guard">Delivery Person/s</th>
-            <th>Contact Number</th>
-            <th data-field="guard">Action</th>                
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+  <div class="row">
+    <div class="col l12">
+      <div class="col l10 offset-l2" style="max-height:690px">
+  		  <table class="centered" id="tableDelivery">			  
+  			<thead>
+            <tr>
+              <th data-field="status">Delivery ID</th>                              
+              <th data-field="status">Delivery Date</th>
+              <th data-field="guard">Delivery Person/s</th>
+              <th>Contact Number</th>
+              <th data-field="guard">Action</th>                
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 <!-- Delivery Table End -->
 
 <!--Modal Delivery Detail Start-->
-<div id="modalDeliveryDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
-  <div class="modal-header">
-    <div class="h">
-      <h3><center>Delivery</center></h3>  
-    </div>
-  </div>
-  <div class="modal-content">
-    <div class="row">
-      <div class="col s12">
-        <ul class="collection with-header" id="collectionActive">
-          <li class="collection-header" ><h4 style="font-weight:bold;">Items</h4></li>
-          <div>
-            <li class="collection-item" style="font-weight:bold;">
-              <div style="font-weight:normal;">
-                <div class='row'>
-                  <div class="col s12">
-                    <table class="" style="font-family:Myriad Pro" id = 'tableItem'>
-                      <thead>
-                        <tr>
-                        <th class="grey lighten-1"></th>
-                        <th class="grey lighten-1">Serial Number</th>
-                        <th class="grey lighten-1">Name</th>
-                        <th class="grey lighten-1">Type of Gun</th>
-                        <th class="grey lighten-1">Rounds</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </div>
-        </ul>
+  <div id="modalDeliveryDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
+    <div class="modal-header">
+      <div class="h">
+        <h3><center>Delivery</center></h3>  
       </div>
     </div>
-    <div class="row"></div>
-  </div>
-  <div class="modal-footer ci" style="background-color: #00293C;">
-    <div id = "buttons" >	
-      <button class="btn green" name="" style="margin-right: 30px;" id = "btnReceive">OK</button>
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s12">
+          <ul class="collection with-header" id="collectionActive">
+            <li class="collection-header" ><h4 style="font-weight:bold;">Items</h4></li>
+            <div>
+              <li class="collection-item" style="font-weight:bold;">
+                <div style="font-weight:normal;">
+                  <div class='row'>
+                    <div class="col s12">
+                      <table class="" style="font-family:Myriad Pro" id = 'tableItem'>
+                        <thead>
+                          <tr>
+                          <th class="grey lighten-1"></th>
+                          <th class="grey lighten-1">Serial Number</th>
+                          <th class="grey lighten-1">Name</th>
+                          <th class="grey lighten-1">Type of Gun</th>
+                          <th class="grey lighten-1">Rounds</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <div class="row"></div>
+    </div>
+    <div class="modal-footer ci" style="background-color: #00293C;">
+      <div id = "buttons" >	
+        <button class="btn green" name="" style="margin-right: 30px;" id = "btnReceive">OK</button>
+      </div>
     </div>
   </div>
-</div>
 <!--Modal Delivery Detail End-->
 
 <!--modal delivery swap-->
-<div id="modalSwapDeliveryDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:1000px;max-height:100%; height:650px; margin-top:-60px;">
-  <div class="modal-header">
-    <div class="h">
-      <h3><center>Delivery</center></h3>  
-    </div>
-  </div>
-  <div class="modal-content">
-    <div class="row">
-      <div class="col s12">
-        <ul class="collection with-header" id="collectionActive">
-          <div>
-            <li class="collection-item" style="font-weight:bold;">
-              <div style="font-weight:normal;">
-                <div class='row'>
-                  <div class="col s6">
-                    <table class="" style="font-family:Myriad Pro" id = 'tableGunsReturned'>
-						<h5 class="red-text">Guns Returned</h5>
-                      <thead>
-                        <tr>                        
-                        <th class="grey lighten-1">Serial Number</th>
-                        <th class="grey lighten-1">Name</th>
-                        <th class="grey lighten-1">Type of Gun</th>
-                        <th class="grey lighten-1">Rounds</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-						<tr>
-							<td>123-123</td>
-							<td>Anaconda</td>
-							<td>Pistol</td>
-							<td>45</td>
-						</tr>
-                      </tbody>
-                    </table>
-                  </div>
-				  
-				  <div class="col s6">
-					<table class="" style="font-family:Myriad Pro" id = 'tableGunsReplacement'>
-						<h5 class="green-text">Guns Replacement</h5>
-                      <thead>
-                        <tr>
-                        <th class="grey lighten-1"></th>
-                        <th class="grey lighten-1">Serial Number</th>
-                        <th class="grey lighten-1">Name</th>
-                        <th class="grey lighten-1">Type of Gun</th>
-                        <th class="grey lighten-1">Rounds</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-						<tr>
-							<td><input type="checkbox" id="test1" value=""><label for="test1"></label></td>
-							<td>123-123</td>
-							<td>Glock</td>
-							<td>Pistol</td>
-							<td>60</td>
-						</tr>
-                      </tbody>
-                    </table>
-				  </div>
-                </div>
-              </div>
-            </li>
-          </div>
-        </ul>
+  <div id="modalSwapDeliveryDetails" class="modal modal-fixed-footer ci" style="overflow:hidden; width:1000px;max-height:100%; height:650px; margin-top:-60px;">
+    <div class="modal-header">
+      <div class="h">
+        <h3><center>Delivery</center></h3>  
       </div>
     </div>
-    <div class="row"></div>
-  </div>
-  <div class="modal-footer ci" style="background-color: #00293C;">
-    <div id = "buttons" >	
-      <button class="btn green" name="" style="margin-right: 30px;" id = "">Proceed</button>
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s12">
+          <ul class="collection with-header" id="collectionActive">
+            <div>
+              <li class="collection-item" style="font-weight:bold;">
+                <div style="font-weight:normal;">
+                  <div class='row'>
+                    <div class="col s6">
+                      <table class="" style="font-family:Myriad Pro" id = 'tableGunsReturned'>
+  						<h5 class="red-text">Guns Returned</h5>
+                        <thead>
+                          <tr>                        
+                          <th class="grey lighten-1">Serial Number</th>
+                          <th class="grey lighten-1">Name</th>
+                          <th class="grey lighten-1">Type of Gun</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                    </div>
+  				  
+  				  <div class="col s6">
+  					<table class="" style="font-family:Myriad Pro" id = 'tableGunsReplacement'>
+  						<h5 class="green-text">Guns Replacement</h5>
+                        <thead>
+                          <tr>
+                          <th class="grey lighten-1"></th>
+                          <th class="grey lighten-1">Serial Number</th>
+                          <th class="grey lighten-1">Name</th>
+                          <th class="grey lighten-1">Type of Gun</th>
+                          <th class="grey lighten-1">Rounds</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+  				          </div>
+                  </div>
+                </div>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <div class="row"></div>
+    </div>
+    <div class="modal-footer ci" style="background-color: #00293C;">
+      <div id = "buttons" >	
+        <button class="btn green" name="" style="margin-right: 30px;" id = "btnSwapRequestProceed">Proceed</button>
+      </div>
     </div>
   </div>
-</div>
 <!--modal delivery swap end-->
 
 <!-- sg login Start-->
-<div id="modalLogin" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
-  <div class="modal-header">
-    <div class="h">
-      <h3><center>Login</center></h3>  
-    </div>
-  </div>
-  <div class="modal-content">
-    <div class="row">
-      <div class="col s10 push-s1" style="margin-top:-30px;">      
-        <div class="row"></div>  
-        <div class="input-field col s12">
-          <i class="material-icons prefix" style="font-size:35px;">account_circle</i>
-          <input id="username" type="text" class="validate" required="" aria-required="true">
-          <label for="">Username</label> 
-        </div>
+  <div id="modalLogin" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
+    <div class="modal-header">
+      <div class="h">
+        <h3><center>Login</center></h3>  
       </div>
-      <div class="col s10 push-s1" style="margin-top:-30px;">      
-        <div class="row"></div>
-        <div class="row"></div>  
-        <div class="input-field col s12">
-          <i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
-          <input id="password" type="password" class="validate" name = "" required="" aria-required="true">
-          <label for="">Password</label> 
-        </div>
-      </div>
-      
     </div>
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s10 push-s1" style="margin-top:-30px;">      
+          <div class="row"></div>  
+          <div class="input-field col s12">
+            <i class="material-icons prefix" style="font-size:35px;">account_circle</i>
+            <input id="username" type="text" class="validate" required="" aria-required="true">
+            <label for="">Username</label> 
+          </div>
+        </div>
+        <div class="col s10 push-s1" style="margin-top:-30px;">      
+          <div class="row"></div>
+          <div class="row"></div>  
+          <div class="input-field col s12">
+            <i class="material-icons prefix" style="font-size:35px;">vpn_key</i>
+            <input id="password" type="password" class="validate" name = "" required="" aria-required="true">
+            <label for="">Password</label> 
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer" style="background-color: #00293C;">
+      <button class="btn large green" name="action" style="margin-right: 30px;" id = "btnOkay">OK
+      </button>
+    </div>  
   </div>
-  <div class="modal-footer" style="background-color: #00293C;">
-    <button class="btn large green" name="action" style="margin-right: 30px;" id = "btnOkay">OK
-    </button>
-  </div>  
-</div>
 <!-- sg login End -->
 
 <!-- Reason Start-->
-<div id="modalReason" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
-  <div class="modal-header">
-    <div class="h">
-      <h3><center>Reason</center></h3>  
+  <div id="modalReason" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
+    <div class="modal-header">
+      <div class="h">
+        <h3><center>Reason</center></h3>  
+      </div>
     </div>
-  </div>
-  <div class="modal-content">
-    <div class="row">
-      <div class="col s10 push-s1" style="margin-top:-30px;">      
-        <div class="row"></div>  
-        <div class="input-field col s12">
-          <i class="material-icons prefix" style="font-size:35px;">account_circle</i>
-          <input id="reason" type="text" class="validate" required="" aria-required="true">
-          <label for="">Reason</label> 
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s10 push-s1" style="margin-top:-30px;">      
+          <div class="row"></div>  
+          <div class="input-field col s12">
+            <i class="material-icons prefix" style="font-size:35px;">account_circle</i>
+            <input id="reason" type="text" class="validate" required="" aria-required="true">
+            <label for="">Reason</label> 
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="modal-footer" style="background-color: #00293C;">
-    <button class="btn large red" name="action" style="margin-right: 30px;" id = "btnCancel">Cancel
-    </button>
+    <div class="modal-footer" style="background-color: #00293C;">
+      <button class="btn large red" name="action" style="margin-right: 30px;" id = "btnCancel">Cancel
+      </button>
 
-    <button class="btn large green" name="action" style="margin-right: 30px;" id = "btnReason">OK
-    </button>
-    
-  </div>  
-</div>
+      <button class="btn large green" name="action" style="margin-right: 30px;" id = "btnReason">OK
+      </button>
+      
+    </div>  
+  </div>
 <!-- Reason End -->
 @stop
 
@@ -234,13 +220,16 @@ $(document).ready(function(){
   var arrItemDelivery;
   var arrItemPost = [];
   var arrItemStatus= [];
+  var arrGunRemove;
   var tableItem = $('#tableItem').DataTable();
   var tableDelivery = $('#tableDelivery').DataTable();
   var boolModalReasonChecker;
   var intDeliveryID;
+  var deliveryType;
 
   tableDelivery.on('click', '.buttonVerify', function(){
     intDeliveryID = this.id;
+    deliveryType = this.value;
     swal({    
       title: "Delivery Code.",   
       text: "Enter the delivery code.",   
@@ -255,14 +244,19 @@ $(document).ready(function(){
           return false;
         }else{
           this.closeOnConfirm = true; //close swal.
-          $('#modalDeliveryDetails').openModal();
-          refreshTableItem();
+
+          if (deliveryType == 0){
+            $('#modalDeliveryDetails').openModal();
+            refreshTableItem();
+          }else if (deliveryType == 1){
+            $('#modalSwapDeliveryDetails').openModal();
+            refreshTableSwapGun();
+          } 
         }
       });
   });//button verify
 
   tableDelivery.on('click', '.buttonVerified', function(){
-
   });
 
   $('#btnReceive').click(function(){
@@ -293,7 +287,7 @@ $(document).ready(function(){
     var password = $('#password').val().trim();
 
     if (username != '' && password != ''){
-      $.ajax({
+     $.ajax({
         type: "POST",
         url: "{{action('CGRReceivingDeliveryController@setGuardReceiver')}}",
         beforeSend: function (xhr) {
@@ -309,7 +303,12 @@ $(document).ready(function(){
         },
         success: function(data){
           if (data){
-            databaseItem();
+            if (deliveryType == 0){
+              addGunDatabase();
+            }else if (deliveryType == 1){
+              swapGunDatabase();
+            }
+            
           }else{
             var toastContent = $('<span>Login failed.</span>');
             Materialize.toast(toastContent, 1500,'red', 'edit');      
@@ -328,7 +327,7 @@ $(document).ready(function(){
       url: "{{action('CGRReceivingDeliveryController@getDelivery')}}",
       success: function(data){
         tableDelivery.clear().draw(); //clear all the row
-        
+        console.log(data);
         $.each(data, function(index, value) {
           
           var deliveryID = '<h>'+value.intGunDeliveryHeaderID+'</h>';
@@ -341,7 +340,7 @@ $(document).ready(function(){
           if (checker == 0){
             deliveryButton = '<button class="btn green darken-4 buttonVerified" type="button" id = "'+value.intGunDeliveryHeaderID+'">Verified</button>';
           }else{
-            deliveryButton = '<button class="btn blue darken-4 buttonVerify" type="button" id = "'+value.intGunDeliveryHeaderID+'">Verify</button>';
+            deliveryButton = '<button class="btn blue darken-4 buttonVerify" type="button" id = "'+value.intGunDeliveryHeaderID+'" value = "'+value.tinyintType+'">Verify</button>';
           }
 
           tableDelivery.row.add([
@@ -372,93 +371,191 @@ $(document).ready(function(){
     return checker;
   }//check delivery code correct
 
-  function refreshTableItem(){
-    $.ajax({
-      type: "GET",
-      url: "/cgrreceivingdelivery/get/deliverydetail?id=" + intDeliveryID,
-      success: function(data){
-        tableItem.clear().draw(); //clear all the row
-        arrItemDelivery = data;    
-        $.each(data, function(index, value) {
-          
-          var serialNumber = '<h>'+value.strSerialNumber+'</h>';
-          var gunName = '<h>'+value.strGunName+'</h>';
-          var typeGun = '<h>'+value.strTypeOfGun+'</h>';
-          var rounds = '<h>'+value.intRounds+'</h>';
-          var checkboxItem = '<input type="checkbox" value = "'+value.intGunDeliveryDetailID+'" id="checkbox'+value.intGunDeliveryDetailID+'"/><label for="checkbox'+value.intGunDeliveryDetailID+'"></label>'; 
+  // additional gun Start
+    function refreshTableItem(){
+      $.ajax({
+        type: "GET",
+        url: "/cgrreceivingdelivery/get/deliverydetail?id=" + intDeliveryID,
+        success: function(data){
+          tableItem.clear().draw(); //clear all the row
+          arrItemDelivery = data;    
+          $.each(data, function(index, value) {
+            
+            var serialNumber = '<h>'+value.strSerialNumber+'</h>';
+            var gunName = '<h>'+value.strGunName+'</h>';
+            var typeGun = '<h>'+value.strTypeOfGun+'</h>';
+            var rounds = '<h>'+value.intRounds+'</h>';
+            var checkboxItem = '<input type="checkbox" value = "'+value.intGunDeliveryDetailID+'" id="checkbox'+value.intGunDeliveryDetailID+'"/><label for="checkbox'+value.intGunDeliveryDetailID+'"></label>'; 
 
-          tableItem.row.add([
-            checkboxItem,
-            serialNumber,
-            gunName,
-            typeGun,
-            rounds
-          ]).draw();
-        });//foreach
-      },async:false
-    });//ajax
-  }//refresh table item
+            tableItem.row.add([
+              checkboxItem,
+              serialNumber,
+              gunName,
+              typeGun,
+              rounds
+            ]).draw();
+          });//foreach
+        },async:false
+      });//ajax
+    }//refresh table item
 
-  function getCheckedItem(){
-    boolModalReasonChecker = true;
-    arrItemPost = [];
-    arrItemStatus = [];
-    $('#username').val('');
-    $('#password').val('');
+    function getCheckedItem(){
+      boolModalReasonChecker = true;
+      arrItemPost = [];
+      arrItemStatus = [];
+      $('#username').val('');
+      $('#password').val('');
 
-    $.each(arrItemDelivery, function(index,value){
-      var boolStatus;
-      
-      if ($('#checkbox' + value.intGunDeliveryDetailID).is(':checked')){
-        boolStatus = 1;
+      $.each(arrItemDelivery, function(index,value){
+        var boolStatus;
+        
+        if ($('#checkbox' + value.intGunDeliveryDetailID).is(':checked')){
+          boolStatus = 1;
+        }else{
+          boolStatus = 0;
+          boolModalReasonChecker = false;
+        }
+        arrItemPost.push($('#checkbox' + value.intGunDeliveryDetailID).val());
+        arrItemStatus.push(boolStatus);
+      });//for each
+
+    }//get checked item
+
+    function addGunDatabase(){
+      $.ajax({
+        type: "POST",
+        url: "{{action('CGRReceivingDeliveryController@postItem')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        data: {
+            arrItemPost:arrItemPost,
+            arrItemStatus:arrItemStatus,
+            reason:$('#reason').val(),
+            deliveryID: intDeliveryID,
+            deliveryType: 0
+        },
+        success: function(data){
+          swal({
+              title: "Success!",
+              text: "Delivery Received!",
+              type: "success"
+            },
+            function(){
+              window.location.href = '{{ URL::to("/cgrreceivingdelivery") }}';
+            });
+
+        },
+      });//ajax
+    }
+  // additional gun End
+
+  // swap gun start
+    function refreshTableSwapGun(){
+      $.ajax({
+        type: "GET",
+        url: "/cgrreceivingdelivery/get/swapRequestGunInformation?deliveryID=" + intDeliveryID,
+        success: function(data){
+          var tableReturn = $('#tableGunsReturned').DataTable();
+          var tableDeliver = $('#tableGunsReplacement').DataTable();
+          arrItemDelivery = data.gunDeliver;
+
+          tableReturn.clear().draw();
+          tableDeliver.clear().draw();
+
+          var serialNumber;
+          var gunName;
+          var typeOfGun;
+          var rounds;
+          var checkbox;
+          arrGunRemove = [];
+          $.each(data.gunRemove, function(index,value){
+            serialNumber = '<h>' + value.strSerialNumber + '</h>';
+            gunName = '<h>' + value.strGunName + '</h>';
+            typeOfGun = '<h>' + value.strTypeOfGun + '</h>';
+            arrGunRemove.push(value.intGunID);
+            tableReturn.row.add([
+              serialNumber, 
+              gunName,
+              typeOfGun
+            ]).draw();
+          });//foreach remove
+
+          $.each(data.gunDeliver, function(index,value){
+            serialNumber = '<h>' + value.strSerialNumber + '</h>';
+            gunName = '<h>' + value.strGunName + '</h>';
+            typeOfGun = '<h>' + value.strTypeOfGun + '</h>';
+            rounds = '<h>' + value.intRounds + '</h>';
+            checkbox = '<input type="checkbox" id="checkbox'+value.intGunDeliveryDetailID+'" value="'+value.intGunDeliveryDetailID+'"><label for="checkbox'+value.intGunDeliveryDetailID+'"></label>';
+
+            tableDeliver.row.add([
+              checkbox,
+              serialNumber, 
+              gunName,
+              typeOfGun,
+              rounds
+            ]).draw();
+          });//foreach remove
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+        },async:false
+      });//ajax
+    }
+
+    function swapGunDatabase(){
+      $.ajax({
+        type: "POST",
+        url: "{{action('CGRReceivingDeliveryController@postItem')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        data: {
+            arrItemPost:arrItemPost,
+            arrItemStatus:arrItemStatus,
+            reason:$('#reason').val(),
+            deliveryID: intDeliveryID,
+            deliveryType: 1,
+            arrGunRemove: arrGunRemove
+        },
+        success: function(data){
+          swal({
+              title: "Success!",
+              text: "Delivery Received!",
+              type: "success"
+            },
+            function(){
+              window.location.href = '{{ URL::to("/cgrreceivingdelivery") }}';
+            });
+
+        },
+      });//ajax
+    }
+
+    $('#btnSwapRequestProceed').click(function(){
+      $('#reason').val('');
+      getCheckedItem();
+      if (boolModalReasonChecker){
+        $('#modalLogin').openModal();  
       }else{
-        boolStatus = 0;
-        boolModalReasonChecker = false;
+        $('#modalReason').openModal();
       }
-      arrItemPost.push($('#checkbox' + value.intGunDeliveryDetailID).val());
-      arrItemStatus.push(boolStatus);
-    });//for each
-
-    console.log(arrItemPost);
-    console.log(arrItemStatus);
-  }//get checked item
-
-  function databaseItem(){
-    $.ajax({
-      type: "POST",
-      url: "{{action('CGRReceivingDeliveryController@postItem')}}",
-      beforeSend: function (xhr) {
-          var token = $('meta[name="csrf_token"]').attr('content');
-
-          if (token) {
-                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-          }
-      },
-      data: {
-          arrItemPost:arrItemPost,
-          arrItemStatus:arrItemStatus,
-          reason:$('#reason').val(),
-          deliveryID: intDeliveryID
-      },
-      success: function(data){
-        swal({
-            title: "Success!",
-            text: "Guard has been registered!",
-            type: "success"
-          },
-          function(){
-            window.location.href = '{{ URL::to("/cgrreceivingdelivery") }}';
-          });
-
-      },
-    });//ajax
-  }
-
+    });
+  // swap gun end
 });//document ready function
 </script>
 
 <script>
-$('#tableDelivery').DataTable({
+    $('#tableDelivery').DataTable({
              "columns": [         					
 			null,
 			null,
@@ -470,7 +567,7 @@ $('#tableDelivery').DataTable({
 			"lengthMenu": [5,10,15,20],
 			"bFilter" : false
 		});
-$('#tableItem').DataTable({
+    $('#tableItem').DataTable({
              "columns": [         					
 			{"orderable": false},
 			null,
@@ -483,19 +580,18 @@ $('#tableItem').DataTable({
 			"bFilter" : false
 		});
 	
-$('#tableGunsReturned').DataTable({
+    $('#tableGunsReturned').DataTable({
              "columns": [         								
 			null,
 			null,
 			null,
-			null
             ] ,  
 			"pageLength":3,
 			"lengthMenu": [5,10,15,20],
 			"bFilter" : false
 		});
 	
-$('#tableGunsReplacement').DataTable({
+    $('#tableGunsReplacement').DataTable({
              "columns": [         					
 			{"orderable": false},
 			null,
@@ -507,7 +603,6 @@ $('#tableGunsReplacement').DataTable({
 			"lengthMenu": [5,10,15,20],
 			"bFilter" : false
 		});
-	
 </script>
 
 @stop

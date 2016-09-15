@@ -658,7 +658,7 @@ Inbox
 <!--modal remove guard request complete guards end-->
 
 <!--modal client gun swap request-->
-<div id="modalClientSwapGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
+  <div id="modalClientSwapGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
     <div class="modal-header">
       <div class="h">
         <h3><center>Replacement of Guns</center></h3>  
@@ -675,7 +675,7 @@ Inbox
 					</div>
 					
 					<div class="col s4">
-						<div><h5 style="font-weight:bold;" id = ''>LandBank</h5></div>
+						<div><h5 style="font-weight:bold;" id = 'strSwapGunClientName'></h5></div>
 					</div>
 				</div>
 			</li>
@@ -683,7 +683,7 @@ Inbox
 				<div class="row">
 					<div class="col s12">
 						<div ><h5 style="font-weight:bold;">Notes:</h5></div>
-						<div ><p id = ''>Test Test Test Test Test Test Test Test Test Test Test </p></div>
+						<div ><p id = 'strSwapGunNotes'></p></div>
 					</div>
 					
 					
@@ -702,11 +702,6 @@ Inbox
 						  <th class="grey lighten-1">Type of Gun</th>						  
 					  </thead>
 					  <tbody>
-						  <tr>
-						  	<td>098-890</td>
-							<td>Magnum</td>
-							<td>Pistol</td>
-						  </tr>
 					  </tbody>
 					</table>  
 				  </div>
@@ -721,7 +716,7 @@ Inbox
     <div class="modal-footer ci" style="background-color: #00293C;">
 
       <div id = "" style=""> 
-        <button class="btn green waves-effect waves-light" id = "btnSwapProceed" style="margin-right: 30px;">Proceed</button>
+        <button class="btn green waves-effect waves-light" id = "btnSwapGunProceed" style="margin-right: 30px;">Proceed</button>
         <button class="btn red waves-effect waves-light" style="margin-right: 30px;" id = "">Decline</button>
       </div>
 
@@ -866,10 +861,6 @@ $(document).ready(function(){
 	
 	 $('#btnTest').click(function(){
        $('#modalClientSwapGun').openModal();
-    });
-	
-	 $('#btnSwapProceed').click(function(){
-       window.location.href = '{{ URL::to("/clientaddgunproceed") }}';
     });
 
     $('#btnSendNotificationLeaveRequest').click(function(){
@@ -1754,11 +1745,6 @@ $(document).ready(function(){
 
   // Add Gun Start
     function additionalGunRequest(){
-      $('#modalClientAddGun').openModal();
-      setInformation();
-    }
-
-    function setInformation(){
       $.ajax({
         type: "GET",
         url: "/clientgunrequest/get/addGunRequest?inboxID=" + inboxID,
@@ -1777,6 +1763,7 @@ $(document).ready(function(){
           }else if (boolStatus == 2){
             showHideButton('divAddGunAccepted', 'divAddGunRejected', 'divAddGunButton');
           }
+          $('#modalClientAddGun').openModal();
         },
         error: function(data){
           var toastContent = $('<span>Error Database.</span>');
@@ -1788,7 +1775,7 @@ $(document).ready(function(){
   	$('#btnAddGunRequestProceed').click(function(){
       $.ajax({
         type: "GET",
-        url: "/clientaddgunproceed/setInboxSession?inboxID=" + inboxID,
+        url: "/clientaddgunproceed/setInboxSession?inboxID=" + inboxID + "&requestIdentifier=" + "0",
         success: function(data){
           window.location.href = '{{ URL::to("/clientaddgunproceed") }}'; 
         },
@@ -1838,8 +1825,46 @@ $(document).ready(function(){
 
   // Swap Gun Request Start
     function swapGunRequest(){
-      $('#modalClientSwapGun').openModal();
+      $.ajax({
+        type: "GET",
+        url: "/clientgunrequest/get/SwapGunRequestInformation?inboxID=" + inboxID,
+        success: function(data){
+          console.log(data);
+          $('#strSwapGunNotes').text(data.strNote);
+          $('#strSwapGunClientName').text(data.strClientName);
+
+          var table = $('#dataTableGunstobeReplaced').DataTable();
+          table.clear().draw();
+          $.each(data.guns, function(index,value){
+            table.row.add([
+                '<h>' + value.strSerialNumber + '</h>',
+                '<h>' + value.strGunName + '</h>',
+                '<h>' + value.strTypeOfGun + '</h>' 
+            ]).draw(false);
+          });//foreach
+          $('#modalClientSwapGun').openModal();
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+
+        }
+      });//ajax
     }
+
+    $('#btnSwapGunProceed').click(function(){
+      $.ajax({
+        type: "GET",
+        url: "/clientaddgunproceed/setInboxSession?inboxID=" + inboxID + "&requestIdentifier=" + "1",
+        success: function(data){
+          window.location.href = '{{ URL::to("/clientaddgunproceed") }}'; 
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+      });//ajax
+    });
   // Swap Gun Request End
 });
 </script>        

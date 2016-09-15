@@ -38,6 +38,11 @@ class GunDeliveryController extends Controller
         $contactNumber = $request->contactNumber;
         $deliveryCode = $request->deliveryCode;
         $now = Carbon::now();
+
+        $orderType = DB::table('tblgunorderheader')
+            ->select('tinyintType')
+            ->where('intGunOrderHeaderID', $orderID)
+            ->first();
         
         try{
             DB::beginTransaction();
@@ -48,7 +53,7 @@ class GunDeliveryController extends Controller
                 'strContactNumber' => $contactNumber,
                 'datetimeDeliver' => $now,
                 'strDeliveryCode' => $deliveryCode,
-                'tinyintType' => 0
+                'tinyintType' => $orderType->tinyintType
             ]);
             
             foreach($gunSelected as $value){
