@@ -126,4 +126,50 @@ class ClientGunRequestController extends Controller{
             DB::rollback();
         }
     }
+
+    public function insertSwapGunRequest(Request $request){
+        try{
+            DB::beginTransaction();
+            // Set Variables Start
+                $arrCheckedGun = $request->arrCheckedGun;
+                $strNote = $request->strNote;
+                $clientID = $request->session()->get('id');
+                $clientAccountID = $request->session()->get('accountID');
+                $result = DB::table('tblaccount')
+                    ->select('intAccountID')
+                    ->where('intAccountType', 3)
+                    ->first();
+                $adminAccountID = $result->intAccountID;
+                $subject = 'Swap Gun Request';
+            // Set Variables End
+
+
+            // Process Start
+                $inboxID = DB::table('tblinbox')->insertGetId([
+                    'intAccountIDSender' => $clientAccountID,
+                    'intAccountIDReceiver' => $adminAccountID,
+                    'strSubject' => $subject,
+                    'tinyintType' => 15
+                ]);
+
+                $swapGunHeaderID = DB::table('tblswapgunheader')->insertGetId([
+                    'intInboxID' => $inboxID,
+                    'intClientID' => $clientID,
+                    'strNote' => $strNote,
+                    'boolStatus' => 1
+                ]);
+
+                foreach($arrCheckedGun as $value){
+                    DB::table('tblswapgundetail')->insert([
+                        'intSwapGunHeaderID' => $swapGunHeaderID,
+                        'intGunID' => $value
+                    ]);
+                }//foreach
+            // Process End
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+    }
 }

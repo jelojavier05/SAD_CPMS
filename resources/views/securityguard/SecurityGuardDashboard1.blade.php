@@ -60,7 +60,7 @@
                        <div class="row">
                         <div class="col s4 l12">
                             <div class="col s12 l6 pull-s12 push-l3 hide-on-med-and-down">
-                            <p style="margin-top:9px;font-family:Myriad Pro;font-size:2.2rem">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>     
+                            <p class="flow-text" style="margin-top:9px;font-family:Myriad Pro;font-size:2.2rem">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>     
                             </div>
                               <div class="col s6 pull-s12">
                               

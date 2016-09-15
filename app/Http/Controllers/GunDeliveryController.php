@@ -47,7 +47,8 @@ class GunDeliveryController extends Controller
                 'strDeliveredBy' => $deliveredBy,
                 'strContactNumber' => $contactNumber,
                 'datetimeDeliver' => $now,
-                'strDeliveryCode' => $deliveryCode
+                'strDeliveryCode' => $deliveryCode,
+                'tinyintType' => 0
             ]);
             
             foreach($gunSelected as $value){
