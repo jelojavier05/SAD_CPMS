@@ -16,7 +16,8 @@ Receiving Delivery
   <div class="row">
     <div class="col l12">
       <div class="col l10 offset-l2" style="max-height:690px">
-  		  <table class="centered" id="tableDelivery">			  
+  		  <table class="centered" id="tableDelivery">
+			  <button class="btn blue modal-trigger" href='#modalCgrReturnGun'>Test</button>
   			<thead>
             <tr>
               <th data-field="status">Delivery ID</th>                              
@@ -117,7 +118,7 @@ Receiving Delivery
   						<h5 class="green-text">Guns Replacement</h5>
                         <thead>
                           <tr>
-                          <th class="grey lighten-1"></th>
+						  <th class="grey lighten-1"></th>
                           <th class="grey lighten-1">Serial Number</th>
                           <th class="grey lighten-1">Name</th>
                           <th class="grey lighten-1">Type of Gun</th>
@@ -210,6 +211,81 @@ Receiving Delivery
     </div>  
   </div>
 <!-- Reason End -->
+
+<!--modal cgr return gun-->
+<div id="modalCgrReturnGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
+    <div class="modal-header">
+      <div class="h">
+        <h3><center>Return of Guns</center></h3>  
+      </div>
+    </div>
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s12">
+          <ul class="collection with-header">					
+			<li class="collection-item">
+				<div class="row">
+					<div class="col s12">
+						<table class="" style=" border-radius:10px; width:100%;" id = 'tblReturnGuns'>
+								<h5 class="red-text">Guns to be Returned</h5>
+							  <thead>
+								<tr>								
+								<th class="grey lighten-1">Serial Number</th>
+								<th class="grey lighten-1">Name</th>
+								<th class="grey lighten-1">Type of Gun</th>
+							  </tr>
+							  </thead>
+							  <tbody>
+								  <tr>
+								  	<td>929-929</td>
+									<td>Ruger Bisley</td>
+									<td>Pistol</td>
+								  </tr>
+								  <tr>
+								  	<td>929-929</td>
+									<td>Ruger Bisley</td>
+									<td>Pistol</td>
+								  </tr>
+								  <tr>
+								  	<td>929-929</td>
+									<td>Ruger Bisley</td>
+									<td>Pistol</td>
+								  </tr>
+								  <tr>
+								  	<td>929-929</td>
+									<td>Ruger Bisley</td>
+									<td>Pistol</td>
+								  </tr>
+								  <tr>
+								  	<td>929-929</td>
+									<td>Ruger Bisley</td>
+									<td>Pistol</td>
+								  </tr>
+								  <tr>
+								  	<td>929-929</td>
+									<td>Ruger Bisley</td>
+									<td>Pistol</td>
+								  </tr>
+							  </tbody>
+							</table> 
+					</div>
+				</div>
+			</li>
+          </ul>
+			<div class="row"></div>
+        </div>
+      </div>
+    </div>
+    <!-- button -->
+    <div class="modal-footer ci" style="background-color: #00293C;">
+      
+     <div id = "" style="display: none;"> 
+        <button class="btn green waves-effect" id = "" style="margin-right: 30px;">Proceed</button>
+      </div>
+      
+    </div>
+  </div>
+<!--modal cgr return gun end-->
 @stop
 
 @section('script')
@@ -603,6 +679,17 @@ $(document).ready(function(){
 			"lengthMenu": [5,10,15,20],
 			"bFilter" : false
 		});
+	
+	$('#tblReturnGuns').DataTable({
+               "columns": [         								
+  			null,
+  			null,
+  			null
+              ] ,  
+  			"pageLength":5,
+  			"lengthMenu": [5,10,15,20],
+  			"bFilter" : false
+  		});
 </script>
 
 @stop
