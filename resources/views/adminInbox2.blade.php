@@ -761,16 +761,9 @@ Inbox
 								<th class="grey lighten-1">Serial Number</th>
 								<th class="grey lighten-1">Name</th>
 								<th class="grey lighten-1">Type of Gun</th>
-								<th class="grey lighten-1">Rounds</th>
 							  </tr>
 							  </thead>
 							  <tbody>
-								<tr>									
-									<td>333-333</td>
-									<td>Colt-45</td>
-									<td>Pistol</td>
-									<td>60</td>
-								</tr>
 							  </tbody>
 							</table> 
 					</div>
@@ -783,14 +776,15 @@ Inbox
     </div>
     <!-- button -->
     <div class="modal-footer ci" style="background-color: #00293C;">
-      <div id = "divRemoveButton" style="display: none;"> 
-        <button class="btn green waves-effect waves-light" style="margin-right: 30px;" id = "btnRemoveGuardAccept">Accept</button>
-        <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "btnRemoveGuardDecline">Decline</button>
+      
+      <div id = "divRemoveGunButton" style="display: none;"> 
+        <button class="btn green waves-effect waves-light" style="margin-right: 30px;" id = "btnRemoveGunAccept">Accept</button>
+        <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "btnRemoveGunDecline">Decline</button>
       </div>
-      <div id = "divRemoveAccepted" style="display: none;">                    
+      <div id = "divRemoveGunAccepted" style="display: none;">                    
         <button class="btn green" name="" style="margin-right: 30px; cursor:default;">Accepted</button>
       </div>
-      <div id = "divRemoveRejected" style="display: none;">            
+      <div id = "divRemoveGunRejected" style="display: none;">            
         <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined</button>
       </div>  
       
@@ -845,8 +839,7 @@ Inbox
         
   </div>  
 <!--modal client add gun request end-->
-	 
-
+	
 @stop
 
 
@@ -914,6 +907,8 @@ $(document).ready(function(){
           additionalGunRequest();
         }else if (type == 15){
           swapGunRequest();
+        }else if (type == 16){
+          removeGunRequestClient();
         }
     });//button read click
     
@@ -1897,7 +1892,6 @@ $(document).ready(function(){
         type: "GET",
         url: "/clientgunrequest/get/SwapGunRequestInformation?inboxID=" + inboxID,
         success: function(data){
-          console.log(data);
           $('#strSwapGunNotes').text(data.strNote);
           $('#strSwapGunClientName').text(data.strClientName);
 
@@ -1934,6 +1928,110 @@ $(document).ready(function(){
       });//ajax
     });
   // Swap Gun Request End
+
+  // Remove Gun Request Start
+    var arrRemoveGunID;
+    function removeGunRequestClient(){
+      arrRemoveGunID = [];
+      $.ajax({
+        type: "GET",
+        url: "/clientgunrequest/get/RemoveGunRequestInformation?inboxID=" + inboxID,
+        success: function(data){
+          console.log(data);
+          $('#modalClientRemoveGun').openModal();
+          var table = $('#tableRemoveGuns').DataTable();
+          table.clear().draw();
+          $.each(data.guns, function(index,value){
+            table.row.add([
+                '<h>' + value.strSerialNumber + '</h>',
+                '<h>' + value.strGunName + '</h>',
+                '<h>' + value.strTypeOfGun + '</h>' 
+            ]).draw(false);
+            arrRemoveGunID.push(value.intGunID);
+          });
+
+          var status = data.boolStatus;
+          
+          if (status == 0){
+            showHideButton('divRemoveGunRejected', 'divRemoveGunButton', 'divRemoveGunAccepted');
+          }else if (status == 1){
+            showHideButton('divRemoveGunButton', 'divRemoveGunAccepted', 'divRemoveGunRejected');
+          }else if (status == 2){
+            showHideButton('divRemoveGunAccepted', 'divRemoveGunButton', 'divRemoveGunRejected');
+          }
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+        },async:false
+      });//ajax
+    }
+
+    $('#btnRemoveGunAccept').click(function(){
+      $.ajax({
+        type: "POST",
+        url: "{{action('ClientGunRequestController@acceptRemoveGunRequest')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        data: {
+          arrRemoveGunID: arrRemoveGunID,
+          inboxID: inboxID
+        },
+        success: function(data){
+          swal({
+            title: "Success!",
+            text: "You accepted the Remove Gun Request!",
+            type: "success"
+          },
+            function(){
+            window.location.href = '{{ URL::to("/gunDeliveryView") }}';
+          });
+
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+
+        }
+      });//ajax
+    });
+
+    $('#btnRemoveGunDecline').click(function(){
+      $.ajax({
+        type: "POST",
+        url: "{{action('ClientGunRequestController@declineRemoveGunRequest')}}",
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        data: {
+          inboxID: inboxID
+        },
+        success: function(data){
+          swal({
+            title: "Success!",
+            text: "You decline the remove gun request.",
+            type: "success"
+          });
+
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+
+        }
+      });//ajax
+    });
+  // Remove Gun Request End
+
 });
 </script>        
         
@@ -2076,17 +2174,16 @@ $(document).ready(function(){
         "lengthMenu": [5,10,15,20]
      });
 	
-	$('#tableRemoveGuns').DataTable({
-             "columns": [         								
-			null,
-			null,
-			null,
-			null
-            ] ,  
-			"pageLength":3,
-			"lengthMenu": [5,10,15,20],
-			"bFilter" : false
-		});
+  	$('#tableRemoveGuns').DataTable({
+               "columns": [         								
+  			null,
+  			null,
+  			null
+              ] ,  
+  			"pageLength":3,
+  			"lengthMenu": [5,10,15,20],
+  			"bFilter" : false
+  		});
 </script>
     
 @stop

@@ -259,4 +259,131 @@ class ClientGunRequestController extends Controller{
             DB::rollback();
         }
     }
+
+    public function getRemoveGunRequestInformation(Request $request){
+        $inboxID = Input::get('inboxID');
+
+        $removeGunRequestInformation = DB::table('tblremovegunheader')
+            ->select('*')
+            ->where('intInboxID', $inboxID)
+            ->first();
+        
+        $guns = DB::table('tblremovegundetail')
+            ->join('tblgun', 'tblgun.intGunID', '=', 'tblremovegundetail.intGunID')
+            ->join('tbltypeofgun', 'tbltypeofgun.intTypeOfGunID', '=', 'tblgun.intTypeOfGunID')
+            ->select('tblgun.strGunName', 'tblgun.strSerialNumber', 'tbltypeofgun.strTypeOfGun', 'tblgun.intGunID')
+            ->where('tblremovegundetail.intRemoveGunHeaderID', $removeGunRequestInformation->intRemoveGunHeaderID)
+            ->get();
+
+        $removeGunRequestInformation->guns = $guns;
+
+        return response()->json($removeGunRequestInformation);
+    }
+
+    public function acceptRemoveGunRequest(Request $request){
+
+        try{
+            DB::beginTransaction();
+            // Set Variables start
+                $arrRemoveGunID = $request->arrRemoveGunID;
+                $inboxID = $request->inboxID;
+                $clientInformation = DB::table('tblremovegunheader')
+                    ->join('tblclient', 'tblclient.intClientID', '=', 'tblremovegunheader.intClientID')
+                    ->join('tblcontract', 'tblcontract.intClientID', '=', 'tblclient.intClientID')
+                    ->select('tblclient.intClientID', 'tblclient.intAccountID', 'tblcontract.intContractID')
+                    ->where('tblremovegunheader.intInboxID', $inboxID)
+                    ->where('tblcontract.boolStatus', 1)
+                    ->first();
+                $result = DB::table('tblaccount')
+                    ->select('intAccountID')
+                    ->where('intAccountType', 3)
+                    ->first();
+                $adminAccountID = $result->intAccountID;
+                $now = Carbon::now();
+
+                $message = 'Your Remove Gun Request has been accepted. We wil pick up the gun as soon as possible.';
+                $subject = 'Remove Gun Request Update';
+            // Set Variables end
+
+            // Process start    
+                $gunOrderHeaderID = DB::table('tblgunorderheader')->insertGetId([
+                    'intClientID' => $clientInformation->intClientID,
+                    'tinyintType' => 2, //for removal gun request
+                    'created_at' => $now
+                ]);
+
+                foreach($arrRemoveGunID as $value){
+                    DB::table('tblgunorderdetail')->insert([
+                        'intGunOrderHeaderID' => $gunOrderHeaderID,
+                        'intGunID' => $value,
+                        'intRounds' => 0
+                    ]);    
+                }
+
+                DB::table('tblinbox')->insert([
+                    'intAccountIDSender' => $adminAccountID,
+                    'intAccountIDReceiver' => $clientInformation->intAccountID,
+                    'strMessage' => $message,
+                    'strSubject' => $subject,
+                    'tinyintType' => 0
+                ]);
+
+                DB::table('tblremovegunheader')
+                    ->where('intInboxID', $inboxID)
+                    ->update([
+                        'boolStatus' => 2,
+                        'updated_at' => $now
+                    ]);
+            // Process End
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }//try catch
+    }
+
+    public function declineRemoveGunRequest(Request $request){
+
+        try{
+            DB::beginTransaction();
+            // Set Variables start
+                $inboxID = $request->inboxID;
+                $clientInformation = DB::table('tblremovegunheader')
+                    ->join('tblclient', 'tblclient.intClientID', '=', 'tblremovegunheader.intClientID')
+                    ->select('tblclient.intClientID', 'tblclient.intAccountID')
+                    ->where('tblremovegunheader.intInboxID', $inboxID)
+                    ->first();
+                $result = DB::table('tblaccount')
+                    ->select('intAccountID')
+                    ->where('intAccountType', 3)
+                    ->first();
+                $adminAccountID = $result->intAccountID;
+                $now = Carbon::now();
+
+                $message = 'Your Remove Gun Request has been rejected.';
+                $subject = 'Remove Gun Request Update';
+            // Set Variables end
+
+            // Process Start
+                DB::table('tblremovegunheader')
+                    ->where('intInboxID', $inboxID)
+                    ->update([
+                        'boolStatus' => 0,
+                        'updated_at' => $now
+                    ]);
+
+                DB::table('tblinbox')->insert([
+                    'intAccountIDSender' => $adminAccountID,
+                    'intAccountIDReceiver' => $clientInformation->intAccountID,
+                    'strMessage' => $message,
+                    'strSubject' => $subject,
+                    'tinyintType' => 0
+                ]);
+            // Process End
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+    }
 }

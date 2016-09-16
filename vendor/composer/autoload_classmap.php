@@ -45,6 +45,7 @@ return array(
     'CreateGunOrderHeaderTable' => $baseDir . '/database/migrations/2016_07_28_121622_create_gun_order_header_table.php',
     'CreateGunTable' => $baseDir . '/database/migrations/2016_03_11_181358_create_gun_table.php',
     'CreateGunlicenseTable' => $baseDir . '/database/migrations/2016_07_16_044935_create_gunlicense_table.php',
+    'CreateGunstatusTable' => $baseDir . '/database/migrations/2016_09_16_154937_create_gunstatus_table.php',
     'CreateInboxTable' => $baseDir . '/database/migrations/2016_07_16_153522_create_inbox_table.php',
     'CreateIncidentwitnessTable' => $baseDir . '/database/migrations/2016_08_22_115047_create_incidentwitness_table.php',
     'CreateIntRankIDColumn' => $baseDir . '/database/migrations/2016_07_11_150700_create_intRankID_column.php',

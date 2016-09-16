@@ -203,6 +203,12 @@ class CGRReceivingDeliveryController extends Controller
                             'intRound' => $gun->intRounds,
                             'created_at' => $now
                     ]);
+
+                    DB::table('tblgunstatus')->insert([
+                        'intGunID' => $gun->intGunID,
+                        'boolStatus' => 2,
+                        'dateEffectivity' => $now
+                    ]);
                 }else{
                     $gunStatus = 1;
                     $deliveryDetailStatus = 0;
@@ -253,6 +259,12 @@ class CGRReceivingDeliveryController extends Controller
                             ->update([
                                 'boolFlag' => 1
                             ]);
+
+                        DB::table('tblgunstatus')->insert([
+                            'intGunID' => $value,
+                            'boolStatus' => 1,
+                            'dateEffectivity' => $now
+                        ]);
                     }
                 }
             }
