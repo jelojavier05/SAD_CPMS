@@ -36,8 +36,6 @@ Inbox
   </div>
 <!-- Table End -->
 
-
-
 <!-- modal Message Modal Start-->
   <div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
     <div class="modal-header">
