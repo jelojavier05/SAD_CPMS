@@ -16,8 +16,7 @@ Receiving Delivery
   <div class="row">
     <div class="col l12">
       <div class="col l10 offset-l2" style="max-height:690px">
-  		  <table class="centered" id="tableDelivery">
-			  <button class="btn blue modal-trigger" href='#modalCgrReturnGun'>Test</button>
+  		  <table class="centered" id="tableDelivery">			  
   			<thead>
             <tr>
               <th data-field="status">Delivery ID</th>                              
@@ -216,7 +215,7 @@ Receiving Delivery
 <div id="modalCgrReturnGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
     <div class="modal-header">
       <div class="h">
-        <h3><center>Return of Guns</center></h3>  
+        <h3><center>Guns</center></h3>  
       </div>
     </div>
     <div class="modal-content">
