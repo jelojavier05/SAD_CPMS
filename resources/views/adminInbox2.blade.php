@@ -730,6 +730,74 @@ Inbox
   </div>  
 <!--modal client gun swap request end-->
 
+<!--modal client remove gun-->
+<div id="modalClientRemoveGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
+    <div class="modal-header">
+      <div class="h">
+        <h3><center>Guns Removal</center></h3>  
+      </div>
+    </div>
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s12">
+          <ul class="collection with-header" id="collectionActive">                                       
+            <li class="collection-header">
+                <div class="row">
+                    <div class="col s1">
+                        <h5 style="font-weight:bold;">Reason</h5>                        
+                    </div>
+                    <div class="col s12">
+                        <div><p id="">Test Test Test Test</p></div>
+                    </div>            
+                </div>
+            </li>			           			  						
+			<li class="collection-item">
+				<div class="row">
+					<div class="col s12">
+						<table class="" style=" border-radius:10px; width:100%;" id = 'tableRemoveGuns'>
+								<h5 class="red-text">Guns to be Removed</h5>
+							  <thead>
+								<tr>								
+								<th class="grey lighten-1">Serial Number</th>
+								<th class="grey lighten-1">Name</th>
+								<th class="grey lighten-1">Type of Gun</th>
+								<th class="grey lighten-1">Rounds</th>
+							  </tr>
+							  </thead>
+							  <tbody>
+								<tr>									
+									<td>333-333</td>
+									<td>Colt-45</td>
+									<td>Pistol</td>
+									<td>60</td>
+								</tr>
+							  </tbody>
+							</table> 
+					</div>
+				</div>
+			</li>
+          </ul>
+			<div class="row"></div>
+        </div>
+      </div>
+    </div>
+    <!-- button -->
+    <div class="modal-footer ci" style="background-color: #00293C;">
+      <div id = "divRemoveButton" style="display: none;"> 
+        <button class="btn green waves-effect waves-light" style="margin-right: 30px;" id = "btnRemoveGuardAccept">Accept</button>
+        <button class="btn red waves-effect waves-light modal-close" name="" style="margin-right: 30px;" id = "btnRemoveGuardDecline">Decline</button>
+      </div>
+      <div id = "divRemoveAccepted" style="display: none;">                    
+        <button class="btn green" name="" style="margin-right: 30px; cursor:default;">Accepted</button>
+      </div>
+      <div id = "divRemoveRejected" style="display: none;">            
+        <button class="btn red" name="" style="margin-right: 30px; cursor:default;" id = "">Declined</button>
+      </div>  
+      
+    </div>
+  </div>
+<!--modal client remove gun end-->
+
 <!--modal client add gun request-->
  <div id="modalClientAddGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:500px; margin-top:0px;">
     <div class="modal-header">
@@ -744,17 +812,17 @@ Inbox
             <li class="collection-header" style="font-weight:bold;">
               <div class='row'>
                 <div class='col s1'><h5 style="font-weight:bold;">Client:</h5></div>
-                <div class="col s10 push-s1" id = 'strAddGunClientName'><h5></h5></div>
+                <div class="col s10 push-s1" id = ''><h5></h5></div>
               </div>
             </li>
 			  
 			<li class="collection-item" style="font-weight:bold;">
               <div class='row'>
                 <div class='col s5'><h5 style="font-weight:bold;">Number of Guns:</h5></div>
-                <div class="col s2 pull-s1"><h5 id = 'intAddGunCount'></h5></div>
+                <div class="col s2 pull-s1"><h5 id = ''></h5></div>
               </div>
             </li>
-            <li class="collection-item"><p id = 'strAddGunNote'></p></li>            
+            <li class="collection-item"><p id = ''></p></li>            
           </ul>
         </div>
       </div>
@@ -762,21 +830,23 @@ Inbox
     <!-- button -->
     <div class="modal-footer ci" style="background-color: #00293C;">
 
-      <div id = "divAddGunButton" style="display: none;"> 
-        <button class="btn green waves-effect waves-light" id = "btnAddGunRequestProceed" style="margin-right: 30px;">Proceed</button>
-        <button class="btn red waves-effect waves-light" style="margin-right: 30px;" id = "btnAddGunRequestDecline">Decline</button>
+       <div id = "" style=""> 
+        <button class="btn green waves-effect waves-light" id = "" style="margin-right: 30px;">Proceed</button>
+        <button class="btn red waves-effect waves-light" style="margin-right: 30px;" id = "">Decline</button>
       </div>
 
-      <div id = "divAddGunAccepted" style="display: none;">                 
+      <div id = "" style="display: none;">                 
         <button class="btn green" style="margin-right: 30px; cursor:default;">Accepted</button>
       </div>
 
-      <div id = "divAddGunRejected" style="display: none;">     
+      <div id = "" style="display: none;">     
         <button class="btn red" style="margin-right: 30px; cursor:default;">Declined</button>
       </div> 
         
   </div>  
 <!--modal client add gun request end-->
+	 
+
 @stop
 
 
@@ -2005,6 +2075,18 @@ $(document).ready(function(){
         "pageLength":3,
         "lengthMenu": [5,10,15,20]
      });
+	
+	$('#tableRemoveGuns').DataTable({
+             "columns": [         								
+			null,
+			null,
+			null,
+			null
+            ] ,  
+			"pageLength":3,
+			"lengthMenu": [5,10,15,20],
+			"bFilter" : false
+		});
 </script>
     
 @stop
