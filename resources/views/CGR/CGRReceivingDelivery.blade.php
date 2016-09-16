@@ -232,39 +232,10 @@ Receiving Delivery
 								<th class="grey lighten-1">Serial Number</th>
 								<th class="grey lighten-1">Name</th>
 								<th class="grey lighten-1">Type of Gun</th>
+                <th class="grey lighten-1">Rounds</th>
 							  </tr>
 							  </thead>
 							  <tbody>
-								  <tr>
-								  	<td>929-929</td>
-									<td>Ruger Bisley</td>
-									<td>Pistol</td>
-								  </tr>
-								  <tr>
-								  	<td>929-929</td>
-									<td>Ruger Bisley</td>
-									<td>Pistol</td>
-								  </tr>
-								  <tr>
-								  	<td>929-929</td>
-									<td>Ruger Bisley</td>
-									<td>Pistol</td>
-								  </tr>
-								  <tr>
-								  	<td>929-929</td>
-									<td>Ruger Bisley</td>
-									<td>Pistol</td>
-								  </tr>
-								  <tr>
-								  	<td>929-929</td>
-									<td>Ruger Bisley</td>
-									<td>Pistol</td>
-								  </tr>
-								  <tr>
-								  	<td>929-929</td>
-									<td>Ruger Bisley</td>
-									<td>Pistol</td>
-								  </tr>
 							  </tbody>
 							</table> 
 					</div>
@@ -277,11 +248,7 @@ Receiving Delivery
     </div>
     <!-- button -->
     <div class="modal-footer ci" style="background-color: #00293C;">
-      
-     <div id = "" style="display: none;"> 
-        <button class="btn green waves-effect" id = "" style="margin-right: 30px;">Proceed</button>
-      </div>
-      
+      <button class="btn green waves-effect" id = "btnReturnGunProceed" style="margin-right: 30px;">Proceed</button>
     </div>
   </div>
 <!--modal cgr return gun end-->
@@ -326,7 +293,10 @@ $(document).ready(function(){
           }else if (deliveryType == 1){
             $('#modalSwapDeliveryDetails').openModal();
             refreshTableSwapGun();
-          } 
+          }else if (deliveryType == 2){
+            $('#modalCgrReturnGun').openModal();
+            removeGunTable();
+          }
         }
       });
   });//button verify
@@ -382,6 +352,8 @@ $(document).ready(function(){
               addGunDatabase();
             }else if (deliveryType == 1){
               swapGunDatabase();
+            }else if (deliveryType == 2){
+              removeGunDatabase();
             }
             
           }else{
@@ -626,6 +598,71 @@ $(document).ready(function(){
       }
     });
   // swap gun end
+
+  $('#btnReturnGunProceed').click(function(){
+    $('#modalLogin').openModal();
+  });
+
+  function removeGunTable(){
+    $.ajax({
+      type: "GET",
+      url: "/cgrreceivingdelivery/get/removeGunDeliveryInformation?deliveryID=" + intDeliveryID,
+      success: function(data){
+        console.log(data);
+
+        var table = $('#tblReturnGuns').DataTable();
+        table.clear().draw();
+
+        $.each(data, function(index, value){
+          table.row.add([
+            '<h>' + value.strSerialNumber + '</h>',
+            '<h>' + value.strGunName + '</h>',
+            '<h>' + value.strTypeOfGun + '</h>',
+            '<h>' + value.intRound + '</h>',
+          ]).draw();
+        });
+      },
+      error: function(data){
+        var toastContent = $('<span>Error Database.</span>');
+        Materialize.toast(toastContent, 1500,'red', 'edit');
+
+      }
+    });//ajax
+  }
+
+  function removeGunDatabase(){
+    $.ajax({
+      type: "POST",
+      url: "{{action('CGRReceivingDeliveryController@postRemoveGunDelivery')}}",
+      beforeSend: function (xhr) {
+          var token = $('meta[name="csrf_token"]').attr('content');
+
+          if (token) {
+                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+          }
+      },
+      data: {
+        deliveryID: intDeliveryID
+      },
+      success: function(data){
+        swal({
+        title: "Success!",
+        text: "",
+        type: "success"
+      },
+        function(){
+          refreshTableDelivery();
+          $('#modalCgrReturnGun').closeModal();
+          $('#modalLogin').closeModal();
+      });
+
+      },  
+      error: function(data){
+        var toastContent = $('<span>Error Database.</span>');
+        Materialize.toast(toastContent, 1500,'red', 'edit');
+      }
+    });//ajax
+  }
 });//document ready function
 </script>
 
@@ -679,11 +716,12 @@ $(document).ready(function(){
 			"bFilter" : false
 		});
 	
-	$('#tblReturnGuns').DataTable({
+	   $('#tblReturnGuns').DataTable({
                "columns": [         								
   			null,
   			null,
-  			null
+  			null,
+        null
               ] ,  
   			"pageLength":5,
   			"lengthMenu": [5,10,15,20],

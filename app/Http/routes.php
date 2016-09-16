@@ -154,10 +154,13 @@ Route::get('/cgrreceivingdelivery', 'CGRReceivingDeliveryController@index');
 Route::get('/cgrreceivingdelivery/get/delivery', 'CGRReceivingDeliveryController@getDelivery');
 Route::get('/cgrreceivingdelivery/get/deliverycode', 'CGRReceivingDeliveryController@getDeliveryCode');
 Route::get('/cgrreceivingdelivery/get/deliverydetail', 'CGRReceivingDeliveryController@getDeliveryDetail');
+Route::get('/cgrreceivingdelivery/get/removeGunDeliveryInformation', 'CGRReceivingDeliveryController@getRemoveGunDeliveryInformation');
 Route::post('/cgrreceivingdelivery/post/setGuardReceiver', 'CGRReceivingDeliveryController@setGuardReceiver');
 Route::post('/cgrreceivingdelivery/post/item', 'CGRReceivingDeliveryController@postItem');
 Route::get('/cgrreceivingdelivery/get/swapRequestGunInformation', 'CGRReceivingDeliveryController@swapRequestGunInformation');
 Route::post('/cgrreceivingdelivery/post/swapRequest', 'CGRReceivingDeliveryController@postSwapRequest');
+Route::post('/cgrreceivingdelivery/post/removeGunDelivery', 'CGRReceivingDeliveryController@postRemoveGunDelivery');
+
 Route::get('/cgrreports', 'CGRReportsController@index');
 Route::post('/cgrreports/post/report', 'CGRReportsController@postReport');
 
