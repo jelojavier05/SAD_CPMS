@@ -1,7 +1,7 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Type Of Contract - Query
+Requirements - Query
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@ Type Of Contract - Query
  
      <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Query - Type of Contract</h3>
+                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Query - Requirements</h3>
                 </div>
     
     </div>
@@ -32,7 +32,7 @@ Type Of Contract - Query
 			<div class="row"></div>
 			<div class="row">
 				
-				<div class="input-field col s4">
+				<div class="input-field col s3">
 					<select>
 						<option disabled selected>Choose Status</option>
 						<option>Active</option>
@@ -40,8 +40,18 @@ Type Of Contract - Query
 					</select>
 					<label>Status</label>
 				</div>
+				
+				<div class="input-field col s3">
+					<select>
+						<option disabled selected>For</option>
+						<option>Guard</option>
+						<option>Client</option>
+						<option>Guard and Client</option>
+					</select>
+					<label>Armed Service</label>
+				</div>
 			
-				<div class="input-field col s4 offset-s4">
+				<div class="input-field col s4 offset-s2 ">
 					<nav style="height:55px;">
 						<div class="nav-wrapper blue-grey lighten-3">
 							<form>
@@ -60,10 +70,10 @@ Type Of Contract - Query
                 <div class="col s12" style="">
                     <table class="striped" style="border-radius:10px;" id="dataTable">						
                         <thead>
-                            <tr>                                                                
-                                <th class="blue darken-1 white-text">Type of Contract</th>
+                            <tr>                                                                                                
+                                <th class="blue darken-1 white-text">Requirement</th>
 								<th class="blue darken-1 white-text">Description</th>
-								<th class="blue darken-1 white-text">Duration (Months)</th>
+								<th class="blue darken-1 white-text">For</th>
 								<th class="blue darken-1 white-text">Status</th>
                                 
                             </tr>
@@ -71,16 +81,17 @@ Type Of Contract - Query
 
                         <tbody>
 							<tr>
-								<td>Contract 1</td>
-								<td>Annual</td>
-								<td>12</td>
+								<td>Birth Certificate</td>
+								<td>NSO</td>
+								<td>Guard</td>
 								<td>Active</td>
+								
 							</tr>
 							
 							<tr>
-								<td>Contract 2</td>
-								<td>Semi-Annual</td>
-								<td>6</td>
+								<td>Medical Certificate</td>
+								<td>X-Ray</td>
+								<td>Guard</td>							
 								<td>Inactive</td>
 							</tr>
                         </tbody>
@@ -99,7 +110,7 @@ $(document).ready(function(){
 		$("#dataTable").DataTable({
              "columns": [           
             null,
-            null,
+			null,
 			null,
 			null
             ] ,  

@@ -246,21 +246,21 @@
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                   
-								  <a href="#!" class="waves-effect" id="buttonhover">Guards</a>
-								  <a href="#!" class="waves-effect" id="buttonhover">Clients</a>
-								  <a href="#!" class="waves-effect" id="buttonhover">Guns</a>
+								  <a href="/queryguard" class="waves-effect" id="buttonhover">Guards</a>
+								  <a href="/queryclient" class="waves-effect" id="buttonhover">Clients</a>
+								  <a href="/querygun" class="waves-effect" id="buttonhover">Guns</a>
                                   <a href="/querynatureofbusiness" class="waves-effect" id="buttonhover">Nature of Business</a>
 								  <a href="/querytypeofcontract" class="waves-effect" id="buttonhover">Type of Contract</a>
 								  <a href="/queryarmedservice" class="waves-effect" id="buttonhover">Armed Service</a>
 								  <a href="/queryrank" class="waves-effect" id="buttonhover">Rank</a>
-								  <a href="#!" class="waves-effect" id="buttonhover">Body Attributes</a>
-								  <a href="#!" class="waves-effect" id="buttonhover">Government Exam</a>
-								  <a href="#!" class="waves-effect" id="buttonhover">Leave</a>
-								  <a href="#!" class="waves-effect" id="buttonhover">Province</a>
-								  <a href="#!" class="waves-effect" id="buttonhover">City</a>
-								  <a href="#!" class="waves-effect" id="buttonhover">Requirements</a>
-								  <a href="#!" class="waves-effect" id="buttonhover">Type of Gun</a>
-								  <a href="#!" class="waves-effect" id="buttonhover">Unit of Measurement</a>
+								  <a href="/querybodyattributes" class="waves-effect" id="buttonhover">Body Attributes</a>
+								  <a href="/querygovexam" class="waves-effect" id="buttonhover">Government Exam</a>
+								  <a href="/queryleave" class="waves-effect" id="buttonhover">Leave</a>
+								  <a href="/queryprovince" class="waves-effect" id="buttonhover">Province</a>
+								  <a href="/querycity" class="waves-effect" id="buttonhover">City</a>
+								  <a href="/queryrequirements" class="waves-effect" id="buttonhover">Requirements</a>
+								  <a href="/queryguntype" class="waves-effect" id="buttonhover">Type of Gun</a>
+								  <a href="/queryuom" class="waves-effect" id="buttonhover">Unit of Measurement</a>
 								
 																						  
                                            

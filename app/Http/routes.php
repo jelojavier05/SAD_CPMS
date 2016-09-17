@@ -9,10 +9,21 @@ Route::get('/clientaddgunproceed/setInboxSession', 'ClientAddGunProceedControlle
 Route::get('/clientaddgunproceed/getRequestIdentifier', 'ClientAddGunProceedController@getRequestIdentifier');
 Route::post('/clientaddgunproceed/post/insertgunorder', 'ClientAddGunProceedController@insertGunOrder');
 
+Route::get('/queryguard', 'QueryGuardController@index');
+Route::get('/queryclient', 'QueryClientController@index');
+Route::get('/querygun', 'QueryGunController@index');
 Route::get('/querynatureofbusiness', 'QueryNatureOfBusinessController@index');
 Route::get('/querytypeofcontract', 'QueryTypeOfContractController@index');
 Route::get('/queryarmedservice', 'QueryArmedServiceController@index');
 Route::get('/queryrank', 'QueryRankController@index');
+Route::get('/querybodyattributes', 'QueryBodyAttributesController@index');
+Route::get('/querygovexam', 'QueryGovernmentExamController@index');
+Route::get('/queryleave', 'QueryLeaveController@index');
+Route::get('/queryprovince', 'QueryProvinceController@index');
+Route::get('/querycity', 'QueryCityController@index');
+Route::get('/queryrequirements', 'QueryRequirementsController@index');
+Route::get('/queryguntype', 'QueryTypeOfGunController@index');
+Route::get('/queryuom', 'QueryUnitOfMeasurementController@index');
 
 
 

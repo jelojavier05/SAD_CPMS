@@ -1,7 +1,7 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Type Of Contract - Query
+Client - Query
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@ Type Of Contract - Query
  
      <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Query - Type of Contract</h3>
+                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Query - Client</h3>
                 </div>
     
     </div>
@@ -31,17 +31,26 @@ Type Of Contract - Query
         <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
 			<div class="row"></div>
 			<div class="row">
-				
-				<div class="input-field col s4">
+				<div class="input-field col s3">
 					<select>
 						<option disabled selected>Choose Status</option>
 						<option>Active</option>
-						<option>Inactive</option>
+						<option>Pending</option>
 					</select>
 					<label>Status</label>
 				</div>
+				
+				<div class="input-field col s3">
+					<select>
+						<option disabled selected>Choose Nature of Business</option>
+						<option>Bank</option>
+						<option>School</option>
+						<option>Salon</option>
+					</select>
+					<label>Nature of Business</label>
+				</div>
 			
-				<div class="input-field col s4 offset-s4">
+				<div class="input-field col s4 offset-s2 ">
 					<nav style="height:55px;">
 						<div class="nav-wrapper blue-grey lighten-3">
 							<form>
@@ -52,7 +61,7 @@ Type Of Contract - Query
 							</form>
 						</div>
 					</nav>
-				</div>	
+				</div>
 				
 			</div>
         
@@ -60,10 +69,10 @@ Type Of Contract - Query
                 <div class="col s12" style="">
                     <table class="striped" style="border-radius:10px;" id="dataTable">						
                         <thead>
-                            <tr>                                                                
-                                <th class="blue darken-1 white-text">Type of Contract</th>
-								<th class="blue darken-1 white-text">Description</th>
-								<th class="blue darken-1 white-text">Duration (Months)</th>
+                            <tr>                                                                                                
+                                <th class="blue darken-1 white-text">Name</th>
+								<th class="blue darken-1 white-text">Nature of Business</th>
+								<th class="blue darken-1 white-text">Person In Charge</th>								
 								<th class="blue darken-1 white-text">Status</th>
                                 
                             </tr>
@@ -71,17 +80,18 @@ Type Of Contract - Query
 
                         <tbody>
 							<tr>
-								<td>Contract 1</td>
-								<td>Annual</td>
-								<td>12</td>
+								<td>LandBank Almanza</td>
+								<td>Bank</td>
+								<td>Boy Tigas</td>
 								<td>Active</td>
+								
 							</tr>
 							
 							<tr>
-								<td>Contract 2</td>
-								<td>Semi-Annual</td>
-								<td>6</td>
-								<td>Inactive</td>
+								<td>ChinaBank</td>
+								<td>Bank</td>
+								<td>Chun Li</td>
+								<td>Pending</td>
 							</tr>
                         </tbody>
                     </table>
@@ -99,7 +109,7 @@ $(document).ready(function(){
 		$("#dataTable").DataTable({
              "columns": [           
             null,
-            null,
+			null,
 			null,
 			null
             ] ,  

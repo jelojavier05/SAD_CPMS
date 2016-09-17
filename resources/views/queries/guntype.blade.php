@@ -1,10 +1,12 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Type Of Contract - Query
+Type of Gun - Query
 @endsection
 
 @section('content')
+
+
 <style>
 .dataTables_filter
 	{
@@ -21,7 +23,7 @@ Type Of Contract - Query
  
      <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Query - Type of Contract</h3>
+                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Query - Type of Gun</h3>
                 </div>
     
     </div>
@@ -60,27 +62,24 @@ Type Of Contract - Query
                 <div class="col s12" style="">
                     <table class="striped" style="border-radius:10px;" id="dataTable">						
                         <thead>
-                            <tr>                                                                
-                                <th class="blue darken-1 white-text">Type of Contract</th>
+                            <tr>                                
+                                <th class="blue darken-1 white-text">Type of Gun</th>
 								<th class="blue darken-1 white-text">Description</th>
-								<th class="blue darken-1 white-text">Duration (Months)</th>
 								<th class="blue darken-1 white-text">Status</th>
                                 
                             </tr>
                         </thead>
 
                         <tbody>
-							<tr>
-								<td>Contract 1</td>
-								<td>Annual</td>
-								<td>12</td>
+							<tr>								
+								<td>Pistol</td>
+								<td>Handgun</td>
 								<td>Active</td>
 							</tr>
 							
-							<tr>
-								<td>Contract 2</td>
-								<td>Semi-Annual</td>
-								<td>6</td>
+							<tr>								
+								<td>Rifle</td>
+								<td>Rifle Gun</td>
 								<td>Inactive</td>
 							</tr>
                         </tbody>
@@ -100,7 +99,6 @@ $(document).ready(function(){
              "columns": [           
             null,
             null,
-			null,
 			null
             ] ,  
 //		    "pagingType": "full_numbers",

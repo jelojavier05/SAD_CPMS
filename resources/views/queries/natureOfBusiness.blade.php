@@ -36,7 +36,7 @@ Nature of Business - Query
 				
 				<div class="input-field col s4">
 					<select>
-						<option disabled selected>Choose</option>
+						<option disabled selected>Choose Status</option>
 						<option>Active</option>
 						<option>Inactive</option>
 					</select>
@@ -63,7 +63,7 @@ Nature of Business - Query
                     <table class="striped" style="border-radius:10px;" id="dataTable">						
                         <thead>
                             <tr>                                
-                                <th class="blue darken-1 white-text">Name</th>
+                                <th class="blue darken-1 white-text">Nature of Business</th>
 								<th class="blue darken-1 white-text">Rate per Hour</th>
 								<th class="blue darken-1 white-text">Status</th>
                                 

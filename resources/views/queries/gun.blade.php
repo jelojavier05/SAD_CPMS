@@ -1,7 +1,7 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Rank - Query
+Guns - Query
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@ Rank - Query
  
      <div class="col s5 push-s3" style="margin-left:-2%">
     
-                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Query - Rank</h3>
+                   <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Query - Guns</h3>
                 </div>
     
     </div>
@@ -31,37 +31,49 @@ Rank - Query
         <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
 			<div class="row"></div>
 			<div class="row">
-				
-				<div class="input-field col s3">
-					<select>
-						<option disabled selected>Choose Status</option>
-						<option>Active</option>
-						<option>Inactive</option>
-					</select>
-					<label>Status</label>
-				</div>
-				
-				<div class="input-field col s3">
-					<select>
-						<option disabled selected>Choose Armed Service</option>
-						<option>PNP</option>
-						<option>SWAT</option>
-					</select>
-					<label>Armed Service</label>
+				<div class="col s8">
+					<div class="input-field col s4">
+						<select>
+							<option disabled selected>Choose Status</option>
+							<option>Available</option>
+							<option>Pending for Delivery</option>							
+						</select>
+						<label>Status</label>
+					</div>
+
+					<div class="input-field col s4">
+						<select>
+							<option disabled selected>Choose Type of Gun</option>
+							<option>Pistol</option>
+							<option>Rifle</option>
+						</select>
+						<label>Type of Gun</label>
+					</div>
+
+					<div class="input-field col s4">
+						<select disabled>
+							<option disabled selected>Choose Client</option>							
+							<option>LandBank Almanza</option>
+							<option>David's Salon Makati</option>
+						</select>
+						<label>Client</label>
+					</div>
 				</div>
 			
-				<div class="input-field col s4 offset-s2 ">
-					<nav style="height:55px;">
-						<div class="nav-wrapper blue-grey lighten-3">
-							<form>
-								<div class="input-field" style="">
-									<input id="mySearch" type="search" placeholder="Search" required>
-									<label for="search"><i class="material-icons">search</i></label>									
-								</div>
-							</form>
-						</div>
-					</nav>
-				</div>	
+				<div class="col s4">
+					<div class="input-field col s12">
+						<nav style="height:55px;">
+							<div class="nav-wrapper blue-grey lighten-3">
+								<form>
+									<div class="input-field" style="">
+										<input id="mySearch" type="search" placeholder="Search" required>
+										<label for="search"><i class="material-icons">search</i></label>									
+									</div>
+								</form>
+							</div>
+						</nav>
+					</div>	
+				</div>
 				
 			</div>
         
@@ -70,8 +82,9 @@ Rank - Query
                     <table class="striped" style="border-radius:10px;" id="dataTable">						
                         <thead>
                             <tr>                                                                                                
-                                <th class="blue darken-1 white-text">Rank</th>
-								<th class="blue darken-1 white-text">Armed Service</th>                                
+                                <th class="blue darken-1 white-text">Name</th>
+								<th class="blue darken-1 white-text">License Number</th>								
+								<th class="blue darken-1 white-text">Gender</th>
 								<th class="blue darken-1 white-text">Status</th>
                                 
                             </tr>
@@ -79,16 +92,18 @@ Rank - Query
 
                         <tbody>
 							<tr>
-								<td>Captain</td>
-								<td>PNP</td>								
+								<td>Jason Paredes</td>
+								<td>2013-04019-MN-0</td>
+								<td>Male</td>
 								<td>Active</td>
 								
 							</tr>
 							
 							<tr>
-								<td>Major</td>
-								<td>SWAT</td>								
-								<td>Inactive</td>
+								<td>Kobe Bryant</td>
+								<td>123-123</td>
+								<td>Male</td>
+								<td>Reliever</td>
 							</tr>
                         </tbody>
                     </table>
@@ -106,6 +121,7 @@ $(document).ready(function(){
 		$("#dataTable").DataTable({
              "columns": [           
             null,
+			null,
 			null,
 			null
             ] ,  
