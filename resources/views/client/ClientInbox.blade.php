@@ -7,134 +7,104 @@ Inbox
 @section('content')
 
 <!--Inbox-->
-<div class="row"></div>
-<div class="row">
-	<div class="col s8 push-s3">
-          <div class="row" style="margin-top:-40px;"> 
-                    <div class="col s12 push-s4">
-                     <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#662E1C;font-weight:bold">MESSAGES</h3>
-                    </div>  
-               <hr>
-          </div>	
-		<!-- table message -->
-		<div id="message">
-			<div class="container-fluid grey lighten-2">	
-				<table class="striped" id="inboxTable">					
-					<thead>
-						<tr>
-							<th class="grey lighten-1" style="width: 20px;"></th>
-							<th class="grey lighten-1" style="width: 30px;"></th>
-							<th class="grey lighten-1">Date</th>
-							<th class="grey lighten-1">From</th>
-							<th class="grey lighten-1">Subject</th>
-						</tr>
-					</thead>
+	<div class="row"></div>
+	<div class="row">
+		<div class="col s8 push-s3">
+	          <div class="row" style="margin-top:-40px;"> 
+	                    <div class="col s12 push-s4">
+	                     <h3 style="font-family:Myriad Pro;margin-top:9.2%;color:#662E1C;font-weight:bold">MESSAGES</h3>
+	                    </div>  
+	               <hr>
+	          </div>	
+			<!-- table message -->
+			<div id="message">
+				<div class="container-fluid grey lighten-2">	
+					<table class="striped" id="inboxTable">					
+						<thead>
+							<tr>
+								<th class="grey lighten-1" style="width: 20px;"></th>
+								<th class="grey lighten-1" style="width: 30px;"></th>
+								<th class="grey lighten-1">Date</th>
+								<th class="grey lighten-1">From</th>
+								<th class="grey lighten-1">Subject</th>
+							</tr>
+						</thead>
 
-					<tbody>
-					</tbody>
-				</table>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 <!--Inbox End-->
 
-<!--modal message approved client/contract-->
-<div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
-    <div class="modal-header">
-      	<div class="h">
-			<h3><center>Message</center></h3>  
-		</div>
-    </div>
-	
-	<div class="modal-content">
-		<div class="row">
-			<div class="col s12">
-				<ul class="collection with-header" id="collectionActive">
-					<li class="collection-header"><div style="font-size:18px;" id = "messageSubject">&nbsp;</div></li>
-					<li class="collection-item"><p id = 'messageInbox'></p>
-                    </li>
+<!--modal message start-->
+	<div id="modalMessage" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:470px; margin-top:-10px;">
+	    <div class="modal-header">
+	      	<div class="h">
+				<h3><center>Message</center></h3>  
+			</div>
+	    </div>
+		
+		<div class="modal-content">
+			<div class="row">
+				<div class="col s12">
+					<ul class="collection with-header" id="collectionActive">
+						<li class="collection-header"><div style="font-size:18px;" id = "messageSubject">&nbsp;</div></li>
+						<li class="collection-item"><p id = 'messageInbox'></p>
+	                    </li>
+				</div>
 			</div>
 		</div>
-	</div>
-		
-	<div class="modal-footer ci modal-close" style="background-color: #00293C;">
-		<button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK</button>
-	</div>
-</div>
-<!--modal message approved client/contract end-->
-	
-<!--modal add guards || tagged guards-->
-<div id="modalGuards" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
-    <div class="modal-header">
-      	<div class="h">
-			<h3><center>Guards</center></h3>  
+			
+		<div class="modal-footer ci modal-close" style="background-color: #00293C;">
+			<button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK</button>
 		</div>
-    </div>
+	</div>
+<!--modal message end-->
 	
-	<div class="modal-content">
-		<div class="row">
-			<div class="col s12">
-				<ul class="collection with-header" id="collectionActive">
-<!--					<li class="collection-header"><h5>Guards</h5></li>-->
-					<li class="collection-item">
-						<table class="striped white" style="border-radius:10px; width:100%;" id="dataTableGuards">
-							<thead>
-								<th class="grey lighten-1">Name</th>
-								<th class="grey lighten-1">Address</th>
-								<th class="grey lighten-1">Gender</th>
-							</thead>
-							
-							<tbody>
-								<tr>
-									<td>Shaquille O'Neal</td>
-									<td>345 Hey Street Talon Uno, Las Pinas Metro Manila</td>
-									<td>Male</td>
-								</tr>
-								<tr>
-									<td>haquille O'Neal</td>
-									<td>345 Hey Street Talon Uno, Las Pinas Metro Manila</td>
-									<td>Male</td>
-								</tr>
-								<tr>
-									<td>Shaquille O'Neal</td>
-									<td>345 Hey Street Talon Uno, Las Pinas Metro Manila</td>
-									<td>Male</td>
-								</tr>
-								<tr>
-									<td>Shaquille O'Neal</td>
-									<td>345 Hey Street Talon Uno, Las Pinas Metro Manila</td>
-									<td>Male</td>
-								</tr>
-								<tr>
-									<td>Shaquille O'Neal</td>
-									<td>345 Hey Street Talon Uno, Las Pinas Metro Manila</td>
-									<td>Male</td>
-								</tr>
-								<tr>
-									<td>Shaquille O'Neal</td>
-									<td>345 Hey Street Talon Uno, Las Pinas Metro Manila</td>
-									<td>Male</td>
-								</tr>
-							</tbody>
-						</table>
-                    </li>
-				</ul><div class="row"></div>
+<!--modal additional guards || replace guards start-->
+	<div id="modalGuards" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:570px; margin-top:-30px;">
+	    <div class="modal-header">
+	      	<div class="h">
+				<h3><center>Guards</center></h3>  
+			</div>
+	    </div>
+		
+		<div class="modal-content">
+			<div class="row">
+				<div class="col s12">
+					<ul class="collection with-header" id="collectionActive">
+						<li class="collection-item">
+							<table class="striped white" style="border-radius:10px; width:100%;" id="dataTableGuards">
+								<thead>
+									<th class="grey lighten-1">Name</th>
+									<th class="grey lighten-1">Address</th>
+									<th class="grey lighten-1">Gender</th>
+								</thead>
+								
+								<tbody>
+								</tbody>
+							</table>
+	                    </li>
+					</ul><div class="row"></div>
+				</div>
 			</div>
 		</div>
+			
+		<div class="modal-footer ci modal-close" style="background-color: #00293C;">
+			<button class="btn green waves-effect waves-light" style="margin-right: 30px;">OK</button>
+		</div>
 	</div>
-		
-	<div class="modal-footer ci modal-close" style="background-color: #00293C;">
-		<button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK</button>
-	</div>
-</div>
-<!--modal add guards|| tagged guards end-->
+<!--modal additional guards || replace guards end-->
 @stop
 
 @section('script')
 <script>
 $(document).ready(function(){
 	var table = $('#inboxTable').DataTable();
+	var inboxID;
 	$.ajax({
         type: "GET",
         url: "{{action('InboxController@getInbox')}}",
@@ -163,14 +133,15 @@ $(document).ready(function(){
     });//get inbox 
 
 	$('#inboxTable').on('click', '.buttonRead', function(){
-        var type = $('#type' + this.id).val();
-        inboxID = this.id;
-        readMessage();
-
-        if (type == 0){
+    var type = $('#type' + this.id).val();
+    inboxID = this.id;
+    readMessage();
+    if (type == 0){
 			message();
-        }
-    });
+    }else if (type == 12){
+    	swapRequestAccepted();
+    }
+  });
 
     function readMessage(){
         if($('#radio' + inboxID).is(':checked')){
@@ -206,48 +177,70 @@ $(document).ready(function(){
     }//function readMessage
 
     function message(){
-        $('#modalMessage').openModal();
-        getMessage();
-    }
-
-    function getMessage(){
         $.ajax({
             type: "GET",
             url: "/adminInbox/get/message?inboxID=" + inboxID,
             success: function(data){
-                console.log(data);
+            	$('#modalMessage').openModal();
                 $('#messageSubject').text(data.strSubject);
                 $('#messageInbox').text(data.strMessage);
-            },async:false
+            }
         });//get guard waiting
-    }//get message to db
+    }
 
+    function swapRequestAccepted(){
+			$.ajax({
+        type: "GET",
+        url: "/clientinbox/get/SwapGuardRequestAccepted?inboxID=" + inboxID,
+        success: function(data){
+        	$('#modalGuards').openModal();
+        	var arrGuard = data.guards;
+
+        	var table = $('#dataTableGuards').DataTable();
+        	table.clear().draw();
+        	
+        	$.each(arrGuard, function(index,value){
+            var address = value.strAddress + ' ' + value.strCityName + ', ' + value.strProvinceName;
+            var name = value.strFirstName + ' ' + value.strLastName;
+
+            table.row.add([
+          		'<h>' + name + '</h>',
+              '<h>' + address + '</h>',
+              '<h>' + value.strGender + '</h>'
+            ]).draw(false);
+          });//foreach
+        },
+        error: function(data){
+					var toastContent = $('<span>Error Database.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+      });//ajax
+    }
 });
-
 </script>
 
 <script>
-$("#inboxTable").DataTable({
-     "columns": [         
-	{"orderable": false},
-	{"orderable": false},
-	null,
-	null,
-	null,
-    ] ,  
-	"pageLength":5,
-	"lengthMenu": [5,10,15,20],
-	"bFilter" : false
-});
+	$("#inboxTable").DataTable({
+	     "columns": [         
+		{"orderable": false},
+		{"orderable": false},
+		null,
+		null,
+		null,
+	    ] ,  
+		"pageLength":5,
+		"lengthMenu": [5,10,15,20],
+		"bFilter" : false
+	});
 
-$("#dataTableGuards").DataTable({
-     "columns": [         
-	null,
-	null,
-	null,
-    ] ,  
-	"pageLength":5,
-	"lengthMenu": [5,10,15,20]	
-});
+	$("#dataTableGuards").DataTable({
+	     "columns": [         
+		null,
+		null,
+		null,
+	    ] ,  
+		"pageLength":5,
+		"lengthMenu": [5,10,15,20]	
+	});
 </script>
 @stop

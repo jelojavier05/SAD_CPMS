@@ -415,13 +415,18 @@ class ChangeGuardController extends Controller{
                 //Guard Accepted End
 
                 $message = 'Guard Replacement has been approved. Effectivity date: ' . $effectivityDate->toFormattedDateString() . '.';
-                DB::table('tblinbox')->insert([
+                $swapRequestAcceptedInboxID = DB::table('tblinbox')->insertGetId([
                     'intAccountIDSender' => $adminAccountID,
                     'intAccountIDReceiver' =>  $clientAccountID,
                     'strMessage' => $message,
                     'strSubject' => $subject,
-                    'tinyintType' => 0
+                    'tinyintType' => 12
                 ]);//send inbox from admin to client
+
+                DB::table('tblswapguardrequestinbox')->insert([
+                    'intInboxID' => $swapRequestAcceptedInboxID,
+                    'intSwapGuardHeaderID' => $swapGuardHeaderID
+                ]);
 
                 $message = 'The guards needed for the change guard request of ' . $clientName . ' are now compelete. Effectivity date: ' . $effectivityDate->toFormattedDateString();
                 DB::table('tblinbox')->insert([
@@ -430,7 +435,7 @@ class ChangeGuardController extends Controller{
                     'strMessage' => $message,
                     'strSubject' => $subject,
                     'tinyintType' => 0
-                ]);//send inbox from admin to client
+                ]);//send inbox from client to admin
             }// if count guard accepted is equal to count guard to be replaced
 
             DB::commit();

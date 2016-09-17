@@ -190,6 +190,7 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
     Route::post('/clientsettings/update', 'ClientSettingsController@update');
     Route::post('/clientsettings/update/macaddress', 'ClientSettingsController@updateMacAddress');
 	Route::get('/clientinbox', 'ClientInboxController@index');
+    Route::get('/clientinbox/get/SwapGuardRequestAccepted', 'ClientInboxController@getSwapGuardRequestAccepted');
 	Route::get('/clientcgrmodule', 'ClientCGRModuleController@index');
 
 
