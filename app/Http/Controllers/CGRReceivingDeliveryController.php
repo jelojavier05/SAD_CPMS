@@ -377,6 +377,7 @@ class CGRReceivingDeliveryController extends Controller
                     ->update([
                         'boolFlag' => 1
                     ]);
+
             }
 
             DB::commit();

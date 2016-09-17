@@ -569,7 +569,7 @@ Inbox
                         <h5 style="font-weight:bold;">Reason</h5>                        
                     </div>
                     <div class="col s12">
-                        <div><p id="strRemoveReason">Hello hello hello hello hello hello</p></div>
+                        <div><p id="strRemoveReason"></p></div>
                     </div>            
                 </div>
             </li>
@@ -579,15 +579,12 @@ Inbox
                 <div class="col s12">
                   <table class="striped white" style="border-radius:10px; width:100%;" id="dataTableRemoveGuards">
                     <h5 class="red-text">Guards to be Removed</h5>
-                    <thead>                                                                                             
+                    <thead>                                                                                
                       <th class="grey lighten-1">Name</th>                      
-                      <th class="grey lighten-1">Gender</th>                                              
+                      <th class="grey lighten-1">Address</th>                                              
+                      <th class="grey lighten-1">Gender</th>        
                     </thead>
                     <tbody>
-						<tr>
-							<td>Derrick Rose</td>
-							<td>Male</td>
-						</tr>
                     </tbody>
                   </table>
                 </div>
@@ -601,7 +598,7 @@ Inbox
 					</div>
 					
 					<div class="col s1 pull-s1">
-						<h5 style="font-weight:bold;">10</h5>
+						<h5 style="font-weight:bold;" id = 'intRemainingGuard'></h5>
 					</div>
 				</div>
 			</li>
@@ -731,7 +728,7 @@ Inbox
 <!--modal client gun swap request end-->
 
 <!--modal client remove gun-->
-<div id="modalClientRemoveGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
+  <div id="modalClientRemoveGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
     <div class="modal-header">
       <div class="h">
         <h3><center>Guns Removal</center></h3>  
@@ -1706,18 +1703,25 @@ $(document).ready(function(){
   // Swap Guard (Client Requested) Accepted End
 
   // Remove Guard (Client Requested) Start
+    var arrGun;
+    var arrGunChecked;
+
     function removeGuardRequest(){
       $('#modalRemoveGuardRequest').openModal();
         $.ajax({
           type: "GET",
           url: "/removeguardrequest/get/requestInformation?inboxID=" + inboxID,
           success: function(data){
-            var arrGuard = data.guards;
+            var arrGuard = data.removeGuard;
+            var arrClientGun = data.clientGun;
             var table = $('#dataTableRemoveGuards').DataTable();
+            var tableGun = $('#tableGunsRemoval').DataTable();
             var requestSTatus = data.boolStatus;
             table.clear().draw();
+            tableGun.clear().draw();
 
             $('#strRemoveReason').text(data.strReason);
+            $('#intRemainingGuard').text(data.remainingGuard);
 
             $.each(arrGuard, function(index,value){
               var address = value.strAddress + ' ' + value.strCityName + ', ' + value.strProvinceName;
@@ -1728,6 +1732,19 @@ $(document).ready(function(){
                 '<h>' + address + '</h>',
                 '<h>' + value.strGender + '</h>'
               ]).draw(false);
+            });//removeGuard
+            arrGun =[];
+            $.each(arrClientGun, function(index,value){
+              var checkBox = '<input type="checkbox" id="removeGunCheckbox'+value.intGunID+'" value="'+value.intGunID+'"><label for="removeGunCheckbox'+value.intGunID+'"></label>'
+              tableGun.row.add([
+                checkBox,
+                '<h>' + value.strSerialNumber + '</h>',
+                '<h>' + value.strGunName + '</h>',
+                '<h>' + value.strTypeOfGun + '</h>',
+                '<h>' + value.intRound + '</h>'
+              ]).draw(false);
+
+              arrGun.push(value.intGunID);
             });//foreach
 
             if (requestSTatus == 1){
@@ -1746,6 +1763,7 @@ $(document).ready(function(){
     }
 
     $('#btnRemoveGuardAccept').click(function(){
+      getCheckedGun();
       $.ajax({
         type: "POST",
         url: "{{action('RemoveGuardController@accept')}}",
@@ -1757,7 +1775,8 @@ $(document).ready(function(){
             }
         },
         data: {
-          inboxID: inboxID
+          inboxID: inboxID,
+          arrGunChecked: arrGunChecked
         },
         success: function(data){
           swal({
@@ -1804,6 +1823,15 @@ $(document).ready(function(){
         }
       });//ajax
     });
+
+    function getCheckedGun(){
+      arrGunChecked = [];
+      $.each(arrGun, function(index,value){
+        if($('#removeGunCheckbox' + value).is(':checked')){
+          arrGunChecked.push(value);
+        }
+      });
+    }
   // Remove Guard (Client Requested) End
 
   // Add Gun Start
@@ -2144,6 +2172,7 @@ $(document).ready(function(){
     
     $('#dataTableRemoveGuards').DataTable({
          "columns": [       
+        null,
         null,
         null
         ] ,  

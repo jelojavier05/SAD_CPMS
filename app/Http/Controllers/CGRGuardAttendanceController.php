@@ -81,8 +81,6 @@ class CGRGuardAttendanceController extends Controller
 
     	}
         
-        krsort($clientGuard);
-        
     	return response()->json($clientGuard);
     }//get active guard in the cgrm
 
