@@ -3,7 +3,7 @@
     <head>
           <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-            <title>@yield('title')</title>
+                <title>@yield('title')</title>
           <meta charset="utf-8">
           <meta name="csrf_token" content="{{ csrf_token() }}" />
         
@@ -56,6 +56,9 @@
 
 <body id="scrollhider" class="bodyscrollhider grey lighten-3 ci">
 	
+   
+
+    
       <nav class="blue darken-4">
     
          <div class="nav-wrapper">
