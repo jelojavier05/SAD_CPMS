@@ -6,8 +6,8 @@ Receiving Delivery
 @section('content')
 <!-- Title Start -->
   <div class="row">
-    <div class="col s5 push-s3" style="margin-left:-2%">
-      <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:7%">Receiving Delivery</h3>
+    <div class="col s6 push-s3" style="margin-left:-2%">
+      <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:7%">Receiving Delivery and Item Return</h3>
     </div>
   </div>
 <!-- Title End -->

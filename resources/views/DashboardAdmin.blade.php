@@ -144,11 +144,23 @@ Admin
     </div>   
   </div>
               
-  <div class="row">
-      <div class="col l2 push-l3">
-          <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-      </div>
-  </div> 
+<div class="row">
+
+	<div class="col s10 push-s2">		
+		<div class="row">
+		  <div class="col s6">
+			  <hr>
+			  <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+		  </div>
+			   
+		  <div class="col s6">
+			  <hr>
+			  <div id="container1" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+		  </div>
+
+		</div>
+	</div>
+</div>
                 
 </div>
               
@@ -165,6 +177,68 @@ Admin
       success: function(data){
         guardChart = data;
         $('#container').highcharts({
+          chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+          },
+          title: {
+            text: 'Guards'
+          },
+          tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+          },
+          plotOptions: {
+            pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+              enabled: false
+            },
+              showInLegend: true
+            }
+          },
+          series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+              name: 'Deployed',
+              y: guardChart.deployed
+            }, {
+              name: 'Waiting',
+              y: guardChart.waiting,
+            }, {
+              name: 'Pending',
+              y: guardChart.pending
+            }, {
+              name: 'On Leave',
+              y: guardChart.onLeave
+            },{
+              name: 'Reliever',
+              y: guardChart.reliever
+            }]
+          }]
+        });
+      },
+      error: function(data){
+        var toastContent = $('<span>Error Database.</span>');
+        Materialize.toast(toastContent, 1500,'red', 'edit');
+
+      }
+    });//ajax
+  });
+</script>
+	
+<script>
+  $(document).ready(function () {
+    var guardChart;
+    $.ajax({
+      type: "GET",
+      url: "{{action('DashboardAdminController@getPieGuard')}}",
+      success: function(data){
+        guardChart = data;
+        $('#container1').highcharts({
           chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
