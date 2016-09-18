@@ -60,50 +60,50 @@ Guard
     <div class ="col s4" style=" margin-top:40px; overflow:scroll; overflow-x:hidden; height:500px;">
       <ul class="collection with-header" id="collectionActive">
 		  <li class="collection-header" style=""><h5 style="font-weight:bold;">Details</h5></li>          	          		 
-			  <li class="collection-item" style="font-weight:bold; ">Client:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;ChinaBank</div>
+			  <li class="collection-item" style="font-weight:bold; ">Client:<div style="font-weight:normal;" id = "clientName">&nbsp;&nbsp;&nbsp;</div>
 			  </li>		  		  	  
 		  
-		  	  <li class="collection-item" style="font-weight:bold; ">Status:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Active</div>
+		  	  <li class="collection-item" style="font-weight:bold; ">Status:<div style="font-weight:normal;" id = "guardStatus">&nbsp;&nbsp;&nbsp;</div>
 			  </li>
 		  
 		  <li class="collection-header"><h5 style="font-weight:bold;">Personal Data</h5></li>
 		  	  <li class="collection-item">
 		  		<div class='row'>
 					<div class='col s4' style="font-weight:bold;">
-						First Name:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Larry</div>
+						First Name:<div style="font-weight:normal;" id = "firstName">&nbsp;&nbsp;&nbsp;</div>
 					</div>
 					
 					<div class='col s4' style="font-weight:bold;">
-						Middle Name:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Test</div>
+						Middle Name:<div style="font-weight:normal;" id = "middleName">&nbsp;&nbsp;&nbsp;</div>
 					</div>
 					
 					<div class='col s4' style="font-weight:bold;">
-						Last Name:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Bird</div>
+						Last Name:<div style="font-weight:normal;" id = "lastName">&nbsp;&nbsp;&nbsp;</div>
 					</div>
 				</div>
 		  	  </li>
 		  
-		 	  <li class="collection-item" style="font-weight:bold; ">License Number:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;2013-12345-MN-0</div>
+		 	  <li class="collection-item" style="font-weight:bold; ">License Number:<div style="font-weight:normal;" id = "licenseNumber">&nbsp;&nbsp;&nbsp;</div>
 			  </li>
 		  	
-		  	  <li class="collection-item" style="font-weight:bold; ">Address:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;123 Hello Street Almanza Las Pinas Metro Manila</div>
+		  	  <li class="collection-item" style="font-weight:bold; ">Address:<div style="font-weight:normal;" id = "address">&nbsp;&nbsp;&nbsp;</div>
 			  </li>		  		  	  
 		  
-		  	  <li class="collection-item" style="font-weight:bold; ">Place of Birth:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Makati City</div>
+		  	  <li class="collection-item" style="font-weight:bold; ">Place of Birth:<div style="font-weight:normal;" id = "placeOfBirth">&nbsp;&nbsp;&nbsp;</div>
 			  </li>
 		  
 		  	  <li class="collection-item">
 		  		<div class='row'>
 					<div class='col s4' style="font-weight:bold;">
-						Age:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;31</div>
+						Age:<div style="font-weight:normal;" id = "age">&nbsp;&nbsp;&nbsp;</div>
 					</div>
 					
 					<div class='col s4' style="font-weight:bold;">
-						Gender:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Male</div>
+						Gender:<div style="font-weight:normal;" id = "gender">&nbsp;&nbsp;&nbsp;</div>
 					</div>
 					
-					<div class='col s4' style="font-weight:bold;">
-						Civil Status:<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;Single</div>
+					<div class='ol s4' style="font-weight:bold;">
+						Civil Status:<div style="font-weight:normal;" id = "civilStatus">&nbsp;&nbsp;&nbsp;</div>
 					</div>
 				</div>
 		  	  </li>
@@ -111,31 +111,32 @@ Guard
 		  	  <li class="collection-item">
 		  		<div class='row'>
 					<div class='col s6' style="font-weight:bold;">
-						Contact Number (Mobile):<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;09123456789</div>
+						Contact Number (Mobile):<div style="font-weight:normal;" id = "mobileNumber">&nbsp;&nbsp;&nbsp;</div>
 					</div>
 					
 					<div class='col s6' style="font-weight:bold;">
-						Contact Number (Landline):<div style="font-weight:normal;" id = "">&nbsp;&nbsp;&nbsp;8123456</div>
+						Contact Number (Landline):<div style="font-weight:normal;" id = "landlineNumber">&nbsp;&nbsp;&nbsp;</div>
 					</div>										
 				</div>
 		  	  </li>
 		  <li class="collection-header"><h5 style="font-weight:bold;">Body Attributes</h5></li>
 		  	 <div> 
-		      <li class="collection-item" style="font-weight:bold;">Wingspan: 72 inches</li>
-		  	  <li class="collection-item" style="font-weight:bold;">Height: 72 inches</li>
+		  	 @foreach($bodyAttributes as $value)
+		      <li class="collection-item" style="font-weight:bold;" id = 'bodyAttribute{{$value->intBodyAttributeID}}'>{{$value->strBodyAttributeName}}</li>
+		      <li class="collection-item" style="font-weight:bold;" id = 'value{{$value->intBodyAttributeID}}'></li>
+		  	 @endforeach
 			  <li></li>
 			 </div>
 		  <li class="collection-header"><h5 style="font-weight:bold;">Armed Services</h5></li>
 		  	 <div> 
-		      <li class="collection-item" style="font-weight:bold;">PNP</li>
-		  	  <li class="collection-item" style="font-weight:bold;">SAF</li>
+		      <li class="collection-item" style="font-weight:bold;" id = 'armedService'></li>
 			  <li></li>
 			 </div>
 		  <li class="collection-header"><h5 style="font-weight:bold;">Government Exams</h5></li>
 		  	 <div> 
-		      <li class="collection-item" style="font-weight:bold;">Civil Service Examination - 99</li>
-		  	  <li class="collection-item" style="font-weight:bold;">Guard Exam - 100</li>
-			  <li></li>
+		  	 @foreach($governmentExams as $value)
+		      <li class="collection-item" style="font-weight:bold;" id = 'governmentExam{{$value->intGovernmentExamID}}'>{{$value->strGovernmentExam}}</li>
+		     @endforeach
 			 </div>
 		</ul>  
     </div>
@@ -339,23 +340,11 @@ Guard
             "lengthMenu": [5,10,15,20]
         });
 		
-//		$('#dataTable').on('click', '.buttonUpdate', function(){
-//            $('#modalchangeDetails').openModal();            
-//
-//        });
-        
         $('#dataTable').on('click', '.buttonMore', function(){
             $.ajax({
 
                 type: "GET",
                 url: "/getInformation?guardID=" + this.id,
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
-
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
                 success: function(data){
                     console.log(data);
                     
@@ -392,7 +381,7 @@ Guard
                             for (intLoop2 = 0; intLoop2 < bodyAttributesGuard.length; intLoop2 ++){
                                 if (bodyAttributes[intLoop].intBodyAttributeID == bodyAttributesGuard[intLoop2].intBodyAttributeID){
                                     $('#value' + bodyAttributesGuard[intLoop2].intBodyAttributeID)
-                                        .text(bodyAttributesGuard[intLoop2].strValue);
+                                        .text(bodyAttributesGuard[intLoop2].strValue + ' ' +bodyAttributesGuard[intLoop2].strMeasurement);
                                     break;
                                 }    
                             }
@@ -414,7 +403,7 @@ Guard
                     
                     if (governmentExamGuard){
                         for(intLoop = 0; intLoop < governmentExam.length; intLoop ++){
-                            var temp = '•' + governmentExam[intLoop].strGovernmentExam + ' - ';
+                            var temp = governmentExam[intLoop].strGovernmentExam + ' - ';
                             var checker = true;
                             for (intLoop2 = 0; intLoop2 < governmentExamGuard.length; intLoop2 ++){
                                 if (governmentExam[intLoop].intGovernmentExamID == governmentExamGuard[intLoop2].intGovernmentExamID){
