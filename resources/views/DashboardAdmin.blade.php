@@ -5,20 +5,6 @@ Admin
 @endsection
 
 @section('content')
-<!--<div class="row">
-	<div class="col l12">
-		<div class="col l2 push-l2">
-			<i class="material-icons" style="font-size:3.9rem;margin-top:3%">dashboard</i>
-		</div>
-		<div class="col l3">
-			<div class="row"></div>
-			<p style="margin-left:19%;margin-top:12%">DASHBOARD</p>
-		</div>
-		
-	
-	</div>
-	<hr>
-</div> -->
 
  <div class="row"> 
 	 <div class="col s12 push-s3">
@@ -107,148 +93,130 @@ Admin
             </div>
           </div>
     </div>
-		  
-	
-          
-          <div class="row">
-            <div class="col l12">
-                    <div class="col l2 push-l3">
-                         <div class="card animated zoomIn" style="background-color:#00293C">
-                                    <div class="card-content white-text">
-                                      <span class="card-title" style="font-size:40px; font-weight:bold;">35</span>
-                                      <p style="margin-left:10px;">Unpaid <br> Clients</p>
-                                      <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">receipt</i>
-                                    </div>
-                                    <div class="card-action" style="background-color:#00293C">
-                                      <center>
-                                          <a href="/unpaidclients" class="white-text">See All</a>
-                                          <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
-                                      </center>
-                                    </div>
-                    </div>
-                
-                
-                
-                    </div>
+<div class="row">
+<div class="col l12">
+  <div class="col l2 push-l3">
+    <div class="card animated zoomIn" style="background-color:#00293C">
+      <div class="card-content white-text">
+        <span class="card-title" style="font-size:40px; font-weight:bold;">35</span>
+        <p style="margin-left:10px;">Unpaid <br> Clients</p>
+        <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">receipt</i>
+      </div>
+      <div class="card-action" style="background-color:#00293C">
+        <center>
+          <a href="/unpaidclients" class="white-text">See All</a>
+          <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
+        </center>
+      </div>
+    </div>
+  </div>
 				
-				<div class="col l2 push-l3">
-                         <div class="card animated zoomIn indigo darken-2" style="">
-                                    <div class="card-content white-text">
-                                      <span class="card-title" style="font-size:40px; font-weight:bold;">20</span>
-                                      <p style="margin-left:10px;">Guard <br> Licenses</p>
-                                      <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">security</i>
-                                    </div>
-                                    <div class="card-action indigo darken-2" style="">
-                                      <center>
-                                          <a href="/guardLicenses" class="white-text">See All</a>
-                                          <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
-                                      </center>
-                                    </div>
-                    </div>
-                
-                
-                
-                    </div>
+  <div class="col l2 push-l3">
+    <div class="card animated zoomIn indigo darken-2" style="">
+      <div class="card-content white-text">
+        <span class="card-title" style="font-size:40px; font-weight:bold;">20</span>
+        <p style="margin-left:10px;">Guard <br> Licenses</p>
+        <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">security</i>
+      </div>
+      <div class="card-action indigo darken-2" style="">
+        <center>
+          <a href="/guardLicenses" class="white-text">See All</a>
+          <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
+        </center>
+      </div>
+    </div>
+  </div>
 				
 				
-				<div class="col l2 push-l3">
-                         <div class="card animated zoomIn teal darken-1" style="">
-                                    <div class="card-content white-text">
-                                      <span class="card-title" style="font-size:40px; font-weight:bold;">30</span>
-                                      <p style="margin-left:10px;">Contract <br> Extensions</p>
-                                      <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">extension</i>
-                                    </div>
-                                    <div class="card-action teal darken-1" style="">
-                                      <center>
-                                          <a href="#!" class="white-text">See All</a>
-                                          <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
-                                      </center>
-                                    </div>
-                    </div>
-                     
-
-
-   
-</div>
-                
-                
-        <!--------------------------------CHARTS @ DASHBOARD------------------>
+  <div class="col l2 push-l3">
+    <div class="card animated zoomIn teal darken-1" style="">
+      <div class="card-content white-text">
+        <span class="card-title" style="font-size:40px; font-weight:bold;">30</span>
+        <p style="margin-left:10px;">Contract <br> Extensions</p>
+        <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">extension</i>
+      </div>
+      <div class="card-action teal darken-1" style="">
+        <center>
+          <a href="#!" class="white-text">See All</a>
+          <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
+        </center>
+      </div>
+    </div>   
+  </div>
               
-            <div class="row">
-                <div class="col l2 push-l3">
-                    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-                </div>
-            </div> 
+  <div class="row">
+      <div class="col l2 push-l3">
+          <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+      </div>
+  </div> 
                 
 </div>
-              
-
-              
-<!--------------------------------CHARTS @ DASHBOARD-------------
-              
-               <div class="row">
-                <div class="col l2 push-l3">
-                    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-                </div>
-            </div> 
- ----->
               
 @stop   
 @section('script')
 
               
-              <script>
-              $(function () {
-
-    $(document).ready(function () {
-
-        // Build the chart
+<script>
+  $(document).ready(function () {
+    var guardChart;
+    $.ajax({
+      type: "GET",
+      url: "{{action('DashboardAdminController@getPieGuard')}}",
+      success: function(data){
+        guardChart = data;
         $('#container').highcharts({
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
+          chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+          },
+          title: {
+            text: 'Guards'
+          },
+          tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+          },
+          plotOptions: {
+            pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+              enabled: false
             },
-            title: {
-                text: 'CPMS Transaction Reports'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                name: 'Brands',
-                colorByPoint: true,
-                data: [{
-                    name: 'Clients',
-                    y: 56.33
-                }, {
-                    name: 'Guards',
-                    y: 24.03,
-                    sliced: true,
-                    selected: true
-                }, {
-                    name: 'Guns',
-                    y: 10.38
-                }, {
-                    name: 'Requests',
-                    y: 5.88
-                }]
+              showInLegend: true
+            }
+          },
+          series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+              name: 'Deployed',
+              y: guardChart.deployed
+            }, {
+              name: 'Waiting',
+              y: guardChart.waiting,
+            }, {
+              name: 'Pending',
+              y: guardChart.pending
+            }, {
+              name: 'On Leave',
+              y: guardChart.onLeave
+            },{
+              name: 'Reliever',
+              y: guardChart.reliever
             }]
+          }]
         });
-    });
-});
-              </script>
-              
+      },
+      error: function(data){
+        var toastContent = $('<span>Error Database.</span>');
+        Materialize.toast(toastContent, 1500,'red', 'edit');
+
+      }
+    });//ajax
+  });
+</script>
+
 
 @stop
