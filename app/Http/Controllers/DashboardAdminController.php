@@ -43,6 +43,11 @@ class DashboardAdminController extends Controller
             ->select('intGuardID')
             ->where('boolStatus', 1)
             ->get();
+
+        if (count($guardsID) > 0){
+
+        }
+
         $waiting = 0;
         $pending = 0;
         $deployed = 0;
@@ -72,7 +77,7 @@ class DashboardAdminController extends Controller
         }//foreach
 
         $allGuard = count($guardsID);
-        $guardsStatus = new \stdClass();    
+        $guardsStatus = new \stdClass();
         $guardsStatus->waiting = $waiting/$allGuard * 100;
         $guardsStatus->pending = $pending/$allGuard * 100;
         $guardsStatus->deployed = $deployed/$allGuard * 100;
@@ -81,5 +86,44 @@ class DashboardAdminController extends Controller
         $guardsStatus->allGuard = $allGuard;
 
         return response()->json($guardsStatus);
+    }
+
+    public function getPieGun(Request $request){
+        $result = DB::table('tblgun')
+            ->select('boolFlag')
+            ->where('boolFlag','<>' ,4)
+            ->get();
+
+        if (count($result) > 0){
+            $now = Carbon::now();
+
+            $inventory = 0;
+            $deployed = 0;
+            $pending = 0;
+            $notWorking = 0;
+
+            foreach($result as $value){
+                if ($value->boolFlag == 0){
+                    $notWorking ++;
+                }else if ($value->boolFlag == 1){
+                    $inventory ++;
+                }else if ($value->boolFlag == 2){
+                    $deployed ++;
+                }else if ($value->boolFlag == 3){
+                    $pending ++;
+                }//if else
+            }//foreach
+
+            $allGun = count($result);
+            $gunStatus = new \stdClass();
+            $gunStatus->inventory = $inventory/$allGun * 100;
+            $gunStatus->deployed = $deployed/$allGun * 100;
+            $gunStatus->pending = $pending/$allGun * 100;
+            $gunStatus->notWorking = $notWorking/$allGun * 100;
+
+            return response()->json($gunStatus);
+        }else{
+            return response()->json(false);
+        }
     }
 }
