@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="row">
         
-                                                  <a  data-position="right" data-delay="50" data-tooltip="RECEIVING DELIVERY"href="/cgrreceivingdelivery" class=" tooltipped"><i class="material-icons" style="font-size:5rem;color:black;margin-left:30%">local_shipping</i></a>
+                                                  <a  data-position="right" data-delay="50" data-tooltip="RECEIVING DELIVERY & ITEM RETURN"href="/cgrreceivingdelivery" class=" tooltipped"><i class="material-icons" style="font-size:5rem;color:black;margin-left:30%">local_shipping</i></a>
     
                                 </div>
                                 <div class="row">
