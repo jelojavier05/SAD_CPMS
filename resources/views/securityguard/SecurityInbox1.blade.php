@@ -145,7 +145,7 @@ Security Homepage
 		</div>
 			
 		<div class="modal-footer ci modal-close" style="background-color: #00293C;">
-			<button class="btn green waves-effect waves-light" name="" id = "" style="margin-right: 30px;">OK
+			<button class="btn green waves-effect" name="" id = "" style="margin-right: 30px;">OK
 	            </button>
 		</div>
 	</div>
@@ -471,7 +471,7 @@ $(document).ready(function(){
 	                radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" /> <label for="'+value.intInboxID+'"></label>';
 	            }
               
-	            button = '<center><a class="material-icons buttonRead" id="'+value.intInboxID+'"><i class="material-icons">markunread</i></a></center>';
+	            button = '<center><a class="material-icons buttonRead" id="'+value.intInboxID+'" style="cursor:pointer;"><i class="material-icons">markunread</i></a></center>';
 	            
                    
 	            table.row.add([

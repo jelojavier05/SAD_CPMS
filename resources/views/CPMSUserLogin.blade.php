@@ -75,7 +75,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <button class="btn waves-effect waves-light col s12" id = "btnLogin">Login</button>
+                        <button class="btn waves-effect waves-light blue darken-4 col s12" id = "btnLogin">Login</button>
                     </div>
                 </div>
                 <div class="row"></div>

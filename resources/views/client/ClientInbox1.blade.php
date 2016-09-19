@@ -125,7 +125,7 @@ $(document).ready(function(){
                     }else{
                         radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" /> <label for="'+value.intInboxID+'"></label>';
                     }
-                    button = '<center><a class="buttonRead" style="color:darkblue;"id="'+value.intInboxID+'"><i class="material-icons">markunread</i></a></center>';
+                    button = '<center><a style="cursor:pointer;" class="buttonRead" style="color:darkblue;"id="'+value.intInboxID+'"><i class="material-icons">markunread</i></a></center>';
                     
                     table.row.add([
                         radio,
