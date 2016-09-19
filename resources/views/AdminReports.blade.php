@@ -17,17 +17,16 @@ Admin Reports
 
 
 <div class="row"> 
-        
     <div class="row">
  
-     <div class="col s5 push-s3" style="margin-left:-2%">
+        <div class="col s5 push-s3" style="margin-left:-2%">
     
                    <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Reports</h3>
-                </div>
-    
+        </div>
     </div>
    
     </div>
+    <div class="row">
     <div class="col s12 push-s1" style="margin-top:-4%;">
         <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
 			<div class="row"></div>
@@ -70,23 +69,102 @@ Admin Reports
 					</div>	
 				</div>
 				
-			</div>
+			
         
      
             
-            
+            <!--
             
             <div class="row">
                 <div class="col l7 push-l2">
                     <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
                 </div>
-            </div> 
+            </div> -->
+        
+           </div>
+            
+            <div class="row">
+                <div class="col l12">
+                <div class="col s6">
+                    <div class="card animated zoomIn" style="background-color:#2D4262" >
+                        <div class="card-content white-text">
+                          <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'>CLIENT</span>
+                          <p style="margin-left:10px;"></p>
+                          <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
+                        </div>
+                        <div class="card-action" style="background-color:">
+                          <center>
+                              <a href="/reports/ReportClient" class="white-text">See Statistical Report</a>
+                              <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
+                          </center>
+                        </div>
+                    </div>
+
+                </div>
+                    
+                    <div class="col s6">
+                    <div class="card animated zoomIn" style="background-color:#1A405F" >
+                        <div class="card-content white-text">
+                          <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'>GUARD</span>
+                          <p style="margin-left:10px;"></p>
+                          <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
+                        </div>
+                        <div class="card-action" style="background-color:">
+                          <center>
+                              <a href="/reports/ReportGuard" class="white-text">See Statistical Report</a>
+                              <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
+                          </center>
+                        </div>
+                    </div>
+
+                </div>
+                    <div class="row">
+                        <div class="col s12">
+                                <div class="col s6">
+                                    <div class="card animated zoomIn" style="background-color:#32384D" >
+                                        <div class="card-content white-text">
+                                          <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'>GUNS</span>
+                                          <p style="margin-left:10px;"></p>
+                                          <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
+                                        </div>
+                                        <div class="card-action" style="background-color:">
+                                          <center>
+                                              <a href="/clientView" class="white-text">See Statistical Report</a>
+                                              <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
+                                          </center>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            <div class="col s6">
+                                    <div class="card animated zoomIn" style="background-color:#00293C" >
+                                        <div class="card-content white-text">
+                                          <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'>REQUESTS</span>
+                                          <p style="margin-left:10px;"></p>
+                                          <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
+                                        </div>
+                                        <div class="card-action" style="background-color:">
+                                          <center>
+                                              <a href="/clientView" class="white-text">See Statistical Report</a>
+                                              <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
+                                          </center>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    
+                    </div>
+                
+                </div>
+            </div>
+            
             
             
             
         </div>
     </div>
-
+    
+            
 <!--
 <div class="row">
      <div class="col s12">
@@ -145,8 +223,7 @@ Admin Reports
 
 @section('script')
 
-<script type="text/javascript">
-  
+<script type="text/javascript"> 
     
 /*
     $(function () {

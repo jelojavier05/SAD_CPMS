@@ -9,59 +9,105 @@
 
 <div class="row">
     <div class="col s5 push-s3" style="margin-left:-2%">
-            <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:5%">Settings</h3>
+        <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:5%">Settings</h3>
     </div>
                   
     <div class="col s10 push-s2">
-      <ul class="tabs">
-        <li class="tab col s3"><a href="#General">General</a></li>
-          <li class="tab col s3"><a href="#Customization">System Customization</a></li>
-      </ul>
+        <ul class="tabs">
+            <li class="tab col s3"><a href="#General">General</a></li>
+            <li class="tab col s3"><a href="#Customization">System Customization</a></li>
+        </ul>
     </div>
     
 <!--------------------GENERAL TAB------------------->
     
-    <div id="General" class="ci col s8 push-s3" style="margin-top:2px;">
+<div id="General" class="ci col s8 push-s3" style="margin-top:2px;">
+    <ul class="collection with-header" id="collectionActive" >
+        <li class="collection-header">
+            <h4 style="font-weight:bold;">General Settings</h4>
+        </li>
+        
+        <div class="col s12"> 
+            <div class="col s6">                        
+                <li class="collection-item" style="font-weight:bold;">
+                    Organization/System Name:
+                    <div style="font-weight:normal;" id = ''>
+                        &nbsp;&nbsp;&nbsp; CLIENT AND PERSONNEL MANAGEMENT SYSTEM
+                    </div>
+                </li>
 
-		<ul class="collection with-header" id="collectionActive" >
-			
-			<li class="collection-header">
-				<h4 style="font-weight:bold;">General Settings</h4>
-			</li>
+                <li class="collection-item" style="font-weight:bold;">
+                    System Logo:
+                    <div style="font-weight:normal;" id = ''>
+                        &nbsp;&nbsp;&nbsp; 
+                        <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="30%">
+                    </div>
+                </li>
+            </div>
+            
+            <div class="col s6">                        
+                <li class="collection-item" style="font-weight:bold;">
+                    Subject Name (Admin Side):
+                    <div style="font-weight:normal;" id = ''>
+                        &nbsp;&nbsp;&nbsp; New Client Ready
+                    </div>
+                </li>
+
+                <li class="collection-item" style="font-weight:bold;">
+                    Subject Name (Guard Side):
+                    <div style="font-weight:normal;" id = ''>
+                        &nbsp;&nbsp;&nbsp; New Client Ready
+                    </div>
+                </li>
+
+                <li class="collection-item" style="font-weight:bold;">
+                    Subject Name (Client Side):
+                    <div style="font-weight:normal;" id = ''>
+                        &nbsp;&nbsp;&nbsp; New Client Ready
+                    </div>
+                </li>
+
                 
-            <div class="col s12"> 
-            
-                <div class="col s6">                        
-                        <li class="collection-item" style="font-weight:bold;">
-                            Organization/System Name:
-                            <div style="font-weight:normal;" id = ''>
-                                &nbsp;&nbsp;&nbsp; CLIENT AND PERSONNEL MANAGEMENT SYSTEM
-                            </div>
-                        </li>
-
-                        <li class="collection-item" style="font-weight:bold;">
-                            System Logo:
-                            <div style="font-weight:normal;" id = ''>
-                                &nbsp;&nbsp;&nbsp; 
-                                <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="30%">
-                            </div>
-                    </li>
-                </div>
-			 </div>
-        </ul>
-            
-            
+            </div>
         </div>
-      <div id="Customization" class="ci col s8 push-s3" style="margin-top:2px;">
-
-		<ul class="collection with-header" id="collectionActive" >
-			
-			<li class="collection-header">
-				<h4 style="font-weight:bold;">Basic Design</h4>
-			</li>
+    </ul>
+</div>
+    
+    
+<!--------------------CUSTOMIZATION TAB------------------->
+    
+    
+<div id="Customization" class="ci col s8 push-s3" style="margin-top:2px;">
+    <ul class="collection with-header" id="collectionActive" >
+        <li class="collection-header">
+            <h4 style="font-weight:bold;">Basic Design</h4>
+        </li>
                 
-            <div class="col s12"> 
+        <div class="col s12"> 
+            <div class="col s6">                        
+                <li class="collection-item" style="font-weight:bold;">
+                    System Title
+                    <input class="jscolor {onFineChange:'update(this)'}" value="#ffffff">
+                </li>
+
+                <li class="collection-item" style="font-weight:bold;">
+                    Header and Wrapper
+                    <input class="jscolor {onFineChange:'update1(this)'}" value="#0d47a1">
+                </li>
+                
+                <li class="collection-item" style="font-weight:bold;">
+                    Side Navigation
+                    <input class="jscolor {onFineChange:'update2(this)'}" value="#0d47a1">
+                    </li>
+                
+                <li class="collection-item" style="font-weight:bold;">
+                    Body
+                    <input class="jscolor {onFineChange:'update3(this)'}" value="#0d47a1">
+                </li>
+            </div>
+        </div>
             
+<<<<<<< HEAD
 <!--
                 <div class="col s6">                        
                         <li class="collection-item" style="font-weight:bold;">
@@ -87,6 +133,12 @@
             <li class="collection-header">
 				<h4 style="font-weight:bold;">.</h4>
 			</li>
+=======
+        <li class="collection-header">
+            <h4 style="font-weight:bold;">.</h4>
+        </li>
+
+>>>>>>> 89eea8a69e852eea21b129265fc10b562a52784d
     <!--
            <li class="collection-header">
 				<h4 style="font-weight:bold;">Modals, Tabs,  </h4>
@@ -136,9 +188,9 @@
                     <h3><center>Color</center></h3>  
 				</div>
 
-            </div>
+            </div>-->
 </div>
--->
+
 @stop
 
 @section('script')

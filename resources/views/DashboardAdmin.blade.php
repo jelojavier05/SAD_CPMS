@@ -94,8 +94,7 @@ Admin
           </div>
     </div>
 <div class="row">
-<div class="col l12">
-  <div class="col l2 push-l3">
+  <div class="col l2 offset-l3">
     <div class="card animated zoomIn" style="background-color:#00293C">
       <div class="card-content white-text">
         <span class="card-title" style="font-size:40px; font-weight:bold;">35</span>
@@ -111,7 +110,7 @@ Admin
     </div>
   </div>
 				
-  <div class="col l2 push-l3">
+  <div class="col l2">
     <div class="card animated zoomIn indigo darken-2" style="">
       <div class="card-content white-text">
         <span class="card-title" style="font-size:40px; font-weight:bold;">20</span>
@@ -128,7 +127,7 @@ Admin
   </div>
 				
 				
-  <div class="col l2 push-l3">
+  <div class="col l2">
     <div class="card animated zoomIn teal darken-1" style="">
       <div class="card-content white-text">
         <span class="card-title" style="font-size:40px; font-weight:bold;">30</span>

@@ -268,6 +268,14 @@ Route::get('/getPDF', 'PDFContractController@getPDF');
 Route::get('/settings', 'SettingsController@index');
 
 
+//Reports ------------------------------------------------
+Route::get('/reports/ReportClient', 'ReportClientController@index');
+Route::get('/reports/ReportGuard', 'ReportGuardController@index');
+Route::get('/reports/ReportGun', 'ReportGunController@index');
+Route::get('/reports/ReportRequest', 'ReportRequestController@index');
+
+
+
 
 Route::get('/adminannouncement', 'AdminAnnouncementViewController@index');
 Route::get('/adminannouncement/get', 'AdminAnnouncementViewController@get');

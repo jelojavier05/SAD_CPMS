@@ -50,9 +50,6 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/highcharts-3d.js"></script>
     
-	<script src="{!! URL::asset('../js/highcharts.js') !!}"></script>
-	<script src="{!! URL::asset('../js/exporting.js') !!}"></script>
-	<script src="{!! URL::asset('../js/highcharts-3d.js') !!}"></script>
 
     <!--colorpicker-->
     <script src="{!! URL::asset('../js/jscolor.js') !!}"></script>
