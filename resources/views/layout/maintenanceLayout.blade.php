@@ -250,6 +250,7 @@
 								  <a href="/queryguard" class="waves-effect" id="buttonhover">Guards</a>
 								  <a href="/queryclient" class="waves-effect" id="buttonhover">Clients</a>
 								  <a href="/querygun" class="waves-effect" id="buttonhover">Guns</a>
+<!--
                                   <a href="/querynatureofbusiness" class="waves-effect" id="buttonhover">Nature of Business</a>
 								  <a href="/querytypeofcontract" class="waves-effect" id="buttonhover">Type of Contract</a>
 								  <a href="/queryarmedservice" class="waves-effect" id="buttonhover">Armed Service</a>
@@ -262,6 +263,7 @@
 								  <a href="/queryrequirements" class="waves-effect" id="buttonhover">Requirements</a>
 								  <a href="/queryguntype" class="waves-effect" id="buttonhover">Type of Gun</a>
 								  <a href="/queryuom" class="waves-effect" id="buttonhover">Unit of Measurement</a>
+-->
 								
 																						  
                                            

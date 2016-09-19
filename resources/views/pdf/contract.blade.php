@@ -3,7 +3,7 @@
     <title> Client Contract </title>
     <style>
     #logo{
-        margin-top: -20px;
+        margin-top: 35px;
         margin-left: -25px;
         width: 120px;
         height: 120px;
@@ -107,8 +107,8 @@
                     
                     <li> The Agency will not accept any request/s that is outside from the boundary of the client's business or agreement upon the creation of this contract. </li>
                 </ul>
-        <br>
-        <h4> Client's Duties and Resposibilities </h4>
+        <br><br><br><br><br><br>
+        <h4> Client's Duties and Responsibilities </h4>
             <p>
                 <ul  class="text">
                     <li> Properly supervise the Deployed Guards to perform its work accordingly to the nature of the business of their client/s. </li>
@@ -138,7 +138,7 @@
         
         <h3 id="sig"> Signature: <u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u> </h3>
         
-        <h5><i> Signature over printed name </i></h5>
+        <h5><i>Signature over printed name </i></h5>
         
     
         <h3 id="cli"> Client: &nbsp;&nbsp;&nbsp; <u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u> </h3>

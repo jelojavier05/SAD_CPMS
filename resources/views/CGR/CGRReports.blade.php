@@ -104,7 +104,7 @@ Reports
 <div id="modalWitness" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
   <div class="modal-header">
     <div class="h">
-      <h3><center>Login</center></h3>  
+      <h3><center>Add Witness</center></h3>  
     </div>
   </div>
   <div class="modal-content">

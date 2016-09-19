@@ -77,6 +77,7 @@
 <!--------------------CUSTOMIZATION TAB------------------->
     
     
+<!--
 <div id="Customization" class="ci col s8 push-s3" style="margin-top:2px;">
     <ul class="collection with-header" id="collectionActive" >
         <li class="collection-header">
@@ -106,7 +107,9 @@
                 </li>
             </div>
         </div>
+-->
             
+<!--
 <<<<<<< HEAD
 <!--
                 <div class="col s6">                        
@@ -128,17 +131,15 @@
                             <input class="jscolor {onFineChange:'update3(this)'}" value="cc66ff">
                         </li>
                 </div>
--->
 			 </div>
             <li class="collection-header">
 				<h4 style="font-weight:bold;">.</h4>
 			</li>
-=======
         <li class="collection-header">
             <h4 style="font-weight:bold;">.</h4>
         </li>
+-->
 
->>>>>>> 89eea8a69e852eea21b129265fc10b562a52784d
     <!--
            <li class="collection-header">
 				<h4 style="font-weight:bold;">Modals, Tabs,  </h4>

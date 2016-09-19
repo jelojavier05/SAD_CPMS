@@ -9,7 +9,7 @@ Guard Form
 <div class="row">
 	<div class="col s12 push-s2">
 		<nav>
-			<div class="nav-wrapper">
+			<div class="nav-wrapper blue darken-1">
 				<div class="row">	
 					<div class="col s12 offset-s1">
 						
@@ -99,14 +99,14 @@ Guard Form
 
 				<div class="input-field col s6">
 						<i class="material-icons prefix">smartphone</i>
-						<input placeholder = " " id="contactCp" maxlength="13" type="text" class="validate ci" pattern="[0-9+]{11,}" required="" aria-required="true">
+						<input placeholder = " " id="contactCp" maxlength="13" type="text" class="validate ci" pattern="[0-9+ ]{11,}" required="" aria-required="true">
 						<label class="ci" data-error="Incorrect" for="contactCp">Contact Number (Mobile)</label>
 
 				</div>
 				
 			    <div class="input-field col s6">
 						<i class="material-icons prefix">phone</i>
-						<input placeholder = " " id="contactLandline" maxlength="10" type="text" class="validate ci" pattern="[0-9+- ]{7,}" required="" aria-required="true">
+						<input placeholder = " " id="contactLandline" maxlength="10" type="text" class="validate ci" pattern="[0-9+ ]{7,}" required="" aria-required="true">
 						<label class="ci" data-error="Incorrect" for="contactLandline">Contact Number (Landline)</label>
 
 				</div>

@@ -79,7 +79,7 @@ Delivery
 								</div>
 
 								<div class="input-field col s6">
-									<input placeholder=" " id="contactNumber" maxlength="13" type="text" class="validate" pattern="[0-9+]{11,}" required="" aria-required="true">
+									<input placeholder=" " id="contactNumber" maxlength="13" type="text" class="validate" pattern="[0-9+ ]{11,}" required="" aria-required="true">
 									<label data-error="Incorrect" for="contactDeliver">Contact Number (Delivery)</label>
 								</div>
 
