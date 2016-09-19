@@ -144,11 +144,23 @@ Admin
     </div>   
   </div>
               
-  <div class="row">
-      <div class="col l2 push-l3">
-          <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-      </div>
-  </div> 
+<div class="row">
+
+	<div class="col s10 push-s2">		
+		<div class="row">
+		  <div class="col s6">
+			  <hr>
+			  <div id="guardPie" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+		  </div>
+			   
+		  <div class="col s6">
+			  <hr>
+			  <div id="gunPie" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+		  </div>
+
+		</div>
+	</div>
+</div>
                 
 </div>
               
@@ -164,7 +176,7 @@ Admin
       url: "{{action('DashboardAdminController@getPieGuard')}}",
       success: function(data){
         guardChart = data;
-        $('#container').highcharts({
+        $('#guardPie').highcharts({
           chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
@@ -188,7 +200,7 @@ Admin
             }
           },
           series: [{
-            name: 'Brands',
+            name: 'Ratio',
             colorByPoint: true,
             data: [{
               name: 'Deployed',
@@ -208,6 +220,124 @@ Admin
             }]
           }]
         });
+      },
+      error: function(data){
+        var toastContent = $('<span>Error Database.</span>');
+        Materialize.toast(toastContent, 1500,'red', 'edit');
+
+      }
+    });//ajax
+  });
+</script>
+	
+<script>
+  $(document).ready(function () {
+    $.ajax({
+      type: "GET",
+      url: "{{action('DashboardAdminController@getPieGuard')}}",
+      success: function(data){
+        if (data){
+          var guardChart = data;
+          $('#guardPie1').highcharts({
+            chart: {
+              plotBackgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false,
+              type: 'pie'
+            },
+            title: {
+              text: 'Guards'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+              pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                enabled: false
+              },
+                showInLegend: true
+              }
+            },
+            series: [{
+              name: 'Brands',
+              colorByPoint: true,
+              data: [{
+                name: 'Deployed',
+                y: guardChart.deployed
+              }, {
+                name: 'Waiting',
+                y: guardChart.waiting,
+              }, {
+                name: 'Pending',
+                y: guardChart.pending
+              }, {
+                name: 'On Leave',
+                y: guardChart.onLeave
+              },{
+                name: 'Reliever',
+                y: guardChart.reliever
+              }]
+            }]
+          });
+        }
+      },
+      error: function(data){
+        var toastContent = $('<span>Error Database.</span>');
+        Materialize.toast(toastContent, 1500,'red', 'edit');
+
+      }
+    });//ajax
+
+    $.ajax({
+      type: "GET",
+      url: "{{action('DashboardAdminController@getPieGun')}}",
+      success: function(data){
+        if (data){
+          $('#gunPie').highcharts({
+            chart: {
+              plotBackgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false,
+              type: 'pie'
+            },
+            title: {
+              text: 'Guns'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+              pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                enabled: false
+              },
+                showInLegend: true
+              }
+            },
+            series: [{
+              name: 'Ratio',
+              colorByPoint: true,
+              data: [{
+                name: 'Inventory',
+                y: data.inventory
+              }, {
+                name: 'Deployed',
+                y: data.deployed,
+              }, {
+                name: 'Pending',
+                y: data.pending
+              }, {
+                name: 'Has Defect',
+                y: data.notWorking
+              }]
+            }]
+          });
+        }
       },
       error: function(data){
         var toastContent = $('<span>Error Database.</span>');

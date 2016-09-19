@@ -197,7 +197,7 @@
 					
 							
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView"><i class="material-icons">local_shipping</i><strong>Delivery</strong></a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView"><i class="material-icons">local_shipping</i><strong>Delivery and Pickup</strong></a>
                             <div class="collapsible-body grey lighten-2">
 <!--
                                 <ul>
