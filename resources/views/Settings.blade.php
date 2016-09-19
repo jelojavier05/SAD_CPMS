@@ -62,6 +62,7 @@
                 
             <div class="col s12"> 
             
+<!--
                 <div class="col s6">                        
                         <li class="collection-item" style="font-weight:bold;">
                             System Title
@@ -81,6 +82,7 @@
                             <input class="jscolor {onFineChange:'update3(this)'}" value="cc66ff">
                         </li>
                 </div>
+-->
 			 </div>
             <li class="collection-header">
 				<h4 style="font-weight:bold;">.</h4>

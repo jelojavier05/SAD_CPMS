@@ -64,14 +64,14 @@
 <body id="scrollhider" class="bodyscrollhider ci" style="">
     <nav id="header">
         
-         <div id="wrap" class="nav-wrapper">
+         <div id="wrap" class="nav-wrapper blue darken-4">
                
                 <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
                     
 <!--					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >-->
 					<ul class="side-nav fixed " id="mobile-nav">
                     <div class="iconposition">
-						<div  id="ctitle"  class="card-panel" style="height:138px;">
+						<div  id="ctitle"  class="card-panel blue darken-4" style="height:138px;">
 
 							<div class="row">
                                 <div class="col l12">

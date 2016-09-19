@@ -12,10 +12,20 @@ Route::post('/clientaddgunproceed/post/insertgunorder', 'ClientAddGunProceedCont
 Route::get('/queryguard', 'QueryGuardController@index');
 Route::get('/queryclient', 'QueryClientController@index');
 Route::get('/querygun', 'QueryGunController@index');
+
+
 Route::get('/querynatureofbusiness', 'QueryNatureOfBusinessController@index');
+Route::get('/querynatureofbusiness/get/natureofbusiness', 'QueryNatureOfBusinessController@getNatureOfBusiness');
+
+
 Route::get('/querytypeofcontract', 'QueryTypeOfContractController@index');
 Route::get('/queryarmedservice', 'QueryArmedServiceController@index');
+
+
 Route::get('/queryrank', 'QueryRankController@index');
+Route::get('/queryrank/get/rank', 'QueryRankController@getRank');
+
+
 Route::get('/querybodyattributes', 'QueryBodyAttributesController@index');
 Route::get('/querygovexam', 'QueryGovernmentExamController@index');
 Route::get('/queryleave', 'QueryLeaveController@index');

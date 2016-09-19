@@ -100,6 +100,40 @@ Rank - Query
 @stop
 		
 @section('script')
+
+	
+<script>
+$(document).ready(function(){
+	$.ajax({
+      type: "GET",
+      url: "{{action('QueryRankController@getRank')}}",
+      success: function(data){
+   		console.log(data);
+		var table= $('#dataTable').DataTable();
+		table.clear().draw();
+		var status;
+		
+		$.each(data,function(index,value){
+			if (value.boolFlag == 1){
+				status='Active';
+			}
+			else{
+				status='Inactive';
+			}
+			
+			table.row.add([
+				'<h>' + value.strRank +  '<h>',
+				'<h>' + value.strArmedServiceName + '<h>',
+				'<h>' + status + '<h>'
+			]).draw();
+		});
+	  },error: function(){
+		  var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+	  }
+	});
+})
+</script>	
 <script>
 $(document).ready(function(){
 		
