@@ -1,44 +1,83 @@
 <!DOCTYPE html>
 <html>
     <title> Client Contract </title>
-     <head>
-           <link href="../css/materialize.css" type="text/css" rel="stylesheet"/>
-            <style>
-                p {
-                    text-align: justify;
-                    text-indent: 1cm;
-                }
-                ul {
-                    text-align: justify;
-                }
-                h3#sig {
-                    text-indent: 1cm;
-                }
-                h5 {
-                    text-indent: 4cm;
-                }
-                h3#cli, h5#cli {
-                    text-align: right;
-                    text-indent: 1cm;
-                }
-            </style>
-    </head>
-    <body>
-      
-        <style>
-            #pdf{
-                font-family:"Trebuchet MS";
-            }
-        
-        </style>
-            <center>
-                <h1> Client and Personnel Management System </h1>
-                <h4> 117 Quezon Avenue, Angono, Rizal </h4>
-            </center>
+    <style>
+    #logo{
+        margin-top: -20px;
+        margin-left: -25px;
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        z-index: 99;
+    }
+    span {
+        font-weight: normal;
+    }
+    th {
+        font-size: 13px;
+        background-color: teal;
+        color: white;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10px;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    td {
+        font-weight: bold;
+    }
+    span {
+        font-weight: normal;
+    }
+    h3 {
+        margin-top: 30px;
+    }
+    h4 {
+        padding-top: -20px;
+    }
+    body {
+        font-family: "Helvetica";
+    }
+    .margin {
+        padding-top: -20px;
+    }
+    .date {
+        padding-top: -20px;
+    }
+        .text
+        {
+            text-align: justify;
+        }
+    #title
+        {
+            font-family:'Helvetica';
+            font-size:28px;
+        }
+</style>
+
+<head>
+    <title>Collection Report</title>
+</head>
+<body>
+   
+         
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img id="logo" src="{!! public_path('img/cpms-logo.png') !!}">
+    
+      <center><p id="title" align="center"> CLIENT AND PERSONNEL <br> MANAGEMENT SYSTEM</p>
+        <h4 align = "center">Angono, Rizal</h4>
+            <h4 align = "center">Tel No: 716-70-86</h4>
         <br>
         <hr>
-        <hr>
-        <br>
         
         <h3 id="pdf"><center><b> Client Agreement </b></center></h3>
         
@@ -55,13 +94,13 @@
         <br>
         
         <h4> Scope of Agreement </h4>
-            <p>
+            <p class="text">
                 This is hereby to protect and keep the safetiness and peacefulness of the client by the end of this contract. To give a efficient and quality of service in all transactions may encounter of all stakeholders involved. During the term of this agreement, the client must follow and strictly comply with the agency's policies and guidelines.
             </p>
         <br>
         <h4> Ageny's Duties and Responsibilities </h4>
             
-                <ul>
+                <ul  class="text">
                     <li> The Agency agress to use reasonable efforts in the performance of the following duties: responds to all Client's request instantly, comply all the Client's requests, and able to cooperate to all Client's needs. </li>
                     
                     <li> The Agency will maintain office, staff, and facilities reasonably adequate for the rendition of such services. </li>
@@ -71,7 +110,7 @@
         <br>
         <h4> Client's Duties and Resposibilities </h4>
             <p>
-                <ul>
+                <ul  class="text">
                     <li> Properly supervise the Deployed Guards to perform its work accordingly to the nature of the business of their client/s. </li>
                     <li> The Client agrees to cooperate upon the compilation needed during the contract and to confirm any notifications that will be receiving to avoid any intervention </li>
                     <li> </li>
@@ -80,7 +119,7 @@
         <br>
         <h4> Resources Deployment (Guns) </h4>
             <p> List of all deployed guns: </p>
-                <ul>
+                <ul >
                     <li> Rifle </li>
                     <li> Pistol </li>
                 </ul>    

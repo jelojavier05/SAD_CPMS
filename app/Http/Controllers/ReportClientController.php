@@ -16,7 +16,7 @@ class ReportClientController extends Controller
      */
     public function index()
     {
-        //
+        return view('/reports/ReportClient');
     }
 
     /**
