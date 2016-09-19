@@ -10,6 +10,63 @@ Guard Attendance
   <div class="col s5 push-s3" style="margin-left:-2%">
     <h3 class="blue-text" style="font-family:Myriad Pro;margin-top:7%">Security Guard Attendance</h3>
   </div>
+
+  <div class="col s1" style="margin-left:30%; margin-top:1%">
+        <style type="text/css">
+                    .clockStyle {
+                        font-size: 50px;
+                        margin: 0 auto;
+                        padding: 10px;
+                        color: #000000;
+                        font-weight: bold;
+                        text-align: center;
+                        padding:2px;
+                        color:white;
+                        background-color:dodgerblue;
+                        width:120px;
+                        display:inline-block;
+                        clear:both;
+                        width:300px;
+                        height: 70px;
+                        border-radius: 5%;
+                        box-shadow: 0 4px 4px 0 rgba(50, 50, 50, 0.4);
+                    }
+                </style>
+
+                <div id="clockDisplay" class="clockStyle"> 08 : 08 : 08 PM </div>
+                <script type="text/javascript">
+                    function renderTime() {
+                        var currentTime = new Date();
+                        var diem = "AM";
+                        var h = currentTime.getHours();
+                        var m = currentTime.getMinutes();
+                        var s = currentTime.getSeconds();
+
+                        if (h == 0) {
+                            h=12;
+                        } else if (h > 12) {
+                            h = h - 12;
+                            diem = "PM";
+                        }
+                        if (h < 10) {
+                            h = "0" + h;
+                        }
+                        if (m < 10) {
+                            m = "0" + m;
+                        }
+                        if (s < 10) {
+                            s = "0" + s;
+                        }
+
+                        var myClock = document.getElementById('clockDisplay');
+                        myClock.textContent = h + ":" + m + ":" + s + " " + diem
+                        myClock.innerText = h + ":" + m + ":" + s + " " + diem;	
+                        setTimeout('renderTime()',1000);
+                    }
+                    renderTime();
+                </script>
+    
+  </div>
 </div>
 <!-- Title End -->
 
@@ -18,7 +75,11 @@ Guard Attendance
   <div class="col s12 push-s1">
     <div class="col s6 offset-s1 grey lighten-2" style=";max-height:690px; margin-top:-25px;">
       <table class="centered" id="tableAttendance">
-		  <iframe src="http://free.timeanddate.com/clock/i5bt1d45/n145/tlph/fn6/fs15/fc222/tct/pct/ftb/bo2/tt0/tw0/th2/ta1/tb4" frameborder="0" width="143" height="40" allowTransparency="true" style="margin-left:70%; margin-top:10px;pointer-events:none;"></iframe>
+        
+          
+          
+                 
+          
         <thead>
           <tr>
             <th data-field="">SG License</th>
