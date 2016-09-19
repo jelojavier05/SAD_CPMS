@@ -175,50 +175,53 @@ Admin
       url: "{{action('DashboardAdminController@getPieGuard')}}",
       success: function(data){
         guardChart = data;
-        $('#guardPie').highcharts({
-          chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-          },
-          title: {
-            text: 'Guards'
-          },
-          tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-          },
-          plotOptions: {
-            pie: {
-              allowPointSelect: true,
-              cursor: 'pointer',
-              dataLabels: {
-              enabled: false
+        if (data){
+          $('#guardPie').highcharts({
+            chart: {
+              plotBackgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false,
+              type: 'pie'
             },
-              showInLegend: true
-            }
-          },
-          series: [{
-            name: 'Ratio',
-            colorByPoint: true,
-            data: [{
-              name: 'Deployed',
-              y: guardChart.deployed
-            }, {
-              name: 'Waiting',
-              y: guardChart.waiting,
-            }, {
-              name: 'Pending',
-              y: guardChart.pending
-            }, {
-              name: 'On Leave',
-              y: guardChart.onLeave
-            },{
-              name: 'Reliever',
-              y: guardChart.reliever
+            title: {
+              text: 'Guards'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+              pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                enabled: false
+              },
+                showInLegend: true
+              }
+            },
+            series: [{
+              name: 'Ratio',
+              colorByPoint: true,
+              data: [{
+                name: 'Deployed',
+                y: guardChart.deployed
+              }, {
+                name: 'Waiting',
+                y: guardChart.waiting,
+              }, {
+                name: 'Pending',
+                y: guardChart.pending
+              }, {
+                name: 'On Leave',
+                y: guardChart.onLeave
+              },{
+                name: 'Reliever',
+                y: guardChart.reliever
+              }]
             }]
-          }]
-        });
+          });
+        }
+          
       },
       error: function(data){
         var toastContent = $('<span>Error Database.</span>');

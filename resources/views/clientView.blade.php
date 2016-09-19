@@ -113,8 +113,8 @@ Clients
                                     @foreach($clientPending as $value)
                                     <tr>
                                         
-										<td>
-                                            <button class="buttonDelete col s12 btn red"  name="" id="" >
+									                      <td>
+                                            <button class="buttonDelete col s12 btn red"  name="" id="{{$value->intClientID}}" >
                                                 <i class="material-icons">delete</i>
                                             </button>
                                             <label for=""></label>
@@ -271,6 +271,10 @@ Clients
             });//get guard count accepted
         });
 
+        $('#dataTablePending').on('click', '.buttonDelete', function(){
+          confirm(this.id);
+        });
+
         $('#tableActive').on('click', '.btnActiveMore', function(){
             $.ajax({
                 type: "GET",
@@ -301,13 +305,13 @@ Clients
 		
         $('.buttonMore').click(function() {
             $('#guardcontainer').css({
-				'visibility': 'visible',
-				'max-height': '400px',
-				'overflow': 'scroll',
-				'overflow-x': 'hidden',
-				'height': '100%'
-			});
-		});
+    				'visibility': 'visible',
+    				'max-height': '400px',
+    				'overflow': 'scroll',
+    				'overflow-x': 'hidden',
+    				'height': '100%'
+    			 });
+    		});
 		
 		$('.detaillist').click(function() {
 			$('#detailcontainer').css({

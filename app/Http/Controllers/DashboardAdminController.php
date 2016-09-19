@@ -45,47 +45,49 @@ class DashboardAdminController extends Controller
             ->get();
 
         if (count($guardsID) > 0){
+            $waiting = 0;
+            $pending = 0;
+            $deployed = 0;
+            $onLeave = 0;
+            $reliever = 0;
 
+            foreach($guardsID as $value){
+                
+                $result = DB::table('tblguardstatus')
+                    ->select('intStatusIdentifier')
+                    ->where('intGuardID', $value->intGuardID)                
+                    ->where('dateEffectivity', '<=', $now)
+                    ->orderBy('dateEffectivity', 'desc')
+                    ->first();
+
+                if ($result->intStatusIdentifier == 0){
+                    $waiting ++;
+                }else if ($result->intStatusIdentifier == 1 || $result->intStatusIdentifier == 5){
+                    $pending ++;
+                }else if ($result->intStatusIdentifier == 2){
+                    $deployed ++;
+                }else if ($result->intStatusIdentifier == 3){
+                    $onLeave ++;
+                }else if ($result->intStatusIdentifier == 4){
+                    $reliever ++;
+                }
+            }//foreach
+
+            $allGuard = count($guardsID);
+            $guardsStatus = new \stdClass();
+            $guardsStatus->waiting = $waiting/$allGuard * 100;
+            $guardsStatus->pending = $pending/$allGuard * 100;
+            $guardsStatus->deployed = $deployed/$allGuard * 100;
+            $guardsStatus->onLeave = $onLeave/$allGuard * 100;
+            $guardsStatus->reliever = $reliever/$allGuard * 100;
+            $guardsStatus->allGuard = $allGuard;
+
+            return response()->json($guardsStatus);
+        }else{
+            return response()->json(false);
         }
 
-        $waiting = 0;
-        $pending = 0;
-        $deployed = 0;
-        $onLeave = 0;
-        $reliever = 0;
-
-        foreach($guardsID as $value){
             
-            $result = DB::table('tblguardstatus')
-                ->select('intStatusIdentifier')
-                ->where('intGuardID', $value->intGuardID)                
-                ->where('dateEffectivity', '<=', $now)
-                ->orderBy('dateEffectivity', 'desc')
-                ->first();
-
-            if ($result->intStatusIdentifier == 0){
-                $waiting ++;
-            }else if ($result->intStatusIdentifier == 1 || $result->intStatusIdentifier == 5){
-                $pending ++;
-            }else if ($result->intStatusIdentifier == 2){
-                $deployed ++;
-            }else if ($result->intStatusIdentifier == 3){
-                $onLeave ++;
-            }else if ($result->intStatusIdentifier == 4){
-                $reliever ++;
-            }
-        }//foreach
-
-        $allGuard = count($guardsID);
-        $guardsStatus = new \stdClass();
-        $guardsStatus->waiting = $waiting/$allGuard * 100;
-        $guardsStatus->pending = $pending/$allGuard * 100;
-        $guardsStatus->deployed = $deployed/$allGuard * 100;
-        $guardsStatus->onLeave = $onLeave/$allGuard * 100;
-        $guardsStatus->reliever = $reliever/$allGuard * 100;
-        $guardsStatus->allGuard = $allGuard;
-
-        return response()->json($guardsStatus);
     }
 
     public function getPieGun(Request $request){
