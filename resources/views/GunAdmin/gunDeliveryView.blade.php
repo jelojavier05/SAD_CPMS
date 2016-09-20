@@ -47,9 +47,9 @@ Delivery
 		
 	<div class ="col s5 animated fadeInUp" style="margin-top:-25px;">
 		<!--		GUN DELIVERY-->
-			<div class="col s12" style="display:;">
+			<div class="col s12" style="display:none;">
 				<ul class="collection with-header" id="collectionActive">
-					<li class="collection-header"><h5 style="font-weight:bold;">Details</h5></li>
+					<li class="collection-header"><h5 style="font-weight:bold;">Details - Delivery</h5></li>
 					<div class="" style="">
 						<li class="collection-item">
 							<div class="row">
@@ -76,7 +76,7 @@ Delivery
 							</div>
 						</li>
 						<li class="collection-header">
-							<table class="striped" id="tblDelivery">
+							<table class="striped" id="tblDeliveryOnly">
 								<h5 style="font-weight:bold;">Items</h5>
 								<thead>
 									<th>Serial Number</th>
@@ -94,10 +94,10 @@ Delivery
 			</div>
 		<!--		GUN DELIVERY END-->
 
-		<!--		GUN PICKUP-->
+		<!--		GUN delivery/PICKUP-->
 			<div class="col s12" style="display:none;">
 				<ul class="collection with-header" id="collectionActive">
-					<li class="collection-header"><h5 style="font-weight:bold;">Details</h5></li>
+					<li class="collection-header"><h5 style="font-weight:bold;">Details - Pickup And Delivery</h5></li>
 					<li class="collection-item">
 						<div class="row">
 							<div class="col s4">Person Handling:</div>
@@ -156,7 +156,61 @@ Delivery
 					<!-- items pick up end -->
 				</ul>
 			</div>
-		<!--		GUN PICKUP END-->
+		<!--		GUN delivery/PICKUP END-->
+		
+<!--		item pickup-->
+			<div class="col s12" style="display:none;">
+				<ul class="collection with-header" id="collectionActive">
+					<li class="collection-header"><h5 style="font-weight:bold;">Details - Pickup</h5></li>
+					<div class="" style="">
+						<li class="collection-item">
+							<div class="row">
+								<div class="col s4">Picked Up By:</div>
+								<div class="col s6" id="">Mang Pedro</div>
+							</div>
+						</li>
+						<li class="collection-item">
+							<div class="row">
+								<div class="col s4">Contact Number:</div>
+								<div class="col s6" id="">09123456789</div>
+							</div>
+						</li>
+						<li class="collection-item">
+							<div class="row">
+								<div class="col s4">Pick Up Code:</div>
+								<div class="col s6" id="">QWE789</div>
+							</div>
+						</li>
+						<li class="collection-item">
+							<div class="row">
+								<div class="col s4">Status:</div>
+								<div class="col s6" id="">Test</div>
+							</div>
+						</li>
+						<li class="collection-header">
+							<table class="striped" id="tblPickupOnly">
+								<h5 style="font-weight:bold;">Items</h5>
+								<thead>
+									<th>Serial Number</th>
+									<th>Name</th>
+									<th>Gun Type</th>
+									<th>Rounds</th>
+									<th>Status</th>
+								</thead>
+								<tbody>
+									<td>000</td>
+									<td>Anaconda</td>
+									<td>Pistol</td>
+									<td>30</td>
+									<td>test</td>
+								</tbody>
+							</table>
+						</li>
+					</div>
+				</ul>
+			</div>
+
+<!--item pickup end-->
 </div>
 </div>
 
@@ -318,7 +372,7 @@ Delivery
 
 <script>
 $(document).ready(function(){
-	$("#tblDelivery").DataTable({
+	$("#tblDeliveryOnly").DataTable({
 			 "columns": [
 			{ "orderable": false },
 			{ "orderable": false },
@@ -331,6 +385,19 @@ $(document).ready(function(){
 			"bFilter" :false
 		});
 	
+	$("#tblPickupOnly").DataTable({
+			 "columns": [
+			{ "orderable": false },
+			{ "orderable": false },
+			{ "orderable": false },
+			{ "orderable": false },
+			{ "orderable": false }
+			] ,  
+			"pageLength":3,
+			"bLengthChange": false,
+			"bFilter" :false
+		});
+
 	$("#tblDelivered").DataTable({
 			 "columns": [
 			{ "orderable": false },
@@ -356,6 +423,8 @@ $(document).ready(function(){
 			"bLengthChange": false,
 			"bFilter" :false
 		});
+	
+	
 });
 </script>
 @stop
