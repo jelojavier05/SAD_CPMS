@@ -58,7 +58,7 @@ Delivery
 		
 <!--		GUN DELIVERY-->
 		<div class="col s12" style="display:;">
-			<ul class="collection with-header">
+			<ul class="collection with-header" id="collectionActive">
 				<li class="collection-header"><h5 style="font-weight:bold;">Details</h5></li>
 				<div class="" style="">
 				<li class="collection-item">
@@ -162,7 +162,7 @@ Delivery
 		
 <!--		GUN PICKUP-->
 		<div class="col s12" style="display:none;">
-			<ul class="collection with-header">
+			<ul class="collection with-header" id="collectionActive">
 				<li class="collection-header"><h5 style="font-weight:bold;">Details</h5></li>
 				
 				<li class="collection-item">
