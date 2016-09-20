@@ -6,319 +6,158 @@ Delivery
 
 @section('content')	
 <div class="row">
-    <div class="col s7 push-s1">
-        <div class="container grey lighten-2 z-depth-2 animated fadeInUp" style="border-radius: 10px; margin-top:40px;margin-left:16%; padding-left:2%;padding-right:2%;">
-            <div class="col s6" style="margin-top:-15px;">
-                <h3 class="blue-text">Delivery and Pickup</h3>
-            </div>
-            
-            <div class="col s3 offset-s3">
-                <a style="margin-top: 20px;" id="" class=" z-depth-1 btn-large blue" href="/gunDeliveryCart">
-                    Deliver
-                </a>
-            </div>
-            
-            <div class="row">
-                <div class="col s12" style="margin-top:0px;">
-                    <table class="highlight white" style="border-radius:10px;" id="dataTable">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Client</th>
-								<th>Date Released</th>
-								<th style="width:50px;"></th>
-                                
-                            </tr>
-                        </thead>
-                        
-                        <tbody>
-                            @foreach($delivery as $value)
-                            <tr>
-
-                                <td id = "">{{$value->intGunDeliveryHeaderID}}</td>
-                                <td id = "">{{$value->strClientName}}</td>
-                                <td>{{$value->dateDeliver}}</td>
-
-                                <td>
-                                    <button class=" btn blue btnMore" id="{{$value->intGunDeliveryHeaderID}}">
-                                        MORE
-                                    </button>
-                                </td>
-
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-	
-	<div class ="col s5 animated fadeInUp" style="margin-top:-25px;">
-		
-<!--		GUN DELIVERY-->
-		<div class="col s12" style="display:;">
-			<ul class="collection with-header" id="collectionActive">
-				<li class="collection-header"><h5 style="font-weight:bold;">Details</h5></li>
-				<div class="" style="">
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s4">
-							Delivered By:
-						</div>
-						<div class="col s6" id="">
-							Mang Tomas
-						</div>
-					</div>
-				</li>
-				
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s4">
-							Contact Number:
-						</div>
-						<div class="col s6" id="">
-							09123456789
-						</div>
-					</div>
-				</li>
-				
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s4">
-							Delivery Code:
-						</div>
-						<div class="col s6" id="">
-							ABC123
-						</div>
-					</div>
-				</li>
-				
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s4">
-							Status:
-						</div>
-						<div class="col s6" id="">
-							Test
-						</div>
-					</div>
-				</li>
-				
-				<li class="collection-header">
-					<table class="striped" id="tblDelivery">
-						<h5 style="font-weight:bold;">Items</h5>
+	<div class="col s7 push-s1">
+		<!-- Delivery and Pickup Table -->
+		<div class="container grey lighten-2 z-depth-2 animated fadeInUp" style="border-radius: 10px; margin-top:40px;margin-left:16%; padding-left:2%;padding-right:2%;">
+			<div class="col s6" style="margin-top:-15px;">
+				<h3 class="blue-text">Delivery and Pickup</h3>
+			</div>
+			<div class="col s3 offset-s3">
+				<a style="margin-top: 20px;" id="" class=" z-depth-1 btn-large blue" href="/gunDeliveryCart">Deliver</a>
+			</div>
+			<div class="row">
+				<div class="col s12" style="margin-top:0px;">
+					<table class="highlight white" style="border-radius:10px;" id="dataTable">
 						<thead>
-							<th>Serial Number</th>
-							<th>Name</th>
-							<th>Gun Type</th>
-							<th>Rounds</th>
-							<th>Status</th>
+							<tr>
+							<th>ID</th>
+							<th>Client</th>
+							<th>Date Released</th>
+							<th style="width:50px;"></th>
+							</tr>
 						</thead>
-						
 						<tbody>
-							<tr>
-								<td>123-321</td>
-								<td>Mauser41</td>
-								<td>Pistol</td>
-								<td>45</td>
-								<td>Test</td>
-							</tr>
-							<tr>
-								<td>123-321</td>
-								<td>Mauser41</td>
-								<td>Pistol</td>
-								<td>45</td>
-								<td>Test</td>
-							</tr>
-							<tr>
-								<td>123-321</td>
-								<td>Mauser41</td>
-								<td>Pistol</td>
-								<td>45</td>
-								<td>Test</td>
-							</tr>
-							<tr>
-								<td>123-321</td>
-								<td>Mauser41</td>
-								<td>Pistol</td>
-								<td>45</td>
-								<td>Test</td>
-							</tr>
-							<tr>
-								<td>123-321</td>
-								<td>Mauser41</td>
-								<td>Pistol</td>
-								<td>45</td>
-								<td>Test</td>
-							</tr>
+							@foreach($delivery as $value)
+								<tr>
+									<td id = "">{{$value->intGunDeliveryHeaderID}}</td>
+									<td id = "">{{$value->strClientName}}</td>
+									<td>{{$value->dateDeliver}}</td>
+									<td>
+										<button class=" btn blue btnMore" id="{{$value->intGunDeliveryHeaderID}}">MORE</button>
+									</td>
+								</tr>
+							@endforeach
 						</tbody>
 					</table>
-				</li>
 				</div>
-			</ul>
+			</div>
 		</div>
-<!--		GUN DELIVERY END-->
-		
-<!--		GUN PICKUP-->
-		<div class="col s12" style="display:none;">
-			<ul class="collection with-header" id="collectionActive">
-				<li class="collection-header"><h5 style="font-weight:bold;">Details</h5></li>
-				
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s4">
-							Person Handling:
-						</div>
-						<div class="col s6" id="">
-							Mang Juan
-						</div>
-					</div>
-				</li>
-				
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s4">
-							Contact Number:
-						</div>
-						<div class="col s6" id="">
-							09123456789
-						</div>
-					</div>
-				</li>
-				
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s4">
-							Delivery/Pickup Code:
-						</div>
-						<div class="col s6" id="">
-							ZXC456
-						</div>
-					</div>
-				</li>
-				
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s4">
-							Status:
-						</div>
-						<div class="col s6" id="">
-							Test
-						</div>
-					</div>
-				</li>
-<!--	items delivered table			-->
-				<li class="collection-item">
-					<table class="striped" id="tblDelivered">
-						<h5 class="green-text" style="font-weight:bold;">Items Delivered</h5>
-						<thead>
-							<th>Serial Number</th>
-							<th>Name</th>
-							<th>Gun Type</th>
-							<th>Rounds</th>
-							<th>Status</th>
-						</thead>
-						
-						<tbody>
-							<tr>
-								<td>123-321</td>
-								<td>Glock</td>
-								<td>Pistol</td>
-								<td>60</td>
-								<td>Test</td>
-							</tr>
-							<tr>
-								<td>123-321</td>
-								<td>Glock</td>
-								<td>Pistol</td>
-								<td>60</td>
-								<td>Test</td>
-							</tr>
-							<tr>
-								<td>123-321</td>
-								<td>Glock</td>
-								<td>Pistol</td>
-								<td>60</td>
-								<td>Test</td>
-							</tr>
-							<tr>
-								<td>123-321</td>
-								<td>Glock</td>
-								<td>Pistol</td>
-								<td>60</td>
-								<td>Test</td>
-							</tr>
-							<tr>
-								<td>123-321</td>
-								<td>Glock</td>
-								<td>Pistol</td>
-								<td>60</td>
-								<td>Test</td>
-							</tr>
-							
-						</tbody>
-					</table>
-				</li>
-<!--		items delivered table end-->
-<!--			items pick up	-->
-				<li class="collection-item">
-					<table class="striped" id="tblPickup">
-						<h5 class="red-text" style="font-weight:bold;">Items Returned</h5>
-						<thead>
-							<th>Serial Number</th>
-							<th>Name</th>
-							<th>Gun Type</th>
-							<th>Rounds</th>
-							<th>Status</th>
-						</thead>
-						
-						<tbody>
-							<tr>
-								<td>123-321</td>
-								<td>Glock</td>
-								<td>Pistol</td>
-								<td>60</td>
-								<td>Test</td>
-							</tr>
-							<tr>
-								<td>123-321</td>
-								<td>Glock</td>
-								<td>Pistol</td>
-								<td>60</td>
-								<td>Test</td>
-							</tr>
-							<tr>
-								<td>123-321</td>
-								<td>Glock</td>
-								<td>Pistol</td>
-								<td>60</td>
-								<td>Test</td>
-							</tr>
-							<tr>
-								<td>123-321</td>
-								<td>Glock</td>
-								<td>Pistol</td>
-								<td>60</td>
-								<td>Test</td>
-							</tr>
-							<tr>
-								<td>123-321</td>
-								<td>Glock</td>
-								<td>Pistol</td>
-								<td>60</td>
-								<td>Test</td>
-							</tr>
-							
-						</tbody>
-					</table>
-				</li>
-<!--		items pick up end-->
-			</ul>
-		</div>
-<!--		GUN PICKUP END-->
+		<!-- Delivery and Pickup Table -->
 	</div>
+		
+	<div class ="col s5 animated fadeInUp" style="margin-top:-25px;">
+		<!--		GUN DELIVERY-->
+			<div class="col s12" style="display:;">
+				<ul class="collection with-header" id="collectionActive">
+					<li class="collection-header"><h5 style="font-weight:bold;">Details</h5></li>
+					<div class="" style="">
+						<li class="collection-item">
+							<div class="row">
+								<div class="col s4">Delivered By:</div>
+								<div class="col s6" id="">Mang Tomas</div>
+							</div>
+						</li>
+						<li class="collection-item">
+							<div class="row">
+								<div class="col s4">Contact Number:</div>
+								<div class="col s6" id="">09123456789</div>
+							</div>
+						</li>
+						<li class="collection-item">
+							<div class="row">
+								<div class="col s4">Delivery Code:</div>
+								<div class="col s6" id="">ABC123</div>
+							</div>
+						</li>
+						<li class="collection-item">
+							<div class="row">
+								<div class="col s4">Status:</div>
+								<div class="col s6" id="">Test</div>
+							</div>
+						</li>
+						<li class="collection-header">
+							<table class="striped" id="tblDelivery">
+								<h5 style="font-weight:bold;">Items</h5>
+								<thead>
+									<th>Serial Number</th>
+									<th>Name</th>
+									<th>Gun Type</th>
+									<th>Rounds</th>
+									<th>Status</th>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</li>
+					</div>
+				</ul>
+			</div>
+		<!--		GUN DELIVERY END-->
 
+		<!--		GUN PICKUP-->
+			<div class="col s12" style="display:none;">
+				<ul class="collection with-header" id="collectionActive">
+					<li class="collection-header"><h5 style="font-weight:bold;">Details</h5></li>
+					<li class="collection-item">
+						<div class="row">
+							<div class="col s4">Person Handling:</div>
+							<div class="col s6" id="">Mang Juan</div>
+						</div>
+					</li>
+					<li class="collection-item">
+						<div class="row">
+							<div class="col s4">Contact Number:</div>
+							<div class="col s6" id="">09123456789</div>
+						</div>
+					</li>
+					<li class="collection-item">
+						<div class="row">
+							<div class="col s4">Delivery/Pickup Code:</div>
+							<div class="col s6" id="">ZXC456</div>
+						</div>
+					</li>
+					<li class="collection-item">
+						<div class="row">
+							<div class="col s4">Status:</div>
+							<div class="col s6" id="">Test</div>
+						</div>
+					</li>
+					<!-- items delivered table			 -->
+						<li class="collection-item">
+							<table class="striped" id="tblDelivered">
+								<h5 class="green-text" style="font-weight:bold;">Items Delivered</h5>
+								<thead>
+									<th>Serial Number</th>
+									<th>Name</th>
+									<th>Gun Type</th>
+									<th>Rounds</th>
+									<th>Status</th>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</li>
+					<!-- items delivered table end -->
+					<!--			items pick up	-->
+						<li class="collection-item">
+							<table class="striped" id="tblPickup">
+								<h5 class="red-text" style="font-weight:bold;">Items Returned</h5>
+								<thead>
+									<th>Serial Number</th>
+									<th>Name</th>
+									<th>Gun Type</th>
+									<th>Rounds</th>
+									<th>Status</th>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</li>
+					<!-- items pick up end -->
+				</ul>
+			</div>
+		<!--		GUN PICKUP END-->
+</div>
 </div>
 
 
