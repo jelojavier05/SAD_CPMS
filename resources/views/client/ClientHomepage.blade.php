@@ -43,7 +43,7 @@ Client Homepage
           </div> 
 	  </div>
 		
-	<div class="col s12">
+	<div class="col s6">
 		<table class="striped white" style="border:1px solid black;" id="dataTablePresentGuards">
 			<h4 style="font-weight:bold;">Present Guards</h4>
 			<thead>
@@ -78,7 +78,28 @@ Client Homepage
 				</tr>
 			</tbody>
 		</table>
-	</div>	
+	</div>
+		
+	<div class="col s6">
+		<table style="border: 1px solid black; " id = 'tableAttendanceLog'>
+			<h4 style="font-weight:bold;">Guard Attendance Log</h4>
+			<thead>
+				<tr>
+				  <th>Name</th>
+				  <th>Action</th>
+				  <th>DateTime</th>
+				</tr>
+			</thead>
+			
+			<tbody style=" min-height:200px; max-height:200px;">
+				<tr>
+					<td>Draymond Green</td>
+					<td>Time-In</td>
+					<td>09-09-16 12:12:12</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
 	</div>
 </div>
