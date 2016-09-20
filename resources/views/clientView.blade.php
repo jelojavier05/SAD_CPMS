@@ -114,13 +114,13 @@ Clients
                                     <tr>
                                         
 									                      <td>
-                                            <button class="buttonDelete col s12 btn red"  name="" id="{{$value->intClientID}}" >
+                                            <button class="buttonDelete col s12 btn red"  name="" id="{{$value->intClientPendingID}}" >
                                                 <i class="material-icons">delete</i>
                                             </button>
                                             <label for=""></label>
                                         </td>
                                         
-                                        <td id = "">{{ $value->intClientPendingID }}</td>
+                                        <td id = "">{{ $value->intClientID }}</td>
                                         <td id = "">{{ $value->strClientName }}</td>
                                         <td>
                                             <a id = '{{ $value->intClientPendingID }}' class="btn col s12 buttonMore" onclick="Materialize.showStaggeredList('#collectionPending')" value = '{{$value->intClientPendingID}}'>More</a>
@@ -182,179 +182,221 @@ Clients
 
 
 <script type="text/javascript">
-	$(document).ready(function(){
-        var clientID;
-        var clientPendingID;
-        var guardWaiting;
-        var guardChecked;
-        var guardHasNotification;
-        
-        $('#dataTablePending').on('click', '.buttonMore', function(){
-            $.ajax({    
-                type: "GET",
-                url: "/clientView/get/guardaccept?notificationID=" + this.id,
-                success: function(data){
-                    var items = [];
-                    $('#guardcontainer').empty();
-                    $.each(data, function(i, item) {
-                        $("#guardcontainer").append('<li class="collection-item" style="opacity:100;">' + item.strFirstName + ' ' + item.strLastName + '</li>');
+$(document).ready(function(){
+  var clientID;
+  var clientPendingID;
+  var guardWaiting;
+  var guardChecked;
+  var guardHasNotification;
+  
+  $('#dataTablePending').on('click', '.buttonMore', function(){
+      $.ajax({    
+          type: "GET",
+          url: "/clientView/get/guardaccept?notificationID=" + this.id,
+          success: function(data){
+              var items = [];
+              $('#guardcontainer').empty();
+              $.each(data, function(i, item) {
+                  $("#guardcontainer").append('<li class="collection-item" style="opacity:100;">' + item.strFirstName + ' ' + item.strLastName + '</li>');
+              });
+          }
+      });//get guard accepted
+      
+      $.ajax({    
+          type: "GET",
+          url: "/clientView/get/selectedclientpending?notificationID=" + this.id,
+          success: function(data){
+              var area = commaSeparateNumber(data.deciAreaSize);
+              var population = commaSeparateNumber(data.intPopulation);
+              
+              $('#natureOfBusiness').text(data.strNatureOfBusiness);
+              $('#clientName').text(data.strClientName);
+              $('#clientNumber').text(data.strContactNumber);
+              $('#personInCharge').text(data.strPersonInCharge);
+              $('#personNumber').text(data.strPOICContactNumber);
+              $('#address').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+              $('#areaSize').text(area);
+              $('#population').text(population);
+              
+          }
+      });//get selected client pending
+      
+      $.ajax({
+
+          type: "GET",
+          url: "/clientView/get/guardcount?notificationID=" + this.id,
+          success: function(data){
+              $('#guardCount').text('Guards - ' + data.countAccepted + '/' + data.countNeedGuard.intNumberOfGuard);
+          },
+          error: function(data){
+              confirm ('guard pending');
+          }
+      });//get guard count accepted
+  });
+  
+  $('#dataTablePending').on('click', '.buttonProceed', function(){
+      var id = this.id;
+      var clientID = this.value;
+      $.ajax({
+          type: "GET",
+          url: "/clientView/get/guardcount?notificationID=" + id,
+          success: function(data){
+              var guardNeeded = data.countNeedGuard.intNumberOfGuard - data.countAccepted;
+              
+              if (guardNeeded == 0){
+
+                  swal({    
+                    title: "Proceed Code.",   
+                    text: "Enter the code to proceed.",   
+                    type: "input",   
+                    showCancelButton: true,   
+                    closeOnConfirm: false,   
+                    animation: "slide-from-top"
+                  }, 
+                    function(inputValue){     
+                      if (inputValue == data.code) {     
+                          this.closeOnConfirm = true; //close swal. 
+                          sendClientID(clientID);
+                      }else{
+                          swal.showInputError("Check your code.");
+                          return false;
+                      }
                     });
-                }
-            });//get guard accepted
-            
-            $.ajax({    
-                type: "GET",
-                url: "/clientView/get/selectedclientpending?notificationID=" + this.id,
-                success: function(data){
-                    var area = commaSeparateNumber(data.deciAreaSize);
-                    var population = commaSeparateNumber(data.intPopulation);
-                    
-                    $('#natureOfBusiness').text(data.strNatureOfBusiness);
-                    $('#clientName').text(data.strClientName);
-                    $('#clientNumber').text(data.strContactNumber);
-                    $('#personInCharge').text(data.strPersonInCharge);
-                    $('#personNumber').text(data.strPOICContactNumber);
-                    $('#address').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
-                    $('#areaSize').text(area);
-                    $('#population').text(population);
-                    
-                }
-            });//get selected client pending
-            
-            $.ajax({
+                  
+              }else{
+                  var toastContent = $('<span>Not enough guards.</span>');
+                  Materialize.toast(toastContent, 1500,'red', 'edit');
+              }
+          }
+      });//get guard count accepted
+  });
 
-                type: "GET",
-                url: "/clientView/get/guardcount?notificationID=" + this.id,
-                success: function(data){
-                    $('#guardCount').text('Guards - ' + data.countAccepted + '/' + data.countNeedGuard.intNumberOfGuard);
-                },
-                error: function(data){
-                    confirm ('guard pending');
-                }
-            });//get guard count accepted
-        });
-        
-        $('#dataTablePending').on('click', '.buttonProceed', function(){
-            var id = this.id;
-            var clientID = this.value;
-            $.ajax({
-                type: "GET",
-                url: "/clientView/get/guardcount?notificationID=" + id,
-                success: function(data){
-                    var guardNeeded = data.countNeedGuard.intNumberOfGuard - data.countAccepted;
-                    
-                    if (guardNeeded == 0){
+  $('#dataTablePending').on('click', '.buttonDelete', function(){
+    var clientPendingID = this.id;
+    swal({   title: "Are you sure?",   
+             text: "The Client will be remove.",   
+             type: "warning",   
+             showCancelButton: true,   
+             confirmButtonColor: "#DD6B55",   
+             confirmButtonText: "Yes, remove it!",   
+             closeOnConfirm: false 
+         }, 
+         function(){
+          postDeleteTemporaryAccount(clientPendingID);
+      });
+  });
 
-                        swal({    
-                          title: "Proceed Code.",   
-                          text: "Enter the code to proceed.",   
-                          type: "input",   
-                          showCancelButton: true,   
-                          closeOnConfirm: false,   
-                          animation: "slide-from-top"
-                        }, 
-                          function(inputValue){     
-                            if (inputValue == data.code) {     
-                                this.closeOnConfirm = true; //close swal. 
-                                sendClientID(clientID);
-                            }else{
-                                swal.showInputError("Check your code.");
-                                return false;
-                            }
-                          });
-                        
-                    }else{
-                        var toastContent = $('<span>Not enough guards.</span>');
-                        Materialize.toast(toastContent, 1500,'red', 'edit');
-                    }
-                }
-            });//get guard count accepted
+  function postDeleteTemporaryAccount(clientPendingID){
+    $.ajax({
+      type: "POST",
+      url: "{{action('ClientViewController@deleteClientPending')}}",
+      beforeSend: function (xhr) {
+          var token = $('meta[name="csrf_token"]').attr('content');
+
+          if (token) {
+                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+          }
+      },
+      data: {
+        clientPendingID: clientPendingID
+      },
+      success: function(data){
+        swal({
+            title: "Success!",
+            text: "You remove the temporary client.",
+            type: "success"
+          },
+          function(){
+          window.location.href = '{{ URL::to("/clientView") }}';
         });
 
-        $('#dataTablePending').on('click', '.buttonDelete', function(){
-          confirm(this.id);
-        });
+      },
+      error: function(data){
+        var toastContent = $('<span>Error Database.</span>');
+        Materialize.toast(toastContent, 1500,'red', 'edit');
+      }
+    });//ajax
+  }
 
-        $('#tableActive').on('click', '.btnActiveMore', function(){
-            $.ajax({
-                type: "GET",
-                url: "/clientView/get/client?clientID=" + this.id,
-                success: function(data){
-                    console.log(data);
-                    $('#activeBusiness').text(data.strNatureOfBusiness);
-                    $('#activeContactClient').text(data.strContactNumber);
-                    $('#activeInCharge').text(data.strPersonInCharge);
-                    $('#activeContactPerson').text(data.strPOICContactNumber);
-                    $('#activeAddress').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
-                    $('#activeAreaSize').text(data.deciAreaSize);
-                    $('#activePopulation').text(data.intPopulation);
+  $('#tableActive').on('click', '.btnActiveMore', function(){
+      $.ajax({
+          type: "GET",
+          url: "/clientView/get/client?clientID=" + this.id,
+          success: function(data){
+              console.log(data);
+              $('#activeBusiness').text(data.strNatureOfBusiness);
+              $('#activeContactClient').text(data.strContactNumber);
+              $('#activeInCharge').text(data.strPersonInCharge);
+              $('#activeContactPerson').text(data.strPOICContactNumber);
+              $('#activeAddress').text(data.strAddress + ' ' + data.strCityName + ', ' + data.strProvinceName);
+              $('#activeAreaSize').text(data.deciAreaSize);
+              $('#activePopulation').text(data.intPopulation);
 
 
 
 
 
 
-                },
-                error: function(data){
-                    var toastContent = $('<span>Error Database.</span>');
-                    Materialize.toast(toastContent, 1500,'red', 'edit');
+          },
+          error: function(data){
+              var toastContent = $('<span>Error Database.</span>');
+              Materialize.toast(toastContent, 1500,'red', 'edit');
 
-                }
-            });//ajax
-        });
-		
-        $('.buttonMore').click(function() {
-            $('#guardcontainer').css({
-    				'visibility': 'visible',
-    				'max-height': '400px',
-    				'overflow': 'scroll',
-    				'overflow-x': 'hidden',
-    				'height': '100%'
-    			 });
-    		});
-		
-		$('.detaillist').click(function() {
-			$('#detailcontainer').css({
-				'visibility': 'visible',
-				'overflow': 'scroll',
-				'overflow-x': 'hidden',
-				'height': '400px'
-			});
+          }
+      });//ajax
+  });
+
+  $('.buttonMore').click(function() {
+      $('#guardcontainer').css({
+			'visibility': 'visible',
+			'max-height': '400px',
+			'overflow': 'scroll',
+			'overflow-x': 'hidden',
+			'height': '100%'
+		 });
+	});
+
+	$('.detaillist').click(function() {
+		$('#detailcontainer').css({
+			'visibility': 'visible',
+			'overflow': 'scroll',
+			'overflow-x': 'hidden',
+			'height': '400px'
 		});
-        
-        function commaSeparateNumber(val){
-            while (/(\d+)(\d{3})/.test(val.toString())){
-                val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
-            }
-            return val;
-        }
-        
-        function sendClientID(id){
-            $.ajax({
-                type: "POST",
-                url: "{{action('ClientViewController@post')}}",
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
+  });
+  
+  function commaSeparateNumber(val){
+      while (/(\d+)(\d{3})/.test(val.toString())){
+          val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+      }
+      return val;
+  }
+  
+  function sendClientID(id){
+      $.ajax({
+          type: "POST",
+          url: "{{action('ClientViewController@post')}}",
+          beforeSend: function (xhr) {
+              var token = $('meta[name="csrf_token"]').attr('content');
 
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                data: {
-                    clientID:id
-                },
-                success: function(data){
-                    window.location.href = '{{ URL::to("/client/gunTagging") }}';
-                },
-                error: function(data){
-                    var toastContent = $('<span>sendingClientPendingID</span>');
-                    Materialize.toast(toastContent, 1500,'red', 'edit');
+              if (token) {
+                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+              }
+          },
+          data: {
+              clientID:id
+          },
+          success: function(data){
+              window.location.href = '{{ URL::to("/client/gunTagging") }}';
+          },
+          error: function(data){
+              var toastContent = $('<span>sendingClientPendingID</span>');
+              Materialize.toast(toastContent, 1500,'red', 'edit');
 
-                }
-            });//ajax
-        }// magsesend ng clientID sa session
-
-    });
+          }
+      });//ajax
+  }// magsesend ng clientID sa session
+});
 </script>
 
 <script>

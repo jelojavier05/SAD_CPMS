@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Validator;
 use DB;
 use Input;
+use Carbon\Carbon;
 
 class ClientViewController extends Controller
 {
@@ -65,8 +66,7 @@ class ClientViewController extends Controller
             DB::commit();
         }catch(Exception $e){
             DB::rollBack();
-        }
-            
+        }       
     }
     
     public function getGuardAccept(Request $request){
@@ -144,5 +144,85 @@ class ClientViewController extends Controller
         
         return response()->json($client);
     }
-    
+
+    public function deleteClientPending(Request $request){
+        try{
+            DB::beginTransaction();
+
+            // Set Variables Needed
+                $clientPendingID = $request->clientPendingID;
+                $clientInformation = DB::table('tblclientpendingnotification')
+                    ->join('tblclient', 'tblclient.intClientID', '=', 'tblclientpendingnotification.intClientID')
+                    ->select('tblclient.intClientID', 'tblclient.strClientName', 'tblclient.intAccountID')
+                    ->where('tblclientpendingnotification.intClientPendingID', $clientPendingID)
+                    ->first();
+
+                $result = DB::table('tblaccount')
+                    ->select('intAccountID')
+                    ->where('intAccountType', 3)
+                    ->first();
+                $adminAccountID = $result->intAccountID;
+
+                $guardAccepted = DB::table('tblguardpendingnotification')
+                    ->join('tblguard', 'tblguard.intGuardID', '=', 'tblguardpendingnotification.intGuardID')
+                    ->select('tblguard.intGuardID', 'tblguard.intAccountID')
+                    ->where('tblguardpendingnotification.intStatusIdentifier', 2)
+                    ->where('intClientPendingID', $clientPendingID)
+                    ->get();
+
+                $now = Carbon::now();
+
+                $messageGuard = 'The ' . $clientInformation->strClientName . ' you accepted have backed out.';
+                $subjectGuard = 'New Client Update';
+
+            // Set Variables Needed
+
+            // Process
+                DB::table('tblclientpendingnotification')
+                    ->where('intClientPendingID', $clientPendingID)
+                    ->update([
+                        'intStatusIdentifier' => 2
+                    ]);//rejected of the client pending notification
+
+                DB::table('tblguardpendingnotification')
+                    ->where('intClientPendingID', $clientPendingID)
+                    ->update([
+                        'intStatusIdentifier' => 3
+                    ]);//change the status of the guard pending notification to unavailable
+
+                DB::table('tblaccount')
+                    ->where('intAccountID', $clientInformation->intAccountID)
+                    ->update([
+                        'boolStatus' => 0
+                    ]);//deactivate account of client
+
+                DB::table('tblclient')
+                    ->where('intClientID', $clientInformation->intClientID)
+                    ->update([
+                        'intStatusIdentifier' => 0,
+                        'deleted_at' => $now
+                    ]);//deactivate the client
+
+                foreach($guardAccepted as $value){
+                    DB::table('tblguardstatus')->insert([
+                        'intGuardID' => $value->intGuardID,
+                        'intStatusIdentifier' => 0,
+                        'dateEffectivity' => $now
+                    ]);//update the guard status who accepted the request
+
+                    DB::table('tblinbox')->insert([
+                        'intAccountIDSender' => $adminAccountID,
+                        'intAccountIDReceiver' => $value->intAccountID,
+                        'strMessage' => $messageGuard, 
+                        'strSubject' => $subjectGuard, 
+                        'tinyintType' => 0
+                    ]);//send message to guard who accepted
+                }
+
+            // Process
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+    }
 }

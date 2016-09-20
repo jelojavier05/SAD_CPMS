@@ -296,6 +296,7 @@ Route::get('/clientView/get/selectedclientpending', 'ClientViewController@getSel
 Route::get('/clientView/get/guardcount', 'ClientViewController@getGuardAccepted');
 Route::get('/clientView/get/client', 'ClientViewController@getClient');
 Route::post('/clientView/send/clientPendingID', 'ClientViewController@post');
+Route::post('/clientView/delete/clientPending', 'ClientViewController@deleteClientPending');
 
 
 Route::get('/client/registration/basicInfo', 'ClientRegistrationController@index')->name('basicInfoBC');
