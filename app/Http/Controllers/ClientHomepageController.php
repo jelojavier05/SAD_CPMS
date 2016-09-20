@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
 class ClientHomepageController extends Controller
 {
     /**
@@ -19,69 +19,65 @@ class ClientHomepageController extends Controller
         return view('/client/ClientHomepage');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function getPresentGuard(Request $request){
+        $clientID = $request->session()->get('id');
+
+        $presentGuard = DB::table('tblattendance')
+            ->join('tblguard', 'tblguard.intGuardID', '=', 'tblattendance.intGuardID')
+            ->select('tblguard.strFirstName', 'tblguard.strLastName', 'tblguard.strGender')
+            ->where('tblattendance.intClientID', $clientID)
+            ->where('tblattendance.datetimeOut', '0000-00-00 00:00:00')
+            ->get();
+
+        return response()->json($presentGuard);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function getAttendanceLog(Request $request){
+        $clientID = $request->session()->get('id');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $timeIn = DB::table('tblattendance')
+            ->select('datetimeIn', 'intGuardID')
+            ->where('intClientID', $clientID)
+            ->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $timeOut = DB::table('tblattendance')
+            ->select('datetimeOut', 'intGuardID')
+            ->where('intClientID', $clientID)
+            ->get();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        $attendanceLog = array(); 
+        foreach ($timeIn as $value){
+            $guardName = DB::table('tblguard')
+                ->select('strFirstName', 'strLastName')
+                ->where('intGuardID', $value->intGuardID)
+                ->first();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+            $attendance = new \stdClass();
+            $attendance->guardName = $guardName->strFirstName . ' ' . $guardName->strLastName;
+            $attendance->dateTimeIn = $value->datetimeIn;
+            $attendance->identifier = 1;
+            $attendance->dateTime = date('M d - H:i', strtotime($attendance->dateTimeIn)); 
+
+            // array_push($attendanceLog, $attendance);
+            $attendanceLog [$value->datetimeIn] = $attendance;
+        }
+
+        foreach($timeOut as $value){
+            $guardName = DB::table('tblguard')
+                ->select('strFirstName', 'strLastName')
+                ->where('intGuardID', $value->intGuardID)
+                ->first();
+
+            if (!($value->datetimeOut == '0000-00-00 00:00:00')){
+                $attendance = new \stdClass();
+                $attendance->guardName = $guardName->strFirstName . ' ' . $guardName->strLastName;
+                $attendance->dateTimeOut = $value->datetimeOut;
+                $attendance->identifier = 0;
+                $attendance->dateTime = date('M d - H:i', strtotime($attendance->dateTimeOut)); 
+                $attendanceLog [$value->datetimeOut] = $attendance;
+            }
+        }
+
+        return response()->json($attendanceLog);
     }
 }

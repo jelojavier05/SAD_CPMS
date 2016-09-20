@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\App; 
 
 class CGRGuardAttendanceController extends Controller
 {
@@ -112,53 +113,80 @@ class CGRGuardAttendanceController extends Controller
     }
 
     public function timeIn (Request $request){
-    	$guardID = $request->intGuardID;
-    	$cgrmID = $request->session()->get('id');
-    	$now = Carbon::now();
+    	try{
+            DB::beginTransaction();
+            $guardID = $request->intGuardID;
+            $cgrmID = $request->session()->get('id');
+            $now = Carbon::now();
 
-    	$result = DB::table('tblcgrm')
-    		->select('intClientID')
-    		->where('intCgrmID', $cgrmID)
-    		->first();
-    	$clientID = $result->intClientID;
+            $result = DB::table('tblcgrm')
+                ->select('intClientID')
+                ->where('intCgrmID', $cgrmID)
+                ->first();
+            $clientID = $result->intClientID;
 
-    	DB::table('tblattendance')
-    		->insert([
-    			'intGuardID' => $guardID,
-    			'intClientID' => $clientID,
-    			'datetimeIn' => $now
-    		]);
+            DB::table('tblattendance')
+                ->insert([
+                    'intGuardID' => $guardID,
+                    'intClientID' => $clientID,
+                    'datetimeIn' => $now
+                ]);
+
+            $pusher = App::make('pusher');
+            $pusher->trigger(
+                'attendance',
+                'guard-attendance', 
+                array('text' => 'Time In')
+            );
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
     }
 
     public function timeOut(Request $request){
-    	$guardID = $request->intGuardID;
-    	$cgrmID = $request->session()->get('id');
-    	$now = Carbon::now();
+        try{
+            DB::beginTransaction();
+            $guardID = $request->intGuardID;
+            $cgrmID = $request->session()->get('id');
+            $now = Carbon::now();
 
-    	$result = DB::table('tblcgrm')
-    		->select('intClientID')
-    		->where('intCgrmID', $cgrmID)
-    		->first();
-    	$clientID = $result->intClientID;
+            $result = DB::table('tblcgrm')
+                ->select('intClientID')
+                ->where('intCgrmID', $cgrmID)
+                ->first();
+            $clientID = $result->intClientID;
 
-    	$result = DB::table('tblattendance')
-			->select('intAttendanceID', 'datetimeIn')
-			->where('intGuardID', $guardID)
-			->where('intClientID', $clientID)
-			->orderBy('datetimeIn', 'desc')
-			->first();
-		$attendanceID = $result->intAttendanceID;
-		$datetimeIn = new Carbon($result->datetimeIn);
-		
-		$dateDifference = $datetimeIn->diffInMinutes($now);
-		$dateDifference = $dateDifference * (1/60);
-		
-		DB::table('tblattendance')
-			->where('intAttendanceID', $attendanceID)
-			->update([
-				'datetimeOut' => $now,
-				'deciTotalHours' => $dateDifference
-			]);
+            $result = DB::table('tblattendance')
+                ->select('intAttendanceID', 'datetimeIn')
+                ->where('intGuardID', $guardID)
+                ->where('intClientID', $clientID)
+                ->orderBy('datetimeIn', 'desc')
+                ->first();
+            $attendanceID = $result->intAttendanceID;
+            $datetimeIn = new Carbon($result->datetimeIn);
+            
+            $dateDifference = $datetimeIn->diffInMinutes($now);
+            $dateDifference = $dateDifference * (1/60);
+            
+            DB::table('tblattendance')
+                ->where('intAttendanceID', $attendanceID)
+                ->update([
+                    'datetimeOut' => $now,
+                    'deciTotalHours' => $dateDifference
+                ]);
+
+            $pusher = App::make('pusher');
+            $pusher->trigger(
+                'attendance',
+                'guard-attendance', 
+                array('text' => 'Time Out')
+            );
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+        	
     }
 
     public function attendanceLog(Request $request){

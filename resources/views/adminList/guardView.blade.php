@@ -42,7 +42,7 @@ Guard
                                     <label for=""></label>
                                 </td>
                                 <td>
-                                    <button class="buttonMore btn blue"  id="{{$value->intGuardID}}">
+                                    <button class="buttonMore btn blue" onclick = "Materialize.showStaggeredList('#collectionActive')"" id="{{$value->intGuardID}}">
                                         MORE
                                     </button>
                                 </td>

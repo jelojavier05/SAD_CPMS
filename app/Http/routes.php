@@ -226,6 +226,8 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
     Route::get('/client', 'ClientDashboardController@index');
     Route::get('/client/getinformation', 'ClientDashboardController@getClientInformation');
     Route::get('/clienthomepage', 'ClientHomepageController@index');
+    Route::get('/clienthomepage/get/presentGuard', 'ClientHomepageController@getPresentGuard');
+    Route::get('/clienthomepage/get/attendanceLog', 'ClientHomepageController@getAttendanceLog');
     Route::get('/clientguardrequest', 'ClientGuardRequestController@index');
     Route::get('/clientguardrequest/get/activeguard', 'ClientGuardRequestController@getActiveGuard');
     Route::get('/clientguardrequest/get/hasAddRequest', 'ClientGuardRequestController@hasAddRequest');

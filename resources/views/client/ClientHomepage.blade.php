@@ -52,30 +52,6 @@ Client Homepage
 			</thead>
 			
 			<tbody>
-				<tr>
-					<td>Tim Duncan</td>
-					<td>Male</td>
-				</tr>
-				<tr>
-					<td>Tim Duncan</td>
-					<td>Male</td>
-				</tr>
-				<tr>
-					<td>Tim Duncan</td>
-					<td>Male</td>
-				</tr>
-				<tr>
-					<td>Tim Duncan</td>
-					<td>Male</td>
-				</tr>
-				<tr>
-					<td>Tim Duncan</td>
-					<td>Male</td>
-				</tr>
-				<tr>
-					<td>Tim Duncan</td>
-					<td>Male</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -92,11 +68,6 @@ Client Homepage
 			</thead>
 			
 			<tbody style=" min-height:200px; max-height:200px;">
-				<tr>
-					<td>Draymond Green</td>
-					<td>Time-In</td>
-					<td>09-09-16 12:12:12</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -281,46 +252,162 @@ Client Homepage
 @stop
 
 @section('script')
+
 <script>
-$('.guardbtn').click(function() {
-			
-	$('#guardlist').css({	
-		'max-height': '230px',
-		'overflow': 'scroll',
-		'overflow-x': 'hidden',		
-	});
+$(document).ready(function(){
 	
-	$('body').animate({
-        scrollTop: $(".guardscroll").offset().top},
-        'slow');
-});
+  refreshTables();
 
-$('.btnbackguard').click(function() {
-			
-	$('body').animate({
-        scrollTop: $(".cards").offset().top},
-        'slow');
-});
+  function refreshTables(){
+  	$.ajax({
+	    type: "GET",
+	    url: "{{action('ClientHomepageController@getPresentGuard')}}",
+	    success: function(data){
+	    	var table = $('#dataTablePresentGuards').DataTable();
+	    	table.clear().draw();
 
-$('.btnbackgun').click(function() {
-			
-	$('body').animate({
-        scrollTop: $(".cards").offset().top},
-        'slow');
+	    	$.each(data, function(index,value){
+	    		table.row.add([
+	    			'<h>' + value.strFirstName + ' ' + value.strLastName + '</h>',
+	    			'<h>' + value.strGender + '</h>'
+	    		]).draw();
+	    	});
+	    },
+	    error: function(data){
+					var toastContent = $('<span>Error Database.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+
+	    }
+		});//ajax
+
+		$.ajax({
+	    type: "GET",
+	    url: "{{action('ClientHomepageController@getAttendanceLog')}}",
+	    success: function(data){
+	      var dataTable = $('#tableAttendanceLog').DataTable();
+	      dataTable.clear().draw(); //clear all the row
+
+	      $.each(data, function(index, value){
+	        var identifier = value.identifier;
+	        var action;
+	        if (identifier == 0){
+	          action = 'OUT';
+	        }else{
+	          action = 'IN';
+	        }
+	        dataTable.row.add([
+	            '<h>' + value.guardName +'</h>',
+	            '<h>' + action +'</h>',
+	            '<h>' + value.dateTime +'</h>',
+	        ]).draw();
+
+	        console.log(value);
+	      });
+	    }
+	  });//ajax
+  }
 });
-	
-$('.gunbtn').click(function() {
-			
-	$('#gunlist').css({	
-		'max-height': '230px',
-		'overflow': 'scroll',
-		'overflow-x': 'hidden',		
+</script>
+
+<script>
+	var pusher = new Pusher("{{env('PUSHER_KEY')}}");
+  var channel = pusher.subscribe('attendance');
+  channel.bind('guard-attendance', function(data) {
+  	var toastContent = $('<span>'+data.text+'</span>');
+    Materialize.toast(toastContent, 1500,'green', 'edit');
+		refreshTables();
+  });
+	function refreshTables(){
+  	$.ajax({
+	    type: "GET",
+	    url: "{{action('ClientHomepageController@getPresentGuard')}}",
+	    success: function(data){
+	    	var table = $('#dataTablePresentGuards').DataTable();
+	    	table.clear().draw();
+
+	    	$.each(data, function(index,value){
+	    		table.row.add([
+	    			'<h>' + value.strFirstName + ' ' + value.strLastName + '</h>',
+	    			'<h>' + value.strGender + '</h>'
+	    		]).draw();
+	    	});
+	    },
+	    error: function(data){
+					var toastContent = $('<span>Error Database.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+
+	    }
+		});//ajax
+
+		$.ajax({
+	    type: "GET",
+	    url: "{{action('ClientHomepageController@getAttendanceLog')}}",
+	    success: function(data){
+	      var dataTable = $('#tableAttendanceLog').DataTable();
+	      dataTable.clear().draw(); //clear all the row
+
+	      $.each(data, function(index, value){
+	        var identifier = value.identifier;
+	        var action;
+	        if (identifier == 0){
+	          action = 'OUT';
+	        }else{
+	          action = 'IN';
+	        }
+	        dataTable.row.add([
+	            '<h>' + value.guardName +'</h>',
+	            '<h>' + action +'</h>',
+	            '<h>' + value.dateTime +'</h>',
+	        ]).draw();
+
+	        console.log(value);
+	      });
+	    }
+	  });//ajax
+  }
+</script>
+
+
+<script>
+	$('.guardbtn').click(function() {
+				
+		$('#guardlist').css({	
+			'max-height': '230px',
+			'overflow': 'scroll',
+			'overflow-x': 'hidden',		
+		});
+		
+		$('body').animate({
+	        scrollTop: $(".guardscroll").offset().top},
+	        'slow');
 	});
-	
-	$('body').animate({
-        scrollTop: $(".gunscroll").offset().top},
-        'slow');
-});
+
+	$('.btnbackguard').click(function() {
+				
+		$('body').animate({
+	        scrollTop: $(".cards").offset().top},
+	        'slow');
+	});
+
+	$('.btnbackgun').click(function() {
+				
+		$('body').animate({
+	        scrollTop: $(".cards").offset().top},
+	        'slow');
+	});
+		
+	$('.gunbtn').click(function() {
+				
+		$('#gunlist').css({	
+			'max-height': '230px',
+			'overflow': 'scroll',
+			'overflow-x': 'hidden',		
+		});
+		
+		$('body').animate({
+	        scrollTop: $(".gunscroll").offset().top},
+	        'slow');
+	});
 </script>
 
 <script>
@@ -333,6 +420,18 @@ $('.gunbtn').click(function() {
 			"bLengthChange":false,
 			"bFilter" : false
 		});
+
+	$("#tableAttendanceLog").DataTable({
+  "columns": [
+  null,
+  null,
+  null
+  ] ,  
+  "pageLength":5,
+	"bLengthChange":false,
+  "bFilter" : false,
+  "order": [[2, "desc"]]
+	});
 </script>
 
 @stop

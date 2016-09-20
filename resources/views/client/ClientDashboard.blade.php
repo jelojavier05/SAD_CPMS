@@ -33,6 +33,7 @@
           <script src="{!! URL::asset('../sweetalert.min.js') !!}"></script>
           <script src="{!! URL::asset('../js/moment.min.js') !!}"></script>
        <script src="{!! URL::asset('../datatable.js') !!}"></script>
+        <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
        <!-- <script src="{!! URL::asset('../dataTables.material.min.js') !!}"></script> -->
        <script src="{!! URL::asset('../jquery.dataTables.min.js') !!}"></script>
        <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script> -->
