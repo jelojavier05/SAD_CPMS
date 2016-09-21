@@ -3,6 +3,7 @@
 Route::get('/test', 'TestController@index');
 
 Route::get('/sgtransferlog', 'SgTransferHistoryController@index');
+Route::get('/sgtransferlog/get/guardInformation', 'SgTransferHistoryController@getGuardInformation');
 
 Route::get('/insertmaintenance', 'MaintenanceController@insert');
 
