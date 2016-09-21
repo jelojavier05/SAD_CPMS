@@ -20,6 +20,7 @@ return array(
     'CreateClientTable' => $baseDir . '/database/migrations/2016_07_14_181829_create_client_table.php',
     'CreateClientaddguardTable' => $baseDir . '/database/migrations/2016_08_31_001242_create_clientaddguard_table.php',
     'CreateClientaddressTable' => $baseDir . '/database/migrations/2016_07_14_183214_create_clientaddress_table.php',
+    'CreateClientbillingdateTable' => $baseDir . '/database/migrations/2016_09_22_012620_create_clientbillingdate_table.php',
     'CreateClientpendingnotificationTable' => $baseDir . '/database/migrations/2016_07_17_194223_create_clientpendingnotification_table.php',
     'CreateClientshiftTable' => $baseDir . '/database/migrations/2016_07_14_183313_create_clientshift_table.php',
     'CreateClientswapguardrequestTable' => $baseDir . '/database/migrations/2016_09_06_122219_create_clientswapguardrequest_table.php',

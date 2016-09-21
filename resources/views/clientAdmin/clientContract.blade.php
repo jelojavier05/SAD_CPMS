@@ -242,6 +242,7 @@ $(document).ready(function() {
     var shiftNumber = [];
     var shiftTo = [];
     var shiftFrom = [];
+    var arrDate = [];
     
     $.ajax({
         type: "GET",
@@ -332,6 +333,7 @@ $(document).ready(function() {
     $('#contractStart').on('change',function(){
         refreshDateEnd();
         billingDates();
+        console.log(arrDate);
     });
     
     $('#btnSave').click(function(){
@@ -370,7 +372,8 @@ $(document).ready(function() {
                 clientName: clientName,
                 address:address,
                 username: username,
-                password: password
+                password: password,
+                arrDate: arrDate
                 
             },
             success: function(data){
@@ -412,10 +415,7 @@ $(document).ready(function() {
             }
             var dateEnd = yearEnd + "-" + monthEnd + "-" + dayEnd;
             $('#contractEnd').val(dateEnd);
-        }
-        
-            
-        
+        }   
     }
     
     function billingDates(){
@@ -449,6 +449,7 @@ $(document).ready(function() {
             
             $('#tableBilling tr').not(function(){ return !!$(this).has('th').length; }).remove();
             var dateStart1 = new Date($('#contractStart').val());
+            arrDate = [];
             $.each(arr, function(index,value){
                 var year = value.getFullYear();
                 var month = value.getMonth() + 1;
@@ -460,6 +461,9 @@ $(document).ready(function() {
                 dateStart1 = value;
                 
                 $('#tableBilling tr:last').after('<tr><td>' + date + '</td></tr>');
+
+                var databaseDate = year + '-' + month + '-' + day;
+                arrDate.push(databaseDate);
             });
         }
     }

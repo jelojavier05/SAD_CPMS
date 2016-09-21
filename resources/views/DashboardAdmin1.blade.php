@@ -97,7 +97,7 @@ Admin
   <div class="col l2 offset-l3">
     <div class="card animated zoomIn" style="background-color:#00293C">
       <div class="card-content white-text">
-        <span class="card-title" style="font-size:40px; font-weight:bold;">35</span>
+        <span class="card-title" style="font-size:40px; font-weight:bold;">{{$value->countUnpaidBills}}</span>
         <p style="margin-left:10px;">Unpaid <br> Clients</p>
         <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">receipt</i>
       </div>

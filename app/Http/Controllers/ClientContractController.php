@@ -212,6 +212,15 @@ class ClientContractController extends Controller
                     'intClientID' => $clientID
                 ]);
 
+            $arrDate = $request->arrDate;
+            foreach($arrDate as $value){
+                DB::table('tblclientbillingdate')->insert([
+                    'intContractID' => $contractID,
+                    'boolStatus' => 1,
+                    'dateBill' => $value
+                ]);
+            }
+
             DB::commit();
         }catch(Exception $e){
             DB::rollback();
