@@ -40,6 +40,18 @@ class SecurityGuardDashboardController extends Controller
             ->first();
         
         return response()->json($clientInformation);
+    }
 
+    public function isLicenseUpdated(Request $request){
+        $guardID = $request->session()->get('id');
+        $expirationDate = Carbon::now();
+        $expirationDate->addMonths(2);
+
+        $result = DB::table('tblguardlicense')
+            ->where('dateExpiration', '<=', $expirationDate)
+            ->where('intGuardID', $guardID)
+            ->count();
+
+        return response()->json($result);
     }
 }
