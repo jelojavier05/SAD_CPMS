@@ -5,104 +5,160 @@ Test
 @endsection
 
 @section('content')
-
 <div class="row">
-    <div class="col s8 push-s3" style="margin-left:10px;">
-        <div class="container-fluid grey lighten-4 z-depth-1 ci animated slideInLeft" style="border: 1px solid black; border-radius:5px;">
-           <div class="row">
-					<div class="col l12 offset-l4">
+	<div class="col s10 offset-s2">
+		<div class="row">
+			<div class="col s12">
+				<ul class="collection with-header">
+					<li class="collection-header">
+						<h5 style="font-weight:bold;">Payment Options</h5>
+						<div>
+							<input class="with-gap" name="group1" type="radio" id="test1" value="0" />
+							<label for="test1">Cash</label>
+						</div>
+						<div>
+							<input class="with-gap" name="group1" type="radio" id="test2" value="1" />
+							<label for="test2">Cheque</label>
+						</div>
+					</li>
+					<div class="payradio animated zoomIn" style="display:none;">
+					<li class="collection-item">
+						<h5 style="font-weight:bold;">Cheque Details</h5>
+						<div class="row">
+							<div class="col s12">
+								<div class="input-field col s4">
+									<input id="" type="text"  name = "" placeholder="e.g.HelloBank">                                
+									<label for="">Bank Name</label>                                 
+								</div>
+								<div class="input-field col s4">
+									<input id="" type="date"  name = "" placeholder=" ">                                
+									<label class="active" for="">Date</label>                                 
+								</div>								
+							</div>
+						</div>
 						
-						 <legend><h4>Armed Services</h4></legend>
-				
+						<div class="row">
+							<div class="col s12">
+								<div class="input-field col s4">
+									<input id="" type="text"  name = "" placeholder="e.g.123-321">                                
+									<label for="">Cheque Number</label>                                 
+								</div>
+								<div class="input-field col s4">
+									<input id="" type="text"  name = "" placeholder="e.g.100.00">                                
+									<label for="">Amount</label>                                 
+								</div>								
+							</div>
+						</div>
+					</li>
+					<li class="collection-item"></li>
 					</div>
+					
+					<li class="collection-item">
+						<table class="striped grey lighten-1" id="tblBills">
+							<h5 style="font-weight:bold;">Unpaid Bills</h5>
+							<thead>
+								<th></th>
+								<th>Date</th>
+								<th>Amount</th>
+								<th>Due Date</th>							
+							</thead>
+							
+							<tbody>
+								<tr>
+									<td>
+										<input type="checkbox" class="filled-in" id="testA"/>
+										<label for="testA"></label>
+									</td>
+									<td>12/12/12</td>
+									<td>10000.00</td>
+									<td>12/20/12</td>
+								</tr>
+								
+								<tr>
+									<td>
+										<input type="checkbox" class="filled-in" id="testB"/>
+										<label for="testB"></label>
+									</td>
+									<td>12/12/12</td>
+									<td>10000.00</td>
+									<td>12/20/12</td>
+								</tr>
+								
+								<tr>
+									<td>
+										<input type="checkbox" class="filled-in" id="testC"/>
+										<label for="testC"></label>
+									</td>
+									<td>12/12/12</td>
+									<td>10000.00</td>
+									<td>12/20/12</td>
+								</tr>
+								
+								<tr>
+									<td>
+										<input type="checkbox" class="filled-in" id="testD"/>
+										<label for="testD"></label>
+									</td>
+									<td>12/12/12</td>
+									<td>10000.00</td>
+									<td>12/20/12</td>
+								</tr>
+								
+								<tr>
+									<td>
+										<input type="checkbox" class="filled-in" id="testE"/>
+										<label for="testE"></label>
+									</td>
+									<td>12/12/12</td>
+									<td>10000.00</td>
+									<td>12/20/12</td>
+								</tr>
+								
+								<tr>
+									<td>
+										<input type="checkbox" class="filled-in" id="testF"/>
+										<label for="testF"></label>
+									</td>
+									<td>12/12/12</td>
+									<td>10000.00</td>
+									<td>12/20/12</td>
+								</tr>
+							</tbody>
+						</table>
+					</li>
+				</ul>
 			</div>
-			
-            <div class="row">		
-				<div class="col s10 push-s1">
-                    <div class = "input-field col s4 offset-s8 pull-s8">    
-                        <select id = "armedService" >
-                            <option disabled selected value = "0">Choose armed services if any</option>
-                            @foreach($armedservices as $armedservice)
-                                <option id = "option{{$armedservice->intArmedServiceID}}" value = "{{$armedservice->intArmedServiceID}}">{{$armedservice->strArmedServiceName}}</option>
-                            @endforeach
-                        </select>
-						<label data-error="Incorrect" for="armedService">Armed Service</label>
-                    </div>
-                     <div class="input-field col s6">
-                        <select id = "armedServiceRank">
-                            <option value="" disabled selected>Choose Rank</option>  
-                        </select>
-                        <label data-error="Incorrect" for="armedServiceRank">Rank</label>
-                    </div>
-					<div class="input-field col s6">
-                        <select id = "armedServiceYear">
-                            <option value="" disabled selected>----</option>  
-                        </select>
-                        <label data-error="Incorrect" for="armedServiceYear">Year</label>
-                    </div>
-						
-                    
-                    <div class="input-field col s6">
-                        <input class="with-gap" name="radio" type="radio" id="dischargedHonorably" value = "Honorably"/>
-                        <label for="dischargedHonorably">Discharged Honorably</label>
-                        <input class="with-gap" name="radio" type="radio" id="dischargedDishonorably"  value="Dishonorably"/>
-                        <label for="dischargedDishonorably">Discharged Dishonorably</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input placeholder = " " id="reason" type="text" class="validate" pattern="[A-za-z0-9 ]{2,}" required="" aria-required="true" >
-                        <label data-error="Incorrect" for="reason">Reason</label>
-                    </div>
-				</div>
-            </div>
-        </div>
-    </div>
-</div>
- 
-<!--gov exam	-->
-
-<div class ="row">
-    <div class = "col s8 push-s3" style="margin-left:10px;">
-        <div class="container-fluid grey lighten-4 z-depth-1 ci animated slideInLeft" style="border: 1px solid black; border-radius:5px;">
-              <div class="row">
-					<div class="col l12 offset-l4">
-						
-						 <legend><h4>Government Exam</h4></legend>
-				
-					</div>
-			</div>
-			
-			<button style="margin-top:-10%; margin-left:700px;" class="z-depth-1 btn green modal-trigger" href="#modalgovexamAdd">
-            <i class="material-icons left">add</i> ADD
-            </button>
-            <table class="striped white" id = "dataTable">
-                <thead>
-                    <tr>
-						<th style="width:50px;"></th>
-                        <th style="width:50px;"></th>
-                        <th>Name</th>
-                        <th>Ratings</th>
-                        <th>Date Taken</th>
-                    </tr>
-                </thead>
-                <tbody> 
-
-                </tbody>
-            </table>
-        </div>
-        <button style="margin-top:20px;" class=" z-depth-2 btn-large blue left animated slideInLeft" id="backArmed">Back</button>
-        <button style="margin-top:20px;" class=" z-depth-2 btn-large blue right animated slideInLeft" id = "nextArmed">Next</button>
-    </div>
-</div>
-	
+		</div>
+	</div>
+</div>	
 @stop
 
 @section('script')
-
 <script>
-$('.datepicker').pickadate({
-    selectMonths: true, 
-    selectYears: 15 
-  });
+$(document).ready(function(){
+	$("#tblBills").DataTable({
+		"columns": [
+			{ "orderable": false },
+			null,
+			null,
+			null
+		] ,  
+		"pageLength":5,
+		"bLengthChange": false,
+		"bFilter": false
+	});		
+	
+	 $('input[type="radio"]').click(function(){
+        if($(this).attr("value")=="1"){           
+            $(".payradio").show();
+        }
+		 else{
+			 $(".payradio").hide();
+		 }
+	 });
+			 
+});
 </script>
+
 
 @stop
