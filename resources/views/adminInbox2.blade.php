@@ -21,7 +21,6 @@ Inbox
             <thead>
               <tr>
                 <th class="grey lighten-1" style="width: 20px;"></th>
-                <th class="grey lighten-1" style="width: 30px;"></th>
                 <th class="grey lighten-1">Date</th>
                 <th class="grey lighten-1">From</th>
                 <th class="grey lighten-1">Subject</th>
@@ -652,7 +651,7 @@ Inbox
   </div>  
 <!--modal remove guard request complete guards end-->
 
-<!--modal client gun swap request-->
+<!--modal client swap gun request-->
   <div id="modalClientSwapGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
     <div class="modal-header">
       <div class="h">
@@ -710,22 +709,22 @@ Inbox
 	  </div>
     <div class="modal-footer ci" style="background-color: #00293C;">
 
-      <div id = "" style=""> 
+      <div id = "divSwapGunButton" style=""> 
         <button class="btn green waves-effect waves-light" id = "btnSwapGunProceed" style="margin-right: 30px;">Proceed</button>
-        <button class="btn red waves-effect waves-light" style="margin-right: 30px;" id = "">Decline</button>
+        <button class="btn red waves-effect waves-light" style="margin-right: 30px;" id = "btnSwapGunDecline">Decline</button>
       </div>
 
-      <div id = "" style="display: none;">                 
+      <div id = "divSwapGunAccepted" style="display: none;">                 
         <button class="btn green" style="margin-right: 30px; cursor:default;">Accepted</button>
       </div>
 
-      <div id = "" style="display: none;">     
+      <div id = "divSwapGunRejected" style="display: none;">     
         <button class="btn red" style="margin-right: 30px; cursor:default;">Declined</button>
       </div>             
 
     </div>
   </div>  
-<!--modal client gun swap request end-->
+<!--modal client swap gun request end-->
 
 <!--modal client remove gun-->
   <div id="modalClientRemoveGun" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
@@ -803,17 +802,17 @@ Inbox
             <li class="collection-header" style="font-weight:bold;">
               <div class='row'>
                 <div class='col s1'><h5 style="font-weight:bold;">Client:</h5></div>
-                <div class="col s10 push-s1" id = ''><h5></h5></div>
+                <div class="col s10 push-s1" ><h5 id = 'strAddGunClientName'></h5></div>
               </div>
             </li>
 			  
 			<li class="collection-item" style="font-weight:bold;">
               <div class='row'>
                 <div class='col s5'><h5 style="font-weight:bold;">Number of Guns:</h5></div>
-                <div class="col s2 pull-s1"><h5 id = ''></h5></div>
+                <div class="col s2 pull-s1"><h5 id = 'intAddGunCount'></h5></div>
               </div>
             </li>
-            <li class="collection-item"><p id = ''></p></li>            
+            <li class="collection-item"><p id = 'strAddGunNote'></p></li>            
           </ul>
         </div>
       </div>
@@ -821,16 +820,16 @@ Inbox
     <!-- button -->
     <div class="modal-footer ci" style="background-color: #00293C;">
 
-       <div id = "" style=""> 
-        <button class="btn green waves-effect waves-light" id = "" style="margin-right: 30px;">Proceed</button>
-        <button class="btn red waves-effect waves-light" style="margin-right: 30px;" id = "">Decline</button>
+       <div id = "divAddGunButton" style=""> 
+        <button class="btn green waves-effect waves-light" id = "btnAddGunRequestProceed" style="margin-right: 30px;">Proceed</button>
+        <button class="btn red waves-effect waves-light" style="margin-right: 30px;" id = "btnAddGunRequestDecline">Decline</button>
       </div>
 
-      <div id = "" style="display: none;">                 
+      <div id = "divAddGunAccepted" style="display: none;">                 
         <button class="btn green" style="margin-right: 30px; cursor:default;">Accepted</button>
       </div>
 
-      <div id = "" style="display: none;">     
+      <div id = "divAddGunRejected" style="display: none;">     
         <button class="btn red" style="margin-right: 30px; cursor:default;">Declined</button>
       </div> 
         
@@ -854,24 +853,26 @@ $(document).ready(function(){
       success: function(data){
           if (data){
               var table = $('#dataTableMsg').DataTable();
-              var radio;
-              var button;
+              table.clear().draw();
               $.each(data, function(index,value){
-                  if (value.tinyintStatus == 1){
-                      radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" checked/> <label for="'+value.intInboxID+'"></label>';  
-                  }else{
-                      radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" /> <label for="'+value.intInboxID+'"></label>';
-                  }
-                  button = '<center><button class="btn blue darken-4 buttonRead" id="'+value.intInboxID+'"><i class="material-icons">keyboard_arrow_right</i></button></center>';
-                  
-                  table.row.add([
-                      radio,
-                      button,
-                      '<h>' + value.datetimeSend + '</h>',
-                      '<h>' + value.nameSender + '</h>',
-                      '<h>' + value.strSubject + '</h>' + 
-                      '<input type = "hidden" id = "type'+value.intInboxID+'" value="'+value.tinyintType+'">'
-                  ]).draw(false);
+                var strColor;
+                if (value.tinyintStatus == 1){
+                    color = 'red';
+                }else{
+                  color = 'blue';
+                }
+                
+                button = '<center><a class="material-icons buttonRead" id="'+value.intInboxID+'" style="cursor:pointer;"><i class="material-icons" style="color:'+color+'"; id = "iconMessage'+value.intInboxID+'">markunread</i></a></center>';
+                
+                     
+                table.row.add([
+                    button,
+                    '<h>' + value.datetimeSend + '</h>',
+                    '<h>' + value.nameSender + '</h>'+ 
+                    '<input type = "hidden" id = "radio'+value.intInboxID+'" value="'+value.tinyintStatus+'">',
+                    '<h>' + value.strSubject + '</h>' + 
+                    '<input type = "hidden" id = "type'+value.intInboxID+'" value="'+value.tinyintType+'">'
+                ]).draw(false);
               });//foreach
           }//if else
       }//success ajax
@@ -1006,8 +1007,8 @@ $(document).ready(function(){
   //Buttons end
 
   function readMessage(){
-      if($('#radio' + inboxID).is(':checked')){
-          $('#radio' + inboxID).attr('checked', false); // all read mark as unread        
+      if($('#radio' + inboxID).val() == 1){
+          $("#iconMessage" + inboxID).css("color", "blue");    
           $.ajax({
               type: "POST",
               url: "{{action('InboxController@readInbox')}}",
@@ -1894,23 +1895,23 @@ $(document).ready(function(){
 
     function declineAddGunRequest(){
       $.ajax({
-          type: "GET",
-          url: "/clientgunrequest/post/declineAddGunRequest?inboxID=" + inboxID,
-          success: function(data){
-            swal({
-              title: "Success!",
-              text: "You declined the request.",
-              type: "success"
-            },function(){
-              $('#modalClientAddGun').closeModal();
-            });
+        type: "GET",
+        url: "/clientgunrequest/post/declineAddGunRequest?inboxID=" + inboxID,
+        success: function(data){
+          swal({
+            title: "Success!",
+            text: "You declined the request.",
+            type: "success"
+          },function(){
+            $('#modalClientAddGun').closeModal();
+          });
 
-          },
-          error: function(data){
-            var toastContent = $('<span>Error Database.</span>');
-            Materialize.toast(toastContent, 1500,'red', 'edit');
-          }
-        });//ajax
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+      });//ajax
     }
   // Add Gun End
 
@@ -1922,6 +1923,15 @@ $(document).ready(function(){
         success: function(data){
           $('#strSwapGunNotes').text(data.strNote);
           $('#strSwapGunClientName').text(data.strClientName);
+          console.log(data);
+          var boolStatus = data.boolStatus;
+          if (boolStatus == 0){
+            showHideButton('divSwapGunRejected', 'divSwapGunButton', 'divSwapGunAccepted');
+          }else if (boolStatus == 1){
+            showHideButton('divSwapGunButton', 'divSwapGunRejected', 'divSwapGunAccepted');
+          }else if (boolStatus == 2){
+            showHideButton('divSwapGunAccepted', 'divSwapGunButton', 'divSwapGunRejected');
+          }
 
           var table = $('#dataTableGunstobeReplaced').DataTable();
           table.clear().draw();
@@ -1955,6 +1965,42 @@ $(document).ready(function(){
         }
       });//ajax
     });
+
+    $('#btnSwapGunDecline').click(function(){
+      swal({  
+        title: "Are you sure?",   
+        text: "Decline the Request.",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, I decline the request",   
+        closeOnConfirm: false 
+      },
+      function(){
+        declineSwapGunRequest();
+      });//sweet alert
+    });
+
+    function declineSwapGunRequest(){
+      $.ajax({
+        type: "GET",
+        url: "/clientgunrequest/post/declineSwapGunRequest?inboxID=" + inboxID,
+        success: function(data){
+          swal({
+            title: "Success!",
+            text: "You declined the request.",
+            type: "success"
+          },function(){
+            $('#modalClientSwapGun').closeModal();
+          });
+
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Database.</span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+        }
+      });//ajax
+    }
   // Swap Gun Request End
 
   // Remove Gun Request Start
@@ -2030,6 +2076,21 @@ $(document).ready(function(){
     });
 
     $('#btnRemoveGunDecline').click(function(){
+      swal({  
+        title: "Are you sure?",   
+        text: "Decline the Request.",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, I decline the request",   
+        closeOnConfirm: false 
+      },
+      function(){
+        declineSwapGunRequest();
+      });//sweet alert
+    });
+
+    function declineRemoveGunRequest(){
       $.ajax({
         type: "POST",
         url: "{{action('ClientGunRequestController@declineRemoveGunRequest')}}",
@@ -2057,7 +2118,7 @@ $(document).ready(function(){
 
         }
       });//ajax
-    });
+    }
   // Remove Gun Request End
 
 });
@@ -2066,7 +2127,6 @@ $(document).ready(function(){
 <script>
     $('#dataTableMsg').DataTable({
          "columns": [
-        { "orderable": false },
         { "orderable": false },
         null,
         null,

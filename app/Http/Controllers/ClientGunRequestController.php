@@ -173,6 +173,47 @@ class ClientGunRequestController extends Controller{
         }
     }
 
+    public function declineSwapGunRequest(Request $request){
+        try{
+            DB::beginTransaction();
+            // Set Variables start
+                $inboxID = Input::get('inboxID');
+                $adminAccountID = $request->session()->get('accountID');
+                $now = Carbon::now();
+                $result = DB::table('tblswapgunheader')
+                    ->join('tblclient', 'tblclient.intClientID', ' =', 'tblswapgunheader.intClientID')
+                    ->select('tblclient.intAccountID')
+                    ->where('tblswapgunheader.intInboxID', $inboxID)
+                    ->first();
+                $clientAccountID = $result->intAccountID;
+
+                $message = 'Your Swap Gun Request has been declined by the admin.';
+                $subject = 'Swap Gun Request Update';
+            // Set Variables end
+
+            // Process Start
+                DB::table('tblinbox')->insert([
+                    'intAccountIDSender' => $adminAccountID,
+                    'intAccountIDReceiver' => $clientAccountID,
+                    'strMessage' => $message, 
+                    'strSubject' => $subject,
+                    'tinyintType' => 0
+                ]);
+
+                DB::table('tblswapgunheader')
+                    ->where('intInboxID' ,$inboxID)
+                    ->update([
+                        'boolStatus' => 0, 
+                        'updated_at' => $now
+                    ]);
+            // Process End
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+    }
+
     public function hasSwapGunRequest(Request $request){
         $clientID = $request->session()->get('id');
 
@@ -198,7 +239,7 @@ class ClientGunRequestController extends Controller{
         $swapRequestInformation = DB::table('tblswapgunheader')
             ->join('tblswapgundetail', 'tblswapgundetail.intSwapGunHeaderID', '=', 'tblswapgunheader.intSwapGunHeaderID')
             ->join('tblclient','tblclient.intClientID', '=', 'tblswapgunheader.intClientID')
-            ->select('tblswapgunheader.strNote', 'tblclient.strClientName', 'tblswapgunheader.intSwapGunHeaderID')
+            ->select('tblswapgunheader.strNote', 'tblclient.strClientName', 'tblswapgunheader.intSwapGunHeaderID', 'tblswapgunheader.boolStatus')
             ->where('tblswapgunheader.intInboxID', $inboxID)
             ->first();
 
