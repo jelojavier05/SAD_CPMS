@@ -102,7 +102,7 @@ Unpaid Clients
 <div id="modalClientBills" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:650px; margin-top:-60px;">
 	<div class="modal-header">
 		<div class="h">
-			<h3><center>Message</center></h3>  
+			<h3><center>Dates Unpaid</center></h3>  
 		</div>
     </div>
     <div class="modal-content">
