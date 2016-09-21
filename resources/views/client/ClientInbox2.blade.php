@@ -23,7 +23,6 @@ Inbox
 						<thead>
 							<tr>
 								<th class="grey lighten-1"></th>
-								<th class="grey lighten-1"></th>
 								<th class="grey lighten-1">Date</th>
 								<th class="grey lighten-1">From</th>
 								<th class="grey lighten-1">Subject</th>
@@ -120,18 +119,20 @@ $(document).ready(function(){
             if (data){
 
                 $.each(data, function(index,value){
-                    if (value.tinyintStatus == 1){
-                        radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" checked/> <label for="'+value.intInboxID+'"></label>';  
-                    }else{
-                        radio = '<input name="" type="radio" id="radio'+value.intInboxID+'" /> <label for="'+value.intInboxID+'"></label>';
-                    }
-                    button = '<center><a style="cursor:pointer;" class="buttonRead" style="color:darkblue;"id="'+value.intInboxID+'"><i class="material-icons">markunread</i></a></center>';
+                    var strColor;
+	            if (value.tinyintStatus == 1){
+                 	color = 'red';
+	            }else{
+	            	color = 'blue';
+	            }
+              
+	            button = '<center><a class="material-icons buttonRead" id="'+value.intInboxID+'" style="cursor:pointer;"><i class="material-icons" style="color:'+color+'"; id = "iconMessage'+value.intInboxID+'">markunread</i></a></center>';
                     
                     table.row.add([
-                        radio,
                         button,
                         '<h>' + value.datetimeSend + '</h>',
-                        '<h>' + value.nameSender + '</h>',
+                        '<h>' + value.nameSender + '</h>'+ 
+	                	'<input type = "hidden" id = "radio'+value.intInboxID+'" value="'+value.tinyintStatus+'">',
                         '<h>' + value.strSubject + '</h>' + 
                         '<input type = "hidden" id = "type'+value.intInboxID+'" value="'+value.tinyintType+'">'
                     ]).draw(false);
@@ -152,8 +153,8 @@ $(document).ready(function(){
   });
 
     function readMessage(){
-        if($('#radio' + inboxID).is(':checked')){
-            $('#radio' + inboxID).attr('checked', false); // all read mark as unread        
+        if($('#radio' + inboxID).val() == 1){
+	      	$("#iconMessage" + inboxID).css("color", "blue");        
             $.ajax({
                 type: "POST",
                 url: "{{action('InboxController@readInbox')}}",
@@ -232,7 +233,6 @@ $(document).ready(function(){
 <script>
 	$("#inboxTable").DataTable({
 	     "columns": [         
-		{"orderable": false},
 		{"orderable": false},
 		null,
 		null,
