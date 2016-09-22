@@ -197,6 +197,8 @@ Route::post('/cgrreports/post/report', 'CGRReportsController@postReport');
 Route::get('/securityHome', 'SecurityHomeController@index');
 
 Route::get('/securityguard/getClientInformation', 'SecurityGuardDashboardController@getClientInformation');
+Route::get('/securityguard/isLicenseUpdated', 'SecurityGuardDashboardController@isLicenseUpdated');
+
 Route::get('/securityInbox', 'SecurityHomepageController@index');
 Route::get('/securityInbox/get/guard', 'SecurityHomepageController@getGuardInformation');
 Route::get('/securityInbox/get/inbox', 'SecurityHomepageController@getInbox');

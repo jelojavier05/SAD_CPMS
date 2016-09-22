@@ -100,9 +100,9 @@
         </div>
     </nav>
     <!--epal na warning-->
-<div class="row">
-	<div class="col s5 l3 push-l9 push-s7" style="margin-left:-10px;">
-		<div class="card-panel red animated bounceInRight" id="epalwarning">
+<div class="row" >
+	<div class="col s5 l3 push-l9 push-s7" style="margin-left:-10px;" >
+		<div class="card-panel red animated bounceInRight" style = "display:none;" id="epalwarning">
 			<div class="white-text" style="font-size:20px;"><i class="material-icons left">warning</i>Notice</div>
           <span class="white-text">Your Guard License Expiration is near. Please Inform the Agency for Renewal Updates.
           </span>
@@ -201,7 +201,7 @@
                 </div>
         </div> -->
             
-        <!----------SCRIPT---------->
+        <!-- SCRIPT -->
     <script>
         function init(){
             document.getElementById('loading').style.visibility="hidden";
@@ -268,7 +268,7 @@
 
         window.onload=init;
     </script>
-            <!----------STYLE---------->
+            <!-- STYLE -->
     <style>
             #loading{
                 margin:0;
@@ -359,7 +359,7 @@
             
     </style>
             
-            <!----------MAIN CONTAINER---------->
+            <!-- Main container -->
             
             <div class="app-container">
                 <p id="loading">Loading...</p>
@@ -519,6 +519,22 @@
 $(document).ready(function() {
   $('select').material_select();
   var statusIdentifier;
+
+  $.ajax({
+    type: "GET",
+    url: "{{action('SecurityGuardDashboardController@isLicenseUpdated')}}",
+    success: function(data){
+      if (data == 1){
+        $('#epalwarning').show();
+      }else{
+        $('#epalwarning').hide();
+      }
+    },
+    error: function(data){
+      var toastContent = $('<span>Error Database.</span>');
+      Materialize.toast(toastContent, 1500,'red', 'edit');
+    }
+  });//ajax
 
   $.ajax({
     type: "GET",
