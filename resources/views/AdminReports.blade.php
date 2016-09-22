@@ -30,6 +30,7 @@ Admin Reports
     <div class="col s12 push-s1" style="margin-top:-4%;">
         <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
 			<div class="row"></div>
+<!--
 			<div class="row">
 				<div class="col s8">
 					<div class="input-field col s4">
@@ -67,21 +68,9 @@ Admin Reports
 							</div>
 						</nav>
 					</div>	
-				</div>
-				
-			
-        
-     
-            
-            <!--
-            
-            <div class="row">
-                <div class="col l7 push-l2">
-                    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-                </div>
-            </div> -->
-        
+				</div>							                                             
            </div>
+-->
             
             <div class="row">
                 <div class="col l12">
