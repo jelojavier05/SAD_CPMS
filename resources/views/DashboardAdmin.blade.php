@@ -113,7 +113,7 @@ Admin
   <div class="col l2">
     <div class="card animated zoomIn indigo darken-2" style="">
       <div class="card-content white-text">
-        <span class="card-title" style="font-size:40px; font-weight:bold;">20</span>
+        <span class="card-title" style="font-size:40px; font-weight:bold;">{{$value->countGuardLicense}}</span>
         <p style="margin-left:10px;">Guard <br> Licenses</p>
         <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">security</i>
       </div>

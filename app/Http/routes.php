@@ -95,6 +95,8 @@ Route::get('/gunLicenses/get/guntobeexpired', 'GunLicensesController@getGunToBeE
 Route::post('/gunLicenses/post/updateGunLicense', 'GunLicensesController@updateGunLicense');
 
 Route::get('/guardLicenses', 'GuardLicensesController@index');
+Route::get('/guardLicenses/get/GuardToBeExpired', 'GuardLicensesController@getGuardToBeExpired');
+Route::post('/guardLicenses/post/updateGuardLicense', 'GuardLicensesController@updateGuardLicense');
 
 Route::get('/dashboardadmin', 'DashboardAdminController@index');
 Route::get('/dashboardadmin/get/pieguard', 'DashboardAdminController@getPieGuard');

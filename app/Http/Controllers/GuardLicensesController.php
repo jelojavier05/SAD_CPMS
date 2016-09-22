@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
+use Carbon\Carbon;
 class GuardLicensesController extends Controller
 {
     /**
@@ -19,69 +20,34 @@ class GuardLicensesController extends Controller
         return view('/guardLicenses');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function getGuardToBeExpired(){
+        $expirationDate = Carbon::now();
+        $expirationDate->addMonths(2);
+        $guardToBeExpired = DB::table('tblguardlicense')
+            ->join('tblguard', 'tblguard.intGuardID', '=', 'tblguardlicense.intGuardID')
+            ->select('tblguardlicense.strLicenseNumber', 'tblguardlicense.dateExpiration', 'tblguard.intGuardID', 'tblguard.strFirstName', 'tblguard.strLastName')
+            ->where('tblguardlicense.dateExpiration', '<=', $expirationDate)
+            ->get();
+
+        foreach($guardToBeExpired as $value){
+            $dateExpiration = new Carbon($value->dateExpiration);    
+            
+            $value->dateExpiration = $dateExpiration->toFormattedDateString();
+        }
+        
+        return response()->json($guardToBeExpired);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function updateGuardLicense(Request $request){
+        $guardID = $request->guardID;
+        $dateFrom =$request->dateFrom;
+        $dateTo = $request->dateTo;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        DB::table('tblguardlicense')
+            ->where('intGuardID', $guardID)
+            ->update([
+                'dateIssued' => $dateFrom,
+                'dateExpiration' => $dateTo
+            ]);
     }
 }

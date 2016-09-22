@@ -98,7 +98,7 @@ $(document).ready(function(){
       arrGun = data;
 
       $.each(data, function (index, value){
-        checkbox = '<input type="checkbox" id="checkbox'+value.intGunID+'" value = "'+value.intGunID+'"><label for="checkbox'+value.intGunID+'"></label>'
+        checkbox = '<input type="checkbox" id="checkbox'+value.intGunID+'" value = "'+value.intGunID+'"><label for="checkbox'+value.intGunID+'"></label>';
         table.row.add([
           checkbox,
           '<h>' + value.strSerialNumber + '</h>',

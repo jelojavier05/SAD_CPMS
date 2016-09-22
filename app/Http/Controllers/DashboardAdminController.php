@@ -14,8 +14,8 @@ class DashboardAdminController extends Controller
     public function index(Request $request){
         $accountType = $request->session()->get('accountType');
         $now = Carbon::now();
-        $gunExpirationDate = Carbon::now();
-        $gunExpirationDate->addMonths(2);
+        $expirationDate = Carbon::now();
+        $expirationDate->addMonths(2);
 
         if ($accountType == 3){
             $countClient = DB::table('tblclient')
@@ -28,8 +28,10 @@ class DashboardAdminController extends Controller
                 ->where('deleted_at', null)
                 ->count();
             $countGunLicense = DB::table('tblgunlicense')
-                ->select('intGunID')
-                ->where('dateExpiration', '<=', $gunExpirationDate)
+                ->where('dateExpiration', '<=', $expirationDate)
+                ->count();
+            $countGuardLicense = DB::table('tblguardlicense')
+                ->where('dateExpiration', '<=', $expirationDate)
                 ->count();
 
             $value = new \stdClass();
@@ -37,6 +39,7 @@ class DashboardAdminController extends Controller
             $value->countGuard = $countGuard;
             $value->countGun = $countGun;
             $value->countGunLicense = $countGunLicense;
+            $value->countGuardLicense = $countGuardLicense;
 
              return view('/DashboardAdmin')
                 ->with('value', $value);
