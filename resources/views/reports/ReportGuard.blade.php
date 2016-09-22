@@ -15,7 +15,7 @@ Admin Reports
 </style>
  <div class="row">
     <div class="col s12 push-s1">
-        <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
+        <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%; padding-bottom:1%;">
 			<div class="row"></div>
 			<div class="row">
 				<div class="col s8">
@@ -36,6 +36,7 @@ Admin Reports
 					</div>-->
 				</div>
 			
+<!--
 				<div class="col s4">
 					<div class="input-field col s12">
 						<nav style="height:55px;margin-top:-4%">
@@ -51,16 +52,38 @@ Admin Reports
 					</div>	
 				</div>
             </div>
+-->
             
-            <div class="row">
-    <div class="col l12">
-    
-        <div id="container" style="min-width: 300px; height: 400px; margin: 0 auto;"></div>
-    
-    
-    </div>
+			<div class="row">
+				<div class="col l8 push-l2">
 
-</div>
+					<div id="testchart" style="min-width: 300px; height: 400px; margin: 0 auto;"></div>
+
+
+				</div>
+
+			</div>
+				
+			<div clas="row">
+				<div class="col l10 push-l1">
+					<div class="container-fluid white" id="tbl">
+						<table>
+							<thead>
+								<th>City</th>
+								<th>Client</th>
+								<th>Number of Guards</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Makati</td>
+									<td>ChinaBank</td>
+									<td>10</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>	
+			</div>
         </div>
      </div>
 </div>
@@ -70,6 +93,60 @@ Admin Reports
 
 
 @section('script')
-
+<script>
+$(document).ready(function(){
+	$('#testchart').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Browser market shares January, 2015 to May, 2015'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Internet Explorer',
+                y: 56.33
+            }, {
+                name: 'Chrome',
+                y: 24.03,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Firefox',
+                y: 10.38
+            }, {
+                name: 'Safari',
+                y: 4.77
+            }, {
+                name: 'Opera',
+                y: 0.91
+            }, {
+                name: 'Proprietary or Undetectable',
+                y: 0.2
+            }]
+        }]
+    });
+});
 </script>
 @stop
