@@ -30,7 +30,8 @@ Incident Reports - Admin
 							<tr>
 								<th style="width:50px;" class="grey lighten-1 "></th>                                
                                 <th class="grey lighten-1 ">Date</th>
-                                <th class="grey lighten-1 ">Client</th>                                
+                                <th class="grey lighten-1 ">Client</th>
+								<th class="grey lighten-1">Client Address</th>
                             </tr>
                         </thead>
                         
@@ -39,37 +40,9 @@ Incident Reports - Admin
 								<td><button class="btn blue btnOpenReport waves-effect"><i class="material-icons">open_in_browser</i></button></td>
 								<td>12/12/12</td>
 								<td>LandBank</td>
+								<td>123 Hello Street Las Pinas Metro Manila</td>
 							</tr>
-							
-							<tr>
-								<td><button class="btn blue btnOpenReport waves-effect"><i class="material-icons">open_in_browser</i></button></td>
-								<td>12/12/12</td>
-								<td>LandBank</td>
-							</tr>
-							
-							<tr>
-								<td><button class="btn blue btnOpenReport waves-effect"><i class="material-icons">open_in_browser</i></button></td>
-								<td>12/12/12</td>
-								<td>LandBank</td>
-							</tr>
-							
-							<tr>
-								<td><button class="btn blue btnOpenReport waves-effect"><i class="material-icons">open_in_browser</i></button></td>
-								<td>12/12/12</td>
-								<td>LandBank</td>
-							</tr>
-							
-							<tr>
-								<td><button class="btn blue btnOpenReport waves-effect"><i class="material-icons">open_in_browser</i></button></td>
-								<td>12/12/12</td>
-								<td>LandBank</td>
-							</tr>
-							
-							<tr>
-								<td><button class="btn blue btnOpenReport waves-effect"><i class="material-icons">open_in_browser</i></button></td>
-								<td>12/12/12</td>
-								<td>LandBank</td>
-							</tr>
+														
                         </tbody>
                     </table>
                 </div>
@@ -111,8 +84,8 @@ Incident Reports - Admin
 					<li class="collection-header">
 						<div class="row">
 							<div class="col s12">
-								<h5 style="font-weight:bold;">Location/Address:</h5>							
-								<div id=''>123 Hello Street Mandaluyong Metro Manila</div>							
+								<h5 style="font-weight:bold;">Exact Location of the Incident:</h5>							
+								<div id=''>Room 10 Bldg 123</div>							
 						</div>
 					</li>
 					<li class="collection-header" style="font-weight:bold;">
@@ -199,6 +172,7 @@ $("#tblIncidentReports").DataTable({
 	 "columns": [     
 	 {"orderable": false},
 	 null,
+	 null,
 	 null
 	 ] ,  
 	 "pageLength":5,
@@ -215,7 +189,7 @@ $("#tblWitness").DataTable({
 	 null
 	 ] ,  
 	 "pageLength":5,
-	 "lengthMenu": [5,10,15,20],		
+	 "lengthMenu": [5,10,15,20],	
 });
 	
 });
