@@ -172,6 +172,22 @@ Admin Reports
 									</div>
 								</div>	
 							</div>
+							
+							<div class="col s6">
+								<div class="card animated zoomIn" style="background-color:#1565c0" >
+									<div class="card-content white-text">
+										<span class="card-title" style="font-size:30px; font-weight:bold;" id = 'clientNumber'><center>INCIDENT REPORTS</center></span>
+										<p style="margin-left:10px;"></p>
+	<!--									<i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>-->
+									</div>
+									<div class="card-action" style="background-color:">
+										<center>
+											<a href="/reportsincidentreports" class="white-text">See All</a>
+											<i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
+										</center>
+									</div>
+								</div>	
+							</div>
 						</div>
 					</div>
                 
