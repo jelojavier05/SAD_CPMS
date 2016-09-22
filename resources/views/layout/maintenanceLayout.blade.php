@@ -316,7 +316,12 @@
              
 							<ul class="right hide-on-med-and-down">
 								 
-                                
+                                <li id="notification_li">
+									<a  data-position="bottom" data-delay="50" data-tooltip="INCIDENT REPORTS" href="/incidentreportsadmin" class=" tooltipped">
+										<i class="material-icons">report</i>
+<!--								<span id="notification_count_reports">*</span>-->
+									</a>
+								</li>  
                                 <li  id="notification_li">
                                     <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/adminInbox" class="tooltipped">
                                         <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>

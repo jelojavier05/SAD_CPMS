@@ -1,8 +1,8 @@
-@extends('layout.maintenanceLayout')
-
+@extends('client.ClientDashboard')
 @section('title')
-Incident Reports - Admin
+Incident Reports - Client
 @endsection
+
 
 @section('content')
 <div class="row" style="margin-top:-30px;">
@@ -37,39 +37,9 @@ Incident Reports - Admin
                         <tbody>
                             <tr>
 								<td><button class="btn blue btnOpenReport waves-effect"><i class="material-icons">open_in_browser</i></button></td>
-								<td>12/12/12</td>
-								<td>LandBank</td>
-							</tr>
-							
-							<tr>
-								<td><button class="btn blue btnOpenReport waves-effect"><i class="material-icons">open_in_browser</i></button></td>
-								<td>12/12/12</td>
-								<td>LandBank</td>
-							</tr>
-							
-							<tr>
-								<td><button class="btn blue btnOpenReport waves-effect"><i class="material-icons">open_in_browser</i></button></td>
-								<td>12/12/12</td>
-								<td>LandBank</td>
-							</tr>
-							
-							<tr>
-								<td><button class="btn blue btnOpenReport waves-effect"><i class="material-icons">open_in_browser</i></button></td>
-								<td>12/12/12</td>
-								<td>LandBank</td>
-							</tr>
-							
-							<tr>
-								<td><button class="btn blue btnOpenReport waves-effect"><i class="material-icons">open_in_browser</i></button></td>
-								<td>12/12/12</td>
-								<td>LandBank</td>
-							</tr>
-							
-							<tr>
-								<td><button class="btn blue btnOpenReport waves-effect"><i class="material-icons">open_in_browser</i></button></td>
-								<td>12/12/12</td>
-								<td>LandBank</td>
-							</tr>
+								<td>11/11/11</td>
+								<td>ChinaBank</td>
+							</tr>														
                         </tbody>
                     </table>
                 </div>
@@ -96,7 +66,7 @@ Incident Reports - Admin
 							</div>
 							
 							<div class="col s2 pull-s1">
-								<h5>12/12/12</h5>
+								<h5>11/11/11</h5>
 							</div>
 							
 							<div class="col s3">
@@ -104,7 +74,7 @@ Incident Reports - Admin
 							</div>
 							
 							<div class="col s2 pull-s1">
-								<h5>12:12:12</h5>
+								<h5>11:11:11</h5>
 							</div>
 						</div>
 					</li>
@@ -112,7 +82,7 @@ Incident Reports - Admin
 						<div class="row">
 							<div class="col s12">
 								<h5 style="font-weight:bold;">Location/Address:</h5>							
-								<div id=''>123 Hello Street Mandaluyong Metro Manila</div>							
+								<div id=''>123 Hi Street Las Pinas Metro Manila</div>							
 						</div>
 					</li>
 					<li class="collection-header" style="font-weight:bold;">
@@ -122,7 +92,7 @@ Incident Reports - Admin
 							</div>
 							
 							<div class="col s6 pull-s3">								
-								<h5 id="" style="font-weight:normal">Mang Kanor</h5>
+								<h5 id="" style="font-weight:normal">Mang Tomas</h5>
 								
 							</div>
 						</div>
@@ -131,7 +101,7 @@ Incident Reports - Admin
 						<div class="row">
 							<div class="col s12">
 								<h5 style="font-weight:bold;">Description of the Incident:</h5>							
-								<div id=''>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>							
+								<div id=''>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam finibus facilisis dapibus. Nulla auctor ligula lacus, et convallis sapien consectetur quis. Sed scelerisque arcu non nulla congue, eget elementum est ultrices. Donec at luctus ipsum. Aliquam eu turpis pulvinar, ornare diam id, lacinia tellus. Mauris id arcu at dui gravida ornare quis at est. Morbi non velit suscipit, pulvinar ex sit amet, ullamcorper tellus. Ut consequat velit massa, eget interdum purus commodo sit amet. Fusce eget ante condimentum elit euismod tincidunt eu at enim.</div>							
 						</div>
 					</li>
 					
@@ -147,34 +117,10 @@ Incident Reports - Admin
 									
 									<tbody>
 										<tr>
-											<td>Manu Ginobili</td>
+											<td>Tony Parker</td>
 											<td>09123456789</td>
 										</tr>
-										
-										<tr>
-											<td>Manu Ginobili</td>
-											<td>09123456789</td>
-										</tr>
-										
-										<tr>
-											<td>Manu Ginobili</td>
-											<td>09123456789</td>
-										</tr>
-										
-										<tr>
-											<td>Manu Ginobili</td>
-											<td>09123456789</td>
-										</tr>
-										
-										<tr>
-											<td>Manu Ginobili</td>
-											<td>09123456789</td>
-										</tr>
-										
-										<tr>
-											<td>Manu Ginobili</td>
-											<td>09123456789</td>
-										</tr>
+																				
 									</tbody>
 								</table>
 							</div>	
