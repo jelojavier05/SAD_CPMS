@@ -72,8 +72,8 @@ Guard Attendance
 
 <!-- Guard Table Start-->
 <div class="row">
-  <div class="col s12 push-s1">
-    <div class="col s6 offset-s1 grey lighten-2" style=";max-height:690px; margin-top:-25px;">
+  <div class="col s12 push-s1 col">
+    <div class="col s6 grey lighten-2" style=";max-height:690px; margin-top:-25px;">
       <table class="centered" id="tableAttendance">
         
           

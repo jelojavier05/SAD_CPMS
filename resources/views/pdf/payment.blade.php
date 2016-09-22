@@ -170,11 +170,28 @@
         
 </div>
     <div style="padding-top:-40%;padding-left:52%;width:50%">
-     <div style="border:solid;">
+     <div style="border:solid;padding:3%;">
     
-    José Protasio Rizal Mercado[7] y Alonso Realonda, popularly known as José Rizal (Spanish pronunciation: [xoˈse riˈsal]; June 19, 1861 – December 30, 1896), was a Filipino nationalist and polymath during the tail end of the Spanish colonial period of the Philippines. An ophthalmologist by profession, Rizal became a writer and a key member of the Filipino Propaganda Movement which advocated political reforms for the colony under Spain. He was executed by the Spanish colonial government for the crime of rebellion after an anti-colonial revolution, inspired in part by his writings, broke out. 
-    
-    </div>
+        <p style="text-align:justify; font-size: 14px;">
+            <b> This is your copy. Keep this in a safe place. </b>
+            <br>
+            <br>
+            This voucher is valid only until <b> NOVEMBER 1, 2016 </b>
+            <br>
+            <br>
+            ALL FEES ARE NONREFUNDABLE AND NONTRANSFERABLE; hence only those who completed the registration shall be accomodated to apply. 
+            <br>
+            <br>
+            I agree to the Terms of Use, have read and understood the Privacy Policy, and confirm that the information I have provided to the Security Agency are true and correct. 
+            Furthermore, I agree and understand that I am legally responsible for the inforamtion I entered in the CPMS, and if I violate its Terms of Service, my contract shall be removed and shall lead to the termination, without prior notice of my registration and everything associated with it.
+            <br>
+            <br>
+            <u style="text-align:center;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+            <br>
+            <i>Client's Signature</i>
+        </p>
+         
+     </div>
     
     </div>
    

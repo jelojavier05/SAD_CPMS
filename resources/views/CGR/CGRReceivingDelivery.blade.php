@@ -14,8 +14,8 @@ Receiving Delivery
 
 <!-- Delivery Table Start-->
   <div class="row">
-    <div class="col l12">
-      <div class="col l10 offset-l2" style="max-height:690px">
+    <div class="col l12 push-s7">
+      <div class="col l9 push-s7 container grey lighten-2 z-depth-2" style="border-radius: 10px; margin-top:25px; margin-left:50px;"> <!--class="col l10 offset-l2" style="max-height:690px"-->
   		  <table class="centered" id="tableDelivery">			  
   			<thead>
             <tr>
