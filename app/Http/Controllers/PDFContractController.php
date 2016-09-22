@@ -11,7 +11,7 @@ use PDF;
 class PDFContractController extends Controller
 {
 
-        public function getPDF()
+        public function getContract()
         {
             $pdf=PDF::loadView('pdf.contract');
             return $pdf->stream('contract.pdf');
