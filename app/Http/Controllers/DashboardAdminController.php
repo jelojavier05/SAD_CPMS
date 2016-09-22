@@ -105,8 +105,6 @@ class DashboardAdminController extends Controller
         }else{
             return response()->json(false);
         }
-
-            
     }
 
     public function getPieGun(Request $request){
@@ -146,5 +144,24 @@ class DashboardAdminController extends Controller
         }else{
             return response()->json(false);
         }
+    }
+
+    public function getSample(Request $request){
+        $result = DB::table('tblguard')
+            ->select('strFirstName', 'strLastName')
+            ->get();
+
+        $sample = array();
+        $intLoop = 0;
+        foreach($result as $value){
+            $intLoop += 3;
+            $guardRecord = new \stdClass();
+            $guardRecord->name = $value->strFirstName . ' ' . $value->strLastName;
+            $guardRecord->y = $intLoop;
+
+            array_push($sample, $guardRecord);
+        }
+
+        return response()->json($sample);
     }
 }

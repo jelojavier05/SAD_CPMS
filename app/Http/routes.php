@@ -106,6 +106,7 @@ Route::post('/guardLicenses/post/updateGuardLicense', 'GuardLicensesController@u
 Route::get('/dashboardadmin', 'DashboardAdminController@index');
 Route::get('/dashboardadmin/get/pieguard', 'DashboardAdminController@getPieGuard');
 Route::get('/dashboardadmin/get/pieGun', 'DashboardAdminController@getPieGun');
+Route::get('/dashboardadmin/get/pieSample', 'DashboardAdminController@getSample');
 
 Route::get('/client/gunTagging', 'GunTaggingController@index');
 Route::post('/client/gunTagging/post', 'GunTaggingController@post');
