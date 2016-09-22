@@ -3,6 +3,7 @@
 Route::get('/test', 'TestController@index');
 
 Route::get('/incidentreportsadmin', 'IncidentReportsAdminController@index');
+Route::get('/incidentreportsadmin/get/IncidentReportInformation', 'IncidentReportsAdminController@getIncidentReportInformation');
 
 Route::get('/incidentreportsclient', 'IncidentReportsClientController@index');
 

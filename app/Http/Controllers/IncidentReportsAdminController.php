@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
+use Carbon\Carbon;
+use Input;
 class IncidentReportsAdminController extends Controller
 {
     /**
@@ -14,74 +16,39 @@ class IncidentReportsAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('/incidentReportsAdmin');
+    public function index(){
+        $arrIncidentReport = DB::table('tblreportincident')
+            ->join('tblclient', 'tblclient.intClientID', '=', 'tblreportincident.intClientID')
+            ->join('tblclientaddress', 'tblclientaddress.intClientID', '=', 'tblclient.intClientID')
+            ->join('tblprovince', 'tblprovince.intProvinceID', '=', 'tblclientaddress.intProvinceID')
+            ->join('tblcity', 'tblcity.intCityID', '=', 'tblclientaddress.intCityID')
+            ->select('tblreportincident.datetimeReport', 'tblclient.strClientName', 'tblclientaddress.strAddress', 'tblprovince.strProvinceName', 'tblcity.strCityName', 'tblreportincident.intReportIncidentID')
+            ->orderBy('datetimeReport', 'desc')
+            ->get();
+
+        foreach($arrIncidentReport as $value){
+            $value->strDateReport = (new Carbon($value->datetimeReport))->toDayDateTimeString();
+        }
+
+        return view('/incidentReportsAdmin')
+            ->with('arrIncidentReport', $arrIncidentReport);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function getIncidentReportInformation(){
+        $incidentReportID = Input::get('incidentReportID');
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $reportInfo = DB::table('tblreportincident')
+            ->join('tblguard', 'tblguard.intGuardID', '=', 'tblreportincident.intGuardID')
+            ->select('tblreportincident.*', 'tblguard.strFirstName', 'tblguard.strLastName')
+            ->where('intReportIncidentID', $incidentReportID)
+            ->first();
+        $reportInfo->strDateIncident = (new Carbon($reportInfo->datetimeIncident))->toDayDateTimeString();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $reportInfo->witness = DB::table('tblincidentwitness')
+            ->select('strWitnessName', 'strContactNumber')
+            ->where('intReportIncidentID', $incidentReportID)
+            ->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return response()->json($reportInfo);
     }
 }
