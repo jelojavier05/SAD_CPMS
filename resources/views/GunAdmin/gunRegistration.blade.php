@@ -129,7 +129,7 @@ Gun Registration
             
             if ($('#typeOfGunSelect').val() && $('#strGunName').val().trim() && $('#strGunManufacturer').val().trim() && 
                $('#strGunSerial').val().trim() && $('#strGunLicense').val().trim() && 
-                $('#startDate').val() && $('#endDate').val() ){
+                $('#startDate').val() && $('#endDate').val() && moment() < moment($('#endDate').val())){
                 $.ajax({
 
                     type: "POST",

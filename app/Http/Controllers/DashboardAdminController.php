@@ -13,6 +13,9 @@ class DashboardAdminController extends Controller
 {
     public function index(Request $request){
         $accountType = $request->session()->get('accountType');
+        $now = Carbon::now();
+        $gunExpirationDate = Carbon::now();
+        $gunExpirationDate->addMonths(2);
 
         if ($accountType == 3){
             $countClient = DB::table('tblclient')
@@ -24,20 +27,27 @@ class DashboardAdminController extends Controller
             $countGun = DB::table('tblgun')
                 ->where('deleted_at', null)
                 ->count();
+            $countGunLicense = DB::table('tblgunlicense')
+                ->select('intGunID')
+                ->where('dateExpiration', '<=', $gunExpirationDate)
+                ->count();
 
             $value = new \stdClass();
             $value->countClient = $countClient;
             $value->countGuard = $countGuard;
             $value->countGun = $countGun;
+            $value->countGunLicense = $countGunLicense;
 
              return view('/DashboardAdmin')
                 ->with('value', $value);
+            
         }else{
             return redirect('/userlogin');
         }
     }
 
     public function getPieGuard(Request $request){
+        
         $now = Carbon::now();
         $guardsID = DB::table('tblguard')
             ->select('intGuardID')

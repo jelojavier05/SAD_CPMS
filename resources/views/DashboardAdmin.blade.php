@@ -81,7 +81,7 @@ Admin
 
           <div class="card animated zoomIn" style="background-color:#323030">
             <div class="card-content white-text">
-              <span class="card-title" style="font-size:40px; font-weight:bold;">10</span>
+              <span class="card-title" style="font-size:40px; font-weight:bold;">{{$value->countGunLicense}}</span>
               <p style="margin-left:10px;">Gun<br>Licenses</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-60%;">forward</i>
             </div>
