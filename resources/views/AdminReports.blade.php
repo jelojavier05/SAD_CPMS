@@ -88,7 +88,7 @@ Admin Reports
                 <div class="col s6">
                     <div class="card animated zoomIn" style="background-color:#2D4262" >
                         <div class="card-content white-text">
-                          <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'>CLIENT</span>
+                          <span class="card-title" style="font-size:30px; font-weight:bold;" id = 'clientNumber'>CLIENT</span>
                           <p style="margin-left:10px;"></p>
                           <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
                         </div>
@@ -105,9 +105,9 @@ Admin Reports
                     <div class="col s6">
                     <div class="card animated zoomIn" style="background-color:#1A405F" >
                         <div class="card-content white-text">
-                          <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'>GUARD</span>
+                          <span class="card-title" style="font-size:28px; font-weight:bold;" id = 'clientNumber'>GUARDS DEPLOYED PER AREA</span>
                           <p style="margin-left:10px;"></p>
-                          <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
+<!--                          <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>-->
                         </div>
                         <div class="card-action" style="background-color:">
                           <center>
@@ -123,7 +123,7 @@ Admin Reports
                                 <div class="col s6">
                                     <div class="card animated zoomIn" style="background-color:#32384D" >
                                         <div class="card-content white-text">
-                                          <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'>GUNS</span>
+                                          <span class="card-title" style="font-size:30px; font-weight:bold;" id = 'clientNumber'>GUNS</span>
                                           <p style="margin-left:10px;"></p>
                                           <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
                                         </div>
@@ -139,7 +139,7 @@ Admin Reports
                             <div class="col s6">
                                     <div class="card animated zoomIn" style="background-color:#00293C" >
                                         <div class="card-content white-text">
-                                          <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'>REQUESTS</span>
+                                          <span class="card-title" style="font-size:30px; font-weight:bold;" id = 'clientNumber'>REQUESTS</span>
                                           <p style="margin-left:10px;"></p>
                                           <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
                                         </div>

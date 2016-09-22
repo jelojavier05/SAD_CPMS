@@ -20,14 +20,9 @@ Admin Reports
 			<div class="row">
 				<div class="col s8">
 					<div class="input-field col s4">
-						<label class="active" style="color:#64b5f6;"  for="dateOfbirth">From</label>	
+						<label class="active" style="color:#64b5f6;"  for="dateOfbirth">Date</label>	
 				        <input placeholder=""  id="dateOfbirth" type="date" class="datepicker">
-					</div>
-
-					<div class="input-field col s4">
-						<label class="active" style="color:#64b5f6;"  for="dateOfbirth">To</label>	
-				        <input placeholder=""  id="dateOfbirth" type="date" class="datepicker">
-					</div>
+					</div>					
 
 					<!--<div class="input-field col s4">
 						  <select>

@@ -30,7 +30,8 @@ Incident Reports - Client
 							<tr>
 								<th style="width:50px;" class="grey lighten-1 "></th>                                
                                 <th class="grey lighten-1 ">Date</th>
-                                <th class="grey lighten-1 ">Client</th>                                
+                                <th class="grey lighten-1 ">Client</th>
+								<th class="grey lighten-1">Client Address</th>
                             </tr>
                         </thead>
                         
@@ -39,6 +40,7 @@ Incident Reports - Client
 								<td><button class="btn blue btnOpenReport waves-effect"><i class="material-icons">open_in_browser</i></button></td>
 								<td>11/11/11</td>
 								<td>ChinaBank</td>
+								<td>123 Hi Street Las Pinas Metro Manila</td>
 							</tr>														
                         </tbody>
                     </table>
@@ -81,8 +83,8 @@ Incident Reports - Client
 					<li class="collection-header">
 						<div class="row">
 							<div class="col s12">
-								<h5 style="font-weight:bold;">Location/Address:</h5>							
-								<div id=''>123 Hi Street Las Pinas Metro Manila</div>							
+								<h5 style="font-weight:bold;">Exact Location of the Incident:</h5>							
+								<div id=''>Room 11 Blk 3</div>							
 						</div>
 					</li>
 					<li class="collection-header" style="font-weight:bold;">
@@ -144,6 +146,7 @@ $(document).ready(function(){
 $("#tblIncidentReports").DataTable({             
 	 "columns": [     
 	 {"orderable": false},
+	 null,
 	 null,
 	 null
 	 ] ,  
