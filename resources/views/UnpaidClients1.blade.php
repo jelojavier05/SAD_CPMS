@@ -140,7 +140,7 @@ Unpaid Clients
 <!--modal client bills end-->
 
 <!-- admin login Start-->
-	<div id="modalTime" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
+	<div id="modalLogin" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:320px !important; border-radius:10px;">      
 		<div class="modal-header">
 			<div class="h">
 				<h3><center>Login</center></h3>  
