@@ -35,7 +35,7 @@ Incident Reports - Admin
 									</td>
 									<td>{{$value->strDateReport}}</td>
 									<td>{{$value->strClientName}}</td>
-									<td>{{$value->strAddress}} {{$value->strProvinceName}}, {{$value->strCityName}}</td>
+									<td>{{$value->strAddress}} {{$value->strCityName}}, {{$value->strProvinceName}}</td>
 								</tr>	
 								@endforeach
 							</tbody>
