@@ -160,6 +160,24 @@ Admin
 		</div>
 	</div>
 </div>
+	
+<div class="row">
+
+	<div class="col s10 push-s2">		
+		<div class="row">
+		  <div class="col s6">
+			  <hr>	
+			  <div id="" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+		  </div>
+			   
+		  <div class="col s6">
+			  <hr>
+			  <div id="" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+		  </div>
+
+		</div>
+	</div>
+</div>
                 
 </div>
               

@@ -66,7 +66,7 @@
                 <a href="#" data-activates="mobile-nav" class="button-collapse" id="scrollcontrol"><i class="material-icons">menu</i></a>
                     
 <!--					<ul class="side-nav fixed white sidenavhover" id="mobile-nav" >-->
-					<ul class="side-nav fixed " id="mobile-nav">
+					<ul class="side-nav fixed sidenavhover" id="mobile-nav">
                     <div class="iconposition">
 						<div  id="ctitle"  class="card-panel blue darken-4" style="height:138px;">
 
@@ -223,7 +223,14 @@
                                 </ul>
 -->
                             </div>
-					</li>		
+					</li>
+					
+					<li class="bold" style="width:280px;">
+								<a class="collapsible-header waves-effect waves-blue swa" href="/incidentreportsadmin"><i class="material-icons">report</i><strong>Incident Reports</strong></a>
+                            <div class="collapsible-body grey lighten-2">
+
+                            </div>
+					</li>
                             
                             
 					<li class="bold" style="width:280px;">

@@ -2,6 +2,8 @@
 
 Route::get('/test', 'TestController@index');
 
+Route::get('/incidentreportsadmin', 'IncidentReportsAdminController@index');
+
 Route::get('/sgtransferlog', 'SgTransferHistoryController@index');
 Route::get('/sgtransferlog/get/guardInformation', 'SgTransferHistoryController@getGuardInformation');
 

@@ -72,7 +72,7 @@ Inbox
           <ul class="collection with-header" id="collectionActive">
             <li class="collection-header" style="font-weight:bold;">Number of Guards Needed:
               <div style="font-size:18px;" id = "guardNumber">&nbsp;</div>
-              <button class="btn blue right" style="margin-top:-40px;" id="btnSuggested">Suggested</button>
+<!--              <button class="btn blue right" style="margin-top:-40px;" id="btnSuggested">Suggested</button>-->
             </li>
             <li class="collection-item">
               <div class="row">
