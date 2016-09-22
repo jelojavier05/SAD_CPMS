@@ -1,7 +1,7 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Admin Reports
+Guards Deployed per Area
 @endsection
 
 @section('content')
@@ -64,10 +64,27 @@ Admin Reports
 
 			</div>
 				
+			<div class="row">
+				<div class="col s4 push-s7">
+					<div class="input-field col s12">
+						<nav style="height:55px;margin-top:-4%">
+							<div class="nav-wrapper blue-grey lighten-3">
+								<form>
+									<div class="input-field" style="">
+										<input id="mySearch" type="search" placeholder="Search" required>
+										<label for="search"><i class="material-icons">search</i></label>									
+									</div>
+								</form>
+							</div>
+						</nav>
+					</div>	
+				</div>	
+			</div>
+				
 			<div clas="row">
 				<div class="col l10 push-l1">
-					<div class="container-fluid white" id="tbl">
-						<table>
+					<div class="container-fluid white" style="border-radius:10px;">
+						<table id="tblguardperareaReport">
 							<thead>
 								<th>City</th>
 								<th>Client</th>
@@ -78,6 +95,12 @@ Admin Reports
 									<td>Makati</td>
 									<td>ChinaBank</td>
 									<td>10</td>
+								</tr>
+								
+								<tr>
+									<td>Manila</td>
+									<td>LandBank</td>
+									<td>11</td>
 								</tr>
 							</tbody>
 						</table>
@@ -147,6 +170,22 @@ $(document).ready(function(){
             }]
         }]
     });
+	
+	$("#tblguardperareaReport").DataTable({             
+	 "columns": [     	 
+	 null,
+	 null,
+	 null
+	 ] ,  
+	 "bLengthChange": false	
+	});
+	
+	search = $('#tblguardperareaReport').DataTable();
+		$("#mySearch").keyup(function(){
+			search.search($(this).val()).draw();
+		});
 });
 </script>
+	
+<
 @stop

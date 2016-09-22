@@ -33,20 +33,20 @@ Guards - Query
 			<div class="row">
 				<div class="col s8">
 					<div class="input-field col s4">
-						<select>
-							<option disabled selected>Choose Status</option>
-							<option>Active</option>
-							<option>Pending/Waiting</option>
-							<option>Reliever</option>
+						<select id="selectStatus">
+							<option selected value="">Choose Status</option>
+							<option value="Active">Active</option>
+							<option value="Pending/Waiting">Pending/Waiting</option>
+							<option value="Reliever">Reliever</option>
 						</select>
 						<label>Status</label>
 					</div>
 
 					<div class="input-field col s4">
-						<select>
-							<option disabled selected>Choose Gender</option>
-							<option>Male</option>
-							<option>Female</option>
+						<select id="selectGender">
+							<option selected value="">Choose Gender</option>
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
 						</select>
 						<label>Gender</label>
 					</div>
@@ -106,6 +106,13 @@ Guards - Query
 								<td>Male</td>
 								<td>Reliever</td>
 							</tr>
+							
+							<tr>
+								<td>Ronda Rousey</td>
+								<td>909-090</td>
+								<td>Female</td>
+								<td>Pending/Waiting</td>
+							</tr>
                         </tbody>
                     </table>
                 </div>
@@ -139,6 +146,12 @@ $(document).ready(function(){
 		$("#mySearch").keyup(function(){
 			search.search($(this).val()).draw();
 		});
+	
+	 var oTable = $('#dataTable').dataTable();
+	 $('select#selectStatus').change( function() { oTable.fnFilter( $(this).val(),3 ); } );
+	
+	var oTable = $('#dataTable').dataTable();
+	 $('select#selectGender').change( function() { oTable.fnFilter( $(this).val(),2 ); } );
 });
 	
 </script>		

@@ -33,19 +33,19 @@ Guns - Query
 			<div class="row">
 				<div class="col s8">
 					<div class="input-field col s4">
-						<select>
-							<option disabled selected>Choose Status</option>
-							<option>Available</option>
-							<option>Pending for Delivery</option>							
+						<select id="selectStatus">
+							<option selected value="">Choose Status</option>
+							<option value="Available">Available</option>
+							<option value="Pending">Pending</option>							
 						</select>
 						<label>Status</label>
 					</div>
 
 					<div class="input-field col s4">
-						<select>
-							<option disabled selected>Choose Type of Gun</option>
-							<option>Pistol</option>
-							<option>Rifle</option>
+						<select id="selectGunType">
+							<option selected value="">Choose Type of Gun</option>
+							<option value="Pistol">Pistol</option>
+							<option value="Rifle">Rifle</option>
 						</select>
 						<label>Type of Gun</label>
 					</div>
@@ -80,30 +80,59 @@ Guns - Query
             <div class="row">
                 <div class="col s12" style="">
                     <table class="striped" style="border-radius:10px;" id="dataTable">						
+<!--
                         <thead>
-                            <tr>                                                                                                
-                                <th class="blue darken-1 white-text">Name</th>
-								<th class="blue darken-1 white-text">License Number</th>								
-								<th class="blue darken-1 white-text">Gender</th>
+                            <tr>                                                                                        
+								<th class="select-filter">Gender</th>
+								<th class="select-filter">Status</th>
+								<th></th>
+								<th></th>
+                            </tr>
+                        </thead>
+-->
+						
+						<thead>
+                            <tr>                                                                                                     
+								<th class="blue darken-1 white-text">Type of Gun</th>								
+								<th class="blue darken-1 white-text">License Number</th>
+								<th class="blue darken-1 white-text">Name</th>
 								<th class="blue darken-1 white-text">Status</th>
                                 
                             </tr>
-                        </thead>
+                        </thead>												
 
                         <tbody>
 							<tr>
-								<td>Jason Paredes</td>
-								<td>2013-04019-MN-0</td>
-								<td>Male</td>
-								<td>Active</td>
+								
+								<td>Pistol</td>
+								<td>123-123</td>
+								<td>Glock</td>
+								<td>Available</td>
 								
 							</tr>
 							
 							<tr>
-								<td>Kobe Bryant</td>
-								<td>123-123</td>
-								<td>Male</td>
-								<td>Reliever</td>
+								
+								<td>Rifle</td>
+								<td>456-654</td>
+								<td>M16</td>
+								<td>Pending</td>
+							</tr>
+							
+							<tr>
+								
+								<td>Rifle</td>
+								<td>111-222</td>
+								<td>M4A1</td>
+								<td>Available</td>
+							</tr>
+							
+							<tr>
+								
+								<td>Pistol</td>
+								<td>888-999</td>
+								<td>Colt 45</td>
+								<td>Pending</td>
 							</tr>
                         </tbody>
                     </table>
@@ -119,18 +148,16 @@ Guns - Query
 $(document).ready(function(){
 		
 		$("#dataTable").DataTable({
-             "columns": [           
-            null,
-			null,
-			null,
-			null
-            ] ,  
-//		    "pagingType": "full_numbers",
+//             "columns": [           
+//            null,
+//			null,
+//			null,
+//			null
+//            ] ,  
 			"pageLength":5,
-//			"lengthMenu": [5,10,15,20],
-//			"bFilter": false
-			"bLengthChange": false
-
+			"bLengthChange": false,
+			
+			
 
 		});
 	
@@ -138,6 +165,12 @@ $(document).ready(function(){
 		$("#mySearch").keyup(function(){
 			search.search($(this).val()).draw();
 		});
+	 var oTable = $('#dataTable').dataTable();
+	 $('select#selectStatus').change( function() { oTable.fnFilter( $(this).val(),3 ); } );
+	
+	var oTable = $('#dataTable').dataTable();
+	 $('select#selectGunType').change( function() { oTable.fnFilter( $(this).val(),0 ); } );
+	 
 });
 	
 </script>		
