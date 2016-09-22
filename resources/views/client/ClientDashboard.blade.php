@@ -72,10 +72,17 @@
                 </div>
                 
                 <ul class="right">    
-                      <li  id="notification_li">
+                    <li id="notification_li">
+                            <a  data-position="bottom" data-delay="50" data-tooltip="INCIDENT REPORTS" href="/incidentreportsclient" class=" tooltipped">
+								<i class="material-icons">report</i>
+<!--								<span id="notification_count_reports">*</span>-->
+                            </a>
+                       </li>  
+					
+					<li  id="notification_li">
                             <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES"     href="/clientinbox" class="tooltipped">
                                 <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
-                                <span id="notification_count">3</span>
+                                <span id="notification_count">1</span>
                             </a>
                       </li>                                                                                                
                       <li id="notification_li">
