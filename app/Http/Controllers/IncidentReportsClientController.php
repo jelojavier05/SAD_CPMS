@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
+use Carbon\Carbon;
 
 class IncidentReportsClientController extends Controller
 {
@@ -14,74 +16,22 @@ class IncidentReportsClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('client/incidentReportsClient');
+    public function index(Request $request){
+        $clientID = $request->session()->get('id');
+
+        $arrReport = DB::table('tblreportincident')
+            ->join('tblguard', 'tblguard.intGuardID', '=', 'tblreportincident.intGuardID')
+            ->select('tblreportincident.datetimeReport', 'tblreportincident.strLocation', 'tblguard.strFirstName', 'tblguard.strLastName', 'tblreportincident.intReportIncidentID')
+            ->where('tblreportincident.intClientID', $clientID)
+            ->orderBy('tblreportincident.datetimeReport', 'desc')
+            ->get();
+
+        foreach($arrReport as $value){
+            $value->strDateReport = (new Carbon($value->datetimeReport))->toDayDateTimeString();
+        }
+
+        return view('client/incidentReportsClient')
+            ->with('arrReport', $arrReport);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
