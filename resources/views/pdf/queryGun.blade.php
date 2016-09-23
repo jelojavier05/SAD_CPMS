@@ -79,6 +79,10 @@
             {
                 font-size:16px;
             }
+            #margin
+        {
+            margin-top:10px;
+        }
     </style>
     <body>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img id="logo" src="{!! public_path('img/cpms-logo.png') !!}" style="width:100px;margin-left:8%">
@@ -87,22 +91,15 @@
         <hr>
         <h2><center><b><strong><i>Guns Query</i></strong></b></center></h2>
         <br>
- <!--<body>       
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img id="logo" src="{!! public_path('img/cpms-logo.png') !!}" width="100">
-   <p id="title"> CLIENT AND PERSONNEL <br>MANAGEMENT SYSTEM</p>
-        <hr>
-          <h2><center><b><strong><i>Guards Query</i></strong></b></center></h2>
-
-    <h5><center><b><strong><i>From: January 1, 2013 To: January 1, 2017</i></strong></b></center></h5>-->
            <h4>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Status: All
+            Status: {{$strStatus}}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Client: All 
+            Client: {{$strClientName}} 
         </h4>
         
         <h4>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type of Gun: All
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type of Gun: {{$strGunType}}
         </h4>
         <br>
         <br>
@@ -116,42 +113,26 @@
                     <th><center>Status</center></th>
                     <th><center>Client</center></th>
                     </tr>
-                    
+                    @foreach($arrData as $value)
                     <tr>
-                        <td>Pistol</td>
-                        <td>123-123</td>
-                        <td>Glock</td>
-                        <td>Available</td>
-                        <td>ChinaBank Pilar</td>
+                        <td>{{$value->strGunType}}</td>
+                        <td>{{$value->strLicenseNumber}}</td>
+                        <td>{{$value->strGunName}}</td>
+                        <td>{{$value->strStatus}}</td>
+                        <td>{{$value->strClientName}}</td>
                     </tr>
-
+                    @endforeach
                    
-                    <tr>
-                        <td>Pistol</td>
-                        <td>888-999</td>
-                        <td>Colt 45</td>
-                        <td>Pending</td>
-                        <td>None</td>
-                    </tr>
-    
-                    <tr>
-                        <td>Rifle</td>
-                        <td>456-654</td>
-                        <td>M16</td>
-                        <td>Pending</td>
-                        <td>None</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Rifle</td>
-                        <td>111-222</td>
-                        <td>M4A1</td>
-                        <td>Available</td>
-                        <td>David' Salon Makati</td>
-                    </tr>
                 </tbody>
             </table>
 
+            <br></br>
+            <br></br>
+            <br></br>            
+            <hr>
+        <div>
+            <h3 id="margin">Total Number of Guns: {{count($arrData)}}</h3>
+        </div>
 
     </body>
     

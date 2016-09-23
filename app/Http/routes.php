@@ -29,6 +29,7 @@ Route::get('/queryclient/get/city', 'QueryClientController@getCity');
 Route::get('/queryclient/get/queryClient', 'QueryClientController@getQueryClient');
 
 Route::get('/querygun', 'QueryGunController@index');
+Route::get('/querygun/getGun', 'QueryGunController@getGun');
 
 
 Route::get('/querynatureofbusiness', 'QueryNatureOfBusinessController@index');
@@ -303,6 +304,7 @@ Route::post('/getQueryGuards/post', 'PDFQueryGuardsController@postQueryGuard');
 Route::get('/getQueryClient', 'PDFQueryClientController@getQueryClient');
 Route::post('/getQueryClient/post', 'PDFQueryClientController@postQueryClient');
 Route::get('/getQueryGun', 'PDFQueryGunController@getQueryGun');
+Route::post('/getQueryGun/post', 'PDFQueryGunController@postQueryGun');
 
 
 //Settings -----------------------------------------------

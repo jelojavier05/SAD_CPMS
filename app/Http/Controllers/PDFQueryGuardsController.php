@@ -20,6 +20,11 @@ class PDFQueryGuardsController extends Controller
 	        	'arrData' => $request->session()->get('arrData')
 	        )
         );
+        $request->session()->forget('strStatus');
+        $request->session()->forget('strGender');
+        $request->session()->forget('strClientName');
+        $request->session()->forget('arrData');
+        
         return $pdf->stream('queryguards.pdf');
     }
 
