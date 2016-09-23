@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
 class QueryClientController extends Controller
 {
     /**
@@ -14,74 +14,50 @@ class QueryClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('/queries/client');
+    public function index(){   
+        $arrNatureOfBusiness = DB::table('tblnatureofbusiness')
+            ->select('strNatureOfBusiness')
+            ->where('deleted_at', null)
+            ->get();
+
+        $arrContractType = DB::table('tbltypeofcontract')
+            ->select('strTypeOfContractName')
+            ->where('deleted_at', null)
+            ->get();
+
+        $arrProvince = DB::table('tblprovince')
+            ->select('strProvinceName', 'intProvinceID')
+            ->where('deleted_at', null)
+            ->get();
+
+        return view('/queries/client')
+            ->with('arrNatureOfBusiness', $arrNatureOfBusiness)
+            ->with('arrContractType', $arrContractType)
+            ->with('arrProvince', $arrProvince);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function getCity(){
+        $arrCity = DB::table('tblcity')
+            ->select('strCityName', 'intProvinceID')
+            ->where('deleted_at', null)
+            ->get();
+
+        return response()->json($arrCity);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function getQueryClient(){
+        $arrClient = DB::table('tblclient')
+            ->join('tblnatureofbusiness', 'tblnatureofbusiness.intNatureOfBusinessID', '=', 'tblclient.intNatureOfBusinessID')
+            ->join('tblcontract', 'tblcontract.intClientID', '=', 'tblclient.intClientID')
+            ->join('tbltypeofcontract', 'tbltypeofcontract.intTypeOfContractID', '=', 'tblcontract.intTypeOfContractID')
+            ->join('tblclientaddress', 'tblclientaddress.intClientID', '=', 'tblclient.intClientID')
+            ->join('tblprovince', 'tblprovince.intProvinceID', '=', 'tblclientaddress.intProvinceID')
+            ->join('tblcity', 'tblcity.intCityID', '=', 'tblclientaddress.intCityID')
+            ->select('tblnatureofbusiness.strNatureOfBusiness', 'tbltypeofcontract.strTypeOfContractName', 'tblclient.strClientName', 'tblclient.strPersonInCharge', 'tblprovince.strProvinceName', 'tblcity.strCityName')
+            ->where('tblclient.intStatusIdentifier', 2)
+            ->where('tblcontract.boolStatus', 1)
+            ->get();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return response()->json($arrClient);
     }
 }

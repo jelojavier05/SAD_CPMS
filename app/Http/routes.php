@@ -25,6 +25,9 @@ Route::get('/queryguard', 'QueryGuardController@index');
 Route::get('/queryguard/get/queryGuard', 'QueryGuardController@getQueryGuard');
 
 Route::get('/queryclient', 'QueryClientController@index');
+Route::get('/queryclient/get/city', 'QueryClientController@getCity');
+Route::get('/queryclient/get/queryClient', 'QueryClientController@getQueryClient');
+
 Route::get('/querygun', 'QueryGunController@index');
 
 
