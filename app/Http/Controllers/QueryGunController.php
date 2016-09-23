@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
+use Carbon\Carbon;
 class QueryGunController extends Controller
 {
     /**
@@ -16,72 +17,57 @@ class QueryGunController extends Controller
      */
     public function index()
     {
-        return view('/queries/gun');
+        $arrGunType = DB::table('tbltypeofgun')
+            ->select('strTypeOfGun')
+            ->where('deleted_at', null)
+            ->get();
+
+        $arrClient = DB::table('tblclient')
+            ->select('strClientName')
+            ->where('intStatusIdentifier', 2)
+            ->get();
+
+        return view('/queries/gun')
+            ->with('arrGunType', $arrGunType)
+            ->with('arrClient', $arrClient);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function getGun(Request $request){
+        $arrGun = DB::table('tblgun')
+            ->join('tbltypeofgun', 'tbltypeofgun.intTypeOfGunID', '=', 'tblgun.intTypeOfGunID')
+            ->join('tblgunlicense', 'tblgunlicense.intGunID', '=', 'tblgun.intGunID')
+            ->select('tblgun.strGunName', 'tbltypeofgun.strTypeOfGun', 'tblgunlicense.strLicenseNumber', 'tblgun.boolFlag')
+            ->where('tblgun.boolFlag', '<>', 4)
+            ->get();
+
+        $now = Carbon::now();
+        
+        foreach($arrGun as $value){
+            $boolFlag = $value->boolFlag;
+            $clientName = 'None';
+            if ($boolFlag == 1){
+                $status = 'Inventory';
+            }else if ($boolFlag == 2){
+                $status = 'Deployed';
+                $result = DB::table('tblclientgun')
+                    ->join('tblcontract', 'tblcontract.intContractID', '=','tblclientgun.intContractID')
+                    ->join('tblclient', 'tblclient.intClientID', '=', 'tblcontract.intClientID')
+                    ->select('tblclient.strClientName')
+                    ->where('tblclientgun.created_at', '<=', $now)
+                    ->where('tblcontract.boolStatus', 1)
+                    ->orderBy('tblclientgun.created_at', 'desc')
+                    ->first();
+                $clientName = $result->strClientName;
+            }else if ($boolFlag == 3){
+                $status = 'Pending';
+            }else if ($boolFlag == 0){
+                $status = 'Defective';
+            }
+            $value->clientName = $clientName;
+            $value->status = $status;
+        }//foreach
+
+        return response()->json($arrGun);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

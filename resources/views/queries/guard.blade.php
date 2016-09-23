@@ -23,6 +23,7 @@ Guards - Query
 	<div class="col s12 push-s1" style="margin-top:-4%;">
 		<div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
 			<div class="row"></div>
+			<div class="btn blue" id="btnPrint">Generate PDF</div>
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field col s3">
@@ -122,8 +123,54 @@ $(document).ready(function(){
 		}
 	});//ajax
 
+	$('#btnPrint').click(function(){
+		var dataTable = $('#tblqueryGuards').DataTable().rows( { filter : 'applied'} ).data();
+		var strStatus = $("#selectStatus option:selected").text();
+		var strGender = $("#selectGender option:selected").text();
+		var strClientName = $("#selectClient option:selected").text();
 
-	
+		var arrLicenseNumber = [];
+		var arrGuardName = [];
+		var arrGender = [];
+		var arrStatus = [];
+		var arrClientName = [];
+
+		$.each(dataTable, function(index,value){
+			arrLicenseNumber.push(value[0]);
+			arrGuardName.push(value[1]);
+			arrGender.push(value[2]);
+			arrStatus.push(value[3]);
+			arrClientName.push(value[4]);
+		});
+
+		$.ajax({
+			type: "POST",
+			url: "{{action('PDFQueryGuardsController@postQueryGuard')}}",
+			beforeSend: function (xhr) {
+				var token = $('meta[name="csrf_token"]').attr('content');
+				if (token) {
+					return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+				}
+			},
+			data: {
+				arrLicenseNumber: arrLicenseNumber,
+				arrGuardName: arrGuardName,
+				arrGender: arrGender,
+				arrStatus: arrStatus,
+				arrClientName: arrClientName,
+				strStatus: strStatus,
+				strGender: strGender,
+				strClientName: strClientName,
+			},
+			success: function(data){
+				window.location.href = '{{ URL::to("/getQueryGuards") }}';
+			},
+			error: function(data){
+				var toastContent = $('<span>Error Database.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+			}
+		});//ajax
+	});
 });
 </script>
 

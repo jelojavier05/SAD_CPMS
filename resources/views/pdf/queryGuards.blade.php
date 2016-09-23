@@ -79,6 +79,10 @@
             {
                 font-size:16px;
             }
+            #margin
+        {
+            margin-top:10px;
+        }
     </style>
     <body>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img id="logo" src="{!! public_path('img/cpms-logo.png') !!}" style="width:100px;margin-left:8%">
@@ -89,13 +93,13 @@
         <br>
         <h4>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Status: All
+            Status: {{$strStatus}}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Client: All 
+            Client: {{$strClientName}} 
         </h4>
         
         <h4>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gender: All
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gender: {{$strGender}}
         </h4>
         <br>
         <br>
@@ -103,40 +107,33 @@
          <table>
                 <tbody>
                     <tr>
-                    <th><center>License Number</center></th>
-                    <th><center>Name</center></th>
-                    <th><center>Gender</center></th>
-                    <th><center>Status</center></th>
-                    <th><center>Client</center></th>
-
+                        <th><center>License Number</center></th>
+                        <th><center>Name</center></th>
+                        <th><center>Gender</center></th>
+                        <th><center>Status</center></th>
+                        <th><center>Client</center></th>
                     </tr>
-                        <tr>
-                        <td>GLN123</td>
-                        <td>Adrian Flores</td>
-                        <td>Male</td>
-                        <td>Active</td>
-                        <td>PUP</td>
-                    </tr>
-
                     
+                    @foreach($arrData as $value)
                     <tr>
-                        <td>GLN123</td>
-                        <td>Adrian Flores</td>
-                        <td>Male</td>
-                        <td>Active</td>
-                        <td>PUP</td>
+                        <td>{{$value->strLicenseNumber}}</td>
+                        <td>{{$value->strGuardName}}</td>
+                        <td>{{$value->strGender}}</td>
+                        <td>{{$value->strStatus}}</td>
+                        <td>{{$value->strClientName}}</td>
                     </tr>
-    
-                   
-                    <tr>
-                        <td>GLN123</td>
-                        <td>Adrian Flores</td>
-                        <td>Male</td>
-                        <td>Active</td>
-                        <td>PUP</td>
-                    </tr>
+                    @endforeach
+                    
+
                 </tbody>
             </table>
+            <br></br>
+            <br></br>
+            <br></br>            
+            <hr>
+        <div>
+            <h3 id="margin">Total Number of Guards: {{count($arrData)}}</h3>
+        </div>
     </body>
     
 </html>
