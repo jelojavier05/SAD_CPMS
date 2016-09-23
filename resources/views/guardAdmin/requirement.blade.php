@@ -54,9 +54,11 @@ Guard Form
       						<div class="dz-default dz-message">Drag your Picture Here</div>
 						</div>
 -->
+<!--
 						<form action="{{ url('user/upload')}}" class="dropzone" id="my-awesome-dropzone">
 							<div class="dz-default dz-message">Drag your Picture Here</div>
 						</form>
+-->
 						
 					</div>
 				</div>
