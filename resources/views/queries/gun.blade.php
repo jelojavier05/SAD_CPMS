@@ -30,9 +30,38 @@ Guns - Query
     <div class="col s12 push-s1" style="margin-top:-4%;">
         <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
 			<div class="row"></div>
-			
+						
 			<div class="row">
-				<div class="col s4 offset-s8">
+				<div class="col s12">
+					<div class="input-field col s3">
+						<select id="selectStatus">
+							<option selected value="">All</option>
+							<option value="Available">Available</option>
+							<option value="Pending">Pending</option>							
+						</select>
+						<label>Status</label>
+					</div>
+
+					<div class="input-field col s3">
+						<select id="selectGunType">
+							<option selected value="">All</option>
+							<option value="Pistol">Pistol</option>
+							<option value="Rifle">Rifle</option>
+						</select>
+						<label>Type of Gun</label>
+					</div>
+
+					<div class="input-field col s3">
+						<select id="selectClient">
+							<option selected value=" ">All</option>							
+							<option value="LandBank Almanza">LandBank Almanza</option>
+							<option value="David's Salon Makati">David's Salon Makati</option>
+							<option value="ChinaBank Pilar">ChinaBank Pilar</option>
+						</select>
+						<label>Client</label>
+					</div>
+					
+					<div class="col s3">
 					<div class="input-field col s12">
 						<nav style="height:55px;">
 							<div class="nav-wrapper blue-grey lighten-3">
@@ -46,36 +75,6 @@ Guns - Query
 						</nav>
 					</div>	
 				</div>
-			</div>
-			<div class="row">
-				<div class="col s8">
-					<div class="input-field col s4">
-						<select id="selectStatus">
-							<option selected value="">All</option>
-							<option value="Available">Available</option>
-							<option value="Pending">Pending</option>							
-						</select>
-						<label>Status</label>
-					</div>
-
-					<div class="input-field col s4">
-						<select id="selectGunType">
-							<option selected value="">All</option>
-							<option value="Pistol">Pistol</option>
-							<option value="Rifle">Rifle</option>
-						</select>
-						<label>Type of Gun</label>
-					</div>
-
-					<div class="input-field col s4">
-						<select id="selectClient">
-							<option selected value=" ">All</option>							
-							<option value="LandBank Almanza">LandBank Almanza</option>
-							<option value="David's Salon Makati">David's Salon Makati</option>
-							<option value="ChinaBank Pilar">ChinaBank Pilar</option>
-						</select>
-						<label>Client</label>
-					</div>
 				</div>
 			
 				
