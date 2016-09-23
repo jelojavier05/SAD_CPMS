@@ -15,4 +15,5 @@ class PDFQueryGuardsController extends Controller
         $pdf=PDF::loadView('pdf.queryguards');
         return $pdf->stream('queryguards.pdf');
     }
+
 }

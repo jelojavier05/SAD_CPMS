@@ -30,7 +30,7 @@
             text-align: left;
             padding: 8px;
         }
-      /*  tr:nth-child(even) {
+        /*  tr:nth-child(even) {
             background-color: #A1D6E2;*/
         }
         td {
@@ -70,7 +70,7 @@
                 font-family:inherit;
                 font-size:14px;
             }
-      .text
+            .text
             {
                 font-size:13px;
                 padding-top:-2%;
@@ -87,13 +87,6 @@
         <hr>
         <h2><center><b><strong><i>Guards Query</i></strong></b></center></h2>
         <br>
- <!--<body>       
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img id="logo" src="{!! public_path('img/cpms-logo.png') !!}" width="100">
-   <p id="title"> CLIENT AND PERSONNEL <br>MANAGEMENT SYSTEM</p>
-        <hr>
-          <h2><center><b><strong><i>Guards Query</i></strong></b></center></h2>
-
-    <h5><center><b><strong><i>From: January 1, 2013 To: January 1, 2017</i></strong></b></center></h5>-->
         <h4>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             Status: All
@@ -106,6 +99,7 @@
         </h4>
         <br>
         <br>
+        <h1 id = 'test'></h1>
          <table>
                 <tbody>
                     <tr>
@@ -143,8 +137,6 @@
                     </tr>
                 </tbody>
             </table>
-
-
     </body>
     
 </html>

@@ -79,6 +79,10 @@
             {
                 font-size:16px;
             }
+        #margin
+        {
+            margin-top:10px;
+        }
     </style>
     <body>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img id="logo" src="{!! public_path('img/cpms-logo.png') !!}" style="width:100px;margin-left:8%">
@@ -89,14 +93,14 @@
         <br>
            <h4>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Nature of Business: All
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Province: All
+            Nature of Business: {{$natureOfBusiness}}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Province: {{$province}}
         </h4>
         
         <h4>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type of Contract: All
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type of Contract: {{$contractType}}
             
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;City: All 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;City: {{$city}}
         </h4>
         <br>
         <br>
@@ -112,47 +116,28 @@
                         <th><center>City</center> </th>
                     </tr>
                     
+                    @foreach($arrData as $value)
                     <tr>
-                        <td>Bank</td>
-                        <td>Contract 1</td>
-                        <td>LandBank Almanza</td>
-                        <td>Juan Dela Cruz</td>
-                        <td>Metro Manila</td>
-                        <td>Las Pinas</td>
+                        <td>{{$value->nob}}</td>
+                        <td>{{$value->contract}}</td>
+                        <td>{{$value->clientName}}</td>
+                        <td>{{$value->person}}</td>
+                        <td>{{$value->province}}</td>
+                        <td>{{$value->city}}</td>
                     </tr>
-
-                   
-                    <tr>
-                        <td>School</td>
-                        <td>Contract 2</td>
-                        <td>PUP Sta.Mesa</td>
-                        <td>Mang Kanor</td>
-                        <td>Rizal</td>
-                        <td>Antipolo</td>
-                    </tr>
-                    
-                     <tr>
-                        <td>Bank</td>
-                        <td>Contract 1</td>
-                        <td>LandBank Almanza</td>
-                        <td>Juan Dela Cruz</td>
-                        <td>Metro Manila</td>
-                        <td>Las Pinas</td>
-                    </tr>
-
-                   
-                    <tr>
-                        <td>School</td>
-                        <td>Contract 2</td>
-                        <td>PUP Sta.Mesa</td>
-                        <td>Mang Kanor</td>
-                        <td>Rizal</td>
-                        <td>Antipolo</td>
-                    </tr>
-                    
+                    @endforeach
 
                 </tbody>
             </table>
+
+            <br></br>
+            <br></br>
+            <br></br>            
+            <hr>
+        <div>
+            <h3 id="margin">Total Number of Clients: {{count($arrData)}}</h3>
+        </div>
+
 
 
     </body>

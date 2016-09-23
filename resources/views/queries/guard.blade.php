@@ -108,11 +108,11 @@ $(document).ready(function(){
 				}
 
 				table.row.add([
-					'<h>' + value.strLicenseNumber + '</h>',
-					'<h>' + value.strFirstName + ' ' + value.strLastName  +'</h>',
-					'<h>' + gender + '</h>',
-					'<h>' + value.status + '</h>',
-					'<h>' + value.clientName + '</h>',
+					value.strLicenseNumber,
+					value.strFirstName + ' ' + value.strLastName ,
+					gender,
+					value.status,
+					value.clientName,
 				]).draw();
 			});
 		},
@@ -121,6 +121,9 @@ $(document).ready(function(){
 			Materialize.toast(toastContent, 1500,'red', 'edit');
 		}
 	});//ajax
+
+
+	
 });
 </script>
 
