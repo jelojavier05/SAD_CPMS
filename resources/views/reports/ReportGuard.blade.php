@@ -5,14 +5,13 @@ Guards Deployed per Area
 @endsection
 
 @section('content')
-
-
 <style>
-.dataTables_filter
-	{
-    display: none;
-	}
+  .dataTables_filter
+  	{
+      display: none;
+  	}
 </style>
+
  <div class="row">
     <div class="col s12 push-s1">
         <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%; padding-bottom:1%;">
@@ -20,48 +19,15 @@ Guards Deployed per Area
 			<div class="row">
 				<div class="col s8">
 					<div class="input-field col s4">
-						<label class="active" style="color:#64b5f6;"  for="dateOfbirth">Date</label>	
-				        <input placeholder=""  id="dateOfbirth" type="date" class="datepicker">
+						<label class="active" style="color:#64b5f6;"  for="dateReport">Date</label>	
+				        <input placeholder=""  id="dateReport" type="date" class="datepicker">
 					</div>					
+				</div>
 
-					<!--<div class="input-field col s4">
-						  <select>
-                                <option disabled selected>Choose an Option</option>
-                                <option>Clients</option>
-                                <option>Guards</option>
-                                <option>Guns</option>
-                                <option>Requests</option>
-					       </select>
-						<label>Reports</label>
-					</div>-->
-				</div>
-			
-<!--
-				<div class="col s4">
-					<div class="input-field col s12">
-						<nav style="height:55px;margin-top:-4%">
-							<div class="nav-wrapper blue-grey lighten-3">
-								<form>
-									<div class="input-field" style="">
-										<input id="mySearch" type="search" placeholder="Search" required>
-										<label for="search"><i class="material-icons">search</i></label>									
-									</div>
-								</form>
-							</div>
-						</nav>
-					</div>	
-				</div>
-            </div>
--->
-            
 			<div class="row">
 				<div class="col l8 push-l2">
-
-					<div id="testchart" style="min-width: 300px; height: 400px; margin: 0 auto;"></div>
-
-
+					<div id="reportPieChart" style="min-width: 300px; height: 400px; margin: 0 auto;"></div>
 				</div>
-
 			</div>
 				
 			<div class="row">
@@ -109,82 +75,101 @@ Guards Deployed per Area
 			</div>
         </div>
      </div>
-</div>
+  </div>
 
 
 @stop
 
 
 @section('script')
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+
 <script>
 $(document).ready(function(){
-	$('#testchart').highcharts({
+  
+  $('#dateReport').on('change', function(){
+    var dateReport = $('#dateReport').val();
+
+    $.ajax({
+      type: "GET",
+      url: "/reports/ReportGuard/get/PieInformation?dateReport=" + dateReport,
+      success: function(data){
+        setChart(data);
+        setTable(data.tabularForm);
+      },
+      error: function(data){
+        var toastContent = $('<span>Error Database.</span>');
+        Materialize.toast(toastContent, 1500,'red', 'edit');
+      }
+    });//ajax
+  });
+
+  function setChart(data){
+    $('#reportPieChart').highcharts({
         chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
             type: 'pie'
         },
         title: {
-            text: 'Browser market shares January, 2015 to May, 2015'
+            text: 'Guard - Client Summary'
         },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        subtitle: {
+            text: ''
         },
         plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
+            series: {
                 dataLabels: {
                     enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
+                    format: '{point.name}: {point.y:.1f}'
                 }
             }
         },
+
+        tooltip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+        },
         series: [{
-            name: 'Brands',
+            name: 'City',
             colorByPoint: true,
-            data: [{
-                name: 'Internet Explorer',
-                y: 56.33
-            }, {
-                name: 'Chrome',
-                y: 24.03,
-                sliced: true,
-                selected: true
-            }, {
-                name: 'Firefox',
-                y: 10.38
-            }, {
-                name: 'Safari',
-                y: 4.77
-            }, {
-                name: 'Opera',
-                y: 0.91
-            }, {
-                name: 'Proprietary or Undetectable',
-                y: 0.2
-            }]
-        }]
+            data: data.series
+        }],
+        drilldown: {
+            series: data.drilldown
+        }
     });
-	
-	$("#tblguardperareaReport").DataTable({             
-	 "columns": [     	 
-	 null,
-	 null,
-	 null
-	 ] ,  
-	 "bLengthChange": false	
-	});
-	
-	search = $('#tblguardperareaReport').DataTable();
-		$("#mySearch").keyup(function(){
-			search.search($(this).val()).draw();
-		});
+  }  
+
+  function setTable(data){
+    var table = $('#tblguardperareaReport').DataTable();
+    table.clear().draw();
+    $.each(data, function(index, value){
+      table.row.add([
+        '<h>' + value.cityName + '</h>',
+        '<h>' + value.strClientName + '</h>',
+        '<h>' + value.clientCountGuard + '</h>',
+      ]).draw();
+    });
+  }
 });
+</script>
+
+<script>
+  $(document).ready(function(){
+  	$("#tblguardperareaReport").DataTable({             
+    	 "columns": [     	 
+    	 null,
+    	 null,
+    	 null
+    	 ] ,  
+    	 "bLengthChange": false	
+  	});
+  	
+  	search = $('#tblguardperareaReport').DataTable();
+  		$("#mySearch").keyup(function(){
+  			search.search($(this).val()).draw();
+  		});
+  });
 </script>
 	
 <

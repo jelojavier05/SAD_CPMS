@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
+use Carbon\Carbon;
+use Input;
 
 class ReportGuardController extends Controller
 {
@@ -19,69 +22,91 @@ class ReportGuardController extends Controller
         return view('/reports/ReportGuard');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function getPieInformation(){
+        $arrCityResult = DB::table('tblcity')
+            ->select('strCityName', 'intCityID')
+            ->get();    
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $date = Input::get('dateReport');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $arrPie = array();
+        $arrClientGuardCount = array();
+        $arrTabularForm = array();
+        foreach($arrCityResult as $value){
+            $arrClientResult = DB::table('tblclient')
+                ->join('tblclientaddress', 'tblclientaddress.intClientID','=','tblclient.intClientID')
+                ->join('tblcontract', 'tblcontract.intClientID', '=', 'tblclient.intClientID')
+                ->select('tblclient.intClientID', 'tblcontract.intContractID')
+                ->where('tblclientaddress.intCityID', $value->intCityID)
+                ->where('tblclient.intStatusIdentifier', 2)
+                ->where('tblcontract.boolStatus', 1)
+                ->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+            $cityName = $value->strCityName;
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+            $cityResult = new \stdClass();
+            $cityResult->name = $value->strCityName;
+            $cityResult->drilldown = $value->intCityID;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+            array_push($arrPie, $cityResult);
+
+            $arrClientInformation = array();
+            $intCounterTotalGuardInCity = 0;
+
+            foreach($arrClientResult as $valueClient){
+                $clientResult = DB::table('tblclient')
+                    ->select('intClientID', 'strClientName')
+                    ->where('intClientID', $valueClient->intClientID)
+                    ->first();
+
+                $arrGuard = DB::table('tblcontract')
+                    ->join('tblclientguard', 'tblclientguard.intContractID', '=', 'tblcontract.intContractID')
+                    ->select('tblclientguard.intGuardID')
+                    ->where('tblcontract.intClientID', $valueClient->intClientID)
+                    ->where('tblcontract.boolStatus', 1)
+                    ->get();
+
+                $countArrGuard = array();
+                foreach($arrGuard as $valueGuardID){
+                    $activeGuard = DB::table('tblclientguard')
+                        ->select('boolStatus')
+                        ->where('intGuardID', $valueGuardID->intGuardID)
+                        ->where('intContractID', $valueClient->intContractID)
+                        ->where('tblclientguard.created_at', '<=', $date)
+                        ->first();
+
+                    if (!is_null($activeGuard) && $activeGuard->boolStatus == 1){
+                        array_push($countArrGuard, $activeGuard);
+                    }
+                }
+
+                $objTabularForm = new \stdClass();//for the tabular form
+                $objTabularForm->cityName = $cityName;
+                $objTabularForm->strClientName = $clientResult->strClientName;
+                $objTabularForm->clientCountGuard = count($countArrGuard);
+
+                array_push($arrTabularForm, $objTabularForm);
+
+                $intCounterTotalGuardInCity += count($countArrGuard);
+                $clientInformation = [$clientResult->strClientName, count($countArrGuard)];
+                array_push($arrClientInformation, $clientInformation);
+            }
+
+            $cityResult->y = $intCounterTotalGuardInCity;
+
+            $clientResult = new \stdClass();
+            $clientResult->name = $value->strCityName;
+            $clientResult->id = $value->intCityID;
+            $clientResult->data = $arrClientInformation;
+
+            array_push($arrClientGuardCount, $clientResult);
+        }
+
+        $pieInformation = new \stdClass();
+        $pieInformation->series = $arrPie;
+        $pieInformation->drilldown = $arrClientGuardCount;
+        $pieInformation->tabularForm = $arrTabularForm;
+        
+        return response()->json($pieInformation);
     }
 }
