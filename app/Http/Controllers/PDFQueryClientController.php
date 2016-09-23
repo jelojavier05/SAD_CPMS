@@ -22,6 +22,12 @@ class PDFQueryClientController extends Controller
 	        	'arrData' => $request->session()->get('arrData')
 	        )
         );
+
+        $request->session()->forget('natureOfBusiness');
+        $request->session()->forget('contractType');
+        $request->session()->forget('province');
+        $request->session()->forget('city');
+        $request->session()->forget('arrData');
         return $pdf->stream('queryclient.pdf');
     }
 
