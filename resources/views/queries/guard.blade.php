@@ -23,11 +23,28 @@ Guards - Query
 	<div class="col s12 push-s1" style="margin-top:-4%;">
 		<div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
 			<div class="row"></div>
+			
+			<div class="row">
+				<div class="col s4 offset-s8">
+					<div class="input-field col s12">
+						<nav style="height:55px;">
+							<div class="nav-wrapper blue-grey lighten-3">
+								<form>
+									<div class="input-field" style="">
+										<input id="mySearch" type="search" placeholder="Search" required>
+										<label for="search"><i class="material-icons">search</i></label>									
+									</div>
+								</form>
+							</div>
+						</nav>
+					</div>	
+				</div>
+			</div>
 			<div class="row">
 				<div class="col s8">
 					<div class="input-field col s4">
 						<select id="selectStatus">
-							<option selected value="">Choose Status</option>
+							<option selected value="">All</option>
 							<option value="Active">Active</option>
 							<option value="Pending/Waiting">Pending/Waiting</option>
 							<option value="Reliever">Reliever</option>
@@ -36,17 +53,18 @@ Guards - Query
 					</div>
 					<div class="input-field col s4">
 						<select id="selectGender">
-							<option selected value="">Choose Gender</option>
-							<option value="Male">Male</option>
-							<option value="Female">Female</option>
+							<option selected value="">All</option>
+							<option value="Male (M)">Male (M)</option>
+							<option value="Female (F)">Female (F)</option>
 						</select>
 						<label>Gender</label>
 					</div>
 					<div class="input-field col s4">
-						<select disabled>
-							<option disabled selected>Choose Client</option>
-							<option>LandBank Almanza</option>
-							<option>David's Salon Makati</option>
+						<select id="selectClient">
+							<option selected>All</option>
+							<option value="LandBank Almanza">LandBank Almanza</option>
+							<option value="ChinaBank Pilar">ChinaBank Pilar</option>
+							<option value="Pacific Sta. Mesa">Pacific Sta. Mesa</option>
 						</select>
 						<label>Client</label>
 					</div>
@@ -116,9 +134,10 @@ $(document).ready(function(){
 <script>
 	$(document).ready(function(){
 		
-		$("#dataTable").DataTable({
+		$("#tblqueryGuards").DataTable({
              "columns": [           
             null,
+			null,
 			null,
 			null,
 			null
