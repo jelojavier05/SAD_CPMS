@@ -28,8 +28,9 @@ Guards - Query
 					<div class="input-field col s3">
 						<select id="selectStatus">
 							<option selected value="">All</option>
+							<option value="Waiting">Waiting</option>
 							<option value="Active">Active</option>
-							<option value="Pending/Waiting">Pending/Waiting</option>
+							<option value="Pending">Pending</option>
 							<option value="Reliever">Reliever</option>
 						</select>
 						<label>Status</label>
@@ -44,10 +45,11 @@ Guards - Query
 					</div>
 					<div class="input-field col s3">
 						<select id="selectClient">
-							<option selected>All</option>
-							<option value="LandBank Almanza">LandBank Almanza</option>
-							<option value="ChinaBank Pilar">ChinaBank Pilar</option>
-							<option value="Pacific Sta. Mesa">Pacific Sta. Mesa</option>
+							<option selected value = "">All</option>
+							<option value="None">None</option>
+							@foreach($arrClient as $value)
+							<option value="{{$value->strClientName}}">{{$value->strClientName}}</option>
+							@endforeach
 						</select>
 						<label>Client</label>
 					</div>
@@ -94,7 +96,25 @@ $(document).ready(function(){
 		type: "GET",
 		url: "{{action('QueryGuardController@getQueryGuard')}}",
 		success: function(data){
+			var table = $('#tblqueryGuards').DataTable();
+			table.clear().draw();
+			var gender;
+			$.each(data,function(index,value){
 
+				if (value.strGender == 'Male'){
+					gender = 'Male (M)';
+				}else{
+					gender = 'Female (F)';
+				}
+
+				table.row.add([
+					'<h>' + value.strLicenseNumber + '</h>',
+					'<h>' + value.strFirstName + ' ' + value.strLastName  +'</h>',
+					'<h>' + gender + '</h>',
+					'<h>' + value.status + '</h>',
+					'<h>' + value.clientName + '</h>',
+				]).draw();
+			});
 		},
 		error: function(data){
 			var toastContent = $('<span>Error Database.</span>');

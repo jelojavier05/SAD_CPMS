@@ -17,8 +17,14 @@ class QueryGuardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('/queries/guard');
+    {   
+        $arrClient = DB::table('tblclient')
+            ->select('strClientName')
+            ->where('intStatusIdentifier', 2)
+            ->get();
+
+        return view('/queries/guard')
+            ->with('arrClient', $arrClient);
     }
 
     public function getQueryGuard(Request $request){
@@ -63,7 +69,6 @@ class QueryGuardController extends Controller
                     ->orderBy('tblclientguard.created_at', 'desc')
                     ->first();
 
-
                 $clientName = $resultClient->strClientName;
             }
 
@@ -71,6 +76,6 @@ class QueryGuardController extends Controller
             $value->status = $status;
         }//foreach
 
-        dd($arrGuard);
+        return response()->json($arrGuard);
     }
 }
