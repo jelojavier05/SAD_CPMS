@@ -84,8 +84,8 @@
                             
                             <div class="row">
                            		
-                            <span class="card-title ci" style="font-size:20px;color:white;margin-top:-15%;margin-left:23%; position:absolute">John Cena</span>
-								  <span  style=" font-size: 14px; margin-top:-4%;margin-left:24%;position:absolute;color:red margin-left:-40px;">Administrator</span>
+                            <span id="jc" class="card-title ci" style="font-size:20px;color:white;margin-top:-15%;margin-left:23%; position:absolute">John Cena</span>
+								  <span id="admin" style=" font-size: 14px; margin-top:-4%;margin-left:24%;position:absolute;color:red margin-left:-40px;">Administrator</span>
                             
                             </div>
 <!--
@@ -103,7 +103,7 @@
                         <ul class="collapsible collapsible-accordion">
                           
                     <li class="bold" style="width:280px">
-						<a class="collapsible-header waves-effect waves-blue swa" href="#">
+						<a class="collapsible-header waves-effect waves-blue swa" href="#" id="maint">
 							<i class="material-icons">view_quilt</i><strong>Maintenance</strong><i class="mdi-navigation-arrow-drop-down right"></i>
 						</a>
                             <div class="collapsible-body grey lighten-2">
@@ -174,7 +174,7 @@
                           
 					
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="#"><i class="material-icons">content_paste</i><strong>Registration</strong><i class="mdi-navigation-arrow-drop-down right"></i></a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="#" id="regi"><i class="material-icons">content_paste</i><strong>Registration</strong><i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                             
@@ -194,7 +194,7 @@
 					
 							
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView"><i class="material-icons">local_shipping</i><strong>Delivery and Pickup</strong></a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView" id="delivery"><i class="material-icons">local_shipping</i><strong>Delivery and Pickup</strong></a>
                             <div class="collapsible-body grey lighten-2">
 <!--
                                 <ul>
@@ -211,7 +211,7 @@
 							
 					
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="/adminannouncement"><i class="material-icons">announcement</i><strong>Announcements</strong></a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="/adminannouncement" id="announcement"><i class="material-icons">announcement</i><strong>Announcements</strong></a>
                             <div class="collapsible-body grey lighten-2">
 <!--
                                 <ul>
@@ -228,7 +228,7 @@
                             
                             
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="/adminreports"><i class="material-icons">assessment</i><strong>Reports</strong></a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="/adminreports" id="reports"><i class="material-icons">assessment</i><strong>Reports</strong></a>
                             <div class="collapsible-body grey lighten-2">
 <!--
                                 <ul>
@@ -244,7 +244,7 @@
 					
 							
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="#"><i class="material-icons">search</i><strong>Queries</strong><i class="mdi-navigation-arrow-drop-down right"></i></a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="#" id="queries"><i class="material-icons">search</i><strong>Queries</strong><i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body grey lighten-2">
                                 <ul>
                                   
@@ -274,7 +274,7 @@
 							
 							
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="/settings"><i class="material-icons">settings_input_component</i><strong>Utilities</strong></a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="/settings" id="utilities"><i class="material-icons">settings_input_component</i><strong>Utilities</strong></a>
                             <div class="collapsible-body grey lighten-2">
 <!--
                                 <ul>
@@ -311,17 +311,17 @@
 							<ul class="right hide-on-med-and-down">
 								 
                                 <li id="notification_li">
-									<a  data-position="bottom" data-delay="50" data-tooltip="INCIDENT REPORTS" href="/incidentreportsadmin" class=" tooltipped">
+									<a  data-position="bottom" data-delay="50" data-tooltip="INCIDENT REPORTS" href="/incidentreportsadmin" class=" tooltipped" id="incident">
 										<i class="material-icons">report</i>
 <!--								<span id="notification_count_reports">*</span>-->
 									</a>
 								</li>  
                                 <li  id="notification_li">
                                     <a id="notificationLink" data-position="bottom" data-delay="50" data-tooltip="MESSAGES" href="/adminInbox" class="tooltipped">
-                                        <i class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
+                                        <i id="msg"class="mdi-content-inbox" style="font-size:2.1rem;color:white"></i>
                                         <span id="notification_count">3</span></a>
                                 </li>     
-                                <li><a  data-position="bottom" data-delay="50" data-tooltip="DASHBOARD"href="/dashboardadmin" class=" tooltipped"><i class="material-icons">apps</i></a></li>                                           
+                                <li><a  data-position="bottom" data-delay="50" data-tooltip="DASHBOARD"href="/dashboardadmin" class=" tooltipped" id="dash"><i class="material-icons">apps</i></a></li>                                           
                                 <li><a  data-position="bottom" data-delay="50" data-tooltip="LOG OUT" id = 'btnLogout' class=" tooltipped"><i class="material-icons">input</i></a></li>
                                 
 							</ul>

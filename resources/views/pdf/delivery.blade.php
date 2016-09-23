@@ -97,7 +97,8 @@
         
      <table>
             <tbody>
-                <th><center>CLIENT NAME</center>
+                <tr>
+                 <th><center>CLIENT NAME</center>
                 </th>
                  <th><center>NATURE OF BUSINESS</center>
                 </th>
@@ -105,6 +106,8 @@
                 </th>
                  <th><center>CONTACT NUMBER</center>
                 </th>
+                </tr>
+               
             </tbody>
     
     
@@ -116,8 +119,10 @@
       <h2 id="pdf"><center><b><strong><i>LIST OF FIREARMS WITH SERIAL NUMBER</i></strong></b></center></h2>
     
         <table>
+            
             <tbody>
-                <th><center>Serial Number</center>
+                <tr>
+            <th><center>Serial Number</center>
                 </th>
                  <th><center>Name</center>
                 </th>
@@ -125,6 +130,8 @@
                 </th>
                  <th><center>Rounds</center>
                 </th>
+            
+            </tr>
             </tbody>
     
     
