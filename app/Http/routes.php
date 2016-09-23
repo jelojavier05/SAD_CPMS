@@ -22,6 +22,8 @@ Route::get('/clientaddgunproceed/getRequestIdentifier', 'ClientAddGunProceedCont
 Route::post('/clientaddgunproceed/post/insertgunorder', 'ClientAddGunProceedController@insertGunOrder');
 
 Route::get('/queryguard', 'QueryGuardController@index');
+Route::get('/queryguard/get/queryGuard', 'QueryGuardController@getQueryGuard');
+
 Route::get('/queryclient', 'QueryClientController@index');
 Route::get('/querygun', 'QueryGunController@index');
 

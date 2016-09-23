@@ -144,7 +144,7 @@ class ClientContractController extends Controller
                     ->insert([
                         'intGuardID' => $value->intGuardID,
                         'intStatusIdentifier' => 2,
-                        'dateEffectivity' => $now
+                        'dateEffectivity' => $request->dateStart
                     ]);
                 
                 DB::table('tblinbox')->insert([

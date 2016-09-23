@@ -78,43 +78,6 @@ Guards Deployed per Area
 			<div class="row">
 				<div class="col l10 push-l1">
 					<ul class="collection with-header">
-<!--
-						<li class="collection-header">
-							<div class="row">
-								<div class="col s5">
-									<h5 style="font-weight:bold;">Total Number of Cities:</h5>
-								</div>
-								
-								<div class="col s7">
-									<h5>3</h5>
-								</div>
-							</div>
-						</li>
-						
-						<li class="collection-header">
-							<div class="row">
-								<div class="col s5">
-									<h5 style="font-weight:bold;">Total Number of Clients:</h5>
-								</div>
-
-								<div class="col s7">
-									<h5>5</h5>
-								</div>
-							</div>
-						</li>
-						
-						<li class="collection-header">
-							<div class="row">
-								<div class="col s5">
-									<h5 style="font-weight:bold;">Total Number of Guards:</h5>
-								</div>
-								
-								<div class="col s7">
-									<h5>20</h5>
-								</div>
-							</div>
-						</li>
--->
 						<li class="collection-header">
 							<div class="row">
 								<div class="col s5">
