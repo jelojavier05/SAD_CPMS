@@ -30,34 +30,35 @@ Guard Form
 			<div class="row">	
 				<div class="col s4 push-s4">
 					<h4 id="scroll">Personal Data</h4>
+					<div class="red-text" style="margin-left:30px;">ALL Fields are Required</div>
 				</div>
 			</div>
 		   <div class="row" style="margin:1%;">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="input-field col s4">
 					   <i class="material-icons prefix">account_circle</i>
-					   <input placeholder = " " id="firstName" type="text" class="validate" pattern="[A-za-z.' ][^0-9]{2,}" required="" aria-required="true" >
+					   <input placeholder = " " id="firstName" type="text" class="validate" pattern="[A-Za-z ,.'-]{2,}"  required >
 					   <label class="ci" data-error="Incorrect" for="firstName">First Name</label>
 
 				</div>
 
 				<div class="input-field col s4">
 						<i class="material-icons prefix">account_circle</i>
-					    <input placeholder = " " id="middleName" type="text" class="validate" pattern="[A-za-z.' ][^0-9]{2,}" required="" aria-required="true">
+					    <input placeholder = " " id="middleName" type="text" class="validate" pattern="[A-Za-z ,.'-]{2,}" required="" aria-required="true">
 						<label class="ci" data-error="Incorrect" for="middleName">Middle Name</label>
 
 				</div>
 
 				<div class="input-field col s4">
 						<i class="material-icons prefix">account_circle</i>
-						<input placeholder = " " id="lastName" type="text" class="validate" pattern="[A-za-z.' ][^0-9]{2,}" required="" aria-required="true">
+						<input placeholder = " " id="lastName" type="text" class="validate" pattern="[A-Za-z ,.'-]{2,}" required="" aria-required="true">
 						<label class="ci" data-error="Incorrect" for="lastName">Last Name</label>
 
 				</div>
 
 				<div class="input-field col s4">
 					    <i class="material-icons prefix">home</i>
-						<input placeholder = " " id="address" type="text" class="validate" pattern="[A-za-z0-9.,' ]{2,}" required="" aria-required="true">
+						<input placeholder = " " id="address" type="text" class="validate" pattern="[a-zA-Z0-9 '-.,]{2,}" required="" aria-required="true">
 
 						<label class="ci" data-error="Incorrect" for="address">Address</label>
 
@@ -92,21 +93,21 @@ Guard Form
 				</div>
 
 				<div class="input-field col s6">
-						<input placeholder = " " id="placeofbirth" type="text" class="validate ci" pattern="[A-za-z0-9.,' ]{2,}" required="" aria-required="true">
+						<input placeholder = " " id="placeofbirth" type="text" class="validate ci" pattern="[a-zA-Z0-9 '-.,]{2,}" required="" aria-required="true">
 						<label class="ci" data-error="Incorrect" for="placeofbirth">Place of Birth</label>
 
 				</div>
 
 				<div class="input-field col s6">
 						<i class="material-icons prefix">smartphone</i>
-						<input placeholder = " " id="contactCp" maxlength="13" type="text" class="validate ci" pattern="[0-9+ ]{11,}" required="" aria-required="true">
+						<input placeholder = " " id="contactCp" maxlength="13" type="text" class="validate ci" pattern="[-0-9+ ]{11,}" required="" aria-required="true">
 						<label class="ci" data-error="Incorrect" for="contactCp">Contact Number (Mobile)</label>
 
 				</div>
 				
 			    <div class="input-field col s6">
 						<i class="material-icons prefix">phone</i>
-						<input placeholder = " " id="contactLandline" maxlength="10" type="text" class="validate ci" pattern="[0-9+ ]{7,}" required="" aria-required="true">
+						<input placeholder = " " id="contactLandline" maxlength="10" type="text" class="validate ci" pattern="[-0-9+ ]{7,}" required="" aria-required="true">
 						<label class="ci" data-error="Incorrect" for="contactLandline">Contact Number (Landline)</label>
 
 				</div>
@@ -330,7 +331,7 @@ Guard Form
 				window.location.href = '{{ URL::to("/guard/registration/educationalbackground") }}';
 //				confirm('tama');
 			}else{
-				confirm('mali');
+				swal('Warning', 'Please Check Your Input', 'warning');
 			}
 			
 				
@@ -439,21 +440,17 @@ Guard Form
 		
 		function checkInput(){
 			var checker;
-			
-//			$.each(bodyAttribute, function(index,value){
-//				
-//				var specs = $('#specification' + value.intBodyAttributeID);
-//				confirm(specs);
-//				if (specs == ''){
-//					checker = false;
-//					confirm ('test');
-//					return false;
-//				}
-//			});
-//				
-//			console.log(bodyAttribute);
-			var firstName = $('#firstName').val();
-			if (firstName == '' || checker == false){
+//			var address = $('#address').val().trim();
+//			confirm(address);			
+			if ($('#firstName').val().trim() == '' || checker == false || !alphaValidate($('#firstName').val().trim()) ||
+			    $('#middleName').val().trim() == '' || checker == false || !alphaValidate($('#middleName').val().trim()) ||
+				$('#lastName').val().trim() == '' || checker == false || !alphaValidate($('#lastName').val().trim()) ||
+				$('#address').val().trim() == '' || checker == false || !addressValidate($('#address').val().trim()) ||
+				$('#placeofbirth').val().trim() == '' || checker == false || !addressValidate($('#placeofbirth').val().trim()) ||
+				$('#contactCp').val().trim() == '' || checker == false || !addressValidate($('#contactCp').val().trim()) ||
+				$('#contactLandline').val().trim() == '' || checker == false || !addressValidate($('#contactLandline').val().trim())
+				
+				){
 				checker = false;
 			}else{
 				checker = true;
@@ -461,7 +458,22 @@ Guard Form
 			
 			return checker;
 		}
+				
+		function alphaValidate(str) {
+  			return /^[a-zA-Z'-. ]{2,}$/.test(str);
+			}
 		
+		function addressValidate(str) {
+  			return /^[a-zA-Z0-9 '-.,][^()]{2,}$/.test(str);
+			}
+		
+		function cpnumberValidate(str) {
+  			return /^[-0-9+]{11,}$/.test(str);
+			}
+		
+		function landlinenumberValidate(str) {
+  			return /^[-0-9+-]{7,}$/.test(str);
+			}
     });
 	
 	
