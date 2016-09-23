@@ -298,7 +298,11 @@ Route::get('/settings', 'SettingsController@index');
 
 //Reports ------------------------------------------------
 Route::get('/reports/ReportClient', 'ReportClientController@index');
+
 Route::get('/reports/ReportGuard', 'ReportGuardController@index');
+Route::get('/reports/ReportGuard/get/PieInformation', 'ReportGuardController@getPieInformation');
+
+
 Route::get('/reports/ReportGun', 'ReportGunController@index');
 Route::get('/reports/ReportRequest', 'ReportRequestController@index');
 
