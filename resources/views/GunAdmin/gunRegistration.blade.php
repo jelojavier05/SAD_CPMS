@@ -8,7 +8,7 @@ Gun Registration
 
 
 
-<div style="margin-top:3%;">
+<div style="margin-top:-1%;">
 		
 	<div class="row">
 		

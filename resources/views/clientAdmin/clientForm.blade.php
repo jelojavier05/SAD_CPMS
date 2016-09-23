@@ -46,14 +46,14 @@ Client
 					</div>
 					
 					<div class="input-field col s6">
-						<input placeholder=" " id="piccontactCp" maxlength="13" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
+						<input placeholder=" " id="piccontactCp" maxlength="11" type="text" class="validate" pattern="[0-9+]{7,}" required="" aria-required="true">
 						<label data-error="Incorrect" for="clientcontactCp">Contact Number (Person In Charge)</label>
 
 					</div>
 				
 					
 					<div class="input-field col s12">
-						<input placeholder=" " id="address" type="text" class="validate" pattern="[A-za-z0-9., ]{2,}" required="" aria-required="true">
+						<input placeholder=" " id="address" type="text" class="validate" pattern="[a-zA-Z0-9 '-.,]{2,}" required="" aria-required="true">
 						<label data-error="Incorrect" for="address">Address</label>
 
 					</div>
@@ -283,8 +283,9 @@ Client
         }
         
         $('#btnSave').click(function(){
+			
             
-            if (checkInputShift() && checkInput() && checkGuard()){
+            if (checkInputShift() && checkInput() && checkGuard() && checkInput()){
                 for (intLoop = 1; intLoop <= shiftCounter; intLoop ++){
                     shiftNumber[intLoop - 1] = intLoop;
                     shiftFrom[intLoop - 1] = $('#shiftSelectFrom' + intLoop).val();
@@ -572,6 +573,28 @@ Client
                 return false;
             }
         }
+		
+		function checkInput(){
+			var checker;
+			if ($('#clientcontactLandline').val().trim() == '' || checker == false || !landlinenumberValidate($('#clientcontactLandline').val().trim()) ||
+			$('#piccontactCp').val().trim() == '' || checker == false || !landlinenumberValidate($('#piccontactCp').val().trim()) ||
+			$('#address').val().trim() == '' || checker == false || !addressValidate($('#address').val().trim())
+			){
+				checker = false;
+			}else{
+				checker = true;
+			}
+			
+			return checker;
+		}
+				
+		function landlinenumberValidate(str) {
+  			return /^[-0-9+-]{7,}$/.test(str);
+			}
+		function addressValidate(str) {
+  			return /^[a-zA-Z0-9 '-.,][^()]{2,}$/.test(str);
+			}
+		
     });
         
 </script>

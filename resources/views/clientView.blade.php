@@ -274,7 +274,7 @@ $(document).ready(function(){
   $('#dataTablePending').on('click', '.buttonDelete', function(){
     var clientPendingID = this.id;
     swal({   title: "Are you sure?",   
-             text: "The Client will be remove.",   
+             text: "The Client will be removed.",   
              type: "warning",   
              showCancelButton: true,   
              confirmButtonColor: "#DD6B55",   
@@ -303,7 +303,7 @@ $(document).ready(function(){
       success: function(data){
         swal({
             title: "Success!",
-            text: "You remove the temporary client.",
+            text: "You removed the temporary client.",
             type: "success"
           },
           function(){
