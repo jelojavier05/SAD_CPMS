@@ -294,6 +294,13 @@ Route::get('/getContract', 'PDFContractController@getContract');
 Route::get('/getDelivery', 'PDFDeliveryController@getDelivery');
 Route::get('/getPayment',  'PDFPaymentController@getPayment');
 Route::get('/getTrackTransferRec', 'PDFTrackTransferRecordController@getTrackTransfer');
+Route::get('/getGuardDeployedparea', 'PDFGuardDeployedPerAreaController@getGuardDeployedparea');
+
+
+//PDF QUERIES ---------------------------------------------
+Route::get('/getQueryGuards', 'PDFQueryGuardsController@getQueryGuards');
+Route::get('/getQueryClient', 'PDFQueryClientController@getQueryClient');
+Route::get('/getQueryGun', 'PDFQueryGunController@getQueryGun');
 
 
 //Settings -----------------------------------------------

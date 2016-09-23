@@ -6,21 +6,10 @@
 
 @section('content')
 
-
+<div class="row"></div>
+<div class="row"></div>
 <div class="row">
-    <div class="col s5 push-s3" style="margin-left:-2%">
-        <h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:5%">Settings</h3>
-    </div>
-                  
-    <div class="col s10 push-s2">
-        <ul class="tabs">
-            <li class="tab col s3"><a href="#General">General</a></li>
-            <li class="tab col s3"><a href="#Customization">System Customization</a></li>
-        </ul>
-    </div>
-    
-<!--------------------GENERAL TAB------------------->
-    
+
 <div id="General" class="ci col s8 push-s3" style="margin-top:2px;">
     <ul class="collection with-header" id="collectionActive" >
         <li class="collection-header">
@@ -28,7 +17,13 @@
         </li>
         
         <div class="col s12"> 
-            <div class="col s6">                        
+            <div class="col s6">
+                <li class="collection-item" style="font-weight:bold;">
+                   Administrator's Name:
+                    <div style="font-weight:normal;" id = ''>
+                        &nbsp;&nbsp;&nbsp; John Cena
+                    </div>
+                </li>
                 <li class="collection-item" style="font-weight:bold;">
                     Organization/System Name:
                     <div style="font-weight:normal;" id = ''>
@@ -43,33 +38,60 @@
                         <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="30%">
                     </div>
                 </li>
+                  
             </div>
             
             <div class="col s6">                        
                 <li class="collection-item" style="font-weight:bold;">
-                    Subject Name (Admin Side):
+                    Address:
                     <div style="font-weight:normal;" id = ''>
-                        &nbsp;&nbsp;&nbsp; New Client Ready
+                        &nbsp;&nbsp;&nbsp; 3383 V. Mapa 2nd St. Sta. Mesa, Manila
                     </div>
                 </li>
 
                 <li class="collection-item" style="font-weight:bold;">
-                    Subject Name (Guard Side):
+                    Telephone/Cellphone Number:
                     <div style="font-weight:normal;" id = ''>
-                        &nbsp;&nbsp;&nbsp; New Client Ready
+                        &nbsp;&nbsp;&nbsp; 09294206368
                     </div>
                 </li>
-
-                <li class="collection-item" style="font-weight:bold;">
-                    Subject Name (Client Side):
-                    <div style="font-weight:normal;" id = ''>
-                        &nbsp;&nbsp;&nbsp; New Client Ready
-                    </div>
+                
+              <li class="collection-item" style="font-weight:bold;">
+                    SYSTEM THEME:
+                    
                 </li>
+                <div class="row"> 
+                    <div class="col s12">
+                    
+                    <div class="col s6"> 
+                         <li class="collection-item" style="font-weight:bold;">
+                  
+                    <p style="margin-top:-7%">For HEADER</p>
+                    <div style="font-weight:normal;" id = ''>
+                        &nbsp;&nbsp;&nbsp;  <input class="jscolor {onFineChange:'update(this)'}" value="#0d47a1">
+                    </div>
+                        </li>
+                    </div>
+                         <div class="col s6">  
+                            <li class="collection-item" style="font-weight:bold;">
+                    <p style="margin-top:-7%">For SIDE NAV</p>
+                     <div style="font-weight:normal;" id = ''>
+                        &nbsp;&nbsp;&nbsp;  <input class="jscolor {onFineChange:'update1(this)'}" value="#0d47a1">
+                    </div>
+                                  </li>
+                    </div>
+                    </div>
+                </div>
+              
+              
+                
 
                 
             </div>
         </div>
+        <li class="collection-header">
+           <p style="color:white">.</p>
+        </li>
     </ul>
 </div>
     
@@ -207,35 +229,23 @@
 <script>
 function update(jscolor) {
     // 'jscolor' instance can be used as a string
+     document.getElementById('jc').style.color = '#' + jscolor        
+      document.getElementById('admin').style.color = '#' + jscolor        
     document.getElementById('tit').style.color = '#' + jscolor
-     
-      
+        document.getElementById('incident').style.color = '#' + jscolor
+             document.getElementById("msg").style.color = '#' + jscolor
+                    document.getElementById('dash').style.color = '#' + jscolor
+                          document.getElementById('btnLogout').style.color = '#' + jscolor                           
 }
-function update1(jscolor) {
-    // 'jscolor' instance can be used as a string
-    document.getElementById('header').style.backgroundColor = '#' + jscolor
-       document.getElementById('ctitle').style.backgroundColor = '#' + jscolor
-       document.getElementById('guardnav').style.backgroundColor = '#' + jscolor
-     
-      
+function update1(jscolor) {  
+    document.getElementById('maint').style.color = '#' + jscolor
+            document.getElementById('regi').style.color = '#' + jscolor
+                document.getElementById('delivery').style.color = '#' + jscolor
+                    document.getElementById('announcement').style.color = '#' + jscolor
+                        document.getElementById('reports').style.color = '#' + jscolor
+                            document.getElementById('queries').style.color = '#' + jscolor
+                                document.getElementById('utilities').style.color = '#' + jscolor
 }
-function update2(jscolor) {
-    // 'jscolor' instance can be used as a string
-    document.getElementById('mobile-nav').style.backgroundColor = '#' + jscolor
-     
-      
-}
-function update3(jscolor) {
-    // 'jscolor' instance can be used as a string
-    document.getElementById('scrollhider').style.backgroundColor = '#' + jscolor
-     
-      
-}
-    function update4(jscolor) {
-    // 'jscolor' instance can be used as a string
-      
-}
-    
 </script>
 
 @stop

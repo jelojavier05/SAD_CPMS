@@ -65,15 +65,17 @@
             margin-left:24%;
             color:#011A27;
         }
-    .pdf
+    #pdf
         {
             font-family:inherit;
-            font-size:14px;
+            font-size:35px;
+            padding-top:2%;
+            padding-left:2%;
         }
   .text
         {
             font-size:13px;
-            padding-top:-2%;
+            padding-top:-1%;
         }
          .ss
         {
@@ -83,15 +85,15 @@
 
 <body>  
          
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img id="logo" src="{!! public_path('img/cpms-logo.png') !!}" width="100">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img id="logo" src="{!! public_path('img/cpms-logo.png') !!}" width="150">
     
-   <p id="title"> CLIENT AND PERSONNEL <br> MANAGEMENT SYSTEM</p>
+     <h2 id="pdf"><center><b><strong><i>&nbsp;&nbsp;CLIENT AND PERSONNEL<br> MANAGEMENT SYSTEM</i></strong></b></center></h2>
 
         <hr>
           <h2><center><b><strong><i>CLIENT AGREEMENT</i></strong></b></center></h2>
      
 
-        <p style="font-size:13px">
+        <p class="text" style="font-size:13px">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AN AGREEMENT made this
             <u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u> day of 
             <u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u>, 20
@@ -127,7 +129,7 @@
     <hr>
     
     <h2><center><b><strong><i>RESOURCES DEPLOYMENT</i></strong></b></center></h2>
-     <p style="text" class="ss">FIREARMS</p>
+     <p style="padding-bottom:2%">FIREARMS</p>
      <table>  <tbody>
                 <tr>
                     <th><center>Serial Number</center>
@@ -182,7 +184,7 @@
     
         </table>
     
-    <p style="text" class="ss">SECURITY GUARDS</p>
+    <p style="padding-bottom:2%">SECURITY GUARDS</p>
      <table>
             <tbody>
                 <tr>
