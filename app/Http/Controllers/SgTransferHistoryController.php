@@ -28,7 +28,7 @@ class SgTransferHistoryController extends Controller
             ->with('arrGuard', $arrGuard);
     }
 
-    public function getGuardInformation(){
+    public function getGuardInformation(Request $request){
         $guardID = Input::get('guardID');
         $now = Carbon::now();
 
@@ -40,11 +40,13 @@ class SgTransferHistoryController extends Controller
             ->select('tblguard.*', 'tblguardlicense.strLicenseNumber', 'tblguardaddress.strAddress', 'tblprovince.strProvinceName', 'tblcity.strCityName')
             ->where('tblguard.intGuardID', $guardID)
             ->first();
-
+        $dateBirthday = new Carbon($guardInformation->dateBirthday);
+        $guardInformation->age = Carbon::createFromDate($dateBirthday->year, $dateBirthday->month, $dateBirthday->day)->age;
         $guardTrackRecord = DB::table('tblclientguard')
             ->join('tblcontract', 'tblcontract.intContractID', '=', 'tblclientguard.intContractID')
             ->join('tblclient', 'tblclient.intClientID', '=', 'tblcontract.intClientID')
-            ->select('tblclient.strClientName', 'tblclientguard.boolStatus', 'tblclientguard.created_at')
+            ->join('tblnatureofbusiness', 'tblnatureofbusiness.intNatureOfBusinessID', '=', 'tblclient.intNatureOfBusinessID')
+            ->select('tblclient.strClientName', 'tblclientguard.boolStatus', 'tblclientguard.created_at', 'tblnatureofbusiness.strNatureOfBusiness')
             ->where('tblclientguard.intGuardID', $guardID)
             ->where('tblclientguard.boolStatus', '<>', 2)
             ->where('tblclientguard.created_at','<=', $now)
@@ -53,25 +55,39 @@ class SgTransferHistoryController extends Controller
 
         $trackRecord = array();
         foreach($guardTrackRecord as $value){
-            $created_at = (new Carbon($value->created_at))->toFormattedDateString();
+            $created_at = (new Carbon($value->created_at))->toDateString();
+            $pdfCreated_at = (new Carbon($value->created_at))->toFormattedDateString();
             if ($value->boolStatus == 1 || $value->boolStatus == 3){ //1 active, 3 reliever
                 $record = new \stdClass();
                 $record->strClientName = $value->strClientName;
                 $record->boolStatus = $value->boolStatus;
                 $record->dateStart = $created_at;
-                $record->dateEnd = '';
-                array_push($trackRecord, $record);
+                $record->dateEnd = 'Present';
+                $record->strNatureOfBusiness = $value->strNatureOfBusiness;
+                $record->pdfCreated_at = $pdfCreated_at;
+                $record->pdfDateEnd = 'Present';
+
+
+                if ($value->boolStatus == 1){
+                    $record->boolStatus = 'Deployed';
+                }else{
+                    $record->boolStatus = 'Reliever';
+                }
+                // array_push($trackRecord, $record);
+                array_unshift($trackRecord, $record);
             }else if ($value->boolStatus == 0){
                 $record = array_pop($trackRecord);
                 $record->dateEnd = $created_at;
+                $record->pdfDateEnd = $pdfCreated_at;
                 array_push($trackRecord, $record);
             }
         }//foreach
 
-
         $value = new \stdClass();
         $value->guardInformation = $guardInformation;
         $value->trackRecord = $trackRecord;
+
+        $request->session()->put('guardTrackRecord', $value);
 
         return response()->json($value);
     }

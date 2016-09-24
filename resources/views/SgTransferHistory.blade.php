@@ -45,44 +45,46 @@ Guard Transfer History
 		<!-- Guard Information -->
 			<div class="col s7" style="margin-top:10px;">
 				<ul class="collection with-header animated fadeInUp sidenavhover" style="max-height:550px;">
-					<li class="collection-header"><h5 style="font-weight:bold;">Personal Information</h5></li>
+					<li class="collection-header"><h5 style="font-weight:bold;">Personal Information</h5>
+					<span><button class="btn blue tooltipped right waves-effect  " data-position="bottom" data-delay="50" data-tooltip="Generate PDF" style="margin-top: -40px;" id = 'btnPrint'><i class="material-icons">picture_as_pdf</i></button></span>
+					</li>
 					<li class="collection-item">
 						<div class='row'>
 							<div class='col s4' style="font-weight:bold;">
-								First Name:<div style="font-weight:normal;" id = "strFirstName">&nbsp;&nbsp;&nbsp;Kawhi</div>
+								First Name:<div style="font-weight:normal;" id = "strFirstName">&nbsp;&nbsp;&nbsp;</div>
 							</div>
 					
 							<div class='col s4' style="font-weight:bold;">
-								Middle Name:<div style="font-weight:normal;" id = "strMiddleName">&nbsp;&nbsp;&nbsp;Test</div>
+								Middle Name:<div style="font-weight:normal;" id = "strMiddleName">&nbsp;&nbsp;&nbsp;</div>
 							</div>
 					
 							<div class='col s4' style="font-weight:bold;">
-								Last Name:<div style="font-weight:normal;" id = "strLastName">&nbsp;&nbsp;&nbsp;Leonard</div>
+								Last Name:<div style="font-weight:normal;" id = "strLastName">&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
 					</li>
 		  
-					<li class="collection-item" style="font-weight:bold; ">License Number:<div style="font-weight:normal;" id = "strLicenseNumber">&nbsp;&nbsp;&nbsp;122-221</div>
+					<li class="collection-item" style="font-weight:bold; ">License Number:<div style="font-weight:normal;" id = "strLicenseNumber">&nbsp;&nbsp;&nbsp;</div>
 					</li>
 		  	
-					<li class="collection-item" style="font-weight:bold; ">Address:<div style="font-weight:normal;" id = "strAddress">&nbsp;&nbsp;&nbsp;321 Bye Street</div>
+					<li class="collection-item" style="font-weight:bold; ">Address:<div style="font-weight:normal;" id = "strAddress">&nbsp;&nbsp;&nbsp;</div>
 					</li>		  		  	  
 		  
-					<li class="collection-item" style="font-weight:bold; ">Place of Birth:<div style="font-weight:normal;" id = "strPlaceBirth">&nbsp;&nbsp;&nbsp;Pasig City</div>
+					<li class="collection-item" style="font-weight:bold; ">Place of Birth:<div style="font-weight:normal;" id = "strPlaceBirth">&nbsp;&nbsp;&nbsp;</div>
 					</li>
 		  
 					<li class="collection-item">
 						<div class='row'>
 							<div class='col s4' style="font-weight:bold;">
-								Age:<div style="font-weight:normal;" id = "strAge">&nbsp;&nbsp;&nbsp;31</div>
+								Age:<div style="font-weight:normal;" id = "strAge">&nbsp;&nbsp;&nbsp;</div>
 							</div>
 					
 							<div class='col s4' style="font-weight:bold;">
-								Gender:<div style="font-weight:normal;" id = "strGender">&nbsp;&nbsp;&nbsp;Male</div>
+								Gender:<div style="font-weight:normal;" id = "strGender">&nbsp;&nbsp;&nbsp;</div>
 							</div>
 					
 							<div class='ol s4' style="font-weight:bold;">
-								Civil Status:<div style="font-weight:normal;" id = "strCivilStatus">&nbsp;&nbsp;&nbsp;Single</div>
+								Civil Status:<div style="font-weight:normal;" id = "strCivilStatus">&nbsp;&nbsp;&nbsp;</div>
 							</div>
 						</div>
 					</li>
@@ -90,11 +92,11 @@ Guard Transfer History
 					<li class="collection-item">
 						<div class='row'>
 							<div class='col s6' style="font-weight:bold;">
-								Contact Number (Mobile):<div style="font-weight:normal;" id = "strContactNumberMobile">&nbsp;&nbsp;&nbsp;09123456789</div>
+								Contact Number (Mobile):<div style="font-weight:normal;" id = "strContactNumberMobile">&nbsp;&nbsp;&nbsp;</div>
 							</div>
 					
 							<div class='col s6' style="font-weight:bold;">
-								Contact Number (Landline):<div style="font-weight:normal;" id = "strContactNumberLandline">&nbsp;&nbsp;&nbsp;8123456</div>
+								Contact Number (Landline):<div style="font-weight:normal;" id = "strContactNumberLandline">&nbsp;&nbsp;&nbsp;</div>
 							</div>										
 						</div>
 					</li>
@@ -103,7 +105,7 @@ Guard Transfer History
 						<table class="striped grey lighten-1" id="tblLog">
 							<h5 style="font-weight:bold;">Transfer History</h5>
 							<thead>
-								<th>Date</th>
+								<th>Date (Y-M-D)</th>
 								<th>Client</th>
 								<th>Stauts</th>
 							</thead>
@@ -124,22 +126,21 @@ Guard Transfer History
 
 <script>
 $(document).ready(function(){
-
+	var guardID = null;
 	$('#tblGuards').on('click', '.btnMore', function(){
-		var guardID = this.id;
+		guardID = this.id;
 		$.ajax({
 			type: "GET",
 			url: "/sgtransferlog/get/guardInformation?guardID=" + guardID,
 			success: function(data){
 				var guardInfo = data.guardInformation;
-				var strAge = moment(guardInfo.dateBirthday).fromNow(true);
 				$('#strFirstName').text(guardInfo.strFirstName);
 				$('#strMiddleName').text(guardInfo.strMiddleName);
 				$('#strLastName').text(guardInfo.strLastName);
 				$('#strLicenseNumber').text(guardInfo.strLicenseNumber);
 				$('#strAddress').text(guardInfo.strAddress + ' ' + guardInfo.strProvinceName + ', ' + guardInfo.strCityName);
 				$('#strPlaceBirth').text(guardInfo.strPlaceBirth);
-				$('#strAge').text(strAge);
+				$('#strAge').text(guardInfo.age);
 				$('#strGender').text(guardInfo.strGender);
 				$('#strCivilStatus').text(guardInfo.strCivilStatus);
 				$('#strContactNumberMobile').text(guardInfo.strContactNumberMobile);
@@ -151,22 +152,11 @@ $(document).ready(function(){
 				var boolStatus;
 				table.clear().draw();
 				$.each(trackRecord, function(index, value){
-					if (value.dateEnd == ''){
-						dateEnd = 'Present';
-					}else{
-						dateEnd = value.dateEnd;
-					}
-
-					if (value.boolStatus == 1){
-						boolStatus = 'Deployed';
-					}else if (value.boolStatus == 3){
-						boolStatus = 'Reliever';
-					}
 
 					table.row.add([
-						'<h>' + value.dateStart + ' - ' + dateEnd +'</h>',
+						'<h>' + value.dateStart + ' - ' + value.dateEnd +'</h>',
 						'<h>' + value.strClientName + '</h>',
-						'<h>' + boolStatus + '</h>',
+						'<h>' + value.boolStatus + '</h>',
 					]).draw();
 				});
 			},
@@ -175,6 +165,15 @@ $(document).ready(function(){
 				Materialize.toast(toastContent, 1500,'red', 'edit');
 			}
 		});//ajax
+	});
+
+	$('#btnPrint').click(function(){
+		if(guardID != null){
+			window.location.href = '{{ URL::to("/getTrackTransferRec") }}';
+		}else{
+			var toastContent = $('<span>Choose Guard.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
 	});
 });	
 </script>
@@ -198,6 +197,7 @@ $(document).ready(function(){
 			null,
 			null
 			] ,  
+			"order": [[ 0, "desc" ]],
 			"pageLength":5,
 			"bLengthChange": false,
 			"bFilter": false

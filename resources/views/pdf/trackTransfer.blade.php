@@ -79,6 +79,25 @@
         {
             font-size:16px;
         }
+
+        .container1
+        {
+            position:relative;            
+            /*background: red;*/
+            width:50%;
+
+        }
+
+        .container2
+        {
+            position:absolute;        
+            /*margin-left:400px;
+            margin-top:-200px;*/
+            width:50%;
+            /*background:green;*/
+            top:250px;
+            left:360px;
+        }
 </style>
 
 <body>  
@@ -89,32 +108,59 @@
 
         <hr>
           <h2><center><b><strong><i>Guard Transfer History</i></strong></b></center></h2>
+          <!-- <h4><center><b><strong><i>{{$now}}</i></strong></b></center></h4> -->
      
 
         
     <p style="text-align:center;"> Guard Personal Information </p>
     
-    <p style="text" class="ss"> 
-        GUARD ID:
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LICENSE NUMBER:
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GUARD NAME:
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CURRENT STATUS:
-    </p>
-    
-    <p style="padding-top:-3%" class="ss"> 
-        ADDRESS:
-        
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLACE OF BIRTH:
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AGE:
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GENDER:
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CIVIL STATUS:
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTACT NUMBER (MOBILE):
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTACT NUMBER (LANDLINE):
-    </p>
+    <div class="container1">
+        <div style="font-weight: bold;">
+            GUARD ID:&nbsp;&nbsp;<span style="font-weight:normal;">{{$guardInformation->intGuardID}}</span>
+        </div>
+
+        <div style="font-weight: bold;">
+            GUARD NAME:&nbsp;&nbsp;<span style="font-weight:normal;">{{$guardInformation->strFirstName}} {{$guardInformation->strLastName}}</span>
+        </div>
+
+        <div style="font-weight: bold;">
+            ADDRESS:&nbsp;&nbsp;<span style="font-weight:normal;">{{$guardInformation->strAddress}} {{$guardInformation->strCityName}}, {{$guardInformation->strProvinceName}}</span>
+        </div>
+
+        <div style="font-weight: bold;">
+            AGE:&nbsp;&nbsp;<span style="font-weight:normal;">{{$guardInformation->age}}</span>
+        </div>
+
+        <div style="font-weight: bold;">
+            CONTACT NUMBER (MOBILE):&nbsp;&nbsp;<span style="font-weight:normal;">{{$guardInformation->strContactNumberMobile}}</span>
+        </div>
+    </div>
+
+    <div class="container2">
+        <div style="font-weight: bold;">
+            LICENSE NUMBER:&nbsp;&nbsp;<span style="font-weight:normal;">{{$guardInformation->strLicenseNumber}}</span>
+        </div>
+
+        <div style="font-weight: bold;">
+            GENDER:&nbsp;&nbsp;<span style="font-weight:normal;">{{$guardInformation->strGender}}</span>
+        </div>
+
+        <div style="font-weight: bold;">
+            PLACE OF BIRTH:&nbsp;&nbsp;<span width="20px" style="font-weight:normal;">{{$guardInformation->strPlaceBirth}} </span>
+        </div>
+
+        <div style="font-weight: bold;">
+            CIVIL STATUS:&nbsp;&nbsp;<span style="font-weight:normal;">{{$guardInformation->strCivilStatus}}</span>
+        </div>
+
+        <div style="font-weight: bold;">
+            CONTACT NUMBER (LANDLINE):&nbsp;&nbsp;<span style="font-weight:normal;">{{$guardInformation->strContactNumberLandline}}</span>
+        </div>
+    </div>
     
     
      <h3><center><b><i>Transfer History</i></b></center></h3>
-     <h5><center><b><strong><i>From: January 1, 2013 To: January 1, 2017</i></strong></b></center></h5>
+
      <br>
      <br>
          <table>
@@ -128,35 +174,15 @@
                     </th>
                      <th><center>Status</center>
                     </th>
-
+                    @foreach($trackRecord as $value)
                     </tr>
                         <tr>
-                        <td>01/12/2016</td>
-                        <td>Polytechnic University of the Philippines</td>
-                        <td>School</td>
-                        <td>Active</td>
+                        <td>{{$value->pdfCreated_at}} - {{$value->pdfDateEnd}}</td>
+                        <td>{{$value->strClientName}}</td>
+                        <td>{{$value->strNatureOfBusiness}}</td>
+                        <td>{{$value->boolStatus}}</td>
                     </tr>
-
-                     <tr>
-                        <td>05/24/2014</td>
-                        <td>China Bank</td>
-                        <td>Bank</td>
-                        <td>Swap</td>
-                    </tr>
-
-                     <tr>
-                        <td>04/27/2013</td>
-                        <td>BDO</td>
-                        <td>Bank</td>
-                        <td>Active</td>
-                    </tr>
-
-                     <tr>
-                        <td>04/1/2013</td>
-                        <td>Robinson Magnolia</td>
-                        <td>Mall</td>
-                        <td>Terminated</td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
 
