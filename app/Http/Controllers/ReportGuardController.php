@@ -22,7 +22,7 @@ class ReportGuardController extends Controller
         return view('/reports/ReportGuard');
     }
 
-    public function getPieInformation(){
+    public function getPieInformation(Request $request){
         $arrCityResult = DB::table('tblcity')
             ->select('strCityName', 'intCityID')
             ->get();    
@@ -32,6 +32,9 @@ class ReportGuardController extends Controller
         $arrPie = array();
         $arrClientGuardCount = array();
         $arrTabularForm = array();
+        $intTotalNumberGuard = 0;
+        $intTotalNumberClient = 0;
+
         foreach($arrCityResult as $value){
             $arrClientResult = DB::table('tblclient')
                 ->join('tblclientaddress', 'tblclientaddress.intClientID','=','tblclient.intClientID')
@@ -41,7 +44,7 @@ class ReportGuardController extends Controller
                 ->where('tblclient.intStatusIdentifier', 2)
                 ->where('tblcontract.boolStatus', 1)
                 ->get();
-
+            $intTotalNumberClient += count($arrClientResult);
             $cityName = $value->strCityName;
 
             $cityResult = new \stdClass();
@@ -73,6 +76,7 @@ class ReportGuardController extends Controller
                         ->where('intGuardID', $valueGuardID->intGuardID)
                         ->where('intContractID', $valueClient->intContractID)
                         ->where('tblclientguard.created_at', '<=', $date)
+                        ->orderBy('tblclientguard.created_at', 'desc')
                         ->first();
 
                     if (!is_null($activeGuard) && $activeGuard->boolStatus == 1){
@@ -99,6 +103,7 @@ class ReportGuardController extends Controller
             $clientResult->id = $value->intCityID;
             $clientResult->data = $arrClientInformation;
 
+            $intTotalNumberGuard += $intCounterTotalGuardInCity;
             array_push($arrClientGuardCount, $clientResult);
         }
 
@@ -106,7 +111,16 @@ class ReportGuardController extends Controller
         $pieInformation->series = $arrPie;
         $pieInformation->drilldown = $arrClientGuardCount;
         $pieInformation->tabularForm = $arrTabularForm;
+
+        $totalNumber = new \stdClass();
+        $totalNumber->guard = $intTotalNumberGuard;
+        $totalNumber->city = count($arrCityResult);
+        $totalNumber->client = $intTotalNumberClient;
+        $pieInformation->totalNumber = $totalNumber;
+        $pieInformation->dateAsOf = (new Carbon($date))->toFormattedDateString();
+        $pieInformation->arrCity = $arrCityResult;
         
+        $request->session()->put('pieInformation', $pieInformation);
         return response()->json($pieInformation);
     }
 }

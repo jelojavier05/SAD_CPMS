@@ -103,57 +103,35 @@
       <h2 id="pdf"><center><b><strong><i>&nbsp;&nbsp;CLIENT AND PERSONNEL<br> MANAGEMENT SYSTEM</i></strong></b></center></h2>
     
     <p><center class="ss">GUARDS Deployed Per Area</center></p>
-    <h2 id="date" ><center><b><strong><i>FROM January 12, 2015 TO December 28, 2016</i></strong></b></center></h2>
+    <h2 id="date" ><center><b><strong><i>As Of: {{$dateAsOf}}</i></strong></b></center></h2>
         <hr>
         
         
         
-     <table>
-         
-            <tbody>
-                <tr>
-                
-                 <th><center>CITY</center>
-                </th>
-                 <th><center>CLIENT</center>
-                </th>
-                 <th><center>NUMBER OF GUARDS</center>
-                </th>
-                
-                
-                
-                </tr>
-               
-            </tbody>
-         <tr>
-             <td>123</td>
-             <td>123</td>
-             <td>123</td>
-         </tr>
-         <tr>
-             <td>123</td>
-             <td>123</td>
-             <td>123</td>
-         </tr>
-    
-         <tr>
-             <td>123</td>
-             <td>123</td>
-             <td>123</td>
-         </tr>
-    
-    
-    
-    
-        </table>
+    <table>
+      <tbody>
+        <tr>
+          <th><center>CITY</center></th>
+          <th><center>CLIENT</center></th>
+          <th><center>NUMBER OF GUARDS</center></th>
+        </tr>
+      </tbody>
+        @foreach($dataTable as $value)
+        <tr>
+          <td>{{$value->strCityName}}</td>
+          <td>{{$value->strClientName}}</td>
+          <td>{{$value->intCityCountGuard}}</td>
+        </tr>
+        @endforeach
+    </table>
       <br>
     <br>
     <br>
     
     <p>Total Number of:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-     <p class="tot"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CITIES:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;25</p>
-     <p class="tot">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLIENTS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;25</p>
-     <p class="tot"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GUARDS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;25</p>
+     <p class="tot"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CITIES:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$totalNumber->city}}</p>
+     <p class="tot">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLIENTS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$totalNumber->client}}</p>
+     <p class="tot"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GUARDS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$totalNumber->guard}}</p>
     </body>
     
 </html>

@@ -16,11 +16,14 @@ Guards Deployed per Area
     <div class="col s12 push-s1">
         <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%; padding-bottom:1%;">
 			<div class="row"></div>
+
 			<div class="row">
 				<div class="col s8">
 					<div class="input-field col s4">
 						<label class="active" style="color:#64b5f6;"  for="dateReport">Date</label>	
-				        <input placeholder=""  id="dateReport" type="date" class="datepicker">
+				    <input placeholder=""  id="dateReport" type="date" class="datepicker">
+
+				    <span><button class="btn blue tooltipped right waves-effect  " data-position="bottom" data-delay="50" data-tooltip="Generate PDF" style="margin-top: -40px;" id = 'btnPrint'><i class="material-icons">picture_as_pdf</i></button></span>
 					</div>					
 				</div>
 
@@ -57,17 +60,6 @@ Guards Deployed per Area
 								<th>Number of Guards</th>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Makati</td>
-									<td>ChinaBank</td>
-									<td>10</td>
-								</tr>
-								
-								<tr>
-									<td>Manila</td>
-									<td>LandBank</td>
-									<td>11</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
@@ -85,7 +77,7 @@ Guards Deployed per Area
 								</div>
 								
 								<div class="col s7">
-									<h5 style="font-weight:bold;">3</h5>
+									<h5 style="font-weight:bold;" id = 'totalCity'></h5>
 								</div>
 							</div>
 							
@@ -95,7 +87,7 @@ Guards Deployed per Area
 								</div>
 
 								<div class="col s7">
-									<h5 style="font-weight:bold;">5</h5>
+									<h5 style="font-weight:bold;" id = 'totalClient'></h5>
 								</div>
 							</div>
 							
@@ -105,7 +97,7 @@ Guards Deployed per Area
 								</div>
 								
 								<div class="col s7">
-									<h5 style="font-weight:bold;">20</h5>
+									<h5 style="font-weight:bold;" id = 'totalGuard'></h5>
 								</div>
 							</div>
 						</li>
@@ -130,19 +122,29 @@ $(document).ready(function(){
   
   $('#dateReport').on('change', function(){
     var dateReport = $('#dateReport').val();
-
     $.ajax({
       type: "GET",
       url: "/reports/ReportGuard/get/PieInformation?dateReport=" + dateReport,
       success: function(data){
         setChart(data);
         setTable(data.tabularForm);
+        setTotalNumber(data.totalNumber);
       },
       error: function(data){
         var toastContent = $('<span>Error Database.</span>');
         Materialize.toast(toastContent, 1500,'red', 'edit');
       }
     });//ajax
+  });
+
+  $('#btnPrint').click(function(){
+  	var dateReport = $('#dateReport').val();
+  	if (dateReport != ''){	
+  		window.location.href = '{{ URL::to("/getGuardDeployedparea") }}';
+  	}else{
+  		var toastContent = $('<span>Select Date. </span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+  	}
   });
 
   function setChart(data){
@@ -190,6 +192,12 @@ $(document).ready(function(){
         '<h>' + value.clientCountGuard + '</h>',
       ]).draw();
     });
+  }
+
+  function setTotalNumber(data){
+  	$('#totalCity').text(data.city);
+  	$('#totalGuard').text(data.guard);
+  	$('#totalClient').text(data.client);
   }
 });
 </script>
