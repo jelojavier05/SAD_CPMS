@@ -294,6 +294,12 @@ Route::get('/getTrackTransferRec', 'PDFTrackTransferRecordController@getTrackTra
 Route::get('/getGuardDeployedparea', 'PDFGuardDeployedPerAreaController@getGuardDeployedparea');
 
 
+//PDF QUERIES ---------------------------------------------
+Route::get('/getQueryGuards', 'PDFQueryGuardsController@getQueryGuards');
+Route::get('/getQueryClient', 'PDFQueryClientController@getQueryClient');
+Route::get('/getQueryGun', 'PDFQueryGunController@getQueryGun');
+
+
 //Settings -----------------------------------------------
 Route::get('/settings', 'SettingsController@index');
 
