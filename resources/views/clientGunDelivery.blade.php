@@ -74,12 +74,12 @@ Delivery
 								</div>
 
 								<div class="input-field col s6">
-									<input placeholder=" " id="deliveredBy" type="text" class="validate" pattern="[A-za-z ][^0-9]{2,}" required="" aria-required="true">
+									<input placeholder=" " id="deliveredBy" type="text" class="validate" pattern="[a-zA-Z'-. ]{2,}" required="" aria-required="true">
 									<label for="deliveredBy"  data-error="Incorrect">Delivered By</label>
 								</div>
 
 								<div class="input-field col s6">
-									<input placeholder=" " id="contactNumber" maxlength="13" type="text" class="validate" pattern="[0-9+ ]{11,}" required="" aria-required="true">
+									<input placeholder=" " id="deliverycontactNumber" maxlength="13" type="text" class="validate" pattern="[-0-9+-]{7,}" required="" aria-required="true">
 									<label data-error="Incorrect" for="contactDeliver">Contact Number (Delivery)</label>
 								</div>
 
@@ -124,38 +124,42 @@ Delivery
 
         $('#btnDeliver').click(function(){
             var deliveredBy = $('#deliveredBy').val();
-            var contactNumber = $('#contactNumber').val();
-            $.ajax({
-                type: "POST",
-                url: "{{action('GunDeliveryController@postDelivery')}}",
-                beforeSend: function (xhr) {
-                    var token = $('meta[name="csrf_token"]').attr('content');
+            var contactNumber = $('#deliverycontactNumber').val();
+			if (checkInput()){	
+				$.ajax({
+					type: "POST",
+					url: "{{action('GunDeliveryController@postDelivery')}}",
+					beforeSend: function (xhr) {
+						var token = $('meta[name="csrf_token"]').attr('content');
 
-                    if (token) {
-                          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    }
-                },
-                data: {
-                    deliveredBy: deliveredBy,
-                    contactNumber: contactNumber,
-                    deliveryCode: $('#deliveryCode').val()
-                },
-                success: function(data){
+						if (token) {
+							  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+						}
+					},
+					data: {
+						deliveredBy: deliveredBy,
+						contactNumber: contactNumber,
+						deliveryCode: $('#deliveryCode').val()
+					},
+					success: function(data){
 
-                	swal({
-						title: "Success!",
-						text: "Delivery Recorded!",
-						type: "success"
-					},function(){
-						window.location.href = '{{ URL::to("/gunDeliveryView") }}';
-					});
-                },
-                error: function(data){
-                    var toastContent = $('<span>Error Occured. </span>');
-                    Materialize.toast(toastContent, 1500,'red', 'edit');
+						swal({
+							title: "Success!",
+							text: "Delivery Recorded!",
+							type: "success"
+						},function(){
+							window.location.href = '{{ URL::to("/gunDeliveryView") }}';
+						});
+					},
+					error: function(data){
+						var toastContent = $('<span>Error Occured. </span>');
+						Materialize.toast(toastContent, 1500,'red', 'edit');
 
-                }
-            });//ajax
+					}
+				});//ajax
+			}else{
+                swal('Warning!', 'Please Check Your Input', 'warning')
+            }
         });
 
         function getRandomPassword(){
@@ -178,6 +182,27 @@ Delivery
                 "pageLength":5,
 				"lengthMenu": [5,10,15,20]
             });
+		
+		function checkInput(){
+			var checker;
+			if ($('#deliveredBy').val().trim() == '' || checker == false || !alphaValidate($('#deliveredBy').val().trim()) ||
+			$('#deliverycontactNumber').val().trim() == '' || checker == false || !landlinenumberValidate($('#deliverycontactNumber').val().trim())
+			){
+				checker = false;
+			}else{
+				checker = true;
+			}
+			
+			return checker;
+		}
+		
+		function alphaValidate(str) {
+  			return /^[a-zA-Z'-. ]{2,}$/.test(str);
+			}
+		
+		function landlinenumberValidate(str) {
+  			return /^[-0-9+-]{7,}$/.test(str);
+			}
 	});
 </script>
 @stop

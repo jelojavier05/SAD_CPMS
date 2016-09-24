@@ -8,7 +8,7 @@ Delivery
 <div class="row">
 	<div class="col s7 push-s1">
 		<!-- Delivery and Pickup Table -->
-			<div class="container grey lighten-2 z-depth-2 animated fadeInUp" style="border-radius: 10px; margin-top:40px;margin-left:16%; padding-left:2%;padding-right:2%;">
+			<div class="container grey lighten-2 z-depth-2 animated fadeInUp" style="border-radius: 10px; margin-top:-10px;margin-left:16%; padding-left:2%;padding-right:2%;">
 				<div class="col s6" style="margin-top:-15px;">
 					<h3 class="blue-text">Delivery and Pickup</h3>
 				</div>
