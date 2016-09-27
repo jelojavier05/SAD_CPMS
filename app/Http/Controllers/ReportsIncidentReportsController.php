@@ -21,29 +21,39 @@ class ReportsIncidentReportsController extends Controller
     		->select('*')
     		->where('deleted_at', null)
     		->get();
-    	$year = Input::get('year');
 
-    	$arrIncidentReport = array();
-
+    	// $year = Input::get('year');
+    	$year = 2016;
     	$dateStart = Carbon::now();
     	$dateStart->day = 1;
     	$dateStart->year = $year;
-
     	$dateEnd = Carbon::now();
     	$dateEnd->year = $year;
 
+    	$arrIncidentReport = array();
     	foreach($arrCity as $value){
     		$objIncidentReport = new \stdClass();
     		$objIncidentReport->name = $value->strCityName;
 
-    		$arr
+    		$arrCountPerMonth = array();
     		for ($intLoop = 1; $intLoop <= 12; $intLoop ++){
     			$dateStart->month = $intLoop;
     			$dateEnd->month = $intLoop;
     			$dateEnd->day = $dateEnd->daysInMonth;
 
-    			
+    			$intCountPerMonth = DB::table('tblreportincident')
+    				->join('tblclient', 'tblclient.intClientID', '=', 'tblreportincident.intClientID')
+    				->join('tblclientaddress', 'tblclientaddress.intClientID', '=', 'tblclient.intClientID')
+    				->whereBetween('tblreportincident.datetimeReport', [$dateStart, $dateEnd])
+    				->where('tblclientaddress.intCityID', $value->intCityID)
+    				->count();
+
+    			array_push($arrCountPerMonth, $intCountPerMonth);
     		}//for loop
+    		$objIncidentReport->data = $arrCountPerMonth;
+    		array_push($arrIncidentReport, $objIncidentReport);
     	}//foreach
+
+    	return response()->json($arrIncidentReport);
     }
 }
