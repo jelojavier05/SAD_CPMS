@@ -17,10 +17,10 @@ Incident Reports - Reports
 			<div class="row"></div>
 			<div class="row">
 				<div class="col s4">
-					<select>
+					<select id = 'reportFilter'>
 						<option disabled selected>Choose Filter</option>
-						<option>Nature of Business</option>
-						<option>City</option>
+						<option value = '0'>Nature of Business</option>
+						<option value = '1'>City</option>
 					</select>						
 				</div>			            
 				<div class="row">
@@ -36,41 +36,56 @@ Incident Reports - Reports
 
 @section('script')
 <script>
-$.ajax({
-  type: "GET",
-  url: "{{action('ReportsIncidentReportsController@getIncidentReportPerArea')}}",
-  success: function(data){
-    $('#container').highcharts({
-        chart: {
-            type: 'line'
-        },
-        title: {
-            text: 'Monthly Incident Report'
-        },
-        xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        },
-        yAxis: {
-            title: {
-                text: 'Count'
-            }
-        },
-        plotOptions: {
-            line: {
-                dataLabels: {
-                    enabled: true
-                },
-                enableMouseTracking: true
-            }
-        },
-        series: data
-    });
-  },
-  error: function(data){
-    var toastContent = $('<span>Error Database.</span>');
-    Materialize.toast(toastContent, 1500,'red', 'edit');
+$('#reportFilter').on('change',function(){
+  
+  var selectFilter = $('#reportFilter').val();
+  var strFunction;
+  if (selectFilter == 0){
+    strFunction = 'getIncidentPerNatureOfBusiness';
+  }else if (selectFilter == 1){
+    strFunction = 'getIncidentPerArea';
   }
-});//ajax
+  $.ajax({
+    type: "GET",
+    url: "/reportsincidentreports/" + strFunction,
+    success: function(data){
+      setChart(data);
+    },
+    error: function(data){
+      var toastContent = $('<span>Error Database.</span>');
+      Materialize.toast(toastContent, 1500,'red', 'edit');
+    }
+  });//ajax
+});
+
+
+function setChart(data){
+  $('#container').highcharts({
+      chart: {
+          type: 'line'
+      },
+      title: {
+          text: 'Monthly Incident Report'
+      },
+      xAxis: {
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      },
+      yAxis: {
+          title: {
+              text: 'Count'
+          }
+      },
+      plotOptions: {
+          line: {
+              dataLabels: {
+                  enabled: true
+              },
+              enableMouseTracking: true
+          }
+      },
+      series: data
+  });
+}
 
 
 $(function () {
