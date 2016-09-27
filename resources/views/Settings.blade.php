@@ -18,25 +18,32 @@
         
         <div class="col s12"> 
             <div class="col s6">
-                <li class="collection-item" style="font-weight:bold;">
-                   Administrator's Name:
-                    <div style="font-weight:normal;" id = ''>
-                        &nbsp;&nbsp;&nbsp; John Cena
-                    </div>
-                </li>
-                <li class="collection-item" style="font-weight:bold;">
-                    Organization/System Name:
-                    <div style="font-weight:normal;" id = ''>
-                        &nbsp;&nbsp;&nbsp; CLIENT AND PERSONNEL MANAGEMENT SYSTEM
-                    </div>
-                </li>
+                <li class="collection-item" style="font-weight:bold;">                   
+                    <div class="input-field col s12">
+						<input placeholder=" " id="" type="text" class="validate" name = "" required="" aria-required="true">
+						<label class="active" for="">Administrator Name</label> 
+					</div>	
+                
+                
+                   <div class="input-field col s12">
+						<input placeholder=" " id="" type="text" class="validate" name = "" required="" aria-required="true">
+						<label class="active" for="">Organization/System Name</label> 
+					</div>
+                
 
-                <li class="collection-item" style="font-weight:bold;">
-                    System Logo:
-                    <div style="font-weight:normal;" id = ''>
-                        &nbsp;&nbsp;&nbsp; 
-                        <img src="{!! URL::asset('../Materialize/images/logo.png') !!}" width="30%">
-                    </div>
+                
+                    <div class="file-field input-field col s12">
+					  <label class="active">System Logo</label>
+						<div class="row"></div>
+					  <div class="btn blue">
+						<span>File</span>
+						<input type="file">
+					  </div>
+					  <div class="file-path-wrapper">
+						<input class="file-path validate" type="text">
+					  </div>
+						
+					</div>
                 </li>
                   
             </div>
@@ -57,171 +64,58 @@
                 </li>
                 
               <li class="collection-item" style="font-weight:bold;">
-                    SYSTEM THEME:
+                    Administrator Account:
                     
                 </li>
                 <div class="row"> 
                     <div class="col s12">
-                    
-                    <div class="col s6"> 
-                         <li class="collection-item" style="font-weight:bold;">
-                  
-                    <p style="margin-top:-7%">For HEADER</p>
-                    <div style="font-weight:normal;" id = ''>
-                        &nbsp;&nbsp;&nbsp;  <input class="jscolor {onFineChange:'update(this)'}" value="#0d47a1">
+                    	
+							<li class="collection-item">
+								<div class="input-field col s12">
+									<input placeholder=" " id="" type="text" class="validate" name = "" required="" aria-required="true">
+									<label class="active" for="">Username</label> 
+								</div>							
+														
+								<div class="input-field col s12">
+									<input placeholder=" " id="" type="password" class='validate' name="" required="" aria-required="true">
+									<label class='active' for="">Password</label>
+								</div>
+								
+								<div class="input-field col s12">
+									<input placeholder=" " id="" type="password" class='validate' name="" required="" aria-required="true">
+									<label class='active' for="">Confirm Password</label>
+								</div>
+							</li>
+						                 
                     </div>
-                        </li>
-                    </div>
-                         <div class="col s6">  
-                            <li class="collection-item" style="font-weight:bold;">
-                    <p style="margin-top:-7%">For SIDE NAV</p>
-                     <div style="font-weight:normal;" id = ''>
-                        &nbsp;&nbsp;&nbsp;  <input class="jscolor {onFineChange:'update1(this)'}" value="#0d47a1">
-                    </div>
-                                  </li>
-                    </div>
-                    </div>
-                </div>
-              
-              
-                
-
-                
+                </div>								                                                            
             </div>
+			<center><button class="btn blue btnSave">Save Changes</button></center>
         </div>
+		
         <li class="collection-header">
            <p style="color:white">.</p>
         </li>
     </ul>
-</div>
-    
-    
-<!--------------------CUSTOMIZATION TAB------------------->
-    
-    
-<!--
-<div id="Customization" class="ci col s8 push-s3" style="margin-top:2px;">
-    <ul class="collection with-header" id="collectionActive" >
-        <li class="collection-header">
-            <h4 style="font-weight:bold;">Basic Design</h4>
-        </li>
-                
-        <div class="col s12"> 
-            <div class="col s6">                        
-                <li class="collection-item" style="font-weight:bold;">
-                    System Title
-                    <input class="jscolor {onFineChange:'update(this)'}" value="#ffffff">
-                </li>
-
-                <li class="collection-item" style="font-weight:bold;">
-                    Header and Wrapper
-                    <input class="jscolor {onFineChange:'update1(this)'}" value="#0d47a1">
-                </li>
-                
-                <li class="collection-item" style="font-weight:bold;">
-                    Side Navigation
-                    <input class="jscolor {onFineChange:'update2(this)'}" value="#0d47a1">
-                    </li>
-                
-                <li class="collection-item" style="font-weight:bold;">
-                    Body
-                    <input class="jscolor {onFineChange:'update3(this)'}" value="#0d47a1">
-                </li>
-            </div>
-        </div>
--->
-            
-<!--
-<<<<<<< HEAD
-<!--
-                <div class="col s6">                        
-                        <li class="collection-item" style="font-weight:bold;">
-                            System Title
-                            <input class="jscolor {onFineChange:'update(this)'}" value="cc66ff">
-                        </li>
-
-                        <li class="collection-item" style="font-weight:bold;">
-                            Header and Wrapper
-                            <input class="jscolor {onFineChange:'update1(this)'}" value="cc66ff">
-                        </li>
-                        <li class="collection-item" style="font-weight:bold;">
-                            Side Navigation
-                            <input class="jscolor {onFineChange:'update2(this)'}" value="cc66ff">
-                        </li>
-                     <li class="collection-item" style="font-weight:bold;">
-                            Body
-                            <input class="jscolor {onFineChange:'update3(this)'}" value="cc66ff">
-                        </li>
-                </div>
-			 </div>
-            <li class="collection-header">
-				<h4 style="font-weight:bold;">.</h4>
-			</li>
-        <li class="collection-header">
-            <h4 style="font-weight:bold;">.</h4>
-        </li>
--->
-
-    <!--
-           <li class="collection-header">
-				<h4 style="font-weight:bold;">Modals, Tabs,  </h4>
-			</li>
-             <div class="col s12"> 
-            
-                <div class="col s6">                        
-                        <li class="collection-item" style="font-weight:bold;">
-                            Modals
-                            <input class="jscolor {onFineChange:'update4(this)'}" value="cc66ff">
-                        </li>
-
-                        <li class="collection-item" style="font-weight:bold;">
-                            Header and Wrapper
-                            <input class="jscolor {onFineChange:'update1(this)'}" value="cc66ff">
-                        </li>
-                      
-                </div>
-			 </div>
-        </ul>
-              <button class="z-depth-1 btn-large green modal-trigger" href="#modalEditAccount">
-                        <i class="material-icons left">add</i> EDIT ACCOUNT
-                    </button>
-          <button class="z-depth-1 btn-large green modal-trigger" href="#modalEditColor">
-                        <i class="material-icons left">add</i> EDIT COLOR
-                    </button>
-             
-            
-        </div>
-        
-    </div>
-        </div>
-    </div>
-<!--
-
-<div id="modalEditAccount" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
-       <div class="modal-header">
-                <div id="h">
-                    <h3><center>Account</center></h3>  
-				</div>
-
-            </div>
-</div>
-<div id="modalEditColor" class="modal modal-fixed-footer ci" style="overflow:hidden; width:40% !important; margin-top:50px !important;  max-height:100% !important; height:400px !important; border-radius:10px;">
-       <div class="modal-header" id="modalss">
-                <div id="h">
-                    <h3><center>Color</center></h3>  
-				</div>
-
-            </div>-->
+</div>        
 </div>
 
 @stop
 
 @section('script')
 <script>
-	$('#buttonEditAccount').click(function(){
+	$('.btnSave').click(function(){
 		
 
-		$('#modalEditAccount').openModal();
+		swal({   title: "Are you sure?",  
+			  text: "Your Changes will be saved",   
+			  type: "warning",   
+			  showCancelButton: true,   
+			  confirmButtonColor: "green",   
+			  confirmButtonText: "Save Changes",   
+			  closeOnConfirm: false }, 
+			 function(){   			 
+		});
 	});
 
 
