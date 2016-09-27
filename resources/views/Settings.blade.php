@@ -49,24 +49,7 @@
             </div>
             
             <div class="col s6">                        
-                <li class="collection-item" style="font-weight:bold;">
-                    Address:
-                    <div style="font-weight:normal;" id = ''>
-                        &nbsp;&nbsp;&nbsp; 3383 V. Mapa 2nd St. Sta. Mesa, Manila
-                    </div>
-                </li>
-
-                <li class="collection-item" style="font-weight:bold;">
-                    Telephone/Cellphone Number:
-                    <div style="font-weight:normal;" id = ''>
-                        &nbsp;&nbsp;&nbsp; 09294206368
-                    </div>
-                </li>
-                
-              <li class="collection-item" style="font-weight:bold;">
-                    Administrator Account:
-                    
-                </li>
+   				<h5 style="font-weight:bold;">Administrator Account:</h5>
                 <div class="row"> 
                     <div class="col s12">
                     	
