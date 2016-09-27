@@ -28,7 +28,7 @@ Admin
       	 <div class="card animated zoomIn" style="background-color:#8D230F" >
             <div class="card-content white-text">
               <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'clientNumber'>{{$value->countClient}}</span>
-              <p style="margin-l	eft:10px;">Clients</p>
+              <p style="margin-l	eft:10px;">Clients <br> &nbsp;</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
             </div>
             <div class="card-action" style="background-color:#8D230F">
@@ -45,7 +45,7 @@ Admin
           <div class="card animated zoomIn" style="background-color:#1E434C">
             <div class="card-content white-text">
               <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'guardNumber'>{{$value->countGuard}}</span>
-              <p style="margin-left:10px;">Guards</p>
+              <p style="margin-left:10px;">Guards <br> &nbsp;</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">accessibility</i>
             </div>
             <div class="card-action" style="background-color:#1E434C">
@@ -63,7 +63,7 @@ Admin
             <div class="card-content white-text">
 
               <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'gunNumber'>{{$value->countGun}}</span>
-              <p style="margin-left:10px;">Guns</p>
+              <p style="margin-left:10px;">Guns <br> &nbsp;</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">tonality</i>
 
             </div>
@@ -76,23 +76,45 @@ Admin
           </div> 
           
         </div>
-   
-     <div class="col l2">
-
-          <div class="card animated zoomIn" style="background-color:#323030">
+		  
+	<div class="col l2">
+           <div class="card animated zoomIn teal darken-1" style="background-color:#9B4F0F">
             <div class="card-content white-text">
-              <span class="card-title" style="font-size:40px; font-weight:bold;">{{$value->countGunLicense}}</span>
-              <p style="margin-left:10px;">Gun<br>Licenses</p>
-			  <i class="material-icons right" style="font-size:5rem; margin-top:-60%;">forward</i>
+
+              <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'gunNumber'>30</span>
+              <p style="margin-left:10px;">Contract <br> Extensions</p>
+			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">extension</i>
+
             </div>
-            <div class="card-action" style="background-color:#323030;margin-top:-11%">
+            <div class="card-action teal darken-1" style="background-color:#9B4F0F">
               <center>
-                  <a href="/gunLicenses" class="white-text">See All</a>
+                  <a href="/contractextensions" class="white-text">See All</a>
                   <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
               </center>
             </div>
-          </div>
-    </div>
+          </div> 
+          
+		  </div>
+		  
+<!--
+	 <div class="col l2">
+		<div class="card animated zoomIn teal darken-1" style="">
+		  <div class="card-content white-text">
+			<span class="card-title" style="font-size:40px; font-weight:bold;">30</span>
+			<p style="margin-left:10px;">Contract <br> Extensions</p>
+			<i class="material-icons right" style="font-size:5rem; margin-top:-70px;">extension</i>
+		  </div>
+		  <div class="card-action teal darken-1" style="">
+			<center>
+			  <a href="/contractextensions" class="white-text">See All</a>
+			  <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
+			</center>
+		  </div>
+		</div>   
+	  </div>
+-->
+   
+     
 <div class="row">
   <div class="col l2 offset-l3">
     <div class="card animated zoomIn" style="background-color:#00293C">
@@ -125,23 +147,27 @@ Admin
       </div>
     </div>
   </div>
-				
-				
-  <div class="col l2">
-    <div class="card animated zoomIn teal darken-1" style="">
+	
+<div class="col l2">
+    <div class="card animated zoomIn" style="background-color:#323030">
       <div class="card-content white-text">
-        <span class="card-title" style="font-size:40px; font-weight:bold;">30</span>
-        <p style="margin-left:10px;">Contract <br> Extensions</p>
-        <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">extension</i>
+        <span class="card-title" style="font-size:40px; font-weight:bold;">{{$value->countGunLicense}}</span>
+        <p style="margin-left:10px;">Gun <br> Licenses</p>
+        <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">forward</i>
       </div>
-      <div class="card-action teal darken-1" style="">
+      <div class="card-action" style="background-color:#323030">
         <center>
-          <a href="/contractextensions" class="white-text">See All</a>
+          <a href="/gunLicenses" class="white-text">See All</a>
           <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
         </center>
       </div>
-    </div>   
+    </div>
   </div>
+				
+				
+ 
+	
+
               
 <div class="row">
 
