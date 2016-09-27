@@ -5,6 +5,7 @@ Route::get('/test', 'TestController@index');
 Route::get('/contractextensions', 'ContractExtensionsController@index');
 
 Route::get('/reportsincidentreports', 'ReportsIncidentReportsController@index');
+Route::get('/reportsincidentreports/getIncidentReportPerArea', 'ReportsIncidentReportsController@getIncidentReportPerArea');
 
 Route::get('/incidentreportsadmin', 'IncidentReportsAdminController@index');
 Route::get('/incidentreportsadmin/get/IncidentReportInformation', 'IncidentReportsAdminController@getIncidentReportInformation');
