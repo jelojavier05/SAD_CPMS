@@ -62,9 +62,9 @@ Incident Reports - Client
 						<li class="collection-header">
 							<div class="row">
 								<div class="col s3">
-									<h5 style="font-weight:bold;">Date Time:</h5>
+									<h5 style="font-weight:bold;">Date/Time:</h5>
 								</div>
-								<div class="col s2 pull-s1">
+								<div class="col s5">
 									<h5 id = 'datetimeIncident'></h5>
 								</div>
 							</div>

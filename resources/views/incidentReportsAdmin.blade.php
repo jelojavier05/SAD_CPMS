@@ -8,7 +8,7 @@ Incident Reports - Admin
 <!-- Table -->
 	<div class="row" style="margin-top:-30px;">
 		<div class="row"> 
-			<div class="row">s
+			<div class="row">
 				<div class="col s5 push-s3" style="margin-left:-2%">
 					<h3 class="blue-text animated fadeIn" style="font-family:Myriad Pro;margin-top:9.2%">Incident Reports</h3>
 				</div>
@@ -18,7 +18,7 @@ Incident Reports - Admin
 			<div class="container white lighten-2 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;padding-top:1%;">
 				<div class="row">
 					<div class="col s12" style="margin-top:-5px;">
-						<table class="striped white" style="border-radius:10px;" id="tblIncidentReports">
+						<table class="striped white" style="border-radius:10px;" id="tblIncidentReports">							
 							<thead>
 								<tr>
 									<th style="width:50px;" class="grey lighten-1 "></th>                                
@@ -61,9 +61,9 @@ Incident Reports - Admin
 						<li class="collection-header">
 							<div class="row">
 								<div class="col s3">
-									<h5 style="font-weight:bold;">Date Time:</h5>
+									<h5 style="font-weight:bold;">Date/Time:</h5>
 								</div>
-								<div class="col s2 pull-s1">
+								<div class="col s5">
 									<h5 id = 'datetimeIncident'></h5>
 								</div>
 							</div>
