@@ -140,7 +140,8 @@ $(document).ready(function(){
   $('#btnPrint').click(function(){
   	var dateReport = $('#dateReport').val();
   	if (dateReport != ''){	
-  		window.location.href = '{{ URL::to("/getGuardDeployedparea") }}';
+  		// window.location.href = '{{ URL::to("/getGuardDeployedparea") }}';
+      window.open('{{ URL::to("/getGuardDeployedparea") }}', '_blank');
   	}else{
   		var toastContent = $('<span>Select Date. </span>');
 			Materialize.toast(toastContent, 1500,'red', 'edit');
