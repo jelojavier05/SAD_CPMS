@@ -22,14 +22,21 @@ Guards Deployed per Area
 					<div class="input-field col s4">
 						<label class="active" style="color:#64b5f6;"  for="dateReport">Date</label>	
 				    <input placeholder=""  id="dateReport" type="date" class="datepicker">
-
-				    <span><button class="btn blue tooltipped right waves-effect  " data-position="bottom" data-delay="50" data-tooltip="Generate PDF" style="margin-top: -40px;" id = 'btnPrint'><i class="material-icons">picture_as_pdf</i></button></span>
+				    
 					</div>					
+					
+					<div class="col s3 push-s2"><button class="btn blue tooltipped right waves-effect  " data-position="bottom" data-delay="50" data-tooltip="Generate PDF"  id = 'btnPrint'><i class="material-icons">picture_as_pdf</i></button></div>
 				</div>
 
 			<div class="row">
-				<div class="col l8 push-l2">
+				<div class="col l8 push-l2" style="display:none;">
 					<div id="reportPieChart" style="min-width: 300px; height: 400px; margin: 0 auto;"></div>
+				</div>
+				
+				<div class="col l8 push-l2" style="">
+					<div class="container-fluid white">
+						<h1 class="grey-text"><center>CHART WILL APPEAR HERE</center></h1>
+					</div>
 				</div>
 			</div>
 				

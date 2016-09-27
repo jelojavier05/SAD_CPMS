@@ -32,9 +32,11 @@
         text-align: left;
         padding: 8px;
     }
+/*
     tr:nth-child(even) {
         background-color: #dddddd;
     }
+*/
     td {
         font-weight: bold;
     }

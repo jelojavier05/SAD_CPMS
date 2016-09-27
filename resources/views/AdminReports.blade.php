@@ -118,7 +118,7 @@ Admin Reports
                                         </div>
                                         <div class="card-action" style="background-color:">
                                           <center>
-                                              <a href="/clientView" class="white-text">See Statistical Report</a>
+                                              <a href="#!" class="white-text">See Statistical Report</a>
                                               <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
                                           </center>
                                         </div>
@@ -134,7 +134,7 @@ Admin Reports
                                         </div>
                                         <div class="card-action" style="background-color:">
                                           <center>
-                                              <a href="/clientView" class="white-text">See Statistical Report</a>
+                                              <a href="#!" class="white-text">See Statistical Report</a>
                                               <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
                                           </center>
                                         </div>
