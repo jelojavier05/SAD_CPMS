@@ -300,6 +300,8 @@ Route::get('/getPayment',  'PDFPaymentController@getPayment');
 Route::get('/getTrackTransferRec', 'PDFTrackTransferRecordController@getTrackTransfer');
 Route::get('/getGuardDeployedparea', 'PDFGuardDeployedPerAreaController@getGuardDeployedparea');
 
+Route::get('/getIncident', 'PDFIncidentController@index');
+
 
 //PDF QUERIES ---------------------------------------------
 Route::get('/getQueryGuards', 'PDFQueryGuardsController@getQueryGuards');
