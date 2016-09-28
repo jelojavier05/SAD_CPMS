@@ -197,7 +197,6 @@ Security Leave Request
                 type: "GET",
                 url: "{{action('SecurityLeaveRequestController@guardStatus')}}",
                 success: function(data){
-                    console.log(data);
                     if (data.intStatusIdentifier == 2 && data.countActiveLeaveRequest == 0){
                         checker = true;
                     }else{

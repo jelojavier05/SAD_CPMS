@@ -84,7 +84,7 @@
                             
                             <div class="row">
                            		
-                            <span id="jc" class="card-title ci" style="font-size:20px;color:white;margin-top:-15%;margin-left:23%; position:absolute">John Cena</span>
+                            <span id="strAdminName" class="card-title ci" style="font-size:20px;color:white;margin-top:-15%;margin-left:23%; position:absolute">John Cena</span>
 								  <span id="admin" style=" font-size: 14px; margin-top:-4%;margin-left:24%;position:absolute;color:red margin-left:-40px;">Administrator</span>
                             
                             </div>
@@ -300,7 +300,7 @@
                     <div class="row">
                         <div class="col l12">
                             <div class="col l6 push-l3">
-                            <p id="tit" style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.5rem;font-weight:bold;color:#F4F4EF">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>
+                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.5rem;font-weight:bold;color:#F4F4EF" id="strCompanyName">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>
                             </div>    
                         </div>
                     </div>
@@ -446,6 +446,21 @@ $(document).ready(function() {
 			return false;
 		});
 	});
+</script>
+
+<script>
+$.ajax({
+	type: "GET",
+	url: "{{action('UtilitiesController@getUtilities')}}",
+	success: function(data){
+		$('#strCompanyName').text(data.strCompanyName);
+		$('#strAdminName').text(data.strAdminName);
+	},
+	error: function(data){
+		var toastContent = $('<span>Error Database.</span>');
+		Materialize.toast(toastContent, 1500,'red', 'edit');
+	}
+});//ajax
 </script>
 <script>
 

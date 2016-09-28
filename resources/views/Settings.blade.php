@@ -20,16 +20,25 @@
             <div class="col s6">
                 <li class="collection-item" style="font-weight:bold;">                   
                     <div class="input-field col s12">
-						<input placeholder=" " id="" type="text" class="validate" name = "" required="" aria-required="true">
-						<label class="active" for="">Administrator Name</label> 
+						<input placeholder=" " id="strAdminName1" type="text" class="validate" name = "" required="" aria-required="true">
+						<label class="active" for="strAdminName1">Administrator Name</label> 
 					</div>	
                 
                 
-                   <div class="input-field col s12">
-						<input placeholder=" " id="" type="text" class="validate" name = "" required="" aria-required="true">
-						<label class="active" for="">Organization/System Name</label> 
+          <div class="input-field col s12">
+						<input placeholder=" " id="strCompanyName1" type="text" class="validate" name = "" required="" aria-required="true">
+						<label class="active" for="strCompanyName1">Organization/System Name</label> 
 					</div>
-                
+
+					<div class="input-field col s12">
+						<input placeholder=" " id="strAddress" type="text" class="validate" name = "" required="" aria-required="true">
+						<label class="active" for="strAddress">Address</label> 
+					</div>	
+          
+          <div class="input-field col s12">
+						<input placeholder=" " id="strContactNumber" type="text" class="validate" name = "" required="" aria-required="true">
+						<label class="active" for="strContactNumber">Contact Number</label> 
+					</div>	      
 
                 
                     <div class="file-field input-field col s12">
@@ -55,18 +64,18 @@
                     	
 							<li class="collection-item">
 								<div class="input-field col s12">
-									<input placeholder=" " id="" type="text" class="validate" name = "" required="" aria-required="true">
-									<label class="active" for="">Username</label> 
+									<input placeholder=" " id="strUsername" type="text" class="validate" name = "" required="" aria-required="true">
+									<label class="active" for="strUsername">Username</label> 
 								</div>							
 														
 								<div class="input-field col s12">
-									<input placeholder=" " id="" type="password" class='validate' name="" required="" aria-required="true">
-									<label class='active' for="">Password</label>
+									<input placeholder=" " id="strPassword" type="password" class='validate' name="" required="" aria-required="true">
+									<label class='active' for="strPassword">Password</label>
 								</div>
 								
 								<div class="input-field col s12">
-									<input placeholder=" " id="" type="password" class='validate' name="" required="" aria-required="true">
-									<label class='active' for="">Confirm Password</label>
+									<input placeholder=" " id="strConfirm" type="password" class='validate' name="" required="" aria-required="true">
+									<label class='active' for="strConfirm">Confirm Password</label>
 								</div>
 							</li>
 						                 
@@ -87,41 +96,85 @@
 
 @section('script')
 <script>
-	$('.btnSave').click(function(){
-		
 
-		swal({   title: "Are you sure?",  
-			  text: "Your Changes will be saved",   
-			  type: "warning",   
-			  showCancelButton: true,   
-			  confirmButtonColor: "green",   
-			  confirmButtonText: "Save Changes",   
-			  closeOnConfirm: false }, 
-			 function(){   			 
-		});
+$.ajax({
+	type: "GET",
+	url: "{{action('UtilitiesController@getUtilities')}}",
+	success: function(data){
+		$('#strAdminName1').val(data.strAdminName);
+		$('#strCompanyName1').val(data.strCompanyName);
+		$('#strAddress').val(data.strAddress);
+		$('#strContactNumber').val(data.strContactNumber);
+	},
+	error: function(data){
+		var toastContent = $('<span>Error Database.</span>');
+		Materialize.toast(toastContent, 1500,'red', 'edit');
+	}
+});//ajax
+
+$('.btnSave').click(function(){
+	
+	swal({   title: "Are you sure?",  
+		  text: "Your Changes will be saved",   
+		  type: "warning",   
+		  showCancelButton: true,   
+		  confirmButtonColor: "green",   
+		  confirmButtonText: "Save Changes",   
+		  closeOnConfirm: false }, 
+		 function(){  
+		 	if (checkInput()){
+		 	 sendData();
+		 	}
 	});
+});
 
+function checkInput(){
+	var checker = true;
 
-</script>
-<script>
-function update(jscolor) {
-    // 'jscolor' instance can be used as a string
-     document.getElementById('jc').style.color = '#' + jscolor        
-      document.getElementById('admin').style.color = '#' + jscolor        
-    document.getElementById('tit').style.color = '#' + jscolor
-        document.getElementById('incident').style.color = '#' + jscolor
-             document.getElementById("msg").style.color = '#' + jscolor
-                    document.getElementById('dash').style.color = '#' + jscolor
-                          document.getElementById('btnLogout').style.color = '#' + jscolor                           
+	if ($('#strAdminName1').val().trim() == "" || $('#strCompanyName1').val().trim() == "" || $('#strAddress').val().trim() == "" || $('#strContactNumber').val().trim() == "" || $('#strUsername').val().trim() == "" || $('#strPassword').val().trim() == "" || $('#strPassword').val().trim() != $('#strConfirm').val().trim()){
+		checker = false;
+		var toastContent = $('<span>Check Input. </span>');
+		Materialize.toast(toastContent, 1500,'red', 'edit');
+
+	}
+
+	return checker;
 }
-function update1(jscolor) {  
-    document.getElementById('maint').style.color = '#' + jscolor
-            document.getElementById('regi').style.color = '#' + jscolor
-                document.getElementById('delivery').style.color = '#' + jscolor
-                    document.getElementById('announcement').style.color = '#' + jscolor
-                        document.getElementById('reports').style.color = '#' + jscolor
-                            document.getElementById('queries').style.color = '#' + jscolor
-                                document.getElementById('utilities').style.color = '#' + jscolor
+
+function sendData(){
+	$.ajax({
+		type: "POST",
+		url: "{{action('UtilitiesController@update')}}",
+		beforeSend: function (xhr) {
+			var token = $('meta[name="csrf_token"]').attr('content');
+			if (token) {
+				return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+			}
+		},
+		data: {
+			strAdminName: $('#strAdminName1').val().trim(),
+			strCompanyName: $('#strCompanyName1').val().trim(),
+			strAddress: $('#strAddress').val().trim(),
+			strContactNumber: $('#strContactNumber').val().trim(),
+			strUsername: $('#strUsername').val(),
+			strPassword: $('#strPassword').val()
+		},
+		success: function(data){
+			swal({
+						title: "Success!",
+						text: "Changes Applied",
+						type: "success"
+					},
+					function(){
+					window.location.href = '{{ URL::to("/settings") }}';
+				});
+
+		},
+		error: function(data){
+			var toastContent = $('<span>Error Database.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
+	});//ajax 		
 }
 </script>
 

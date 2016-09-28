@@ -69,7 +69,7 @@
                        <div class="row">
                         <div class="col s12 l12">
                             <div class="col s12 l6 pull-s12 push-l3 hide-on-med-and-down">
-                            <p class="flow-text" style="margin-top:9px;font-family:Myriad Pro;font-size:2.2rem">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>     
+                            <p class="flow-text" style="margin-top:9px;font-family:Myriad Pro;font-size:2.2rem" id = 'strAdminName1'></p>     
                             </div>
                               <div class="col s6 l6 pull-s4 pull-l8 ">
                                    <p style="margin-top:9px;font-family:Myriad Pro;font-size:.6rem;">CLIENT & PERSONNEL MANAGEMENT SYSTEM</p>   
@@ -614,6 +614,20 @@ $(document).ready(function() {
     });//ajax
   }
 });      
+</script>
+
+<script>
+$.ajax({
+  type: "GET",
+  url: "{{action('UtilitiesController@getUtilities')}}",
+  success: function(data){
+    $('#strAdminName1').text(data.strCompanyName);
+  },
+  error: function(data){
+    var toastContent = $('<span>Error Database.</span>');
+    Materialize.toast(toastContent, 1500,'red', 'edit');
+  }
+});//ajax
 </script>
 
 <script>

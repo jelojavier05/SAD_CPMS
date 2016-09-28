@@ -291,7 +291,10 @@ class SecurityHomepageController extends Controller
         $guardRequestedName = $result->strFirstName . ' ' . $result->strLastName;
         $intLeaveID = $result->intLeaveID;
 
-        $dateLeaveStart = $result->dateStart;
+        $dateLeaveStart = new Carbon($result->dateStart);
+        $dateLeaveStart->hour = $now->hour;
+        $dateLeaveStart->minute = $now->minute;
+        $dateLeaveStart->second = $now->second;
         $dateLeaveEnd = $result->dateEnd;
         $dateReturn = new Carbon($dateLeaveEnd);
         $dateReturn = $dateReturn->addDays(1);

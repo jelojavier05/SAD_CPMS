@@ -277,7 +277,19 @@ $('.datepicker').pickadate({
 </script>
 
 	
-	
+<script>
+$.ajax({
+  type: "GET",
+  url: "{{action('UtilitiesController@getUtilities')}}",
+  success: function(data){
+    $('#strCompanyName').text(data.strCompanyName);
+  },
+  error: function(data){
+    var toastContent = $('<span>Error Database.</span>');
+    Materialize.toast(toastContent, 1500,'red', 'edit');
+  }
+});//ajax
+</script>
     
      
     </body>

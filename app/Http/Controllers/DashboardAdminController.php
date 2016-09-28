@@ -94,13 +94,13 @@ class DashboardAdminController extends Controller
 
             $allGuard = count($guardsID);
             $guardsStatus = new \stdClass();
-            $guardsStatus->waiting = $waiting/$allGuard * 100;
-            $guardsStatus->pending = $pending/$allGuard * 100;
-            $guardsStatus->deployed = $deployed/$allGuard * 100;
-            $guardsStatus->onLeave = $onLeave/$allGuard * 100;
-            $guardsStatus->reliever = $reliever/$allGuard * 100;
-            $guardsStatus->allGuard = $allGuard;
 
+            $guardsStatus->waiting = $waiting;
+            $guardsStatus->pending = $pending;
+            $guardsStatus->deployed = $deployed;
+            $guardsStatus->onLeave = $onLeave;
+            $guardsStatus->reliever = $reliever;
+            $guardsStatus->allGuard = $allGuard;
             return response()->json($guardsStatus);
         }else{
             return response()->json(false);
@@ -146,22 +146,4 @@ class DashboardAdminController extends Controller
         }
     }
 
-    public function getSample(Request $request){
-        $result = DB::table('tblguard')
-            ->select('strFirstName', 'strLastName')
-            ->get();
-
-        $sample = array();
-        $intLoop = 0;
-        foreach($result as $value){
-            $intLoop += 3;
-            $guardRecord = new \stdClass();
-            $guardRecord->name = $value->strFirstName . ' ' . $value->strLastName;
-            $guardRecord->y = $intLoop;
-
-            array_push($sample, $guardRecord);
-        }
-
-        return response()->json($sample);
-    }
 }

@@ -12,7 +12,6 @@ class PDFQueryClientController extends Controller
 {
     public function getQueryClient(Request $request)
     {
-
         $pdf=PDF::loadView('pdf.queryclient', 
         	array(
 	        	'natureOfBusiness' => $request->session()->get('natureOfBusiness'), 

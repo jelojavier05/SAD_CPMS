@@ -31,11 +31,18 @@ class ReportsIncidentReportsController extends Controller
     	$dateEnd->year = $year;
 
     	$arrIncidentReport = array();
+        $arrTabularReport = array();
+        $intTotalNumberOfIncident = 0;
+
     	foreach($arrCity as $value){
     		$objIncidentReport = new \stdClass();
     		$objIncidentReport->name = $value->strCityName;
 
+            $objTabularReport = new \stdClass();
+            $objTabularReport->name = $value->strCityName;
+
     		$arrCountPerMonth = array();
+            $intCountPerCity = 0;
     		for ($intLoop = 1; $intLoop <= 12; $intLoop ++){
     			$dateStart->month = $intLoop;
     			$dateEnd->month = $intLoop;
@@ -48,13 +55,25 @@ class ReportsIncidentReportsController extends Controller
     				->where('tblclientaddress.intCityID', $value->intCityID)
     				->count();
 
+                $intCountPerCity += $intCountPerMonth;
+                $intTotalNumberOfIncident += $intCountPerMonth;
+
     			array_push($arrCountPerMonth, $intCountPerMonth);
     		}//for loop
     		$objIncidentReport->data = $arrCountPerMonth;
+            $objTabularReport->count = $intCountPerCity;
+
+            array_push($arrTabularReport, $objTabularReport);
     		array_push($arrIncidentReport, $objIncidentReport);
     	}//foreach
 
-    	return response()->json($arrIncidentReport);
+        $data = new \stdClass();
+        $data->graphReport = $arrIncidentReport;
+        $data->tabularReport = $arrTabularReport;
+        $data->count = count($arrCity);
+        $data->totalNumber = $intTotalNumberOfIncident;
+
+    	return response()->json($data);
     }
 
     public function getIncidentPerNatureOfBusiness(Request $request){
@@ -71,12 +90,18 @@ class ReportsIncidentReportsController extends Controller
     	$dateEnd = Carbon::now();
     	$dateEnd->year = $year;
 
+        $arrTabularReport = array();
     	$arrIncidentReport = array();
+        $intTotalNumberOfIncident = 0;
     	foreach($arrNOB as $value){
     		$objIncidentReport = new \stdClass();
     		$objIncidentReport->name = $value->strNatureOfBusiness;
 
+            $objTabularReport = new \stdClass();
+            $objTabularReport->name = $value->strNatureOfBusiness;
+
     		$arrCountPerMonth = array();
+            $intCountPerNOB = 0;
     		for ($intLoop = 1; $intLoop <= 12; $intLoop ++){
     			$dateStart->month = $intLoop;
     			$dateEnd->month = $intLoop;
@@ -88,12 +113,30 @@ class ReportsIncidentReportsController extends Controller
     				->where('tblclient.intNatureOfBusinessID', $value->intNatureOfBusinessID)
     				->count();
 
+                $intCountPerNOB += $intCountPerMonth;
+                $intTotalNumberOfIncident += $intCountPerMonth;
+
     			array_push($arrCountPerMonth, $intCountPerMonth);
     		}//for loop
+
+
+
     		$objIncidentReport->data = $arrCountPerMonth;
+            $objTabularReport->count = $intCountPerNOB;
+
+            array_push($arrTabularReport, $objTabularReport);
     		array_push($arrIncidentReport, $objIncidentReport);
     	}//foreach
 
-    	return response()->json($arrIncidentReport);
+
+
+
+        $data = new \stdClass();
+        $data->graphReport = $arrIncidentReport;
+        $data->tabularReport = $arrTabularReport;
+        $data->count = count($arrNOB);
+        $data->totalNumber = $intTotalNumberOfIncident;
+
+        return response()->json($data);
     }
 }

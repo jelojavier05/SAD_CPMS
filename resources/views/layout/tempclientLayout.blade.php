@@ -64,7 +64,7 @@
                             </div>
                             <div class="col l3 pull-l3">
                             
-                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:3.0rem">Client and Personnel Management System</p>
+                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:3.0rem" id = 'strCompanyName'></p>
                                 
                             </div>
                        
@@ -218,7 +218,19 @@ $(document).ready(function() {
     });
 });
 </script>
-    
+<script>
+$.ajax({
+  type: "GET",
+  url: "{{action('UtilitiesController@getUtilities')}}",
+  success: function(data){
+    $('#strCompanyName').text(data.strCompanyName);
+  },
+  error: function(data){
+    var toastContent = $('<span>Error Database.</span>');
+    Materialize.toast(toastContent, 1500,'red', 'edit');
+  }
+});//ajax
+</script>
      
     </body>
 	

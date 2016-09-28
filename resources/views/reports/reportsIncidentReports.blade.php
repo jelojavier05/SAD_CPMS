@@ -24,11 +24,11 @@ Incident Reports - Reports
 					</select>						
 				</div>			            
 				<div class="row">
-					<div class="col l10 push-l1" style="display:none;">
+					<div class="col l10 push-l1" style="display:none;" id = 'divContainer'>
 						<div id="container" style="min-width: 300px; height: 400px; margin: 0 auto;"></div>
 					</div>
 					
-					<div class="col l10 push-l1" style="">
+					<div class="col l10 push-l1" style="" id = 'divTakip'>
 						<div class="container-fluid white">
 							<h1 class="grey-text"><center>CHART WILL APPEAR HERE</center></h1>
 						</div>
@@ -42,16 +42,12 @@ Incident Reports - Reports
 							<div>	
 								<table id="tblIncidents">
 									<thead>
-										<th>Nature of Business</th>
-										<th>Month</th>
+									<th id = 'tableHeaderFilter'></th>
 										<th>Number of Incidents</th>
+
 									</thead>
 									<tbody>
-										<tr>
-											<td>Bank</td>
-											<td>January</td>
-											<td>10</td>
-										</tr>
+										
 									</tbody>
 								</table>
 							</div>
@@ -59,6 +55,35 @@ Incident Reports - Reports
 						</div>
 					</div>	
 				</div>
+        <div class="row"></div> 
+      <div class="row">
+        <div class="col l10 push-l1">
+          <ul class="collection with-header">
+            <li class="collection-header">
+              <div class="row">
+                <div class="col s5">
+                  <h5 style="font-weight:bold;" id = 'totalText'></h5>
+                </div>
+                
+                <div class="col s7">
+                  <h5 style="font-weight:bold;" id = 'totalTextCount'></h5>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col s5">
+                  <h5 style="font-weight:bold;">Total Number of Incident:</h5>
+                </div>
+
+                <div class="col s7">
+                  <h5 style="font-weight:bold;" id = 'totalIncident'></h5>
+                </div>
+              </div>
+            </li>
+            
+          </ul>
+        </div>  
+      </div>
 			</div>
 		</div>
 	</div>
@@ -70,19 +95,34 @@ Incident Reports - Reports
 @section('script')
 <script>
 $('#reportFilter').on('change',function(){
-  
+  $('#divContainer').show();
+  $('#divTakip').hide();
+
   var selectFilter = $('#reportFilter').val();
   var strFunction;
+  var strTotalText;
+  var strTableFilter;
   if (selectFilter == 0){
     strFunction = 'getIncidentPerNatureOfBusiness';
+    strTotalText = 'Total Number of Business: ';
+    strTableFilter = 'Nature Of Business';
+
   }else if (selectFilter == 1){
     strFunction = 'getIncidentPerArea';
+    strTotalText = 'Total Number of City: ';
+    strTableFilter = 'City';
   }
+  $('#tableHeaderFilter').text(strTableFilter);
+  $('#totalText').text(strTotalText);
+
   $.ajax({
     type: "GET",
     url: "/reportsincidentreports/" + strFunction,
     success: function(data){
-      setChart(data);
+      $('#totalTextCount').text(data.count);
+      $('#totalIncident').text(data.totalNumber);
+      setChart(data.graphReport);
+      setTable(data.tabularReport);
     },
     error: function(data){
       var toastContent = $('<span>Error Database.</span>');
@@ -120,10 +160,20 @@ function setChart(data){
   });
 }
 
+function setTable(data){
+  var table = $('#tblIncidents').DataTable();
+  table.clear().draw();
 
-$(function () {
-    
-});
+  $.each(data, function(index, value){
+    if (value.count > 0){
+      table.row.add([
+        value.name,
+        value.count
+      ]).draw();
+    }
+  });
+}
+
 </script>
 
 <script>
@@ -132,7 +182,6 @@ $(function () {
     	 "columns": [     	 
     	 null,
     	 null,
-    	 null
     	 ] ,  
     	 "bLengthChange": false	
   	});

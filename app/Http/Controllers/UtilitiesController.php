@@ -6,82 +6,45 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
 class UtilitiesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function getUtilities(){
+        $utilities = DB::table('tblutilities')
+            ->select('*')
+            ->first();
+
+        return response()->json($utilities);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function update(Request $request){
+    	$strCompanyName = $request->strCompanyName;
+    	$strAdminName = $request->strAdminName;
+    	$strAddress = $request->strAddress;
+    	$strContactNumber = $request->strContactNumber;
+    	$strUsername = $request->strUsername;
+    	$strPassword = $request->strPassword;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    	try{
+    		DB::beginTransaction();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    		DB::table('tblutilities')
+    			->update([
+    				'strAdminName' => $strAdminName,
+    				'strCompanyName' => $strCompanyName,
+    				'strContactNumber' => $strContactNumber,
+    				'strAddress' => $strAddress
+    			]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    		DB::table('tblaccount')
+    			->where('intAccountType', 3)
+    			->update([
+    				'strUsername' => $strUsername,
+    				'strPassword' => $strPassword
+    			]);
+    		DB::commit();
+    	}catch(Exception $e){
+    		DB::rollback();
+    	}
     }
 }
