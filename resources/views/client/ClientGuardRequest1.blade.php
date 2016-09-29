@@ -37,7 +37,7 @@ Client Request of Guard
 				    
 	            <div class="row">
 	                <div class="col s12" style="margin-top:-20px;">
-	                    <table class="striped white" style="border-radius:10px;" id="dataTable">
+	                    <table class="striped white" style="border-radius:10px;" id="dataTable">							
 	                        <thead class="hide-on-med-and-down">
 	                            <tr>                                
 	                                <th class="blue darken-3 white-text"></th>
@@ -74,13 +74,7 @@ Client Request of Guard
 				<h3><center>Request Additional Guards</center></h3>  
 			</div>
 		</div>
-		<div class="modal-content">
-            
-            <div class="row">
-                <div class="col l12 push-l4">
-                      <i class="material-icons" style="font-size:10rem">group_add</i>
-                </div>
-            </div>
+		<div class="modal-content">                        
 			<div class="row">
 				<div class="col s12 l10 push-s1" style="margin-top:-30px;">      
 					<div class="row"></div>  
@@ -205,8 +199,8 @@ Client Request of Guard
 		</div>
 		<div class="modal-content">
                <div class="row">
-                <div class="col l12 push-l4">
-                      <i class="material-icons" style="font-size:10rem">cached</i>
+                <div class="col l12 push-l5">
+                      <i class="material-icons" style="font-size:5rem">cached</i>
                 </div>
             </div>
 			<div class="row">

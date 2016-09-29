@@ -41,6 +41,7 @@
 					</div>	      
 
                 
+<!--
                     <div class="file-field input-field col s12">
 					  <label class="active">System Logo</label>
 						<div class="row"></div>
@@ -53,6 +54,7 @@
 					  </div>
 						
 					</div>
+-->
                 </li>
                   
             </div>
