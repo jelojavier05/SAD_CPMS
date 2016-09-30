@@ -14,7 +14,7 @@ Incident Reports - Reports
 <div class="row">
 	<div class="col s12 push-s1">
 		<div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%; padding-bottom:1%; height:100%;">
-			<div class="row"></div>
+			<div class="row"></div>			
 			<div class="row">
 				<div class="col s4">
 					<select id = 'reportFilter'>
@@ -37,7 +37,7 @@ Incident Reports - Reports
 			
 			
 				<div clas="row">
-					<div class="col l10 push-l1">
+					<div class="col l5 push-l1">
 						<div class="container-fluid white" style="border-radius:10px;">
 							<div>	
 								<table id="tblIncidents">
@@ -47,43 +47,46 @@ Incident Reports - Reports
 
 									</thead>
 									<tbody>
-										
+										<tr>
+											<td>test</td>
+											<td>test</td>
+										</tr>
 									</tbody>
 								</table>
 							</div>
 														
 						</div>
-					</div>	
+					</div>
+					
+					<div class="col l5 push-l1">
+					  <ul class="collection with-header">
+						<li class="collection-header">
+						  <div class="row">
+							<div class="col s5">
+							  <div style="font-weight:bold;" id = 'totalText'></div>
+							</div>
+
+							<div class="col s7">
+							  <div style="font-weight:bold;" id = 'totalTextCount'></div>
+							</div>
+						  </div>
+
+						  <div class="row">
+							<div class="col s5">
+							  <div style="font-weight:bold;">Total Number of Incident:</div>
+							</div>
+
+							<div class="col s7">
+							  <div style="font-weight:bold;" id = 'totalIncident'></div>
+							</div>
+						  </div>
+						</li>
+
+					  </ul>
+					</div>
 				</div>
         <div class="row"></div> 
-      <div class="row">
-        <div class="col l10 push-l1">
-          <ul class="collection with-header">
-            <li class="collection-header">
-              <div class="row">
-                <div class="col s5">
-                  <h5 style="font-weight:bold;" id = 'totalText'></h5>
-                </div>
-                
-                <div class="col s7">
-                  <h5 style="font-weight:bold;" id = 'totalTextCount'></h5>
-                </div>
-              </div>
-              
-              <div class="row">
-                <div class="col s5">
-                  <h5 style="font-weight:bold;">Total Number of Incident:</h5>
-                </div>
 
-                <div class="col s7">
-                  <h5 style="font-weight:bold;" id = 'totalIncident'></h5>
-                </div>
-              </div>
-            </li>
-            
-          </ul>
-        </div>  
-      </div>
 			</div>
 		</div>
 	</div>

@@ -25,7 +25,7 @@ Guards Deployed per Area
 				    
 					</div>					
 					
-					<div class="col s3 push-s2"><button class="btn blue tooltipped right waves-effect  " data-position="bottom" data-delay="50" data-tooltip="Generate PDF"  id = 'btnPrint'><i class="material-icons">picture_as_pdf</i></button></div>
+					
 				</div>
 
 			<div class="row">
@@ -60,6 +60,7 @@ Guards Deployed per Area
 			<div clas="row">
 				<div class="col l10 push-l1">
 					<div class="container-fluid white" style="border-radius:10px;">
+						<div class="col s3 push-s9"><button class="btn blue tooltipped right waves-effect  " data-position="bottom" data-delay="50" data-tooltip="Generate PDF"  id = 'btnPrint'><i class="material-icons">picture_as_pdf</i></button></div>
 						<table id="tblguardperareaReport">
 							<thead>
 								<th>City</th>

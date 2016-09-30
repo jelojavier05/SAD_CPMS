@@ -24,8 +24,7 @@ Guard
                     <table class="highlight white" style="border-radius:10px;" id="dataTable">
 
                         <thead>
-                            <tr>
-								<th style="width:50px;"></th>
+                            <tr>								
 								<th style="width:50px;"></th>
                                 <th>License Number</th>
                                 <th>Name</th>
@@ -34,13 +33,7 @@ Guard
 
                         <tbody>
                             @foreach($guards as $value)
-                            <tr>
-                                <td>
-                                    <button class="buttonUpdate btn" name="" id="">
-                                        <i class="material-icons">edit</i>
-                                    </button>
-                                    <label for=""></label>
-                                </td>
+                            <tr>                                
                                 <td>
                                     <button class="buttonMore btn blue" onclick = "Materialize.showStaggeredList('#collectionActive')"" id="{{$value->intGuardID}}">
                                         MORE
@@ -330,8 +323,7 @@ Guard
         
         
         $("#dataTable").DataTable({
-             "columns": [
-            { "orderable": false },
+             "columns": [            
             { "orderable": false },
             null,
             null

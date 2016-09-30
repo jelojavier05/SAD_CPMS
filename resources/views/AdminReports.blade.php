@@ -78,12 +78,11 @@ Admin Reports
                     <div class="card animated zoomIn" style="background-color:#2D4262" >
                         <div class="card-content white-text">
                           <span class="card-title" style="font-size:30px; font-weight:bold;" id = 'clientNumber'>CLIENT</span>
-                          <p style="margin-left:10px;"></p>
-                          <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
+                         
                         </div>
                         <div class="card-action" style="background-color:">
                           <center>
-                              <a href="/reports/ReportClient" class="white-text">See Statistical Report</a>
+                              <a href="/reports/ReportClient" class="white-text">See Statistical Reports</a>
                               <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
                           </center>
                         </div>
@@ -94,19 +93,20 @@ Admin Reports
                     <div class="col s6">
                     <div class="card animated zoomIn" style="background-color:#1A405F" >
                         <div class="card-content white-text">
-                          <span class="card-title" style="font-size:28px; font-weight:bold;" id = 'clientNumber'>GUARDS DEPLOYED PER AREA</span>
+                          <span class="card-title" style="font-size:26px; font-weight:bold;" id = 'clientNumber'>GUARDS DEPLOYED PER AREA</span>
                           <p style="margin-left:10px;"></p>
 <!--                          <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>-->
                         </div>
                         <div class="card-action" style="background-color:">
                           <center>
-                              <a href="/reports/ReportGuard" class="white-text">See Statistical Report</a>
+                              <a href="/reports/ReportGuard" class="white-text">See Statistical Reports</a>
                               <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
                           </center>
                         </div>
                     </div>
 
                 </div>
+                    <!--
                     <div class="row">
                         <div class="col s12">
                                 <div class="col s6">
@@ -142,20 +142,20 @@ Admin Reports
                                 </div>
                         </div>
                     
-                    </div>
+                    </div>-->
 					
 					<div class="row">
 						<div class="col s12">
 							<div class="col s6">
-								<div class="card animated zoomIn" style="background-color:#0d47a1" >
+								<div class="card animated zoomIn" style="background-color:#32384D" >
 									<div class="card-content white-text">
-										<span class="card-title" style="font-size:30px; font-weight:bold;" id = 'clientNumber'>GUARD TRANSFER HISTORY</span>
+										<span class="card-title" style="font-size:26px; font-weight:bold;" id = 'clientNumber'>GUARD TRANSFER HISTORY</span>
 										<p style="margin-left:10px;"></p>
 	<!--									<i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>-->
 									</div>
 									<div class="card-action" style="background-color:">
 										<center>
-											<a href="/sgtransferlog" class="white-text">See All</a>
+											<a href="/sgtransferlog" class="white-text">SEE TRANSFER LOGS</a>
 											<i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
 										</center>
 									</div>
@@ -163,7 +163,7 @@ Admin Reports
 							</div>
 							
 							<div class="col s6">
-								<div class="card animated zoomIn" style="background-color:#1565c0" >
+								<div class="card animated zoomIn" style="background-color:#00293C" >
 									<div class="card-content white-text">
 										<span class="card-title" style="font-size:30px; font-weight:bold;" id = 'clientNumber'><center>INCIDENT REPORTS</center></span>
 										<p style="margin-left:10px;"></p>
@@ -171,7 +171,7 @@ Admin Reports
 									</div>
 									<div class="card-action" style="background-color:">
 										<center>
-											<a href="/reportsincidentreports" class="white-text">See All</a>
+											<a href="/reportsincidentreports" class="white-text">SEE LIST OF REPORT</a>
 											<i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
 										</center>
 									</div>

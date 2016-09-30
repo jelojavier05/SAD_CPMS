@@ -298,11 +298,11 @@
             <div>
                 <a href="#" class="brand-logo">
                     <div class="row">
-                        <div class="col l12">
-                            <div class="col l6 push-l3">
-                            <p style="margin-top:9px; margin-left: 20px;font-family:Myriad Pro;font-size:2.5rem;font-weight:bold;color:#F4F4EF" id="strCompanyName">CLIENT AND PERSONNEL MANAGEMENT SYSTEM</p>
-                            </div>    
-                        </div>
+                            <div style="margin-left:60%;width:400px;">
+                                  <p style="margin-top:9px;font-family:Myriad Pro;font-size:2.2rem;font-weight:bold;color:#F4F4EF" id="strCompanyName"></p>
+                            </div>
+                          
+                
                     </div>
                 </a>		 
             </div>
@@ -453,7 +453,7 @@ $.ajax({
 	type: "GET",
 	url: "{{action('UtilitiesController@getUtilities')}}",
 	success: function(data){
-		$('#strCompanyName').text(data.strCompanyName);
+        $('#strCompanyName').text(data.strCompanyName);
 		$('#strAdminName').text(data.strAdminName);
 	},
 	error: function(data){

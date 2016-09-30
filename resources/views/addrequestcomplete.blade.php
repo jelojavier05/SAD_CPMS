@@ -1,7 +1,7 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Add Request Completion
+Request Completion
 @endsection
 
 @section('content')
