@@ -101,12 +101,6 @@ class AdminInboxController extends Controller
                     'intInboxID' => $inboxID
                 ]);
             }
-            $pusher = App::make('pusher');
-            $pusher->trigger(
-                'notification',
-                'new-message', 
-                array('text' => 'New Message')
-            );
             DB::commit();
 
         }catch(Exception $e){
@@ -169,6 +163,11 @@ class AdminInboxController extends Controller
             ->orderBy('tblclientguard.intClientGuardID', 'desc')
             ->first();
         $result->strClientName = $clientName->strClientName;
+        $now = Carbon::now();
+        $now->hour = 0;
+        $now->minute = 0;
+        $now->second = 0;
+        $result->now = $now;
         
         return response()->json($result);
     }

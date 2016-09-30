@@ -132,12 +132,6 @@ class CGRGuardAttendanceController extends Controller
                     'datetimeIn' => $now
                 ]);
 
-            $pusher = App::make('pusher');
-            $pusher->trigger(
-                'attendance',
-                'guard-attendance', 
-                array('text' => 'Time In')
-            );
             DB::commit();
         }catch(Exception $e){
             DB::rollback();

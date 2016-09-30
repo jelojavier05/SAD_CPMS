@@ -142,7 +142,8 @@ class SecurityLeaveRequestController extends Controller
 
         $countActiveLeaveRequest = DB::table ('tblguardleaverequest')
             ->where('intGuardID', $guardID)
-            ->where('boolStatus', 1)
+            ->whereIn('boolStatus', [1,2])
+            ->where('dateEnd', '>=', $now)
             ->count();// checking if there's still existing leave 
 
         $guard->countActiveLeaveRequest = $countActiveLeaveRequest;

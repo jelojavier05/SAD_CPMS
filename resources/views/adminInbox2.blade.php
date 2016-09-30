@@ -1201,6 +1201,7 @@ $(document).ready(function(){
             type: "GET",
             url: "/adminInbox/get/guardrequestleaveinformation?inboxID=" + inboxID,            
             success: function(data){
+                console.log(data);
                 $('#modalLeaveRequestApproval').openModal();
                 $('#strLeaveType').text(data.strLeaveType);
                 $('#strClientName').text(data.strClientName);
@@ -1208,7 +1209,7 @@ $(document).ready(function(){
                 $('#strDateStart').text(moment(data.dateStart).format('MMMM D, YYYY'));
                 $('#strDateEnd').text(moment(data.dateEnd).format('MMMM D, YYYY'));
                 var dateStart = new Date(data.dateStart);
-                var dateNow = new Date();
+                var dateNow = new Date(data.now.date);
 
                 if(data.boolStatus == 1 && !(dateStart < dateNow)){
                     getGuardWaiting(); //guard waiting

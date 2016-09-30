@@ -152,7 +152,7 @@ Security Homepage
 	
 
 <!--modal leave request from other guard////releiver-->
-	<div id="modalLeaveRequestNotification" class="modal modal-fixed-footer ci" style="overflow:hidden; width:700px;max-height:100%; height:600px; margin-top:-50px;">
+	<div id="modalLeaveRequestNotification" class="modal modal-fixed-footer ci" style="overflow:hidden; ">
 	    <div class="modal-header">
 	      	<div class="h">
 				<h3><center>Reliever Notice</center></h3>  
@@ -161,7 +161,7 @@ Security Homepage
 		
 		<div class="modal-content">
 			<div class="row">
-				<div class="col s12">
+				<div class="col s12 l12">
 					<ul class="collection with-header" id="collectionActive">
 						<li class="collection-header">
 							<div class="row">

@@ -29,11 +29,11 @@ Guards Deployed per Area
 				</div>
 
 			<div class="row">
-				<div class="col l8 push-l2" style="display:none;">
+				<div class="col l8 push-l2" style="display:none;" id = 'divChart'>
 					<div id="reportPieChart" style="min-width: 300px; height: 400px; margin: 0 auto;"></div>
 				</div>
 				
-				<div class="col l8 push-l2" style="">
+				<div class="col l8 push-l2" style="" id = 'divTakip'>
 					<div class="container-fluid white">
 						<h1 class="grey-text"><center>CHART WILL APPEAR HERE</center></h1>
 					</div>
@@ -133,6 +133,8 @@ $(document).ready(function(){
       type: "GET",
       url: "/reports/ReportGuard/get/PieInformation?dateReport=" + dateReport,
       success: function(data){
+        $('#divTakip').hide();
+        $('#divChart').show();
         setChart(data);
         setTable(data.tabularForm);
         setTotalNumber(data.totalNumber);
