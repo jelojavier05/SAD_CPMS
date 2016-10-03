@@ -49,6 +49,8 @@
 
 
 <body id="scrollhider" class="bodyscrollhider grey lighten-3 ci cards">
+	
+	
       <nav class="blue darken-4">
         
          <div class="nav-wrapper">
@@ -99,6 +101,16 @@
         </div>
     </nav>
     
+	<div class="row" >
+		<div class="col s5 l3 push-l9 push-s7" style="margin-left:-10px;" >
+			<div class="card-panel red animated bounceInRight" style = "" id="epalwarning">
+				<div class="white-text" style="font-size:20px;"><i class="material-icons left">warning</i>Notice</div>
+			  <span class="white-text">This is a reminder that your account balance of <span id="">1000.00</span> was overdue as of <span id="">01/01/17</span>.
+			  </span>
+			</div>
+		</div>
+	</div>
+	
     <div class="row"></div> 
      <ul class="side-nav fixed" id="mobile-nav" style="background-color:#90AFC5;overflow:hidden">
                      <div class="iconposition">

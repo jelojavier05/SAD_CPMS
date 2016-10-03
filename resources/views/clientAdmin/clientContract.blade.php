@@ -32,12 +32,12 @@ Client
 							</div>
 								
 							<div class="input-field col s6">
-								<input  id="contractStart" type="date" class="datepicker"  required="" aria-required="true">
+								<input  id="contractStart" type="date" class="" required="" aria-required="true">
 								<label class="active" data-error="Incorrect" for="contractStart">Start Date</label>
 							</div>
 
 							<div class="input-field col s6">
-								<input  id="contractEnd" type="date" class="datepicker"  required="" aria-required="true" placeholder="" readonly>
+								<input  id="contractEnd" type="date" class=""  required="" aria-required="true" placeholder="" readonly>
 								<label class="active" data-error="Incorrect" for="contractEnd">End Date</label>
 							</div>
 
@@ -54,7 +54,22 @@ Client
 						<input  id="rateperHour" type="text" required="" aria-required="true" placeholder=" ">
 						<label class="active" for="rateperHour">Rate Per Hour</label>
 					</div>
-				</div>
+					
+					
+					
+					<div class="col s5 push-s1">
+						<p class="blue-text">Client will be billed during the</p>
+					</div>
+					
+					<div class="col s2 push-s1">
+						<input type="number" id="" required="" aria-required="true" placeholder=" " max="31" min="1">		
+					</div>
+					
+					<div class="col s4 push-s1">
+						<p class="blue-text">day of the month.</p>
+					</div>
+					
+			</div>
                 
                     
 				<div class='row'>
@@ -381,7 +396,7 @@ $(document).ready(function() {
 						});
             	},
             error: function(data){
-                var toastContent = $('<span>Error Occured. </span>');
+                var toastContent = $('<span>Please Check your Input. </span>');
                 Materialize.toast(toastContent, 1500,'red', 'edit');
             }
         });//ajax

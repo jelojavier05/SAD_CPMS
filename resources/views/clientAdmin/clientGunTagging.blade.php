@@ -76,7 +76,7 @@ Client
         <div class="row">
             <div class="col s10 push-s1">
                 <div class="input-field">
-                    <input id="intRounds" type="number" class="validate" required="" aria-required="true">
+                    <input id="intRounds" type="number" min="1" class="validate" required="" aria-required="true">
                     <label for="">Rounds</label> 
                 </div>
             </div>
