@@ -81,7 +81,7 @@ Admin
            <div class="card animated zoomIn teal darken-1" style="background-color:#9B4F0F">
             <div class="card-content white-text">
 
-              <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'gunNumber'>30</span>
+              <span class="card-title" style="font-size:40px; font-weight:bold;" id = 'gunNumber'>{{$value->countContractExtension}}</span>
               <p style="margin-left:10px;">Contract <br> Extensions</p>
 			  <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">extension</i>
 

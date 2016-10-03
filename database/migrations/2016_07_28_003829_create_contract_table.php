@@ -17,7 +17,6 @@ class CreateContractTable extends Migration
             $table->integer('intTypeOfContractID')->unsigned();
             $table->integer('intClientID')->unsigned();
             $table->integer('intMonthsDuration');
-            $table->decimal('deciRate', 7, 2);
             $table->date('dateStart');
             $table->date('dateEnd');
             $table->tinyInteger('boolStatus')->default(1); //0 = N/A 1 = A

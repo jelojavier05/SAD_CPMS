@@ -45,6 +45,21 @@ Guard Transfer History
 		<!-- Guard Information -->
 			<div class="col s7" style="margin-top:10px;">
 				<ul class="collection with-header animated fadeInUp sidenavhover" style="max-height:550px;">
+
+					<li class="collection-header">
+						<table class="striped grey lighten-1" id="tblLog">
+							<h5 style="font-weight:bold;">Transfer History</h5>
+							<thead>
+								<th>Date (Y-M-D)</th>
+								<th>Client</th>
+								<th>Stauts</th>
+							</thead>
+							
+							<tbody>
+							</tbody>
+						</table>
+					</li>
+					
 					<li class="collection-header"><h5 style="font-weight:bold;">Personal Information</h5>
 					<span><button class="btn blue tooltipped right waves-effect  " data-position="bottom" data-delay="50" data-tooltip="Generate PDF" style="margin-top: -40px;" id = 'btnPrint'><i class="material-icons">picture_as_pdf</i></button></span>
 					</li>
@@ -99,20 +114,6 @@ Guard Transfer History
 								Contact Number (Landline):<div style="font-weight:normal;" id = "strContactNumberLandline">&nbsp;&nbsp;&nbsp;</div>
 							</div>										
 						</div>
-					</li>
-					
-					<li class="collection-header">
-						<table class="striped grey lighten-1" id="tblLog">
-							<h5 style="font-weight:bold;">Transfer History</h5>
-							<thead>
-								<th>Date (Y-M-D)</th>
-								<th>Client</th>
-								<th>Stauts</th>
-							</thead>
-							
-							<tbody>
-							</tbody>
-						</table>
 					</li>
 				</ul>
 			</div>
@@ -169,7 +170,7 @@ $(document).ready(function(){
 
 	$('#btnPrint').click(function(){
 		if(guardID != null){
-			window.location.href = '{{ URL::to("/getTrackTransferRec") }}';
+			window.open('{{ URL::to("/getTrackTransferRec") }}', '_blank');
 		}else{
 			var toastContent = $('<span>Choose Guard.</span>');
 			Materialize.toast(toastContent, 1500,'red', 'edit');

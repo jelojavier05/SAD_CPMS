@@ -89,6 +89,14 @@ class MaintenanceController extends Controller
                     ['strTypeOfGun' => 'Pistol', 'strDescription' => 'Handgun'],
                     ['strTypeOfGun' => 'Rifle', 'strDescription' => 'Rifle guns'],
                 ]);
+
+                DB::table('tblutilities')->insert([
+                    'strAdminName' => 'Jelo Javier',
+                    'strCompanyName' => 'Zion Security Agency Inc.',
+                    'strAddress' => '51 Teresa St. Brgy. 592 Angono, Rizal',
+                    'strContactNumber' => '09364743900',
+                ]);
+
                 DB::commit();
             }catch(Exception $e){
                 DB::rollback();

@@ -28,6 +28,7 @@ return array(
     'CreateClientswapguardrequestTable' => $baseDir . '/database/migrations/2016_09_06_122219_create_clientswapguardrequest_table.php',
     'CreateClientswapguardresponseTable' => $baseDir . '/database/migrations/2016_09_06_123643_create_clientswapguardresponse_table.php',
     'CreateContractTable' => $baseDir . '/database/migrations/2016_07_28_003829_create_contract_table.php',
+    'CreateContractrateTable' => $baseDir . '/database/migrations/2016_10_04_021046_create_contractrate_table.php',
     'CreateGovernmentExamTable' => $baseDir . '/database/migrations/2016_02_28_080528_create_government_exam_table.php',
     'CreateGuardArmedserviceTable' => $baseDir . '/database/migrations/2016_07_04_033854_create_guard_armedservice_table.php',
     'CreateGuardBodyattributeTable' => $baseDir . '/database/migrations/2016_07_06_171018_create_guard_bodyattribute_table.php',

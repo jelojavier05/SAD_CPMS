@@ -120,9 +120,13 @@ class ClientContractController extends Controller
                 'intTypeOfContractID' => $request->contractID, 
                 'intClientID' => $clientID,
                 'intMonthsDuration' => $request->duration,
-                'deciRate' => $request->rate,
                 'dateStart' => $request->dateStart,
                 'dateEnd' => $request->dateEnd
+            ]);
+
+            DB::table('tblcontractrate')->insert([
+                'intContractID' => $contractID,
+                'deciRate' => $request->rate,
             ]);
             
             $guardPerShift = count($guardID)/count($shift);

@@ -51,7 +51,7 @@ Client
 					</div>
 					
 					<div class="input-field col s5 push-s1">
-						<input  id="rateperHour" type="text" required="" aria-required="true" readonly placeholder=" ">
+						<input  id="rateperHour" type="text" required="" aria-required="true" placeholder=" ">
 						<label class="active" for="rateperHour">Rate Per Hour</label>
 					</div>
 				</div>
@@ -127,12 +127,6 @@ Client
 											</thead>
 
 											<tbody>
-											  <tr>
-												
-											  </tr>
-												
-												
-
 											</tbody>
 										</table>
 									</div>

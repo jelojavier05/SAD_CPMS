@@ -17,6 +17,7 @@ class DashboardAdminController extends Controller
         $expirationDate = Carbon::now();
         $expirationDate->addMonths(2);
         $unpaidBillDate = new Carbon();
+        $contractExtension = (new Carbon())->addDays(14);
 
         if ($accountType == 3){
             $countClient = DB::table('tblclient')
@@ -39,6 +40,11 @@ class DashboardAdminController extends Controller
                 ->where('boolStatus', 1)
                 ->count();
 
+            $countContractExtension = DB::table('tblcontract')
+                ->where('dateEnd', '<=', $contractExtension)
+                ->where('boolStatus', 1)
+                ->count();
+
             $value = new \stdClass();
             $value->countClient = $countClient;
             $value->countGuard = $countGuard;
@@ -46,6 +52,7 @@ class DashboardAdminController extends Controller
             $value->countGunLicense = $countGunLicense;
             $value->countGuardLicense = $countGuardLicense;
             $value->countUnpaidBills = $countUnpaidBills;
+            $value->countContractExtension = $countContractExtension;
 
              return view('/DashboardAdmin1')
                 ->with('value', $value);
