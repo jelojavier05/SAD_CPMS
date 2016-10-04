@@ -20,7 +20,7 @@ Unpaid Clients
 				<div class="row">
 					<div class="col s12" style="margin-top:10px;">
 						<table class="striped white" style="border-radius:10px;" id="dataTable">
-							
+							<button class="btn modal-trigger" href="#modalClientBills">asas</button>
 							<thead>
 								<tr>
 									<th class="grey lighten-1"></th>                                
@@ -62,12 +62,12 @@ Unpaid Clients
 							<ul class="collection with-header">
 								<li class="collection-header">
 									<div class="row">
-										<div class="col s7">
+										<div class="col s7" style="margin-top:2%;">
 											<h5 style="font-weight:bold;">Official Receipt Number:</h5>
 										</div>
 										
-										<div class="col s5 pull-s1">
-											<div class="input-field">
+										<div class="col s5 pull-s1" >
+											<div class="input-field" >
 												<input type="text" id="strOfficialReceipt" placeholder="091222222">
 											</div>
 										</div>
