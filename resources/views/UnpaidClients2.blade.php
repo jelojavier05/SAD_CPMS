@@ -19,7 +19,8 @@ Unpaid Clients
 			<div class="container white lighten-2 z-depth-2" style="padding-left:2%; padding-right:2%;">       
 				<div class="row">
 					<div class="col s12" style="margin-top:10px;">
-						<table class="striped white" style="border-radius:10px;" id="dataTable">							
+						<table class="striped white" style="border-radius:10px;" id="dataTable">
+							
 							<thead>
 								<tr>
 									<th class="grey lighten-1"></th>                                
@@ -66,7 +67,9 @@ Unpaid Clients
 										</div>
 										
 										<div class="col s5 pull-s1">
-											<h5 style="font-weight: normal;" id="">929292929292929292</h5>
+											<div class="input-field">
+												<input type="text" id="" placeholder="091222222">
+											</div>
 										</div>
 									</div>										
 								</li>				
