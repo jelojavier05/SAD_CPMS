@@ -2,6 +2,8 @@
 
 Route::get('/test', 'TestController@index');
 
+Route::get('/clientbill', 'ClientBillController@index');
+
 Route::get('/contractextensions', 'ContractExtensionsController@index');
 
 Route::get('/reportsincidentreports', 'ReportsIncidentReportsController@index');
