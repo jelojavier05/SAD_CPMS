@@ -2,6 +2,8 @@
 
 Route::get('/test', 'TestController@index');
 
+Route::get('/paidclients', 'PaidClientsController@index');
+
 Route::get('/clientbill', 'ClientBillController@index');
 Route::get('/clientbill/getPaidBill', 'ClientBillController@getPaidBill');
 
