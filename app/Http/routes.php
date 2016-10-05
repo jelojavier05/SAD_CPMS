@@ -3,6 +3,8 @@
 Route::get('/test', 'TestController@index');
 
 Route::get('/contractextensions', 'ContractExtensionsController@index');
+Route::get('/contractextensions/getContractExtension', 'ContractExtensionsController@getContractExtension');
+Route::get('/contractextensions/getContractInfo', 'ContractExtensionsController@getContractInfo');
 
 Route::get('/reportsincidentreports', 'ReportsIncidentReportsController@index');
 Route::get('/reportsincidentreports/getIncidentPerArea', 'ReportsIncidentReportsController@getIncidentPerArea');

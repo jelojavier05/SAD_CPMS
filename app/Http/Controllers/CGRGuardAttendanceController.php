@@ -214,9 +214,8 @@ class CGRGuardAttendanceController extends Controller
             $attendance->guardName = $guardName->strFirstName . ' ' . $guardName->strLastName;
             $attendance->dateTimeIn = $value->datetimeIn;
             $attendance->identifier = 1;
-            $attendance->dateTime = date('M d - H:i', strtotime($attendance->dateTimeIn)); 
+            $attendance->dateTime = (new Carbon($attendance->dateTimeIn))->toDateTimeString(); 
 
-            // array_push($attendanceLog, $attendance);
             $attendanceLog [$value->datetimeIn] = $attendance;
         }
 
@@ -231,7 +230,7 @@ class CGRGuardAttendanceController extends Controller
                 $attendance->guardName = $guardName->strFirstName . ' ' . $guardName->strLastName;
                 $attendance->dateTimeOut = $value->datetimeOut;
                 $attendance->identifier = 0;
-                $attendance->dateTime = date('M d - H:i', strtotime($attendance->dateTimeOut)); 
+                $attendance->dateTime = (new Carbon($attendance->dateTimeOut))->toDateTimeString();
 
                 // array_push($attendanceLog, $attendance);
                 $attendanceLog [$value->datetimeOut] = $attendance;

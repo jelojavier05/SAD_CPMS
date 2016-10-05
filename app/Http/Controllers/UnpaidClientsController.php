@@ -45,9 +45,12 @@ class UnpaidClientsController extends Controller
             ->get();
 
         $result = DB::table('tblcontract')
-            ->select('deciRate')
-            ->where('intClientID', $clientID)
-            ->where('boolStatus', 1)
+            ->join('tblcontractrate', 'tblcontractrate.intContractID', '=', 'tblcontract.intContractID')
+            ->select('tblcontractrate.deciRate')
+            ->where('tblcontract.intClientID', $clientID)
+            ->where('tblcontract.boolStatus', 1)
+            ->where('tblcontractrate.datetimeEffectivity', '<=', $now)
+            ->orderBy('tblcontractrate.datetimeEffectivity', 'desc')
             ->first();
         $deciRate = $result->deciRate;
 
@@ -64,7 +67,7 @@ class UnpaidClientsController extends Controller
                     ->where('datetimeOut', '<=', $dateEnd)
                     ->first();
 
-                $totalAmount = $deciRate * $totalHours->totalHours;
+                $totalAmount = number_format((float)($deciRate * $totalHours->totalHours), 2, '.', '');;
 
                 $billingDate[$intLoop]->totalAmount = $totalAmount;
                 $billingDate[$intLoop]->strDate = (new Carbon($dateEnd))->toFormattedDateString();

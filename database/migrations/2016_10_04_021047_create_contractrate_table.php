@@ -15,7 +15,6 @@ class CreateContractrateTable extends Migration
         Schema::create('tblcontractrate', function (Blueprint $table) {
             $table->increments('intContractRateID');
             $table->integer('intContractID')->unsigned();
-            $table->integer('intClientID')->unsigned();
             $table->decimal('deciRate', 7, 2);
             $table->timestamp('datetimeEffectivity')->useCurrent = true;
             

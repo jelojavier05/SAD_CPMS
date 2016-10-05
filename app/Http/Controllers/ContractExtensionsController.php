@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use DB;
+use Input;
 
 class ContractExtensionsController extends Controller
 {
@@ -16,72 +19,41 @@ class ContractExtensionsController extends Controller
      */
     public function index()
     {
-        return view('/contractExtensions');
+        
+        return view('/contractExtension');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function getContractExtension(){
+        $unpaidBillDate = new Carbon();
+        $contractExtension = (new Carbon())->addDays(14);
+
+        $arrClient = DB::table('tblclient')
+            ->join('tblcontract', 'tblcontract.intClientID', '=', 'tblclient.intClientID')
+            ->select('tblclient.strClientName', 'tblcontract.dateEnd', 'tblclient.strPersonInCharge', 'tblcontract.intContractID')
+            ->where('tblcontract.boolStatus', 1)
+            ->where('tblcontract.dateEnd', '<=', $contractExtension)
+            ->get();
+        
+        return response()->json($arrClient);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function getContractInfo(Request $request){
+        $contractID = Input::get('contractID');
+        $now = new Carbon();
+
+        $result = DB::table('tblcontract')
+            ->join('tblcontractrate', 'tblcontractrate.intContractID', '=', 'tblcontract.intContractID')
+            ->join('tbltypeofcontract', 'tbltypeofcontract.intTypeOfContractID', '=', 'tblcontract.intTypeOfContractID')
+            ->select('tblcontractrate.deciRate', 'tbltypeofcontract.strTypeOfContractName', 'tblcontract.*')
+            ->where('tblcontract.intContractID', $contractID)
+            ->where('tblcontractrate.datetimeEffectivity', '<=', $now)
+            ->orderBy('tblcontractrate.datetimeEffectivity', 'desc')
+            ->first();
+
+        return response()->json($result);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function extendContract(Request $request){
+        
     }
 }

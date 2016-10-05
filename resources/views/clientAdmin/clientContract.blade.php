@@ -16,10 +16,10 @@ Client
 						<form>
 							<div class = "input-field col s6">    
 							   <select  id = "selectContract" name = "" >
-								   <option disabled selected>Choose an option</option>
+								   <option disabled selected id = 0>Choose an option</option>
 									@foreach($contract as $value)  
-                                    <option id = "{{$value->intTypeOfContractID}}" value = '{{$value->intMonthDuration}}'>{{$value->strTypeOfContractName}}</option>
-                                    @endforeach
+                  <option id = "{{$value->intTypeOfContractID}}" value = '{{$value->intMonthDuration}}'>{{$value->strTypeOfContractName}}</option>
+                  @endforeach
                                     
 									  
 							   </select>
@@ -62,7 +62,7 @@ Client
 					</div>
 					
 					<div class="col s2 push-s1">
-						<input type="number" id="" required="" aria-required="true" placeholder=" " max="31" min="1">		
+						<input type="number" id="intDayMonth" required="" aria-required="true" placeholder=" " max="31" min="1" value = '1'>		
 					</div>
 					
 					<div class="col s4 push-s1">
@@ -252,6 +252,7 @@ $(document).ready(function() {
     var shiftTo = [];
     var shiftFrom = [];
     var arrDate = [];
+    var dateEnd;
     
     $.ajax({
         type: "GET",
@@ -344,21 +345,36 @@ $(document).ready(function() {
         billingDates();
         console.log(arrDate);
     });
+
+    function isNumeric( obj ) {
+      return !jQuery.isArray( obj ) && (obj - parseFloat( obj ) + 1) >= 0;
+    }
     
     $('#btnSave').click(function(){
+        var deciRate = $('#rateperHour').val();
+        var intDayMonth = $('#intDayMonth').val();
+        var selectContract = $('#selectContract').children(":selected").attr("id");
         
-        var clientID = $('#clientID').text();
-        var clientName = $('#name').text();
-        var address = $('#address').text();
-        var contractID = $('#selectContract').children(":selected").attr("id");
-        var duration = $('#contractDuration').val();
-        var dateStart = $('#contractStart').val();
-        var dateEnd = $('#contractEnd').val();
-        var ratePerHour = $('#rateperHour').val();
-        var username = $('#username').val();
-        var password = $('#password').val();
-
-        $.ajax({
+        if (isNumeric(deciRate) && 
+          isInteger(intDayMonth) && 
+          deciRate > 0 &&
+          (intDayMonth >= 1 && intDayMonth <= 31) &&
+          selectContract != 0 && 
+          checkDate() &&
+          $('#username').val() != '' &&
+          $('#password').val() != ''
+          ){
+          var clientID = $('#clientID').text();
+          var clientName = $('#name').text();
+          var address = $('#address').text();
+          var contractID = $('#selectContract').children(":selected").attr("id");
+          var duration = $('#contractDuration').val();
+          var dateStart = $('#contractStart').val();
+          // var dateEnd = $('#contractEnd').val();
+          var ratePerHour = $('#rateperHour').val();
+          var username = $('#username').val();
+          var password = $('#password').val();
+          $.ajax({
             type: "POST",
             url: "{{action('ClientContractController@postContract')}}",
             beforeSend: function (xhr) {
@@ -387,20 +403,41 @@ $(document).ready(function() {
             },
             success: function(data){
                 swal({
-						title: "Success!",
-						text: "Contract is Completed!",
-						type: "success"
-					},
-					function(){
-						window.location.href = '{{ URL::to("/dashboardadmin") }}';
-						});
-            	},
+            title: "Success!",
+            text: "Contract is Completed!",
+            type: "success"
+          },
+          function(){
+            window.location.href = '{{ URL::to("/dashboardadmin") }}';
+            });
+              },
             error: function(data){
-                var toastContent = $('<span>Please Check your Input. </span>');
+                var toastContent = $('<span>Error Occured. </span>');
                 Materialize.toast(toastContent, 1500,'red', 'edit');
             }
-        });//ajax
+          });//ajax
+        }else{
+          
+        }
+
+        
+
     });
+
+    $('#intDayMonth').on('change', function(){
+      billingDates();
+    });
+
+    function checkDate(){
+      var now = new Date();
+      var dateStart = new Date($('#contractStart').val());
+
+      if (now < dateStart){
+        return true;
+      }else{
+        return false;
+      }
+    }
     
     function refreshDateEnd() {
         if ($('#contractStart').val() != '' && $('#contractDuration').val() != 0){
@@ -426,9 +463,23 @@ $(document).ready(function() {
             $('#contractEnd').val(dateEnd);
         }   
     }
+
+    function isInteger(x) {
+        return x % 1 === 0;
+    }
+
+    function checkDayMonth(number){
+      if (isInteger(number) &&(number >= 1 && number <= 31)){
+        return true;
+      }else{
+        return false;
+      }
+    }
     
     function billingDates(){
-        if ($('#contractStart').val() != '' && $('#contractDuration').val() != 0){
+        var intDayMonth = $('#intDayMonth').val();
+        if ($('#contractStart').val() != '' && $('#contractDuration').val() != 0 &&
+          checkDayMonth(intDayMonth)){
             var dateStart = new Date($('#contractStart').val());
             var monthDuration = $('#contractDuration').val();
             var counter = 0;
@@ -436,8 +487,8 @@ $(document).ready(function() {
             var tempPastMonth = dateStart;
             var tempCurrentMonth = new Date(dateStart.getFullYear(), dateStart.getMonth() + 1, dateStart.getDate());
             var arr = [];
-            var dayStart = dateStart.getDate();
-            
+            var dayStart = intDayMonth;
+
             while(counter != monthDuration){
                 
                 var year = tempCurrentMonth.getFullYear();
@@ -475,7 +526,10 @@ $(document).ready(function() {
 
                 var databaseDate = year + '-' + month + '-' + day;
                 arrDate.push(databaseDate);
+                dateEnd = databaseDate;
             });
+        }else{
+          $('#tableBilling tr').not(function(){ return !!$(this).has('th').length; }).remove();
         }
     }
     
