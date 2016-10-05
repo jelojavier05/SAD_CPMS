@@ -221,3 +221,15 @@ min-height: -25px;
 	opacity:1;
 	cursor: default;
 }
+
+#epalwarningclient
+{	
+	position:absolute;
+	z-index:100;	
+	opacity: 0.2;
+}
+
+#epalwarningclient:hover
+{
+	opacity:1;	
+}

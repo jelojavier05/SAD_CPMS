@@ -64,20 +64,25 @@
                             <div class="col s12 l6 pull-s12 push-l3 hide-on-med-and-down">
                             <p style="margin-top:9px;font-family:Myriad Pro;font-size:2.2rem" id = 'strCompanyName'></p>     
                             </div>
-                              <div class="col s6 l6 pull-s4 pull-l8">
-                              
-                                   <p style="margin-top:9px;font-family:Myriad Pro;font-size:.6rem">CLIENT & PERSONNEL MANAGEMENT SYSTEM</p>   
+                              <div style="margin-left:60%;width:400px;">
+                                  <p style="margin-top:9px;font-family:Myriad Pro;font-size:2.2rem;font-weight:bold;color:#F4F4EF" id="strCompanyName"></p>
                             </div>
                         </div>
                     </div>
                     </a>
                 </div>
                 
-                <ul class="right">    
+                <ul class="right">  
+					
+					<li id="notification_li">
+                            <a  data-position="bottom" data-delay="50" data-tooltip="BILLS" href="/clientbill" class=" tooltipped">
+								<i class="material-icons">payment</i>
+                            </a>
+                       </li>  
+					
                     <li id="notification_li">
                             <a  data-position="bottom" data-delay="50" data-tooltip="INCIDENT REPORTS" href="/incidentreportsclient" class=" tooltipped">
 								<i class="material-icons">report</i>
-<!--								<span id="notification_count_reports">*</span>-->
                             </a>
                        </li>  
 					
@@ -103,11 +108,11 @@
     
 	<div class="row" >
 		<div class="col s5 l3 push-l9 push-s7" style="margin-left:-10px;" >
-			<div class="card-panel red animated bounceInRight" style = "" id="epalwarning">
+			<a class="card-panel red animated bounceInRight" style = "" id="epalwarningclient" href="/clientbill">
 				<div class="white-text" style="font-size:20px;"><i class="material-icons left">warning</i>Notice</div>
 			  <span class="white-text">This is a reminder that your account balance of <span id="">1000.00</span> was overdue as of <span id="">01/01/17</span>.
 			  </span>
-			</div>
+			</a>
 		</div>
 	</div>
 	
