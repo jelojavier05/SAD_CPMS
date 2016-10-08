@@ -21,11 +21,6 @@ Manual Deployment
 							</thead>
 							
 							<tbody>
-								<tr>
-									<td>1</td>
-									<td>ChinaBank Talon</td>
-									<td><button class="btn blue waves-effect">More</button></td>
-								</tr>
 							</tbody>
 						</table>
 					</li>
@@ -38,17 +33,12 @@ Manual Deployment
 						<table class="striped grey lighten-1" id="tblGuards">
 							<h5 class="blue-text" style="font-weight:bold;">Guards</h5>
 							<thead>
-								<th>License Number</th>
+								<th>ID</th>
 								<th>Name</th>	
-								<th></th>
+								<th>Swap</th>
 							</thead>
 							
 							<tbody>
-								<tr>
-									<td>123-321</td>
-									<td>Andre Iguodala</td>
-									<td><button class="blue btn waves-effect tooltipped" data-tooltip="Replace" data-delay="50" data-position="bottom" id="btnReplace"><i class="material-icons">swap_horiz</i></button></td>
-								</tr>
 							</tbody>
 						</table>
 					</li>
@@ -58,12 +48,11 @@ Manual Deployment
 	</div>
 </div>
 
-
 <!--modal swap guard-->
 <div id="modalSwapGuard" class="modal modal-fixed-footer ci" style="overflow:hidden; width:60% !important; margin-top:-60px !important;  max-height:100% !important; height:650px !important;">      
 	<div class="modal-header">
 		<div class="h">
-			<h3><center>Guards</center></h3>  
+			<h3 id = 'strGuardNameModal'><center></center></h3>  
 		</div>
 	</div>
 	<div class="modal-content">
@@ -89,29 +78,13 @@ Manual Deployment
 								<table class="striped white" id="tblWaitingGuards" style="width:100%;">
 										<thead>
 											<tr>
-												<th class="grey ligten-1"></th>
-												<th class="grey ligten-1">License Number</th>
+												<th class="grey ligten-1">Action</th>
+												<th class="grey ligten-1">ID</th>
 												<th class="grey ligten-1">Name</th>
+												<th class="grey ligten-1">Location</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>
-													<input class="with-gap" name="guards" type="radio" id="test1" />
-													<label for="test1"></label>
-												</td>
-												<td>123-123-123</td>
-												<td>Jordan Clarkson</td>
-											</tr>
-
-											<tr>
-												<td>
-													<input class="with-gap" name="guards" type="radio" id="test2" />
-													<label for="test2"></label>
-												</td>
-												<td>456-456-456</td>
-												<td>Brandon Ingram</td>
-											</tr>
 										</tbody>
 									</table>
 								</div>
@@ -132,54 +105,139 @@ Manual Deployment
 @section('script')
 <script>
 $(document).ready(function(){
-		$("#tblClients").DataTable({
-			"columns": [
-				null,
-				null,
-				{"orderable":false}
-			] ,  
-			"pageLength":5,
-			"lengthMenu": [5,10,15,20]
-		});
-		
-		$("#tblGuards").DataTable({
-			"columns": [
-				null,
-				null,
-				{"orderable":false}
-			] ,  
-			"pageLength":5,
-			"lengthMenu": [5,10,15,20]
-		});
-		
-		$("#tblWaitingGuards").DataTable({
-			"columns": [
-				{"orderable":false},
-				null,
-				null				
-			] ,  
-			"pageLength":5,
-			"lengthMenu": [5,10,15,20]
-		});
-		
-		$('#btnReplace').click(function(){
-			$("#modalSwapGuard").openModal();
-		})
-				
-		
-		$("#btnOK").click(function(){
-			swal({   
-				title: "Are you sure?",
-				text: "Changes will be saved",
-				type: "warning",
-				showCancelButton: true,
-				confirmButtonColor: "#00e676",
-				confirmButtonText: "Save",
-				closeOnConfirm: false },
-				 function(){   
-				
+	$.ajax({
+		type: "GET",
+		url: "{{action('ClientController@getActiveClient')}}",
+		success: function(data){
+			var button;
+			var table = $('#tblClients').DataTable();
+			table.clear().draw();
+
+			$.each(data, function(index,value){
+				button = '<button class="btn blue waves-effect btnClient" id = "'+value.intClientID+'">More</button>'
+				table.row.add([ 
+					'<h>' + value.intClientID + '</h>',
+					'<h>' + value.strClientName + '</h>',
+					button
+				]).draw();
 			});
-		})
+		},
+		error: function(data){
+			var toastContent = $('<span>Error Database.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
+	});//get active client
+
+	$.ajax({
+		type: "GET",
+		url: "{{action('ClientController@getGuardWaiting')}}",
+		success: function(data){
+			var radio;
+			var table = $('#tblWaitingGuards').DataTable();
+			table.clear().draw();
+			$.each(data, function(index, value){
+				radio = '<input class="with-gap" name="guards" type="radio" value = "'+value.intGuardID+'" id="radio'+value.intGuardID+'" /><label for="radio'+value.intGuardID+'"></label>';
+				table.row.add([
+					radio, 
+			 	'<h>' + value.intGuardID + '</h>',
+			 	'<h>' + value.strFirstName + ' ' +value.strLastName + '</h>',
+			 	'<h>' + value.strCityName + ', ' + value.strProvinceName + '</h>'
+				]).draw();
+			});//foreach
+		},
+		error: function(data){
+			var toastContent = $('<span>Error Database.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
+	});//get guard waiting
+
+	$('#tblClients').on('click', '.btnClient', function(){
+		clientID = this.id;
+		$.ajax({
+			type: "GET",
+			url: "/clients/guards?id=" + clientID,
+			success: function(data){
+				arrGuardTable = data;
+				refreshGuardTable();
+			},
+			error: function(data){
+				var toastContent = $('<span>Error Database.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+			},async:false
+		});//get active guards in client.
+	});
+
+	$('#tblGuards').on('click', '.btnReplace', function(){
+		guardID = this.id;
+		$('#strGuardNameModal').text($('#guardName' + guardID).text());
+		$('#strGuardNameModal').css('text-align','center');
+
+		$('#modalSwapGuard').openModal();
+	});
+
+	function refreshGuardTable(){
+		var button;
+		var table = $('#tblGuards').DataTable();
+		table.clear().draw();
+
+		$.each(arrGuardTable,function(index,value){
+			button = '<button class="blue btn waves-effect tooltipped btnReplace" data-tooltip="Replace" data-delay="50" data-position="bottom" id="'+value.intGuardID+'"><i class="material-icons">swap_horiz</i></button>';
+			table.row.add([
+				'<h>' + value.intGuardID + '</h>',
+				'<h id = "guardName'+value.intGuardID+'">' + value.strFirstName + ' ' + value.strLastName + '</h>',
+				button
+			]).draw();
+		});
+	}
+});
+</script>
+
+<script>
+	$(document).ready(function(){
+			$("#tblClients").DataTable({
+				"columns": [
+					null,
+					null,
+					{"orderable":false}
+				] ,  
+				"pageLength":5,
+				"lengthMenu": [5,10,15,20]
+			});
+			
+			$("#tblGuards").DataTable({
+				"columns": [
+					null,
+					null,
+					{"orderable":false}
+				] ,  
+				"pageLength":5,
+				"lengthMenu": [5,10,15,20]
+			});
+			
+			$("#tblWaitingGuards").DataTable({
+				"columns": [
+					{"orderable":false},
+					null,
+					null,
+					null
+				] ,  
+				"pageLength":5,
+				"lengthMenu": [5,10,15,20]
+			});
+			
+			$("#btnOK").click(function(){
+				swal({   
+					title: "Are you sure?",
+					text: "Changes will be saved",
+					type: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#00e676",
+					confirmButtonText: "Save",
+					closeOnConfirm: false },
+					 function(){   
+					
+				});
+			})
 	});
 </script>
 @stop

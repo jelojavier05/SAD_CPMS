@@ -204,13 +204,8 @@ $(document).ready(function(){
 
 	$('#tblGuards').on('click', '.btnDTR', function(){
 		guardID = this.id;
-
-		$.each(arrGuardTable, function(index, value){
-			if (value.intGuardID == guardID){
-				$('#strGuardNameModal').text(value.strFirstName + ' ' + value.strLastName);
-				$('#strGuardNameModal').css('text-align','center');
-			}
-		});
+		$('#strGuardNameModal').text($('#guardName' + guardID).text());
+		$('#strGuardNameModal').css('text-align','center');
 
 		$('#modalAddDTR').openModal();
 	});
@@ -280,7 +275,7 @@ $(document).ready(function(){
 			button = '<button class="btnDTR green btn waves-effect tooltipped" data-tooltip="Add DTR" data-delay="50" data-position="bottom" id="'+value.intGuardID+'"><i class="material-icons">add</i></button>';
 			table.row.add([
 				'<h>' + value.intGuardID + '</h>',
-				'<h>' + value.strFirstName + ' ' + value.strLastName + '</h>',
+				'<h id = "guardName'+value.intGuardID+'">' + value.strFirstName + ' ' + value.strLastName + '</h>',
 				button
 			]).draw();
 		});

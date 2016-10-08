@@ -64,7 +64,7 @@ class ClientController extends Controller
             ->join('tblguardaddress', 'tblguardaddress.intGuardID', '=', 'tblguard.intGuardID')
             ->join('tblprovince', 'tblprovince.intProvinceID', '=', 'tblguardaddress.intProvinceID')
             ->join('tblcity','tblcity.intCityID', '=', 'tblguardaddress.intCityID')
-            ->select('tblguard.intGuardID', 'tblguard.strFirstName', 'tblguard.strLastName')
+            ->select('tblguard.intGuardID', 'tblguard.strFirstName', 'tblguard.strLastName', 'tblprovince.strProvinceName','tblcity.strCityName')
             ->where('boolStatus', 1)
             ->get();
         $arrayGuardWaiting = array();
