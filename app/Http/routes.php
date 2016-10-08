@@ -2,7 +2,12 @@
 
 Route::get('/test', 'TestController@index');
 
+Route::get('/clients', 'ClientController@getActiveClient');
+Route::get('/clients/guards', 'ClientController@getActiveClientGuard');
+Route::get('/clients/guards/waiting', 'ClientController@getGuardWaiting');
+
 Route::get('/manualdtr', 'ManualDTRController@index');
+Route::post('/manualdtr/post/insertManualDTR', 'ManualDTRController@insertManualDTR');
 
 Route::get('/manualdeploy', 'ManualDeployController@index');
 

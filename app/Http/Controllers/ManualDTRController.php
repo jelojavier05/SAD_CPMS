@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
+use Carbon\Carbon;
 
 class ManualDTRController extends Controller
 {
@@ -19,69 +21,22 @@ class ManualDTRController extends Controller
         return view('/manualDTR');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function insertManualDTR(Request $request){
+    	$guardID = $request->guardID;
+    	$clientID = $request->clientID;
+    	$datetimeFrom = new Carbon($request->datetimeFrom);
+    	$datetimeTo = new Carbon($request->datetimeTo);
+    	$dateDifference = $datetimeFrom->diffInMinutes($datetimeTo);
+		$dateDifference = $dateDifference * (1/60);
+
+    	DB::table('tblattendance')->insert([
+    		'intGuardID' => $guardID,
+    		'intClientID' => $clientID,
+    		'datetimeIn' => $datetimeFrom,
+    		'datetimeOut' => $datetimeTo,
+    		'deciTotalHours' => $dateDifference
+    	]);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

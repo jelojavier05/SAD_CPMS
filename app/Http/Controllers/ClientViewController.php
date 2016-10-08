@@ -26,7 +26,6 @@ class ClientViewController extends Controller
             ->select('strClientName', 'strPersonInCharge', 'intClientID')
             ->where('intStatusIdentifier' , '=', 2)
             ->get();
-            
         
         return view('/clientView')
             ->with('clientPending', $clientPending)
