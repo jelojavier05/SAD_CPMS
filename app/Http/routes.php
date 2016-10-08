@@ -4,6 +4,8 @@ Route::get('/test', 'TestController@index');
 
 Route::get('/manualdtr', 'ManualDTRController@index');
 
+Route::get('/manualdeploy', 'ManualDeployController@index');
+
 Route::get('/paidclients', 'PaidClientsController@index');
 Route::get('/paidclients/getPaidClient', 'PaidClientsController@getPaidClient');
 

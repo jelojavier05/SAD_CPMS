@@ -201,15 +201,14 @@
 					<li class="bold" style="width:280px;">
 								<a class="collapsible-header waves-effect waves-blue swa" href="/gunDeliveryView" id="delivery"><i class="material-icons">local_shipping</i><strong>Delivery and Pickup</strong></a>
                             <div class="collapsible-body grey lighten-2">
-<!--
-                                <ul>
-                                            
-                                  
-									
-									
-                                           
-                                </ul>
--->
+
+                            </div>
+					</li>
+							
+					<li class="bold" style="width:280px;">
+								<a class="collapsible-header waves-effect waves-blue swa" href="/manualdeploy" id=""><i class="material-icons">send</i><strong>Manual Deployment</strong></a>
+                            <div class="collapsible-body grey lighten-2">
+
                             </div>
 					</li>
 							
@@ -218,20 +217,14 @@
 					<li class="bold" style="width:280px;">
 								<a class="collapsible-header waves-effect waves-blue swa" href="/adminannouncement" id="announcement"><i class="material-icons">announcement</i><strong>Announcements</strong></a>
                             <div class="collapsible-body grey lighten-2">
-<!--
-                                <ul>
-                                            
-                                  
-									
-									
-                                           
-                                </ul>
--->
+
                             </div>
 					</li>
 							
+							
+							
 					<li class="bold" style="width:280px;">
-								<a class="collapsible-header waves-effect waves-blue swa" href="/manualdtr" id="announcement"><i class="material-icons">date_range</i><strong>Guard DTR</strong></a>
+								<a class="collapsible-header waves-effect waves-blue swa" href="/manualdtr" id=""><i class="material-icons">date_range</i><strong>Guard DTR</strong></a>
                             <div class="collapsible-body grey lighten-2">
                             </div>
 					</li>

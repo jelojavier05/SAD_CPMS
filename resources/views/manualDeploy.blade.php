@@ -1,13 +1,14 @@
 @extends('layout.maintenanceLayout')
 
 @section('title')
-Manual DTR
+Manual Deployment
 @endsection
 
 @section('content')
 <div class="row">
 	<div class="col s10 offset-s2" style="margin-top:-25px;">
 		<div class="row">
+			
 			<div class="col s6" style="margin-top:25px;">
 				<ul class="collection with-header animated fadeInUp" style="max-height:550px;">
 					<li class="collection-header">
@@ -22,7 +23,7 @@ Manual DTR
 							<tbody>
 								<tr>
 									<td>1</td>
-									<td>LandBank San Antonio</td>
+									<td>ChinaBank Talon</td>
 									<td><button class="btn blue waves-effect">More</button></td>
 								</tr>
 							</tbody>
@@ -35,7 +36,7 @@ Manual DTR
 				<ul class="collection with-header animated fadeInUp" style="max-height:550px;">
 					<li class="collection-header">
 						<table class="striped grey lighten-1" id="tblGuards">
-							<h5 class="blue-text" style="font-weight:bold;">Guards</h5><span><button class="btn green waves-effect right" style="margin-top:-40px;" id="btnAddGuard">ADD</button></span>
+							<h5 class="blue-text" style="font-weight:bold;">Guards</h5>
 							<thead>
 								<th>License Number</th>
 								<th>Name</th>	
@@ -45,8 +46,8 @@ Manual DTR
 							<tbody>
 								<tr>
 									<td>123-321</td>
-									<td>Stephen Curry</td>
-									<td><button class="green btn waves-effect tooltipped" data-tooltip="Add DTR" data-delay="50" data-position="bottom" id="btnAddDTR"><i class="material-icons">add</i></button></td>
+									<td>Andre Iguodala</td>
+									<td><button class="blue btn waves-effect tooltipped" data-tooltip="Replace" data-delay="50" data-position="bottom" id="btnReplace"><i class="material-icons">swap_horiz</i></button></td>
 								</tr>
 							</tbody>
 						</table>
@@ -56,8 +57,10 @@ Manual DTR
 		</div>
 	</div>
 </div>
-<!--modal add guard-->
-<div id="modalAddGuard" class="modal modal-fixed-footer ci" style="overflow:hidden; width:60% !important; margin-top:-60px !important;  max-height:100% !important; height:650px !important;">      
+
+
+<!--modal swap guard-->
+<div id="modalSwapGuard" class="modal modal-fixed-footer ci" style="overflow:hidden; width:60% !important; margin-top:-60px !important;  max-height:100% !important; height:650px !important;">      
 	<div class="modal-header">
 		<div class="h">
 			<h3><center>Guards</center></h3>  
@@ -66,7 +69,20 @@ Manual DTR
 	<div class="modal-content">
 		<div class="row">
 			<div class="col s12">
-				<ul class="collection with-header">					
+				<ul class="collection with-header">	
+					<li class="collection-header">
+						<div class="row">
+							<div class="input-field col s6">
+								<input type="date" id="">
+								<label class="active">From</label>
+							</div>
+							
+							<div class="input-field col s6">
+								<input type="date" id="">
+								<label class="active">To</label>
+							</div>
+						</div>
+					</li>
 					<li class="collection-item">
 						<div class="row">
 							<div class="col s12">		
@@ -85,7 +101,7 @@ Manual DTR
 													<label for="test1"></label>
 												</td>
 												<td>123-123-123</td>
-												<td>Klay Thompson</td>
+												<td>Jordan Clarkson</td>
 											</tr>
 
 											<tr>
@@ -94,7 +110,7 @@ Manual DTR
 													<label for="test2"></label>
 												</td>
 												<td>456-456-456</td>
-												<td>Draymond Green</td>
+												<td>Brandon Ingram</td>
 											</tr>
 										</tbody>
 									</table>
@@ -106,70 +122,16 @@ Manual DTR
 		</div>
 	</div>
 	<div class="modal-footer" style="background-color: #00293C;">
-		<button class="btn large waves-effect green" name="action" style="margin-right: 30px;" id = "">Add
+		<button class="btn large waves-effect green" name="action" style="margin-right: 30px;" id = "btnOK">OK
 		</button>
 	</div>	
 </div>
-
-<!--modal add guard end-->
-
-<!--modal add dtr-->
-
-<div id="modalAddDTR" class="modal modal-fixed-footer ci" style="overflow:hidden; width:45% !important; margin-top:10px !important;  max-height:100% !important; height:500px !important;">      
-	<div class="modal-header">
-		<div class="h">
-			<h3><center>Guards</center></h3>  
-		</div>
-	</div>
-	<div class="modal-content">
-		<div class="row">
-			<div class="col s12">
-				<ul class="collection with-header">
-					<li class="collection-header">
-						<div class="row">
-							<div class="col s4">
-								<h5 class="blue-text" style="font-weight:bold;">Time Present</h5>
-							</div>
-							
-							<div class="col s3 push-s4">
-								<button class="btn green waves-effect tooltipped" data-tooltip="Add" data-position="bottom" data-delay="50"><i class="material-icons">add</i></button>
-							</div>
-							
-							<div class="col s3 push-s3">
-								<button class="btn red waves-effect tooltipped" data-tooltip="Remove" data-position="bottom" data-delay="50"><i class="material-icons">delete</i></button>
-							</div>
-						</div>
-					</li>
-					
-					<li class="collection-item">
-						<div class="row">
-							<div class="input-field col s6">
-								<input type="datetime-local" id="">
-								<label class="active">From</label>
-							</div>
-							
-							<div class="input-field col s6">
-								<input type="datetime-local" id="">
-								<label class="active">To</label>
-							</div>
-						</div>
-					</li>					
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="modal-footer" style="background-color: #00293C;">
-		<button class="btn large waves-effect blue" name="action" style="margin-right: 30px;" id = "btnSave">Save
-		</button>
-	</div>	
-</div>
-
-<!--modal add dtr end-->
+<!--modal swap guard end-->
 @stop
 
 @section('script')
 <script>
-	$(document).ready(function(){
+$(document).ready(function(){
 		$("#tblClients").DataTable({
 			"columns": [
 				null,
@@ -200,15 +162,12 @@ Manual DTR
 			"lengthMenu": [5,10,15,20]
 		});
 		
-		$('#btnAddGuard').click(function(){
-			$("#modalAddGuard").openModal();
+		$('#btnReplace').click(function(){
+			$("#modalSwapGuard").openModal();
 		})
+				
 		
-		$('#btnAddDTR').click(function(){
-			$("#modalAddDTR").openModal();
-		})
-		
-		$("#btnSave").click(function(){
+		$("#btnOK").click(function(){
 			swal({   
 				title: "Are you sure?",
 				text: "Changes will be saved",
