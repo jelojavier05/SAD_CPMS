@@ -10,6 +10,7 @@ Route::get('/manualdtr', 'ManualDTRController@index');
 Route::post('/manualdtr/post/insertManualDTR', 'ManualDTRController@insertManualDTR');
 
 Route::get('/manualdeploy', 'ManualDeployController@index');
+Route::post('/manualdeploy/post', 'ManualDeployController@manualDeploy');
 
 Route::get('/paidclients', 'PaidClientsController@index');
 Route::get('/paidclients/getPaidClient', 'PaidClientsController@getPaidClient');

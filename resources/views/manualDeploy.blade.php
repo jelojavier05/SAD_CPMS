@@ -65,7 +65,7 @@ Manual Deployment
 								<h5>Choose an Option:</h5>
 							</div>
 							<div class="col s6">
-								<input class="with-gap" type="radio" name="deploymentType" id="test1" value="0">
+								<input class="with-gap" type="radio" name="deploymentType" id="test1" value="0" checked="checked">
 								<label for="test1">Permanent</label>
 							</div>
 							
@@ -79,12 +79,7 @@ Manual Deployment
 						<li class="collection-item">
 							<div class="row">
 								<div class="input-field col s6">
-									<input type="date" id="">
-									<label class="active">From</label>
-								</div>
-
-								<div class="input-field col s6">
-									<input type="date" id="">
+									<input type="date" id="dateTo">
 									<label class="active">To</label>
 								</div>
 							</div>
@@ -125,6 +120,9 @@ Manual Deployment
 @section('script')
 <script>
 $(document).ready(function(){
+	var selectedGuardID;
+	var selectedClientID;
+
 	$.ajax({
 		type: "GET",
 		url: "{{action('ClientController@getActiveClient')}}",
@@ -156,7 +154,7 @@ $(document).ready(function(){
 			var table = $('#tblWaitingGuards').DataTable();
 			table.clear().draw();
 			$.each(data, function(index, value){
-				radio = '<input class="with-gap" name="guards" type="radio" value = "'+value.intGuardID+'" id="radio'+value.intGuardID+'" /><label for="radio'+value.intGuardID+'"></label>';
+				radio = '<input class="with-gap" name="guardWaiting" type="radio" value = "'+value.intGuardID+'" id="radio'+value.intGuardID+'" /><label for="radio'+value.intGuardID+'"></label>';
 				table.row.add([
 					radio, 
 			 	'<h>' + value.intGuardID + '</h>',
@@ -172,10 +170,10 @@ $(document).ready(function(){
 	});//get guard waiting
 
 	$('#tblClients').on('click', '.btnClient', function(){
-		clientID = this.id;
+		selectedClientID = this.id;
 		$.ajax({
 			type: "GET",
-			url: "/clients/guards?id=" + clientID,
+			url: "/clients/guards?id=" + selectedClientID,
 			success: function(data){
 				arrGuardTable = data;
 				refreshGuardTable();
@@ -188,12 +186,65 @@ $(document).ready(function(){
 	});
 
 	$('#tblGuards').on('click', '.btnReplace', function(){
-		guardID = this.id;
-		$('#strGuardNameModal').text($('#guardName' + guardID).text());
+		selectedGuardID = this.id;
+		$('#strGuardNameModal').text($('#guardName' + selectedGuardID).text());
 		$('#strGuardNameModal').css('text-align','center');
 
 		$('#modalSwapGuard').openModal();
 	});
+
+	$('#btnOK').click(function(){
+		// swal({   
+		// 	title: "Are you sure?",
+		// 	text: "Changes will be saved",
+		// 	type: "warning",
+		// 	showCancelButton: true,
+		// 	confirmButtonColor: "#00e676",
+		// 	confirmButtonText: "Save",
+		// 	closeOnConfirm: false },
+		// 	 function(){   
+			
+		// });
+		var deploymentType = $('input[name=deploymentType]:checked').val();
+		// confirm($('input[name=guardWaiting]:checked').val());
+
+		if($('input[name=guardWaiting]').is(':checked')){
+			var guardWaitingID = $('input[name=guardWaiting]:checked').val();
+			manualDatabasePermanent(guardWaitingID);
+		}
+	});
+
+	function manualDatabasePermanent(guardWaitingID){
+		$.ajax({
+			type: "POST",
+			url: "{{action('ManualDeployController@manualDeploy')}}",
+			beforeSend: function (xhr) {
+				var token = $('meta[name="csrf_token"]').attr('content');
+				if (token) {
+					return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+				}
+			},
+			data: {
+				clientID: selectedClientID,
+				replaceGuardID: selectedGuardID,
+				guardWaitingID: guardWaitingID
+			},
+			success: function(data){
+				swal({
+					title: "Success!",
+					text: "Replacement Guard Success!",
+					type: "success"
+				},
+					function(){
+					window.location.href = '{{ URL::to("/manualdeploy") }}';
+				});
+			},
+			error: function(data){
+				var toastContent = $('<span>Error Database.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+			}
+		});//ajax
+	}
 
 	function refreshGuardTable(){
 		var button;
@@ -215,7 +266,7 @@ $(document).ready(function(){
 <script>
 	$(document).ready(function(){
 		
-			$('input[type="radio"]').click(function(){
+			$('input[name="deploymentType"]').click(function(){
 				if($(this).attr("value")=="1"){           
 						$(".deploymentType").show();
 					}else{
@@ -253,20 +304,6 @@ $(document).ready(function(){
 				"pageLength":5,
 				"lengthMenu": [5,10,15,20]
 			});
-			
-			$("#btnOK").click(function(){
-				swal({   
-					title: "Are you sure?",
-					text: "Changes will be saved",
-					type: "warning",
-					showCancelButton: true,
-					confirmButtonColor: "#00e676",
-					confirmButtonText: "Save",
-					closeOnConfirm: false },
-					 function(){   
-					
-				});
-			})
 	});
 </script>
 @stop
