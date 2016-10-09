@@ -31,7 +31,7 @@ Manual Deployment
 				<ul class="collection with-header animated fadeInUp" style="max-height:550px;">
 					<li class="collection-header">
 						<table class="striped grey lighten-1" id="tblGuards">
-							<h5 class="blue-text" style="font-weight:bold;">Guards</h5>
+							<h5 class="blue-text" style="font-weight:bold;">Guards</h5>							
 							<thead>
 								<th>ID</th>
 								<th>Name</th>	
@@ -49,7 +49,7 @@ Manual Deployment
 </div>
 
 <!--modal swap guard-->
-<div id="modalSwapGuard" class="modal modal-fixed-footer ci" style="overflow:hidden; width:60% !important; margin-top:-60px !important;  max-height:100% !important; height:650px !important;">      
+<div id="modalSwapGuard" class="modal modal-fixed-footer ci" style="overflow:hidden; width:60% !important; margin-top:-30px !important;  max-height:100% !important; height:600px !important;">      
 	<div class="modal-header">
 		<div class="h">
 			<h3 id = 'strGuardNameModal'><center></center></h3>  
@@ -61,17 +61,37 @@ Manual Deployment
 				<ul class="collection with-header">	
 					<li class="collection-header">
 						<div class="row">
-							<div class="input-field col s6">
-								<input type="date" id="">
-								<label class="active">From</label>
+							<div class="col s6 offset-s6 pull-s6">
+								<h5>Choose an Option:</h5>
+							</div>
+							<div class="col s6">
+								<input class="with-gap" type="radio" name="deploymentType" id="test1" value="0">
+								<label for="test1">Permanent</label>
 							</div>
 							
-							<div class="input-field col s6">
-								<input type="date" id="">
-								<label class="active">To</label>
+							<div class="col s6">
+								<input class="with-gap" type="radio" name="deploymentType" id="test2" value="1">
+								<label for="test2">Reliever</label>
 							</div>
 						</div>
 					</li>
+					<div class="deploymentType animated slideInLeft" style="display:none;">	
+						<li class="collection-item">
+							<div class="row">
+								<div class="input-field col s6">
+									<input type="date" id="">
+									<label class="active">From</label>
+								</div>
+
+								<div class="input-field col s6">
+									<input type="date" id="">
+									<label class="active">To</label>
+								</div>
+							</div>
+						</li>
+						<li class="collection-item"></li>
+					</div>
+					
 					<li class="collection-item">
 						<div class="row">
 							<div class="col s12">		
@@ -90,7 +110,7 @@ Manual Deployment
 								</div>
 						</div>
 					</li>
-				</ul>
+				</ul><div class="row"></div>
 			</div>
 		</div>
 	</div>
@@ -194,6 +214,15 @@ $(document).ready(function(){
 
 <script>
 	$(document).ready(function(){
+		
+			$('input[type="radio"]').click(function(){
+				if($(this).attr("value")=="1"){           
+						$(".deploymentType").show();
+					}else{
+					 $(".deploymentType").hide();
+					}
+				});
+			
 			$("#tblClients").DataTable({
 				"columns": [
 					null,
