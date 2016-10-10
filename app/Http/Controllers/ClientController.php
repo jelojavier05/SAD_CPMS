@@ -50,7 +50,7 @@ class ClientController extends Controller
                 ->orderBy('tblclientguard.created_at', 'desc')
                 ->first();
 
-            if ($result->boolStatus == 1 || $result->boolStatus == 2){     
+            if ($result->boolStatus == 1){     
                 array_push($clientGuard, $result);
             }
         }
