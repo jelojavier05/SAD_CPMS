@@ -325,6 +325,7 @@ Route::get('/getTrackTransferRec', 'PDFTrackTransferRecordController@getTrackTra
 Route::get('/getGuardDeployedparea', 'PDFGuardDeployedPerAreaController@getGuardDeployedparea');
 
 Route::get('/getIncident', 'PDFIncidentController@index');
+Route::get('/getDTR', 'PDFdtrController@getDTR');
 
 
 //PDF QUERIES ---------------------------------------------
