@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <title> Guard Transfer History </title>
+    <title> Daily Time Record </title>
     <style>
     #logo{
         margin-top: 35px;
@@ -61,7 +61,7 @@
      #title
         {
             font-family: arial, sans-serif;
-            font-size:25px;
+            font-size:30px;
             color:#011A27;
             text-align: center;
         }
@@ -103,35 +103,38 @@
 <body>  
          
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img id="logo" src="{!! public_path('img/cpms-logo.png') !!}" width="100">
-    
-   <p id="title"> CLIENT AND PERSONNEL <br>MANAGEMENT SYSTEM</p>
-
+    <h3><center><b><strong><i style="font-size:30px">CLIENT AND PERSONNEL <br> MANAGEMENT SYSTEM</i></strong></b></center></h3>
         <hr>
-          <h2><center><b><strong><i>Guard Transfer History</i></strong></b></center></h2>
-        
-     
+          <h2><center><b><strong><i>Daily Time Record</i></strong></b></center></h2><br>
 
-        
-    <p style="text-align:center;"> Guard Personal Information </p>
-    <p> Name: </p>
-    
-    
-    
-     <h3><center><b><i>DTR</i></b></center></h3>
-
+<h4>Guard:</h4>
+<h4>For the Month of: </h4>
+<h4>Assigned Client:</h4>
      <br>
      <br>
          <table>
                 <tbody>
                     <tr>
-                    <th><center>Date Deployed</center>
+                    <th><center>Date</center>
                     </th>
-                     <th><center>Client</center>
+                     <th><center>Time In</center>
                     </th>
-                     <th><center>Client's Nature of Business</center>
-                    </th>
-                     <th><center>Status</center>
-                    </th>
+                     <th><center>Time Out</center>
+                        </th>
+                    </tr>
+                    
+                    <tr>
+                    <td>
+                      02/04/16  
+                    </td>
+                    <td>
+                    12:00 AM
+                    </td>
+                    <td>
+                    12:00 PM
+                    </td>
+                    
+                    </tr>
                   
                 </tbody>
             </table>

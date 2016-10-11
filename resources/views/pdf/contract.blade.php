@@ -128,6 +128,9 @@
     
     <hr>
     
+     <p style="padding-bottom:2%">RATE PER HOUR:</p>
+     <p style="padding-bottom:2%">TYPE OF PAYMENT:</p>
+    
     <h2><center><b><strong><i>RESOURCES DEPLOYMENT</i></strong></b></center></h2>
      <p style="padding-bottom:2%">FIREARMS</p>
      <table>  <tbody>
