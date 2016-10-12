@@ -2,6 +2,8 @@
 
 Route::get('/test', 'TestController@index');
 
+Route::get('/reportDTR', 'ReportDTRController@index');
+
 Route::get('/clients', 'ClientController@getActiveClient');
 Route::get('/clients/guards', 'ClientController@getActiveClientGuard');
 Route::get('/clients/guards/waiting', 'ClientController@getGuardWaiting');
