@@ -11,7 +11,7 @@ Test
 			<div class="col s12">
 				<ul class="collection with-header">
 					<li class="collection-header">
-						<h5 style="font-weight:bold;">Payment Options</h5>
+						<h5 style="font-weight:bold;">Hello HHAHAHAHAH</h5>
 						<div>
 							<input class="with-gap" name="group1" type="radio" id="test1" value="0" />
 							<label for="test1">Cash</label>
