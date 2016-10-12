@@ -32,7 +32,7 @@ Guard Attendance
 										<td>Damian Lillard</td>
 										<td>Polytechnic University of the Philippines Sta Mesa</td>
 										<td>
-											<button class=" btn blue btnMore col s12" id="">View</button>
+											<button class="btn blue col s12" id="">View</button>
 										</td>
 									</tr>									
 								</tbody>
