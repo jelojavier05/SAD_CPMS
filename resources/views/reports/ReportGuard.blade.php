@@ -18,6 +18,7 @@ Guards Deployed per Area
 			<div class="row"></div>
 
 			<div class="row">
+				<div class="col s6 offset-s6 pull-s6"><h4 class="blue-text" style="font-weight:bold;">Guards Deployed Per Area</h4></div>
 				<div class="col s8">
 					<div class="input-field col s4">
 						<label class="active" style="color:#64b5f6;"  for="dateReport">Date</label>	

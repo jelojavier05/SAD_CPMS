@@ -8,6 +8,7 @@ Guard Transfer History
 <div class="row">
 	<div class="col s10 offset-s2" style="margin-top:-25px;">
 		<div class="row">
+			<div class="col s6 offset-s6 pull-s6"><h4 class="blue-text" style="font-weight:bold;">Guard Transfer History</h4></div>
 		<!-- Guard Table -->
 			<div class="col s5">
 				<div class="container-fluid grey lighten-2 z-depth-2 animated fadeInUp" style="border-radius: 10px; margin-top:10px; padding-left:2%;padding-right:2%;">

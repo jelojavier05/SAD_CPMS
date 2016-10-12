@@ -16,6 +16,7 @@ Incident Reports - Reports
 		<div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%; padding-bottom:1%; height:100%;">
 			<div class="row"></div>			
 			<div class="row">
+				<div class="col s6 offset-s6 pull-s6"><h4 class="blue-text" style="font-weight:bold;">Incident Reports</h4></div>
 				<div class="col s4">
 					<select id = 'reportFilter'>
 						<option disabled selected>Choose Filter</option>

@@ -30,50 +30,10 @@ Admin Reports
     <div class="col s12 push-s1" style="margin-top:-4%;">
         <div class="container blue-grey lighten-4 z-depth-2 animated fadeIn" style="padding-left:2%; padding-right:2%;">
 			<div class="row"></div>
-<!--
-			<div class="row">
-				<div class="col s8">
-					<div class="input-field col s4">
-						<label class="active" style="color:#64b5f6;"  for="dateOfbirth">From</label>	
-				        <input placeholder=""  id="dateOfbirth" type="date" class="datepicker">
-					</div>
-
-					<div class="input-field col s4">
-						<label class="active" style="color:#64b5f6;"  for="dateOfbirth">To</label>	
-				        <input placeholder=""  id="dateOfbirth" type="date" class="datepicker">
-					</div>
-
-					<div class="input-field col s4">
-						  <select>
-                                <option disabled selected>Choose an Option</option>
-                                <option>Clients</option>
-                                <option>Guards</option>
-                                <option>Guns</option>
-                                <option>Requests</option>
-					       </select>
-						<label>Reports</label>
-					</div>
-				</div>
-			
-				<div class="col s4">
-					<div class="input-field col s12">
-						<nav style="height:55px;">
-							<div class="nav-wrapper blue-grey lighten-3">
-								<form>
-									<div class="input-field" style="">
-										<input id="mySearch" type="search" placeholder="Search" required>
-										<label for="search"><i class="material-icons">search</i></label>									
-									</div>
-								</form>
-							</div>
-						</nav>
-					</div>	
-				</div>							                                             
-           </div>
--->
             
             <div class="row">
                 <div class="col l12">
+<!--
                 <div class="col s6">
                     <div class="card animated zoomIn" style="background-color:#2D4262" >
                         <div class="card-content white-text">
@@ -89,6 +49,7 @@ Admin Reports
                     </div>
 
                 </div>
+-->
                     
                     <div class="col s6">
                     <div class="card animated zoomIn" style="background-color:#1A405F" >
@@ -105,53 +66,14 @@ Admin Reports
                         </div>
                     </div>
 
-                </div>
-                    <!--
-                    <div class="row">
-                        <div class="col s12">
-                                <div class="col s6">
-                                    <div class="card animated zoomIn" style="background-color:#32384D" >
-                                        <div class="card-content white-text">
-                                          <span class="card-title" style="font-size:30px; font-weight:bold;" id = 'clientNumber'>GUNS</span>
-                                          <p style="margin-left:10px;"></p>
-                                          <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
-                                        </div>
-                                        <div class="card-action" style="background-color:">
-                                          <center>
-                                              <a href="#!" class="white-text">See Statistical Report</a>
-                                              <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
-                                          </center>
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                            <div class="col s6">
-                                    <div class="card animated zoomIn" style="background-color:#00293C" >
-                                        <div class="card-content white-text">
-                                          <span class="card-title" style="font-size:30px; font-weight:bold;" id = 'clientNumber'>REQUESTS</span>
-                                          <p style="margin-left:10px;"></p>
-                                          <i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>
-                                        </div>
-                                        <div class="card-action" style="background-color:">
-                                          <center>
-                                              <a href="#!" class="white-text">See Statistical Report</a>
-                                              <i class="material-icons white-text" style="font-size:1rem; margin-left:-15px;">chevron_right</i>
-                                          </center>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                    
-                    </div>-->
+                </div> 
 					
-					<div class="row">
-						<div class="col s12">
-							<div class="col s6">
+				<div class="col s6">
 								<div class="card animated zoomIn" style="background-color:#32384D" >
 									<div class="card-content white-text">
 										<span class="card-title" style="font-size:26px; font-weight:bold;" id = 'clientNumber'>GUARD TRANSFER HISTORY</span>
 										<p style="margin-left:10px;"></p>
-	<!--									<i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>-->
+	
 									</div>
 									<div class="card-action" style="background-color:">
 										<center>
@@ -161,13 +83,16 @@ Admin Reports
 									</div>
 								</div>	
 							</div>
+					
+					<div class="row">
+						<div class="col s12">							
 							
 							<div class="col s6">
 								<div class="card animated zoomIn" style="background-color:#00293C" >
 									<div class="card-content white-text">
 										<span class="card-title" style="font-size:30px; font-weight:bold;" id = 'clientNumber'><center>INCIDENT REPORTS</center></span>
 										<p style="margin-left:10px;"></p>
-	<!--									<i class="material-icons right" style="font-size:5rem; margin-top:-70px;">nature_people</i>-->
+	
 									</div>
 									<div class="card-action" style="background-color:">
 										<center>

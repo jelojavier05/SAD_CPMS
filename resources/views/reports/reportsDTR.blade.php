@@ -9,7 +9,7 @@ Guard Attendance
 <div class="row">
 		<div class="col s10 offset-s2" style="margin-top:-25px;">			
 			<div class="row">
-				
+				<div class="col s6 offset-s6 pull-s6"><h4 class="blue-text" style="font-weight:bold;">Guard Attendance Log</h4></div>
 				<div class="col s6" style="margin-top:25px;">
 					<ul class="collection with-header animated fadeInUp" style="max-height:550px;">
 						<li class="collection-header blue-grey lighten-4">
