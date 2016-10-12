@@ -32,7 +32,7 @@ Guard Attendance
 										<td>Damian Lillard</td>
 										<td>Polytechnic University of the Philippines Sta Mesa</td>
 										<td>
-											<button class="btn blue col s12" id="">View</button>
+											<button class="btn blue col s12" id="btnView">View</button>
 										</td>
 									</tr>									
 								</tbody>
@@ -44,7 +44,7 @@ Guard Attendance
 		<!-- Guards -->
 
 <!-- Guard Information -->
-			<div class="col s5" style="margin-top:0px;">
+			<div class="col s5" style="margin-top:0px; display:none;" id="containerDTR" >
 				<ul class="collection with-header animated fadeInUp" style="max-height:550px;">
 					<li class="collection-header grey lighten-2">
 						<span>
@@ -52,8 +52,21 @@ Guard Attendance
 						</span>
 						<h5 class="blue-text" style="font-weight:bold;">DTR</h5>
 					</li>
-					<li class="collection-header">
-						<table class="striped grey lighten-1" id="tblDTR">							
+					<li class="collection-header grey lighten-3">
+						<div class="row">
+							<div class="input-field col s6">
+								<input type="date" id="">
+								<label class="active">Start Date</label>
+							</div>
+							
+							<div class="input-field col s6">
+								<input type="date" id="">
+								<label class="active">End Date</label>
+							</div>
+						</div>
+					</li>
+					<li class="collection-header grey lighten-5">
+						<table class="striped grey lighten-1" id="tblDTR" style="width:100%;">							
 							<thead>
 								<th>In</th>
 								<th>Out</th>								
@@ -125,6 +138,10 @@ Guard Attendance
 			"pageLength":5,
 			"bLengthChange": false,
 			"bFilter": false
+		});
+		
+		$('#btnView').click(function(){
+			$("#containerDTR").css("display", "block");
 		});
 	});
 </script>
