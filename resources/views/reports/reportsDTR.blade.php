@@ -9,6 +9,18 @@ Guard Attendance
 	<div class="col s10 offset-s2" style="margin-top:-25px;">
 		<div class="row">
 			<div class="col s6 offset-s6 pull-s6"><h4 class="blue-text" style="font-weight:bold;">Guard Attendance Log</h4></div>
+			
+			
+				<div class="input-field col s2">
+					<input type="date" id="">
+					<label class="active">Start Date</label>
+				</div>							
+								
+				<div class="input-field col s2 offset-s6 pull-s5">
+					<input type="date" id="">
+					<label class="active">End Date</label>
+				</div>
+			
 		<!-- Guards-->
 			<div class="col s7">
 				<div class="container-fluid grey lighten-2 z-depth-2 animated fadeInUp" style="border-radius: 10px; margin-top:-10px; padding-left:2%;padding-right:2%;">
@@ -51,20 +63,7 @@ Guard Attendance
 							<button class="btn blue waves-effect right" style="margin-top:5px;" id="" >Print</button>
 						</span>
 						<h5 class="blue-text" style="font-weight:bold;">DTR</h5>
-					</li>
-					<li class="collection-header grey lighten-3">
-						<div class="row">
-							<div class="input-field col s6">
-								<input type="date" id="">
-								<label class="active">Start Date</label>
-							</div>
-							
-							<div class="input-field col s6">
-								<input type="date" id="">
-								<label class="active">End Date</label>
-							</div>
-						</div>
-					</li>
+					</li>					
 					<li class="collection-header grey lighten-5">
 						<table class="striped grey lighten-1" id="tblDTR" style="width:100%;">							
 							<thead>
