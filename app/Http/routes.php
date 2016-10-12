@@ -3,6 +3,7 @@
 Route::get('/test', 'TestController@index');
 
 Route::get('/reportDTR', 'ReportDTRController@index');
+Route::get('/reportDTR/getDTR', 'ReportDTRController@getDTRperGuard');
 
 Route::get('/clients', 'ClientController@getActiveClient');
 Route::get('/clients/guards', 'ClientController@getActiveClientGuard');
@@ -329,6 +330,7 @@ Route::get('/getGuardDeployedparea', 'PDFGuardDeployedPerAreaController@getGuard
 
 Route::get('/getIncident', 'PDFIncidentController@index');
 Route::get('/getDTR', 'PDFdtrController@getDTR');
+Route::post('/getDTR/post', 'PDFdtrController@postDTR');
 
 
 //PDF QUERIES ---------------------------------------------

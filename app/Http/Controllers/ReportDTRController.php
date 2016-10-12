@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Input;
+use DB;
+use Carbon\Carbon;
 
 class ReportDTRController extends Controller
 {
@@ -16,72 +19,27 @@ class ReportDTRController extends Controller
      */
     public function index()
     {
-        return view('/reports/reportsDTR');
+        return view('/reports/reportsDTR1');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function getDTRperGuard(Request $request){
+        $guardID = Input::get('guardID');
+        $dateStart = new Carbon(Input::get('dateStart'));
+        $dateEnd = new Carbon(Input::get('dateEnd'));
+        $dateEnd->addDay();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $dtrGuard = DB::table('tblattendance')
+            ->join('tblclient', 'tblclient.intClientID', '=', 'tblattendance.intClientID')
+            ->select('datetimeIn', 'datetimeOut', 'strClientName')
+            ->where('intGuardID', $guardID)
+            ->whereBetween('datetimeIn', [$dateStart, $dateEnd])
+            ->get();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        foreach($dtrGuard as $value){
+            $value->strTimeIn = (new Carbon($value->datetimeIn))->toDayDateTimeString();
+            $value->strTimeOut = (new Carbon($value->datetimeOut))->toDayDateTimeString();
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return response()->json($dtrGuard);
     }
 }

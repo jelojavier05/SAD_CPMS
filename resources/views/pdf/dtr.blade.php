@@ -107,15 +107,14 @@
         <hr>
           <h2><center><b><strong><i>Daily Time Record</i></strong></b></center></h2><br>
 
-<h4>Guard:</h4>
-<h4>For the Month of: </h4>
-<h4>Assigned Client:</h4>
+<h4>Guard: {{$strGuardName}}</h4>
+<h4>Date Range: {{$dateStart}} - {{$dateEnd}}</h4>
      <br>
      <br>
          <table>
                 <tbody>
                     <tr>
-                    <th><center>Date</center>
+                    <th><center>Client Name</center>
                     </th>
                      <th><center>Time In</center>
                     </th>
@@ -123,19 +122,13 @@
                         </th>
                     </tr>
                     
+                    @foreach($arrData as $value)
                     <tr>
-                    <td>
-                      02/04/16  
-                    </td>
-                    <td>
-                    12:00 AM
-                    </td>
-                    <td>
-                    12:00 PM
-                    </td>
-                    
+                        <td>{{$value->strClientName}}</td>
+                        <td>{{$value->timeIn}}</td>
+                        <td>{{$value->timeOut}}</td>
                     </tr>
-                  
+                    @endforeach
                 </tbody>
             </table>
 
