@@ -55,8 +55,8 @@ Guard Attendance
 					<li class="collection-header">
 						<table class="striped grey lighten-1" id="tblDTR">							
 							<thead>
-								<th>From</th>
-								<th>To</th>								
+								<th>In</th>
+								<th>Out</th>								
 							</thead>
 							
 							<tbody>
