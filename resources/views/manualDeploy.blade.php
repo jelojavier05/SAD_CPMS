@@ -8,9 +8,10 @@ Manual Deployment
 <!-- Table -->
 	<div class="row">
 		<div class="col s10 offset-s2" style="margin-top:-25px;">
+			
 			<div class="row">
-				
-				<div class="col s6" style="margin-top:25px;">
+				<div class="col s5 offset-s7 pull-s7"><h4 class="blue-text">Manual Deployment</h4></div>
+				<div class="col s6" style="margin-top:-10px;">
 					<ul class="collection with-header animated fadeInUp" style="max-height:550px;">
 						<li class="collection-header">
 							<table class="striped grey lighten-1" id="tblClients">
