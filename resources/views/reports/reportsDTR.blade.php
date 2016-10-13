@@ -116,6 +116,40 @@ Guard Attendance
 
 
 @section('script')
+
+<script>
+$(document).ready(function(){
+	$.ajax({
+		type: "GET",
+		url: "{{action('QueryGuardController@getQueryGuard')}}",
+		success: function(data){
+			var table = $('#tblGuards').DataTable();
+			table.clear().draw();
+			var button;
+			$.each(data, function(index,value){
+				var strGuardName = value.strFirstName + ' ' + value.strLastName;
+				button = '<button class="btn blue col s12 btnMore" id="'+value.intGuardID+'">View</button>';
+				table.row.add([
+					value.intGuardID,
+					value.strLicenseNumber,
+					strGuardName,
+					value.clientName,
+					button
+				]).draw();
+			});	
+		},
+		error: function(data){
+			var toastContent = $('<span>Error Database.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
+	});//ajax
+
+	$('#tblGuards').on('click', '.btnMore', function(){
+		$("#containerDTR").css("display", "block");
+	});
+});
+</script>
+
 <script>
 	$(document).ready(function(){
 		$("#tblGuards").DataTable({
