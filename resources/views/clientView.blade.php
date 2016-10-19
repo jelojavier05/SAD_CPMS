@@ -24,7 +24,7 @@ Clients
                     
                     <div class="row">
                         <div class="col s11" style="margin: -15px 25px 25px 25px;">
-                            <table class="highlight white" style="border-radius:10px;" id="tableActive">
+                            <table class="highlight white" style="border-radius:10px; padding:2%;" id="tableActive">
                                 <thead>
                                     <tr>
                                         <th style="width:50px;"></th>
@@ -98,7 +98,7 @@ Clients
                     
                     <div class="row">
                         <div class="col s12" style="margin-top:-20px;">
-                            <table class="highlight white" style="border-radius:10px;" id="dataTablePending">
+                            <table class="highlight white" style="border-radius:10px; padding:2%;" id="dataTablePending">
                                 <thead>
                                     <tr>
                                         <th style="width:10px;"></th>

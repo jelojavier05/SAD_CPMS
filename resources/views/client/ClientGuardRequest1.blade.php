@@ -94,7 +94,7 @@ Client Request of Guard
 				
 				<div class="col s10 push-s2">
 					<div class='row'></div>
-					<input class="filled-in" type="checkbox" id="checkAdd" value = ""><label for="checkAdd">I Agree to the Terms and Conditions</label>
+					<input class="filled-in" type="checkbox" id="checkAdd" value = ""><label for="checkAdd">Confirmation</label>
 				</div>
 				
 			</div>
@@ -218,7 +218,7 @@ Client Request of Guard
 				
 				<div class="col s10 push-s2">
 					<div class='row'></div>
-					<input class="filled-in" type="checkbox" id="checkSwap" value = ""><label for="checkSwap">I Agree to the Terms and Conditions</label>
+					<input class="filled-in" type="checkbox" id="checkSwap" value = ""><label for="checkSwap">Confirmation</label>
 				</div>
 				
 			</div>
@@ -255,7 +255,7 @@ Client Request of Guard
 				
 				<div class="col s10 push-s2">
 					<div class='row'></div>
-					<input class="filled-in" type="checkbox" id="checkRemove" value = ""><label for="checkRemove">I Agree to the Terms and Conditions</label>
+					<input class="filled-in" type="checkbox" id="checkRemove" value = ""><label for="checkRemove">Confirmation</label>
 				</div>
 				
 			</div>
