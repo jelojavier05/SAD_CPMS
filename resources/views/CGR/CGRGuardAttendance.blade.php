@@ -145,7 +145,7 @@ Guard Attendance
 		</div>
 	</div>
 	<div class="modal-footer" style="background-color: #00293C;">
-		<button class="btn large waves-effect waves-light green" name="action" style="margin-right: 30px;" id = "btnOkay">OK
+		<button class="btn large waves-effect  green" name="action" style="margin-right: 30px;" id = "btnOkay">OK
 		</button>
 	</div>	
 </div>
