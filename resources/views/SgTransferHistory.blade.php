@@ -52,7 +52,7 @@ Guard Transfer History
 							<thead>
 								<th>Date (Y-M-D)</th>
 								<th>Client</th>
-								<th>Stauts</th>
+								<th>Status</th>
 							</thead>
 							
 							<tbody>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <title> PAYMENT </title>
+    <title> Voucher </title>
     <style>
     #logo{
         margin-top: 35px;
@@ -100,7 +100,8 @@
 		
 		
 	</div>
-	<br>
+	
+	<div style="width:50%">Statement Date:&nbsp;<span id="">January 01,2017</span></div>
 	<div style="background-color:#2D4262;color:white;width:50%">CLIENT INFORMATION</div>
     
 	<div id="" style="width:50%;">
@@ -108,8 +109,8 @@
 		<p id="" style="font-size:12px; padding-top:-2%;">2013-12345-MN-0</p>
 	</div>
 	
-	<div id="" style="height:80px; position:absolute; width:50%;  font-weight:bold; margin-left:350px; top:100px; ">
-			<p ><b><center><div style="margin-top:20px; font-size:25px;">CLIENT'S COPY</div></center></b></p>
+	<div id="" style="height:80px; position:absolute; width:50%;  font-weight:bold; margin-left:380px; top:100px; ">
+			<p ><b><div style="margin-top:20px; font-size:15px;">RECEIPT NUMBER:&nbsp;<span id="">123456789</span></div></b></p>
 	</div>
 	<p style="background-color:#2D4262;color:white;width:50%; margin-top:-1%;">TYPE OF PAYMENT:</p>
 	<p style="padding-top:-1%;font-size:12px;">CHEQUE</p>
@@ -117,42 +118,7 @@
     
     <hr>
     
-    <div>
-    <p style="text;" class="ss">PAYMENT DETAILS</p>
-    
-      <table style="width:50%">  <tbody>
-                <tr>
-                    <th><center>Bank Name</center>
-                    </th>
-                     <th><center>Date</center>
-                    </th>
-                     <th><center>Cheque Number</center>
-                    </th>
-                     <th><center>Amount</center>
-                    </th>
-                </tr>
-                <tr>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                
-                </tr>
-                 <tr>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                
-                </tr>
-                
-                
-            </tbody>
-    
-    
-    
-        </table>
-    <br>
+    <div>       
 		
 	<p style="text" class="ss">GUARDS</p>
     <table style="width:50%">  <tbody>
@@ -205,7 +171,7 @@
 		
 	<br>
   
-     	<p style="text" class="ss">UNPAID BILLS</p>
+     	<p style="text" class="ss">BILLING DATES</p>
     <table style="width:50%">  <tbody>
                 <tr>
                     <th><center>Date</center>
@@ -234,7 +200,7 @@
         </table>
         
 </div>
-    <div style="padding-top:-65%;padding-left:52%;width:50%">
+    <div style="padding-top:-50%;padding-left:52%;width:50%">
      <div style="border:solid;padding:3%;">
     
         <p style="text-align:justify; font-size: 14px;">
@@ -260,25 +226,14 @@
     
     </div>
    
-    <br>
-    <br>
-    <div style="border-style:dotted"></div>
-    <img src="{!! public_path('img/rsz_cut.png') !!}" style="margin-top:-2%">
-       
-  
-    <div style="background-color:#2D4262;color:white;width:50%">CLIENT INFORMATION</div>
+    <br>    
     
     <div id="" style="width:50%;">
-		<p id="" style="font-size:20px; padding-top:-2%;">JASON ANDREW PAREDES</p>
-		<p id="" style="font-size:12px; padding-top:-2%; font-weight:bold;">2013-12345-MN-0</p>
-		<p id="" style="font-size:12px; padding-top:-2%; font-weight:bold;">Nature of Business:&nbsp;<span id="">Bank</span></p>
-		<p id="" style="font-size:12px; padding-top:-2%; font-weight:bold; color:red">Balance Remaining:&nbsp;<span id="" style="color:black;">10000.00</span></p>
-		<p id="" style="font-size:12px; padding-top:-2%; font-weight:bold;">As of:&nbsp;<span id="">01, January 2017</span></p>
+		<div id="" style="font-size:18px; padding-top:-2%; font-weight:bold;">TOTAL NUMBER OF HOURS:&nbsp;<span id="">12</span></div>
+		<div id="" style="font-size:18px;padding-top:-2%; font-weight:bold;">RATE PER HOUR:&nbsp;<span id="">100.00</span></div>
 	</div>
 	
-	<div id="" style="height:80px; position:absolute; width:50%;  font-weight:bold; margin-left:350px; top:50px; ">
-			<p ><b><center><div style="margin-top:20px; font-size:25px;">AGENCY'S COPY</div></center></b></p>
-	</div>
+	
     
     </body>
     

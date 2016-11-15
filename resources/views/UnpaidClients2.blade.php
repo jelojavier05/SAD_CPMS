@@ -19,8 +19,7 @@ Unpaid Clients
 			<div class="container white lighten-2 z-depth-2" style="padding-left:2%; padding-right:2%;">       
 				<div class="row">
 					<div class="col s12" style="margin-top:10px;">
-						<table class="striped white" style="border-radius:10px;" id="dataTable">
-							
+						<table class="striped white" style="border-radius:10px;" id="dataTable">							
 							<thead>
 								<tr>
 									<th class="grey lighten-1"></th>                                
@@ -62,13 +61,13 @@ Unpaid Clients
 							<ul class="collection with-header">
 								<li class="collection-header">
 									<div class="row">
-										<div class="col s7">
+										<div class="col s7" style="margin-top:3%;">
 											<h5 style="font-weight:bold;">Official Receipt Number:</h5>
 										</div>
 										
-										<div class="col s5 pull-s1">
-											<div class="input-field">
-												<input type="text" id="strOfficialReceipt" placeholder="091222222">
+										<div class="col s5 pull-s1" >
+											<div class="input-field" >
+												<input type="text" id="strOfficialReceipt" placeholder="123456789">
 											</div>
 										</div>
 									</div>										
