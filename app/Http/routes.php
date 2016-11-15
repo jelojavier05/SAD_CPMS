@@ -7,6 +7,7 @@ Route::get('/clientbill', 'ClientBillController@index');
 Route::get('/contractextensions', 'ContractExtensionsController@index');
 Route::get('/contractextensions/getContractExtension', 'ContractExtensionsController@getContractExtension');
 Route::get('/contractextensions/getContractInfo', 'ContractExtensionsController@getContractInfo');
+Route::post('/contractextensions/postExtend', 'ContractExtensionsController@extendContract');
 
 Route::get('/reportsincidentreports', 'ReportsIncidentReportsController@index');
 Route::get('/reportsincidentreports/getIncidentPerArea', 'ReportsIncidentReportsController@getIncidentPerArea');
@@ -260,6 +261,8 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
 
     Route::get('/client', 'ClientDashboardController@index');
     Route::get('/client/getinformation', 'ClientDashboardController@getClientInformation');
+    Route::get('/client/hasUnpaidBills', 'ClientDashboardController@hasUnpaidBills');
+    
     Route::get('/clienthomepage', 'ClientHomepageController@index');
     Route::get('/clienthomepage/get/presentGuard', 'ClientHomepageController@getPresentGuard');
     Route::get('/clienthomepage/get/attendanceLog', 'ClientHomepageController@getAttendanceLog');

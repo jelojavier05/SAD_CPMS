@@ -107,10 +107,10 @@
     </nav>
     
 	<div class="row" >
-		<div class="col s5 l3 push-l9 push-s7" style="margin-left:-10px;" >
+		<div class="col s5 l3 push-l9 push-s7" style="margin-left:-10px; display: none;" id = 'divWarning'>
 			<a class="card-panel red animated bounceInRight" style = "" id="epalwarningclient" href="/clientbill">
 				<div class="white-text" style="font-size:20px;"><i class="material-icons left">warning</i>Notice</div>
-			  <span class="white-text">This is a reminder that your account balance of <span id="">1000.00</span> was overdue as of <span id="">01/01/17</span>.
+			  <span class="white-text">This is a reminder that you have balance. Please check your Bill Page.
 			  </span>
 			</a>
 		</div>
@@ -595,6 +595,22 @@ $.ajax({
     Materialize.toast(toastContent, 1500,'red', 'edit');
   }
 });//ajax
+</script>
+
+<script>
+  $.ajax({
+    type: "GET",
+    url: "{{action('ClientDashboardController@hasUnpaidBills')}}",
+    success: function(data){
+      if (data > 0){
+        $('#divWarning').show();
+      }
+    },
+    error: function(data){
+      var toastContent = $('<span>Error Database.</span>');
+      Materialize.toast(toastContent, 1500,'red', 'edit');
+    }
+  });//ajax
 </script>
 	
     </body>

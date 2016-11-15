@@ -59,6 +59,30 @@ Bills
 
 @section('script')
 <script>
+$(document).ready(function(){
+	$.ajax({
+		type: "GET",
+		url: "{{action('UnpaidClientsController@getUnpaidBill')}}",
+		success: function(data){
+			var table = $('#tblUnpaid').DataTable();
+			table.clear().draw();
+			console.log(data);
+			$.each(data, function(index, value){
+				table.row.add([
+					'<h>' + value.strDate + '</h>',
+					'<h>' + value.totalAmount + '</h>',
+				]).draw();
+			});
+		},
+		error: function(data){
+			var toastContent = $('<span>Error Database.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
+	});//ajax
+});
+</script>
+
+<script>
 	$(document).ready(function(){
 		$("#tblUnpaid").DataTable({
 			"columns": [

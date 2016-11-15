@@ -27,13 +27,16 @@ class UnpaidClientsController extends Controller
             ->where('tblclientbillingdate.boolStatus', 1)
             ->groupBy('tblclient.intClientID')
             ->get();
-        return view('/UnpaidClients1')
+        return view('/UnpaidClients2')
             ->with('unpaidBill', $unpaidBills);
     }
 
-    public function getUnpaidBill(){
+    public function getUnpaidBill(Request $request){
         $clientID = Input::get('clientID');
         $now = Carbon::now();
+        if (is_null($clientID)){
+            $clientID = $request->session()->get('id');
+        }
 
         $billingDate = DB::table('tblcontract')
             ->join('tblclientbillingdate', 'tblclientbillingdate.intContractID', '=', 'tblcontract.intContractID')
@@ -83,12 +86,15 @@ class UnpaidClientsController extends Controller
         $deciTotalAmount = $request->deciTotalAmount;
         $paymentMode = $request->paymentMode;
         $now = Carbon::now();
+        $clientID = $request->clientID;
 
         try{
             DB::beginTransaction();
 
             $paymentID = DB::table('tblpayment')->insertGetId([
                 'deciAmount' => $deciTotalAmount,
+                'intClientID' => $clientID,
+
                 'tinyintType' => $paymentMode,
                 'datetimePayment' => $now
             ]);

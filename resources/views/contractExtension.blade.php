@@ -161,6 +161,7 @@ Contract Extensions
 $(document).ready(function(){
 	var arrDate;
 	var extensionDate;
+	var contractID;
 
 	$("#tblContractExtensions").DataTable({             
 	 "columns": [     
@@ -175,11 +176,11 @@ $(document).ready(function(){
 
 	$('#tblContractExtensions').on('click', '.btnExtend', function(){
 		$('#modalExtend').openModal();	
-		var id = this.id;
+		contractID = this.id;
 
 		$.ajax({
 			type: "GET",
-			url: "/contractextensions/getContractInfo?contractID=" + id,
+			url: "/contractextensions/getContractInfo?contractID=" + contractID,
 			success: function(data){
 				$('#strTypeOfContractName').text(data.strTypeOfContractName);
 				$('#dateStart').text(data.dateStart);
@@ -209,10 +210,40 @@ $(document).ready(function(){
 	});
 	
 	$('#btnProceed').click(function(){
-		// $('#modalExtend').closeModal();
-		billingDates();
-		console.log(arrDate);
-		// swal("Success!", "Contract Extended", "success");
+		var deciNewRate = parseFloat($('#deciRateNew').val());
+		if (deciNewRate > 0){
+
+			billingDates();
+			
+			$.ajax({
+				type: "POST",
+				url: "{{action('ContractExtensionsController@extendContract')}}",
+				beforeSend: function (xhr) {
+					var token = $('meta[name="csrf_token"]').attr('content');
+					if (token) {
+						return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+					}
+				},
+				data: {
+					arrDate: arrDate,
+					deciNewRate: deciNewRate,
+					extensionDate: extensionDate,
+					contractID: contractID
+				},
+				success: function(data){
+					$('#modalExtend').closeModal();
+					swal("Success!", "Contract Extended", "success");
+				},
+				error: function(data){
+					var toastContent = $('<span>Error Database.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+				}
+			});//ajax
+			
+		}else{
+			var toastContent = $('<span>Check your input.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
 	});
 
 	function billingDates(){
@@ -235,7 +266,7 @@ $(document).ready(function(){
           day = lastDay;
       }
       var monthTemp = month - 1;
-      var tempDate = new Date(year,monthTemp, day);
+      var tempDate = moment(new Date(year,monthTemp, day)).format();
       arrDate.push(tempDate);
       extensionDate = tempDate;
       tempCurrentMonth = new Date(year, month, 1);

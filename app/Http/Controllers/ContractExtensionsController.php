@@ -54,6 +54,49 @@ class ContractExtensionsController extends Controller
     }
 
     public function extendContract(Request $request){
-        
+        try{
+            DB::beginTransaction();
+            $deciNewRate = $request->deciNewRate;
+            $arrDate = $request->arrDate;
+            $extensionDate = (new Carbon($request->extensionDate))->toDateString();
+            $contractID = $request->contractID;
+            $now = new Carbon();
+            $result = DB::table('tblcontractrate')
+                ->select('deciRate')
+                ->where('intContractID', $contractID)
+                ->where('datetimeEffectivity', '<=', $now)
+                ->orderBy('datetimeEffectivity', 'desc')
+                ->first();
+            $deciOldRate = $result->deciRate;
+
+            // Process
+                DB::table('tblcontract')
+                    ->where('intContractID', $contractID)
+                    ->update([
+                        'dateEnd' => $extensionDate
+                    ]);//extend date of contract
+
+
+                if ($deciNewRate != $deciOldRate){
+                    DB::table('tblcontractrate')->insert([
+                        'intContractID' => $contractID,
+                        'deciRate' => $deciNewRate,
+                    ]);
+                }
+
+                foreach($arrDate as $value){
+                    DB::table('tblclientbillingdate')->insert([
+                        'intContractID' => $contractID,
+                        'boolStatus' => 1,
+                        'dateBill' => $value
+                    ]);
+                }
+                
+            // Process
+            
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }//try catch
     }
 }

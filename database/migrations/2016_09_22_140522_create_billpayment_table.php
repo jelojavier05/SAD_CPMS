@@ -17,7 +17,6 @@ class CreateBillpaymentTable extends Migration
             $table->integer('intClientBillingDateID')->unsigned();
             $table->integer('intPaymentID')->unsigned();
             $table->date('dateBill');
-            
 
             $table->foreign('intClientBillingDateID')->references('intClientBillingDateID')->on('tblclientbillingdate');
             $table->foreign('intPaymentID')->references('intPaymentID')->on('tblpayment');

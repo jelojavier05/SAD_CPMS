@@ -184,6 +184,7 @@ $(document).ready(function(){
 	var arrUnpaidBill;
 	var arrCheckedBill;
 	var deciTotalAmount;
+	var clientID;
 
 	$('input[type="radio"]').click(function(){
     if($(this).attr("value")=="1"){           
@@ -194,7 +195,7 @@ $(document).ready(function(){
 	});//radio button
 
 	$('#dataTable').on('click', '.btnMore', function(){
-		var clientID = this.id;
+		clientID = this.id;
 		arrUnpaidBill = [];
 		$.ajax({
 			type: "GET",
@@ -257,7 +258,8 @@ $(document).ready(function(){
 					dateIssued: dateIssued,
 					checkNumber: checkNumber,
 					clientName: clientName,
-					amount: amount
+					amount: amount,
+					clientID: clientID
 				},
 				success: function(data){
 					swal({
