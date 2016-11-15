@@ -112,8 +112,11 @@
 	<div id="" style="height:80px; position:absolute; width:50%;  font-weight:bold; margin-left:380px; top:100px; ">
 			<p ><b><div style="margin-top:20px; font-size:15px;">RECEIPT NUMBER:&nbsp;<span id="">123456789</span></div></b></p>
 	</div>
-	<p style="background-color:#2D4262;color:white;width:50%; margin-top:-1%;">TYPE OF PAYMENT:</p>
-	<p style="padding-top:-1%;font-size:12px;">CHEQUE</p>
+	<p style="background-color:#2D4262;color:white;width:50%; margin-top:-1%;">CHEQUE DETAILS</p>
+	<p style="padding-top:-1%;font-size:12px;">BANK NAME:&nbsp;<span id="">LandBank Pilar</span></p>
+	<p style="padding-top:-1%;font-size:12px;">DATE ISSUED:&nbsp;<span id="">01/01/2017</span></p>
+	<p style="padding-top:-1%;font-size:12px;">CHEQUE NUMBER:&nbsp;<span id="">987654321</span></p>
+	<p style="padding-top:-1%;font-size:12px;">AMOUNT:&nbsp;<span id="">10000.00</span></p>
     
     
     <hr>
