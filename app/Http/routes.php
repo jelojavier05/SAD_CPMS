@@ -3,6 +3,7 @@
 Route::get('/test', 'TestController@index');
 
 Route::get('/clientbill', 'ClientBillController@index');
+Route::get('/clientbill/getPaidBill', 'ClientBillController@getPaidBill');
 
 Route::get('/contractextensions', 'ContractExtensionsController@index');
 Route::get('/contractextensions/getContractExtension', 'ContractExtensionsController@getContractExtension');
@@ -304,6 +305,8 @@ Route::post('/securitysettings/updatepassword', 'SecuritySettingsController@upda
 Route::get('/getContract', 'PDFContractController@getContract');
 Route::get('/getDelivery', 'PDFDeliveryController@getDelivery');
 Route::get('/getPayment',  'PDFPaymentController@getPayment');
+Route::get('/getPayment/paymentPDF',  'PDFPaymentController@postPaymentPDF');
+
 Route::get('/getTrackTransferRec', 'PDFTrackTransferRecordController@getTrackTransfer');
 Route::get('/getGuardDeployedparea', 'PDFGuardDeployedPerAreaController@getGuardDeployedparea');
 

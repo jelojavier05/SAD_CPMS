@@ -13,17 +13,12 @@ Bills
 					<li class="collection-header">
 						<table class="striped grey lighten-1" id="tblUnpaid">
 							<h5 class="red-text" style="font-weight:bold;">Unpaid Bills</h5>
-							<button class="btn blue tooltipped z-depth-1" data-position="bottom" data-delay="50" data-tooltip="Generate Voucher" style="margin-left:400px; margin-top:-45px; position:absolute;"><i class="material-icons">print</i></button>
 							<thead>
 								<th>Date</th>
-								<th>Amount</th>								
+								<th>Amount</th>					
 							</thead>
 							
 							<tbody>
-								<tr>
-									<td>01/11/17</td>
-									<td>10000.00</td>
-								</tr>
 								
 							</tbody>
 						</table>
@@ -37,15 +32,13 @@ Bills
 						<table class="striped grey lighten-1" id="tblPaid">
 							<h5 class="green-text" style="font-weight:bold;">Paid Bills</h5>
 							<thead>
+								<th></th>
+								<th>OR Number</th>
 								<th>Date Paid</th>
 								<th>Amount</th>								
 							</thead>
 							
 							<tbody>
-								<tr>
-									<td>11/11/16</td>
-									<td>12000.00</td>
-								</tr>
 							</tbody>
 						</table>
 					</li>
@@ -78,7 +71,47 @@ $(document).ready(function(){
 			var toastContent = $('<span>Error Database.</span>');
 			Materialize.toast(toastContent, 1500,'red', 'edit');
 		}
-	});//ajax
+	});//unpaid
+
+	$.ajax({
+		type: "GET",
+		url: "{{action('ClientBillController@getPaidBill')}}",
+		success: function(data){
+			console.log(data);
+			var table = $('#tblPaid').DataTable();
+			table.clear().draw();
+
+			$.each(data, function (index,value){
+				var button = '<button class="btn blue tooltipped z-depth-1 btnGenerate" data-position="bottom" data-delay="50" data-tooltip="Generate Voucher" id = "'+value.intPaymentID+'"><i class="material-icons">print</i></button>';
+
+				table.row.add([
+					button,
+					'<h>' + value.strReceiptNumber + '</h>',
+					'<h>' + value.strDate + '</h>',
+					'<h>' + value.deciAmount + '</h>',
+				]).draw();
+			});
+		},
+		error: function(data){
+			var toastContent = $('<span>Error Database.</span>');
+			Materialize.toast(toastContent, 1500,'red', 'edit');
+		}
+	});//paid
+
+	$('#tblPaid').on('click', '.btnGenerate', function(){
+		var id = this.id;
+		$.ajax({
+			type: "GET",
+			url: "/getPayment/paymentPDF?paymentID=" + id,
+			success: function(data){
+				window.open('/getPayment', '_blank');
+			},
+			error: function(data){
+				var toastContent = $('<span>Error Database.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+			}
+		});//ajax
+	});
 });
 </script>
 
@@ -96,7 +129,9 @@ $(document).ready(function(){
 		$("#tblPaid").DataTable({
 			"columns": [
 				null,
-				null				
+				null,
+				null,
+				null
 			] ,  
 			"pageLength":5,
 			"lengthMenu": [5,10,15,20]
