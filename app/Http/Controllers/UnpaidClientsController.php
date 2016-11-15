@@ -87,6 +87,7 @@ class UnpaidClientsController extends Controller
         $paymentMode = $request->paymentMode;
         $now = Carbon::now();
         $clientID = $request->clientID;
+        $receiptNumber = $request->strReceiptNumber;
 
         try{
             DB::beginTransaction();
@@ -94,7 +95,7 @@ class UnpaidClientsController extends Controller
             $paymentID = DB::table('tblpayment')->insertGetId([
                 'deciAmount' => $deciTotalAmount,
                 'intClientID' => $clientID,
-
+                'strReceiptNumber' => $receiptNumber,
                 'tinyintType' => $paymentMode,
                 'datetimePayment' => $now
             ]);

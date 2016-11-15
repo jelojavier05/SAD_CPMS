@@ -68,7 +68,7 @@ Unpaid Clients
 										
 										<div class="col s5 pull-s1">
 											<div class="input-field">
-												<input type="text" id="" placeholder="091222222">
+												<input type="text" id="strOfficialReceipt" placeholder="091222222">
 											</div>
 										</div>
 									</div>										
@@ -273,7 +273,8 @@ $(document).ready(function(){
 					checkNumber: checkNumber,
 					clientName: clientName,
 					amount: amount,
-					clientID: clientID
+					clientID: clientID,
+					strReceiptNumber: $('#strOfficialReceipt').val()
 				},
 				success: function(data){
 					swal({
