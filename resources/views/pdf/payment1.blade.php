@@ -126,7 +126,7 @@
 	<p style="padding-top:-1%;font-size:12px;">AMOUNT:&nbsp;<span id="">{{$data->checkInfo->deciAmount}}</span></p>
     @endif
     
-    <hr>
+    
     
     <div>       
 		
@@ -176,9 +176,6 @@
     
         <p style="text-align:justify; font-size: 14px;">
             <b> This is your copy. Keep this in a safe place. </b>
-            <br>
-            <br>
-            This voucher is valid only until <b> NOVEMBER 1, 2016 </b>
             <br>
             <br>
             ALL FEES ARE NONREFUNDABLE AND NONTRANSFERABLE; hence only those who completed the registration shall be accomodated to apply. 

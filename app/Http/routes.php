@@ -3,6 +3,7 @@
 Route::get('/test', 'TestController@index');
 
 Route::get('/paidclients', 'PaidClientsController@index');
+Route::get('/paidclients/getPaidClient', 'PaidClientsController@getPaidClient');
 
 Route::get('/clientbill', 'ClientBillController@index');
 Route::get('/clientbill/getPaidBill', 'ClientBillController@getPaidBill');
@@ -137,6 +138,7 @@ Route::post('/client/gunTagging/post', 'GunTaggingController@post');
 
 Route::get('/unpaidclients', 'UnpaidClientsController@index');
 Route::get('/unpaidclients/get/UnpaidBill', 'UnpaidClientsController@getUnpaidBill');
+Route::get('/unpaidclients/get/isReceiptNumberExist', 'UnpaidClientsController@isReceiptNumberExist');
 Route::post('/unpaidclients/post/payBill', 'UnpaidClientsController@payBill');
 
 Route::get('/admin/pending', 'AdminPendingController@index');

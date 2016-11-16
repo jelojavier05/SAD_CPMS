@@ -138,7 +138,7 @@ class PDFPaymentController extends Controller
 		$data->totalAmount = $overAllTotalAmount;
 
 
-		$pdf=PDF::loadView('pdf.payment', array('data' => $data));
+		$pdf=PDF::loadView('pdf.payment1', array('data' => $data));
 		return $pdf->stream('payment.pdf');
 	}
 

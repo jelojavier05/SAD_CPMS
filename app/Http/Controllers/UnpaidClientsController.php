@@ -129,4 +129,14 @@ class UnpaidClientsController extends Controller
             DB::rollback();
         }
     }
+
+    public function isReceiptNumberExist(Request $request){
+        $strReceiptNumber = Input::get('receiptNumber');
+
+        $count = DB::table('tblpayment')
+            ->where('strReceiptNumber', $strReceiptNumber)
+            ->count();
+
+        return response()->json($count);
+    }
 }

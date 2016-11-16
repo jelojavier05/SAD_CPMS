@@ -1,4 +1,4 @@
-@extends('layout.maintenanceLayout')
+	@extends('layout.maintenanceLayout')
 
 @section('title')
 Leave

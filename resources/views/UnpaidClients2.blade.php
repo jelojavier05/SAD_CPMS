@@ -252,7 +252,7 @@ $(document).ready(function(){
 			amount = $('#deciCheckAmount').val();
 		}
 
-		if (setCheckedItems() && checkAmount(paymentMode)){
+		if (setCheckedItems() && checkAmount(paymentMode) && checkOfficialReceipt()){
 			
 			$.ajax({
 				type: "POST",
@@ -292,6 +292,29 @@ $(document).ready(function(){
 			});//ajax
 		}
 	});
+
+	function checkOfficialReceipt(){
+		var checker;
+		$.ajax({
+			type: "GET",
+			url: "{{action('UnpaidClientsController@isReceiptNumberExist')}}",
+			success: function(data){
+				if(data == 0){	
+					checker = true;
+				}else{
+					checker = false;
+					var toastContent = $('<span>Receipt Number Exists.</span>');
+					Materialize.toast(toastContent, 1500,'red', 'edit');
+				}
+			},
+			error: function(data){
+				var toastContent = $('<span>Error Database.</span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+			},async: false
+		});//ajax
+
+		return checker;
+	}
 
 	function setCheckedItems(){
 		var checker = false;
