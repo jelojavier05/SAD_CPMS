@@ -149,7 +149,8 @@ $(document).ready(function(){
 			message();
     }else if (type == 12){
     	swapRequestAccepted();
-    }
+    } 
+
   });
 
     function readMessage(){

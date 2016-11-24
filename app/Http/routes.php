@@ -109,6 +109,8 @@ Route::get('/client/gunTagging', 'GunTaggingController@index');
 Route::post('/client/gunTagging/post', 'GunTaggingController@post');
 
 Route::get('/unpaidclients', 'UnpaidClientsController@index');
+Route::get('/unpaidclients/get/UnpaidBill', 'UnpaidClientsController@getUnpaidBill');
+Route::post('/unpaidclients/post/payBill', 'UnpaidClientsController@payBill');
 
 Route::get('/admin/pending', 'AdminPendingController@index');
 

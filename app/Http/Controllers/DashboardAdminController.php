@@ -16,7 +16,7 @@ class DashboardAdminController extends Controller
         $now = Carbon::now();
         $expirationDate = Carbon::now();
         $expirationDate->addMonths(2);
-        $unpaidBillDate = (new Carbon())->addDays(7);
+        $unpaidBillDate = new Carbon();
 
         if ($accountType == 3){
             $countClient = DB::table('tblclient')

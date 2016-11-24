@@ -450,6 +450,8 @@ $(document).ready(function() {
             $('#tableBilling tr').not(function(){ return !!$(this).has('th').length; }).remove();
             var dateStart1 = new Date($('#contractStart').val());
             arrDate = [];
+            var dateStartString = $('#contractStart').val().replace(/\//g, '-');
+            arrDate.push(dateStartString);
             $.each(arr, function(index,value){
                 var year = value.getFullYear();
                 var month = value.getMonth() + 1;

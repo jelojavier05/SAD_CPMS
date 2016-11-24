@@ -16,7 +16,7 @@ class CreateClientbillingdateTable extends Migration
             $table->increments('intClientBillingDateID');
             $table->integer('intContractID')->unsigned();
             $table->tinyInteger('boolStatus');//0 - N/A, 1 - pending, 2 - paid
-            $table->timestamp('dateBill');
+            $table->date('dateBill');
             
             $table->foreign('intContractID')->references('intContractID')->on('tblcontract');
         });

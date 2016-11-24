@@ -213,10 +213,17 @@ class ClientContractController extends Controller
                 ]);
 
             $arrDate = $request->arrDate;
+            $checker = true;
+            $status = 0;
             foreach($arrDate as $value){
+                if ($checker){
+                    $checker = false;
+                }else{
+                    $status = 1;
+                }
                 DB::table('tblclientbillingdate')->insert([
                     'intContractID' => $contractID,
-                    'boolStatus' => 1,
+                    'boolStatus' => $status,
                     'dateBill' => $value
                 ]);
             }
