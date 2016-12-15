@@ -101,23 +101,30 @@
 		
 	</div>
 	
-	<div style="width:50%">Statement Date:&nbsp;<span id="">January 01,2017</span></div>
+	<div style="width:50%">Statement Date:&nbsp;<span id="">{{$data->clientPayment->strDatetimepayment}}</span></div>
 	<div style="background-color:#2D4262;color:white;width:50%">CLIENT INFORMATION</div>
     
 	<div id="" style="width:50%;">
-		<p id="" style="font-size:20px; padding-top:-2%;">JASON ANDREW PAREDES</p>
-		<p id="" style="font-size:12px; padding-top:-2%;">2013-12345-MN-0</p>
+		<p id="" style="font-size:20px; padding-top:-2%;">{{$data->clientPayment->strClientName}}</p>
+		<p id="" style="font-size:12px; padding-top:-2%;">{{$data->clientPayment->strNatureOfBusiness}}</p>
 	</div>
+    <div style="background-color:#2D4262;color:white;width:50%">MODE OF PAYMENT</div>
+    
+    <div id="" style="width:50%;">
+        <p id="" style="font-size:20px; padding-top:-2%;">{{$data->clientPayment->modeOfPayment}}</p>
+    </div>
+
+    @if(isset($data->checkInfo))
 	
 	<div id="" style="height:80px; position:absolute; width:50%;  font-weight:bold; margin-left:380px; top:100px; ">
-			<p ><b><div style="margin-top:20px; font-size:15px;">RECEIPT NUMBER:&nbsp;<span id="">123456789</span></div></b></p>
+			<p ><b><div style="margin-top:20px; font-size:15px;">RECEIPT NUMBER:&nbsp;<span id="">{{$data->clientPayment->strReceiptNumber}}</span></div></b></p>
 	</div>
 	<p style="background-color:#2D4262;color:white;width:50%; margin-top:-1%;">CHEQUE DETAILS</p>
-	<p style="padding-top:-1%;font-size:12px;">BANK NAME:&nbsp;<span id="">LandBank Pilar</span></p>
-	<p style="padding-top:-1%;font-size:12px;">DATE ISSUED:&nbsp;<span id="">01/01/2017</span></p>
-	<p style="padding-top:-1%;font-size:12px;">CHEQUE NUMBER:&nbsp;<span id="">987654321</span></p>
-	<p style="padding-top:-1%;font-size:12px;">AMOUNT:&nbsp;<span id="">10000.00</span></p>
-    
+	<p style="padding-top:-1%;font-size:12px;">BANK NAME:&nbsp;<span id="">{{$data->checkInfo->strBankName}}</span></p>
+	<p style="padding-top:-1%;font-size:12px;">DATE ISSUED:&nbsp;<span id="">{{$data->checkInfo->strDate}}</span></p>
+	<p style="padding-top:-1%;font-size:12px;">CHEQUE NUMBER:&nbsp;<span id="">{{$data->checkInfo->strAccountNumber}}</span></p>
+	<p style="padding-top:-1%;font-size:12px;">AMOUNT:&nbsp;<span id="">{{$data->checkInfo->deciAmount}}</span></p>
+    @endif
     
     <hr>
     
@@ -129,44 +136,16 @@
 					<th><center>Guard ID</center></th>
 					<th><center>Name</center></th>
 					<th><center>Hours</center></th>
-					
                 </tr>
+
+                @foreach($data->arrGuard as $value)
                 <tr>
-                    <td>123-321</td>
-                    <td>Juan Dela Cruz</td>
-					<td>12</td>
+                    <td>{{$value->intGuardID}}</td>
+                    <td>{{$value->strFirstName}} {{$value->strLastName}}</td>
+					<td>{{$value->totalHour}}</td>
 					
                 </tr>
-				
-				<tr>
-                    <td>123-321</td>
-                    <td>Juan Dela Cruz</td>
-					<td>12</td>
-					
-                </tr>
-		
-				<tr>
-                    <td>123-321</td>
-                    <td>Juan Dela Cruz</td>
-					<td>12</td>
-					
-                </tr>
-		
-				<tr>
-                    <td>123-321</td>
-                    <td>Juan Dela Cruz</td>
-					<td>12</td>
-					
-                </tr>
-		
-				<tr>
-                    <td>123-321</td>
-                    <td>Juan Dela Cruz</td>
-					<td>12</td>
-					
-                </tr>
-		
-				
+				@endforeach
             </tbody>
         </table>
   
@@ -182,23 +161,12 @@
                      <th><center>Amount</center>
                     </th>
                 </tr>
+                @foreach($data->billingDate as $value)
                 <tr>
-                    <td>123</td>
-                    <td>123</td>      
-                </tr>   
-          <tr>
-                    <td>123</td>
-                    <td>123</td>      
-                </tr>   
-        
-          <tr>
-                    <td>123</td>
-                    <td>123</td>      
-                </tr>   
-          <tr>
-                    <td>123</td>
-                    <td>123</td>      
-                </tr>   
+                    <td>{{$value->strDate}}</td>
+                    <td>{{$value->totalAmount}}</td>      
+                </tr>      
+                @endforeach
             </tbody>
         </table>
         
@@ -232,8 +200,9 @@
     <br>    
     
     <div id="" style="width:50%;">
-		<div id="" style="font-size:18px; padding-top:-2%; font-weight:bold;">TOTAL NUMBER OF HOURS:&nbsp;<span id="">12</span></div>
-		<div id="" style="font-size:18px;padding-top:-2%; font-weight:bold;">RATE PER HOUR:&nbsp;<span id="">100.00</span></div>
+		<div id="" style="font-size:18px; padding-top:-2%; font-weight:bold;">TOTAL NUMBER OF HOURS:&nbsp;<span id="">{{$data->totalHours}}</span></div>
+		<div id="" style="font-size:18px;padding-top:-2%; font-weight:bold;">RATE PER HOUR:&nbsp;<span id="">{{$data->deciRate}}</span></div>
+        <div id="" style="font-size:18px;padding-top:-2%; font-weight:bold;">TOTAL AMOUNT PAID:&nbsp;<span id="">{{$data->totalAmount}}</span></div>
 	</div>
 	
 	

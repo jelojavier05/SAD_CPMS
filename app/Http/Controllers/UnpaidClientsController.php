@@ -70,7 +70,7 @@ class UnpaidClientsController extends Controller
                     ->where('datetimeOut', '<=', $dateEnd)
                     ->first();
 
-                $totalAmount = number_format((float)($deciRate * $totalHours->totalHours), 2, '.', '');;
+                $totalAmount = number_format((float)($deciRate * $totalHours->totalHours), 2, '.', '');
 
                 $billingDate[$intLoop]->totalAmount = $totalAmount;
                 $billingDate[$intLoop]->strDate = (new Carbon($dateEnd))->toFormattedDateString();
